@@ -1,4 +1,4 @@
-# Autonomous-Market-Intelligence-Engine
+# Autonomous Market Intelligence Engine
 An enterprise-grade, production-ready multi-agent system designed to ingest, process, synthesize, and evaluate real-time financial and emerging market trends. Built on PySpark / Databricks Delta Lake for distributed data ingestion, LangGraph for cyclic agent orchestration, NeMo Guardrails for execution safety, and MLflow for automated evaluation.
 
 ## Architecture Overview
