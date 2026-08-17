@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # =====================================================================
+  # 1. Local MLflow Tracking Server with SQLite Backend
+  # =====================================================================
+  mlflow-server:
+    image: python:3.12-slim
+    container_name: mlflow-tracking-server
+    restart: unless-stopped
+    command: sh -c "pip install --no-cache-dir mlflow && mlflow server --backend-store-uri sqlite:////mlflow/mlflow.db --default-artifact-root /mlflow/artifacts --host 0.0.0.0 --port 5000 --allowed-hosts '*'"
+    ports:
+      - "5000:5000"
+    volumes:
+      - mlflow-data:/mlflow
+
+  # =====================================================================
+  # 2. Python 3.12 Autonomous Agent Container
+  # =====================================================================
+  market-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: market-intelligence-agent
+    restart: on-failure
+    depends_on:
+      - mlflow-server
+    environment:
+      - PYTHONUNBUFFERED=1
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      # - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      # Route agent telemetry directly to the local MLflow server container
+      - MLFLOW_TRACKING_URI=http://mlflow-server:5000
+      - MLFLOW_EXPERIMENT_NAME=/Market_Intelligence_Agent_Tracing
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    # Override command if running specific script vs main entrypoint
+    command: ["python", "main.py"]
+
+# Persistent storage volume for SQLite metadata database & MLflow artifacts
+volumes:
+  mlflow-data:
+    driver: local
