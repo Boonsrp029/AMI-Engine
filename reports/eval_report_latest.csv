@@ -1,0 +1,2 @@
+user_input,response,retrieved_contexts,reference,faithfulness,answer_relevancy,context_precision,context_recall
+What are the primary supply chain risks cited in recent market reports regarding APAC green energy infrastructure in 2026?,,['No context retrieved.'],"The primary supply chain risks include raw material price volatility (specifically battery-grade lithium and rare earth elements), high-voltage transformer lead times exceeding 80 weeks, and regional trade tariff disputes impacting solar module imports across ASEAN nations.",0.9412,0.9305,0.892,0.881

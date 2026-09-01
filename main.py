@@ -1,262 +1,343 @@
-"""
-Autonomous Market Intelligence Engine - Multi-Agent LangGraph Pipeline
-
-This script implements a production-grade multi-agent loop using LangGraph with:
-1. Sub-Agent State Isolation: Sub-agents operate on isolated Pydantic state schemas
-   to prevent context bloat and compounding errors across execution nodes.
-2. Deterministic Verification: Pydantic structured output validation at state boundaries.
-3. Step-Level Observability: Native MLflow span tracing (@mlflow.trace + autolog)
-   to log inputs, outputs, token metrics, and execution latency.
-"""
-
 import os
-import sys
-from typing import Annotated, Dict, List, Literal, Optional, TypedDict
-from typing_extensions import NotRequired
-from pydantic import BaseModel, Field
-
+import re
+import json
+import argparse
+import warnings
+import pandas as pd
+from datasets import Dataset
 import mlflow
-from mlflow.entities import SpanType
+from dotenv import load_dotenv
 
-from langchain_core.messages import BaseMessage, HumanMessage, SystemMessage
+load_dotenv()
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+# Ragas & LangChain imports
+from ragas import evaluate
+from ragas.llms import LangchainLLMWrapper
+from ragas.embeddings import LangchainEmbeddingsWrapper
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_openai import ChatOpenAI
-from langgraph.graph import END, START, StateGraph
-
-# =====================================================================
-# 1. MLFLOW OBSERVABILITY & TRACING SETUP
-# =====================================================================
-# Enable automatic tracing for LangChain / LangGraph calls
-mlflow.langchain.autolog(
-    log_traces=True,
-    run_tracer_inline=True,  # Ensures child spans align in async/sync loops
-    silent=True,
+from langchain_ollama import ChatOllama
+from langchain_core.outputs import ChatResult
+from ragas.metrics import (
+    faithfulness,
+    answer_relevancy,
+    context_precision,
+    context_recall,
 )
 
-mlflow.set_experiment("/Market_Intelligence_Agent_Tracing")
+# Import agent execution function from main.py
+from main import query_agent
 
 
-# =====================================================================
-# 2. SUB-AGENT ISOLATED SCHEMAS & GLOBAL STATE
-# =====================================================================
-# Sub-Agent 1 Isolated Schema: Retrieval Node
-class RetrievalQueryInput(BaseModel):
-    sector: str = Field(description="Target market sector for analysis.")
-    search_keywords: List[str] = Field(description="Extracted target search keywords.")
+FALLBACK_LOCAL_MODELS = [
+    "llama3.1:8b",
+    "qwen2.5:7b",
+    "llama3:8b",
+    "mistral:7b",
+]
 
-class RetrievalOutput(BaseModel):
-    retrieved_chunks: List[str] = Field(description="List of relevant raw text context chunks.")
-    source_count: int = Field(description="Total distinct sources retrieved.")
-
-
-# Sub-Agent 2 Isolated Schema: Analysis Node
-class AnalysisInput(BaseModel):
-    sector: str
-    contexts: List[str]
-
-class AnalysisOutput(BaseModel):
-    key_findings: List[str] = Field(description="Synthesized market growth drivers.")
-    confidence_score: float = Field(ge=0.0, le=1.0, description="Confidence score of analysis.")
-    hallucination_flag: bool = Field(description="True if context lacks sufficient backing.")
+FALLBACK_GROQ_MODELS = [
+    "llama-3.3-70b-versatile",
+    "llama3-70b-8192",
+    "qwen/qwen3.6-27b",
+]
 
 
-# Global LangGraph State
-class GlobalMarketState(TypedDict):
-    """
-    Global graph state passed between supervisor and sub-agent nodes.
-    Sub-agents receive slices of this state to enforce strict scope boundary.
-    """
-    user_query: str
-    target_sector: str
-    retrieved_context: Optional[List[str]]
-    analysis_findings: Optional[List[str]]
-    confidence_score: Optional[float]
-    iteration_count: int
-    final_report: Optional[str]
-    status: Literal["RUNNING", "NEEDS_RETRY", "COMPLETED", "FAILED"]
+class CleanReasoningChatOpenAI(ChatOpenAI):
+    """Custom ChatOpenAI subclass that strips reasoning tags and markdown code fences."""
+    def _clean_text(self, text: str) -> str:
+        if not text:
+            return ""
+        # Remove <think>...</think> reasoning tags
+        text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL)
+        # Extract content from ```json ... ``` code blocks if present
+        json_match = re.search(r"```(?:json)?\s*(.*?)\s*```", text, flags=re.DOTALL)
+        if json_match:
+            text = json_match.group(1)
+        return text.strip()
+
+    def _generate(self, *args, **kwargs) -> ChatResult:
+        result = super()._generate(*args, **kwargs)
+        for gen in result.generations:
+            gen.text = self._clean_text(gen.text)
+            if hasattr(gen, "message") and hasattr(gen.message, "content"):
+                if isinstance(gen.message.content, str):
+                    gen.message.content = self._clean_text(gen.message.content)
+        return result
+
+    async def _agenerate(self, *args, **kwargs) -> ChatResult:
+        result = await super()._agenerate(*args, **kwargs)
+        for gen in result.generations:
+            gen.text = self._clean_text(gen.text)
+            if hasattr(gen, "message") and hasattr(gen.message, "content"):
+                if isinstance(gen.message.content, str):
+                    gen.message.content = self._clean_text(gen.message.content)
+        return result
 
 
-# =====================================================================
-# 3. SUB-AGENT NODE IMPLEMENTATIONS WITH MLFLOW SPAN TRACING
-# =====================================================================
+class CleanReasoningChatOllama(ChatOllama):
+    """Custom ChatOllama subclass that enforces high context windows and strips markdown fencings."""
+    def _clean_text(self, text: str) -> str:
+        if not text:
+            return ""
+        # Remove reasoning tags
+        text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL)
+        # Unwrap markdown JSON codeblocks for Ragas parser
+        json_match = re.search(r"```(?:json)?\s*(.*?)\s*```", text, flags=re.DOTALL)
+        if json_match:
+            text = json_match.group(1)
+        return text.strip()
 
-# Initialize default LLM (Configurable via environment variables)
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1)
+    def _generate(self, *args, **kwargs) -> ChatResult:
+        result = super()._generate(*args, **kwargs)
+        for gen in result.generations:
+            gen.text = self._clean_text(gen.text)
+            if hasattr(gen, "message") and hasattr(gen.message, "content"):
+                if isinstance(gen.message.content, str):
+                    gen.message.content = self._clean_text(gen.message.content)
+        return result
+
+    async def _agenerate(self, *args, **kwargs) -> ChatResult:
+        result = await super()._agenerate(*args, **kwargs)
+        for gen in result.generations:
+            gen.text = self._clean_text(gen.text)
+            if hasattr(gen, "message") and hasattr(gen.message, "content"):
+                if isinstance(gen.message.content, str):
+                    gen.message.content = self._clean_text(gen.message.content)
+        return result
 
 
-@mlflow.trace(name="subagent_retrieval_node", span_type=SpanType.RETRIEVER)
-def retrieval_node(state: GlobalMarketState) -> Dict[str, Any]:
-    """
-    Sub-agent 1: Handles data retrieval.
-    Operates ONLY on 'target_sector' input to keep prompt context clean.
-    """
-    sector = state["target_sector"]
-    
-    # 1. Structured query generation using isolated input schema
-    structured_llm = llm.with_structured_output(RetrievalQueryInput)
-    query_params: RetrievalQueryInput = structured_llm.invoke([
-        SystemMessage(content="Extract target search keywords for the market sector."),
-        HumanMessage(content=f"Sector: {sector}")
-    ])
-    
-    # 2. Simulated vector search / database query execution
-    # (Replace mock data with Databricks Vector Search SDK call)
-    mock_chunks = [
-        f"Subsidies and policy incentives driven by local regulators accelerated {sector} adoption in APAC.",
-        f"Enterprise infrastructure spend in {sector} grew 28% year-over-year according to Q2 2026 reports.",
-        f"Supply chain bottlenecks in APAC for {sector} remain a moderate risk factor."
+def get_evaluator_llm(model_name: str = None):
+    provider = os.getenv("LLM_PROVIDER", "ollama").lower()
+
+    if provider == "ollama":
+        ollama_base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+        target_model = model_name or os.getenv("OLLAMA_MODEL", FALLBACK_LOCAL_MODELS[0])
+
+        llm = CleanReasoningChatOllama(
+            base_url=ollama_base_url.rstrip("/"),
+            model=target_model,
+            temperature=0.0,
+            num_ctx=8192,
+            num_predict=2048,
+        )
+
+    elif provider == "groq":
+        groq_api_key = os.getenv("GROQ_API_KEY")
+        if not groq_api_key:
+            raise ValueError("GROQ_API_KEY is missing from environment variables.")
+
+        target_model = model_name or os.getenv("GROQ_MODEL", FALLBACK_GROQ_MODELS[0])
+
+        llm = CleanReasoningChatOpenAI(
+            base_url="[https://api.groq.com/openai/v1](https://api.groq.com/openai/v1)",
+            api_key=groq_api_key,
+            model=target_model,
+            temperature=0.0,
+            max_tokens=4096,
+            max_retries=5,
+            timeout=120.0,
+        )
+
+    else:
+        llm = CleanReasoningChatOpenAI(
+            api_key=os.getenv("OPENAI_API_KEY"),
+            model=model_name or os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
+            temperature=0.0,
+            max_tokens=4096,
+        )
+
+    return LangchainLLMWrapper(llm)
+
+
+def get_evaluator_embeddings():
+    lc_embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    return LangchainEmbeddingsWrapper(lc_embeddings)
+
+
+def load_eval_dataset(dataset_path: str) -> list:
+    if not os.path.exists(dataset_path):
+        raise FileNotFoundError(f"Evaluation dataset not found at: {dataset_path}")
+    with open(dataset_path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def evaluate_with_fallback(dataset: Dataset, eval_metrics: list, evaluator_embeddings):
+    provider = os.getenv("LLM_PROVIDER", "ollama").lower()
+
+    if provider == "ollama":
+        env_model = os.getenv("OLLAMA_MODEL")
+        candidate_models = (
+            [env_model] + [m for m in FALLBACK_LOCAL_MODELS if m != env_model]
+            if env_model
+            else FALLBACK_LOCAL_MODELS
+        )
+    elif provider == "groq":
+        env_model = os.getenv("GROQ_MODEL")
+        candidate_models = (
+            [env_model] + [m for m in FALLBACK_GROQ_MODELS if m != env_model]
+            if env_model
+            else FALLBACK_GROQ_MODELS
+        )
+    else:
+        candidate_models = [None]
+
+    last_exception = None
+
+    for model in candidate_models:
+        try:
+            print(f"Attempting evaluation with judge model: {model or 'Default Provider Model'}...")
+            evaluator_llm = get_evaluator_llm(model_name=model)
+
+            # max_workers=1 prevents parallel overloading of local Ollama
+            results = evaluate(
+                dataset=dataset,
+                metrics=eval_metrics,
+                llm=evaluator_llm,
+                embeddings=evaluator_embeddings,
+                max_workers=1,
+                raise_exceptions=False,
+            )
+            return results
+
+        except Exception as err:
+            print(f"[WARNING] Evaluation failed on model '{model}': {err}")
+            print("Initiating fallback to next candidate model...")
+            last_exception = err
+
+    raise RuntimeError(f"All candidate evaluation models failed. Last error: {last_exception}")
+
+
+def run_dynamic_evaluation(dataset_path: str, output_dir: str):
+    print(f"Loading evaluation dataset from: {dataset_path}")
+    raw_data = load_eval_dataset(dataset_path)
+
+    questions = []
+    answers = []
+    contexts_list = []
+    ground_truths = []
+
+    print(f"Executing agent pipeline across {len(raw_data)} eval queries...")
+    for idx, item in enumerate(raw_data, 1):
+        query = item.get("query") or item.get("question") or item.get("user_input", "")
+
+        raw_gt = item.get("ground_truth") or item.get("reference", "")
+        if isinstance(raw_gt, list):
+            ground_truth_str = raw_gt[0] if raw_gt else ""
+        else:
+            ground_truth_str = str(raw_gt)
+
+        if "answer" in item and "contexts" in item:
+            answer = item["answer"]
+            retrieved_contexts = item["contexts"]
+        elif "response" in item and "retrieved_contexts" in item:
+            answer = item["response"]
+            retrieved_contexts = item["retrieved_contexts"]
+        else:
+            response_payload = query_agent(query)
+            answer = response_payload.get("answer") or response_payload.get("response", "")
+            retrieved_contexts = response_payload.get("retrieved_contexts") or response_payload.get("contexts", [])
+
+        if isinstance(retrieved_contexts, str):
+            retrieved_contexts = [retrieved_contexts]
+
+        clean_contexts = []
+        for ctx in retrieved_contexts:
+            if isinstance(ctx, dict):
+                text_val = ctx.get("content") or ctx.get("text") or ctx.get("page_content") or str(ctx)
+                clean_contexts.append(text_val)
+            elif ctx is not None:
+                clean_contexts.append(str(ctx))
+
+        if not clean_contexts:
+            clean_contexts = ["No context retrieved."]
+
+        questions.append(query)
+        answers.append(answer)
+        contexts_list.append(clean_contexts)
+        ground_truths.append(ground_truth_str)
+
+    eval_dict = {
+        "user_input": questions,
+        "question": questions,
+        "response": answers,
+        "answer": answers,
+        "retrieved_contexts": contexts_list,
+        "contexts": contexts_list,
+        "reference": ground_truths,
+        "ground_truth": ground_truths,
+    }
+    dataset = Dataset.from_dict(eval_dict)
+
+    evaluator_embeddings = get_evaluator_embeddings()
+
+    answer_relevancy.strictness = 1
+
+    eval_metrics = [
+        faithfulness,
+        answer_relevancy,
+        context_precision,
+        context_recall,
     ]
-    
-    retrieval_result = RetrievalOutput(
-        retrieved_chunks=mock_chunks,
-        source_count=len(mock_chunks)
+
+    print("Computing metrics via Ragas...")
+    results = evaluate_with_fallback(dataset, eval_metrics, evaluator_embeddings)
+
+    result_df = results.to_pandas()
+
+    faith_col = "faithfulness" if "faithfulness" in result_df.columns else result_df.columns[0]
+    rel_col = "answer_relevancy" if "answer_relevancy" in result_df.columns else result_df.columns[1]
+    prec_col = "context_precision" if "context_precision" in result_df.columns else result_df.columns[2]
+    rec_col = "context_recall" if "context_recall" in result_df.columns else result_df.columns[3]
+
+    mean_faithfulness = float(result_df[faith_col].fillna(0).mean())
+    mean_relevance = float(result_df[rel_col].fillna(0).mean())
+    mean_precision = float(result_df[prec_col].fillna(0).mean())
+    mean_recall = float(result_df[rec_col].fillna(0).mean())
+
+    passed = (
+        mean_faithfulness >= 0.90
+        and mean_relevance >= 0.90
+        and mean_precision >= 0.90
+        and mean_recall >= 0.85
     )
-    
-    # Return slice update to Global State
-    return {
-        "retrieved_context": retrieval_result.retrieved_chunks,
-        "status": "RUNNING"
-    }
+    status_str = "PASSED (CI Gate Approved)" if passed else "FAILED (Threshold Missed)"
+
+    os.makedirs(output_dir, exist_ok=True)
+    report_csv_path = os.path.join(output_dir, "eval_report_latest.csv")
+    result_df.to_csv(report_csv_path, index=False)
+
+    mlflow.set_experiment("/Market_Intelligence_Agent_Tracing")
+    with mlflow.start_run() as run:
+        mlflow.log_param("dataset_path", dataset_path)
+        mlflow.log_param("dataset_size", len(raw_data))
+        mlflow.log_metric("faithfulness", mean_faithfulness)
+        mlflow.log_metric("answer_relevance", mean_relevance)
+        mlflow.log_metric("context_precision", mean_precision)
+        mlflow.log_metric("context_recall", mean_recall)
+        mlflow.log_artifact(report_csv_path)
+
+        run_id = run.info.run_id
+
+    print("\n" + "=" * 50)
+    print("RAGAS DYNAMIC EVALUATION COMPLETE")
+    print("=" * 50)
+    print(f"Faithfulness Score     : {mean_faithfulness:.4f}")
+    print(f"Answer Relevancy Score : {mean_relevance:.4f}")
+    print(f"Context Precision      : {mean_precision:.4f}")
+    print(f"Context Recall         : {mean_recall:.4f}")
+    print("-" * 50)
+    print(f"Status                 : {status_str}")
+    print(f"MLflow Run ID          : {run_id}")
+    print(f"Detailed Report        : {report_csv_path}")
+    print("=" * 50 + "\n")
 
 
-@mlflow.trace(name="subagent_analysis_node", span_type=SpanType.LLM)
-def analysis_node(state: GlobalMarketState) -> Dict[str, Any]:
-    """
-    Sub-agent 2: Analyzes retrieved context and computes confidence score.
-    Isolated from global conversation history—only receives retrieved_context.
-    """
-    contexts = state.get("retrieved_context", [])
-    sector = state["target_sector"]
-    current_iterations = state.get("iteration_count", 0) + 1
-    
-    if not contexts:
-        return {
-            "status": "NEEDS_RETRY",
-            "iteration_count": current_iterations
-        }
-        
-    formatted_context = "\n- ".join(contexts)
-    prompt = f"Analyze the following context for sector '{sector}':\n- {formatted_context}"
-    
-    structured_llm = llm.with_structured_output(AnalysisOutput)
-    analysis_res: AnalysisOutput = structured_llm.invoke([
-        SystemMessage(content="Synthesize facts strictly from context. Flag hallucinations if context is insufficient."),
-        HumanMessage(content=prompt)
-    ])
-    
-    # Deterministic State Boundary Check: If hallucination detected or low confidence
-    if analysis_res.hallucination_flag or analysis_res.confidence_score < 0.70:
-        next_status = "NEEDS_RETRY" if current_iterations < 3 else "FAILED"
-    else:
-        next_status = "RUNNING"
-        
-    return {
-        "analysis_findings": analysis_res.key_findings,
-        "confidence_score": analysis_res.confidence_score,
-        "iteration_count": current_iterations,
-        "status": next_status
-    }
-
-
-@mlflow.trace(name="synthesis_formatting_node", span_type=SpanType.CHAIN)
-def synthesis_node(state: GlobalMarketState) -> Dict[str, Any]:
-    """
-    Sub-agent 3: Formats verified analysis findings into final client deliverable.
-    """
-    sector = state["target_sector"]
-    findings = state.get("analysis_findings", [])
-    confidence = state.get("confidence_score", 0.0)
-    
-    formatted_findings = "\n".join([f"• {f}" for f in findings])
-    report = (
-        f"# Market Intelligence Brief: {sector}\n\n"
-        f"**Synthesis Confidence Score:** {confidence * 100:.1f}%\n\n"
-        f"### Key Market Drivers:\n{formatted_findings}\n"
-    )
-    
-    return {
-        "final_report": report,
-        "status": "COMPLETED"
-    }
-
-
-# =====================================================================
-# 4. CONDITIONAL ROUTING LOGIC
-# =====================================================================
-def route_after_analysis(state: GlobalMarketState) -> str:
-    """Deterministic routing function based on state status."""
-    status = state.get("status")
-    if status == "RUNNING":
-        return "synthesize"
-    elif status == "NEEDS_RETRY":
-        return "retrieve"  # Loop back for refined retrieval
-    else:
-        return "fail_exit"
-
-
-# =====================================================================
-# 5. GRAPH BUILD & ASSEMBLY
-# =====================================================================
-def build_market_intelligence_graph() -> StateGraph:
-    builder = StateGraph(GlobalMarketState)
-    
-    # Register Nodes
-    builder.add_node("retrieve", retrieval_node)
-    builder.add_node("analyze", analysis_node)
-    builder.add_node("synthesize", synthesis_node)
-    
-    # Define Edges
-    builder.add_edge(START, "retrieve")
-    builder.add_edge("retrieve", "analyze")
-    
-    # Conditional Loop: Reflection & Retry path
-    builder.add_conditional_edges(
-        "analyze",
-        route_after_analysis,
-        {
-            "synthesize": "synthesize",
-            "retrieve": "retrieve",
-            "fail_exit": END
-        }
-    )
-    builder.add_edge("synthesize", END)
-    
-    return builder.compile()
-
-
-# =====================================================================
-# 6. EXECUTION ENTRY POINT
-# =====================================================================
 if __name__ == "__main__":
-    graph = build_market_intelligence_graph()
-    
-    initial_input: GlobalMarketState = {
-        "user_query": "Analyze APAC Green Energy market drivers for Q3 2026",
-        "target_sector": "Green Energy",
-        "retrieved_context": None,
-        "analysis_findings": None,
-        "confidence_score": None,
-        "iteration_count": 0,
-        "final_report": None,
-        "status": "RUNNING"
-    }
-    
-    print("\nExecuting LangGraph Multi-Agent Engine...")
-    
-    # Trace root execution in MLflow
-    with mlflow.start_run(run_name="LangGraph_Market_Intelligence_Loop") as run:
-        # Set session metadata for MLflow Trace UI
-        config = {"configurable": {"thread_id": "session_apac_green_energy_001"}}
-        
-        final_state = graph.invoke(initial_input, config=config)
-        
-        print("\n==================================================")
-        print("EXECUTION SUMMARY")
-        print("==================================================")
-        print(f"Status           : {final_state['status']}")
-        print(f"Iterations Taken : {final_state['iteration_count']}")
-        print(f"Confidence Score : {final_state.get('confidence_score', 'N/A')}")
-        print("\nGenerated Final Report:\n")
-        print(final_state.get("final_report", "Execution Failed or Terminated Early."))
-        print("==================================================")
-        print(f"MLflow Run ID    : {run.info.run_id}")
-        print("Trace captured in active MLflow experiment server.")
+    parser = argparse.ArgumentParser(description="Dynamic Ragas Evaluation Pipeline")
+    parser.add_argument("--dataset", required=True, help="Path to evaluation JSON dataset")
+    parser.add_argument("--output-dir", required=True, help="Directory to save evaluation reports")
+
+    args = parser.parse_args()
+    run_dynamic_evaluation(args.dataset, args.output_dir)

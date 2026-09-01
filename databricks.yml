@@ -1,0 +1,24 @@
+bundle:
+  name: Autonomous-Market-Intelligence-Engine
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-567e5110-5578.cloud.databricks.com/
+
+resources:
+  jobs:
+    market_intelligence_pipeline:
+      name: "Market Intelligence ETL & Vector Search Sync"
+      tasks:
+        - task_key: bronze_to_silver_etl
+          spark_python_task:
+            python_file: "src/etl/silver_ingestion.py"
+
+        - task_key: sync_vector_index
+          depends_on:
+            - task_key: bronze_to_silver_etl
+          spark_python_task:
+            python_file: "src/indexers/vector_search_sync.py"

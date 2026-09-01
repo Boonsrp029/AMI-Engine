@@ -1,0 +1,26 @@
+[
+  {
+    "query_id": "MKT-2026-001",
+    "category": "Semiconductors & AI Hardware",
+    "query": "Synthesize key supply chain bottlenecks for high-bandwidth memory (HBM4) production across East Asian foundries in Q2 2026.",
+    "expected_topics": ["HBM4 packaging yield", "TSMC CoWoS capacity", "SK Hynix / Samsung capex"]
+  },
+  {
+    "query_id": "MKT-2026-002",
+    "category": "Clean Energy & APAC",
+    "query": "Analyze regional growth drivers and regulatory policy shifts for grid-scale battery energy storage systems (BESS) across Southeast Asia for Q3 2026.",
+    "expected_topics": ["ASEAN Power Grid expansion", "Lithium iron phosphate pricing", "BESS capacity mandates"]
+  },
+  {
+    "query_id": "MKT-2026-003",
+    "category": "SEC Filings & Corporate Governance",
+    "query": "Compare Item 1A Risk Factors across recent 10-K filings for major hyperscalers regarding custom ASIC development vs third-party GPU reliance.",
+    "expected_topics": ["Custom silicon risk exposure", "CapEx commitments", "Supplier concentration risk"]
+  },
+  {
+    "query_id": "MKT-2026-004",
+    "category": "Macroeconomics & Fintech",
+    "query": "Evaluate the impact of cross-border retail CBDC trials on regional commercial banking liquidity in the APAC market.",
+    "expected_topics": ["mBridge corridor volume", "Liquidity disintermediation", "Central bank settlement rails"]
+  }
+]
