@@ -1,5 +1,17 @@
 # Autonomous Market Intelligence Engine
-An enterprise-grade, production-ready multi-agent system designed to ingest, process, synthesize, and evaluate real-time financial and emerging market trends. Built on PySpark / Databricks Delta Lake for distributed data ingestion, LangGraph for cyclic agent orchestration, NeMo Guardrails for execution safety, and MLflow for automated evaluation.
+A production-oriented prototype / portfolio-grade reference architecture with many of the following production engineering patterns:
+* Schema validation
+* Retries
+* Deterministic routing
+* Observability
+* Vector retrieval
+* Guardrails
+* Containerization
+* CI/CD concepts
+* Model registration
+* Serving
+* End-to-end testing
+Designed to ingest, process, synthesize, and evaluate real-time financial and emerging market trends. Built on PySpark / Databricks Delta Lake for distributed data ingestion, LangGraph for cyclic agent orchestration, NeMo Guardrails for execution safety, and MLflow for automated evaluation.
 
 ## Architecture Overview
 The system uses a **Medallion Data Architecture** (Bronze -> Silver -> Gold) paired with a **Cyclic Multi-Agent Graph** to transform raw, unstructured market feeds into structured research briefs with verified citations.
@@ -174,7 +186,7 @@ Bash
 python -m src.evals.evaluate_run --dataset data/gold_eval_dataset.json --output-dir reports/
 ```
 
-This logs dynamic run executions to MLflow and formats a terminal status report:
+This sample logs dynamically run executions to MLflow and formats a terminal status report:
 ```
 Plaintext
 
