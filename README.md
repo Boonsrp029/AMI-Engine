@@ -83,16 +83,7 @@ Fill in only the credentials for the feature you intend to run. Never commit `.e
 python main.py --help
 ```
 
-<<<<<<< HEAD
-The interface and provider requirements are defined in `main.py`. A successful local process does not establish that remote retrieval or model serving is available.
-
-### Run tests
-
-```powershell
-python -m pytest
-=======
 This sample logs dynamically run executions to MLflow and formats a terminal status report:
->>>>>>> 2d17184bf1166bcf8762cd7e93b7039cc85255cf
 ```
 
 Tests are currently based on prototype-specific state fields and mocked components. Passing them would not validate Databricks deployment, live retrieval, guardrail behavior, or the reported benchmark values.
@@ -140,9 +131,4 @@ Describe this as an **experimental portfolio prototype**, not enterprise product
 The project preserves the intended Databricks + Medallion + retrieval + LangGraph + evaluation direction, while keeping the implementation claims narrow. Before presenting this as an integrated system, consolidate the runtime around one state schema and graph; reconcile dependency pins and SDK imports; make the bundle target point to real files; define deterministic mocked unit tests and separate live integration checks; then produce a fresh, fully traceable evaluation run. Add CI, secret management, deployment rollback, monitoring, and failure-recovery evidence before making production-readiness claims.
 
 ## License
-<<<<<<< HEAD
-
-MIT. See [LICENSE](LICENSE).
-=======
 Distributed under the **MIT License**. See `LICENSE` for more information.
->>>>>>> 2d17184bf1166bcf8762cd7e93b7039cc85255cf
