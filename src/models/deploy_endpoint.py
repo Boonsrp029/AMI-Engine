@@ -13,7 +13,9 @@ load_dotenv()
 def deploy_serving_endpoint():
     endpoint_name = "market_agent_serving_endpoint"
     model_uc_path = "main.market_intelligence.market_agent_model"
-    model_version = "2" # Specify the version of the registered model to serve
+    model_version = os.getenv("DATABRICKS_MODEL_VERSION")
+    if not model_version:
+        raise ValueError("Set DATABRICKS_MODEL_VERSION to a registered Unity Catalog model version before deploying.")
 
     host = os.getenv("DATABRICKS_HOST")
     token = os.getenv("DATABRICKS_TOKEN")
@@ -34,7 +36,6 @@ def deploy_serving_endpoint():
             workload_size="Small",
             environment_vars={
                 "DATABRICKS_HOST": host,
-                "DATABRICKS_TOKEN": token,
                 "DATABRICKS_AUTH_TYPE": "pat"
             }
         )

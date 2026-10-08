@@ -40,12 +40,12 @@ class MarketVectorSearchIndexer:
         embedding_model: str = "databricks-bge-large-en",
     ):
         self.vsc = VectorSearchSyncManager().vsc
-        self.endpoint_name = endpoint_name
-        self.source_table = source_table
-        self.index_name = index_name
+        self.endpoint_name = os.getenv("DATABRICKS_VECTOR_SEARCH_ENDPOINT", endpoint_name)
+        self.source_table = os.getenv("DATABRICKS_SOURCE_TABLE", source_table)
+        self.index_name = os.getenv("DATABRICKS_VECTOR_SEARCH_INDEX", index_name)
         self.primary_key = primary_key
-        self.embedding_column = embedding_column
-        self.embedding_model = embedding_model
+        self.embedding_column = os.getenv("DATABRICKS_EMBEDDING_SOURCE_COLUMN", embedding_column)
+        self.embedding_model = os.getenv("DATABRICKS_EMBEDDING_MODEL_ENDPOINT", embedding_model)
 
     def ensure_endpoint_exists(self) -> None:
         """Creates AI Search endpoint if it does not already exist."""

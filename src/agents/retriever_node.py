@@ -16,10 +16,11 @@ os.environ["DATABRICKS_AUTH_TYPE"] = "pat"
 
 
 def get_market_intelligence_retriever(
-    index_name: str = "main.market_intelligence.silver_market_chunks_vector_index",
+    index_name: str | None = None,
     top_k: int = 5
 ):
     """Initializes a Databricks AI Search vector store retriever using WorkspaceClient."""
+    index_name = index_name or os.getenv("DATABRICKS_VECTOR_SEARCH_INDEX") or "main.market_intelligence.silver_market_chunks_vector_index"
     host = os.getenv("DATABRICKS_HOST")
     token = os.getenv("DATABRICKS_TOKEN")
 

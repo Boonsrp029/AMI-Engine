@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def run_test_suite():
-    endpoint_name = "market_agent_serving_endpoint"
+    endpoint_name = os.getenv("DATABRICKS_SERVING_ENDPOINT", "market_agent_serving_endpoint")
     host = os.getenv("DATABRICKS_HOST")
     token = os.getenv("DATABRICKS_TOKEN")
 
@@ -32,13 +32,13 @@ def run_test_suite():
         print(f"\n[Testing Query ID: {item['query_id']}] Category: {item['category']}")
         print(f"Query: {item['query']}")
         
-        response = requests.post(url, headers=headers, json=payload)
+        response = requests.post(url, headers=headers, json=payload, timeout=60)
         
         if response.status_code == 200:
             print("Response Received Successfully:")
             print(json.dumps(response.json(), indent=2))
         else:
-            print(f"Failed with status code {response.status_code}: {response.text}")
+            response.raise_for_status()
 
 if __name__ == "__main__":
     run_test_suite()

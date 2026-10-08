@@ -21,7 +21,7 @@ class LangGraphAgentPyFunc(mlflow.pyfunc.PythonModel):
         from src.agents.graph import app
         self.app = app
 
-    def predict(self, context, model_input):
+    def predict(self, context, model_input, params=None):
         """Processes incoming requests and returns synthesized context/responses."""
         results = []
         if hasattr(model_input, "iterrows"):
@@ -37,7 +37,7 @@ class LangGraphAgentPyFunc(mlflow.pyfunc.PythonModel):
 
         for query in queries:
             state = self.app.invoke({"query": query})
-            results.append(state.get("response", state.get("context", "")))
+            results.append(state.get("response") or state.get("context", ""))
 
         return results
 
@@ -53,7 +53,7 @@ def register_agent_model():
 
     # Define input sample & output sample to infer Unity Catalog model signature
     input_example = pd.DataFrame({"query": ["What are the latest clean energy trends in APAC?"]})
-    output_example = ["Synthesized analysis based on context..."]
+    output_example = pd.DataFrame({"output": ["Synthesized analysis based on context..."]})
     signature = infer_signature(input_example, output_example)
 
     # Pin dependencies to resolve the protobuf conflict

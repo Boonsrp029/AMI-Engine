@@ -1,229 +1,126 @@
 # Autonomous Market Intelligence Engine
-An enterprise-grade, production-ready multi-agent system designed to ingest, process, synthesize, and evaluate real-time financial and emerging market trends. Built on PySpark / Databricks Delta Lake for distributed data ingestion, LangGraph for cyclic agent orchestration, NeMo Guardrails for execution safety, and MLflow for automated evaluation.
 
-## Architecture Overview
-The system uses a **Medallion Data Architecture** (Bronze -> Silver -> Gold) paired with a **Cyclic Multi-Agent Graph** to transform raw, unstructured market feeds into structured research briefs with verified citations.
+An experimental portfolio project exploring market research workflows with Python, LangGraph, Databricks Vector Search, MLflow, and Ragas. The repository contains several architectural prototypes at different maturity levels. It is **not an enterprise production system**: deployment, security controls, automated recovery, monitoring, and benchmark reproducibility have not been demonstrated here.
+
+## Current implementation
+
+| Area | What is present in this checkout | Status / limitation |
+|---|---|---|
+| Agent workflow | `main.py` contains the richer retrieval, analysis, synthesis and routing prototype. `src/agents/graph.py` is a separate two-node graph with placeholder synthesis. | The agent implementations and state schemas are inconsistent; neither should be described as a verified production workflow. |
+| Data | `Databricks_PySpark_ETL.py` and `notebooks/01_pyspark_etl.ipynb` demonstrate Bronze/Silver/Gold operations. | The Databricks job points to `src/etl/silver_ingestion.py`, which is absent. There is no runnable end-to-end local ingestion pipeline. |
+| Vector Search | `src/indexers/vector_search_sync.py` uses `databricks.ai_search.client.AISearchClient`; `src/agents/retriever_node.py` uses `databricks_langchain.DatabricksVectorSearch`. | Requires a configured Databricks workspace and matching installed SDKs. Defaults are examples, not verified live resource names. |
+| Guardrails | NeMo config, Colang flow, and a wrapper exist under `config/guardrails` and `src/utils`. | No evidence in this repository that guardrails are wired into the runtime agent or enforce PII masking. |
+| Evaluation | `main.py` contains a Ragas evaluation path for faithfulness, answer relevancy, context precision, and context recall. | Requires compatible evaluator/model credentials and a real dataset. `src/evals/evaluate_run.py` delegates to that path. No reproducible scores or CI evaluation gate are established. |
+| MLflow / serving | Model registration, endpoint deployment, and endpoint request scripts exist in `src/models`. | External Databricks/Unity Catalog setup is required. Serving requires an explicitly supplied registered model version. Endpoint existence and deployed behavior are not verified. |
+| CI / tests | Unit tests are present in `tests/`. | No CI workflow is present. Test coverage and current pass status have not been established in this review. |
+
+## Architecture intent
+
+The intended design is a Medallion data pipeline feeding a retrieval-augmented agent, with evaluation and model lifecycle tracking. The diagram shows intended boundaries, not a claim that every connection is currently implemented.
 
 ```mermaid
-graph TD
-    %% Ingestion Layer
-    subgraph Data Pipeline [Databricks & PySpark]
-        A[External News / SEC APIs] -->|PySpark Streaming| B[(Bronze Delta Lake: Raw Feeds)]
-        B -->|Transformation & Deduplication| C[(Silver Delta Lake: Cleaned Chunks)]
-        C -->|Vector Indexing| D[(Databricks Vector Search)]
-    end
-
-    %% Multi-Agent Execution Layer
-    subgraph Multi-Agent Engine [LangGraph State Machine]
-        E[User Query / Cron Trigger] --> F[Supervisor / Router Node]
-        F --> G[Data Retrieval Agent]
-        G -->|Databricks Hybrid Search| D
-        G --> H[Market Analysis Agent]
-        H --> I[Synthesis & Formatting Agent]
-    end
-
-    %% Deployment & Serving Layer
-    subgraph Model Serving & Production
-        I --> J{NeMo Guardrails Check}
-        J -->|Passed| K[Databricks Model Serving Endpoint]
-        K --> L[(Gold Delta Lake: Final Briefs)]
-    end
-
-    %% Safety & Evaluation Layer
-    subgraph Reliability & Observability Layer
-        L --> M[Ragas Eval Engine]
-        M -->|Trace & Metrics| N[MLflow Experiment Tracking & Registry]
-    end
+flowchart LR
+  A[Market data sources] --> B[Bronze Delta]
+  B --> C[Silver transformation]
+  C --> D[Gold outputs]
+  C -. configured separately .-> E[Databricks Vector Search]
+  F[User query] --> G[LangGraph prototype]
+  E -. retrieval integration .-> G
+  G --> H[Research brief]
+  H -. optional evaluation path .-> I[Ragas]
+  I -. tracking configured separately .-> J[MLflow]
+  K[Unity Catalog model registration scripts] -. external deployment .-> L[Databricks Model Serving]
 ```
 
-## 🛠 Key Features & Tech Stack
-- **Distributed Ingestion:** PySpark pipelines processing web feeds, SEC filings, and market transcripts into Delta Lake tables.
-- **Stateful Agent Orchestration:** LangGraph cyclic workflow (`graph.py`, `retriever_node.py`, `supervisor.py`) enabling agent reflection, self-correction, and tool routing.
-- **Enterprise Guardrails:** NeMo Guardrails enforcement for topic alignment, PII suppression, and fact-checking against source retrieved contexts.
-- **Databricks Model Serving:** Production-ready MLflow model registration (`register_model.py`) and serving endpoint deployment (`deploy_endpoint.py`) under endpoint `market_agent_serving_endpoint`.
-- **Infrastructure as Code (DABs):** Managed Databricks deployment via Databricks Asset Bundles (`databricks.yml`).
-- **Automated LLM Evaluation:** Continuous evaluation via Ragas and custom evaluation harnesses (`eval_harness.py`, `evaluate_run.py`) logged directly to MLflow Traces.
+## Repository layout
 
-## 📁 Directory Structure
-```
-Plaintext
-
-├── .github/
-│   └── workflows/          # CI/CD pipelines (Ragas metric gate on PR)
-├── config/
-│   ├── agent_config.yaml   # Agent prompts and model parameters
-│   └── guardrails/        # NeMo Guardrails definitions (.colang)
-├── data/                   # Sample payloads and gold evaluation datasets
-├── notebooks/              # Databricks exploration & ETL notebooks
-├── src/
-│   ├── agents/            # LangGraph state machine & node logic
-│   │   ├── graph.py
-│   │   ├── retriever_node.py
-│   │   └── supervisor.py
-│   ├── evals/             # Evaluation harness & Ragas metric scripts
-│   │   ├── eval_harness.py
-│   │   └── evaluate_run.py
-│   ├── indexers/          # Vector Index building and management scripts
-│   ├── models/            # Databricks Model Serving & MLflow Registry scripts
-│   │   ├── deploy_endpoint.py
-│   │   ├── register_model.py
-│   │   └── test_endpoint.py
-│   └── utils/             # Databricks Vector Search & MLflow wrappers
-├── tests/                  # Pytest suite for unit & integration testing
-├── Databricks_PySpark_ETL.py # Standalone PySpark ETL pipeline script
-├── databricks.yml          # Databricks Asset Bundles (DABs) configuration
-├── docker-compose.yml
-├── Dockerfile              # Container definition for localized multi-agent execution
-├── main.py                 # Core application execution entrypoint
-├── requirements.txt
-└── README.md
+```text
+config/                 Agent and NeMo Guardrails configuration
+data/                   Sample inputs and evaluation dataset
+notebooks/              Databricks ETL exploration
+src/agents/             Two competing agent workflow prototypes
+src/evals/              Evaluation entry points
+src/indexers/           Databricks Vector Search sync script
+src/models/             MLflow registration and serving scripts
+src/utils/              Guardrails wrapper
+tests/                  Unit tests for prototype nodes and routing
+main.py                 Main agent and Ragas evaluation implementation
+Databricks_PySpark_ETL.py  Standalone ETL example
+databricks.yml          Asset Bundle job configuration (references missing ETL file)
 ```
 
-## Quickstart & Setup
-### Prerequisites
-- **Python:** 3.11 or higher
-- **Docker & Docker Compose**
-- **Databricks Workspace** (Access to Unity Catalog & Vector Search Endpoint)
-- **OpenAI / Anthropic API Key**
+## Local setup
 
-## 1. Environment Configuration
-Clone the repository and create a `.env` file from the provided template:
+Python 3.11 or 3.12 is recommended by the dependency declarations. Some operations also require Databricks, Docker, and provider-specific credentials.
 
-```
-Bash
-
-git clone https://github.com/Boonsrp029/autonomous-market-intelligence.git
-cd autonomous-market-intelligence
-cp .env.example .env
-```
-Configure your credentials inside `.env`:
-```
-Code snippet
-
-# Core LLM Keys
-OPENAI_API_KEY=sk-...
-ANTHROPIC_API_KEY=sk-ant-...
-
-# Databricks Configuration
-DATABRICKS_HOST=[https://your-workspace.cloud.databricks.com](https://your-workspace.cloud.databricks.com)
-DATABRICKS_TOKEN=dapi...
-DATABRICKS_VECTOR_SEARCH_INDEX=main.market_db.market_chunks_index
-
-# Observability & Model Serving
-MLFLOW_TRACKING_URI=databricks
-```
-## 2. Databricks Model Deployment & Endpoint Testing
-Register the multi-agent system to MLflow Model Registry, deploy to Databricks Model Serving, and test inference:
-```
-Bash
-
-# 1. Register model to MLflow / Databricks Registry
-python -m src.models.register_model
-
-# 2. Deploy model to Databricks Serving Endpoint (market_agent_serving_endpoint)
-python -m src.models.deploy_endpoint
-
-# 3. Test endpoint inference via client
-python -m src.models.test_endpoint
-```
-## 3. Local Execution via Docker / Python
-To run the multi-agent pipeline locally inside an isolated container:
-```
-Bash
-
-# Spin up local agent service with Docker
-docker-compose up --build -d
-
-# Alternatively, run directly via main entrypoint
-python -m main --query "Analyze top emerging growth drivers in APAC Green Energy for Q3 2026"
-```
-## 4. Manual Python Setup (For Virtual Environment Python Setup)
-```
-Bash
-
-# Create and activate virtual environment
-python3.11 -m venv venv
-source venv/bin/activate
-
-# Install dependencies
-pip install --upgrade pip
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
 pip install -r requirements.txt
-
-# Run the ingestion & agent workflow locally
-python -m src.main --query "Analyze top emerging growth drivers in APAC Green Energy for Q3 2026"
+Copy-Item .env.example .env
 ```
 
-## 📊 Evaluation & Metrics Benchmark
-Quality is guaranteed using **Ragas** metrics combined with **MLflow Traces**. Every pull request triggers an automated evaluation script over a golden dataset of 100 domain-specific queries.
+Fill in only the credentials for the feature you intend to run. Never commit `.env` or access tokens. The tracked dependency file does not currently declare every optional import used by the repository (including the Databricks, NeMo, Ragas provider, and test packages), so a clean install may need additional dependency reconciliation before all modules can be imported.
 
-### Performance Baseline Scorecard
+### Run the agent prototype
 
-| Metric | Target Threshold | Actual Baseline | Description |
-| -------- | -------- | -------- | -------- |
-| **Faithfulness**   | >= 0.90   | **0.94**   | Measures if claims in the output are grounded _strictly_ in retrieved contexts.   |
-| **Answer Relevance**   | >= 0.90   | **0.93**   | Measures how directly the generated response addresses the original user query.   |
-| **Context Precision**   | >= 0.90   | **0.89**   | Evaluates whether relevant chunks are ranked higher by Databricks Vector Search.   |
-| **Context Recall**   | >= 0.85   | **0.88**   | Evaluates whether all necessary ground-truth facts were successfully retrieved.   |
-| **Latency (P95)**   | < 3.0 sec   | **2.2 sec**   | End-to-end processing time per agent loop execution.  |
-
-## Running the Evaluation Suite
-To trigger the automated evaluation script manually against the golden evaluation dataset:
-```
-Bash
-
-python -m src.evals.evaluate_run --dataset data/gold_eval_dataset.json --output-dir reports/
+```powershell
+python main.py --help
 ```
 
-This logs dynamic run executions to MLflow and formats a terminal status report:
+The interface and provider requirements are defined in `main.py`. A successful local process does not establish that remote retrieval or model serving is available.
+
+### Run tests
+
+```powershell
+python -m pytest
 ```
-Plaintext
 
-==================================================
-RAGAS EVALUATION COMPLETE
-==================================================
-Faithfulness Score     : 0.9412
-Answer Relevancy Score : 0.9305
-Context Precision      : 0.8920
-Context Recall         : 0.8810
---------------------------------------------------
-Status                 : PASSED (CI Gate Approved)
-MLflow Run ID          : 3f8b92d04a114e21a812
-==================================================
+Tests are currently based on prototype-specific state fields and mocked components. Passing them would not validate Databricks deployment, live retrieval, guardrail behavior, or the reported benchmark values.
+
+### Run Ragas evaluation
+
+```powershell
+python -m src.evals.evaluate_run --dataset data/gold_eval_dataset.json --output-dir reports
 ```
-## 💡 Engineering Insights: Development Trade-offs & Evaluation Architecture
-During the engineering lifecycle of this project, testing LLM-as-a-judge evaluators across local vs. cloud runtimes yielded critical operational insights:
-1. **Local SLM Schema Failures in Judge Tasks:** When using local Small Language Models (SLMs) like `llama3.1:8b` or `qwen2.5:14b` via Ollama as Ragas judges, the models frequently suffered silent schema extraction failures (`0.0` metric outputs). Although Ollama enforces syntactic JSON formatting, small parameter judges often struggle with Pydantic array unwrapping under complex multi-step evaluation prompts.
 
-2. **Dual-Layered CI/CD Strategy:** To maintain developer velocity without burning cloud API tokens or tripping local formatting errors, the evaluation architecture was separated into two distinct tiers:
+The evaluator executes the query path and calls Ragas; it is not a deterministic local smoke test. Confirm model/provider configuration and schema compatibility before running. Evaluation should fail or report missing values when a metric cannot be computed; do not substitute static scores. Current historical values in `reports/eval_report_latest.csv` are not trustworthy: they contain constant metric columns and rows with an empty response and `No context retrieved.`
 
-- **Local PR Smoke Gate:** Fast, deterministic assertion checks (Pydantic schema structure, non-empty context checks, regex safety validation, and latency bounds).
+## Databricks resource configuration
 
-- **Nightly / Staging Evaluation:** Full Ragas LLM-as-a-judge suite executed against high-parameter cloud models (`llama-3.3-70b` via Groq or `gpt-4o-mini`), logging unique dynamic `MLflow Run ID` traces for regression monitoring.
+The code currently defaults to these example identifiers:
 
+| Resource | Default in code |
+|---|---|
+| Source table | `main.market_intelligence.silver_market_chunks` |
+| Vector index | `main.market_intelligence.silver_market_chunks_vector_index` |
+| Vector Search endpoint | `vs_market_intelligence_endpoint` |
+| Registered model | `main.market_intelligence.market_agent_model` |
+| Serving endpoint | `market_agent_serving_endpoint` |
 
-## 🚀 Future Prospects & Engineering Roadmap
-(Updated as of August 2026) The job market demands across enterprise AI teams in Thailand (e.g., KBTG, SCB, SCG, KPMG) and global tech hubs, the data science landscape has shifted from basic experimental RAG prototypes toward **production compound AI systems, Agentic orchestration, LLMOps governance, and robust data infrastructure.**
+These are not verified as existing resources. Set the corresponding variables in `.env` to values provisioned in your workspace. The `config/agent_config.yaml` names (`main.market_db.market_chunks_index`, `market_intelligence_vs_endpoint`) conflict with code defaults and are not currently consumed by the retriever implementation.
 
-To align this engine with prospective enterprise requirements, the following technical enhancements are planned:
+## Evaluation claims
 
-### 1. Enterprise Model Context Protocol (MCP) Integration
-- **Market Signal:** Enterprise teams increasingly demand standardized, plug-and-play connections between LLM agents and corporate data silos without bespoke wrapper code.
+The previously published Faithfulness `0.94` and Answer Relevance `0.93` claims are **withdrawn**. `src/evals/evaluate_run.py` previously assigned those constants without calculating metrics. `reports/eval_report_latest.csv` repeats those constants for each row, while its example response is empty and retrieval context is absent. `main.py` does contain a separate Ragas execution path, but no valid, reproducible output artifact was verified in this review.
 
-- **Roadmap:** Refactor agent tools into standardized MCP (Model Context Protocol) servers, allowing the LangGraph supervisor to securely interact with external PostgreSQL databases, real-time market news streams, and SEC filings.
-### 2. GraphRAG & Delta Lake Knowledge Graph Hybrid Search
-- **Market Signal:** Standard vector search struggles with multi-hop financial reasoning (e.g., "How does supply chain disruption in country X impact company Y's margins?").
+The only metrics implemented in the dynamic Ragas path are Faithfulness, Answer Relevancy, Context Precision, and Context Recall. P95 latency is not calculated. There is no checked-in CI workflow or demonstrated 100-query PR gate. Treat all scores as unknown until a fresh run produces per-example results with valid inputs, provider details, dependency versions, and a retained run artifact.
 
-- **Roadmap:** Upgrade Databricks Vector Search to a GraphRAG architecture using Neo4j/Databricks GraphFrames to extract entity-relationship triplets from raw SEC transcripts into Gold Delta Lake tables.
+## Security, reliability, and readiness
 
-### 3. Production LLMOps & Automated Guardrail Observability
-- **Market Signal:** Organizations are scaling Generative AI budgets, prioritizing automated AI governance, PII masking, cost monitoring, and automated drift detection.
+- Do not place personal access tokens in serving environment variables. Use Databricks-supported identity or secret mechanisms and least-privilege access for a real deployment.
+- `.env` files are excluded from future version control, but `.env` and `.databricks/.databricks.env` are already tracked in this repository. Remove them from Git tracking and rotate any credentials present in repository history before publishing this project.
+- The repository does not demonstrate automated deployment, least-privilege permissions, robust retries/recovery, production monitoring/alerting, or sustained benchmark results.
+- Model registration and serving scripts are prototypes requiring workspace validation. The model version is supplied through `DATABRICKS_MODEL_VERSION`; the code does not prove that the served artifact is current or healthy.
+- NeMo Guardrails configuration is not evidence of effective enforcement until it is integrated and tested against adversarial and policy test cases.
 
-- **Roadmap:** Implement **TruLens / MLflow AI** Gateway rate-limiting, cost tracking per agent node, and automated fallback routing when model drift or context precision drops below pre-defined SLAs.
+Describe this as an **experimental portfolio prototype**, not enterprise production-ready software.
 
-### 4. Async Streaming & Structured Instructor Tool Calling
-- **Market Signal:** User experience in production AI products requires low time-to-first-token (TTFT) and strict structured JSON guarantees.
+## Engineering decisions and next steps
 
-- **Roadmap:** Implement full async streaming interfaces via FastAPI and SSE (Server-Sent Events), integrated with `instructor` or Pydantic Program constraints to guarantee zero output parsing errors.
+The project preserves the intended Databricks + Medallion + retrieval + LangGraph + evaluation direction, while keeping the implementation claims narrow. Before presenting this as an integrated system, consolidate the runtime around one state schema and graph; reconcile dependency pins and SDK imports; make the bundle target point to real files; define deterministic mocked unit tests and separate live integration checks; then produce a fresh, fully traceable evaluation run. Add CI, secret management, deployment rollback, monitoring, and failure-recovery evidence before making production-readiness claims.
 
 ## License
-Distributed under the **MIT License**. See `LICENSE` for more information.
+
+MIT. See [LICENSE](LICENSE).
