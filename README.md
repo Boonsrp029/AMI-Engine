@@ -1,6 +1,4 @@
 # Autonomous Market Intelligence Engine
-<<<<<<< HEAD
-=======
 A production-oriented prototype / portfolio-grade reference architecture with many of the following production engineering patterns:
 * Schema validation
 * Retries
@@ -15,7 +13,6 @@ A production-oriented prototype / portfolio-grade reference architecture with ma
 * End-to-end testing
 
 Designed to ingest, process, synthesize, and evaluate real-time financial and emerging market trends. Built on PySpark / Databricks Delta Lake for distributed data ingestion, LangGraph for cyclic agent orchestration, NeMo Guardrails for execution safety, and MLflow for automated evaluation.
->>>>>>> 2d17184bf1166bcf8762cd7e93b7039cc85255cf
 
 An experimental portfolio project exploring market research workflows with Python, LangGraph, Databricks Vector Search, MLflow, and Ragas. The repository contains several architectural prototypes at different maturity levels. It is **not an enterprise production system**: deployment, security controls, automated recovery, monitoring, and benchmark reproducibility have not been demonstrated here.
 
