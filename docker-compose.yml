@@ -1,45 +1,38 @@
-version: '3.8'
-
 services:
-  # =====================================================================
-  # 1. Local MLflow Tracking Server with SQLite Backend
-  # =====================================================================
-  mlflow-server:
+  mlflow:
     image: python:3.12-slim
-    container_name: mlflow-tracking-server
-    restart: unless-stopped
-    command: sh -c "pip install --no-cache-dir mlflow && mlflow server --backend-store-uri sqlite:////mlflow/mlflow.db --default-artifact-root /mlflow/artifacts --host 0.0.0.0 --port 5000 --allowed-hosts '*'"
+    command:
+      - sh
+      - -c
+      - >-
+        pip install --no-cache-dir mlflow==3.15.1 &&
+        mlflow server --backend-store-uri sqlite:////mlflow/mlflow.db
+        --default-artifact-root /mlflow/artifacts --host 0.0.0.0 --port 5000
+        --allowed-hosts mlflow,localhost,127.0.0.1
     ports:
-      - "5000:5000"
+      - "127.0.0.1:5000:5000"
     volumes:
       - mlflow-data:/mlflow
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5000/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
 
-  # =====================================================================
-  # 2. Python 3.12 Autonomous Agent Container
-  # =====================================================================
-  market-agent:
+  evaluation:
+    profiles: [evaluation]
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: market-intelligence-agent
-    restart: on-failure
-    depends_on:
-      - mlflow-server
+    env_file:
+      - .env
     environment:
-      - PYTHONUNBUFFERED=1
-      - GROQ_API_KEY=${GROQ_API_KEY}
-      # - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
-      # Route agent telemetry directly to the local MLflow server container
-      - MLFLOW_TRACKING_URI=http://mlflow-server:5000
-      - MLFLOW_EXPERIMENT_NAME=/Market_Intelligence_Agent_Tracing
-    ports:
-      - "8000:8000"
-    volumes:
-      - .:/app
-    # Override command if running specific script vs main entrypoint
-    command: ["python", "main.py"]
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+    depends_on:
+      mlflow:
+        condition: service_healthy
+    command: ["python", "-m", "main", "--limit", "1"]
 
-# Persistent storage volume for SQLite metadata database & MLflow artifacts
 volumes:
   mlflow-data:
-    driver: local

@@ -8,4 +8,5 @@ __pycache__/
 mlruns/
 .databricks/.databricks.env
 .pytest_cache/
+.pytest-tmp/
 reports/eval_report_latest.csv

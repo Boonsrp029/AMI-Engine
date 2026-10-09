@@ -1,26 +1,54 @@
 import os
-import asyncio
 import warnings
+from pathlib import Path
 from typing import Dict, Any
 from nemoguardrails import RailsConfig, LLMRails
+from config.guardrails.actions import check_topic_safety
 
 # Suppress NeMo deprecation warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
 class GuardrailsRunner:
-    def __init__(self, config_path: str = "config/guardrails"):
+    def __init__(self, config_path: str | None = None):
         """Initializes NeMo Guardrails configuration."""
-        try:
-            asyncio.get_event_loop()
-        except RuntimeError:
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-
+        if config_path is None:
+            project_root = Path(__file__).resolve().parents[2]
+            config_path = str(project_root / "config" / "guardrails")
+        if not Path(config_path).exists():
+            raise FileNotFoundError(f"NeMo Guardrails config not found: {config_path}")
         self.config = RailsConfig.from_path(config_path)
+        self._configure_model()
         self.rails = LLMRails(self.config)
+        self.rails.register_action(check_topic_safety)
 
-    def validate_output(self, raw_report: str, context: str) -> Dict[str, Any]:
+    def _configure_model(self) -> None:
+        """Keep NeMo's judge aligned with the graph's configured provider/model."""
+        provider = os.getenv("AGENT_LLM_PROVIDER", os.getenv("LLM_PROVIDER", "ollama")).lower()
+        model_name = os.getenv("AGENT_LLM_MODEL") or os.getenv("OLLAMA_MODEL", "qwen2.5:14b")
+        if not self.config.models:
+            raise ValueError("NeMo Guardrails config must declare one main model")
+        model = self.config.models[0]
+        parameters = dict(getattr(model, "parameters", None) or {})
+        if provider == "ollama":
+            model.engine = "ollama"
+            model.model = model_name
+            parameters["base_url"] = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434").rstrip("/")
+        elif provider in {"groq", "openai"}:
+            api_key_name = "GROQ_API_KEY" if provider == "groq" else "OPENAI_API_KEY"
+            api_key = os.getenv(api_key_name)
+            if not api_key:
+                raise ValueError(f"{api_key_name} is required for NeMo Guardrails")
+            model.engine = "openai"
+            model.model = model_name
+            parameters["openai_api_key"] = api_key
+            if provider == "groq":
+                parameters["base_url"] = "https://api.groq.com/openai/v1"
+        else:
+            raise ValueError(f"Unsupported guardrail model provider: {provider!r}")
+        model.parameters = parameters
+
+    def validate_output(self, raw_report: str, context: str, user_input: str = "Verify market report") -> Dict[str, Any]:
         """Runs output rails against the raw synthesized report."""
         messages = [
             {
@@ -28,12 +56,12 @@ class GuardrailsRunner:
                 "content": {
                     "context": context,
                     "response": raw_report,
-                    "user_input": "Verify market report"
+                    "user_input": user_input
                 }
             },
             {
                 "role": "user", 
-                "content": "Verify market report"
+                "content": user_input
             },
             {
                 "role": "assistant",
@@ -50,19 +78,14 @@ class GuardrailsRunner:
         else:
             output_text = str(response)
             
-        # Detect if guardrail triggered a block message
-        is_blocked = (
-            "outside the authorized financial" in output_text or 
-            "flagged for review" in output_text or
-            "violates safety guidelines" in output_text
-        )
-        
-        # Return blocked message if flagged, otherwise preserve exact raw report
-        final_report = output_text if is_blocked else raw_report
+        # The output must be present and unchanged. A rail block, model rewrite,
+        # or unrecognized response fails closed instead of being accepted.
+        passed = bool(raw_report.strip()) and output_text.strip() == raw_report.strip()
+        final_report = raw_report if passed else ""
         
         return {
             "validated_report": final_report,
-            "passed_guardrails": not is_blocked,
+            "passed_guardrails": passed,
             "raw_output": raw_report
         }
 

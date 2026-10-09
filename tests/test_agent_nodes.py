@@ -1,190 +1,80 @@
-"""
-Unit Test Suite for LangGraph Sub-Agent Nodes
+from unittest.mock import MagicMock
 
-Key Requirements Verified:
-1. Zero live API calls (100% mocked via unittest.mock).
-2. Independent testing of Retrieval, Analysis, and Synthesis nodes.
-3. State mutation verification and deterministic routing checks.
-"""
-
-from unittest.mock import MagicMock, patch
 import pytest
+from langchain_core.documents import Document
 
-# Import schema types and node logic from main application module
-from main import (
-    GlobalMarketState,
-    RetrievalQueryInput,
-    AnalysisOutput,
-    retrieval_node,
-    analysis_node,
-    synthesis_node,
-    route_after_analysis,
-)
+from src.agents import graph
 
 
-# =====================================================================
-# 1. RETRIEVAL SUB-AGENT NODE TESTS
-# =====================================================================
-@patch("main.llm")
-def test_retrieval_node_success(mock_llm):
-    """
-    Verifies that retrieval_node extracts search parameters via structured LLM output
-    and populates the retrieved_context list in state.
-    """
-    # Mock LLM structured output response
-    mock_structured = MagicMock()
-    mock_structured.invoke.return_value = RetrievalQueryInput(
-        sector="Green Energy",
-        search_keywords=["subsidies", "solar", "grid modernization"]
+def test_empty_query_rejected():
+    with pytest.raises(ValueError, match="must not be empty"):
+        graph.query_agent("  ")
+
+
+def test_no_retrieved_context_short_circuits_generation(monkeypatch):
+    monkeypatch.setattr(
+        graph,
+        "retrieve_market_context_node",
+        lambda _: {"context": "", "retrieved_docs": []},
     )
-    mock_llm.with_structured_output.return_value = mock_structured
-
-    initial_state: GlobalMarketState = {
-        "user_query": "Analyze APAC Green Energy drivers for Q3 2026",
-        "target_sector": "Green Energy",
-        "retrieved_context": None,
-        "analysis_findings": None,
-        "confidence_score": None,
-        "iteration_count": 0,
-        "final_report": None,
-        "status": "RUNNING"
-    }
-
-    # Execute Node
-    output = retrieval_node(initial_state)
-
-    # Assertions
-    assert "retrieved_context" in output
-    assert len(output["retrieved_context"]) > 0
-    assert output["status"] == "RUNNING"
-    
-    # Ensure LLM was called with expected Pydantic schema
-    mock_llm.with_structured_output.assert_called_once_with(RetrievalQueryInput)
+    monkeypatch.setattr(graph, "_chat_model", lambda: pytest.fail("generation must be skipped"))
+    result = graph.query_agent("What changed in the market?")
+    assert result["status"] == "no_context"
+    assert result["response"] == ""
+    assert result["retrieved_contexts"] == []
 
 
-# =====================================================================
-# 2. ANALYSIS SUB-AGENT NODE TESTS
-# =====================================================================
-@patch("main.llm")
-def test_analysis_node_high_confidence_pass(mock_llm):
-    """
-    Verifies that analysis_node approves findings when confidence >= 0.70 
-    and hallucination_flag is False.
-    """
-    mock_structured = MagicMock()
-    mock_structured.invoke.return_value = AnalysisOutput(
-        key_findings=["Grid modernization spending up 28% in APAC", "Policy subsidies confirmed"],
-        confidence_score=0.88,
-        hallucination_flag=False
+def test_retrieval_returns_shared_schema(monkeypatch):
+    monkeypatch.setattr(
+        graph,
+        "retrieve_market_context_node",
+        lambda _: {
+            "context": "evidence text",
+            "retrieved_docs": [Document(page_content="evidence text", metadata={"feed_id": "f1"})],
+        },
     )
-    mock_llm.with_structured_output.return_value = mock_structured
-
-    state: GlobalMarketState = {
-        "user_query": "Analyze APAC Green Energy",
-        "target_sector": "Green Energy",
-        "retrieved_context": ["Subsidies increased solar adoption in APAC."],
-        "analysis_findings": None,
-        "confidence_score": None,
-        "iteration_count": 0,
-        "final_report": None,
-        "status": "RUNNING"
-    }
-
-    output = analysis_node(state)
-
-    assert output["confidence_score"] == 0.88
-    assert len(output["analysis_findings"]) == 2
-    assert output["status"] == "RUNNING"
-    assert output["iteration_count"] == 1
+    result = graph.retrieval_node({"query": "Q"})
+    assert result["context"] == "evidence text"
+    assert result["retrieved_contexts"] == ["evidence text"]
+    assert result["citations"] == [{"feed_id": "f1"}]
+    assert result["status"] == "ok"
 
 
-@patch("main.llm")
-def test_analysis_node_triggers_retry_on_low_confidence(mock_llm):
-    """
-    Verifies that analysis_node sets status to NEEDS_RETRY when 
-    confidence score is below threshold or hallucination is flagged.
-    """
-    mock_structured = MagicMock()
-    mock_structured.invoke.return_value = AnalysisOutput(
-        key_findings=["Vague statement"],
-        confidence_score=0.45,  # Below 0.70 threshold
-        hallucination_flag=True
-    )
-    mock_llm.with_structured_output.return_value = mock_structured
-
-    state: GlobalMarketState = {
-        "user_query": "Analyze APAC Green Energy",
-        "target_sector": "Green Energy",
-        "retrieved_context": ["Vague unverified text"],
-        "analysis_findings": None,
-        "confidence_score": None,
-        "iteration_count": 1,
-        "final_report": None,
-        "status": "RUNNING"
-    }
-
-    output = analysis_node(state)
-
-    assert output["status"] == "NEEDS_RETRY"
-    assert output["iteration_count"] == 2
+def test_analysis_uses_structured_output(monkeypatch):
+    analysis = graph.Analysis(findings=["Supported fact"], confidence=0.8, response="Brief")
+    structured_model = MagicMock()
+    structured_model.invoke.return_value = analysis
+    model = MagicMock()
+    model.with_structured_output.return_value = structured_model
+    monkeypatch.setattr(graph, "_chat_model", lambda: model)
+    output = graph.analysis_and_synthesis_node({
+        "query": "Q", "context": "Evidence", "retrieved_contexts": ["Evidence"]
+    })
+    assert output == {"findings": ["Supported fact"], "confidence": 0.8, "response": "Brief", "status": "ok"}
 
 
-# =====================================================================
-# 3. SYNTHESIS SUB-AGENT NODE TESTS
-# =====================================================================
-def test_synthesis_node_report_generation():
-    """
-    Verifies that synthesis_node formats validated analysis findings into 
-    the final Markdown report string without requiring LLM calls.
-    """
-    state: GlobalMarketState = {
-        "user_query": "Analyze APAC Green Energy",
-        "target_sector": "Green Energy",
-        "retrieved_context": ["Context 1"],
-        "analysis_findings": [
-            "Subsidies driven by local regulators accelerated adoption.",
-            "Infrastructure spend grew 28% year-over-year."
-        ],
-        "confidence_score": 0.92,
-        "iteration_count": 1,
-        "final_report": None,
-        "status": "RUNNING"
-    }
-
-    output = synthesis_node(state)
-
-    assert output["status"] == "COMPLETED"
-    assert "# Market Intelligence Brief: Green Energy" in output["final_report"]
-    assert "92.0%" in output["final_report"]
-    assert "• Subsidies driven by local regulators" in output["final_report"]
+def test_analysis_skips_without_context():
+    assert graph.analysis_and_synthesis_node({"query": "Q"}) == {"status": "no_context"}
 
 
-# =====================================================================
-# 4. CONDITIONAL ROUTING LOGIC TESTS
-# =====================================================================
-@pytest.mark.parametrize(
-    "status_input, expected_route",
-    [
-        ("RUNNING", "synthesize"),
-        ("NEEDS_RETRY", "retrieve"),
-        ("FAILED", "fail_exit"),
-    ],
-)
-def test_route_after_analysis(status_input, expected_route):
-    """
-    Parameterized test validating deterministic graph routing choices 
-    based on state status.
-    """
-    state: GlobalMarketState = {
-        "user_query": "Query",
-        "target_sector": "Green Energy",
-        "retrieved_context": None,
-        "analysis_findings": None,
-        "confidence_score": None,
-        "iteration_count": 1,
-        "final_report": None,
-        "status": status_input
-    }
+def test_guardrail_fails_closed(monkeypatch):
+    class BrokenGuardrails:
+        def validate_output(self, **_):
+            raise RuntimeError("not shown to callers")
 
-    actual_route = route_after_analysis(state)
-    assert actual_route == expected_route
+    monkeypatch.setattr(graph, "GuardrailsRunner", BrokenGuardrails)
+    output = graph.guardrail_node({"response": "private text", "context": "source"})
+    assert output["response"] == ""
+    assert output["status"] == "failed"
+    assert "RuntimeError" in output["error"]
+
+
+def test_guardrail_rejects_flagged_output(monkeypatch):
+    class RejectingGuardrails:
+        def validate_output(self, **_):
+            return {"passed_guardrails": False, "validated_report": "blocked"}
+
+    monkeypatch.setattr(graph, "GuardrailsRunner", RejectingGuardrails)
+    output = graph.guardrail_node({"response": "bad", "context": "source"})
+    assert output["response"] == ""
+    assert output["status"] == "failed"

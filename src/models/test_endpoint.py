@@ -1,44 +1,30 @@
 import os
 import json
-import requests
 from dotenv import load_dotenv
+from databricks.sdk import WorkspaceClient
 
 load_dotenv()
 
 def run_test_suite():
     endpoint_name = os.getenv("DATABRICKS_SERVING_ENDPOINT", "market_agent_serving_endpoint")
     host = os.getenv("DATABRICKS_HOST")
-    token = os.getenv("DATABRICKS_TOKEN")
-
-    if not host or not token:
-        raise ValueError("DATABRICKS_HOST and DATABRICKS_TOKEN must be set in .env")
-
-    url = f"{host.rstrip('/')}/serving-endpoints/{endpoint_name}/invocations"
-    headers = {
-        "Authorization": f"Bearer {token}",
-        "Content-Type": "application/json"
-    }
+    if not host:
+        raise ValueError("DATABRICKS_HOST must be set")
+    workspace = WorkspaceClient(host=host)
 
     # Load test queries from sample payload file
     with open("data/sample_payloads/market_queries.json", "r") as f:
         test_data = json.load(f)
 
     for item in test_data:
-        payload = {
-            "dataframe_records": [
-                {"query": item["query"]}
-            ]
-        }
         print(f"\n[Testing Query ID: {item['query_id']}] Category: {item['category']}")
         print(f"Query: {item['query']}")
-        
-        response = requests.post(url, headers=headers, json=payload, timeout=60)
-        
-        if response.status_code == 200:
-            print("Response Received Successfully:")
-            print(json.dumps(response.json(), indent=2))
-        else:
-            response.raise_for_status()
+        response = workspace.serving_endpoints.query(
+            name=endpoint_name,
+            dataframe_records=[{"query": item["query"]}],
+        )
+        print("Response Received Successfully:")
+        print(json.dumps(response.as_dict(), indent=2, default=str))
 
 if __name__ == "__main__":
     run_test_suite()
