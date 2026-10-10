@@ -1,0 +1,31 @@
+# Non-secret defaults shared by local runs and Databricks jobs.
+# Credentials are supplied through the environment or workspace identity.
+databricks:
+  catalog: main
+  schema: market_intelligence
+  bronze_table: main.market_intelligence.bronze_market_feeds
+  source_table: main.market_intelligence.silver_market_chunks
+  gold_table: main.market_intelligence.gold_market_summary
+  vector_search_endpoint: market_intelligence_vs_endpoint
+  vector_search_index: main.market_intelligence.silver_market_chunks_vector_index
+  vector_search_primary_key: feed_id
+  search_top_k: 5
+  primary_key: feed_id
+  text_column: clean_content
+  embedding_model_endpoint: databricks-bge-large-en
+
+agent:
+  provider_env: AGENT_LLM_PROVIDER
+  model_env: AGENT_LLM_MODEL
+  max_contexts: 5
+  temperature: 0
+
+evaluation:
+  experiment_name: /Market_Intelligence_Agent_Evaluation
+  judge_provider_env: RAGAS_JUDGE_PROVIDER
+  judge_model_env: RAGAS_JUDGE_MODEL
+  metrics:
+    - faithfulness
+    - answer_relevancy
+    - context_precision
+    - context_recall

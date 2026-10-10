@@ -1,0 +1,4 @@
+{
+  "serverless": true,
+  "useClusterOverride": false
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "query": "What are the primary supply chain risks cited in recent market reports regarding APAC green energy infrastructure in 2026?",
+    "ground_truth": "The primary supply chain risks include raw material price volatility (specifically battery-grade lithium and rare earth elements), high-voltage transformer lead times exceeding 80 weeks, and regional trade tariff disputes impacting solar module imports across ASEAN nations.",
+    "contexts": [
+      "Securities filings and industry research for H1 2026 indicate that high-voltage transformer lead times remain elevated at 80-100 weeks due to electrical steel shortages.",
+      "Trade policy shifts in Southeast Asia have increased tariffs on sub-assembled PV components by 12%, straining utility-scale solar project timelines."
+    ]
+  }
+]
