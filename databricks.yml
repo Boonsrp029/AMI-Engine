@@ -4,6 +4,7 @@ bundle:
 variables:
   workspace_host:
     description: Databricks workspace URL (no credentials)
+    default: https://dbc-567e5110-5578.cloud.databricks.com
   spark_version:
     description: Runtime compatible with the workspace
     default: 14.3.x-scala2.12
@@ -20,7 +21,7 @@ targets:
     mode: development
     default: true
     workspace:
-      host: ${var.workspace_host}
+      host: https://dbc-567e5110-5578.cloud.databricks.com
 
 resources:
   jobs:
