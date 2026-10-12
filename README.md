@@ -1,4 +1,4 @@
-# Autonomous Market Intelligence Engine
+# <img width="1024" height="1024" alt="ami-engine-thumbnail" src="https://github.com/user-attachments/assets/b159db3b-7ba2-4d51-a39f-5b2763799c28" /> Autonomous Market Intelligence Engine
 
 AMI Engine is an experimental, production-oriented portfolio project for evidence-grounded market research. Its current implementation has one LangGraph runtime, Databricks Vector Search retrieval, structured LLM output, a fail-closed NeMo Guardrails check, a Bronze-to-Silver/Gold Databricks job, and Ragas evaluation recorded in MLflow.
 
