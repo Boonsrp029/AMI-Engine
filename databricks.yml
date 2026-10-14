@@ -22,6 +22,7 @@ targets:
     default: true
     workspace:
       host: https://dbc-567e5110-5578.cloud.databricks.com
+      auth_type: databricks-cli
 
 resources:
   jobs:

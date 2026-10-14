@@ -23,12 +23,31 @@ def get_market_intelligence_retriever(
     # In Databricks jobs, use the workspace's configured workload identity.
     w_client = WorkspaceClient(**client_args)
 
-    # Use the same source key and text field configured for the Delta Sync index.
+    # Use the index definition as the source of truth. In particular, the
+    # Databricks LangChain adapter infers text_column for managed embeddings
+    # and raises ValueError if a text_column is also passed explicitly.
+    index_info = w_client.vector_search_indexes.get_index(index_name=index_name)
+    primary_key = getattr(index_info, "primary_key", None)
+    if not primary_key:
+        raise ValueError(f"Vector Search index {index_name!r} has no primary key in its metadata")
+
+    delta_sync_spec = getattr(index_info, "delta_sync_index_spec", None)
+    embedding_source_columns = getattr(delta_sync_spec, "embedding_source_columns", None) or []
+    managed_text_column = next(
+        (column.name for column in embedding_source_columns if getattr(column, "name", None)),
+        None,
+    )
+    # Managed embeddings provide their source column through index metadata.
+    # Self-managed/direct-access indexes still need a configured text column.
+    text_column = None if managed_text_column else (
+        os.getenv("DATABRICKS_EMBEDDING_SOURCE_COLUMN") or "clean_content"
+    )
+
     vector_store = DatabricksVectorSearch(
         index_name=index_name,
         workspace_client=w_client,
-        primary_key=os.getenv("DATABRICKS_VECTOR_SEARCH_PRIMARY_KEY", "feed_id"),
-        text_column=os.getenv("DATABRICKS_EMBEDDING_SOURCE_COLUMN", "clean_content"),
+        primary_key=primary_key,
+        text_column=text_column,
     )
 
     return vector_store.as_retriever(search_kwargs={"k": top_k})
@@ -50,7 +69,7 @@ def retrieve_market_context_node(state: Dict[str, Any]) -> Dict[str, Any]:
         documents: List[Document] = retriever.invoke(user_query)
 
         formatted_context = "\n\n---\n\n".join(
-            [f"Source Chunk ID: {doc.metadata.get('feed_id', 'N/A')}\nContent: {doc.page_content}" 
+            [f"Source Chunk ID: {doc.metadata.get('chunk_id', doc.metadata.get('feed_id', 'N/A'))}\nContent: {doc.page_content}"
              for doc in documents]
         )
         return {
