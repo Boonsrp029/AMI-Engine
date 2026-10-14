@@ -18,10 +18,20 @@ def get_market_intelligence_retriever(
     """Initializes a Databricks AI Search vector store retriever using WorkspaceClient."""
     index_name = index_name or os.getenv("DATABRICKS_VECTOR_SEARCH_INDEX") or "main.market_intelligence.silver_market_chunks_vector_index"
     host = os.getenv("DATABRICKS_HOST")
-    token = os.getenv("DATABRICKS_TOKEN")
-    client_args = {key: value for key, value in {"host": host, "token": token}.items() if value}
-    # In Databricks jobs, use the workspace's configured workload identity.
-    w_client = WorkspaceClient(**client_args)
+    w_client = WorkspaceClient(**({"host": host} if host else {}))
+    authorization = next(
+        (
+            value
+            for key, value in w_client.config.authenticate().items()
+            if key.lower() == "authorization"
+        ),
+        None,
+    )
+    if not authorization:
+        raise ValueError("Databricks authentication did not provide an Authorization header")
+    scheme, separator, access_token = authorization.partition(" ")
+    if not separator or scheme.lower() != "bearer" or not access_token:
+        raise ValueError("Databricks authentication provided an invalid Authorization header")
 
     # Use the index definition as the source of truth. In particular, the
     # Databricks LangChain adapter infers text_column for managed embeddings
@@ -46,6 +56,10 @@ def get_market_intelligence_retriever(
     vector_store = DatabricksVectorSearch(
         index_name=index_name,
         workspace_client=w_client,
+        client_args={
+            "workspace_url": w_client.config.host,
+            "personal_access_token": access_token,
+        },
         primary_key=primary_key,
         text_column=text_column,
     )
