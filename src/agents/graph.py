@@ -32,7 +32,7 @@ class MarketState(TypedDict, total=False):
 
 class Analysis(BaseModel):
     findings: list[str] = Field(description="Evidence-based findings from retrieved context")
-    confidence: float = Field(ge=0, le=1)
+    confidence: float = Field(ge=0, le=1, description="A decimal between 0.0 and 1.0 inclusive; lower when the evidence is incomplete")
     response: str = Field(description="Concise market research brief with source references")
 
 
@@ -40,7 +40,7 @@ def _chat_model() -> BaseChatModel:
     """Build an OpenAI-compatible model client from environment configuration."""
     provider = os.getenv("AGENT_LLM_PROVIDER", os.getenv("LLM_PROVIDER", "ollama")).lower()
     default_models = {
-        "ollama": os.getenv("OLLAMA_MODEL", "qwen2.5:14b"),
+        "ollama": os.getenv("OLLAMA_MODEL", "ami-llama3.1:8b-4k"),
         "groq": "llama-3.3-70b-versatile",
         "openai": "gpt-4o-mini",
     }
@@ -50,8 +50,8 @@ def _chat_model() -> BaseChatModel:
             base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434").rstrip("/"),
             model=model,
             temperature=0,
-            num_ctx=int(os.getenv("OLLAMA_NUM_CTX", "8192")),
-            num_predict=int(os.getenv("OLLAMA_NUM_PREDICT", "1200")),
+            num_ctx=int(os.getenv("OLLAMA_NUM_CTX", "4096")),
+            num_predict=int(os.getenv("OLLAMA_NUM_PREDICT", "600")),
         )
     if provider == "groq":
         key = os.getenv("GROQ_API_KEY")
@@ -114,7 +114,9 @@ def analysis_and_synthesis_node(state: MarketState) -> dict[str, Any]:
         SystemMessage(content=(
             "You are a careful market research analyst. Use only the supplied evidence. "
             "Separate supported findings from uncertainty, do not invent facts or citations, "
-            "and produce a concise answer. If evidence is insufficient, say so."
+            "and produce a concise answer. If evidence is insufficient, say so. "
+            "Set confidence to a decimal from 0.0 to 1.0 inclusive."
+            "The output must be in English language only."
         )),
         HumanMessage(content=f"Question:\n{state['query']}\n\nRetrieved evidence:\n{state['context']}"),
     ])

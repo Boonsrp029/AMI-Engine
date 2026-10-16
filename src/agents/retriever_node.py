@@ -8,6 +8,7 @@ from databricks.sdk import WorkspaceClient
 from src.utils.env import load_project_environment
 from databricks_langchain import DatabricksVectorSearch
 from langchain_core.documents import Document
+from src.agents.local_retriever import create_local_retriever
 
 load_project_environment()
 
@@ -15,7 +16,13 @@ def get_market_intelligence_retriever(
     index_name: str | None = None,
     top_k: int = 5
 ):
-    """Initializes a Databricks AI Search vector store retriever using WorkspaceClient."""
+    """Create the configured local BM25 or Databricks Vector Search retriever."""
+    backend = os.getenv("RETRIEVER_BACKEND", "databricks").strip().lower()
+    if backend == "local":
+        return create_local_retriever(top_k=top_k)
+    if backend != "databricks":
+        raise ValueError("RETRIEVER_BACKEND must be 'local' or 'databricks'")
+
     index_name = index_name or os.getenv("DATABRICKS_VECTOR_SEARCH_INDEX") or "main.market_intelligence.silver_market_chunks_vector_index"
     host = os.getenv("DATABRICKS_HOST")
     w_client = WorkspaceClient(**({"host": host} if host else {}))

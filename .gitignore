@@ -9,4 +9,8 @@ mlruns/
 .databricks/.databricks.env
 .pytest_cache/
 .pytest-tmp/
-reports/eval_report_latest.csv
+reports/eval_report*.csv
+reports/eval_inputs*.json
+reports/eval_checkpoint*.jsonl
+reports/mlflow.db*
+data/external/

@@ -1,0 +1,162 @@
+[
+    {
+        "feed_id": "feed_101",
+        "timestamp": "2026-08-10T08:30:00Z",
+        "source": "Bloomberg Green",
+        "title": "APAC Clean Energy Investment Reaches Record $45B in H1 2026",
+        "raw_content": "Clean energy infrastructure spending across Southeast Asia spiked due to new grid modernization subsidies...",
+        "sector": "Green Tech"
+    },
+{
+        "feed_id": "feed_102",
+        "timestamp": "2026-08-10T09:15:00Z",
+        "source": "TechCrunch AI",
+        "title": "Enterprise GenAI Infrastructure Deployments Surge Across APAC",
+        "raw_content": "Companies are migrating from external API wrappers to self-hosted orchestration platforms like LangGraph on Databricks...",
+        "sector": "AI Infrastructure"
+    },
+{
+        "feed_id": "feed_103",
+        "timestamp": "2026-08-10T10:00:00Z",
+        "source": "Reuters",
+        "title": "Semiconductor Supply Chain Recovery Boosts APAC Manufacturing",
+        "raw_content": "Semiconductor supply chains across the Asia-Pacific region showed strong recovery in Q2 2026 as Taiwan and South Korea ramped up fab utilization rates above 85%, easing chip shortages that had plagued automotive and consumer electronics manufacturers since 2024.",
+        "sector": "Semiconductors"
+    },
+{
+        "feed_id": "feed_104",
+        "timestamp": "2026-08-10T10:30:00Z",
+        "source": "Financial Times",
+        "title": "Southeast Asian Fintech Funding Hits $12B Amid Digital Banking Push",
+        "raw_content": "Fintech funding in Southeast Asia reached $12 billion in the first half of 2026, driven by digital banking adoption in Indonesia, Vietnam, and the Philippines. Notable rounds included a $500M Series D for a Singapore-based cross-border payments platform and a $300M raise for a Vietnamese digital lending startup.",
+        "sector": "Fintech"
+    },
+{
+        "feed_id": "feed_105",
+        "timestamp": "2026-08-10T11:00:00Z",
+        "source": "Bloomberg",
+        "title": "Australia Critical Minerals Strategy Attracts $8B in Foreign Investment",
+        "raw_content": "Australia's critical minerals sector attracted $8 billion in foreign investment commitments during 2026, targeting lithium, rare earth elements, and cobalt projects essential for electric vehicle batteries and renewable energy storage systems, with major deals from Japanese and Korean battery manufacturers.",
+        "sector": "Mining & Materials"
+    },
+{
+        "feed_id": "feed_106",
+        "timestamp": "2026-08-10T11:30:00Z",
+        "source": "CNBC",
+        "title": "Indian SaaS Companies Expand Into Southeast Asian Markets",
+        "raw_content": "Indian software-as-a-service companies accelerated expansion into Southeast Asia in 2026, leveraging cost advantages and AI-powered automation tools to capture market share from established US and European vendors in Indonesia, Thailand, and Malaysia.",
+        "sector": "Software & SaaS"
+    },
+{
+        "feed_id": "feed_107",
+        "timestamp": "2026-08-10T12:00:00Z",
+        "source": "Nikkei Asia",
+        "title": "Japan Quantum Computing Research Budget Doubles to $4B",
+        "raw_content": "Japan doubled its national quantum computing research budget to $4 billion for fiscal year 2026, focusing on superconducting qubit development and quantum cryptography, with partnerships across universities in Tokyo, Osaka, and collaborative projects with IBM and Google Quantum AI.",
+        "sector": "Quantum Computing"
+    },
+{
+        "feed_id": "feed_108",
+        "timestamp": "2026-08-10T12:30:00Z",
+        "source": "South China Morning Post",
+        "title": "Hong Kong Web3 and Blockchain Startups Raise $3.5B in 2026",
+        "raw_content": "Hong Kong emerged as a leading Web3 and blockchain hub in 2026, with local startups raising $3.5 billion across tokenization platforms, decentralized finance protocols, and CBDC infrastructure projects, supported by regulatory clarity from the Hong Kong Monetary Authority's virtual asset licensing framework.",
+        "sector": "Blockchain & Web3"
+    },
+{
+        "feed_id": "feed_109",
+        "timestamp": "2026-08-10T13:00:00Z",
+        "source": "The Economic Times",
+        "title": "India Renewable Energy Capacity Surpasses 200GW with Solar Leadership",
+        "raw_content": "India's renewable energy capacity exceeded 200 gigawatts in 2026, with solar power contributing over 85GW, driven by large-scale solar parks in Rajasthan and Gujarat, plus rooftop solar adoption programs supported by government subsidies and private investment from global energy majors.",
+        "sector": "Green Tech"
+    },
+{
+        "feed_id": "feed_110",
+        "timestamp": "2026-08-10T13:30:00Z",
+        "source": "Tech in Asia",
+        "title": "Vietnam Manufacturing Sector Transitions Up the Value Chain",
+        "raw_content": "Vietnam's manufacturing sector transitioned up the value chain in 2026, moving from textile and electronics assembly to semiconductor packaging, precision engineering, and electric vehicle component manufacturing, attracting $18 billion in FDI from Samsung, Intel, and Chinese EV makers expanding production.",
+        "sector": "Manufacturing"
+    },
+{
+        "feed_id": "feed_111",
+        "timestamp": "2026-08-10T14:00:00Z",
+        "source": "Reuters",
+        "title": "Singapore Becomes Asia-Pacific Hub for Generative AI Model Hosting",
+        "raw_content": "Singapore positioned itself as the Asia-Pacific hub for generative AI model hosting and inference services in 2026, with major cloud providers AWS, Google Cloud, and Microsoft Azure expanding GPU capacity, while local telecom Singtel launched edge AI inference services for enterprise customers across the region.",
+        "sector": "AI Infrastructure"
+    },
+{
+        "feed_id": "feed_112",
+        "timestamp": "2026-08-10T14:30:00Z",
+        "source": "Financial Times",
+        "title": "South Korean Battery Makers Dominate Global EV Market Share",
+        "raw_content": "South Korean battery manufacturers LG Energy Solution, SK On, and Samsung SDI captured over 40% of the global electric vehicle battery market in 2026, benefiting from advances in solid-state battery technology and strategic partnerships with Tesla, Rivian, and European automakers expanding EV production lines.",
+        "sector": "EV & Battery"
+    },
+{
+        "feed_id": "feed_113",
+        "timestamp": "2026-08-10T15:00:00Z",
+        "source": "Bloomberg Green",
+        "title": "Indonesia Nickel Processing Ban Reshapes Global Supply Chain",
+        "raw_content": "Indonesia's ban on raw nickel ore exports reshaped the global battery supply chain in 2026, as the country invested $25 billion in domestic nickel smelting and battery precursor facilities, making it the world's largest nickel processing hub and a critical node in the EV battery supply chain.",
+        "sector": "Mining & Materials"
+    },
+{
+        "feed_id": "feed_114",
+        "timestamp": "2026-08-10T15:30:00Z",
+        "source": "CNBC",
+        "title": "APAC Data Center Capacity Doubles Amid AI Compute Demand",
+        "raw_content": "Data center capacity across the Asia-Pacific region doubled in 2026 compared to 2024 levels, driven by surging demand for AI training and inference workloads, with Singapore, Tokyo, and Sydney leading new capacity additions, though power grid constraints and cooling requirements emerged as limiting factors.",
+        "sector": "AI Infrastructure"
+    },
+{
+        "feed_id": "feed_115",
+        "timestamp": "2026-08-10T16:00:00Z",
+        "source": "Nikkei Asia",
+        "title": "Taiwan Semiconductor Investments in Arizona Fab Reach $40B",
+        "raw_content": "Taiwan Semiconductor Manufacturing Company increased its Arizona fabrication facility investment to $40 billion in 2026, constructing three advanced chip fabs producing 4nm and 2nm process nodes, creating 6,000 high-tech jobs and strengthening US domestic chip supply chain resilience.",
+        "sector": "Semiconductors"
+    },
+{
+        "feed_id": "feed_116",
+        "timestamp": "2026-08-10T16:30:00Z",
+        "source": "The Economic Times",
+        "title": "India Digital Public Infrastructure Exports to 12 Countries",
+        "raw_content": "India's digital public infrastructure including UPI payments, Aadhaar identity, and DigiLocker document storage was exported to 12 countries across Africa and Southeast Asia in 2026, creating new opportunities for Indian technology companies and establishing interoperable digital governance frameworks in partner nations.",
+        "sector": "Fintech"
+    },
+{
+        "feed_id": "feed_117",
+        "timestamp": "2026-08-10T17:00:00Z",
+        "source": "Tech in Asia",
+        "title": "Thailand Smart City Initiative Deploys 5G and IoT Across 30 Provinces",
+        "raw_content": "Thailand's smart city initiative expanded to 30 provinces in 2026, deploying 5G networks, IoT sensors for traffic management, and AI-powered surveillance systems, with $5 billion in public-private partnership investments from telecom operators and technology vendors including Huawei, Nokia, and local integrators.",
+        "sector": "Smart Cities"
+    },
+{
+        "feed_id": "feed_118",
+        "timestamp": "2026-08-10T17:30:00Z",
+        "source": "South China Morning Post",
+        "title": "China Electric Vehicle Exports Reach 5 Million Units in 2026",
+        "raw_content": "Chinese electric vehicle manufacturers exported 5 million units in 2026, with BYD, NIO, and XPeng leading shipments to Europe, Southeast Asia, and Latin America, though EU tariff negotiations and local content requirements in target markets created uncertainty for future growth trajectories.",
+        "sector": "EV & Battery"
+    },
+{
+        "feed_id": "feed_119",
+        "timestamp": "2026-08-10T18:00:00Z",
+        "source": "Reuters",
+        "title": "Philippines BPO Industry Adopts AI to Maintain Competitiveness",
+        "raw_content": "The Philippines business process outsourcing industry adopted generative AI tools across 60% of call centers in 2026, automating routine customer queries while retraining 200,000 workers for higher-value AI supervision and quality assurance roles, maintaining the country's position as a global BPO leader.",
+        "sector": "Software & SaaS"
+    },
+{
+        "feed_id": "feed_120",
+        "timestamp": "2026-08-10T18:30:00Z",
+        "source": "Bloomberg",
+        "title": "Mongolia Green Copper Mining Attracts European Investment",
+        "raw_content": "Mongolia's green copper mining sector attracted $6 billion in European investment in 2026, as renewable-powered copper extraction projects gained traction to supply the global energy transition, with Rio Tinto's Oyu Tolgoi expansion reaching full production capacity using solar and wind energy.",
+        "sector": "Mining & Materials"
+    }
+]

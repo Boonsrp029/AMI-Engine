@@ -1,0 +1,53 @@
+{
+  "run_at_utc": "2026-10-15T13:22:16.620339+00:00",
+  "backend": "local_bm25",
+  "corpus": "data\\silver_level\\silver_market_feeds.json",
+  "corpus_sha256": "58827d4e14a23c96b6fb0fe3297ae662bf05b00e7180e1462c6348268f1ae247",
+  "dataset": "data/gold_eval_dataset.json",
+  "top_k": 5,
+  "queries": [
+    {
+      "case": 1,
+      "query": "What are the primary supply chain risks cited in recent market reports regarding APAC green energy infrastructure in 2026?",
+      "retrieved_count": 5,
+      "ranked_contexts": [
+        {
+          "rank": 1,
+          "feed_id": "feed_120",
+          "title": "Mongolia Green Copper Mining Attracts European Investment",
+          "sector": "Mining & Materials",
+          "content": "Mongolia Green Copper Mining Attracts European Investment Mongolia's green copper mining sector attracted $6 billion in European investment in 2026, as renewable-powered copper extraction projects gained traction to supply the global energy transition, with Rio Tinto's Oyu Tolgoi expansion reaching full production capacity using solar and wind energy."
+        },
+        {
+          "rank": 2,
+          "feed_id": "feed_102",
+          "title": "Enterprise GenAI Infrastructure Deployments Surge Across APAC",
+          "sector": "AI Infrastructure",
+          "content": "Enterprise GenAI Infrastructure Deployments Surge Across APAC Companies are migrating from external API wrappers to self-hosted orchestration platforms like LangGraph on Databricks..."
+        },
+        {
+          "rank": 3,
+          "feed_id": "feed_101",
+          "title": "APAC Clean Energy Investment Reaches Record $45B in H1 2026",
+          "sector": "Green Tech",
+          "content": "APAC Clean Energy Investment Reaches Record $45B in H1 2026 Clean energy infrastructure spending across Southeast Asia spiked due to new grid modernization subsidies..."
+        },
+        {
+          "rank": 4,
+          "feed_id": "feed_113",
+          "title": "Indonesia Nickel Processing Ban Reshapes Global Supply Chain",
+          "sector": "Mining & Materials",
+          "content": "Indonesia Nickel Processing Ban Reshapes Global Supply Chain Indonesia's ban on raw nickel ore exports reshaped the global battery supply chain in 2026, as the country invested $25 billion in domestic nickel smelting and battery precursor facilities, making it the world's largest nickel processing hub and a critical node in the EV battery supply chain."
+        },
+        {
+          "rank": 5,
+          "feed_id": "feed_103",
+          "title": "Semiconductor Supply Chain Recovery Boosts APAC Manufacturing",
+          "sector": "Semiconductors",
+          "content": "Semiconductor Supply Chain Recovery Boosts APAC Manufacturing Semiconductor supply chains across the Asia-Pacific region showed strong recovery in Q2 2026 as Taiwan and South Korea ramped up fab utilization rates above 85%, easing chip shortages that had plagued automotive and consumer electronics manufacturers since 2024."
+        }
+      ]
+    }
+  ],
+  "metric_note": "Retrieval output only; no relevance judgments or Ragas scores computed."
+}

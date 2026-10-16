@@ -28,7 +28,7 @@ colang_version: "1.0"
 models:
   - type: main
     engine: ollama
-    model: qwen2.5:14b
+    model: ami-llama3.1:8b-4k
 
 rails:
   input:

@@ -3,6 +3,7 @@ import warnings
 from pathlib import Path
 from typing import Dict, Any
 from nemoguardrails import RailsConfig, LLMRails
+from nemoguardrails.rails.llm.options import RailStatus, RailType
 from config.guardrails.actions import check_topic_safety
 
 # Suppress NeMo deprecation warnings
@@ -25,7 +26,7 @@ class GuardrailsRunner:
     def _configure_model(self) -> None:
         """Keep NeMo's judge aligned with the graph's configured provider/model."""
         provider = os.getenv("AGENT_LLM_PROVIDER", os.getenv("LLM_PROVIDER", "ollama")).lower()
-        model_name = os.getenv("AGENT_LLM_MODEL") or os.getenv("OLLAMA_MODEL", "qwen2.5:14b")
+        model_name = os.getenv("AGENT_LLM_MODEL") or os.getenv("OLLAMA_MODEL", "ami-llama3.1:8b-4k")
         if not self.config.models:
             raise ValueError("NeMo Guardrails config must declare one main model")
         model = self.config.models[0]
@@ -33,7 +34,7 @@ class GuardrailsRunner:
         if provider == "ollama":
             model.engine = "ollama"
             model.model = model_name
-            parameters["base_url"] = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434").rstrip("/")
+            parameters["base_url"] = f"{os.getenv('OLLAMA_BASE_URL', 'http://localhost:11434').rstrip('/')}/v1"
         elif provider in {"groq", "openai"}:
             api_key_name = "GROQ_API_KEY" if provider == "groq" else "OPENAI_API_KEY"
             api_key = os.getenv(api_key_name)
@@ -69,24 +70,22 @@ class GuardrailsRunner:
             }
         ]
         
-        response = self.rails.generate(messages=messages)
-        
-        if isinstance(response, dict):
-            output_text = response.get("content", "")
-        elif hasattr(response, "content"):
-            output_text = response.content
-        else:
-            output_text = str(response)
-            
-        # The output must be present and unchanged. A rail block, model rewrite,
-        # or unrecognized response fails closed instead of being accepted.
-        passed = bool(raw_report.strip()) and output_text.strip() == raw_report.strip()
+        result = self.rails.check(messages=messages, rail_types=[RailType.OUTPUT])
+
+        # The output must be present, accepted by NeMo, and unchanged.
+        passed = (
+            bool(raw_report.strip())
+            and result.status == RailStatus.PASSED
+            and result.content.strip() == raw_report.strip()
+        )
         final_report = raw_report if passed else ""
-        
+
         return {
             "validated_report": final_report,
             "passed_guardrails": passed,
-            "raw_output": raw_report
+            "raw_output": raw_report,
+            "guardrail_status": str(result.status),
+            "blocking_rail": result.rail,
         }
 
 
