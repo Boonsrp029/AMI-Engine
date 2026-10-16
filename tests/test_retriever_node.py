@@ -36,7 +36,7 @@ def test_retriever_passes_sdk_bearer_token_to_ai_search_adapter(monkeypatch):
         workspace_client=workspace_client,
         client_args={
             "workspace_url": "https://dbc-567e5110-5578.cloud.databricks.com",
-            "personal_access_token": "dapi7a47fe46205d6e82d41a182bf88e1f95",
+            "personal_access_token": "<your-personal-access-token>",
         },
         primary_key="feed_id",
         text_column=None,
