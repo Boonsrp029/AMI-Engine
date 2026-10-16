@@ -25,6 +25,7 @@ def test_retriever_passes_sdk_bearer_token_to_ai_search_adapter(monkeypatch):
     monkeypatch.setattr(retriever_node, "WorkspaceClient", lambda **_: workspace_client)
     adapter = MagicMock(return_value=vector_store)
     monkeypatch.setattr(retriever_node, "DatabricksVectorSearch", adapter)
+    monkeypatch.setenv("RETRIEVER_BACKEND", "databricks")
     monkeypatch.setenv("DATABRICKS_HOST", "https://dbc-567e5110-5578.cloud.databricks.com")
     monkeypatch.setenv("DATABRICKS_VECTOR_SEARCH_INDEX", "main.market_intelligence.test_index")
 
@@ -36,7 +37,7 @@ def test_retriever_passes_sdk_bearer_token_to_ai_search_adapter(monkeypatch):
         workspace_client=workspace_client,
         client_args={
             "workspace_url": "https://dbc-567e5110-5578.cloud.databricks.com",
-            "personal_access_token": "<your-personal-access-token>",
+            "personal_access_token": "short-lived-token",
         },
         primary_key="feed_id",
         text_column=None,
@@ -48,6 +49,7 @@ def test_retriever_rejects_missing_authorization_header(monkeypatch):
     workspace_client = MagicMock()
     workspace_client.config.authenticate.return_value = {}
     monkeypatch.setattr(retriever_node, "WorkspaceClient", lambda **_: workspace_client)
+    monkeypatch.setenv("RETRIEVER_BACKEND", "databricks")
 
     with pytest.raises(ValueError, match="did not provide an Authorization header"):
         retriever_node.get_market_intelligence_retriever()
