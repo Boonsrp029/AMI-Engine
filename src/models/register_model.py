@@ -64,7 +64,7 @@ def register_agent_model():
             if line.strip() and not line.lstrip().startswith("#")
         ]
 
-    with mlflow.start_run(run_name="Register_LangGraph_Model") as run:
+    with mlflow.start_run(run_name="Register_LangGraph_Model"):
         print(f"Logging MLflow model with explicit pip requirements to Unity Catalog path: {uc_model_path}...")
 
         # Log PyFunc model artifact with custom dependencies

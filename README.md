@@ -59,7 +59,7 @@ The agent also limits generation to 600 tokens by default. Local 8B judges can f
 
 Set Databricks access using the SDK’s supported authentication chain or workload identity. Local Python entry points load `.databricks/.databricks.env` first and `.env` second; already-exported process environment variables take precedence over both. Keep credentials out of Git. Never pass a PAT into a deployed serving endpoint; use least-privilege service principals or workload identity for deployed jobs. `.env` and `.databricks/.databricks.env` are ignored, but their historic commits still exist: rotate any credential ever committed and consider repository history cleanup before publishing.
 
-Defaults are centralized in `config/agent_config.yaml` and overridable with environment variables:
+`config/agent_config.yaml` documents reference defaults; runtime modules read environment variables and their own defaults rather than loading that file. The following names are examples to configure for your workspace:
 
 | Setting | Default |
 |---|---|
@@ -81,6 +81,8 @@ Run unit tests without remote services:
 ```powershell
 python -m pytest -q
 ```
+
+The [refactor record](docs/refactoring.md) documents preserved behavior, synthetic parity fixtures, the dependency inventory, and separate migration work.
 
 Run the corpus-aligned, single-example evaluation using the local JSON corpus, Ollama, and SQLite MLflow tracking:
 
@@ -143,7 +145,7 @@ The repo includes extension points for future open-source components (alternativ
 ```text
 config/guardrails/      NeMo rails, prompts, and custom action
 config/ollama/Modelfile RTX 4060-sized local model configuration
-config/agent_config.yaml Non-secret resource/evaluation defaults
+config/agent_config.yaml Reference resource/evaluation defaults (not loaded at runtime)
 data/                   Exported Medallion mock corpus and evaluation questions
 src/agents/graph.py     Canonical LangGraph state and workflow
 src/agents/retriever_node.py Databricks Vector Search adapter

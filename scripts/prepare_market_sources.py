@@ -14,6 +14,11 @@ from pathlib import Path
 
 from pypdf import PdfReader
 
+if __package__:
+    from ._source_text import chunk_text as _chunks
+else:
+    from _source_text import chunk_text as _chunks
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "data" / "external" / "market_sources"
@@ -98,22 +103,6 @@ def _download(url: str, path: Path) -> None:
         raise ValueError(f"Unexpected PDF size or content: {url}")
     path.write_bytes(data)
 
-
-def _chunks(text: str, size: int = 900, overlap: int = 120) -> list[str]:
-    text = re.sub(r"\s+", " ", text).strip()
-    chunks = []
-    start = 0
-    while start < len(text):
-        end = min(start + size, len(text))
-        if end < len(text):
-            boundary = text.rfind(" ", start + size // 2, end)
-            if boundary > start:
-                end = boundary
-        chunks.append(text[start:end].strip())
-        if end == len(text):
-            break
-        start = max(end - overlap, start + 1)
-    return chunks
 
 
 def main() -> None:

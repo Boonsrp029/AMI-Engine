@@ -8,11 +8,15 @@ from __future__ import annotations
 
 import hashlib
 import json
-import re
 import urllib.request
 from pathlib import Path
 
 from pypdf import PdfReader
+
+if __package__:
+    from ._source_text import chunk_text as _chunks
+else:
+    from _source_text import chunk_text as _chunks
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -54,24 +58,6 @@ def _read_jsonl(name: str) -> list[dict]:
         raise ValueError(f"Unexpected SHA-256 for {path}: {actual}")
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
-
-def _chunks(text: str, size: int = 900, overlap: int = 120) -> list[str]:
-    text = re.sub(r"\s+", " ", text).strip()
-    if not text:
-        return []
-    result = []
-    start = 0
-    while start < len(text):
-        end = min(start + size, len(text))
-        if end < len(text):
-            boundary = text.rfind(" ", start + size // 2, end)
-            if boundary > start:
-                end = boundary
-        result.append(text[start:end].strip())
-        if end == len(text):
-            break
-        start = max(end - overlap, start + 1)
-    return result
 
 
 def main() -> None:

@@ -1,0 +1,2027 @@
+{
+  "live": {
+    "result": {
+      "scores": {
+        "faithfulness": 0.625,
+        "answer_relevancy": -0.1,
+        "context_precision": 0.75,
+        "context_recall": 1.0
+      },
+      "ranges": {
+        "faithfulness_max_case_range": 0.25,
+        "answer_relevancy_max_case_range": 0.0,
+        "context_precision_max_case_range": 0.0,
+        "context_recall_max_case_range": 0.0
+      },
+      "run_id": "fixed-run",
+      "report_path": "reports/eval_report_latest.csv",
+      "elapsed_seconds": 10
+    },
+    "error": null,
+    "stdout": "Running live agent query 1/2\nRunning live agent query 2/2\nScoring Ragas case 1/2, judge repeat 1/2\nScoring Ragas case 2/2, judge repeat 1/2\nScoring Ragas case 1/2, judge repeat 2/2\nScoring Ragas case 2/2, judge repeat 2/2\nRAGAS LIVE EVALUATION COMPLETE\nExamples: 2 | elapsed: 10.00s | MLflow run: fixed-run\nfaithfulness: 0.6250\nanswer_relevancy: -0.1000\ncontext_precision: 0.7500\ncontext_recall: 1.0000\nfaithfulness_max_case_range: 0.2500\nanswer_relevancy_max_case_range: 0.0000\ncontext_precision_max_case_range: 0.0000\ncontext_recall_max_case_range: 0.0000\nReport: reports/eval_report_latest.csv\n",
+    "events": [
+      [
+        "query",
+        "Question A"
+      ],
+      [
+        "query",
+        "Question B"
+      ],
+      [
+        "judge"
+      ],
+      [
+        "embeddings",
+        {
+          "model": "sentence-transformers/all-MiniLM-L6-v2"
+        }
+      ],
+      [
+        "metric",
+        "faithfulness",
+        {}
+      ],
+      [
+        "metric",
+        "answer_relevancy",
+        {
+          "strictness": 1
+        }
+      ],
+      [
+        "metric",
+        "context_precision",
+        {
+          "name": "context_precision"
+        }
+      ],
+      [
+        "metric",
+        "context_recall",
+        {}
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question A",
+          "response": "Answer A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question A",
+          "response": "Answer A"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question A",
+          "reference": "Fact A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question A",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact A"
+        }
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question B",
+          "response": "Answer B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question B",
+          "response": "Answer B"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question B",
+          "reference": "Fact B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question B",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact B"
+        }
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question A",
+          "response": "Answer A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question A",
+          "response": "Answer A"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question A",
+          "reference": "Fact A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question A",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact A"
+        }
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question B",
+          "response": "Answer B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question B",
+          "response": "Answer B"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question B",
+          "reference": "Fact B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question B",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact B"
+        }
+      ],
+      [
+        "experiment",
+        "/Market_Intelligence_Agent_Evaluation"
+      ],
+      [
+        "start_run",
+        {
+          "run_name": "AMI_Ragas_Evaluation"
+        }
+      ],
+      [
+        "params",
+        {
+          "dataset_path": "dataset.json",
+          "dataset_sha256": "c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e",
+          "dataset_size": 2,
+          "judge_repeats": 2,
+          "fresh_judge": false,
+          "evaluation_mode": "live_agent_ragas",
+          "retriever_backend": "local",
+          "ragas_version": "0.4.3",
+          "judge_provider": "ollama",
+          "judge_model": "test-judge",
+          "answer_relevancy_prompt": "concise-json-v1",
+          "frozen_inputs_sha256": "67354e640895ddadb293d7bdf530d71e1d28bb762fe84ee60185c5141df071cf",
+          "local_corpus_sha256": "855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b",
+          "local_retriever_mode": "bm25",
+          "agent_model": "ami-llama3.1:8b-4k",
+          "judge_max_tokens": 3072
+        }
+      ],
+      [
+        "log_metrics",
+        {
+          "faithfulness": 0.625,
+          "answer_relevancy": -0.1,
+          "context_precision": 0.75,
+          "context_recall": 1.0
+        }
+      ],
+      [
+        "log_metrics",
+        {
+          "faithfulness_max_case_range": 0.25,
+          "answer_relevancy_max_case_range": 0.0,
+          "context_precision_max_case_range": 0.0,
+          "context_recall_max_case_range": 0.0
+        }
+      ],
+      [
+        "log_metric",
+        "evidence_page_hit_at_k",
+        1.0
+      ],
+      [
+        "log_metric",
+        "evaluation_elapsed_seconds",
+        10
+      ],
+      [
+        "artifact",
+        "reports/.eval_report_00000000000000000000000000000002.csv",
+        {
+          "artifact_path": "evaluation"
+        },
+        "case_id,user_input,response,retrieved_contexts,reference,doc_name,evidence_pages,citations,evidence_page_hit_at_k,judge_repeat,faithfulness,answer_relevancy,context_precision,context_recall\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,1,0.5,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,1,0.5,-0.1,0.75,1.0\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,2,0.75,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,2,0.75,-0.1,0.75,1.0\n"
+      ],
+      [
+        "artifact",
+        "reports/eval_inputs_latest.json",
+        {
+          "artifact_path": "evaluation"
+        },
+        "{\n  \"dataset_sha256\": \"c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e\",\n  \"configuration\": {\n    \"retriever_backend\": \"local\",\n    \"local_retriever_mode\": \"bm25\",\n    \"local_corpus\": \"corpus.json\",\n    \"local_corpus_sha256\": \"855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b\",\n    \"agent_provider\": \"ollama\",\n    \"agent_model\": \"ami-llama3.1:8b-4k\"\n  },\n  \"rows\": [\n    {\n      \"case_id\": \"a\",\n      \"user_input\": \"Question A\",\n      \"response\": \"Answer A\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact A\",\n      \"doc_name\": \"sample\",\n      \"evidence_pages\": [\n        0\n      ],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    },\n    {\n      \"case_id\": \"b\",\n      \"user_input\": \"Question B\",\n      \"response\": \"Answer B\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact B\",\n      \"doc_name\": null,\n      \"evidence_pages\": [],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    }\n  ]\n}"
+      ],
+      [
+        "artifact",
+        "reports/eval_checkpoint_67354e640895_ce9d41af84b8.jsonl",
+        {
+          "artifact_path": "evaluation"
+        },
+        "{\"judge_repeat\": 1, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 1, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n"
+      ],
+      [
+        "end_run",
+        null
+      ]
+    ],
+    "files": {
+      "eval_checkpoint_67354e640895_ce9d41af84b8.jsonl": "{\"judge_repeat\": 1, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 1, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n",
+      "eval_inputs_latest.json": "{\n  \"dataset_sha256\": \"c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e\",\n  \"configuration\": {\n    \"retriever_backend\": \"local\",\n    \"local_retriever_mode\": \"bm25\",\n    \"local_corpus\": \"corpus.json\",\n    \"local_corpus_sha256\": \"855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b\",\n    \"agent_provider\": \"ollama\",\n    \"agent_model\": \"ami-llama3.1:8b-4k\"\n  },\n  \"rows\": [\n    {\n      \"case_id\": \"a\",\n      \"user_input\": \"Question A\",\n      \"response\": \"Answer A\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact A\",\n      \"doc_name\": \"sample\",\n      \"evidence_pages\": [\n        0\n      ],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    },\n    {\n      \"case_id\": \"b\",\n      \"user_input\": \"Question B\",\n      \"response\": \"Answer B\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact B\",\n      \"doc_name\": null,\n      \"evidence_pages\": [],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    }\n  ]\n}",
+      "eval_report_latest.csv": "case_id,user_input,response,retrieved_contexts,reference,doc_name,evidence_pages,citations,evidence_page_hit_at_k,judge_repeat,faithfulness,answer_relevancy,context_precision,context_recall\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,1,0.5,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,1,0.5,-0.1,0.75,1.0\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,2,0.75,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,2,0.75,-0.1,0.75,1.0\n"
+    }
+  },
+  "resume": {
+    "result": {
+      "scores": {
+        "faithfulness": 0.625,
+        "answer_relevancy": -0.1,
+        "context_precision": 0.75,
+        "context_recall": 1.0
+      },
+      "ranges": {
+        "faithfulness_max_case_range": 0.25,
+        "answer_relevancy_max_case_range": 0.0,
+        "context_precision_max_case_range": 0.0,
+        "context_recall_max_case_range": 0.0
+      },
+      "run_id": "fixed-run",
+      "report_path": "reports/eval_report_latest.csv",
+      "elapsed_seconds": 10
+    },
+    "error": null,
+    "stdout": "Running live agent query 1/2\nRunning live agent query 2/2\nScoring Ragas case 1/2, judge repeat 1/2\nScoring Ragas case 2/2, judge repeat 1/2\nScoring Ragas case 1/2, judge repeat 2/2\nScoring Ragas case 2/2, judge repeat 2/2\nRAGAS LIVE EVALUATION COMPLETE\nExamples: 2 | elapsed: 10.00s | MLflow run: fixed-run\nfaithfulness: 0.6250\nanswer_relevancy: -0.1000\ncontext_precision: 0.7500\ncontext_recall: 1.0000\nfaithfulness_max_case_range: 0.2500\nanswer_relevancy_max_case_range: 0.0000\ncontext_precision_max_case_range: 0.0000\ncontext_recall_max_case_range: 0.0000\nReport: reports/eval_report_latest.csv\n",
+    "events": [
+      [
+        "query",
+        "Question A"
+      ],
+      [
+        "query",
+        "Question B"
+      ],
+      [
+        "judge"
+      ],
+      [
+        "embeddings",
+        {
+          "model": "sentence-transformers/all-MiniLM-L6-v2"
+        }
+      ],
+      [
+        "metric",
+        "faithfulness",
+        {}
+      ],
+      [
+        "metric",
+        "answer_relevancy",
+        {
+          "strictness": 1
+        }
+      ],
+      [
+        "metric",
+        "context_precision",
+        {
+          "name": "context_precision"
+        }
+      ],
+      [
+        "metric",
+        "context_recall",
+        {}
+      ],
+      [
+        "experiment",
+        "/Market_Intelligence_Agent_Evaluation"
+      ],
+      [
+        "start_run",
+        {
+          "run_name": "AMI_Ragas_Evaluation"
+        }
+      ],
+      [
+        "params",
+        {
+          "dataset_path": "dataset.json",
+          "dataset_sha256": "c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e",
+          "dataset_size": 2,
+          "judge_repeats": 2,
+          "fresh_judge": false,
+          "evaluation_mode": "live_agent_ragas",
+          "retriever_backend": "local",
+          "ragas_version": "0.4.3",
+          "judge_provider": "ollama",
+          "judge_model": "test-judge",
+          "answer_relevancy_prompt": "concise-json-v1",
+          "frozen_inputs_sha256": "67354e640895ddadb293d7bdf530d71e1d28bb762fe84ee60185c5141df071cf",
+          "local_corpus_sha256": "855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b",
+          "local_retriever_mode": "bm25",
+          "agent_model": "ami-llama3.1:8b-4k",
+          "judge_max_tokens": 3072
+        }
+      ],
+      [
+        "log_metrics",
+        {
+          "faithfulness": 0.625,
+          "answer_relevancy": -0.1,
+          "context_precision": 0.75,
+          "context_recall": 1.0
+        }
+      ],
+      [
+        "log_metrics",
+        {
+          "faithfulness_max_case_range": 0.25,
+          "answer_relevancy_max_case_range": 0.0,
+          "context_precision_max_case_range": 0.0,
+          "context_recall_max_case_range": 0.0
+        }
+      ],
+      [
+        "log_metric",
+        "evidence_page_hit_at_k",
+        1.0
+      ],
+      [
+        "log_metric",
+        "evaluation_elapsed_seconds",
+        10
+      ],
+      [
+        "artifact",
+        "reports/.eval_report_00000000000000000000000000000004.csv",
+        {
+          "artifact_path": "evaluation"
+        },
+        "case_id,user_input,response,retrieved_contexts,reference,doc_name,evidence_pages,citations,evidence_page_hit_at_k,judge_repeat,faithfulness,answer_relevancy,context_precision,context_recall\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,1,0.5,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,1,0.5,-0.1,0.75,1.0\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,2,0.75,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,2,0.75,-0.1,0.75,1.0\n"
+      ],
+      [
+        "artifact",
+        "reports/eval_inputs_latest.json",
+        {
+          "artifact_path": "evaluation"
+        },
+        "{\n  \"dataset_sha256\": \"c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e\",\n  \"configuration\": {\n    \"retriever_backend\": \"local\",\n    \"local_retriever_mode\": \"bm25\",\n    \"local_corpus\": \"corpus.json\",\n    \"local_corpus_sha256\": \"855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b\",\n    \"agent_provider\": \"ollama\",\n    \"agent_model\": \"ami-llama3.1:8b-4k\"\n  },\n  \"rows\": [\n    {\n      \"case_id\": \"a\",\n      \"user_input\": \"Question A\",\n      \"response\": \"Answer A\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact A\",\n      \"doc_name\": \"sample\",\n      \"evidence_pages\": [\n        0\n      ],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    },\n    {\n      \"case_id\": \"b\",\n      \"user_input\": \"Question B\",\n      \"response\": \"Answer B\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact B\",\n      \"doc_name\": null,\n      \"evidence_pages\": [],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    }\n  ]\n}"
+      ],
+      [
+        "artifact",
+        "reports/eval_checkpoint_67354e640895_ce9d41af84b8.jsonl",
+        {
+          "artifact_path": "evaluation"
+        },
+        "{\"judge_repeat\": 1, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 1, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n"
+      ],
+      [
+        "end_run",
+        null
+      ]
+    ],
+    "files": {
+      "eval_checkpoint_67354e640895_ce9d41af84b8.jsonl": "{\"judge_repeat\": 1, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 1, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n",
+      "eval_inputs_latest.json": "{\n  \"dataset_sha256\": \"c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e\",\n  \"configuration\": {\n    \"retriever_backend\": \"local\",\n    \"local_retriever_mode\": \"bm25\",\n    \"local_corpus\": \"corpus.json\",\n    \"local_corpus_sha256\": \"855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b\",\n    \"agent_provider\": \"ollama\",\n    \"agent_model\": \"ami-llama3.1:8b-4k\"\n  },\n  \"rows\": [\n    {\n      \"case_id\": \"a\",\n      \"user_input\": \"Question A\",\n      \"response\": \"Answer A\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact A\",\n      \"doc_name\": \"sample\",\n      \"evidence_pages\": [\n        0\n      ],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    },\n    {\n      \"case_id\": \"b\",\n      \"user_input\": \"Question B\",\n      \"response\": \"Answer B\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact B\",\n      \"doc_name\": null,\n      \"evidence_pages\": [],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    }\n  ]\n}",
+      "eval_report_latest.csv": "case_id,user_input,response,retrieved_contexts,reference,doc_name,evidence_pages,citations,evidence_page_hit_at_k,judge_repeat,faithfulness,answer_relevancy,context_precision,context_recall\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,1,0.5,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,1,0.5,-0.1,0.75,1.0\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,2,0.75,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,2,0.75,-0.1,0.75,1.0\n"
+    }
+  },
+  "frozen": {
+    "result": {
+      "scores": {
+        "faithfulness": 0.625,
+        "answer_relevancy": -0.1,
+        "context_precision": 0.75,
+        "context_recall": 1.0
+      },
+      "ranges": {
+        "faithfulness_max_case_range": 0.25,
+        "answer_relevancy_max_case_range": 0.0,
+        "context_precision_max_case_range": 0.0,
+        "context_recall_max_case_range": 0.0
+      },
+      "run_id": "fixed-run",
+      "report_path": "reports/eval_report_latest.csv",
+      "elapsed_seconds": 10
+    },
+    "error": null,
+    "stdout": "Scoring Ragas case 1/2, judge repeat 1/2\nScoring Ragas case 2/2, judge repeat 1/2\nScoring Ragas case 1/2, judge repeat 2/2\nScoring Ragas case 2/2, judge repeat 2/2\nRAGAS LIVE EVALUATION COMPLETE\nExamples: 2 | elapsed: 10.00s | MLflow run: fixed-run\nfaithfulness: 0.6250\nanswer_relevancy: -0.1000\ncontext_precision: 0.7500\ncontext_recall: 1.0000\nfaithfulness_max_case_range: 0.2500\nanswer_relevancy_max_case_range: 0.0000\ncontext_precision_max_case_range: 0.0000\ncontext_recall_max_case_range: 0.0000\nReport: reports/eval_report_latest.csv\n",
+    "events": [
+      [
+        "judge"
+      ],
+      [
+        "embeddings",
+        {
+          "model": "sentence-transformers/all-MiniLM-L6-v2"
+        }
+      ],
+      [
+        "metric",
+        "faithfulness",
+        {}
+      ],
+      [
+        "metric",
+        "answer_relevancy",
+        {
+          "strictness": 1
+        }
+      ],
+      [
+        "metric",
+        "context_precision",
+        {
+          "name": "context_precision"
+        }
+      ],
+      [
+        "metric",
+        "context_recall",
+        {}
+      ],
+      [
+        "experiment",
+        "/Market_Intelligence_Agent_Evaluation"
+      ],
+      [
+        "start_run",
+        {
+          "run_name": "AMI_Ragas_Evaluation"
+        }
+      ],
+      [
+        "params",
+        {
+          "dataset_path": "dataset.json",
+          "dataset_sha256": "c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e",
+          "dataset_size": 2,
+          "judge_repeats": 2,
+          "fresh_judge": false,
+          "evaluation_mode": "frozen_agent_ragas",
+          "retriever_backend": "local",
+          "ragas_version": "0.4.3",
+          "judge_provider": "ollama",
+          "judge_model": "test-judge",
+          "answer_relevancy_prompt": "concise-json-v1",
+          "frozen_inputs_sha256": "67354e640895ddadb293d7bdf530d71e1d28bb762fe84ee60185c5141df071cf",
+          "local_corpus_sha256": "855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b",
+          "local_retriever_mode": "bm25",
+          "agent_model": "ami-llama3.1:8b-4k",
+          "judge_max_tokens": 3072
+        }
+      ],
+      [
+        "log_metrics",
+        {
+          "faithfulness": 0.625,
+          "answer_relevancy": -0.1,
+          "context_precision": 0.75,
+          "context_recall": 1.0
+        }
+      ],
+      [
+        "log_metrics",
+        {
+          "faithfulness_max_case_range": 0.25,
+          "answer_relevancy_max_case_range": 0.0,
+          "context_precision_max_case_range": 0.0,
+          "context_recall_max_case_range": 0.0
+        }
+      ],
+      [
+        "log_metric",
+        "evidence_page_hit_at_k",
+        1.0
+      ],
+      [
+        "log_metric",
+        "evaluation_elapsed_seconds",
+        10
+      ],
+      [
+        "artifact",
+        "reports/.eval_report_00000000000000000000000000000003.csv",
+        {
+          "artifact_path": "evaluation"
+        },
+        "case_id,user_input,response,retrieved_contexts,reference,doc_name,evidence_pages,citations,evidence_page_hit_at_k,judge_repeat,faithfulness,answer_relevancy,context_precision,context_recall\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,1,0.5,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,1,0.5,-0.1,0.75,1.0\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,2,0.75,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,2,0.75,-0.1,0.75,1.0\n"
+      ],
+      [
+        "artifact",
+        "reports/eval_inputs_latest.json",
+        {
+          "artifact_path": "evaluation"
+        },
+        "{\n  \"dataset_sha256\": \"c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e\",\n  \"configuration\": {\n    \"retriever_backend\": \"local\",\n    \"local_retriever_mode\": \"bm25\",\n    \"local_corpus\": \"corpus.json\",\n    \"local_corpus_sha256\": \"855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b\",\n    \"agent_provider\": \"ollama\",\n    \"agent_model\": \"ami-llama3.1:8b-4k\"\n  },\n  \"rows\": [\n    {\n      \"case_id\": \"a\",\n      \"user_input\": \"Question A\",\n      \"response\": \"Answer A\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact A\",\n      \"doc_name\": \"sample\",\n      \"evidence_pages\": [\n        0\n      ],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    },\n    {\n      \"case_id\": \"b\",\n      \"user_input\": \"Question B\",\n      \"response\": \"Answer B\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact B\",\n      \"doc_name\": null,\n      \"evidence_pages\": [],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    }\n  ]\n}"
+      ],
+      [
+        "artifact",
+        "reports/eval_checkpoint_67354e640895_ce9d41af84b8.jsonl",
+        {
+          "artifact_path": "evaluation"
+        },
+        "{\"judge_repeat\": 1, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 1, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n"
+      ],
+      [
+        "end_run",
+        null
+      ]
+    ],
+    "files": {
+      "eval_checkpoint_67354e640895_ce9d41af84b8.jsonl": "{\"judge_repeat\": 1, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 1, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n",
+      "eval_inputs_latest.json": "{\n  \"dataset_sha256\": \"c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e\",\n  \"configuration\": {\n    \"retriever_backend\": \"local\",\n    \"local_retriever_mode\": \"bm25\",\n    \"local_corpus\": \"corpus.json\",\n    \"local_corpus_sha256\": \"855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b\",\n    \"agent_provider\": \"ollama\",\n    \"agent_model\": \"ami-llama3.1:8b-4k\"\n  },\n  \"rows\": [\n    {\n      \"case_id\": \"a\",\n      \"user_input\": \"Question A\",\n      \"response\": \"Answer A\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact A\",\n      \"doc_name\": \"sample\",\n      \"evidence_pages\": [\n        0\n      ],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    },\n    {\n      \"case_id\": \"b\",\n      \"user_input\": \"Question B\",\n      \"response\": \"Answer B\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact B\",\n      \"doc_name\": null,\n      \"evidence_pages\": [],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    }\n  ]\n}",
+      "eval_report_latest.csv": "case_id,user_input,response,retrieved_contexts,reference,doc_name,evidence_pages,citations,evidence_page_hit_at_k,judge_repeat,faithfulness,answer_relevancy,context_precision,context_recall\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,1,0.5,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,1,0.5,-0.1,0.75,1.0\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,2,0.75,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,2,0.75,-0.1,0.75,1.0\n"
+    }
+  },
+  "fresh": {
+    "result": {
+      "scores": {
+        "faithfulness": 0.625,
+        "answer_relevancy": -0.1,
+        "context_precision": 0.75,
+        "context_recall": 1.0
+      },
+      "ranges": {
+        "faithfulness_max_case_range": 0.25,
+        "answer_relevancy_max_case_range": 0.0,
+        "context_precision_max_case_range": 0.0,
+        "context_recall_max_case_range": 0.0
+      },
+      "run_id": "fixed-run",
+      "report_path": "reports/eval_report_latest.csv",
+      "elapsed_seconds": 10
+    },
+    "error": null,
+    "stdout": "Scoring Ragas case 1/2, judge repeat 1/2\nScoring Ragas case 2/2, judge repeat 1/2\nScoring Ragas case 1/2, judge repeat 2/2\nScoring Ragas case 2/2, judge repeat 2/2\nRAGAS LIVE EVALUATION COMPLETE\nExamples: 2 | elapsed: 10.00s | MLflow run: fixed-run\nfaithfulness: 0.6250\nanswer_relevancy: -0.1000\ncontext_precision: 0.7500\ncontext_recall: 1.0000\nfaithfulness_max_case_range: 0.2500\nanswer_relevancy_max_case_range: 0.0000\ncontext_precision_max_case_range: 0.0000\ncontext_recall_max_case_range: 0.0000\nReport: reports/eval_report_latest.csv\n",
+    "events": [
+      [
+        "judge"
+      ],
+      [
+        "embeddings",
+        {
+          "model": "sentence-transformers/all-MiniLM-L6-v2"
+        }
+      ],
+      [
+        "metric",
+        "faithfulness",
+        {}
+      ],
+      [
+        "metric",
+        "answer_relevancy",
+        {
+          "strictness": 1
+        }
+      ],
+      [
+        "metric",
+        "context_precision",
+        {
+          "name": "context_precision"
+        }
+      ],
+      [
+        "metric",
+        "context_recall",
+        {}
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question A",
+          "response": "Answer A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question A",
+          "response": "Answer A"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question A",
+          "reference": "Fact A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question A",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact A"
+        }
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question B",
+          "response": "Answer B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question B",
+          "response": "Answer B"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question B",
+          "reference": "Fact B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question B",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact B"
+        }
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question A",
+          "response": "Answer A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question A",
+          "response": "Answer A"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question A",
+          "reference": "Fact A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question A",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact A"
+        }
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question B",
+          "response": "Answer B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question B",
+          "response": "Answer B"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question B",
+          "reference": "Fact B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question B",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact B"
+        }
+      ],
+      [
+        "experiment",
+        "/Market_Intelligence_Agent_Evaluation"
+      ],
+      [
+        "start_run",
+        {
+          "run_name": "AMI_Ragas_Evaluation"
+        }
+      ],
+      [
+        "params",
+        {
+          "dataset_path": "dataset.json",
+          "dataset_sha256": "c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e",
+          "dataset_size": 2,
+          "judge_repeats": 2,
+          "fresh_judge": true,
+          "evaluation_mode": "frozen_agent_ragas",
+          "retriever_backend": "local",
+          "ragas_version": "0.4.3",
+          "judge_provider": "ollama",
+          "judge_model": "test-judge",
+          "answer_relevancy_prompt": "concise-json-v1",
+          "frozen_inputs_sha256": "67354e640895ddadb293d7bdf530d71e1d28bb762fe84ee60185c5141df071cf",
+          "local_corpus_sha256": "855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b",
+          "local_retriever_mode": "bm25",
+          "agent_model": "ami-llama3.1:8b-4k",
+          "judge_max_tokens": 3072
+        }
+      ],
+      [
+        "log_metrics",
+        {
+          "faithfulness": 0.625,
+          "answer_relevancy": -0.1,
+          "context_precision": 0.75,
+          "context_recall": 1.0
+        }
+      ],
+      [
+        "log_metrics",
+        {
+          "faithfulness_max_case_range": 0.25,
+          "answer_relevancy_max_case_range": 0.0,
+          "context_precision_max_case_range": 0.0,
+          "context_recall_max_case_range": 0.0
+        }
+      ],
+      [
+        "log_metric",
+        "evidence_page_hit_at_k",
+        1.0
+      ],
+      [
+        "log_metric",
+        "evaluation_elapsed_seconds",
+        10
+      ],
+      [
+        "artifact",
+        "reports/.eval_report_00000000000000000000000000000004.csv",
+        {
+          "artifact_path": "evaluation"
+        },
+        "case_id,user_input,response,retrieved_contexts,reference,doc_name,evidence_pages,citations,evidence_page_hit_at_k,judge_repeat,faithfulness,answer_relevancy,context_precision,context_recall\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,1,0.5,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,1,0.5,-0.1,0.75,1.0\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,2,0.75,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,2,0.75,-0.1,0.75,1.0\n"
+      ],
+      [
+        "artifact",
+        "reports/eval_inputs_latest.json",
+        {
+          "artifact_path": "evaluation"
+        },
+        "{\n  \"dataset_sha256\": \"c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e\",\n  \"configuration\": {\n    \"retriever_backend\": \"local\",\n    \"local_retriever_mode\": \"bm25\",\n    \"local_corpus\": \"corpus.json\",\n    \"local_corpus_sha256\": \"855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b\",\n    \"agent_provider\": \"ollama\",\n    \"agent_model\": \"ami-llama3.1:8b-4k\"\n  },\n  \"rows\": [\n    {\n      \"case_id\": \"a\",\n      \"user_input\": \"Question A\",\n      \"response\": \"Answer A\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact A\",\n      \"doc_name\": \"sample\",\n      \"evidence_pages\": [\n        0\n      ],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    },\n    {\n      \"case_id\": \"b\",\n      \"user_input\": \"Question B\",\n      \"response\": \"Answer B\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact B\",\n      \"doc_name\": null,\n      \"evidence_pages\": [],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    }\n  ]\n}"
+      ],
+      [
+        "artifact",
+        "reports/eval_checkpoint_67354e640895_ce9d41af84b8_00000000.jsonl",
+        {
+          "artifact_path": "evaluation"
+        },
+        "{\"judge_repeat\": 1, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 1, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n"
+      ],
+      [
+        "end_run",
+        null
+      ]
+    ],
+    "files": {
+      "eval_checkpoint_67354e640895_ce9d41af84b8.jsonl": "{\"judge_repeat\": 1, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 1, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n",
+      "eval_checkpoint_67354e640895_ce9d41af84b8_00000000.jsonl": "{\"judge_repeat\": 1, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 1, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n",
+      "eval_inputs_latest.json": "{\n  \"dataset_sha256\": \"c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e\",\n  \"configuration\": {\n    \"retriever_backend\": \"local\",\n    \"local_retriever_mode\": \"bm25\",\n    \"local_corpus\": \"corpus.json\",\n    \"local_corpus_sha256\": \"855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b\",\n    \"agent_provider\": \"ollama\",\n    \"agent_model\": \"ami-llama3.1:8b-4k\"\n  },\n  \"rows\": [\n    {\n      \"case_id\": \"a\",\n      \"user_input\": \"Question A\",\n      \"response\": \"Answer A\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact A\",\n      \"doc_name\": \"sample\",\n      \"evidence_pages\": [\n        0\n      ],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    },\n    {\n      \"case_id\": \"b\",\n      \"user_input\": \"Question B\",\n      \"response\": \"Answer B\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact B\",\n      \"doc_name\": null,\n      \"evidence_pages\": [],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    }\n  ]\n}",
+      "eval_report_latest.csv": "case_id,user_input,response,retrieved_contexts,reference,doc_name,evidence_pages,citations,evidence_page_hit_at_k,judge_repeat,faithfulness,answer_relevancy,context_precision,context_recall\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,1,0.5,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,1,0.5,-0.1,0.75,1.0\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,2,0.75,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,2,0.75,-0.1,0.75,1.0\n"
+    }
+  },
+  "scoring_failure": {
+    "result": null,
+    "error": [
+      "RuntimeError",
+      "synthetic scoring failure"
+    ],
+    "stdout": "Running live agent query 1/2\nRunning live agent query 2/2\nScoring Ragas case 1/2, judge repeat 1/2\nScoring Ragas case 2/2, judge repeat 1/2\n",
+    "events": [
+      [
+        "query",
+        "Question A"
+      ],
+      [
+        "query",
+        "Question B"
+      ],
+      [
+        "judge"
+      ],
+      [
+        "embeddings",
+        {
+          "model": "sentence-transformers/all-MiniLM-L6-v2"
+        }
+      ],
+      [
+        "metric",
+        "faithfulness",
+        {}
+      ],
+      [
+        "metric",
+        "answer_relevancy",
+        {
+          "strictness": 1
+        }
+      ],
+      [
+        "metric",
+        "context_precision",
+        {
+          "name": "context_precision"
+        }
+      ],
+      [
+        "metric",
+        "context_recall",
+        {}
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question A",
+          "response": "Answer A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question A",
+          "response": "Answer A"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question A",
+          "reference": "Fact A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question A",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact A"
+        }
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question B",
+          "response": "Answer B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ]
+    ],
+    "files": {
+      "eval_checkpoint_67354e640895_ce9d41af84b8.jsonl": "{\"judge_repeat\": 1, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n",
+      "eval_inputs_latest.json": "{\n  \"dataset_sha256\": \"c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e\",\n  \"configuration\": {\n    \"retriever_backend\": \"local\",\n    \"local_retriever_mode\": \"bm25\",\n    \"local_corpus\": \"corpus.json\",\n    \"local_corpus_sha256\": \"855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b\",\n    \"agent_provider\": \"ollama\",\n    \"agent_model\": \"ami-llama3.1:8b-4k\"\n  },\n  \"rows\": [\n    {\n      \"case_id\": \"a\",\n      \"user_input\": \"Question A\",\n      \"response\": \"Answer A\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact A\",\n      \"doc_name\": \"sample\",\n      \"evidence_pages\": [\n        0\n      ],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    },\n    {\n      \"case_id\": \"b\",\n      \"user_input\": \"Question B\",\n      \"response\": \"Answer B\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact B\",\n      \"doc_name\": null,\n      \"evidence_pages\": [],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    }\n  ]\n}",
+      "eval_report_latest.csv": "previous report\n"
+    }
+  },
+  "mlflow_failure": {
+    "result": null,
+    "error": [
+      "RuntimeError",
+      "synthetic tracking failure"
+    ],
+    "stdout": "Running live agent query 1/2\nRunning live agent query 2/2\nScoring Ragas case 1/2, judge repeat 1/2\nScoring Ragas case 2/2, judge repeat 1/2\nScoring Ragas case 1/2, judge repeat 2/2\nScoring Ragas case 2/2, judge repeat 2/2\n",
+    "events": [
+      [
+        "query",
+        "Question A"
+      ],
+      [
+        "query",
+        "Question B"
+      ],
+      [
+        "judge"
+      ],
+      [
+        "embeddings",
+        {
+          "model": "sentence-transformers/all-MiniLM-L6-v2"
+        }
+      ],
+      [
+        "metric",
+        "faithfulness",
+        {}
+      ],
+      [
+        "metric",
+        "answer_relevancy",
+        {
+          "strictness": 1
+        }
+      ],
+      [
+        "metric",
+        "context_precision",
+        {
+          "name": "context_precision"
+        }
+      ],
+      [
+        "metric",
+        "context_recall",
+        {}
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question A",
+          "response": "Answer A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question A",
+          "response": "Answer A"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question A",
+          "reference": "Fact A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question A",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact A"
+        }
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question B",
+          "response": "Answer B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question B",
+          "response": "Answer B"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question B",
+          "reference": "Fact B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question B",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact B"
+        }
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question A",
+          "response": "Answer A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question A",
+          "response": "Answer A"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question A",
+          "reference": "Fact A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question A",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact A"
+        }
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question B",
+          "response": "Answer B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question B",
+          "response": "Answer B"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question B",
+          "reference": "Fact B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question B",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact B"
+        }
+      ],
+      [
+        "experiment",
+        "/Market_Intelligence_Agent_Evaluation"
+      ],
+      [
+        "start_run",
+        {
+          "run_name": "AMI_Ragas_Evaluation"
+        }
+      ],
+      [
+        "params",
+        {
+          "dataset_path": "dataset.json",
+          "dataset_sha256": "c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e",
+          "dataset_size": 2,
+          "judge_repeats": 2,
+          "fresh_judge": false,
+          "evaluation_mode": "live_agent_ragas",
+          "retriever_backend": "local",
+          "ragas_version": "0.4.3",
+          "judge_provider": "ollama",
+          "judge_model": "test-judge",
+          "answer_relevancy_prompt": "concise-json-v1",
+          "frozen_inputs_sha256": "67354e640895ddadb293d7bdf530d71e1d28bb762fe84ee60185c5141df071cf",
+          "local_corpus_sha256": "855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b",
+          "local_retriever_mode": "bm25",
+          "agent_model": "ami-llama3.1:8b-4k",
+          "judge_max_tokens": 3072
+        }
+      ],
+      [
+        "log_metrics",
+        {
+          "faithfulness": 0.625,
+          "answer_relevancy": -0.1,
+          "context_precision": 0.75,
+          "context_recall": 1.0
+        }
+      ],
+      [
+        "end_run",
+        "RuntimeError"
+      ]
+    ],
+    "files": {
+      "eval_checkpoint_67354e640895_ce9d41af84b8.jsonl": "{\"judge_repeat\": 1, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 1, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n",
+      "eval_inputs_latest.json": "{\n  \"dataset_sha256\": \"c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e\",\n  \"configuration\": {\n    \"retriever_backend\": \"local\",\n    \"local_retriever_mode\": \"bm25\",\n    \"local_corpus\": \"corpus.json\",\n    \"local_corpus_sha256\": \"855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b\",\n    \"agent_provider\": \"ollama\",\n    \"agent_model\": \"ami-llama3.1:8b-4k\"\n  },\n  \"rows\": [\n    {\n      \"case_id\": \"a\",\n      \"user_input\": \"Question A\",\n      \"response\": \"Answer A\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact A\",\n      \"doc_name\": \"sample\",\n      \"evidence_pages\": [\n        0\n      ],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    },\n    {\n      \"case_id\": \"b\",\n      \"user_input\": \"Question B\",\n      \"response\": \"Answer B\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact B\",\n      \"doc_name\": null,\n      \"evidence_pages\": [],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    }\n  ]\n}",
+      "eval_report_latest.csv": "previous report\n"
+    }
+  },
+  "invalid_score": {
+    "result": null,
+    "error": [
+      "RuntimeError",
+      "Ragas returned invalid scores for case 1: faithfulness=nan"
+    ],
+    "stdout": "Running live agent query 1/2\nRunning live agent query 2/2\nScoring Ragas case 1/2, judge repeat 1/2\n",
+    "events": [
+      [
+        "query",
+        "Question A"
+      ],
+      [
+        "query",
+        "Question B"
+      ],
+      [
+        "judge"
+      ],
+      [
+        "embeddings",
+        {
+          "model": "sentence-transformers/all-MiniLM-L6-v2"
+        }
+      ],
+      [
+        "metric",
+        "faithfulness",
+        {}
+      ],
+      [
+        "metric",
+        "answer_relevancy",
+        {
+          "strictness": 1
+        }
+      ],
+      [
+        "metric",
+        "context_precision",
+        {
+          "name": "context_precision"
+        }
+      ],
+      [
+        "metric",
+        "context_recall",
+        {}
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question A",
+          "response": "Answer A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question A",
+          "response": "Answer A"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question A",
+          "reference": "Fact A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question A",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact A"
+        }
+      ]
+    ],
+    "files": {
+      "eval_inputs_latest.json": "{\n  \"dataset_sha256\": \"c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e\",\n  \"configuration\": {\n    \"retriever_backend\": \"local\",\n    \"local_retriever_mode\": \"bm25\",\n    \"local_corpus\": \"corpus.json\",\n    \"local_corpus_sha256\": \"855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b\",\n    \"agent_provider\": \"ollama\",\n    \"agent_model\": \"ami-llama3.1:8b-4k\"\n  },\n  \"rows\": [\n    {\n      \"case_id\": \"a\",\n      \"user_input\": \"Question A\",\n      \"response\": \"Answer A\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact A\",\n      \"doc_name\": \"sample\",\n      \"evidence_pages\": [\n        0\n      ],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    },\n    {\n      \"case_id\": \"b\",\n      \"user_input\": \"Question B\",\n      \"response\": \"Answer B\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact B\",\n      \"doc_name\": null,\n      \"evidence_pages\": [],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    }\n  ]\n}",
+      "eval_report_latest.csv": "previous report\n"
+    }
+  },
+  "no_answer": {
+    "result": null,
+    "error": [
+      "RuntimeError",
+      "Live agent returned no answer for row 1; status='failed'; error='example'"
+    ],
+    "stdout": "Running live agent query 1/2\n",
+    "events": [
+      [
+        "query",
+        "Question A"
+      ]
+    ],
+    "files": {}
+  },
+  "no_context": {
+    "result": null,
+    "error": [
+      "RuntimeError",
+      "Live agent retrieved no usable context for row 1; evaluation aborted"
+    ],
+    "stdout": "Running live agent query 1/2\n",
+    "events": [
+      [
+        "query",
+        "Question A"
+      ]
+    ],
+    "files": {}
+  },
+  "frozen_revision": {
+    "result": null,
+    "error": [
+      "ValueError",
+      "Frozen inputs were generated from a different dataset revision"
+    ],
+    "stdout": "",
+    "events": [],
+    "files": {
+      "eval_checkpoint_67354e640895_ce9d41af84b8.jsonl": "{\"judge_repeat\": 1, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 1, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n",
+      "eval_inputs_latest.json": "{\"dataset_sha256\": \"wrong-revision\", \"configuration\": {\"retriever_backend\": \"local\", \"local_retriever_mode\": \"bm25\", \"local_corpus\": \"corpus.json\", \"local_corpus_sha256\": \"855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b\", \"agent_provider\": \"ollama\", \"agent_model\": \"ami-llama3.1:8b-4k\"}, \"rows\": [{\"case_id\": \"a\", \"user_input\": \"Question A\", \"response\": \"Answer A\", \"retrieved_contexts\": [\"Evidence\"], \"reference\": \"Fact A\", \"doc_name\": \"sample\", \"evidence_pages\": [0], \"citations\": [{\"doc_name\": \"sample\", \"page_num\": 0}]}, {\"case_id\": \"b\", \"user_input\": \"Question B\", \"response\": \"Answer B\", \"retrieved_contexts\": [\"Evidence\"], \"reference\": \"Fact B\", \"doc_name\": null, \"evidence_pages\": [], \"citations\": [{\"doc_name\": \"sample\", \"page_num\": 0}]}]}",
+      "eval_report_latest.csv": "case_id,user_input,response,retrieved_contexts,reference,doc_name,evidence_pages,citations,evidence_page_hit_at_k,judge_repeat,faithfulness,answer_relevancy,context_precision,context_recall\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,1,0.5,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,1,0.5,-0.1,0.75,1.0\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,2,0.75,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,2,0.75,-0.1,0.75,1.0\n"
+    }
+  },
+  "frozen_count": {
+    "result": null,
+    "error": [
+      "ValueError",
+      "Frozen input count does not match the requested evaluation cases"
+    ],
+    "stdout": "",
+    "events": [],
+    "files": {
+      "eval_checkpoint_67354e640895_ce9d41af84b8.jsonl": "{\"judge_repeat\": 1, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 1, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n",
+      "eval_inputs_latest.json": "{\"dataset_sha256\": \"c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e\", \"configuration\": {\"retriever_backend\": \"local\", \"local_retriever_mode\": \"bm25\", \"local_corpus\": \"corpus.json\", \"local_corpus_sha256\": \"855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b\", \"agent_provider\": \"ollama\", \"agent_model\": \"ami-llama3.1:8b-4k\"}, \"rows\": [{\"case_id\": \"a\", \"user_input\": \"Question A\", \"response\": \"Answer A\", \"retrieved_contexts\": [\"Evidence\"], \"reference\": \"Fact A\", \"doc_name\": \"sample\", \"evidence_pages\": [0], \"citations\": [{\"doc_name\": \"sample\", \"page_num\": 0}]}]}",
+      "eval_report_latest.csv": "case_id,user_input,response,retrieved_contexts,reference,doc_name,evidence_pages,citations,evidence_page_hit_at_k,judge_repeat,faithfulness,answer_relevancy,context_precision,context_recall\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,1,0.5,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,1,0.5,-0.1,0.75,1.0\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,2,0.75,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,2,0.75,-0.1,0.75,1.0\n"
+    }
+  },
+  "partial_resume": {
+    "result": {
+      "scores": {
+        "faithfulness": 0.5625,
+        "answer_relevancy": -0.1,
+        "context_precision": 0.75,
+        "context_recall": 1.0
+      },
+      "ranges": {
+        "faithfulness_max_case_range": 0.25,
+        "answer_relevancy_max_case_range": 0.0,
+        "context_precision_max_case_range": 0.0,
+        "context_recall_max_case_range": 0.0
+      },
+      "run_id": "fixed-run",
+      "report_path": "reports/eval_report_latest.csv",
+      "elapsed_seconds": 10
+    },
+    "error": null,
+    "stdout": "Scoring Ragas case 1/2, judge repeat 1/2\nScoring Ragas case 2/2, judge repeat 1/2\nScoring Ragas case 1/2, judge repeat 2/2\nScoring Ragas case 2/2, judge repeat 2/2\nRAGAS LIVE EVALUATION COMPLETE\nExamples: 2 | elapsed: 10.00s | MLflow run: fixed-run\nfaithfulness: 0.5625\nanswer_relevancy: -0.1000\ncontext_precision: 0.7500\ncontext_recall: 1.0000\nfaithfulness_max_case_range: 0.2500\nanswer_relevancy_max_case_range: 0.0000\ncontext_precision_max_case_range: 0.0000\ncontext_recall_max_case_range: 0.0000\nReport: reports/eval_report_latest.csv\n",
+    "events": [
+      [
+        "judge"
+      ],
+      [
+        "embeddings",
+        {
+          "model": "sentence-transformers/all-MiniLM-L6-v2"
+        }
+      ],
+      [
+        "metric",
+        "faithfulness",
+        {}
+      ],
+      [
+        "metric",
+        "answer_relevancy",
+        {
+          "strictness": 1
+        }
+      ],
+      [
+        "metric",
+        "context_precision",
+        {
+          "name": "context_precision"
+        }
+      ],
+      [
+        "metric",
+        "context_recall",
+        {}
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question B",
+          "response": "Answer B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question B",
+          "response": "Answer B"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question B",
+          "reference": "Fact B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question B",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact B"
+        }
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question A",
+          "response": "Answer A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question A",
+          "response": "Answer A"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question A",
+          "reference": "Fact A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question A",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact A"
+        }
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question B",
+          "response": "Answer B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question B",
+          "response": "Answer B"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question B",
+          "reference": "Fact B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question B",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact B"
+        }
+      ],
+      [
+        "experiment",
+        "/Market_Intelligence_Agent_Evaluation"
+      ],
+      [
+        "start_run",
+        {
+          "run_name": "AMI_Ragas_Evaluation"
+        }
+      ],
+      [
+        "params",
+        {
+          "dataset_path": "dataset.json",
+          "dataset_sha256": "c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e",
+          "dataset_size": 2,
+          "judge_repeats": 2,
+          "fresh_judge": false,
+          "evaluation_mode": "frozen_agent_ragas",
+          "retriever_backend": "local",
+          "ragas_version": "0.4.3",
+          "judge_provider": "ollama",
+          "judge_model": "test-judge",
+          "answer_relevancy_prompt": "concise-json-v1",
+          "frozen_inputs_sha256": "67354e640895ddadb293d7bdf530d71e1d28bb762fe84ee60185c5141df071cf",
+          "local_corpus_sha256": "855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b",
+          "local_retriever_mode": "bm25",
+          "agent_model": "ami-llama3.1:8b-4k",
+          "judge_max_tokens": 3072
+        }
+      ],
+      [
+        "log_metrics",
+        {
+          "faithfulness": 0.5625,
+          "answer_relevancy": -0.1,
+          "context_precision": 0.75,
+          "context_recall": 1.0
+        }
+      ],
+      [
+        "log_metrics",
+        {
+          "faithfulness_max_case_range": 0.25,
+          "answer_relevancy_max_case_range": 0.0,
+          "context_precision_max_case_range": 0.0,
+          "context_recall_max_case_range": 0.0
+        }
+      ],
+      [
+        "log_metric",
+        "evidence_page_hit_at_k",
+        1.0
+      ],
+      [
+        "log_metric",
+        "evaluation_elapsed_seconds",
+        10
+      ],
+      [
+        "artifact",
+        "reports/.eval_report_00000000000000000000000000000002.csv",
+        {
+          "artifact_path": "evaluation"
+        },
+        "case_id,user_input,response,retrieved_contexts,reference,doc_name,evidence_pages,citations,evidence_page_hit_at_k,judge_repeat,faithfulness,answer_relevancy,context_precision,context_recall\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,1,0.5,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,1,0.5,-0.1,0.75,1.0\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,2,0.5,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,2,0.75,-0.1,0.75,1.0\n"
+      ],
+      [
+        "artifact",
+        "reports/eval_inputs_latest.json",
+        {
+          "artifact_path": "evaluation"
+        },
+        "{\n  \"dataset_sha256\": \"c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e\",\n  \"configuration\": {\n    \"retriever_backend\": \"local\",\n    \"local_retriever_mode\": \"bm25\",\n    \"local_corpus\": \"corpus.json\",\n    \"local_corpus_sha256\": \"855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b\",\n    \"agent_provider\": \"ollama\",\n    \"agent_model\": \"ami-llama3.1:8b-4k\"\n  },\n  \"rows\": [\n    {\n      \"case_id\": \"a\",\n      \"user_input\": \"Question A\",\n      \"response\": \"Answer A\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact A\",\n      \"doc_name\": \"sample\",\n      \"evidence_pages\": [\n        0\n      ],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    },\n    {\n      \"case_id\": \"b\",\n      \"user_input\": \"Question B\",\n      \"response\": \"Answer B\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact B\",\n      \"doc_name\": null,\n      \"evidence_pages\": [],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    }\n  ]\n}"
+      ],
+      [
+        "artifact",
+        "reports/eval_checkpoint_67354e640895_ce9d41af84b8.jsonl",
+        {
+          "artifact_path": "evaluation"
+        },
+        "{\"judge_repeat\": 1, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 1, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n"
+      ],
+      [
+        "end_run",
+        null
+      ]
+    ],
+    "files": {
+      "eval_checkpoint_67354e640895_ce9d41af84b8.jsonl": "{\"judge_repeat\": 1, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 1, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n",
+      "eval_inputs_latest.json": "{\n  \"dataset_sha256\": \"c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e\",\n  \"configuration\": {\n    \"retriever_backend\": \"local\",\n    \"local_retriever_mode\": \"bm25\",\n    \"local_corpus\": \"corpus.json\",\n    \"local_corpus_sha256\": \"855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b\",\n    \"agent_provider\": \"ollama\",\n    \"agent_model\": \"ami-llama3.1:8b-4k\"\n  },\n  \"rows\": [\n    {\n      \"case_id\": \"a\",\n      \"user_input\": \"Question A\",\n      \"response\": \"Answer A\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact A\",\n      \"doc_name\": \"sample\",\n      \"evidence_pages\": [\n        0\n      ],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    },\n    {\n      \"case_id\": \"b\",\n      \"user_input\": \"Question B\",\n      \"response\": \"Answer B\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact B\",\n      \"doc_name\": null,\n      \"evidence_pages\": [],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    }\n  ]\n}",
+      "eval_report_latest.csv": "case_id,user_input,response,retrieved_contexts,reference,doc_name,evidence_pages,citations,evidence_page_hit_at_k,judge_repeat,faithfulness,answer_relevancy,context_precision,context_recall\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,1,0.5,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,1,0.5,-0.1,0.75,1.0\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,2,0.5,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,2,0.75,-0.1,0.75,1.0\n"
+    }
+  },
+  "artifact_failure": {
+    "result": null,
+    "error": [
+      "RuntimeError",
+      "synthetic artifact failure"
+    ],
+    "stdout": "Running live agent query 1/2\nRunning live agent query 2/2\nScoring Ragas case 1/2, judge repeat 1/2\nScoring Ragas case 2/2, judge repeat 1/2\nScoring Ragas case 1/2, judge repeat 2/2\nScoring Ragas case 2/2, judge repeat 2/2\n",
+    "events": [
+      [
+        "query",
+        "Question A"
+      ],
+      [
+        "query",
+        "Question B"
+      ],
+      [
+        "judge"
+      ],
+      [
+        "embeddings",
+        {
+          "model": "sentence-transformers/all-MiniLM-L6-v2"
+        }
+      ],
+      [
+        "metric",
+        "faithfulness",
+        {}
+      ],
+      [
+        "metric",
+        "answer_relevancy",
+        {
+          "strictness": 1
+        }
+      ],
+      [
+        "metric",
+        "context_precision",
+        {
+          "name": "context_precision"
+        }
+      ],
+      [
+        "metric",
+        "context_recall",
+        {}
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question A",
+          "response": "Answer A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question A",
+          "response": "Answer A"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question A",
+          "reference": "Fact A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question A",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact A"
+        }
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question B",
+          "response": "Answer B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question B",
+          "response": "Answer B"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question B",
+          "reference": "Fact B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question B",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact B"
+        }
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question A",
+          "response": "Answer A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question A",
+          "response": "Answer A"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question A",
+          "reference": "Fact A",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question A",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact A"
+        }
+      ],
+      [
+        "score",
+        "faithfulness",
+        {
+          "user_input": "Question B",
+          "response": "Answer B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "answer_relevancy",
+        {
+          "user_input": "Question B",
+          "response": "Answer B"
+        }
+      ],
+      [
+        "score",
+        "context_precision",
+        {
+          "user_input": "Question B",
+          "reference": "Fact B",
+          "retrieved_contexts": [
+            "Evidence"
+          ]
+        }
+      ],
+      [
+        "score",
+        "context_recall",
+        {
+          "user_input": "Question B",
+          "retrieved_contexts": [
+            "Evidence"
+          ],
+          "reference": "Fact B"
+        }
+      ],
+      [
+        "experiment",
+        "/Market_Intelligence_Agent_Evaluation"
+      ],
+      [
+        "start_run",
+        {
+          "run_name": "AMI_Ragas_Evaluation"
+        }
+      ],
+      [
+        "params",
+        {
+          "dataset_path": "dataset.json",
+          "dataset_sha256": "c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e",
+          "dataset_size": 2,
+          "judge_repeats": 2,
+          "fresh_judge": false,
+          "evaluation_mode": "live_agent_ragas",
+          "retriever_backend": "local",
+          "ragas_version": "0.4.3",
+          "judge_provider": "ollama",
+          "judge_model": "test-judge",
+          "answer_relevancy_prompt": "concise-json-v1",
+          "frozen_inputs_sha256": "67354e640895ddadb293d7bdf530d71e1d28bb762fe84ee60185c5141df071cf",
+          "local_corpus_sha256": "855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b",
+          "local_retriever_mode": "bm25",
+          "agent_model": "ami-llama3.1:8b-4k",
+          "judge_max_tokens": 3072
+        }
+      ],
+      [
+        "log_metrics",
+        {
+          "faithfulness": 0.625,
+          "answer_relevancy": -0.1,
+          "context_precision": 0.75,
+          "context_recall": 1.0
+        }
+      ],
+      [
+        "log_metrics",
+        {
+          "faithfulness_max_case_range": 0.25,
+          "answer_relevancy_max_case_range": 0.0,
+          "context_precision_max_case_range": 0.0,
+          "context_recall_max_case_range": 0.0
+        }
+      ],
+      [
+        "log_metric",
+        "evidence_page_hit_at_k",
+        1.0
+      ],
+      [
+        "log_metric",
+        "evaluation_elapsed_seconds",
+        10
+      ],
+      [
+        "artifact",
+        "reports/.eval_report_00000000000000000000000000000002.csv",
+        {
+          "artifact_path": "evaluation"
+        },
+        "case_id,user_input,response,retrieved_contexts,reference,doc_name,evidence_pages,citations,evidence_page_hit_at_k,judge_repeat,faithfulness,answer_relevancy,context_precision,context_recall\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,1,0.5,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,1,0.5,-0.1,0.75,1.0\na,Question A,Answer A,['Evidence'],Fact A,sample,[0],\"[{'doc_name': 'sample', 'page_num': 0}]\",1.0,2,0.75,-0.1,0.75,1.0\nb,Question B,Answer B,['Evidence'],Fact B,,[],\"[{'doc_name': 'sample', 'page_num': 0}]\",,2,0.75,-0.1,0.75,1.0\n"
+      ],
+      [
+        "end_run",
+        "RuntimeError"
+      ]
+    ],
+    "files": {
+      "eval_checkpoint_67354e640895_ce9d41af84b8.jsonl": "{\"judge_repeat\": 1, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 1, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.5, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"a\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n{\"judge_repeat\": 2, \"case_id\": \"b\", \"scores\": {\"faithfulness\": 0.75, \"answer_relevancy\": -0.1, \"context_precision\": 0.75, \"context_recall\": 1.0}}\n",
+      "eval_inputs_latest.json": "{\n  \"dataset_sha256\": \"c9b386a25c178be19bff7df4afc662e451b9e9d6d1ca7c8b925eda563db5986e\",\n  \"configuration\": {\n    \"retriever_backend\": \"local\",\n    \"local_retriever_mode\": \"bm25\",\n    \"local_corpus\": \"corpus.json\",\n    \"local_corpus_sha256\": \"855b8f0082b82169dcc57e9b98fcd801a274b51a50b40e6faafb46da24f3258b\",\n    \"agent_provider\": \"ollama\",\n    \"agent_model\": \"ami-llama3.1:8b-4k\"\n  },\n  \"rows\": [\n    {\n      \"case_id\": \"a\",\n      \"user_input\": \"Question A\",\n      \"response\": \"Answer A\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact A\",\n      \"doc_name\": \"sample\",\n      \"evidence_pages\": [\n        0\n      ],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    },\n    {\n      \"case_id\": \"b\",\n      \"user_input\": \"Question B\",\n      \"response\": \"Answer B\",\n      \"retrieved_contexts\": [\n        \"Evidence\"\n      ],\n      \"reference\": \"Fact B\",\n      \"doc_name\": null,\n      \"evidence_pages\": [],\n      \"citations\": [\n        {\n          \"doc_name\": \"sample\",\n          \"page_num\": 0\n        }\n      ]\n    }\n  ]\n}",
+      "eval_report_latest.csv": "previous report\n"
+    }
+  }
+}

@@ -82,7 +82,7 @@ def deploy_serving_endpoint():
 
     try:
         # Check if endpoint exists
-        existing_endpoint = w.serving_endpoints.get(name=endpoint_name)
+        w.serving_endpoints.get(name=endpoint_name)
         print(f"Endpoint '{endpoint_name}' exists. Updating configuration...")
         w.serving_endpoints.update_config_and_wait(
             name=endpoint_name,
