@@ -12,13 +12,20 @@ langgraph==1.0.10
 mlflow==3.15.1
 mcp>=1.24.0,<2  # langchain-mcp-adapters 0.3.1 imports RequestContext, removed in MCP 2
 nemoguardrails==0.23.0
-openai>=2.45.0,<3
+openai==2.45.0
+openai-agents==0.19.3  # Later agents releases require OpenAI 3; NeMo uses OpenAI <3.
+instructor==1.16.0  # OpenAI 2 support without upgrading baseline aiohttp.
+protobuf==5.29.5  # Common supported version for Databricks SDK and Vector Search.
 pandas==2.3.3
 pypdf==6.10.0
 pydantic==2.12.5
-pyspark==4.2.0
+# Local ETL development uses requirements-etl.txt in a separate environment;
+# Databricks Connect (transitive) and standalone PySpark share an import namespace.
 python-dotenv==1.2.2
 PyYAML==6.0.3
 pytest==9.1.1
 ragas==0.4.3
 sentence-transformers==6.0.0
+fastapi==0.141.1
+uvicorn==0.52.1
+httpx==0.28.1  # Offline API contract tests.

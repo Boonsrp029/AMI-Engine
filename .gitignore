@@ -2,6 +2,10 @@
 .env.*
 !.env.example
 .venv/
+.venv-pilot/
+.venv-pilot-*/
+.venv-etl/
+.pilot-work/
 venv/
 __pycache__/
 *.pyc
@@ -14,3 +18,4 @@ reports/eval_inputs*.json
 reports/eval_checkpoint*.jsonl
 reports/mlflow.db*
 data/external/
+reports/workflow_pilot/

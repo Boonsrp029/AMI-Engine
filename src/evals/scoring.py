@@ -5,20 +5,26 @@ import math
 import pandas as pd
 
 
-def score_row(row, metrics) -> dict[str, float]:
+def score_row(row, metrics, runner=None) -> dict[str, float]:
+    def score(name, **kwargs):
+        metric = metrics[name]
+        if runner is not None and callable(getattr(metric, "ascore", None)):
+            return runner.run(metric.ascore(**kwargs))
+        return metric.score(**kwargs)
+
     return {
-        "faithfulness": float(metrics["faithfulness"].score(
+        "faithfulness": float(score("faithfulness",
             user_input=row["user_input"], response=row["response"],
             retrieved_contexts=row["retrieved_contexts"],
         ).value),
-        "answer_relevancy": float(metrics["answer_relevancy"].score(
+        "answer_relevancy": float(score("answer_relevancy",
             user_input=row["user_input"], response=row["response"],
         ).value),
-        "context_precision": float(metrics["context_precision"].score(
+        "context_precision": float(score("context_precision",
             user_input=row["user_input"], reference=row["reference"],
             retrieved_contexts=row["retrieved_contexts"],
         ).value),
-        "context_recall": float(metrics["context_recall"].score(
+        "context_recall": float(score("context_recall",
             user_input=row["user_input"], retrieved_contexts=row["retrieved_contexts"],
             reference=row["reference"],
         ).value),

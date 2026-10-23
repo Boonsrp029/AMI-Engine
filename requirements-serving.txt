@@ -7,7 +7,9 @@ langchain-ollama==1.1.0
 langchain-openai==1.1.9
 langgraph==1.0.10
 nemoguardrails==0.23.0
-openai==1.109.1
+openai==2.45.0
+openai-agents==0.19.3
+protobuf==5.29.5
 pandas==2.3.3
 pydantic==2.12.5
 python-dotenv==1.2.2

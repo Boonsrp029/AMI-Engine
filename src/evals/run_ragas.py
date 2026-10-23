@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import json
 import hashlib
 import os
@@ -67,7 +68,7 @@ def _prompt_version(provider: str) -> str:
     return LOCAL_ANSWER_RELEVANCY_PROMPT_VERSION if provider == "ollama" else "ragas-default"
 
 
-def _judge_llm():
+def _judge_llm(*, return_client=False):
     provider = _judge_provider()
     timeout = float(os.getenv("RAGAS_TIMEOUT_SECONDS", "90"))
     retries = int(os.getenv("RAGAS_MAX_RETRIES", "2"))
@@ -103,13 +104,14 @@ def _judge_llm():
             model = _judge_model(provider)
     else:
         raise ValueError(f"Unsupported RAGAS_JUDGE_PROVIDER: {provider!r}")
-    return llm_factory(
+    judge = llm_factory(
         model=model,
         provider="openai",
         client=client,
         max_retries=retries,
         max_tokens=_judge_max_tokens(provider),
     )
+    return (judge, client) if return_client else judge
 
 
 def _metrics(judge, embeddings, provider: str):
@@ -145,7 +147,7 @@ def run_evaluation(
         cases, dataset_sha, inputs_path, frozen_inputs_path, query_agent, uuid.uuid4,
     )
 
-    judge = _judge_llm()
+    judge, judge_client = _judge_llm(return_client=True)
     embeddings = RagasHuggingFaceEmbeddings(
         model=os.getenv("RAGAS_EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
     )
@@ -175,18 +177,23 @@ def run_evaluation(
             )
             page_hits.append(hit)
             row["evidence_page_hit_at_k"] = int(hit)
-    for repeat in range(1, judge_repeats + 1):
-        for index, row in enumerate(rows, 1):
-            print(f"Scoring Ragas case {index}/{len(rows)}, judge repeat {repeat}/{judge_repeats}", flush=True)
-            checkpoint_key = (repeat, row["case_id"])
-            if checkpoint_key in completed:
-                scores = completed[checkpoint_key]
-            else:
-                scores = score_row(row, metrics)
-            validate_scores(scores, index)
-            if checkpoint_key not in completed:
-                append_checkpoint(checkpoint_path, repeat, row["case_id"], scores)
-            scored_rows.append({**row, "judge_repeat": repeat, **scores})
+    # Keep pooled async connections on one loop across metrics, rows and repeats.
+    with asyncio.Runner() as runner:
+        try:
+            for repeat in range(1, judge_repeats + 1):
+                for index, row in enumerate(rows, 1):
+                    print(f"Scoring Ragas case {index}/{len(rows)}, judge repeat {repeat}/{judge_repeats}", flush=True)
+                    checkpoint_key = (repeat, row["case_id"])
+                    if checkpoint_key in completed:
+                        scores = completed[checkpoint_key]
+                    else:
+                        scores = score_row(row, metrics, runner=runner)
+                    validate_scores(scores, index)
+                    if checkpoint_key not in completed:
+                        append_checkpoint(checkpoint_path, repeat, row["case_id"], scores)
+                    scored_rows.append({**row, "judge_repeat": repeat, **scores})
+        finally:
+            runner.run(judge_client.close())
     frame = pd.DataFrame(scored_rows)
     means, ranges = summarize(frame, required)
 

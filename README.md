@@ -40,12 +40,15 @@ The checked-in ETL task starts from an existing Bronze table; ingestion from ext
 
 Use Python 3.12.10 for local runs. Install the pinned direct dependencies and create a local environment file:
 
+Create a fresh environment directory; an existing environment can retain
+standalone Spark files even after installing the new application manifest.
+
 ```powershell
-py -3.12 -m venv .venv
-.\.venv\Scripts\Activate.ps1
+py -3.12 -m venv .venv-pilot-clean
+.\.venv-pilot-clean\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-pip install -r requirements.txt
-Copy-Item .env.example .env
+pip install -r requirements.txt -c constraints-pilot.txt
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 ```
 
 The `.env.example` defaults to Ollama `ami-llama3.1:8b-4k` for generation, guardrails, and judging, plus local BM25 retrieval over `data/silver_level`. This project model is defined in `config/ollama/Modelfile` and caps the context at 4096 tokens for an 8 GB RTX 4060. On the development machine, `ollama ps` reported a 5.3 GB load at 100% GPU after inference. Create the model once after installing and starting Ollama:
@@ -75,6 +78,18 @@ Set Databricks access using the SDK’s supported authentication chain or worklo
 Treat these as defaults, not proof that the workspace resources exist. Use `DATABRICKS_VECTOR_SEARCH_ENDPOINT`, `DATABRICKS_VECTOR_SEARCH_INDEX`, `DATABRICKS_SOURCE_TABLE`, `DATABRICKS_GOLD_TABLE`, `DATABRICKS_MODEL_VERSION`, and `DATABRICKS_SERVING_ENDPOINT` to select provisioned resources.
 
 ## Local runs
+
+The opt-in [analyst pilot](docs/pilot/workflow.md) adds a local browser workspace with bounded read-only tools, source inspection, draft corrections, human approval and revision-specific export:
+
+```powershell
+python scripts/prepare_market_sources.py
+python -m uvicorn src.pilot.api:create_app --factory --host 127.0.0.1 --port 8000 --workers 1 --no-access-log
+```
+
+Start Ollama first and use the local model configuration described above. Open `http://127.0.0.1:8000`. This is a supervised local pilot; external reviewer findings are pending. See the [reviewer protocol](docs/pilot/reviewer-protocol.md) and [dependency repair record](docs/pilot/dependencies.md). Standalone PySpark is isolated in `requirements-etl.txt`; do not install it into the application environment because Databricks Connect shares its import namespace. Databricks jobs retain their workspace-provided Spark/Delta runtime.
+
+The [analyst workflow case study](docs/pilot/case-study.md) describes the implementation,
+five-case comparison, approval/recovery controls and remaining evidence gates.
 
 Run unit tests without remote services:
 

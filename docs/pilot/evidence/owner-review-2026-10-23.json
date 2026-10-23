@@ -1,0 +1,592 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-23",
+  "author": "Codex (assistant); summary of retained owner judgments",
+  "owner_review_status": "completed",
+  "reviewer": "sirapop-owner",
+  "external_reviewer_usage": "pending",
+  "source_interpretation_disagreements": "unresolved",
+  "source_csv": "reports/workflow_pilot/comparison-2026-10-21/human_review.csv",
+  "source_csv_sha256": "73433b0a17595219917ab414c29bbbed4abdc5f6f4e65ecc84b12f8ece508c0e",
+  "csv_read_encoding": "cp1252",
+  "csv_modified": false,
+  "original_owner_rows": [
+    {
+      "case_id": "h01",
+      "variant": "legacy",
+      "reviewer": "sirapop-owner",
+      "correctness_1_to_5": "3",
+      "completeness_1_to_5": "5",
+      "unsupported_claims": "None identified",
+      "missing_facts": "\"Omits the fact that electronics and electrical appliance and automobile and automobile part exports declined but SSDs, petroleum, agricultural and agro-manufacturing exports increased.\"",
+      "citation_support": "\"Fully Supported — The first page of the source cited the summarized export attributes along with in the retrieved contexts. Also, page 3 of the source also cited both the declining and rising sectors.\"",
+      "notes": "\"Relevant evidence exists in the full souce and in the retrieved contexts but wrongly cited electronics and electrical appliances as supporting Thai exports.\"",
+      "review_status": "completed"
+    },
+    {
+      "case_id": "h01",
+      "variant": "workflow",
+      "reviewer": "sirapop-owner",
+      "correctness_1_to_5": "5",
+      "completeness_1_to_5": "5",
+      "unsupported_claims": "None identified",
+      "missing_facts": "",
+      "citation_support": "\"Fully Supported — The first page of the source cited the summarized export attributes along with in the retrieved contexts. Also, page 3 of the source also cited both the declining and rising export products.\"",
+      "notes": "\"Relevant evidence exists in the full source and fully appears in the output.\"",
+      "review_status": "completed"
+    },
+    {
+      "case_id": "h02",
+      "variant": "legacy",
+      "reviewer": "sirapop-owner",
+      "correctness_1_to_5": "5",
+      "completeness_1_to_5": "5",
+      "unsupported_claims": "None identified",
+      "missing_facts": "",
+      "citation_support": "\"Fully Supported — The first page in the topic \"KEY HIGHLIGHT\" of the source cited the reason of increases in headline inflation and core inflation.\"",
+      "notes": "\"Relevant evidence exists in the full source and fully appears in the output.\"",
+      "review_status": "completed"
+    },
+    {
+      "case_id": "h02",
+      "variant": "workflow",
+      "reviewer": "sirapop-owner",
+      "correctness_1_to_5": "1",
+      "completeness_1_to_5": "1",
+      "unsupported_claims": "None identified",
+      "missing_facts": "",
+      "citation_support": "\"Retrieval omission\"",
+      "notes": "\"Not assessable — abstention\"",
+      "review_status": "completed"
+    },
+    {
+      "case_id": "h03",
+      "variant": "legacy",
+      "reviewer": "sirapop-owner",
+      "correctness_1_to_5": "5",
+      "completeness_1_to_5": "3",
+      "unsupported_claims": "None identified",
+      "missing_facts": "\"Omits the fact that investment in the vehicles also increased. The output also omits services, semi-durable goods, and durable goods consumption which are all increased.\"",
+      "citation_support": "\"Partially Supported — The first page on the summary part and \"Private Consumption\" and \"Private Investment\" on paghe 2 of the source cited the reason of increases in headline inflation and core inflation.\"",
+      "notes": "\"Relevant evidence exists in the full source but partially appears in the output. The output also omits the activities that supported consumption in Thailand.\"",
+      "review_status": "completed"
+    },
+    {
+      "case_id": "h03",
+      "variant": "workflow",
+      "reviewer": "sirapop-owner",
+      "correctness_1_to_5": "1",
+      "completeness_1_to_5": "1",
+      "unsupported_claims": "None identified",
+      "missing_facts": "",
+      "citation_support": "\"Retrieval omission\"",
+      "notes": "\"Not assessable — abstention\"",
+      "review_status": "completed"
+    },
+    {
+      "case_id": "h04",
+      "variant": "legacy",
+      "reviewer": "sirapop-owner",
+      "correctness_1_to_5": "5",
+      "completeness_1_to_5": "5",
+      "unsupported_claims": "None identified",
+      "missing_facts": "",
+      "citation_support": "\"Fully Supported — Page 7 of the source cited both the projected annual electricity-demand growth and project TWh levels until 2035 in STEPS scenario.\"",
+      "notes": "\"Relevant evidence exists in the full source and fully appears in the output.\"",
+      "review_status": "completed"
+    },
+    {
+      "case_id": "h04",
+      "variant": "workflow",
+      "reviewer": "sirapop-owner",
+      "correctness_1_to_5": "1",
+      "completeness_1_to_5": "1",
+      "unsupported_claims": "None identified",
+      "missing_facts": "",
+      "citation_support": "\"Retrieval omission\"",
+      "notes": "\"Not assessable — abstention\"",
+      "review_status": "completed"
+    },
+    {
+      "case_id": "h05",
+      "variant": "legacy",
+      "reviewer": "sirapop-owner",
+      "correctness_1_to_5": "5",
+      "completeness_1_to_5": "4",
+      "unsupported_claims": "None identified",
+      "missing_facts": "\"Omits the percentage of Indonesia and the Philippines' combined share of nickel production relative to the world.\"",
+      "citation_support": "\"Fully Supported — Pages 8, 9 & 161 of the source cited current EV battery-cell capacity in Southeast Asia and planned expansion described by IEA. Page 162 of the source cited the planned EV battery cell plant announced by Indonesia in 2024. Pages 8 & 35 of the source also cited the combined percentage of Indonesia and the Philippines' nickel production relative to the world.\"",
+      "notes": "\"Relevant evidence exists in the full source and mostly appears in the output with a minor omission: the percentage of the combined share of Indonesia and the Philippines' nickel production relative to the world.\"",
+      "review_status": "completed"
+    },
+    {
+      "case_id": "h05",
+      "variant": "workflow",
+      "reviewer": "sirapop-owner",
+      "correctness_1_to_5": "3",
+      "completeness_1_to_5": "3",
+      "unsupported_claims": "None identified",
+      "missing_facts": "\"The output omits the region name which is Southeast Asia. The output also omits the percentage of Indonesia and the Philippines' combined share of nickel production relative to the world.\"",
+      "citation_support": "\"Fully Supported — Pages 8, 9 & 161 of the source cited current EV battery-cell capacity in Southeast Asia and planned expansion described by IEA. Page 162 of the source cited the planned EV battery cell plant announced by Indonesia in 2024. Page 8 of the source cited Indonesia's potential to become one of the region’s leading hubs for lithium-ion batteries and components due to its natural resources.\"",
+      "notes": "\"Relevant evidence exists in the full source but partially appears in the output. It omits the region name whose EV battery-cell capacity and planned expansion are happening describe by the IEA. The output also omits the percentage of Indonesia and the Philippines' combined share of nickel production relative to the world. \"",
+      "review_status": "completed"
+    }
+  ],
+  "owner_rating_summary": {
+    "legacy": {
+      "rows": 5,
+      "correctness_mean": 4.6,
+      "completeness_mean": 4.4
+    },
+    "workflow": {
+      "rows": 5,
+      "correctness_mean": 2.2,
+      "completeness_mean": 2.2
+    }
+  },
+  "historical_assistant_audit": {
+    "path": "docs/pilot/evidence/source-audit.json",
+    "sha256": "f48c6f18e4b7737cf64e766efd98f4fe0525f7d267c937f6b6f784a11453ab78"
+  },
+  "differences": [
+    {
+      "case_id": "h01",
+      "variants": [
+        "legacy"
+      ],
+      "status": "unresolved; owner judgment retained",
+      "owner_observation_summary": "Owner rates completeness 5 and notes an export-category error/omission, while unsupported_claims says None identified and citation_support says Fully Supported.",
+      "assistant_source_assessment": "The audit finds category support but an omitted global technology/AI-cycle explanation. Decline from the preceding month does not alone negate support for a high export level. Clarify scope before resolving the disagreement.",
+      "audit_finding_ids": [
+        "h01-legacy-s1"
+      ],
+      "source_evidence": {
+        "B-export": {
+          "id": "B-export",
+          "doc_name": "BOT_AUG_2026",
+          "source_url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "source_pdf": "data/external/market_sources/bot_aug_2026.pdf",
+          "source_sha256": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+          "published_from_manifest": "2026-09-30",
+          "locators": [
+            {
+              "page_index": 0,
+              "pdf_page_number": 1,
+              "printed_page_number": null,
+              "section": "Key highlight and explanatory narrative"
+            }
+          ],
+          "corpus_chunk_ids": [
+            "BOT_AUG_2026:0:0",
+            "BOT_AUG_2026:0:1",
+            "BOT_AUG_2026:0:3"
+          ],
+          "paraphrase": "August 2026 exports excluding gold remained high with support from the global technology/AI cycle; technology-related exports moderated after earlier growth.",
+          "visual_check": "completed"
+        },
+        "B-export-categories": {
+          "id": "B-export-categories",
+          "doc_name": "BOT_AUG_2026",
+          "source_url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "source_pdf": "data/external/market_sources/bot_aug_2026.pdf",
+          "source_sha256": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+          "published_from_manifest": "2026-09-30",
+          "locators": [
+            {
+              "page_index": 2,
+              "pdf_page_number": 3,
+              "printed_page_number": null,
+              "section": "Export Value"
+            }
+          ],
+          "corpus_chunk_ids": [
+            "BOT_AUG_2026:2:0"
+          ],
+          "paraphrase": "Electronics and electrical-appliance exports declined while remaining high; the release links their high level to the technology/AI cycle.",
+          "visual_check": "text checked; see related visually checked pages"
+        }
+      }
+    },
+    {
+      "case_id": "h01",
+      "variants": [
+        "workflow"
+      ],
+      "status": "unresolved; owner judgment retained",
+      "owner_observation_summary": "Owner rates correctness and completeness 5/5 and finds full output support.",
+      "assistant_source_assessment": "The audit supports all three claims but finds product/date gap messages contradicted by the captured evidence. Claim support does not settle warning accuracy.",
+      "audit_finding_ids": [
+        "h01-workflow-w1",
+        "h01-workflow-w3"
+      ],
+      "source_evidence": {
+        "B-export": {
+          "id": "B-export",
+          "doc_name": "BOT_AUG_2026",
+          "source_url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "source_pdf": "data/external/market_sources/bot_aug_2026.pdf",
+          "source_sha256": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+          "published_from_manifest": "2026-09-30",
+          "locators": [
+            {
+              "page_index": 0,
+              "pdf_page_number": 1,
+              "printed_page_number": null,
+              "section": "Key highlight and explanatory narrative"
+            }
+          ],
+          "corpus_chunk_ids": [
+            "BOT_AUG_2026:0:0",
+            "BOT_AUG_2026:0:1",
+            "BOT_AUG_2026:0:3"
+          ],
+          "paraphrase": "August 2026 exports excluding gold remained high with support from the global technology/AI cycle; technology-related exports moderated after earlier growth.",
+          "visual_check": "completed"
+        },
+        "B-export-agri": {
+          "id": "B-export-agri",
+          "doc_name": "BOT_AUG_2026",
+          "source_url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "source_pdf": "data/external/market_sources/bot_aug_2026.pdf",
+          "source_sha256": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+          "published_from_manifest": "2026-09-30",
+          "locators": [
+            {
+              "page_index": 2,
+              "pdf_page_number": 3,
+              "printed_page_number": null,
+              "section": "Export Value"
+            }
+          ],
+          "corpus_chunk_ids": [
+            "BOT_AUG_2026:2:0",
+            "BOT_AUG_2026:2:1"
+          ],
+          "paraphrase": "Agricultural/agro-manufacturing exports rose slightly, particularly sugar exports to Indonesia.",
+          "visual_check": "text checked; see related visually checked pages"
+        },
+        "B-export-categories": {
+          "id": "B-export-categories",
+          "doc_name": "BOT_AUG_2026",
+          "source_url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "source_pdf": "data/external/market_sources/bot_aug_2026.pdf",
+          "source_sha256": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+          "published_from_manifest": "2026-09-30",
+          "locators": [
+            {
+              "page_index": 2,
+              "pdf_page_number": 3,
+              "printed_page_number": null,
+              "section": "Export Value"
+            }
+          ],
+          "corpus_chunk_ids": [
+            "BOT_AUG_2026:2:0"
+          ],
+          "paraphrase": "Electronics and electrical-appliance exports declined while remaining high; the release links their high level to the technology/AI cycle.",
+          "visual_check": "text checked; see related visually checked pages"
+        }
+      }
+    },
+    {
+      "case_id": "h02",
+      "variants": [
+        "workflow"
+      ],
+      "status": "unresolved; owner judgment retained",
+      "owner_observation_summary": "Owner rates 1/1, labels Retrieval omission, and notes Not assessable - abstention.",
+      "assistant_source_assessment": "Required inflation causes are present in captured contexts. This is a synthesis/abstention failure rather than missing retrieval. The score and non-assessability note use different conventions; retain both.",
+      "audit_finding_ids": [
+        "h02-workflow-abstention"
+      ],
+      "source_evidence": {
+        "B-inflation": {
+          "id": "B-inflation",
+          "doc_name": "BOT_AUG_2026",
+          "source_url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "source_pdf": "data/external/market_sources/bot_aug_2026.pdf",
+          "source_sha256": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+          "published_from_manifest": "2026-09-30",
+          "locators": [
+            {
+              "page_index": 0,
+              "pdf_page_number": 1,
+              "printed_page_number": null,
+              "section": "Economic-stability paragraph and key highlight"
+            }
+          ],
+          "corpus_chunk_ids": [
+            "BOT_AUG_2026:0:2",
+            "BOT_AUG_2026:0:4"
+          ],
+          "paraphrase": "Food inflation is linked to adverse weather/lower agricultural supply and production costs; energy prices track global crude oil; core inflation reflects cost pass-through.",
+          "visual_check": "completed"
+        }
+      }
+    },
+    {
+      "case_id": "h04",
+      "variants": [
+        "workflow"
+      ],
+      "status": "unresolved; owner judgment retained",
+      "owner_observation_summary": "Owner rates 1/1 and labels Retrieval omission.",
+      "assistant_source_assessment": "Captured evidence contains the requested STEPS demand growth and TWh levels. Distinct measures/scenarios do not themselves constitute a conflict; abstention discards available evidence.",
+      "audit_finding_ids": [
+        "h04-workflow-abstention"
+      ],
+      "source_evidence": {
+        "I-demand": {
+          "id": "I-demand",
+          "doc_name": "IEA_SEA_2024",
+          "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+          "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+          "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+          "published_from_manifest": "2024-10-21",
+          "locators": [
+            {
+              "page_index": 6,
+              "pdf_page_number": 7,
+              "printed_page_number": 7,
+              "section": "Executive summary: electricity demand"
+            }
+          ],
+          "corpus_chunk_ids": [
+            "IEA_SEA_2024:6:2"
+          ],
+          "paraphrase": "In STEPS, electricity demand grows about 4% annually to 2035, from over 1,300 TWh at the report baseline to above 2,000 TWh. These are demand figures.",
+          "visual_check": "completed"
+        }
+      }
+    },
+    {
+      "case_id": "h04",
+      "variants": [
+        "legacy"
+      ],
+      "status": "unresolved; owner judgment retained",
+      "owner_observation_summary": "Owner rates 5/5 and full citation support, citing the demand projection on PDF page 7.",
+      "assistant_source_assessment": "The actual answer uses generation above 2,200 TWh instead of requested demand above 2,000 TWh. Its 3/10/20 percent shares belong to solar PV on PDF page 86, not all renewables. Preserve the owner's rating while documenting these source distinctions.",
+      "audit_finding_ids": [
+        "h04-legacy-s1",
+        "h04-legacy-s2"
+      ],
+      "source_evidence": {
+        "I-demand": {
+          "id": "I-demand",
+          "doc_name": "IEA_SEA_2024",
+          "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+          "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+          "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+          "published_from_manifest": "2024-10-21",
+          "locators": [
+            {
+              "page_index": 6,
+              "pdf_page_number": 7,
+              "printed_page_number": 7,
+              "section": "Executive summary: electricity demand"
+            }
+          ],
+          "corpus_chunk_ids": [
+            "IEA_SEA_2024:6:2"
+          ],
+          "paraphrase": "In STEPS, electricity demand grows about 4% annually to 2035, from over 1,300 TWh at the report baseline to above 2,000 TWh. These are demand figures.",
+          "visual_check": "completed"
+        },
+        "I-generation": {
+          "id": "I-generation",
+          "doc_name": "IEA_SEA_2024",
+          "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+          "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+          "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+          "published_from_manifest": "2024-10-21",
+          "locators": [
+            {
+              "page_index": 85,
+              "pdf_page_number": 86,
+              "printed_page_number": 86,
+              "section": "Energy outlook to 2050: generation"
+            }
+          ],
+          "corpus_chunk_ids": [
+            "IEA_SEA_2024:85:0"
+          ],
+          "paraphrase": "Generation, a different quantity, rises from 1,300 TWh in 2023 to over 2,200 TWh in STEPS by 2035; APS generation exceeds 2,400 TWh.",
+          "visual_check": "completed"
+        },
+        "I-solar": {
+          "id": "I-solar",
+          "doc_name": "IEA_SEA_2024",
+          "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+          "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+          "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+          "published_from_manifest": "2024-10-21",
+          "locators": [
+            {
+              "page_index": 6,
+              "pdf_page_number": 7,
+              "printed_page_number": 7,
+              "section": "Electricity generation mix"
+            },
+            {
+              "page_index": 85,
+              "pdf_page_number": 86,
+              "printed_page_number": 86,
+              "section": "Electricity generation mix"
+            }
+          ],
+          "corpus_chunk_ids": [
+            "IEA_SEA_2024:6:3",
+            "IEA_SEA_2024:85:0"
+          ],
+          "paraphrase": "The 3%, roughly 10%, and 20% generation shares describe solar PV alone (baseline, 2035, 2050 STEPS). The executive summary places all renewables above one-third in 2035.",
+          "visual_check": "completed"
+        }
+      }
+    },
+    {
+      "case_id": "h05",
+      "variants": [
+        "legacy",
+        "workflow"
+      ],
+      "status": "unresolved; owner judgment retained",
+      "owner_observation_summary": "Owner rates legacy 5/4 and workflow 3/3; both note the missing nickel share, and workflow notes missing Southeast Asia scope.",
+      "assistant_source_assessment": "The audit supports the three workflow claims but identifies missing nickel coverage and scope/stock-additions ambiguities. Missing geographic scope can affect both correctness and completeness; it does not by itself prove the cited quantities false. Preserve the ratings and retrieve the missing subtopic in a later pass.",
+      "audit_finding_ids": [
+        "h05-legacy-s1",
+        "h05-legacy-s4",
+        "h05-workflow-c1",
+        "h05-workflow-c2",
+        "h05-workflow-c3"
+      ],
+      "source_evidence": {
+        "I-capacity": {
+          "id": "I-capacity",
+          "doc_name": "IEA_SEA_2024",
+          "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+          "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+          "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+          "published_from_manifest": "2024-10-21",
+          "locators": [
+            {
+              "page_index": 7,
+              "pdf_page_number": 8,
+              "printed_page_number": 8,
+              "section": "Executive summary; EV battery supply chains"
+            },
+            {
+              "page_index": 160,
+              "pdf_page_number": 161,
+              "printed_page_number": 161,
+              "section": "Executive summary; EV battery supply chains"
+            }
+          ],
+          "corpus_chunk_ids": [
+            "IEA_SEA_2024:7:3",
+            "IEA_SEA_2024:160:2"
+          ],
+          "paraphrase": "Existing EV battery-cell capacity was 16 GWh at end-2023. The detailed section gives 39 GWh of committed additions by 2030 plus 23 GWh preliminary announcements; the summary rounds additions to almost 40 GWh.",
+          "visual_check": "completed"
+        },
+        "I-hub": {
+          "id": "I-hub",
+          "doc_name": "IEA_SEA_2024",
+          "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+          "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+          "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+          "published_from_manifest": "2024-10-21",
+          "locators": [
+            {
+              "page_index": 7,
+              "pdf_page_number": 8,
+              "printed_page_number": 8,
+              "section": "Manufacturing hubs"
+            },
+            {
+              "page_index": 161,
+              "pdf_page_number": 162,
+              "printed_page_number": 162,
+              "section": "Manufacturing hubs"
+            }
+          ],
+          "corpus_chunk_ids": [
+            "IEA_SEA_2024:7:3",
+            "IEA_SEA_2024:7:4",
+            "IEA_SEA_2024:161:0"
+          ],
+          "paraphrase": "The report expects Indonesia to become a leading lithium-ion battery/component hub because of its raw materials, especially nickel.",
+          "visual_check": "completed"
+        },
+        "I-leading": {
+          "id": "I-leading",
+          "doc_name": "IEA_SEA_2024",
+          "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+          "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+          "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+          "published_from_manifest": "2024-10-21",
+          "locators": [
+            {
+              "page_index": 160,
+              "pdf_page_number": 161,
+              "printed_page_number": 161,
+              "section": "Committed battery capacity in 2030"
+            }
+          ],
+          "corpus_chunk_ids": [
+            "IEA_SEA_2024:160:2"
+          ],
+          "paraphrase": "The committed-capacity discussion names Malaysia, Viet Nam and Indonesia and about 1% of global committed battery-manufacturing capacity in 2030; this is not a ranking of current installed plants.",
+          "visual_check": "completed"
+        },
+        "I-nickel": {
+          "id": "I-nickel",
+          "doc_name": "IEA_SEA_2024",
+          "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+          "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+          "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+          "published_from_manifest": "2024-10-21",
+          "locators": [
+            {
+              "page_index": 7,
+              "pdf_page_number": 8,
+              "printed_page_number": 8,
+              "section": "Nickel production and natural resources"
+            },
+            {
+              "page_index": 8,
+              "pdf_page_number": 9,
+              "printed_page_number": 9,
+              "section": "Nickel production and natural resources"
+            },
+            {
+              "page_index": 34,
+              "pdf_page_number": 35,
+              "printed_page_number": 35,
+              "section": "Nickel production and natural resources"
+            }
+          ],
+          "corpus_chunk_ids": [
+            "IEA_SEA_2024:7:4",
+            "IEA_SEA_2024:8:0",
+            "IEA_SEA_2024:34:1"
+          ],
+          "paraphrase": "Indonesia and the Philippines account for about 65% of global mined nickel production. The summary sentence crosses PDF pages 8-9; PDF page 35 states it completely.",
+          "visual_check": "completed"
+        }
+      }
+    },
+    {
+      "case_id": "h03",
+      "variants": [
+        "legacy"
+      ],
+      "status": "unresolved; owner judgment retained",
+      "owner_observation_summary": "Owner rates 5/3 and notes omitted investment/consumption activities; citation-support text refers to headline/core inflation.",
+      "assistant_source_assessment": "Retain the original wording. The inflation reference appears inconsistent with this investment/consumption question and remains an owner clarification item.",
+      "audit_finding_ids": [],
+      "source_evidence": {}
+    }
+  ],
+  "limits": "Five paired owner-reviewed cases; no independent external review, new human scores, Ragas rerun, production or causal improvement claim."
+}

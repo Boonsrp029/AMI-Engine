@@ -1,0 +1,643 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-23",
+  "author": "Codex (assistant)",
+  "assessment_kind": "Assistant-authored; awaiting owner adjudication; no numerical human scores",
+  "quality_gate": "failed",
+  "offline_validation": {
+    "status": "passed",
+    "tests": 100,
+    "baseline_tests": 88,
+    "new_tests": 12,
+    "warnings": 3,
+    "elapsed_seconds": 26.23,
+    "command": ".\\.venv-pilot-clean\\Scripts\\python.exe -m pytest -q --basetemp .pytest-tmp/draft-usefulness-full-unrestricted",
+    "environment_note": "Sandboxed attempts interrupted: Windows asyncio blocked creating its internal loopback socket pair. Full suite passed outside sandbox; no application workaround was added.",
+    "initial_fixture_correction": "Initial six new synthetic cases expected bare content; corrected to existing title-plus-content contract. The 12 new tests then passed independently before live generation.",
+    "warning_categories": [
+      "Unity Catalog Pydantic config deprecation",
+      "Starlette httpx TestClient deprecation",
+      "MLflow predict type-hint warning"
+    ]
+  },
+  "identity": {
+    "date": "2026-10-23",
+    "started_at": "2026-10-23T22:22:17.418585+07:00",
+    "case_ids": [
+      "d01",
+      "d02",
+      "d03",
+      "d04",
+      "d06"
+    ],
+    "prompt_version": "analyst-pilot-v1.3",
+    "prompt_sha256": "e902288b5438756e8a8ece778ee9187254a60273eb507f595bdb0021c2716dee",
+    "engine_sha256": "8767df04fd836ebd2e68dd38f15c224c7f70d04a45d1ccf184e0aba5aa88bf07",
+    "model": "ami-llama3.1:8b-4k",
+    "model_digest": "6f3154f347c4f96858a9f259e64d96b2675f4cb2f4894b2d9714fb0752aecc23",
+    "context_limit": 4096,
+    "completion_limit": 900,
+    "temperature": 0,
+    "corpus_sha256": "c85c832ac6ba6bfb3b85baa47c6e2ea3ffae428875e1c1a3d47bcba4deb2b011",
+    "guardrails": "unchanged real local NeMo; internal calls uncounted",
+    "versions": {
+      "langchain-ollama": "1.1.0",
+      "langgraph": "1.0.10",
+      "nemoguardrails": "0.23.0"
+    },
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "maximum_workflow_attempts": 5,
+    "ragas": "not run",
+    "human_review": "pending for these new outputs",
+    "external_review": "pending"
+  },
+  "cases": [
+    {
+      "case_id": "d01",
+      "human_review": "pending",
+      "attempt_status": "answered",
+      "path": "reports/workflow_pilot/draft-usefulness-2026-10-23/attempt-d01.json",
+      "sha256": "a99b70dda6f80a53846569245ff308780db9df8231f06083a189d839b9f0005b",
+      "coverage": "Core export driver and moderation answered; Thailand/August scope is implicit in the question and sources rather than named in the claims or generic title.",
+      "retrieval": "Relevant facts retrieved.",
+      "outcome": "Core coverage met; explicit geographic/period wording still incomplete.",
+      "priority": "P2: retain explicit scope in the title or claims without inventing gaps.",
+      "claim_findings": [
+        {
+          "index": 0,
+          "assessment": "supported",
+          "rationale": "Technology/AI-cycle support for exports excluding gold is explicit in BOT_AUG_2026:0:0.",
+          "text_sha256": "d00ae8657422ea8e6ebebc68fb3f4152128fb02c2b7600ec41f81512f626da76",
+          "source_ids": [
+            "BOT_AUG_2026:0:0"
+          ]
+        },
+        {
+          "index": 1,
+          "assessment": "supported",
+          "rationale": "Moderation after prior strong growth is explicit in BOT_AUG_2026:0:0.",
+          "text_sha256": "860fe644323a55c91d798a2f9410d9ba34383bd531b184964ab1373a86e998b2",
+          "source_ids": [
+            "BOT_AUG_2026:0:0"
+          ]
+        },
+        {
+          "index": 2,
+          "assessment": "supported",
+          "rationale": "Seasonally adjusted export value remaining stable month-on-month is explicit in BOT_AUG_2026:2:0.",
+          "text_sha256": "55bda2dd5879bb076c5c997268fffe8cf7bfed05c1262e8102925138e26c6c69",
+          "source_ids": [
+            "BOT_AUG_2026:2:0"
+          ]
+        }
+      ],
+      "warning_findings": [],
+      "source_locators": [
+        {
+          "source_id": "BOT_AUG_2026:0:0",
+          "doc_name": "BOT_AUG_2026",
+          "pdf_page_number": 1,
+          "page_index": 0,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "content_sha256": "fa6e0e32f16c19fb4e69f4673c64e51049b13c93bce011f431ffde8d54bc7540"
+        },
+        {
+          "source_id": "BOT_AUG_2026:2:0",
+          "doc_name": "BOT_AUG_2026",
+          "pdf_page_number": 3,
+          "page_index": 2,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "content_sha256": "3fc1841b58458bcc4e14f8a0683313a43af74d089e24055b507ce50ebacb6e42"
+        },
+        {
+          "source_id": "BOT_AUG_2026:0:3",
+          "doc_name": "BOT_AUG_2026",
+          "pdf_page_number": 1,
+          "page_index": 0,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "content_sha256": "1e36418cc1fdc252c9734a18c1bf9e014fa4ba43dcccc3bc4f6c83e7435b8bad"
+        },
+        {
+          "source_id": "BOT_AUG_2026:2:1",
+          "doc_name": "BOT_AUG_2026",
+          "pdf_page_number": 3,
+          "page_index": 2,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "content_sha256": "9e747c174fc34baf5f208eaec16afeccf977ff6315cc6e949e10eb6bb8249088"
+        },
+        {
+          "source_id": "BOT_AUG_2026:4:1",
+          "doc_name": "BOT_AUG_2026",
+          "pdf_page_number": 5,
+          "page_index": 4,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "content_sha256": "c111ceb0148d48ecd0e68ebf6d1c3ca470612e604b41c3e8671b881fad4f0394"
+        }
+      ],
+      "metrics": {
+        "prompt_version": "analyst-pilot-v1.3",
+        "corpus_sha256": "c85c832ac6ba6bfb3b85baa47c6e2ea3ffae428875e1c1a3d47bcba4deb2b011",
+        "model": "ami-llama3.1:8b-4k",
+        "model_calls": 3,
+        "known_input_tokens": 3685,
+        "known_output_tokens": 238,
+        "missing_usage_calls": 0,
+        "guardrail_invocations": 1,
+        "token_usage_complete": false,
+        "monetary_cost": null,
+        "cost_note": "Local GPU energy and hardware costs are not measured",
+        "stage_seconds": {
+          "tool_round_1": 65.31251229997724,
+          "tool_round_2": 2.0052081999601796,
+          "draft": 4.693996799993329,
+          "guardrails": 0.8526996000437066
+        },
+        "elapsed_seconds": 73.70659340010025
+      }
+    },
+    {
+      "case_id": "d02",
+      "human_review": "pending",
+      "attempt_status": "answered",
+      "path": "reports/workflow_pilot/draft-usefulness-2026-10-23/attempt-d02.json",
+      "sha256": "2a7532fa23b6ebedd5bcb2399cf8d10c8f8499f160c428026f38635b0d7801aa",
+      "coverage": "Partial answer: fresh-food/weather/production-cost and core cost pass-through are present. The energy/fuel/global-crude-oil cause is omitted despite being in the cited chunk.",
+      "retrieval": "Complete causal evidence was retrieved in BOT_AUG_2026:5:0.",
+      "outcome": "Failed completeness and warning-relevance checks.",
+      "priority": "P1: question-component coverage before output; preserve all supported causal components.",
+      "claim_findings": [
+        {
+          "index": 0,
+          "assessment": "supported but incomplete",
+          "rationale": "Headline inflation increasing across major categories is supported, but is a direction statement rather than the requested causal explanation.",
+          "text_sha256": "d092bee086ca402853856664776ea15f17b7ec55728b60686546d794b149a50e",
+          "source_ids": [
+            "BOT_AUG_2026:5:0"
+          ]
+        },
+        {
+          "index": 1,
+          "assessment": "supported",
+          "rationale": "Core inflation cost pass-through and prepared food are supported by BOT_AUG_2026:5:0.",
+          "text_sha256": "84bc08ff09f87b832b47b2c416d258b6cdf2a352995f3898fe2c8ea6505c9ffe",
+          "source_ids": [
+            "BOT_AUG_2026:5:0"
+          ]
+        },
+        {
+          "index": 2,
+          "assessment": "supported",
+          "rationale": "Fresh food, meat/eggs, lower supply, adverse weather and production costs are supported by BOT_AUG_2026:5:0.",
+          "text_sha256": "d1dabf5af1fcaa657ede16cd01ba76c1d1e7e5a3fef0af78ac22b0bf7c686ff1",
+          "source_ids": [
+            "BOT_AUG_2026:5:0"
+          ]
+        }
+      ],
+      "warning_findings": [
+        {
+          "index": 0,
+          "assessment": "irrelevant meta-commentary",
+          "rationale": "Scope/period support is not an evidence gap; it is not useful warning content.",
+          "text_sha256": "ac07dffb6a441c92b93423c9eeb1df95fd2683ad3ad4ddf53116bddce552d17c"
+        },
+        {
+          "index": 1,
+          "assessment": "unsupported scope expansion",
+          "rationale": "Overall-economy quantities/dates/explanations were not requested. This warning does not identify the actual omitted fuel-price cause.",
+          "text_sha256": "6f5e54db0ba22f0a534f8b8bfe36599f65df10e4a7cc00973775ad615e3c0851"
+        },
+        {
+          "index": 2,
+          "assessment": "unsupported scope expansion",
+          "rationale": "The repeated overall-economy caveat is unrequested and does not repair the missing energy explanation.",
+          "text_sha256": "51eba0edf31da55ceecdc2242c5473c0b6a2fec50abf3410527e91dc27225cc2"
+        }
+      ],
+      "source_locators": [
+        {
+          "source_id": "BOT_AUG_2026:0:0",
+          "doc_name": "BOT_AUG_2026",
+          "pdf_page_number": 1,
+          "page_index": 0,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "content_sha256": "fa6e0e32f16c19fb4e69f4673c64e51049b13c93bce011f431ffde8d54bc7540"
+        },
+        {
+          "source_id": "BOT_AUG_2026:5:2",
+          "doc_name": "BOT_AUG_2026",
+          "pdf_page_number": 6,
+          "page_index": 5,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "content_sha256": "19a479ce85d11667deed74444eb1c54cf47f2bccf75f4a55a4e5d17c4b97c16a"
+        },
+        {
+          "source_id": "BOT_AUG_2026:4:2",
+          "doc_name": "BOT_AUG_2026",
+          "pdf_page_number": 5,
+          "page_index": 4,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "content_sha256": "d8a5dc7528b080169725cfca845e2de3739be0fb1a6cdba7b314026823465ebd"
+        },
+        {
+          "source_id": "BOT_AUG_2026:4:1",
+          "doc_name": "BOT_AUG_2026",
+          "pdf_page_number": 5,
+          "page_index": 4,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "content_sha256": "c111ceb0148d48ecd0e68ebf6d1c3ca470612e604b41c3e8671b881fad4f0394"
+        },
+        {
+          "source_id": "BOT_AUG_2026:5:0",
+          "doc_name": "BOT_AUG_2026",
+          "pdf_page_number": 6,
+          "page_index": 5,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "content_sha256": "048b4cf2166fbde819e78ef345635761682294b66d1a35affd3919363f18e87a"
+        }
+      ],
+      "metrics": {
+        "prompt_version": "analyst-pilot-v1.3",
+        "corpus_sha256": "c85c832ac6ba6bfb3b85baa47c6e2ea3ffae428875e1c1a3d47bcba4deb2b011",
+        "model": "ami-llama3.1:8b-4k",
+        "model_calls": 3,
+        "known_input_tokens": 4182,
+        "known_output_tokens": 360,
+        "missing_usage_calls": 0,
+        "guardrail_invocations": 1,
+        "token_usage_complete": false,
+        "monetary_cost": null,
+        "cost_note": "Local GPU energy and hardware costs are not measured",
+        "stage_seconds": {
+          "tool_round_1": 0.9511317000724375,
+          "tool_round_2": 3.607020099996589,
+          "draft": 6.552780400030315,
+          "guardrails": 0.12949510000180453
+        },
+        "elapsed_seconds": 11.900231000036001
+      }
+    },
+    {
+      "case_id": "d03",
+      "human_review": "pending",
+      "attempt_status": "abstained",
+      "path": "reports/workflow_pilot/draft-usefulness-2026-10-23/attempt-d03.json",
+      "sha256": "773406347ffb5ef6037b33f4f7b55f307c514630b1225e89ac0934ff680fc156",
+      "coverage": "Unjustified blanket abstention. Consumption services/hotels/restaurants, semi-durables and durables are explicit; private-investment machinery/technology-cycle support is also available, even though one chunk cuts off mid-sentence.",
+      "retrieval": "BOT_AUG_2026:1:0 contains consumption evidence; :0:3 contains partial investment evidence. The model discarded usable facts.",
+      "outcome": "Failed supported-partial-answer and specific-gap checks.",
+      "priority": "P1: evidence-to-request mapping and bounded abstention validation; no silent retry in this pass.",
+      "claim_findings": [],
+      "warning_findings": [
+        {
+          "index": 0,
+          "assessment": "unsupported gap label",
+          "rationale": "Geographic context is given in the question and BOT source; the label states no specific absent fact.",
+          "text_sha256": "4c2e71d3e3de4cd2e6740225bc7977b454c7df26d1079a3f533aa9799d3322da"
+        },
+        {
+          "index": 1,
+          "assessment": "unsupported gap label",
+          "rationale": "August 2026 is given in the question and release heading.",
+          "text_sha256": "844cea8bf3309f4470f4117088f0e196cdf7cda7133801a1fa8b937c1872f556"
+        },
+        {
+          "index": 2,
+          "assessment": "unrequested requirement",
+          "rationale": "Exact quantities are not required to give the requested directional/activity explanation.",
+          "text_sha256": "21e679159b95278bd42e558ad64b474ca5fef3216c95827fc75007972cf2d662"
+        },
+        {
+          "index": 3,
+          "assessment": "unsupported gap label",
+          "rationale": "The requested historical period is available; no further date requirement is justified.",
+          "text_sha256": "78963905f399ce6fe0e1b9ca063e591c314b3f5c944677a8bca89e3d3425c4b7"
+        },
+        {
+          "index": 4,
+          "assessment": "contradicted as blanket absence",
+          "rationale": "The captured sources provide consumption activities and partial investment drivers.",
+          "text_sha256": "dc4dad6aa5fd869f170e743d3deecb15873ff81ae9175f709a19e45f50593c87"
+        }
+      ],
+      "source_locators": [
+        {
+          "source_id": "BOT_AUG_2026:0:0",
+          "doc_name": "BOT_AUG_2026",
+          "pdf_page_number": 1,
+          "page_index": 0,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "content_sha256": "fa6e0e32f16c19fb4e69f4673c64e51049b13c93bce011f431ffde8d54bc7540"
+        },
+        {
+          "source_id": "BOT_AUG_2026:4:1",
+          "doc_name": "BOT_AUG_2026",
+          "pdf_page_number": 5,
+          "page_index": 4,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "content_sha256": "c111ceb0148d48ecd0e68ebf6d1c3ca470612e604b41c3e8671b881fad4f0394"
+        },
+        {
+          "source_id": "BOT_AUG_2026:0:3",
+          "doc_name": "BOT_AUG_2026",
+          "pdf_page_number": 1,
+          "page_index": 0,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "content_sha256": "1e36418cc1fdc252c9734a18c1bf9e014fa4ba43dcccc3bc4f6c83e7435b8bad"
+        },
+        {
+          "source_id": "BOT_AUG_2026:1:4",
+          "doc_name": "BOT_AUG_2026",
+          "pdf_page_number": 2,
+          "page_index": 1,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "content_sha256": "bbfbcf11ae72154fc6cfc4f2b631fffbe00db64c748e4bffe77d1c2630441291"
+        },
+        {
+          "source_id": "BOT_AUG_2026:1:0",
+          "doc_name": "BOT_AUG_2026",
+          "pdf_page_number": 2,
+          "page_index": 1,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "content_sha256": "64bd6eeae18ed6051da9b12efd0a3c75c82ed44a3bc47f6d4da4675e406f56b8"
+        }
+      ],
+      "metrics": {
+        "prompt_version": "analyst-pilot-v1.3",
+        "corpus_sha256": "c85c832ac6ba6bfb3b85baa47c6e2ea3ffae428875e1c1a3d47bcba4deb2b011",
+        "model": "ami-llama3.1:8b-4k",
+        "model_calls": 3,
+        "known_input_tokens": 3828,
+        "known_output_tokens": 341,
+        "missing_usage_calls": 0,
+        "guardrail_invocations": 0,
+        "token_usage_complete": false,
+        "monetary_cost": null,
+        "cost_note": "Local GPU energy and hardware costs are not measured",
+        "stage_seconds": {
+          "tool_round_1": 0.9281766000203788,
+          "tool_round_2": 7.402787300059572,
+          "draft": 2.114242700044997
+        },
+        "elapsed_seconds": 11.09886320005171
+      }
+    },
+    {
+      "case_id": "d04",
+      "human_review": "pending",
+      "attempt_status": "answered",
+      "path": "reports/workflow_pilot/draft-usefulness-2026-10-23/attempt-d04.json",
+      "sha256": "fc9d30adad7b3b34213ead8d3ca0be4b8836c2e753da90fb19d8c2a851992b6b",
+      "coverage": "Requested regional STEPS demand growth/levels remain unanswered. The top five are mostly charts and miss the textual 4% and over-2,000-TWh passage.",
+      "retrieval": "IEA_SEA_2024:47:0 is all-energy demand by fuel, not regional electricity demand; :139:0 is Indonesian peak demand, not regional annual electricity demand. Retrieval coverage is inadequate.",
+      "outcome": "Failed retrieval coverage and claim-scope/citation-support checks.",
+      "priority": "P1: follow up on subtopic-specific retrieval and source-span selection; validate measure/geography scope.",
+      "claim_findings": [
+        {
+          "index": 0,
+          "assessment": "unsupported by assigned citation",
+          "rationale": "IEA_SEA_2024:47:0 describes major energy sources with EJ chart labels. Regional electricity growth is supported elsewhere in the full report but not by this assigned chunk.",
+          "text_sha256": "9d00a522e8486544a69f93b3440cdbbd122b52756734d6a098f8a76d3aece798",
+          "source_ids": [
+            "IEA_SEA_2024:47:0"
+          ]
+        },
+        {
+          "index": 1,
+          "assessment": "partially supported; scope lost",
+          "rationale": "Activity/electrification drivers in :139:0 refer to peak electricity demand in Indonesia, not regional annual demand.",
+          "text_sha256": "b87a4be5a5ea9b76d740ae9df041446cffcbcae524d726f9d0a23aebe8f40a5f",
+          "source_ids": [
+            "IEA_SEA_2024:139:0"
+          ]
+        },
+        {
+          "index": 2,
+          "assessment": "supported but not the requested scope",
+          "rationale": "The Indonesian peak-demand direction and drivers are supported by :139:0, but do not answer the regional annual-demand question.",
+          "text_sha256": "b3a69b22761fd1b368a4d2d4b8e64c29dc8b1c5ca86c7556965ec172a5101ef8",
+          "source_ids": [
+            "IEA_SEA_2024:139:0"
+          ]
+        }
+      ],
+      "warning_findings": [
+        {
+          "index": 0,
+          "assessment": "supported within captured text",
+          "rationale": "No requested regional electricity-demand rate/TWh figure is stated in the five flattened chunks. Relevant quantities do exist elsewhere in the pinned report; this is a retrieval omission, not report-wide absence.",
+          "text_sha256": "abf46a8ac391b049850626bec84253a3bf130d5a7d6657c5aa21fac57881e349"
+        },
+        {
+          "index": 1,
+          "assessment": "supported caution",
+          "rationale": "The source is historical and forecasts are not current observations; this is a system-added warning.",
+          "text_sha256": "73ec3f54b697e68641adc60497c953f0c348d18b80e50b698e17e6c072f4959c"
+        }
+      ],
+      "source_locators": [
+        {
+          "source_id": "IEA_SEA_2024:47:0",
+          "doc_name": "IEA_SEA_2024",
+          "pdf_page_number": 48,
+          "page_index": 47,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+          "content_sha256": "76dbdec159bddbab5f9793d0e065ca082404b4c3a9b7f0eaa01d9971fde7761a"
+        },
+        {
+          "source_id": "IEA_SEA_2024:88:0",
+          "doc_name": "IEA_SEA_2024",
+          "pdf_page_number": 89,
+          "page_index": 88,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+          "content_sha256": "62c78539a129c576a05db66e055ed7310c73326a8e95c241190178f86f98499e"
+        },
+        {
+          "source_id": "IEA_SEA_2024:66:0",
+          "doc_name": "IEA_SEA_2024",
+          "pdf_page_number": 67,
+          "page_index": 66,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+          "content_sha256": "ea76ac85bd9dfe76f5debffd1255ca0f47f7bb6ec055c78029ec3e20f0fc0493"
+        },
+        {
+          "source_id": "IEA_SEA_2024:139:0",
+          "doc_name": "IEA_SEA_2024",
+          "pdf_page_number": 140,
+          "page_index": 139,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+          "content_sha256": "cf8d156138f62e6d57c74558407df423c8b02ccf8fbab848bbce6a5e1588c321"
+        },
+        {
+          "source_id": "IEA_SEA_2024:101:0",
+          "doc_name": "IEA_SEA_2024",
+          "pdf_page_number": 102,
+          "page_index": 101,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+          "content_sha256": "f3bb1f1f2fad7c8ee4da332913f6e54fde1a8a4debf71a2203a8353ff2ed402d"
+        }
+      ],
+      "metrics": {
+        "prompt_version": "analyst-pilot-v1.3",
+        "corpus_sha256": "c85c832ac6ba6bfb3b85baa47c6e2ea3ffae428875e1c1a3d47bcba4deb2b011",
+        "model": "ami-llama3.1:8b-4k",
+        "model_calls": 3,
+        "known_input_tokens": 4034,
+        "known_output_tokens": 378,
+        "missing_usage_calls": 0,
+        "guardrail_invocations": 1,
+        "token_usage_complete": false,
+        "monetary_cost": null,
+        "cost_note": "Local GPU energy and hardware costs are not measured",
+        "stage_seconds": {
+          "tool_round_1": 1.0887251000385731,
+          "tool_round_2": 5.3213550000218675,
+          "draft": 5.225176900043152,
+          "guardrails": 0.15931739995721728
+        },
+        "elapsed_seconds": 12.580099100014195
+      }
+    },
+    {
+      "case_id": "d06",
+      "human_review": "pending",
+      "attempt_status": "answered",
+      "path": "reports/workflow_pilot/draft-usefulness-2026-10-23/attempt-d06.json",
+      "sha256": "8c9f517fe3eb4dc5c916d6b57403362c481e0ae12c11bdc82f423dbcaeb6f281",
+      "coverage": "No exact Thailand retail electricity price for yesterday is provided. Three unrelated historical claims replace the required abstention.",
+      "retrieval": "Captured sources discuss historical inflation, regional access/cost projections and Lao PDR spending. They do not establish the requested dated Thai tariff.",
+      "outcome": "Failed insufficient-evidence abstention and relevance checks; NeMo acceptance did not catch the failure.",
+      "priority": "P1: request-answerability/relevance gate before reviewer use, with exact period/geography/measure matching.",
+      "claim_findings": [
+        {
+          "index": 0,
+          "assessment": "unsupported geographic narrowing",
+          "rationale": "IEA_SEA_2024:76:0 says Southeast Asia is on course for universal access; the chart extraction does not establish a Thailand-specific future-access assertion. It is also irrelevant to yesterday's tariff.",
+          "text_sha256": "f667abbee0c7b9b191080600c25b31cf0beced4b40c85e87e4147d125b910a7c",
+          "source_ids": [
+            "IEA_SEA_2024:76:0"
+          ]
+        },
+        {
+          "index": 1,
+          "assessment": "partially supported; projection framing omitted",
+          "rationale": "Regional cost moderation is discussed in :89:0 as an outlook/scenario, not a current Thai retail price; the claim omits that projection framing.",
+          "text_sha256": "b42dd24b22e8c6f5faafe47ba0c12f0a7b81f4b69535ed9a1cc22e0ac87f5c3a",
+          "source_ids": [
+            "IEA_SEA_2024:89:0"
+          ]
+        },
+        {
+          "index": 2,
+          "assessment": "supported but irrelevant",
+          "rationale": "Lao PDR households' near-one-third energy-income share is explicit in :24:1 but does not answer a Thai electricity-price question.",
+          "text_sha256": "137a8b0cfd18797c93632b549dfaa74b9ca5ad16d0c2f1c9e312f62d3cf0ebbd",
+          "source_ids": [
+            "IEA_SEA_2024:24:1"
+          ]
+        }
+      ],
+      "warning_findings": [
+        {
+          "index": 0,
+          "assessment": "supported but insufficient caution",
+          "rationale": "System historical-source caution is valid but does not explicitly identify the missing dated Thai retail price or excuse unrelated claims.",
+          "text_sha256": "73ec3f54b697e68641adc60497c953f0c348d18b80e50b698e17e6c072f4959c"
+        }
+      ],
+      "source_locators": [
+        {
+          "source_id": "BOT_AUG_2026:0:2",
+          "doc_name": "BOT_AUG_2026",
+          "pdf_page_number": 1,
+          "page_index": 0,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "content_sha256": "07f81e44c5101fbe0470f7a27f89bac82a8d7840de9c38af3679ac66efe95f6c"
+        },
+        {
+          "source_id": "BOT_AUG_2026:5:0",
+          "doc_name": "BOT_AUG_2026",
+          "pdf_page_number": 6,
+          "page_index": 5,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+          "content_sha256": "048b4cf2166fbde819e78ef345635761682294b66d1a35affd3919363f18e87a"
+        },
+        {
+          "source_id": "IEA_SEA_2024:24:1",
+          "doc_name": "IEA_SEA_2024",
+          "pdf_page_number": 25,
+          "page_index": 24,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+          "content_sha256": "90c19f21a752c4dbc55110048d9b2ee45f48193e35fa2acf20a31d66db68dd51"
+        },
+        {
+          "source_id": "IEA_SEA_2024:76:0",
+          "doc_name": "IEA_SEA_2024",
+          "pdf_page_number": 77,
+          "page_index": 76,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+          "content_sha256": "ab26a2bdff4332693a72248273fc78b462c5b13735a91ba5a9608630d8ae5771"
+        },
+        {
+          "source_id": "IEA_SEA_2024:89:0",
+          "doc_name": "IEA_SEA_2024",
+          "pdf_page_number": 90,
+          "page_index": 89,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+          "content_sha256": "a8875086f3f87075b24f8d963b1787064933b9d0b44e430b0de9262e66054092"
+        }
+      ],
+      "metrics": {
+        "prompt_version": "analyst-pilot-v1.3",
+        "corpus_sha256": "c85c832ac6ba6bfb3b85baa47c6e2ea3ffae428875e1c1a3d47bcba4deb2b011",
+        "model": "ami-llama3.1:8b-4k",
+        "model_calls": 3,
+        "known_input_tokens": 3650,
+        "known_output_tokens": 355,
+        "missing_usage_calls": 0,
+        "guardrail_invocations": 1,
+        "token_usage_complete": false,
+        "monetary_cost": null,
+        "cost_note": "Local GPU energy and hardware costs are not measured",
+        "stage_seconds": {
+          "tool_round_1": 0.8414118000073358,
+          "tool_round_2": 4.960010000038892,
+          "draft": 4.942518900032155,
+          "guardrails": 0.1966380999656394
+        },
+        "elapsed_seconds": 11.769506499986164
+      }
+    }
+  ],
+  "counts": {
+    "workflow_attempts": 5,
+    "nonempty_drafts": 4,
+    "abstentions": 1,
+    "failed_runs": 0,
+    "claim_units_reviewed": 12,
+    "warning_units_reviewed": 11
+  },
+  "limits": [
+    "Development cases only, not an unseen benchmark.",
+    "No matched before/after run; do not infer causal improvement from the prior held-out comparison.",
+    "All 12 claim and 11 warning findings concern captured source text; no new PDF authenticity check.",
+    "NeMo passed four nonempty drafts; this did not establish completeness or relevance.",
+    "No retries, Ragas, hosted inference or changes to owner scores.",
+    "Known token counts exclude internal NeMo calls; monetary cost is unavailable."
+  ],
+  "next_steps": [
+    "Use new development fixtures to test requested-fact coverage and safe abstention before reviewer sessions.",
+    "Improve multipart retrieval and complete source-span coverage, including nickel, as a separate pass.",
+    "Freeze fresh facts for a later evaluation before further tuning.",
+    "Owner adjudicates these new outputs; external usage remains pending."
+  ],
+  "measurements": {
+    "workflow_model_calls": 15,
+    "known_input_tokens": 19379,
+    "known_output_tokens": 1672,
+    "guardrail_invocations": 4,
+    "workflow_seconds": 121.05529320018832,
+    "token_usage_complete": false,
+    "monetary_cost": null
+  }
+}

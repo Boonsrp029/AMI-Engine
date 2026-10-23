@@ -1,0 +1,3 @@
+# Use a separate environment; do not combine with Databricks Connect.
+# Databricks jobs use the workspace-provided Spark/Delta runtime.
+pyspark==4.2.0

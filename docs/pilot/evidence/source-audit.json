@@ -1,0 +1,2171 @@
+{
+  "schema_version": 1,
+  "audit_kind": "assistant-authored source audit; not human scoring",
+  "author": "Codex (assistant)",
+  "generated_at": "2026-10-21T19:02:34.346610+07:00",
+  "human_adjudication": "pending",
+  "scope_case_ids": [
+    "h01",
+    "h02",
+    "h03",
+    "h04",
+    "h05"
+  ],
+  "scope_note": "Five paired cases only. Existing boundary findings are linked, not newly adjudicated.",
+  "source_truth_boundary": "Judgments establish fidelity to pinned documents, not independent authenticity, current real-world accuracy or production quality.",
+  "status_definitions": {
+    "supported": "The asserted proposition is supported within its stated scope; this does not establish full task completeness.",
+    "partially supported": "Some components or a limited local absence are supported, with material qualification or missing scope.",
+    "unsupported": "A needed evidentiary basis or justification is absent; source differences do not themselves establish a conflict.",
+    "contradicted": "The assertion disagrees with explicit source or captured-evidence content.",
+    "unverifiable": "The available source, layout or scope does not permit a reliable conclusion."
+  },
+  "provenance": {
+    "baseline_file": "reports/workflow_pilot/source_review/baseline-hashes.json",
+    "protected_file_count": 157,
+    "input_hashes": {
+      "data/external/market_sources/bot_aug_2026.pdf": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+      "data/external/market_sources/iea_sea_2024.pdf": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+      "data/external/market_sources/prepared/manifest.json": "e4c9c80fb3ed62e9b97aed871adfbdf42558a84d98ae40a70e23b558d98867b0",
+      "data/external/market_sources/prepared/market_chunks.json": "c85c832ac6ba6bfb3b85baa47c6e2ea3ffae428875e1c1a3d47bcba4deb2b011",
+      "data/pilot/cases.json": "acb0933b846713b0a7e7305681ce99a760d1079d5221f11955dbd83ab18f2c86",
+      "data/pilot/manifest.json": "6d66d32ec5bd0e945a747c4a7e3810050c269bb0eee46b6594c3de0034a6f60e",
+      "reports/workflow_pilot/comparison-2026-10-21/freeze_legacy_h01.json": "ae10565dea44f32651e80b0c5b6a07d87b833b4af618d413fa3bfdfb30bbb72d",
+      "reports/workflow_pilot/comparison-2026-10-21/freeze_legacy_h02.json": "cddf69e2ede8e702e896c828afa8463b56fef6c089868036adb9fdcf0dde2216",
+      "reports/workflow_pilot/comparison-2026-10-21/freeze_legacy_h03.json": "7e2a2d5b85d436f3d6ea66e2b0676964c3c5348bef0b223869c26316fc7e3239",
+      "reports/workflow_pilot/comparison-2026-10-21/freeze_legacy_h04.json": "7df1f38b1b5efe0048012f9e2b01b54e1066238b61aada4fbb995202d551f8bf",
+      "reports/workflow_pilot/comparison-2026-10-21/freeze_legacy_h05.json": "e0ff1e17e40420756bb2decf3d7773a2aad90547cf62a801e25e1ccb9ec5f0a6",
+      "reports/workflow_pilot/comparison-2026-10-21/freeze_workflow_h01.json": "62fd2f596b4098f930028c89b7916a8a63297ca938c9ce1b66084b265e8dc443",
+      "reports/workflow_pilot/comparison-2026-10-21/freeze_workflow_h02.json": "656131c940ee1f54fa7ba457a37a18a3d46b16ff1306b16c1e30d420e00b84e1",
+      "reports/workflow_pilot/comparison-2026-10-21/freeze_workflow_h03.json": "e8873696538f5c05150202bfef02792ce68ec73c963cf49b499ec1328454dcea",
+      "reports/workflow_pilot/comparison-2026-10-21/freeze_workflow_h04.json": "71615c85b326ba56ec14c9d3b5700b6eca863660d76759fa4fcbec2f41c56471",
+      "reports/workflow_pilot/comparison-2026-10-21/freeze_workflow_h05.json": "0bf92f3f8a16735e04b752eeebc2e08d7f52ffa54cb52ead525865a8bf8fb728",
+      "reports/workflow_pilot/comparison-2026-10-21/human_review.csv": "63366291f6e03ccbcc896fb6c813bd8d05385f86911a4cf34962f95c42697726"
+    },
+    "no_new_model_or_ragas_calls": true,
+    "benchmark_modified": false
+  },
+  "evidence": {
+    "B-export": {
+      "id": "B-export",
+      "doc_name": "BOT_AUG_2026",
+      "source_url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+      "source_pdf": "data/external/market_sources/bot_aug_2026.pdf",
+      "source_sha256": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+      "published_from_manifest": "2026-09-30",
+      "locators": [
+        {
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "printed_page_number": null,
+          "section": "Key highlight and explanatory narrative"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "BOT_AUG_2026:0:0",
+        "BOT_AUG_2026:0:1",
+        "BOT_AUG_2026:0:3"
+      ],
+      "paraphrase": "August 2026 exports excluding gold remained high with support from the global technology/AI cycle; technology-related exports moderated after earlier growth.",
+      "visual_check": "completed"
+    },
+    "B-export-categories": {
+      "id": "B-export-categories",
+      "doc_name": "BOT_AUG_2026",
+      "source_url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+      "source_pdf": "data/external/market_sources/bot_aug_2026.pdf",
+      "source_sha256": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+      "published_from_manifest": "2026-09-30",
+      "locators": [
+        {
+          "page_index": 2,
+          "pdf_page_number": 3,
+          "printed_page_number": null,
+          "section": "Export Value"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "BOT_AUG_2026:2:0"
+      ],
+      "paraphrase": "Electronics and electrical-appliance exports declined while remaining high; the release links their high level to the technology/AI cycle.",
+      "visual_check": "text checked; see related visually checked pages"
+    },
+    "B-export-agri": {
+      "id": "B-export-agri",
+      "doc_name": "BOT_AUG_2026",
+      "source_url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+      "source_pdf": "data/external/market_sources/bot_aug_2026.pdf",
+      "source_sha256": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+      "published_from_manifest": "2026-09-30",
+      "locators": [
+        {
+          "page_index": 2,
+          "pdf_page_number": 3,
+          "printed_page_number": null,
+          "section": "Export Value"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "BOT_AUG_2026:2:0",
+        "BOT_AUG_2026:2:1"
+      ],
+      "paraphrase": "Agricultural/agro-manufacturing exports rose slightly, particularly sugar exports to Indonesia.",
+      "visual_check": "text checked; see related visually checked pages"
+    },
+    "B-export-figure": {
+      "id": "B-export-figure",
+      "doc_name": "BOT_AUG_2026",
+      "source_url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+      "source_pdf": "data/external/market_sources/bot_aug_2026.pdf",
+      "source_sha256": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+      "published_from_manifest": "2026-09-30",
+      "locators": [
+        {
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "printed_page_number": null,
+          "section": "Export Value graphic; visual label/value association"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "BOT_AUG_2026:0:0"
+      ],
+      "paraphrase": "The page visually labels the August export-value change excluding gold as -0.1% from the previous month. Extracted header numbers alone lose their layout associations.",
+      "visual_check": "completed"
+    },
+    "B-inflation": {
+      "id": "B-inflation",
+      "doc_name": "BOT_AUG_2026",
+      "source_url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+      "source_pdf": "data/external/market_sources/bot_aug_2026.pdf",
+      "source_sha256": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+      "published_from_manifest": "2026-09-30",
+      "locators": [
+        {
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "printed_page_number": null,
+          "section": "Economic-stability paragraph and key highlight"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "BOT_AUG_2026:0:2",
+        "BOT_AUG_2026:0:4"
+      ],
+      "paraphrase": "Food inflation is linked to adverse weather/lower agricultural supply and production costs; energy prices track global crude oil; core inflation reflects cost pass-through.",
+      "visual_check": "completed"
+    },
+    "B-investment": {
+      "id": "B-investment",
+      "doc_name": "BOT_AUG_2026",
+      "source_url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+      "source_pdf": "data/external/market_sources/bot_aug_2026.pdf",
+      "source_sha256": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+      "published_from_manifest": "2026-09-30",
+      "locators": [
+        {
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "printed_page_number": null,
+          "section": "Domestic demand; Private Investment"
+        },
+        {
+          "page_index": 1,
+          "pdf_page_number": 2,
+          "printed_page_number": null,
+          "section": "Domestic demand; Private Investment"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "BOT_AUG_2026:0:1",
+        "BOT_AUG_2026:0:3",
+        "BOT_AUG_2026:0:4",
+        "BOT_AUG_2026:1:1"
+      ],
+      "paraphrase": "Private investment increased, especially machinery/equipment. Detailed indicators include electrical/medical machinery and computer/office-equipment imports.",
+      "visual_check": "completed"
+    },
+    "B-investment-driver": {
+      "id": "B-investment-driver",
+      "doc_name": "BOT_AUG_2026",
+      "source_url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+      "source_pdf": "data/external/market_sources/bot_aug_2026.pdf",
+      "source_sha256": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+      "published_from_manifest": "2026-09-30",
+      "locators": [
+        {
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "printed_page_number": null,
+          "section": "Key highlight: domestic demand"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "BOT_AUG_2026:0:3",
+        "BOT_AUG_2026:0:4"
+      ],
+      "paraphrase": "The key highlight connects machinery/equipment investment to the global technology cycle and data-center investment.",
+      "visual_check": "completed"
+    },
+    "B-consumption": {
+      "id": "B-consumption",
+      "doc_name": "BOT_AUG_2026",
+      "source_url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+      "source_pdf": "data/external/market_sources/bot_aug_2026.pdf",
+      "source_sha256": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+      "published_from_manifest": "2026-09-30",
+      "locators": [
+        {
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "printed_page_number": null,
+          "section": "Private Consumption"
+        },
+        {
+          "page_index": 1,
+          "pdf_page_number": 2,
+          "printed_page_number": null,
+          "section": "Private Consumption"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "BOT_AUG_2026:0:1",
+        "BOT_AUG_2026:1:0"
+      ],
+      "paraphrase": "Consumption increased slightly with services spending, notably hotels/restaurants, associated with foreign tourist arrivals; durable goods also increased.",
+      "visual_check": "completed"
+    },
+    "B-tourism": {
+      "id": "B-tourism",
+      "doc_name": "BOT_AUG_2026",
+      "source_url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf",
+      "source_pdf": "data/external/market_sources/bot_aug_2026.pdf",
+      "source_sha256": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+      "published_from_manifest": "2026-09-30",
+      "locators": [
+        {
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "printed_page_number": null,
+          "section": "Tourism receipts"
+        },
+        {
+          "page_index": 1,
+          "pdf_page_number": 2,
+          "printed_page_number": null,
+          "section": "Tourism receipts"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "BOT_AUG_2026:0:1",
+        "BOT_AUG_2026:0:3",
+        "BOT_AUG_2026:1:2"
+      ],
+      "paraphrase": "Tourism receipts remained broadly stable, while foreign arrivals increased. Stable receipts are not a substitute for naming consumption activities.",
+      "visual_check": "completed"
+    },
+    "I-demand": {
+      "id": "I-demand",
+      "doc_name": "IEA_SEA_2024",
+      "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+      "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+      "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+      "published_from_manifest": "2024-10-21",
+      "locators": [
+        {
+          "page_index": 6,
+          "pdf_page_number": 7,
+          "printed_page_number": 7,
+          "section": "Executive summary: electricity demand"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "IEA_SEA_2024:6:2"
+      ],
+      "paraphrase": "In STEPS, electricity demand grows about 4% annually to 2035, from over 1,300 TWh at the report baseline to above 2,000 TWh. These are demand figures.",
+      "visual_check": "completed"
+    },
+    "I-generation": {
+      "id": "I-generation",
+      "doc_name": "IEA_SEA_2024",
+      "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+      "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+      "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+      "published_from_manifest": "2024-10-21",
+      "locators": [
+        {
+          "page_index": 85,
+          "pdf_page_number": 86,
+          "printed_page_number": 86,
+          "section": "Energy outlook to 2050: generation"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "IEA_SEA_2024:85:0"
+      ],
+      "paraphrase": "Generation, a different quantity, rises from 1,300 TWh in 2023 to over 2,200 TWh in STEPS by 2035; APS generation exceeds 2,400 TWh.",
+      "visual_check": "completed"
+    },
+    "I-solar": {
+      "id": "I-solar",
+      "doc_name": "IEA_SEA_2024",
+      "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+      "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+      "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+      "published_from_manifest": "2024-10-21",
+      "locators": [
+        {
+          "page_index": 6,
+          "pdf_page_number": 7,
+          "printed_page_number": 7,
+          "section": "Electricity generation mix"
+        },
+        {
+          "page_index": 85,
+          "pdf_page_number": 86,
+          "printed_page_number": 86,
+          "section": "Electricity generation mix"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "IEA_SEA_2024:6:3",
+        "IEA_SEA_2024:85:0"
+      ],
+      "paraphrase": "The 3%, roughly 10%, and 20% generation shares describe solar PV alone (baseline, 2035, 2050 STEPS). The executive summary places all renewables above one-third in 2035.",
+      "visual_check": "completed"
+    },
+    "I-capacity": {
+      "id": "I-capacity",
+      "doc_name": "IEA_SEA_2024",
+      "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+      "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+      "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+      "published_from_manifest": "2024-10-21",
+      "locators": [
+        {
+          "page_index": 7,
+          "pdf_page_number": 8,
+          "printed_page_number": 8,
+          "section": "Executive summary; EV battery supply chains"
+        },
+        {
+          "page_index": 160,
+          "pdf_page_number": 161,
+          "printed_page_number": 161,
+          "section": "Executive summary; EV battery supply chains"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "IEA_SEA_2024:7:3",
+        "IEA_SEA_2024:160:2"
+      ],
+      "paraphrase": "Existing EV battery-cell capacity was 16 GWh at end-2023. The detailed section gives 39 GWh of committed additions by 2030 plus 23 GWh preliminary announcements; the summary rounds additions to almost 40 GWh.",
+      "visual_check": "completed"
+    },
+    "I-leading": {
+      "id": "I-leading",
+      "doc_name": "IEA_SEA_2024",
+      "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+      "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+      "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+      "published_from_manifest": "2024-10-21",
+      "locators": [
+        {
+          "page_index": 160,
+          "pdf_page_number": 161,
+          "printed_page_number": 161,
+          "section": "Committed battery capacity in 2030"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "IEA_SEA_2024:160:2"
+      ],
+      "paraphrase": "The committed-capacity discussion names Malaysia, Viet Nam and Indonesia and about 1% of global committed battery-manufacturing capacity in 2030; this is not a ranking of current installed plants.",
+      "visual_check": "completed"
+    },
+    "I-hub": {
+      "id": "I-hub",
+      "doc_name": "IEA_SEA_2024",
+      "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+      "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+      "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+      "published_from_manifest": "2024-10-21",
+      "locators": [
+        {
+          "page_index": 7,
+          "pdf_page_number": 8,
+          "printed_page_number": 8,
+          "section": "Manufacturing hubs"
+        },
+        {
+          "page_index": 161,
+          "pdf_page_number": 162,
+          "printed_page_number": 162,
+          "section": "Manufacturing hubs"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "IEA_SEA_2024:7:3",
+        "IEA_SEA_2024:7:4",
+        "IEA_SEA_2024:161:0"
+      ],
+      "paraphrase": "The report expects Indonesia to become a leading lithium-ion battery/component hub because of its raw materials, especially nickel.",
+      "visual_check": "completed"
+    },
+    "I-nickel": {
+      "id": "I-nickel",
+      "doc_name": "IEA_SEA_2024",
+      "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+      "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+      "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+      "published_from_manifest": "2024-10-21",
+      "locators": [
+        {
+          "page_index": 7,
+          "pdf_page_number": 8,
+          "printed_page_number": 8,
+          "section": "Nickel production and natural resources"
+        },
+        {
+          "page_index": 8,
+          "pdf_page_number": 9,
+          "printed_page_number": 9,
+          "section": "Nickel production and natural resources"
+        },
+        {
+          "page_index": 34,
+          "pdf_page_number": 35,
+          "printed_page_number": 35,
+          "section": "Nickel production and natural resources"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "IEA_SEA_2024:7:4",
+        "IEA_SEA_2024:8:0",
+        "IEA_SEA_2024:34:1"
+      ],
+      "paraphrase": "Indonesia and the Philippines account for about 65% of global mined nickel production. The summary sentence crosses PDF pages 8-9; PDF page 35 states it completely.",
+      "visual_check": "completed"
+    },
+    "I-country-plans": {
+      "id": "I-country-plans",
+      "doc_name": "IEA_SEA_2024",
+      "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+      "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+      "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+      "published_from_manifest": "2024-10-21",
+      "locators": [
+        {
+          "page_index": 161,
+          "pdf_page_number": 162,
+          "printed_page_number": 162,
+          "section": "Country-level battery announcements"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "IEA_SEA_2024:161:1",
+        "IEA_SEA_2024:161:2",
+        "IEA_SEA_2024:161:3"
+      ],
+      "paraphrase": "Country-specific announcements include Indonesian 10 GWh (2025) and 20 GWh (2030), followed by Malaysia/Viet Nam details. Different years/country scopes need not conflict with regional 39 GWh additions.",
+      "visual_check": "completed"
+    },
+    "I-factory": {
+      "id": "I-factory",
+      "doc_name": "IEA_SEA_2024",
+      "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+      "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+      "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+      "published_from_manifest": "2024-10-21",
+      "locators": [
+        {
+          "page_index": 161,
+          "pdf_page_number": 162,
+          "printed_page_number": 162,
+          "section": "Manufacturing partnership paragraph"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "IEA_SEA_2024:161:1"
+      ],
+      "paraphrase": "One paragraph describes an Indonesian 2024 start-up announcement, a 10 GWh plant, Hyundai/LG/Indonesia Battery Corporation partnership, and USD 9.8 billion backing.",
+      "visual_check": "completed"
+    },
+    "I-factory-other": {
+      "id": "I-factory-other",
+      "doc_name": "IEA_SEA_2024",
+      "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+      "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+      "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+      "published_from_manifest": "2024-10-21",
+      "locators": [
+        {
+          "page_index": 171,
+          "pdf_page_number": 172,
+          "printed_page_number": 172,
+          "section": "Clean-energy employment and manufacturing"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "IEA_SEA_2024:171:2"
+      ],
+      "paraphrase": "Another paragraph says Hyundai/LG opened Indonesia’s first battery-cell factory in 2023 as a USD 1.1 billion project. Whether the dates/budgets concern identical scope is not resolved here.",
+      "visual_check": "completed"
+    },
+    "I-historical": {
+      "id": "I-historical",
+      "doc_name": "IEA_SEA_2024",
+      "source_url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf",
+      "source_pdf": "data/external/market_sources/iea_sea_2024.pdf",
+      "source_sha256": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521",
+      "published_from_manifest": "2024-10-21",
+      "locators": [
+        {
+          "page_index": 6,
+          "pdf_page_number": 7,
+          "printed_page_number": 7,
+          "section": "Dated scenario context"
+        },
+        {
+          "page_index": 7,
+          "pdf_page_number": 8,
+          "printed_page_number": 8,
+          "section": "Dated scenario context"
+        }
+      ],
+      "corpus_chunk_ids": [
+        "IEA_SEA_2024:6:2",
+        "IEA_SEA_2024:7:3"
+      ],
+      "paraphrase": "The report is a 2024 snapshot and makes scenario projections, including 2035. Its age is relevant to freshness, but does not invalidate a question asking what that report says.",
+      "visual_check": "completed"
+    }
+  },
+  "cases": [
+    {
+      "case_id": "h01",
+      "question": "What supported exports excluding gold in the BOT August 2026 release, and did technology-related exports keep accelerating?",
+      "required_facts": [
+        {
+          "id": "h01-f1",
+          "required_fact": "High exports excluding gold were supported by the global technology/AI cycle.",
+          "evidence_ids": [
+            "B-export"
+          ],
+          "retrieval_coverage": {
+            "legacy": "complete",
+            "workflow": "complete"
+          },
+          "answer_coverage": {
+            "legacy": "partial",
+            "workflow": "complete"
+          }
+        },
+        {
+          "id": "h01-f2",
+          "required_fact": "Technology-related exports moderated after prior growth; continued acceleration is not the reported outcome.",
+          "evidence_ids": [
+            "B-export",
+            "B-export-categories"
+          ],
+          "retrieval_coverage": {
+            "legacy": "complete",
+            "workflow": "complete"
+          },
+          "answer_coverage": {
+            "legacy": "complete",
+            "workflow": "complete"
+          }
+        }
+      ],
+      "variant_summaries": {
+        "legacy": "Identifies categories and moderation, but omits the requested technology/AI-cycle driver.",
+        "workflow": "Its three cited claims are supported and cover the two main requested facts; the product/date gap messages are false and the figures warning is not established from flattened input."
+      },
+      "findings": [
+        {
+          "id": "h01-legacy-s1",
+          "case_id": "h01",
+          "variant": "legacy",
+          "kind": "sentence",
+          "input_pointer": "/row/response",
+          "span": [
+            0,
+            144
+          ],
+          "assessment": "partially supported",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "B-export",
+            "B-export-categories"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "BOT_AUG_2026:0:0",
+            "BOT_AUG_2026:0:1",
+            "BOT_AUG_2026:0:3",
+            "BOT_AUG_2026:2:0"
+          ],
+          "rationale": "Electronics/electrical appliances are supported categories, but listing them does not identify the causal support asked for: the global technology/AI cycle. The wording is not wholly fabricated.",
+          "components": [
+            {
+              "proposition": "Electronics/electrical appliances are export categories in the release",
+              "assessment": "supported"
+            },
+            {
+              "proposition": "Listing categories answers what supported the high export level",
+              "assessment": "unsupported"
+            }
+          ],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "667ddc6d51e55124d1a706c2c07dd8181c27c109d82289ff37815c1a922ddaea"
+        },
+        {
+          "id": "h01-legacy-s2",
+          "case_id": "h01",
+          "variant": "legacy",
+          "kind": "sentence",
+          "input_pointer": "/row/response",
+          "span": [
+            144,
+            234
+          ],
+          "assessment": "supported",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "B-export"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "BOT_AUG_2026:0:0",
+            "BOT_AUG_2026:0:1",
+            "BOT_AUG_2026:0:3"
+          ],
+          "rationale": "The release explicitly describes moderation after prior strong growth; no continuing acceleration is asserted.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "b60358eb745122b81b691bcb7a75588209f935ff7f7859750c5819180fd37bae"
+        },
+        {
+          "id": "h01-workflow-c1",
+          "case_id": "h01",
+          "variant": "workflow",
+          "kind": "claim",
+          "input_pointer": "/details/draft/claims/0/text",
+          "span": [
+            0,
+            161
+          ],
+          "assessment": "supported",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "B-export"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "BOT_AUG_2026:0:0",
+            "BOT_AUG_2026:0:1",
+            "BOT_AUG_2026:0:3"
+          ],
+          "rationale": "High exports excluding gold and the technology/AI-cycle driver are directly supported by its cited chunk.",
+          "components": [],
+          "citation_assessments": [
+            {
+              "source_id": "BOT_AUG_2026:0:0",
+              "exists_in_corpus": true,
+              "returned_in_this_attempt": true,
+              "assessment": "supported",
+              "rationale": "The cited captured chunk contains the claim’s stated facts; this does not prove full answer completeness."
+            }
+          ],
+          "human_adjudication": "pending",
+          "original_text_sha256": "d00ae8657422ea8e6ebebc68fb3f4152128fb02c2b7600ec41f81512f626da76"
+        },
+        {
+          "id": "h01-workflow-c2",
+          "case_id": "h01",
+          "variant": "workflow",
+          "kind": "claim",
+          "input_pointer": "/details/draft/claims/1/text",
+          "span": [
+            0,
+            185
+          ],
+          "assessment": "supported",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "B-export-categories"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "BOT_AUG_2026:2:0"
+          ],
+          "rationale": "Declining but still high electronics/electrical-appliance exports and their technology-cycle support are directly supported; this addresses the no-further-acceleration part.",
+          "components": [],
+          "citation_assessments": [
+            {
+              "source_id": "BOT_AUG_2026:2:0",
+              "exists_in_corpus": true,
+              "returned_in_this_attempt": true,
+              "assessment": "supported",
+              "rationale": "The cited captured chunk contains the claim’s stated facts; this does not prove full answer completeness."
+            }
+          ],
+          "human_adjudication": "pending",
+          "original_text_sha256": "27f9203d5cab715c14a1d5b1417d44c4f698cb32b3d2ba3f7268474eb6a8ea25"
+        },
+        {
+          "id": "h01-workflow-c3",
+          "case_id": "h01",
+          "variant": "workflow",
+          "kind": "claim",
+          "input_pointer": "/details/draft/claims/2/text",
+          "span": [
+            0,
+            123
+          ],
+          "assessment": "supported",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "B-export-agri"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "BOT_AUG_2026:2:0",
+            "BOT_AUG_2026:2:1"
+          ],
+          "rationale": "Agricultural/agro-manufacturing exports and sugar-to-Indonesia explanation occur in the cited chunk. This is extra context, not an answer error.",
+          "components": [],
+          "citation_assessments": [
+            {
+              "source_id": "BOT_AUG_2026:2:1",
+              "exists_in_corpus": true,
+              "returned_in_this_attempt": true,
+              "assessment": "supported",
+              "rationale": "The cited captured chunk contains the claim’s stated facts; this does not prove full answer completeness."
+            }
+          ],
+          "human_adjudication": "pending",
+          "original_text_sha256": "597d631261e58a359ada2d45bcdb5bd7ec06448e50feb24d624ccc4114f195c9"
+        },
+        {
+          "id": "h01-workflow-w1",
+          "case_id": "h01",
+          "variant": "workflow",
+          "kind": "warning",
+          "input_pointer": "/details/draft/warnings/0",
+          "span": [
+            0,
+            141
+          ],
+          "assessment": "contradicted",
+          "scope": "frozen retrieved-evidence availability",
+          "evidence_ids": [
+            "B-export-categories",
+            "B-export-agri"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "BOT_AUG_2026:2:0",
+            "BOT_AUG_2026:2:1"
+          ],
+          "rationale": "Specific products are named in the returned evidence and even in the draft’s own claims. This gap assertion is false for the captured inputs.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "63f84492efc9146193f44cfeb437cc3b0ab5cd79ea25cfd8116bfc17982b8bb4"
+        },
+        {
+          "id": "h01-workflow-w2",
+          "case_id": "h01",
+          "variant": "workflow",
+          "kind": "warning",
+          "input_pointer": "/details/draft/warnings/1",
+          "span": [
+            0,
+            135
+          ],
+          "assessment": "unverifiable",
+          "scope": "frozen retrieved-evidence availability",
+          "evidence_ids": [
+            "B-export-figure"
+          ],
+          "supporting_evidence_retrieved": "partial",
+          "matching_retrieved_chunk_ids": [
+            "BOT_AUG_2026:0:0"
+          ],
+          "rationale": "The captured header contains numbers without reliable layout associations; the cited export prose lacks a clearly labelled exact export-change figure. The PDF graphic shows -0.1% month-on-month, but source layout cannot be silently attributed to the flattened model input. Exact figures were not requested, so this is not a valid reason to withhold the qualitative answer.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "49f65964990e4a509ddb73a39b881431a79db6f7e99339c992ffd7f9ce5091ab"
+        },
+        {
+          "id": "h01-workflow-w3",
+          "case_id": "h01",
+          "variant": "workflow",
+          "kind": "warning",
+          "input_pointer": "/details/draft/warnings/2",
+          "span": [
+            0,
+            133
+          ],
+          "assessment": "contradicted",
+          "scope": "frozen retrieved-evidence availability",
+          "evidence_ids": [
+            "B-export"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "BOT_AUG_2026:0:0",
+            "BOT_AUG_2026:0:1",
+            "BOT_AUG_2026:0:3"
+          ],
+          "rationale": "August 2026 is explicit in the query and retrieved release heading. No more exact daily date is needed for this monthly question.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "3ccedb247689d550fa06da3a081b669978ce118660c6479a7b89e3295425b5f4"
+        }
+      ],
+      "reviewer_questions": [
+        "Would you keep the electronics decline as the answer to the acceleration question?",
+        "Which gap messages would you remove or qualify?"
+      ],
+      "attempts": {
+        "legacy": {
+          "path": "reports/workflow_pilot/comparison-2026-10-21/freeze_legacy_h01.json",
+          "sha256": "ae10565dea44f32651e80b0c5b6a07d87b833b4af618d413fa3bfdfb30bbb72d",
+          "status": "answered",
+          "retrieved_source_ids": [
+            "BOT_AUG_2026:0:0",
+            "BOT_AUG_2026:2:0",
+            "BOT_AUG_2026:2:1",
+            "BOT_AUG_2026:0:3",
+            "BOT_AUG_2026:0:1"
+          ],
+          "claims": 0
+        },
+        "workflow": {
+          "path": "reports/workflow_pilot/comparison-2026-10-21/freeze_workflow_h01.json",
+          "sha256": "62fd2f596b4098f930028c89b7916a8a63297ca938c9ce1b66084b265e8dc443",
+          "status": "answered",
+          "retrieved_source_ids": [
+            "BOT_AUG_2026:0:0",
+            "BOT_AUG_2026:2:0",
+            "BOT_AUG_2026:2:1",
+            "BOT_AUG_2026:0:3",
+            "BOT_AUG_2026:0:1"
+          ],
+          "claims": 3
+        }
+      },
+      "human_adjudication": "pending"
+    },
+    {
+      "case_id": "h02",
+      "question": "How does the BOT explain the increase in headline inflation and core inflation in August 2026?",
+      "required_facts": [
+        {
+          "id": "h02-f1",
+          "required_fact": "Headline inflation rose with food and energy prices.",
+          "evidence_ids": [
+            "B-inflation"
+          ],
+          "retrieval_coverage": {
+            "legacy": "complete",
+            "workflow": "complete"
+          },
+          "answer_coverage": {
+            "legacy": "complete",
+            "workflow": "missing"
+          }
+        },
+        {
+          "id": "h02-f2",
+          "required_fact": "Fresh-food increases involved adverse weather/lower output and rising production costs.",
+          "evidence_ids": [
+            "B-inflation"
+          ],
+          "retrieval_coverage": {
+            "legacy": "complete",
+            "workflow": "complete"
+          },
+          "answer_coverage": {
+            "legacy": "missing",
+            "workflow": "missing"
+          }
+        },
+        {
+          "id": "h02-f3",
+          "required_fact": "Domestic energy/fuel increases followed higher global crude-oil prices.",
+          "evidence_ids": [
+            "B-inflation"
+          ],
+          "retrieval_coverage": {
+            "legacy": "complete",
+            "workflow": "complete"
+          },
+          "answer_coverage": {
+            "legacy": "missing",
+            "workflow": "missing"
+          }
+        },
+        {
+          "id": "h02-f4",
+          "required_fact": "Core inflation rose through gradual cost pass-through to consumer prices.",
+          "evidence_ids": [
+            "B-inflation"
+          ],
+          "retrieval_coverage": {
+            "legacy": "complete",
+            "workflow": "complete"
+          },
+          "answer_coverage": {
+            "legacy": "complete",
+            "workflow": "missing"
+          }
+        }
+      ],
+      "variant_summaries": {
+        "legacy": "Source-supported concise answer, but omits weather/production-cost and crude-oil causal links.",
+        "workflow": "Unsupported abstention: all required causal evidence was retrieved."
+      },
+      "findings": [
+        {
+          "id": "h02-legacy-s1",
+          "case_id": "h02",
+          "variant": "legacy",
+          "kind": "sentence",
+          "input_pointer": "/row/response",
+          "span": [
+            0,
+            229
+          ],
+          "assessment": "supported",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "B-inflation"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "BOT_AUG_2026:0:4"
+          ],
+          "rationale": "Food/energy increases and core cost pass-through are supported. Weather/production-cost and crude-oil mechanisms are omitted, which affects completeness rather than making these stated facts false.",
+          "components": [
+            {
+              "proposition": "Headline inflation rose with food and energy prices",
+              "assessment": "supported"
+            },
+            {
+              "proposition": "Core inflation reflects gradual cost pass-through",
+              "assessment": "supported"
+            }
+          ],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "367784530a3a503d34b550fb8e7dcb8d9eb6969f2b6ebad669852ac14aaec828"
+        },
+        {
+          "id": "h02-workflow-abstention",
+          "case_id": "h02",
+          "variant": "workflow",
+          "kind": "abstention",
+          "input_pointer": "/row/response",
+          "span": [
+            0,
+            0
+          ],
+          "assessment": "unsupported",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "B-inflation"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "BOT_AUG_2026:0:2",
+            "BOT_AUG_2026:0:4"
+          ],
+          "rationale": "The retrieved contexts include the food/weather/cost, energy/crude-oil and core pass-through explanations. An empty response is not justified by missing task evidence.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "h02-workflow-w1",
+          "case_id": "h02",
+          "variant": "workflow",
+          "kind": "warning",
+          "input_pointer": "/details/draft/warnings/0",
+          "span": [
+            0,
+            131
+          ],
+          "assessment": "contradicted",
+          "scope": "frozen retrieved-evidence availability",
+          "evidence_ids": [
+            "B-inflation"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "BOT_AUG_2026:0:2",
+            "BOT_AUG_2026:0:4"
+          ],
+          "rationale": "The returned material provides the causal explanation needed for the question. “Comprehensive” should not erase the explicit relevant mechanisms.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "0baa727351f548dc3a4708700b1708b6c603f16d43339c57fb7d2823f5c0a6be"
+        }
+      ],
+      "reviewer_questions": [
+        "Does the short legacy answer adequately explain the causes, or must weather, production costs and crude oil be explicit?"
+      ],
+      "attempts": {
+        "legacy": {
+          "path": "reports/workflow_pilot/comparison-2026-10-21/freeze_legacy_h02.json",
+          "sha256": "cddf69e2ede8e702e896c828afa8463b56fef6c089868036adb9fdcf0dde2216",
+          "status": "answered",
+          "retrieved_source_ids": [
+            "BOT_AUG_2026:0:0",
+            "BOT_AUG_2026:5:0",
+            "BOT_AUG_2026:0:4",
+            "BOT_AUG_2026:4:1",
+            "BOT_AUG_2026:4:0"
+          ],
+          "claims": 0
+        },
+        "workflow": {
+          "path": "reports/workflow_pilot/comparison-2026-10-21/freeze_workflow_h02.json",
+          "sha256": "656131c940ee1f54fa7ba457a37a18a3d46b16ff1306b16c1e30d420e00b84e1",
+          "status": "unanswered",
+          "retrieved_source_ids": [
+            "BOT_AUG_2026:0:0",
+            "BOT_AUG_2026:5:0",
+            "BOT_AUG_2026:4:1",
+            "BOT_AUG_2026:0:4",
+            "BOT_AUG_2026:0:2"
+          ],
+          "claims": 0
+        }
+      },
+      "human_adjudication": "pending"
+    },
+    {
+      "case_id": "h03",
+      "question": "Which activities supported private investment and consumption in Thailand in August 2026?",
+      "required_facts": [
+        {
+          "id": "h03-f1",
+          "required_fact": "Private investment increased particularly in machinery/equipment.",
+          "evidence_ids": [
+            "B-investment"
+          ],
+          "retrieval_coverage": {
+            "legacy": "complete",
+            "workflow": "complete"
+          },
+          "answer_coverage": {
+            "legacy": "complete",
+            "workflow": "missing"
+          }
+        },
+        {
+          "id": "h03-f2",
+          "required_fact": "The investment narrative links support to the technology cycle and data centers.",
+          "evidence_ids": [
+            "B-investment-driver"
+          ],
+          "retrieval_coverage": {
+            "legacy": "partial",
+            "workflow": "missing"
+          },
+          "answer_coverage": {
+            "legacy": "missing",
+            "workflow": "missing"
+          }
+        },
+        {
+          "id": "h03-f3",
+          "required_fact": "Consumption increased slightly with services, especially hotels/restaurants.",
+          "evidence_ids": [
+            "B-consumption"
+          ],
+          "retrieval_coverage": {
+            "legacy": "complete",
+            "workflow": "missing"
+          },
+          "answer_coverage": {
+            "legacy": "missing",
+            "workflow": "missing"
+          }
+        }
+      ],
+      "variant_summaries": {
+        "legacy": "Investment fact is supported, while consumption activities and investment drivers are not explained.",
+        "workflow": "Mixed failure: retrieval misses consumption and full investment-driver evidence; synthesis also discards available specific investment activities."
+      },
+      "findings": [
+        {
+          "id": "h03-legacy-s1",
+          "case_id": "h03",
+          "variant": "legacy",
+          "kind": "sentence",
+          "input_pointer": "/row/response",
+          "span": [
+            0,
+            183
+          ],
+          "assessment": "partially supported",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "B-investment",
+            "B-consumption",
+            "B-tourism"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "BOT_AUG_2026:0:1",
+            "BOT_AUG_2026:0:3",
+            "BOT_AUG_2026:1:1"
+          ],
+          "rationale": "Machinery/equipment investment and stable tourism receipts are supported. Machinery is not established as the consumption activity; the answer leaves hotels/restaurants and investment drivers unstated. Stable receipts alone do not answer the consumption part.",
+          "components": [
+            {
+              "proposition": "Investment was supported by machinery/equipment",
+              "assessment": "supported"
+            },
+            {
+              "proposition": "Machinery/equipment establishes the consumption activity",
+              "assessment": "unsupported"
+            },
+            {
+              "proposition": "Tourism receipts remained stable",
+              "assessment": "supported"
+            }
+          ],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "7603d0494b665e0afdd44eaa904d99f6b5237bf55471645d431685eeb0d3d2e0"
+        },
+        {
+          "id": "h03-workflow-abstention",
+          "case_id": "h03",
+          "variant": "workflow",
+          "kind": "abstention",
+          "input_pointer": "/row/response",
+          "span": [
+            0,
+            0
+          ],
+          "assessment": "partially supported",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "B-investment",
+            "B-consumption",
+            "B-investment-driver"
+          ],
+          "supporting_evidence_retrieved": "partial",
+          "matching_retrieved_chunk_ids": [
+            "BOT_AUG_2026:1:1"
+          ],
+          "rationale": "The five contexts omit hotels/restaurants and the complete investment-driver phrase, so the full answer is unavailable in this retrieval. But machinery/equipment investment and detailed activities are present; a useful partial answer was possible.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "h03-workflow-w1",
+          "case_id": "h03",
+          "variant": "workflow",
+          "kind": "warning",
+          "input_pointer": "/details/draft/warnings/0",
+          "span": [
+            0,
+            279
+          ],
+          "assessment": "contradicted",
+          "scope": "frozen retrieved-evidence availability",
+          "evidence_ids": [
+            "B-investment"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "BOT_AUG_2026:1:1"
+          ],
+          "rationale": "The returned BOT page-2 chunk names machinery/equipment, electrical/medical machinery, computer/office imports and vehicles. The blanket claim that no specific activities are given is false, even though consumption coverage is missing.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "58bd1f45e632683b321662b64de1d4094af09af9ca2bac3c1b2b34209443ad3b"
+        },
+        {
+          "id": "h03-workflow-w2",
+          "case_id": "h03",
+          "variant": "workflow",
+          "kind": "warning",
+          "input_pointer": "/details/draft/warnings/1",
+          "span": [
+            0,
+            72
+          ],
+          "assessment": "supported",
+          "scope": "frozen retrieved-evidence availability",
+          "evidence_ids": [
+            "I-historical"
+          ],
+          "supporting_evidence_retrieved": "metadata only",
+          "matching_retrieved_chunk_ids": [],
+          "rationale": "A 2024 IEA source was returned, and forecasts are not observations. The generic caution does not make the relevant August-2026 BOT investment evidence unusable; the IEA distractor does not answer the question.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "73ec3f54b697e68641adc60497c953f0c348d18b80e50b698e17e6c072f4959c"
+        }
+      ],
+      "reviewer_questions": [
+        "What minimum investment and consumption activities should appear in an acceptable brief?",
+        "Would you accept an explicitly partial investment answer while requesting consumption evidence?"
+      ],
+      "attempts": {
+        "legacy": {
+          "path": "reports/workflow_pilot/comparison-2026-10-21/freeze_legacy_h03.json",
+          "sha256": "7e2a2d5b85d436f3d6ea66e2b0676964c3c5348bef0b223869c26316fc7e3239",
+          "status": "answered",
+          "retrieved_source_ids": [
+            "BOT_AUG_2026:0:0",
+            "BOT_AUG_2026:0:3",
+            "BOT_AUG_2026:4:1",
+            "BOT_AUG_2026:1:1",
+            "BOT_AUG_2026:0:1"
+          ],
+          "claims": 0
+        },
+        "workflow": {
+          "path": "reports/workflow_pilot/comparison-2026-10-21/freeze_workflow_h03.json",
+          "sha256": "e8873696538f5c05150202bfef02792ce68ec73c963cf49b499ec1328454dcea",
+          "status": "unanswered",
+          "retrieved_source_ids": [
+            "BOT_AUG_2026:0:0",
+            "BOT_AUG_2026:4:1",
+            "IEA_SEA_2024:166:2",
+            "BOT_AUG_2026:4:0",
+            "BOT_AUG_2026:1:1"
+          ],
+          "claims": 0
+        }
+      },
+      "human_adjudication": "pending"
+    },
+    {
+      "case_id": "h04",
+      "question": "Under IEA STEPS, what annual electricity-demand growth and TWh levels are projected for Southeast Asia by 2035?",
+      "required_facts": [
+        {
+          "id": "h04-f1",
+          "required_fact": "Electricity demand rises about 4% annually to 2035 in STEPS.",
+          "evidence_ids": [
+            "I-demand"
+          ],
+          "retrieval_coverage": {
+            "legacy": "complete",
+            "workflow": "complete"
+          },
+          "answer_coverage": {
+            "legacy": "complete",
+            "workflow": "missing"
+          }
+        },
+        {
+          "id": "h04-f2",
+          "required_fact": "The report’s starting demand level is over 1,300 TWh.",
+          "evidence_ids": [
+            "I-demand"
+          ],
+          "retrieval_coverage": {
+            "legacy": "complete",
+            "workflow": "complete"
+          },
+          "answer_coverage": {
+            "legacy": "missing",
+            "workflow": "missing"
+          }
+        },
+        {
+          "id": "h04-f3",
+          "required_fact": "Demand exceeds 2,000 TWh by 2035 in STEPS; do not substitute generation.",
+          "evidence_ids": [
+            "I-demand"
+          ],
+          "retrieval_coverage": {
+            "legacy": "complete",
+            "workflow": "complete"
+          },
+          "answer_coverage": {
+            "legacy": "missing",
+            "workflow": "missing"
+          }
+        }
+      ],
+      "variant_summaries": {
+        "legacy": "Valid demand growth and generation context, missing requested demand TWh level; added renewables percentages misattribute solar-only shares.",
+        "workflow": "Unsupported abstention despite complete demand evidence; gap messages confuse precision, metric and scenario distinctions."
+      },
+      "findings": [
+        {
+          "id": "h04-legacy-s1",
+          "case_id": "h04",
+          "variant": "legacy",
+          "kind": "sentence",
+          "input_pointer": "/row/response",
+          "span": [
+            0,
+            197
+          ],
+          "assessment": "supported",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "I-demand",
+            "I-generation"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:6:2",
+            "IEA_SEA_2024:85:0"
+          ],
+          "rationale": "Both the 4% demand growth and the separately labelled generation numbers are source-supported. However, the TWh clause answers generation, not the requested demand level; do not label the valid generation fact itself false.",
+          "components": [
+            {
+              "proposition": "Electricity demand grows about 4% annually to 2035 in STEPS",
+              "assessment": "supported"
+            },
+            {
+              "proposition": "Generation rises from 1,300 TWh (2023) to over 2,200 TWh (2035 STEPS)",
+              "assessment": "supported"
+            }
+          ],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "f1cf70e212fcc5eb8c7f1702574808cab1513b36362c7b67e09789f2df5c0d27"
+        },
+        {
+          "id": "h04-legacy-s2",
+          "case_id": "h04",
+          "variant": "legacy",
+          "kind": "sentence",
+          "input_pointer": "/row/response",
+          "span": [
+            197,
+            365
+          ],
+          "assessment": "contradicted",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "I-solar"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:6:3",
+            "IEA_SEA_2024:85:0"
+          ],
+          "rationale": "The 3%/10%/20% shares refer to solar PV alone. Applying them to all renewables changes the category; the report puts all-renewables generation above one-third in 2035.",
+          "components": [
+            {
+              "proposition": "Renewables expand, led by solar PV",
+              "assessment": "supported"
+            },
+            {
+              "proposition": "All renewables have the stated 3%, 10%, 20% generation shares",
+              "assessment": "contradicted"
+            }
+          ],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "025816fe2ac1da7bae94a66175fe730bc9a969722ac55509881ca08552f13d95"
+        },
+        {
+          "id": "h04-workflow-abstention",
+          "case_id": "h04",
+          "variant": "workflow",
+          "kind": "abstention",
+          "input_pointer": "/row/response",
+          "span": [
+            0,
+            0
+          ],
+          "assessment": "unsupported",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "I-demand"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:6:2"
+          ],
+          "rationale": "All requested demand facts are together in returned chunk 6:2. Generation and scenario differences elsewhere do not justify an empty answer.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "h04-workflow-w1",
+          "case_id": "h04",
+          "variant": "workflow",
+          "kind": "warning",
+          "input_pointer": "/details/draft/warnings/0",
+          "span": [
+            0,
+            102
+          ],
+          "assessment": "partially supported",
+          "scope": "frozen retrieved-evidence availability",
+          "evidence_ids": [
+            "I-demand",
+            "I-generation"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:6:2",
+            "IEA_SEA_2024:85:0"
+          ],
+          "rationale": "The source gives rounded/bounded levels rather than an exact point estimate, but it does provide the requested STEPS demand baseline and above-2,000 TWh projection. APS is outside this question; generation figures are a different quantity.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "823b12977b64f98ab0fa55fc316a69a859b244cd91db0207791ebe2f5730178f"
+        },
+        {
+          "id": "h04-workflow-w2",
+          "case_id": "h04",
+          "variant": "workflow",
+          "kind": "warning",
+          "input_pointer": "/details/draft/warnings/1",
+          "span": [
+            0,
+            127
+          ],
+          "assessment": "unsupported",
+          "scope": "frozen retrieved-evidence availability",
+          "evidence_ids": [
+            "I-demand",
+            "I-generation"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:6:2",
+            "IEA_SEA_2024:85:0"
+          ],
+          "rationale": "Different scenarios or different quantities do not establish contradictory facts. No incompatible same-scope annual demand growth rates are identified in this warning.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "afb00e2f8abe08b0d90fa7f08359aad3c2a76a8956703cf68400b700f6598a74"
+        },
+        {
+          "id": "h04-workflow-w3",
+          "case_id": "h04",
+          "variant": "workflow",
+          "kind": "warning",
+          "input_pointer": "/details/draft/warnings/2",
+          "span": [
+            0,
+            72
+          ],
+          "assessment": "supported",
+          "scope": "frozen retrieved-evidence availability",
+          "evidence_ids": [
+            "I-historical"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:6:2"
+          ],
+          "rationale": "The source is historical and its 2035 figures are forecasts. The question explicitly asks for that report’s projection, so the caution is appropriate context, not an abstention reason.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "73ec3f54b697e68641adc60497c953f0c348d18b80e50b698e17e6c072f4959c"
+        }
+      ],
+      "reviewer_questions": [
+        "Would you remove generation context or retain it as separately labelled background?",
+        "How would you correct the solar-versus-all-renewables sentence?"
+      ],
+      "attempts": {
+        "legacy": {
+          "path": "reports/workflow_pilot/comparison-2026-10-21/freeze_legacy_h04.json",
+          "sha256": "7df1f38b1b5efe0048012f9e2b01b54e1066238b61aada4fbb995202d551f8bf",
+          "status": "answered",
+          "retrieved_source_ids": [
+            "IEA_SEA_2024:85:0",
+            "IEA_SEA_2024:6:2",
+            "IEA_SEA_2024:6:3",
+            "IEA_SEA_2024:98:2",
+            "IEA_SEA_2024:83:0"
+          ],
+          "claims": 0
+        },
+        "workflow": {
+          "path": "reports/workflow_pilot/comparison-2026-10-21/freeze_workflow_h04.json",
+          "sha256": "71615c85b326ba56ec14c9d3b5700b6eca863660d76759fa4fcbec2f41c56471",
+          "status": "unanswered",
+          "retrieved_source_ids": [
+            "IEA_SEA_2024:85:0",
+            "IEA_SEA_2024:6:2",
+            "IEA_SEA_2024:82:0",
+            "IEA_SEA_2024:20:0",
+            "IEA_SEA_2024:83:0"
+          ],
+          "claims": 0
+        }
+      },
+      "human_adjudication": "pending"
+    },
+    {
+      "case_id": "h05",
+      "question": "What regional EV battery-cell capacity and planned expansion does the IEA describe, and what is Indonesia and the Philippines’ combined share of mined nickel?",
+      "required_facts": [
+        {
+          "id": "h05-f1",
+          "required_fact": "Existing regional EV battery-cell capacity was 16 GWh at end-2023.",
+          "evidence_ids": [
+            "I-capacity"
+          ],
+          "retrieval_coverage": {
+            "legacy": "complete",
+            "workflow": "complete"
+          },
+          "answer_coverage": {
+            "legacy": "missing",
+            "workflow": "complete"
+          }
+        },
+        {
+          "id": "h05-f2",
+          "required_fact": "Planned committed additions were 39 GWh/almost 40 GWh by 2030, not total resulting capacity.",
+          "evidence_ids": [
+            "I-capacity"
+          ],
+          "retrieval_coverage": {
+            "legacy": "complete",
+            "workflow": "complete"
+          },
+          "answer_coverage": {
+            "legacy": "partial",
+            "workflow": "complete"
+          }
+        },
+        {
+          "id": "h05-f3",
+          "required_fact": "Indonesia plus the Philippines supplied about 65% of global mined nickel, not refining.",
+          "evidence_ids": [
+            "I-nickel"
+          ],
+          "retrieval_coverage": {
+            "legacy": "missing",
+            "workflow": "missing"
+          },
+          "answer_coverage": {
+            "legacy": "missing",
+            "workflow": "missing"
+          }
+        }
+      ],
+      "variant_summaries": {
+        "legacy": "Ambiguous stock/additions wording and missing 16 GWh baseline; absence of nickel share is accurately scoped to its provided contexts.",
+        "workflow": "All three cited claims are supported, but the required nickel share is not retrieved or answered. Several country-specific gaps are unrequested."
+      },
+      "findings": [
+        {
+          "id": "h05-legacy-s1",
+          "case_id": "h05",
+          "variant": "legacy",
+          "kind": "sentence",
+          "input_pointer": "/row/response",
+          "span": [
+            0,
+            187
+          ],
+          "assessment": "partially supported",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "I-capacity"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:160:2"
+          ],
+          "rationale": "39 GWh committed additions and 23 GWh preliminary announcements are supported. “Capacity ... increase to 39 GWh of ... additions” leaves stock versus additions ambiguous, and the existing 16 GWh stock is absent.",
+          "components": [
+            {
+              "proposition": "39 GWh are committed planned additions by 2030, not a stated total stock",
+              "assessment": "supported"
+            },
+            {
+              "proposition": "A further 23 GWh are preliminary announcements",
+              "assessment": "supported"
+            },
+            {
+              "proposition": "The wording clearly distinguishes resulting total capacity from additions",
+              "assessment": "unsupported"
+            }
+          ],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "c96fa894253802c6c9b9801632d516e2305ebce11ac93f66ce1e134b7c24f865"
+        },
+        {
+          "id": "h05-legacy-s2",
+          "case_id": "h05",
+          "variant": "legacy",
+          "kind": "sentence",
+          "input_pointer": "/row/response",
+          "span": [
+            187,
+            381
+          ],
+          "assessment": "supported",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "I-leading"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:160:2"
+          ],
+          "rationale": "The named countries and roughly 1% figure match the committed-2030 discussion. This should not be read as a statement about the current installed-capacity ranking.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "4d23877f5338992bca2c63a50edda376432f63743f3d31b69e0d41bd075de53e"
+        },
+        {
+          "id": "h05-legacy-s3",
+          "case_id": "h05",
+          "variant": "legacy",
+          "kind": "sentence",
+          "input_pointer": "/row/response",
+          "span": [
+            381,
+            620
+          ],
+          "assessment": "supported",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "I-factory",
+            "I-factory-other"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:161:1"
+          ],
+          "rationale": "The 2024 announcement, 10 GWh, partnership and USD 9.8 billion are explicitly in PDF page 162 and the retrieved chunk. This is source attribution, not independent real-world verification; page 172 has a different date/budget whose relationship is unresolved (see SI-1).",
+          "components": [
+            {
+              "proposition": "2024 start-up announcement and 10 GWh capacity",
+              "assessment": "supported"
+            },
+            {
+              "proposition": "Hyundai/LG/Indonesia Battery Corporation partnership",
+              "assessment": "supported"
+            },
+            {
+              "proposition": "The paragraph states USD 9.8 billion backing",
+              "assessment": "supported"
+            }
+          ],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "7560143fc4399317e6101715c6679994eb82ece8a65a0345e7e45ca720167206"
+        },
+        {
+          "id": "h05-legacy-s4",
+          "case_id": "h05",
+          "variant": "legacy",
+          "kind": "sentence",
+          "input_pointer": "/row/response",
+          "span": [
+            620,
+            730
+          ],
+          "assessment": "supported",
+          "scope": "frozen retrieved-evidence availability",
+          "evidence_ids": [
+            "I-nickel"
+          ],
+          "supporting_evidence_retrieved": "no",
+          "matching_retrieved_chunk_ids": [],
+          "rationale": "Correct only within its explicit “provided evidence” scope: none of the five captured contexts supplies the combined nickel percentage. The complete source and corpus DO supply about 65%; this is a retrieval miss, not global source absence.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "fbe8c88248ce74a05c10815ecbfc5d5a9e500c468f52e9c9bc835dfdebc8559e"
+        },
+        {
+          "id": "h05-workflow-c1",
+          "case_id": "h05",
+          "variant": "workflow",
+          "kind": "claim",
+          "input_pointer": "/details/draft/claims/0/text",
+          "span": [
+            0,
+            226
+          ],
+          "assessment": "supported",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "I-capacity"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:160:2",
+            "IEA_SEA_2024:7:3"
+          ],
+          "rationale": "The cited chunk explicitly distinguishes 16 GWh existing stock, 39 GWh committed additions and 23 GWh preliminary announcements with their time bases.",
+          "components": [
+            {
+              "proposition": "16 GWh existed at end-2023",
+              "assessment": "supported"
+            },
+            {
+              "proposition": "39 GWh are committed additions by 2030",
+              "assessment": "supported"
+            },
+            {
+              "proposition": "23 GWh are preliminary announcements",
+              "assessment": "supported"
+            }
+          ],
+          "citation_assessments": [
+            {
+              "source_id": "IEA_SEA_2024:160:2",
+              "exists_in_corpus": true,
+              "returned_in_this_attempt": true,
+              "assessment": "supported",
+              "rationale": "The cited captured chunk contains the claim’s stated facts; this does not prove full answer completeness."
+            }
+          ],
+          "human_adjudication": "pending",
+          "original_text_sha256": "ad8ec1033904b8c7aa568cdc5390ea2dc1afae36ae9f7b341701e77dabee22b2"
+        },
+        {
+          "id": "h05-workflow-c2",
+          "case_id": "h05",
+          "variant": "workflow",
+          "kind": "claim",
+          "input_pointer": "/details/draft/claims/1/text",
+          "span": [
+            0,
+            136
+          ],
+          "assessment": "supported",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "I-leading"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:160:2"
+          ],
+          "rationale": "Countries, global proportion and 2030 committed-capacity context match the cited chunk.",
+          "components": [],
+          "citation_assessments": [
+            {
+              "source_id": "IEA_SEA_2024:160:2",
+              "exists_in_corpus": true,
+              "returned_in_this_attempt": true,
+              "assessment": "supported",
+              "rationale": "The cited captured chunk contains the claim’s stated facts; this does not prove full answer completeness."
+            }
+          ],
+          "human_adjudication": "pending",
+          "original_text_sha256": "200f71b9593fa8c2bf2895e0569925ce38c62a495cb37196606084310fe531e1"
+        },
+        {
+          "id": "h05-workflow-c3",
+          "case_id": "h05",
+          "variant": "workflow",
+          "kind": "claim",
+          "input_pointer": "/details/draft/claims/2/text",
+          "span": [
+            0,
+            130
+          ],
+          "assessment": "supported",
+          "scope": "source fidelity and task contribution",
+          "evidence_ids": [
+            "I-hub"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:7:3"
+          ],
+          "rationale": "The cited executive-summary chunk explicitly links Indonesia’s expected hub role to its natural resources.",
+          "components": [],
+          "citation_assessments": [
+            {
+              "source_id": "IEA_SEA_2024:7:3",
+              "exists_in_corpus": true,
+              "returned_in_this_attempt": true,
+              "assessment": "supported",
+              "rationale": "The cited captured chunk contains the claim’s stated facts; this does not prove full answer completeness."
+            }
+          ],
+          "human_adjudication": "pending",
+          "original_text_sha256": "de3bd94808950e986aa7f2b07a8c6a81d9bbabd1422fa7df585bf0e0655edbf0"
+        },
+        {
+          "id": "h05-workflow-w1",
+          "case_id": "h05",
+          "variant": "workflow",
+          "kind": "warning",
+          "input_pointer": "/details/draft/warnings/0",
+          "span": [
+            0,
+            115
+          ],
+          "assessment": "partially supported",
+          "scope": "frozen retrieved-evidence availability",
+          "evidence_ids": [
+            "I-country-plans"
+          ],
+          "supporting_evidence_retrieved": "partial",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:161:1"
+          ],
+          "rationale": "Indonesia’s 2025/2030 capacity announcements are in a returned chunk, so the Indonesia absence is wrong. The captured contexts do not provide a Philippine battery expansion figure; that country-specific detail is not required by this regional question.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "9d46e1d601ee5ed94ecf31a823c4d16e058cde3f5d6c5c0d05f148d1d70bcef7"
+        },
+        {
+          "id": "h05-workflow-w2",
+          "case_id": "h05",
+          "variant": "workflow",
+          "kind": "warning",
+          "input_pointer": "/details/draft/warnings/1",
+          "span": [
+            0,
+            169
+          ],
+          "assessment": "unsupported",
+          "scope": "frozen retrieved-evidence availability",
+          "evidence_ids": [
+            "I-capacity",
+            "I-country-plans"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:160:2",
+            "IEA_SEA_2024:161:1",
+            "IEA_SEA_2024:7:3"
+          ],
+          "rationale": "Country-level figures for different years and a regional committed-additions figure are not automatically contradictory. The warning establishes no same-scope inconsistency.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "97a7ae0dca883999f74b073d9d3b7809d836ea4ffc2ffe720190940b656b7712"
+        },
+        {
+          "id": "h05-workflow-w3",
+          "case_id": "h05",
+          "variant": "workflow",
+          "kind": "warning",
+          "input_pointer": "/details/draft/warnings/2",
+          "span": [
+            0,
+            93
+          ],
+          "assessment": "supported",
+          "scope": "frozen retrieved-evidence availability",
+          "evidence_ids": [
+            "I-historical"
+          ],
+          "supporting_evidence_retrieved": "metadata only",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:7:3"
+          ],
+          "rationale": "The publication year is 2024, and “may not reflect” current conditions is a qualified freshness caution. It does not negate the requested historical report summary.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "faf4fbd0b0a1927e46e4dee29a620d7d91d3e6212402c03ca5387864b66c9885"
+        },
+        {
+          "id": "h05-workflow-w4",
+          "case_id": "h05",
+          "variant": "workflow",
+          "kind": "warning",
+          "input_pointer": "/details/draft/warnings/3",
+          "span": [
+            0,
+            107
+          ],
+          "assessment": "supported",
+          "scope": "frozen retrieved-evidence availability",
+          "evidence_ids": [
+            "I-leading",
+            "I-country-plans"
+          ],
+          "supporting_evidence_retrieved": "no",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:160:2",
+            "IEA_SEA_2024:161:1"
+          ],
+          "rationale": "Within the five captured contexts, Malaysia/Viet Nam are named without their detailed country capacity additions. The full PDF page 162 has further details after the retrieved span. These country breakdowns were not required.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "cfb50e9b706291b3e57d7edc74f9111172931ca9b02d50201a7ae4aa03b29867"
+        },
+        {
+          "id": "h05-workflow-w5",
+          "case_id": "h05",
+          "variant": "workflow",
+          "kind": "warning",
+          "input_pointer": "/details/draft/warnings/4",
+          "span": [
+            0,
+            101
+          ],
+          "assessment": "supported",
+          "scope": "frozen retrieved-evidence availability",
+          "evidence_ids": [
+            "I-country-plans"
+          ],
+          "supporting_evidence_retrieved": "no",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:161:1"
+          ],
+          "rationale": "No specific Philippine battery expansion figure appears in the captured contexts. This is a narrow local absence, not a verified claim that the entire report lacks it; it is also not the requested mined-nickel statistic.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "1e753d051cd929ba15ba5205758b4262d94e37b287afc47c662a695f777845c9"
+        },
+        {
+          "id": "h05-workflow-w6",
+          "case_id": "h05",
+          "variant": "workflow",
+          "kind": "warning",
+          "input_pointer": "/details/draft/warnings/5",
+          "span": [
+            0,
+            72
+          ],
+          "assessment": "supported",
+          "scope": "frozen retrieved-evidence availability",
+          "evidence_ids": [
+            "I-historical"
+          ],
+          "supporting_evidence_retrieved": "yes",
+          "matching_retrieved_chunk_ids": [
+            "IEA_SEA_2024:7:3"
+          ],
+          "rationale": "The dated source contains forecasts, and they should remain labelled projections. This does not answer or excuse the missing mined-nickel share.",
+          "components": [],
+          "citation_assessments": [],
+          "human_adjudication": "pending",
+          "original_text_sha256": "73ec3f54b697e68641adc60497c953f0c348d18b80e50b698e17e6c072f4959c"
+        }
+      ],
+      "reviewer_questions": [
+        "Does the additions wording need clarification before use?",
+        "Should the unrequested factory cost/timeline details be omitted pending resolution of SI-1?",
+        "Which source span should support the mined-nickel percentage?"
+      ],
+      "attempts": {
+        "legacy": {
+          "path": "reports/workflow_pilot/comparison-2026-10-21/freeze_legacy_h05.json",
+          "sha256": "e0ff1e17e40420756bb2decf3d7773a2aad90547cf62a801e25e1ccb9ec5f0a6",
+          "status": "answered",
+          "retrieved_source_ids": [
+            "IEA_SEA_2024:160:2",
+            "IEA_SEA_2024:161:1",
+            "IEA_SEA_2024:6:3",
+            "IEA_SEA_2024:124:2",
+            "IEA_SEA_2024:70:1"
+          ],
+          "claims": 0
+        },
+        "workflow": {
+          "path": "reports/workflow_pilot/comparison-2026-10-21/freeze_workflow_h05.json",
+          "sha256": "0bf92f3f8a16735e04b752eeebc2e08d7f52ffa54cb52ead525865a8bf8fb728",
+          "status": "answered",
+          "retrieved_source_ids": [
+            "IEA_SEA_2024:160:2",
+            "IEA_SEA_2024:161:1",
+            "IEA_SEA_2024:171:2",
+            "IEA_SEA_2024:7:3",
+            "IEA_SEA_2024:163:2"
+          ],
+          "claims": 3
+        }
+      },
+      "human_adjudication": "pending"
+    }
+  ],
+  "reference_checks": [
+    {
+      "case_id": "h01",
+      "reference_unchanged": "Merchandise exports excluding gold remained high, supported by the global technology and AI cycle. Technology-related exports moderated after earlier strong growth, while other products increased.",
+      "assessment": "supported",
+      "evidence_ids": [
+        "B-export",
+        "B-export-categories"
+      ],
+      "qualification": "The other-products increase is supported contextual information; the question does not require every extra reference fact.",
+      "human_adjudication": "pending"
+    },
+    {
+      "case_id": "h02",
+      "reference_unchanged": "Headline inflation rose with fresh-food prices affected by adverse weather and production costs, and with higher energy prices following global crude oil. Core inflation rose as businesses passed higher costs to consumers.",
+      "assessment": "supported",
+      "evidence_ids": [
+        "B-inflation"
+      ],
+      "qualification": "The reference is supported by the causal explanations on BOT PDF page 1.",
+      "human_adjudication": "pending"
+    },
+    {
+      "case_id": "h03",
+      "reference_unchanged": "Private investment improved, especially machinery and equipment supported by the global technology cycle and data-center investment. Private consumption increased slightly, including more spending on services such as hotels and restaurants.",
+      "assessment": "supported",
+      "evidence_ids": [
+        "B-consumption",
+        "B-investment",
+        "B-investment-driver"
+      ],
+      "qualification": "The data-center driver is in the key highlight on the same source page, not inferred from the machinery detail.",
+      "human_adjudication": "pending"
+    },
+    {
+      "case_id": "h04",
+      "reference_unchanged": "The IEA projects Southeast Asian electricity demand to grow about 4% annually to 2035, rising from over 1,300 TWh to above 2,000 TWh.",
+      "assessment": "supported",
+      "evidence_ids": [
+        "I-demand"
+      ],
+      "qualification": "The reference correctly uses demand above 2,000 TWh, not generation above 2,200 TWh.",
+      "human_adjudication": "pending"
+    },
+    {
+      "case_id": "h05",
+      "reference_unchanged": "The region had 16 GWh of EV battery-cell manufacturing capacity and plans for almost 40 GWh more by 2030. Indonesia and the Philippines together produced about 65% of global mined nickel.",
+      "assessment": "supported",
+      "evidence_ids": [
+        "I-capacity",
+        "I-nickel"
+      ],
+      "qualification": "Almost 40 GWh is compatible with the detailed 39 GWh committed additions. The page-index-7 locator is incomplete for the word mined, which continues on index 8; index 34 supplies a complete statement. Add those locators only in a future dataset revision.",
+      "human_adjudication": "pending"
+    }
+  ],
+  "source_issues": [
+    {
+      "id": "SI-1",
+      "assessment": "unverifiable",
+      "evidence_ids": [
+        "I-factory",
+        "I-factory-other"
+      ],
+      "issue": "PDF page 162 states a 2024 start-up announcement and USD 9.8 billion backing; page 172 describes an opening in 2023 and a USD 1.1 billion project.",
+      "why_unresolved": "The pinned report alone does not establish whether these dates and budgets describe identical project/phase/investment scope. Neither paragraph is silently declared authoritative.",
+      "action": "Human reviewer should omit the optional facility detail or preserve explicit paragraph attribution until the relationship is checked. No external verification is performed in this audit.",
+      "human_adjudication": "pending"
+    }
+  ],
+  "development_backlog": [
+    {
+      "priority": "P1",
+      "change": "Require question-fact coverage before declaring evidence unavailable; preserve supported partial answers.",
+      "findings": [
+        "h02-workflow-abstention",
+        "h03-workflow-abstention",
+        "h03-workflow-w1",
+        "h04-workflow-abstention"
+      ],
+      "future_check": "On development-only cases, require a supported partial answer when specific investment evidence is available, and no blanket missing-evidence statement when required facts were returned."
+    },
+    {
+      "priority": "P1",
+      "change": "Distinguish demand/generation, solar/all-renewables, stocks/additions, scenario and time scopes.",
+      "findings": [
+        "h04-legacy-s2",
+        "h04-workflow-w2",
+        "h05-legacy-s1",
+        "h05-workflow-w2"
+      ],
+      "future_check": "Use development contrasts with identical units but different measures/scenarios; no incompatible scope substitution or unsupported conflict label."
+    },
+    {
+      "priority": "P1",
+      "change": "Retrieve for each requested subtopic and inspect adjacent/complete evidence spans within the existing bounded workflow.",
+      "findings": [
+        "h05-legacy-s4",
+        "h03-workflow-abstention"
+      ],
+      "future_check": "A development battery-plus-nickel request must cover both subtopics and the complete mined-production unit; do not infer new benchmark improvement from these already inspected cases."
+    },
+    {
+      "priority": "P2",
+      "change": "Make gap messages specific to requested facts and distinguish captured-context absence from whole-source absence.",
+      "findings": [
+        "h01-workflow-w1",
+        "h01-workflow-w2",
+        "h01-workflow-w3",
+        "h05-workflow-w1",
+        "h05-workflow-w4",
+        "h05-workflow-w5"
+      ],
+      "future_check": "No invented requirement for unrequested country breakdowns or exact figures; freshness cautions must not suppress explicitly historical questions."
+    },
+    {
+      "priority": "P2",
+      "change": "Treat source/reference reconciliation as an explicit review task.",
+      "findings": [
+        "h05-legacy-s3"
+      ],
+      "future_check": "Flag SI-1 and propose a versioned locator update for h05 without modifying this frozen dataset or promoting source attribution to independently verified truth."
+    }
+  ],
+  "boundary_follow_up": "docs/pilot/validation-2026-10-21.md#reserved-boundary-cases-with-the-real-local-model",
+  "coverage": {
+    "attempts": 10,
+    "response_sentence_units": 10,
+    "workflow_claims": 6,
+    "workflow_warnings": 15,
+    "workflow_abstentions": 3,
+    "total_findings": 34,
+    "workflow_citation_links": 6,
+    "assessment_counts": {
+      "partially supported": 6,
+      "supported": 18,
+      "contradicted": 5,
+      "unverifiable": 1,
+      "unsupported": 4
+    },
+    "note": "Counts describe audit entries, not benchmark scores or performance rates."
+  },
+  "verification": {
+    "protected_files_checked": 157,
+    "protected_files_changed": [],
+    "human_review_rows_pending": 10,
+    "coverage_complete": true,
+    "errors": [],
+    "all_six_workflow_citation_links_source_checked": true,
+    "source_pdf_hashes_match": true,
+    "validation_kind": "deterministic integrity/coverage checks plus assistant source interpretation; no automated semantic ground truth",
+    "captured_contexts_checked_against_corpus": 50,
+    "original_statement_spans_checked": 34,
+    "markdown_assessments_match_structured_audit": true,
+    "packet_contains_unchanged_responses_and_drafts": true,
+    "existing_local_links_checked": 71
+  }
+}

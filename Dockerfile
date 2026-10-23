@@ -24,11 +24,10 @@ RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
 # Copy pinned requirements first to optimize Docker layer caching
-COPY requirements.txt .
+COPY requirements.txt constraints-pilot.txt ./
 
 # Install and build dependency wheel packages
-RUN pip install --upgrade pip setuptools wheel && \
-    pip install -r requirements.txt
+RUN pip install -r requirements.txt -c constraints-pilot.txt
 
 
 # =====================================================================

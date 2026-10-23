@@ -8,6 +8,7 @@ import io
 import json
 import os
 import uuid
+from unittest.mock import AsyncMock
 from contextlib import contextmanager, redirect_stdout
 from pathlib import Path
 from types import SimpleNamespace
@@ -59,9 +60,10 @@ def observe_evaluation(root, monkeypatch, scenario):
         return {"response": f" Answer {text[-1]} ", "retrieved_contexts": [" Evidence ", ""],
                 "citations": [{"doc_name": "sample", "page_num": 0}]}
 
-    def judge():
+    def judge(*, return_client=False):
         events.append(["judge"])
-        return object()
+        value = object()
+        return (value, SimpleNamespace(close=AsyncMock())) if return_client else value
 
     def embeddings(**kwargs):
         events.append(["embeddings", kwargs])

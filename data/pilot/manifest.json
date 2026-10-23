@@ -1,0 +1,39 @@
+{
+  "frozen_on": "2026-10-21",
+  "development_ids": [
+    "d01",
+    "d02",
+    "d03",
+    "d04",
+    "d05",
+    "d06",
+    "d07",
+    "d08",
+    "d09",
+    "d10"
+  ],
+  "held_out_ids": [
+    "h01",
+    "h02",
+    "h03",
+    "h04",
+    "h05",
+    "h06",
+    "h07",
+    "h08",
+    "h09",
+    "h10"
+  ],
+  "comparison_ids": [
+    "h01",
+    "h02",
+    "h03",
+    "h04",
+    "h05"
+  ],
+  "sha256": {
+    "cases.json": "acb0933b846713b0a7e7305681ce99a760d1079d5221f11955dbd83ab18f2c86",
+    "synthetic_corpus.json": "737f57f4a47086d50f5d459dad537e2a4ffcb394a6278da13d99dfcc04d3b67e"
+  },
+  "limitation": "Source-backed questions reuse previously studied BOT/IEA facts; this split is for this sprint, not an unseen benchmark."
+}

@@ -1,6 +1,7 @@
 import json
 from contextlib import contextmanager
 from types import SimpleNamespace
+from unittest.mock import AsyncMock
 
 import pandas as pd
 
@@ -64,7 +65,7 @@ def test_collection_metrics_score_and_record_a_real_agent_row(tmp_path, monkeypa
     monkeypatch.setattr(run_ragas, "query_agent", lambda _: {
         "response": "nickel answer", "retrieved_contexts": ["nickel source"], "status": "ok"
     })
-    monkeypatch.setattr(run_ragas, "_judge_llm", lambda: object())
+    monkeypatch.setattr(run_ragas, "_judge_llm", lambda **_: (object(), SimpleNamespace(close=AsyncMock())))
     monkeypatch.setattr(run_ragas, "RagasHuggingFaceEmbeddings", lambda **kwargs: object())
 
     values = {
