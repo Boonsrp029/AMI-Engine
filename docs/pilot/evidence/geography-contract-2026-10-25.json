@@ -1,0 +1,140 @@
+{
+  "date": "2026-10-25",
+  "assessment_author": "assistant-authored implementation evidence; no new human scores",
+  "requested_contract_status": "implemented and verified offline",
+  "mapping_version": "requested-evidence-v5",
+  "prompt_version": "analyst-pilot-v1.8",
+  "raw_geography_contract": {
+    "required": true,
+    "defaults": "none",
+    "fields": [
+      "status",
+      "value",
+      "evidence",
+      "reason"
+    ],
+    "known": "Nonblank value, selected span IDs, empty reason",
+    "unresolved": "Explicit empty value/evidence and a nonblank reason; not substituted for an omitted field"
+  },
+  "provenance": {
+    "checks": [
+      "Retrieved source identity",
+      "Selected component span when supported facts exist",
+      "Exact original quotation",
+      "Content hash",
+      "Character offsets",
+      "Literal whole-phrase location match"
+    ],
+    "retained_in": [
+      "Resolved evidence mapping geography_resolution",
+      "evidence_scope event"
+    ],
+    "limit": "These checks establish provenance, not semantic classification of a place or exhaustive proof of absence"
+  },
+  "unresolved_behavior": {
+    "supported_facts_preserved": true,
+    "partial_answers_preserved": true,
+    "warning": "Geographic scope is unresolved for this draft; verify the cited sources before approval.",
+    "raw_reason": "Retained in diagnostic evidence; not echoed as arbitrary product instructions",
+    "no_capitalization_or_possessive_inference": true,
+    "no_automatic_abstention_for_unknown_geography": true,
+    "missing_answer_and_unknown_location": "Distinct states; existing no-information message remains unchanged"
+  },
+  "offline_validation": {
+    "baseline_tests": 204,
+    "new_regressions": 40,
+    "full_tests_passed": 244,
+    "full_warnings": 3,
+    "full_seconds": 17.98,
+    "targeted_tests_passed": 176,
+    "targeted_warnings": 2,
+    "targeted_seconds": 48.42,
+    "full_command": ".\\.venv-pilot-clean\\Scripts\\python.exe -m pytest -q --basetemp .pytest-tmp/geography-contract-full",
+    "warnings": [
+      "Unity Catalog Pydantic configuration",
+      "Starlette/httpx TestClient",
+      "MLflow predict type hints"
+    ],
+    "model_quality_limit": "Fixed responses and pure contract checks; not a real LLM-quality measurement"
+  },
+  "offline_artifacts": {
+    "schema": {
+      "path": "reports/workflow_pilot/geography-contract-2026-10-25/mapper-schema.json",
+      "sha256": "5d6dec7a6da0f597883bed6a875ca629986659904e8e1b4d292ebafa8a718bbf"
+    },
+    "contract_examples": {
+      "path": "reports/workflow_pilot/geography-contract-2026-10-25/offline-contract-evidence.json",
+      "sha256": "50d34c2905c448b59ba33f076bc89d80d3495fb22ded910bc448919f2a7f7760"
+    }
+  },
+  "archived_failure": {
+    "path": "reports/workflow_pilot/scope-validation-2026-10-25/preflight-fresh-scoped-multipart.json",
+    "sha256": "c3662e1c2e3aa4c91e71802182d80aaedcfdfda567e9187cc0f6b8b89962d04b",
+    "new_schema_errors": [
+      {
+        "loc": [
+          "geography"
+        ],
+        "type": "missing"
+      }
+    ],
+    "historical_record_unchanged": true,
+    "old_gate_reclassified": false
+  },
+  "requirement_evidence": [
+    {
+      "requirement": "Required geography, omission not silently defaulted",
+      "evidence": "Emitted schema and archived raw-response rejection, plus omission regressions"
+    },
+    {
+      "requirement": "Known location retains selected-span provenance",
+      "evidence": "Resolved span ID/source ID/hash/offset/quotation assertions and synthetic known example"
+    },
+    {
+      "requirement": "Explicit unresolved state",
+      "evidence": "State-validation tests and truly unlocated synthetic passage; fixed unknown cases retain supported output"
+    },
+    {
+      "requirement": "Offline checks before generation",
+      "evidence": "244 passing offline tests; zero new model/NeMo/Ragas calls"
+    },
+    {
+      "requirement": "Preserve partial facts and avoid name guessing",
+      "evidence": "Partial-answer integration tests and anonymous/Atlas/IEA text cases"
+    },
+    {
+      "requirement": "Human review and usage stop conditions",
+      "evidence": "No new actual draft awaits review; usage checked before long steps; saved handoff identifies future checkpoints"
+    }
+  ],
+  "boundaries": {
+    "public_api_changed": false,
+    "sqlite_schema_changed": false,
+    "dependencies_changed": false,
+    "model_settings_changed": false,
+    "retrieval_changed": false,
+    "four_call_limit_retained": true,
+    "guardrail_and_approval_controls_retained": true,
+    "new_model_calls": 0,
+    "new_nemo_calls": 0,
+    "ragas_runs": 0,
+    "hosted_inference": false,
+    "committed": false,
+    "pushed": false,
+    "deployed": false,
+    "reviewers_contacted": false
+  },
+  "manual_review": {
+    "required_now": false,
+    "reason": "No new actual analyst drafts or empirical quality claims",
+    "required_later": [
+      "Actual revised drafts: source support, geographic classification, completeness, causes, dates/measures/scenarios",
+      "Any unresolved geography warning: owner verifies sources before approving",
+      "Exact-revision approval before export",
+      "External task sessions before independent-usefulness claims"
+    ],
+    "csv_instruction": "Leave historical human_review.csv unchanged"
+  },
+  "remaining_validation": "Actual local model compliance with the new object contract is unverified. Use new frozen fixtures and a new bounded experiment; never restart old stopped directories.",
+  "project_readiness": "Not production-qualified; prior failed quality gates retain their status"
+}

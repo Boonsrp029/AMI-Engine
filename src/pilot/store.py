@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from src.pilot.schemas import validate_citations
+from src.pilot._presentation import pdf_page_label
 
 
 class Conflict(ValueError):
@@ -170,7 +171,7 @@ class Store:
             lines += ["", "## Evidence gaps", *[f"- {warning}" for warning in draft["warnings"]], "", "## Sources"]
             for source_id, source in sources.items():
                 lines.append(f"- {source_id}: {source.get('title', '')}; {source.get('published') or 'date unknown'}; "
-                             f"{source.get('url', '')}; PDF page {source.get('page_num')}")
+                             f"{source.get('url', '')}; {pdf_page_label(source.get('page_num'))}")
             content = "\n".join(lines) + "\n"
             db.execute("INSERT INTO exports VALUES(?,?,?,?)", (run_id, row["revision"], content, now()))
             return content, row["revision"]

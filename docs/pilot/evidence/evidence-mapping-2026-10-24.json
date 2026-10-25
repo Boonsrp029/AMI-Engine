@@ -1,0 +1,623 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "author": "Codex (assistant)",
+  "assessment_kind": "Assistant-authored technical diagnostics; new attempts await owner review",
+  "quality_gate": "failed",
+  "implementation_status": "saved; not qualified for reviewer use",
+  "identity": {
+    "date": "2026-10-24",
+    "started_at": "2026-10-24T20:52:12.734378+07:00",
+    "case_ids": [
+      "d01",
+      "d02",
+      "d03",
+      "d04",
+      "d06"
+    ],
+    "prompt_version": "analyst-pilot-v1.4",
+    "prompt_sha256": "8be235878d0c139536a147d759f5e16eebcfdd24fc70d66523b02eb2c9456326",
+    "mapping_version": "requested-evidence-v1",
+    "mapping_prompt_sha256": "68e304783f4d77b4caf70821c78ff8c9a3516dff8dd57243806e75d1119b2f00",
+    "mapping_module_sha256": "1bb6d260d678d5ae18706705eb7d75aef8fac6b55d377b1451358aafb575dc9a",
+    "maximum_workflow_model_calls": 4,
+    "engine_sha256": "6cd69057464e76670dba31699d3764ceebbe671e2241e07c8313b6644de271bb",
+    "model": "ami-llama3.1:8b-4k",
+    "model_digest": "6f3154f347c4f96858a9f259e64d96b2675f4cb2f4894b2d9714fb0752aecc23",
+    "context_limit": 4096,
+    "completion_limit": 900,
+    "temperature": 0,
+    "corpus_sha256": "c85c832ac6ba6bfb3b85baa47c6e2ea3ffae428875e1c1a3d47bcba4deb2b011",
+    "guardrails": "unchanged real local NeMo; internal calls uncounted",
+    "versions": {
+      "langchain-ollama": "1.1.0",
+      "langgraph": "1.0.10",
+      "nemoguardrails": "0.23.0"
+    },
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "maximum_workflow_attempts": 5,
+    "ragas": "not run",
+    "human_review": "pending for these new outputs",
+    "external_review": "pending"
+  },
+  "cases": [
+    {
+      "case_id": "d01",
+      "human_review": "pending",
+      "artifact": "reports/workflow_pilot/evidence-mapping-2026-10-24/attempt-d01.json",
+      "sha256": "89fd78d40675ff4424a3130d29c292b8ad9b74d102f67747a48b166792467757",
+      "status": "failed",
+      "assistant_assessment": "Failed mapping validation; no final brief or valid abstention produced.",
+      "validation_issues": [
+        {
+          "component_index": 0,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 0,
+          "code": "supported_without_quotations"
+        },
+        {
+          "component_index": 1,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 1,
+          "code": "supported_without_quotations"
+        },
+        {
+          "component_index": 2,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 2,
+          "code": "supported_without_quotations"
+        },
+        {
+          "component_index": 3,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 3,
+          "code": "supported_without_quotations"
+        },
+        {
+          "component_index": 4,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 4,
+          "code": "supported_without_quotations"
+        }
+      ],
+      "raw_output_fields_omitted": {
+        "short_answer": 5,
+        "evidence": 5
+      },
+      "mapping_finish_reason": "stop",
+      "mapping_input_tokens": 1747,
+      "mapping_output_tokens": 352,
+      "owner_acceptance": "acceptable with period clarification",
+      "acceptance_met": false,
+      "source_locators": [
+        {
+          "source_id": "BOT_AUG_2026:0:0",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:2:0",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 2,
+          "pdf_page_number": 3,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:0:3",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:2:1",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 2,
+          "pdf_page_number": 3,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:4:1",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 4,
+          "pdf_page_number": 5,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        }
+      ],
+      "measurements": {
+        "model_calls": 3,
+        "known_input_tokens": 3686,
+        "known_output_tokens": 439,
+        "token_usage_complete": false,
+        "stage_seconds": {
+          "tool_round_1": 15.064179000000877,
+          "tool_round_2": 1.986388100001932,
+          "evidence_mapping": 9.83183910000298
+        }
+      },
+      "elapsed_seconds": 27.112114999999903
+    },
+    {
+      "case_id": "d02",
+      "human_review": "pending",
+      "artifact": "reports/workflow_pilot/evidence-mapping-2026-10-24/attempt-d02.json",
+      "sha256": "950588fb02bbf649ae157cc04f19c19e25b0d836ba330fa70e25f4c04e72ebee",
+      "status": "failed",
+      "assistant_assessment": "Failed mapping validation; no final brief or valid abstention produced.",
+      "validation_issues": [
+        {
+          "component_index": 0,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 0,
+          "code": "supported_without_quotations"
+        },
+        {
+          "component_index": 1,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 1,
+          "code": "supported_without_quotations"
+        },
+        {
+          "component_index": 2,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 2,
+          "code": "supported_without_quotations"
+        }
+      ],
+      "raw_output_fields_omitted": {
+        "short_answer": 3,
+        "evidence": 3
+      },
+      "mapping_finish_reason": "stop",
+      "mapping_input_tokens": 1997,
+      "mapping_output_tokens": 174,
+      "owner_acceptance": "requires correction",
+      "acceptance_met": false,
+      "source_locators": [
+        {
+          "source_id": "BOT_AUG_2026:0:0",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:5:2",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 5,
+          "pdf_page_number": 6,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:4:2",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 4,
+          "pdf_page_number": 5,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:4:1",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 4,
+          "pdf_page_number": 5,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:5:0",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 5,
+          "pdf_page_number": 6,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        }
+      ],
+      "measurements": {
+        "model_calls": 3,
+        "known_input_tokens": 4183,
+        "known_output_tokens": 318,
+        "token_usage_complete": false,
+        "stage_seconds": {
+          "tool_round_1": 0.9382660000010219,
+          "tool_round_2": 3.5338276000002224,
+          "evidence_mapping": 5.58112489999985
+        }
+      },
+      "elapsed_seconds": 10.184776599999168
+    },
+    {
+      "case_id": "d03",
+      "human_review": "pending",
+      "artifact": "reports/workflow_pilot/evidence-mapping-2026-10-24/attempt-d03.json",
+      "sha256": "3175522a5f356cdfa48d5c9628fc5604552d05d2c29b1883662de487e5f90e1e",
+      "status": "failed",
+      "assistant_assessment": "Failed mapping validation; no final brief or valid abstention produced.",
+      "validation_issues": [
+        {
+          "component_index": 0,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 0,
+          "code": "supported_without_quotations"
+        },
+        {
+          "component_index": 0,
+          "code": "anchor_not_in_question"
+        },
+        {
+          "component_index": 1,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 1,
+          "code": "supported_without_quotations"
+        },
+        {
+          "component_index": 1,
+          "code": "anchor_not_in_question"
+        },
+        {
+          "component_index": 2,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 2,
+          "code": "supported_without_quotations"
+        },
+        {
+          "component_index": 2,
+          "code": "anchor_not_in_question"
+        },
+        {
+          "component_index": 3,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 3,
+          "code": "supported_without_quotations"
+        },
+        {
+          "component_index": 3,
+          "code": "anchor_not_in_question"
+        },
+        {
+          "component_index": 4,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 4,
+          "code": "supported_without_quotations"
+        }
+      ],
+      "raw_output_fields_omitted": {
+        "short_answer": 5,
+        "evidence": 5
+      },
+      "mapping_finish_reason": "stop",
+      "mapping_input_tokens": 1822,
+      "mapping_output_tokens": 256,
+      "owner_acceptance": "unacceptable",
+      "acceptance_met": false,
+      "source_locators": [
+        {
+          "source_id": "BOT_AUG_2026:0:0",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:4:1",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 4,
+          "pdf_page_number": 5,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:0:3",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:1:4",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 1,
+          "pdf_page_number": 2,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:1:0",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 1,
+          "pdf_page_number": 2,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        }
+      ],
+      "measurements": {
+        "model_calls": 3,
+        "known_input_tokens": 3829,
+        "known_output_tokens": 556,
+        "token_usage_complete": false,
+        "stage_seconds": {
+          "tool_round_1": 0.8932004000016605,
+          "tool_round_2": 7.368921799999953,
+          "evidence_mapping": 7.722310200002539
+        }
+      },
+      "elapsed_seconds": 16.008212200002163
+    },
+    {
+      "case_id": "d04",
+      "human_review": "pending",
+      "artifact": "reports/workflow_pilot/evidence-mapping-2026-10-24/attempt-d04.json",
+      "sha256": "666243aebd6f24ec637205f2f292bca6de7601b64bf6cd7b48c4e42c24078716",
+      "status": "failed",
+      "assistant_assessment": "Failed mapping validation; no final brief or valid abstention produced.",
+      "validation_issues": [
+        {
+          "component_index": 0,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 0,
+          "code": "supported_without_quotations"
+        },
+        {
+          "component_index": 1,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 1,
+          "code": "supported_without_quotations"
+        },
+        {
+          "component_index": 2,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 2,
+          "code": "supported_without_quotations"
+        },
+        {
+          "component_index": 3,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 3,
+          "code": "supported_without_quotations"
+        }
+      ],
+      "raw_output_fields_omitted": {
+        "short_answer": 4,
+        "evidence": 4
+      },
+      "mapping_finish_reason": "stop",
+      "mapping_input_tokens": 1918,
+      "mapping_output_tokens": 179,
+      "owner_acceptance": "assessment accepted; page clarification",
+      "acceptance_met": false,
+      "source_locators": [
+        {
+          "source_id": "IEA_SEA_2024:47:0",
+          "doc_name": "IEA_SEA_2024",
+          "page_index": 47,
+          "pdf_page_number": 48,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf"
+        },
+        {
+          "source_id": "IEA_SEA_2024:88:0",
+          "doc_name": "IEA_SEA_2024",
+          "page_index": 88,
+          "pdf_page_number": 89,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf"
+        },
+        {
+          "source_id": "IEA_SEA_2024:66:0",
+          "doc_name": "IEA_SEA_2024",
+          "page_index": 66,
+          "pdf_page_number": 67,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf"
+        },
+        {
+          "source_id": "IEA_SEA_2024:139:0",
+          "doc_name": "IEA_SEA_2024",
+          "page_index": 139,
+          "pdf_page_number": 140,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf"
+        },
+        {
+          "source_id": "IEA_SEA_2024:101:0",
+          "doc_name": "IEA_SEA_2024",
+          "page_index": 101,
+          "pdf_page_number": 102,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf"
+        }
+      ],
+      "measurements": {
+        "model_calls": 3,
+        "known_input_tokens": 4035,
+        "known_output_tokens": 398,
+        "token_usage_complete": false,
+        "stage_seconds": {
+          "tool_round_1": 1.111856200001057,
+          "tool_round_2": 5.493356000002677,
+          "evidence_mapping": 5.624725799996668
+        }
+      },
+      "elapsed_seconds": 12.256368399997882
+    },
+    {
+      "case_id": "d06",
+      "human_review": "pending",
+      "artifact": "reports/workflow_pilot/evidence-mapping-2026-10-24/attempt-d06.json",
+      "sha256": "2033209768c2b2a6641da2fd67cfed85b71b3297da482002e98bafe7ab81ee0d",
+      "status": "failed",
+      "assistant_assessment": "Failed mapping validation; no final brief or valid abstention produced.",
+      "validation_issues": [
+        {
+          "component_index": 0,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 0,
+          "code": "supported_without_quotations"
+        },
+        {
+          "component_index": 1,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 1,
+          "code": "supported_without_quotations"
+        },
+        {
+          "component_index": 2,
+          "code": "supported_without_answer"
+        },
+        {
+          "component_index": 2,
+          "code": "supported_without_quotations"
+        }
+      ],
+      "raw_output_fields_omitted": {
+        "short_answer": 3,
+        "evidence": 3
+      },
+      "mapping_finish_reason": "stop",
+      "mapping_input_tokens": 1752,
+      "mapping_output_tokens": 143,
+      "owner_acceptance": "requires abstention",
+      "acceptance_met": false,
+      "source_locators": [
+        {
+          "source_id": "BOT_AUG_2026:0:2",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:5:0",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 5,
+          "pdf_page_number": 6,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "IEA_SEA_2024:24:1",
+          "doc_name": "IEA_SEA_2024",
+          "page_index": 24,
+          "pdf_page_number": 25,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf"
+        },
+        {
+          "source_id": "IEA_SEA_2024:76:0",
+          "doc_name": "IEA_SEA_2024",
+          "page_index": 76,
+          "pdf_page_number": 77,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf"
+        },
+        {
+          "source_id": "IEA_SEA_2024:89:0",
+          "doc_name": "IEA_SEA_2024",
+          "page_index": 89,
+          "pdf_page_number": 90,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf"
+        }
+      ],
+      "measurements": {
+        "model_calls": 3,
+        "known_input_tokens": 3662,
+        "known_output_tokens": 341,
+        "token_usage_complete": false,
+        "stage_seconds": {
+          "tool_round_1": 0.7889439999999013,
+          "tool_round_2": 4.91627410000001,
+          "evidence_mapping": 4.613646300000255
+        }
+      },
+      "elapsed_seconds": 10.343403499999113
+    }
+  ],
+  "counts": {
+    "workflow_attempts": 5,
+    "final_drafts": 0,
+    "valid_abstentions": 0,
+    "validation_failures": 5,
+    "composition_calls": 0,
+    "guardrail_invocations": 0
+  },
+  "offline_validation": {
+    "baseline_tests": 100,
+    "full_tests_passed": 140,
+    "full_warnings": 3,
+    "full_seconds": 15.51,
+    "targeted_tests_passed": 72,
+    "targeted_warnings": 2,
+    "targeted_seconds": 14.21,
+    "command": ".\\.venv-pilot-clean\\Scripts\\python.exe -m pytest -q --basetemp .pytest-tmp/evidence-mapping-full",
+    "environment": "Full and targeted suites ran outside sandbox for Windows asyncio loopback sockets.",
+    "initial_failures": [
+      "One synthetic quotation was a paraphrase; fixed fixture to use the actual source text.",
+      "Transient Windows Application Control block importing PyArrow's native CSV extension. A direct import and rerun succeeded without library or security-setting changes."
+    ]
+  },
+  "browser_validation": {
+    "kind": "automated synthetic QA; no external human usage",
+    "source_inspection": [
+      "PDF page 1",
+      "PDF page 7",
+      "PDF page unavailable"
+    ],
+    "citation_selection": [
+      "PDF page 1",
+      "PDF page 7",
+      "PDF page unavailable"
+    ],
+    "screenshot": "reports/workflow_pilot/evidence-mapping-2026-10-24/browser-page-labels.png",
+    "model_calls": 0,
+    "temporary_server_and_tab": "stopped/closed after inspection"
+  },
+  "message_behavior": {
+    "exact_text": "Sorry, our database does not contain the information you requested, please try again.",
+    "delivery": "empty-claim Draft warning with specific evidence gaps, preserving the API shape",
+    "offline_test": "passed",
+    "local_model_test": "not reached; d06 mapping was invalid"
+  },
+  "root_cause": "All five model responses omitted short_answer/evidence fields and asserted supported status. Pydantic defaults allowed structural parsing; conditional validation rejected the empty answers/quotations. d03 also supplied non-question anchors.",
+  "limits": [
+    "Five development attempts only; not a matched before/after or unseen benchmark.",
+    "No generation retries, Ragas, hosted model calls or model/library changes.",
+    "Structural quotation/coverage checks do not establish semantic entailment or relevance.",
+    "All mappings stopped normally below the 900-token output limit; no observed length truncation. This does not prove every token/context issue absent.",
+    "No final draft reached NeMo in this run; its behavior on the revised real composition path remains unverified.",
+    "Original owner comments and completed CSV remain unchanged; no new numerical human ratings."
+  ],
+  "measurements": {
+    "workflow_model_calls": 15,
+    "known_input_tokens": 19395,
+    "known_output_tokens": 2052,
+    "workflow_seconds": 75.90487569999823,
+    "token_usage_complete": false,
+    "monetary_cost": null
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "date": "2026-10-25",
+  "assessment_author": "assistant-authored; no human ratings assigned",
+  "verdict": "Request Changes",
+  "gate": "failed; stopped at first probe",
+  "identity": {
+    "started_at": "2026-10-25T15:22:02.109037+07:00",
+    "prompt_version": "analyst-pilot-v1.7",
+    "mapping_version": "requested-evidence-v4",
+    "frozen_checks_sha256": "580e2b91de5c5879b84d8c4c5b670e516abdc332c7caa783f6e9bcc01d52d644",
+    "implementation_hashes": {
+      ".pilot-work/scope-validation/preflight.py": "c6523bd7c8b81d4950574b2bad6c5a305854b445825c50e27e891c5a67975f49",
+      ".pilot-work/scope-validation/checks.py": "93b2429e037ce65f2713d67372b1b2f02d464e761f97176a5de1889db0f67231",
+      ".pilot-work/scope-validation/run_workflows.py": "2df4b5c85c1e7e6f0755f23bf0c5b459650d0a94ae98e698186716b2fdfce6a1",
+      "src/pilot/_evidence.py": "603f3be0524d6fbe85ac037e76a50112c82b6ca1cc69acd174e5022335345fb9",
+      "src/pilot/_scope.py": "88c7d27dfb7a45e840239556bd7edd3d5aec50cd2158afdfcfadf2015f3d0463",
+      "src/pilot/engine.py": "50f11fbaec33441cf4f19083f2c2a1bb33360594de77987a06f4142a460f2a27",
+      "data/pilot/cases.json": "acb0933b846713b0a7e7305681ce99a760d1079d5221f11955dbd83ab18f2c86",
+      "data/external/market_sources/prepared/market_chunks.json": "c85c832ac6ba6bfb3b85baa47c6e2ea3ffae428875e1c1a3d47bcba4deb2b011"
+    },
+    "mapping_module_sha256": "603f3be0524d6fbe85ac037e76a50112c82b6ca1cc69acd174e5022335345fb9",
+    "engine_sha256": "50f11fbaec33441cf4f19083f2c2a1bb33360594de77987a06f4142a460f2a27",
+    "scope_module_sha256": "88c7d27dfb7a45e840239556bd7edd3d5aec50cd2158afdfcfadf2015f3d0463",
+    "mapping_prompt_sha256": "3e35b161803164ca795e6503d76b3b90ae508cf2efa013d004bfa91e229a0742",
+    "model": "ami-llama3.1:8b-4k",
+    "model_digest": "6f3154f347c4f96858a9f259e64d96b2675f4cb2f4894b2d9714fb0752aecc23",
+    "context_limit": 4096,
+    "completion_limit": 900,
+    "temperature": 0,
+    "client_timeout_seconds": 90,
+    "versions": {
+      "langchain-ollama": "1.1.0",
+      "langgraph": "1.0.10",
+      "pydantic": "2.12.5"
+    },
+    "generation_budget": {
+      "mapper_probes": 3,
+      "conditional_workflows": 5,
+      "workflow_call_ceiling": 4,
+      "maximum_main_calls": 23,
+      "nemo_internal_calls": "separately reported, incompletely measured"
+    },
+    "ragas": "not run",
+    "hosted_inference": false
+  },
+  "new_application_changes": false,
+  "new_dependency_changes": false,
+  "offline_baseline": {
+    "last_verified_tests": 204,
+    "warnings": 3,
+    "status": "Historical result, not rerun in this generation-only pass; implementation hashes unchanged",
+    "source_record": "docs/pilot/evidence/scope-contract-2026-10-25.json"
+  },
+  "harness_validation": "Three fixed fixture examples passed before local generation; not model quality evidence",
+  "preflights": [
+    {
+      "case_id": "fresh-scoped-multipart",
+      "artifact": "reports/workflow_pilot/scope-validation-2026-10-25/preflight-fresh-scoped-multipart.json",
+      "sha256": "c3662e1c2e3aa4c91e71802182d80aaedcfdfda567e9187cc0f6b8b89962d04b",
+      "checks": {
+        "parsed": true,
+        "not_truncated": true,
+        "mapping_valid": true,
+        "component_limit": true,
+        "all_supported": true,
+        "correct_source_selection": true,
+        "required_quotations": true,
+        "answer_facts": true,
+        "no_distractor_claims": true,
+        "geography_in_final": false,
+        "period_in_final_claims": true,
+        "period_qualifies_measure_claim": true
+      },
+      "status": "failed",
+      "parsing": "passed",
+      "mapping": "valid",
+      "fact_checks": "passed for these frozen synthetic facts",
+      "period_retention": "passed in deterministic final fallback projection",
+      "geography_retention": "failed in deterministic final fallback projection",
+      "projection": "Scripted empty composer; no real composition or NeMo call",
+      "owner_acceptance": "not requested for this technical failure",
+      "done_reason": "stop",
+      "usage": {
+        "input_tokens": 763,
+        "output_tokens": 99,
+        "total_tokens": 862
+      },
+      "seconds": 15.100619499993627
+    },
+    {
+      "case_id": "fresh-missing-observation",
+      "status": "not run after stop"
+    },
+    {
+      "case_id": "fresh-causal-selection",
+      "status": "not run after stop"
+    }
+  ],
+  "diagnosis": {
+    "raw_geography_field_present": false,
+    "schema_requires_geography": false,
+    "schema_geography_default": "",
+    "parsed_geography": "",
+    "resolved_geography": "",
+    "source_contains_requested_geography": true,
+    "expected_geography": "Juniper Reach",
+    "source_span": "s_68ba4c7162934d0c",
+    "source_id": "storage-log",
+    "explanation": "The schema permits omission and parsing inserts an empty geography. Scope propagation deliberately does not infer geography, so projection retains the repaired date but lacks the requested place.",
+    "not_observed": [
+      "invalid token/authentication",
+      "unknown span",
+      "wrong capacity figure",
+      "quotation rewriting",
+      "output truncation"
+    ],
+    "evidence_limits": "No real composer ran, so its possible geography handling is untested. One probe does not measure broad model reliability or prove an inherent open-source-model/GPU limitation."
+  },
+  "next_technical_action": "Make geography explicit in the mapper response contract, keep selected-span provenance and an explicit unresolved state, and regression-test omission versus genuine unknown scope. Preserve partial facts; do not silently guess place names or relabel this stopped experiment. Validate offline before any new bounded generation run.",
+  "workflow_cases": {
+    "case_ids": [
+      "d01",
+      "d02",
+      "d03",
+      "d04",
+      "d06"
+    ],
+    "attempts": 0,
+    "reason": "All three probes must pass before workflows"
+  },
+  "generation": {
+    "mapper_calls": 1,
+    "composer_calls": 0,
+    "workflow_calls": 0,
+    "nemo_calls": 0,
+    "ragas_runs": 0,
+    "hosted_inference": false,
+    "retries": 0
+  },
+  "manual_review": {
+    "required_now": false,
+    "reason": "Confirmed technical gate failure; no completed analyst workflow draft",
+    "optional_now": "Inspect the retained synthetic response and exact evidence in the packet; no CSV score requested",
+    "required_later": [
+      "Source support rather than topic overlap",
+      "Period/geography/measure/scenario correctness",
+      "Causal completeness, especially d03",
+      "Useful partial answers and evidence-gap language",
+      "Exact revision approval before export",
+      "External task sessions before independent-usefulness claims"
+    ]
+  },
+  "boundaries": {
+    "committed": false,
+    "pushed": false,
+    "deployed": false,
+    "reviewers_contacted": false
+  }
+}

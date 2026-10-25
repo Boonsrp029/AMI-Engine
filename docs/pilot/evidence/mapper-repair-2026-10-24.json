@@ -1,0 +1,511 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "author": "Codex (assistant)",
+  "assessment_kind": "Technical diagnostics and assistant source review; no new numerical human ratings",
+  "preflight_gate_passed": true,
+  "workflow_attempts": 5,
+  "quality_gate": "failed",
+  "preflights": [
+    {
+      "case_id": "probe-answerable",
+      "artifact": "reports/workflow_pilot/mapper-repair-2026-10-24/preflight-probe-answerable.json",
+      "sha256": "ad204dd82199b3a0934ccf545fd5643c0726dd9576b1143ff805a740caea5a8e",
+      "status": "passed",
+      "checks": {
+        "parsed": true,
+        "mapping_valid": true,
+        "one_requested_component": true,
+        "supported": true,
+        "correct_amount": true,
+        "correct_unit": true,
+        "geography_retained": true,
+        "period_retained": true,
+        "correct_source": true
+      },
+      "elapsed_seconds": 14.599018600005365,
+      "usage": {
+        "input_tokens": 559,
+        "output_tokens": 83,
+        "total_tokens": 642
+      },
+      "done_reason": "stop"
+    },
+    {
+      "case_id": "probe-missing",
+      "artifact": "reports/workflow_pilot/mapper-repair-2026-10-24/preflight-probe-missing.json",
+      "sha256": "5302bd5dc7ae4fb1343193450e38a9bf41d0d7e319b8f6a631b07b40a264603e",
+      "status": "passed",
+      "checks": {
+        "parsed": true,
+        "mapping_valid": true,
+        "all_missing": true,
+        "explicit_empty_answers": true,
+        "explicit_empty_evidence": true,
+        "requested_price_anchor": true,
+        "requested_date_retained": true,
+        "specific_gap_present": true
+      },
+      "elapsed_seconds": 1.236874700000044,
+      "usage": {
+        "input_tokens": 563,
+        "output_tokens": 58,
+        "total_tokens": 621
+      },
+      "done_reason": "stop"
+    }
+  ],
+  "workflows": [
+    {
+      "case_id": "d01",
+      "artifact": "reports/workflow_pilot/mapper-repair-2026-10-24/attempt-d01.json",
+      "sha256": "5717bc84c9a7cd4ce0b7de82be8fce658adc0bf26ac5825359040c25875cb74a",
+      "runtime_status": "failed",
+      "human_review": "pending for this new output",
+      "parsing_success": true,
+      "required_fields_present": true,
+      "mapping_valid": false,
+      "acceptance_met_assistant_assessment": false,
+      "assistant_assessment": "Mapping validation failed: added electronics/automotive/petroleum anchors not in the question. Some quotes also normalize source punctuation. No final brief was produced.",
+      "claim_findings": [],
+      "validation_issues": [
+        {
+          "component_index": 2,
+          "code": "anchor_not_in_question"
+        },
+        {
+          "component_index": 2,
+          "quote_index": 0,
+          "code": "quote_not_in_assigned_source",
+          "assigned_source": "BOT_AUG_2026:2:0",
+          "other_matching_returned_sources": []
+        },
+        {
+          "component_index": 3,
+          "code": "anchor_not_in_question"
+        },
+        {
+          "component_index": 4,
+          "code": "anchor_not_in_question"
+        }
+      ],
+      "mapping_finish_reason": "stop",
+      "mapping_usage": {
+        "input_tokens": 1903,
+        "output_tokens": 429,
+        "total_tokens": 2332
+      },
+      "measurements": {
+        "model_calls": 3,
+        "known_input_tokens": 3842,
+        "known_output_tokens": 516,
+        "token_usage_complete": false,
+        "stage_seconds": {
+          "tool_round_1": 1.2298869999940507,
+          "tool_round_2": 1.7208499999978812,
+          "evidence_mapping": 10.063545500001055
+        }
+      },
+      "elapsed_seconds": 13.049417900001572,
+      "source_locators": [
+        {
+          "source_id": "BOT_AUG_2026:0:0",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:2:0",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 2,
+          "pdf_page_number": 3,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:0:3",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:2:1",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 2,
+          "pdf_page_number": 3,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:4:1",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 4,
+          "pdf_page_number": 5,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        }
+      ]
+    },
+    {
+      "case_id": "d02",
+      "artifact": "reports/workflow_pilot/mapper-repair-2026-10-24/attempt-d02.json",
+      "sha256": "db45db2f4ea6c83d63a5249230a2992c7842e2a8ccf69e46e8d38c06b8431f11",
+      "runtime_status": "failed",
+      "human_review": "pending for this new output",
+      "parsing_success": true,
+      "required_fields_present": true,
+      "mapping_valid": false,
+      "acceptance_met_assistant_assessment": false,
+      "assistant_assessment": "Mapping validation failed: the energy-price quote was assigned to BOT_AUG_2026:0:0 but actually occurs in returned source BOT_AUG_2026:5:0. The candidate also does not fully explain core inflation.",
+      "claim_findings": [],
+      "validation_issues": [
+        {
+          "component_index": 0,
+          "quote_index": 0,
+          "code": "quote_not_in_assigned_source",
+          "assigned_source": "BOT_AUG_2026:0:0",
+          "other_matching_returned_sources": [
+            "BOT_AUG_2026:5:0"
+          ]
+        }
+      ],
+      "mapping_finish_reason": "stop",
+      "mapping_usage": {
+        "input_tokens": 2153,
+        "output_tokens": 135,
+        "total_tokens": 2288
+      },
+      "measurements": {
+        "model_calls": 3,
+        "known_input_tokens": 4339,
+        "known_output_tokens": 279,
+        "token_usage_complete": false,
+        "stage_seconds": {
+          "tool_round_1": 0.8356127000006381,
+          "tool_round_2": 3.106894899996405,
+          "evidence_mapping": 3.993006400000013
+        }
+      },
+      "elapsed_seconds": 7.961685200003558,
+      "source_locators": [
+        {
+          "source_id": "BOT_AUG_2026:0:0",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:5:2",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 5,
+          "pdf_page_number": 6,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:4:2",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 4,
+          "pdf_page_number": 5,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:4:1",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 4,
+          "pdf_page_number": 5,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:5:0",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 5,
+          "pdf_page_number": 6,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        }
+      ]
+    },
+    {
+      "case_id": "d03",
+      "artifact": "reports/workflow_pilot/mapper-repair-2026-10-24/attempt-d03.json",
+      "sha256": "dd4a8086bac5fea53bdea103a63eb5725372c24fada24df04f7be7af35c48b7a",
+      "runtime_status": "answered",
+      "human_review": "pending for this new output",
+      "parsing_success": true,
+      "required_fields_present": true,
+      "mapping_valid": true,
+      "acceptance_met_assistant_assessment": false,
+      "assistant_assessment": "A draft reached and passed NeMo, but the consumption claim converts an index-definition note into a causal explanation. It omits the requested consumption direction and activities; the investment clause ends with a truncated 'investment in data'.",
+      "claim_findings": [
+        {
+          "index": 0,
+          "assessment": "partially supported; incomplete span",
+          "source_id": "BOT_AUG_2026:0:3",
+          "reason": "Higher private investment, machinery/equipment and technology-cycle support are available. The source chunk ends at 'data'; the draft repeats the incomplete phrase instead of qualifying the missing continuation."
+        },
+        {
+          "index": 1,
+          "assessment": "unsupported causal inference in assigned source",
+          "source_id": "BOT_AUG_2026:1:4",
+          "reason": "The citation defines PCI category/aggregate coverage and foreign-tourist treatment. It does not establish a main driver of consumption. Retrieved BOT_AUG_2026:1:0 supplies consumption direction and services/hotels/restaurants/semi-durable/durable activities that the draft omits."
+        }
+      ],
+      "validation_issues": [],
+      "mapping_finish_reason": "stop",
+      "mapping_usage": {
+        "input_tokens": 1992,
+        "output_tokens": 197,
+        "total_tokens": 2189
+      },
+      "measurements": {
+        "model_calls": 4,
+        "known_input_tokens": 4455,
+        "known_output_tokens": 571,
+        "token_usage_complete": false,
+        "stage_seconds": {
+          "tool_round_1": 0.7929945000068983,
+          "tool_round_2": 11.39720639999723,
+          "evidence_mapping": 5.3636829999959446,
+          "draft": 3.1287388000055216
+        }
+      },
+      "elapsed_seconds": 22.596187700000883,
+      "source_locators": [
+        {
+          "source_id": "BOT_AUG_2026:0:0",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:4:1",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 4,
+          "pdf_page_number": 5,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:4:0",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 4,
+          "pdf_page_number": 5,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:0:3",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:1:4",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 1,
+          "pdf_page_number": 2,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        }
+      ]
+    },
+    {
+      "case_id": "d04",
+      "artifact": "reports/workflow_pilot/mapper-repair-2026-10-24/attempt-d04.json",
+      "sha256": "b2a087e036b702e01c368b3d322e9f0d9953ba38d7591d06d95b2e696e5857ca",
+      "runtime_status": "failed",
+      "human_review": "pending for this new output",
+      "parsing_success": true,
+      "required_fields_present": true,
+      "mapping_valid": false,
+      "acceptance_met_assistant_assessment": false,
+      "assistant_assessment": "Mapping validation failed: quote retypes 'build -out' as 'build-out'. Independently, the assigned passage concerns all energy sources, not regional annual electricity demand. Relaxing punctuation matching would not solve the measure mismatch.",
+      "claim_findings": [],
+      "validation_issues": [
+        {
+          "component_index": 0,
+          "quote_index": 0,
+          "code": "quote_not_in_assigned_source",
+          "assigned_source": "IEA_SEA_2024:47:0",
+          "other_matching_returned_sources": []
+        }
+      ],
+      "mapping_finish_reason": "stop",
+      "mapping_usage": {
+        "input_tokens": 2074,
+        "output_tokens": 91,
+        "total_tokens": 2165
+      },
+      "measurements": {
+        "model_calls": 3,
+        "known_input_tokens": 4191,
+        "known_output_tokens": 310,
+        "token_usage_complete": false,
+        "stage_seconds": {
+          "tool_round_1": 0.8962766999975429,
+          "tool_round_2": 4.578653199998371,
+          "evidence_mapping": 3.0334090999967884
+        }
+      },
+      "elapsed_seconds": 8.534257100000104,
+      "source_locators": [
+        {
+          "source_id": "IEA_SEA_2024:47:0",
+          "doc_name": "IEA_SEA_2024",
+          "page_index": 47,
+          "pdf_page_number": 48,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf"
+        },
+        {
+          "source_id": "IEA_SEA_2024:88:0",
+          "doc_name": "IEA_SEA_2024",
+          "page_index": 88,
+          "pdf_page_number": 89,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf"
+        },
+        {
+          "source_id": "IEA_SEA_2024:66:0",
+          "doc_name": "IEA_SEA_2024",
+          "page_index": 66,
+          "pdf_page_number": 67,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf"
+        },
+        {
+          "source_id": "IEA_SEA_2024:139:0",
+          "doc_name": "IEA_SEA_2024",
+          "page_index": 139,
+          "pdf_page_number": 140,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf"
+        },
+        {
+          "source_id": "IEA_SEA_2024:101:0",
+          "doc_name": "IEA_SEA_2024",
+          "page_index": 101,
+          "pdf_page_number": 102,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf"
+        }
+      ]
+    },
+    {
+      "case_id": "d06",
+      "artifact": "reports/workflow_pilot/mapper-repair-2026-10-24/attempt-d06.json",
+      "sha256": "b03277a6d6ffa85c2e1766e0daa86892b4af6765ce8cb3d01ee2cab0154075cc",
+      "runtime_status": "abstained",
+      "human_review": "pending for this new output",
+      "parsing_success": true,
+      "required_fields_present": true,
+      "mapping_valid": true,
+      "acceptance_met_assistant_assessment": true,
+      "assistant_assessment": "Valid missing-evidence mapping: no claims, exact requested no-information message and a gap for retail electricity prices yesterday. Composer and NeMo were correctly skipped.",
+      "claim_findings": [],
+      "validation_issues": [],
+      "mapping_finish_reason": "stop",
+      "mapping_usage": {
+        "input_tokens": 1908,
+        "output_tokens": 44,
+        "total_tokens": 1952
+      },
+      "measurements": {
+        "model_calls": 3,
+        "known_input_tokens": 3818,
+        "known_output_tokens": 242,
+        "token_usage_complete": false,
+        "stage_seconds": {
+          "tool_round_1": 0.7162720000051195,
+          "tool_round_2": 4.31323749999865,
+          "evidence_mapping": 1.887589099998877
+        }
+      },
+      "elapsed_seconds": 6.9436868999982835,
+      "source_locators": [
+        {
+          "source_id": "BOT_AUG_2026:0:2",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 0,
+          "pdf_page_number": 1,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "BOT_AUG_2026:5:0",
+          "doc_name": "BOT_AUG_2026",
+          "page_index": 5,
+          "pdf_page_number": 6,
+          "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+        },
+        {
+          "source_id": "IEA_SEA_2024:24:1",
+          "doc_name": "IEA_SEA_2024",
+          "page_index": 24,
+          "pdf_page_number": 25,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf"
+        },
+        {
+          "source_id": "IEA_SEA_2024:76:0",
+          "doc_name": "IEA_SEA_2024",
+          "page_index": 76,
+          "pdf_page_number": 77,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf"
+        },
+        {
+          "source_id": "IEA_SEA_2024:89:0",
+          "doc_name": "IEA_SEA_2024",
+          "page_index": 89,
+          "pdf_page_number": 90,
+          "url": "https://iea.blob.core.windows.net/assets/ac357b64-0020-421c-98d7-f5c468dadb0f/SoutheastAsiaEnergyOutlook2024.pdf"
+        }
+      ]
+    }
+  ],
+  "preflight_identity": {
+    "started_at": "2026-10-24T23:04:36.278254+07:00",
+    "prompt_version": "analyst-pilot-v1.5",
+    "mapping_version": "requested-evidence-v2",
+    "mapping_module_sha256": "0fc59013712d01d2e20fac391e0a730e92c52d96672b71a7e0ce28e0df623c52",
+    "engine_sha256": "4e12c6d027ef7c7bfbdb1170fd398f0cede93d148f2e5cdd23e67662194de9d1",
+    "mapping_prompt_sha256": "ba781b7f01f51fef397a9476e9172db86e7c8fd4f71dae0f126466a7f1617d62",
+    "model": "ami-llama3.1:8b-4k",
+    "model_digest": "6f3154f347c4f96858a9f259e64d96b2675f4cb2f4894b2d9714fb0752aecc23",
+    "context_limit": 4096,
+    "completion_limit": 900,
+    "temperature": 0,
+    "fixtures_sha256": "ec652a33d2933bbd36e64092922a23aa20868178403451e934feaca4ccdc6db4",
+    "generation_budget": {
+      "mapper_preflights": 2,
+      "conditional_workflows": 5,
+      "workflow_call_cap": 4
+    },
+    "ragas": "not run",
+    "cloud_inference": false
+  },
+  "offline_validation": {
+    "baseline_tests": 140,
+    "full_tests_passed": 157,
+    "warnings": 3,
+    "full_seconds": 15.28,
+    "targeted_tests_passed": 89,
+    "targeted_seconds": 45.59,
+    "command": ".\\.venv-pilot-clean\\Scripts\\python.exe -m pytest -q --basetemp .pytest-tmp/mapper-repair-full"
+  },
+  "confirmed_fix": "Answers/evidence are schema-required; all seven new mapping responses supplied both fields. Both distinct synthetic probes passed. This establishes a bounded contract repair, not general factual accuracy.",
+  "remaining_causes": [
+    "Question decomposition adds unrequested components.",
+    "An exact quote can be assigned to the wrong returned source.",
+    "Retyping extraction punctuation violates the intentionally strict quote contract.",
+    "A valid quote and component link can still support a wrong causal interpretation.",
+    "Retrieved spans may be truncated or concern the wrong measure/geography."
+  ],
+  "limits": [
+    "No matched before/after or unseen benchmark claim.",
+    "Two probes and five workflows; no retries, Ragas or hosted inference.",
+    "d03 NeMo acceptance did not establish factual completeness or causal entailment.",
+    "Original owner comments, CSV and evaluation artifacts remain untouched.",
+    "All mapping finish reasons were stop; no observed length-limit failure. This does not establish general GPU/model adequacy."
+  ],
+  "measurements": {
+    "mapper_preflight_calls": 2,
+    "workflow_model_calls": 16,
+    "known_input_tokens": 21767,
+    "known_output_tokens": 2059,
+    "generation_seconds": 74.92112810000981,
+    "token_usage_complete": false,
+    "monetary_cost": null
+  }
+}

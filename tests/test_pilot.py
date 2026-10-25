@@ -15,6 +15,7 @@ from src.pilot.api import create_app
 from src.pilot.engine import Corpus, PilotEngine
 from src.pilot.schemas import Draft, ResearchRequest, ReviewRequest
 from src.pilot.store import Conflict, Store
+from src.pilot._evidence import EvidenceSelection, NO_INFORMATION
 
 
 @pytest.fixture
@@ -53,7 +54,18 @@ class ScriptedModel:
     def with_structured_output(self, schema, **kwargs):
         def invoke(messages):
             self.calls.append(messages)
-            return {"parsed": Draft.model_validate(self.output), "raw": AIMessage(content="draft",
+            if issubclass(schema, EvidenceSelection):
+                spans = [span["span_id"] for source in json.loads(messages[1].content)["evidence"]
+                    if source["source_id"] == self.output["claims"][0]["source_ids"][0]
+                    for span in source["spans"] if self.output["claims"][0]["text"] in span["text"]]
+                value = {"geography": {"status": "unresolved", "value": "", "evidence": [],
+                    "reason": "The export passage does not identify a location."}, "components": [{"component_id": "r1",
+                    "status": "supported",
+                    "short_answer": self.output["claims"][0]["text"], "evidence": spans or ["unknown-span"]}]}
+            else:
+                value = {"title": self.output["title"], "claims": [{"component_id": "r1", "text": c["text"]}
+                    for c in self.output["claims"]]}
+            return {"parsed": schema.model_validate(value), "raw": AIMessage(content="draft",
                 usage_metadata={"input_tokens": 10, "output_tokens": 5, "total_tokens": 15})}
         return SimpleNamespace(invoke=invoke)
 
@@ -64,8 +76,8 @@ def test_real_graph_uses_bounded_tools_and_known_citations(corpus):
     engine = PilotEngine(corpus, model, SimpleNamespace(validate_output=lambda **_: {"passed_guardrails": True}))
     result = engine.run("What changed in exports?", lambda *args: events.append(args))
     assert result["draft"]["claims"][0]["source_ids"] == ["a"]
-    assert result["metrics"]["model_calls"] == 3
-    assert result["metrics"]["known_output_tokens"] == 5
+    assert result["metrics"]["model_calls"] == 4
+    assert result["metrics"]["known_output_tokens"] == 10
     assert result["metrics"]["token_usage_complete"] is False
     assert any("Historical" in text for text in result["draft"]["warnings"])
     assert [event[1]["name"] for event in events if event[0] == "tool_result"] == ["search_sources", "inspect_source"]
@@ -88,7 +100,7 @@ def test_guardrail_failure_blocks_draft(corpus):
 
 
 def test_model_cannot_invent_citation(corpus):
-    with pytest.raises(ValueError, match="not retrieved"):
+    with pytest.raises(ValueError, match="unknown span"):
         PilotEngine(corpus, ScriptedModel(output=draft("unknown"))).run("Exports?")
 
 
@@ -107,7 +119,8 @@ def test_missing_evidence_returns_gaps_without_synthesis(corpus):
     ])
     result = PilotEngine(corpus, model).run("Unobtainium forecast?")
     assert result["sources"] == {} and result["draft"]["claims"] == []
-    assert "No usable evidence" in result["draft"]["warnings"][0]
+    assert result["draft"]["warnings"][0] == NO_INFORMATION
+    assert result["draft"]["warnings"][1] == "The retrieved documents do not establish an answer to: Unobtainium forecast?"
     assert len(model.calls) == 2
 
 

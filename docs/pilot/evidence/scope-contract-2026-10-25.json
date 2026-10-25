@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-25",
+  "assessment_author": "assistant-authored; no new owner ratings",
+  "implementation_status": "offline scope propagation contract implemented and tested",
+  "prompt_version": "analyst-pilot-v1.7",
+  "mapping_version": "requested-evidence-v4",
+  "historical_quality_gate": "failed and unchanged",
+  "new_model_quality": "unverified; no generation in this pass",
+  "scope_rules": [
+    "Only full English month/year or valid ISO dates are recognized automatically",
+    "Promote an unambiguous requested period only when it is colocated with the verbatim short answer in selected quotation text",
+    "Exclude quotations with publication-date cues from period qualification; never use source publication metadata as the measurement period",
+    "Mapper geography and period require occurrence in selected supporting quotations",
+    "Qualify only components whose selected quotations support that literal scope, retaining supporting source citations",
+    "Reject recognized composed periods absent from that component's evidence and overlong qualified text without truncation",
+    "Final qualified claims reach the existing NeMo boundary without extra model calls"
+  ],
+  "offline_validation": {
+    "baseline_tests": 184,
+    "final_full_tests": 204,
+    "new_tests": 20,
+    "full_seconds": 34.79,
+    "full_warnings": 3,
+    "full_command": ".\\.venv-pilot-clean\\Scripts\\python.exe -m pytest -q --basetemp .pytest-tmp/scope-contract-full-final",
+    "scope_unit_tests": 20,
+    "unit_seconds": 1.63,
+    "earlier_targeted": {
+      "passed": 116,
+      "warnings": 2,
+      "seconds": 44.34,
+      "note": "Before the final additional citation/publication guards; final full suite covers final code"
+    },
+    "warnings": [
+      "Unity Catalog Pydantic config",
+      "Starlette/httpx TestClient",
+      "MLflow predict type hints"
+    ],
+    "limit": "Fixed-response and pure-function tests are not model quality evidence"
+  },
+  "offline_reconstruction": {
+    "artifact": "reports/workflow_pilot/scope-contract-2026-10-25/offline-replay-final.json",
+    "sha256": "2fee882ec3d2c99a605d1c17c257734ccb21ebcfb38c40622def764c8ac20a20",
+    "checks": {
+      "scope_period": true,
+      "qualified_capacity": true,
+      "title_period": true,
+      "no_geography_guess": true,
+      "no_date_attached_to_unscoped_cause": true,
+      "original_file_unchanged": true,
+      "historical_gate_still_failed": true
+    },
+    "capacity_output": "April 2022: 17.5 GW",
+    "scripted_composition": true,
+    "guardrails_not_invoked_in_reconstruction": true,
+    "no_historical_gate_reclassification": true
+  },
+  "model_calls": 0,
+  "nemo_calls": 0,
+  "ragas_runs": 0,
+  "preserved_checklist": {
+    "path": "reports/workflow_pilot/source-spans-2026-10-25/review-packet.md",
+    "sha256": "549a24ee76b2f170ccf05ccad7f8b2febee7b585fd47f719c2ae2419a876bf94",
+    "observed_state": "Checklist present; no additional owner judgments marked in this file"
+  },
+  "manual_review": {
+    "required_now": false,
+    "reason": "No new actual model-generated analyst drafts",
+    "optional_now": "Inspect the documented offline reconstruction; no benchmark score or CSV edit requested",
+    "required_after_fresh_generation": [
+      "Claim support rather than topical similarity",
+      "Measurement period versus publication date",
+      "Geography and aliases",
+      "Projection versus observation and requested measure",
+      "Causal completeness, useful partial answers and gaps"
+    ],
+    "required_at_export": "Human approval of exact revision",
+    "required_before_independent_usefulness_claim": "External reviewer task sessions"
+  },
+  "limits": [
+    "No new actual mapper, composer or NeMo run; old missing-evidence/causal probes and five workflows remain unrun",
+    "No general geography extraction or alias resolution; blank geography remains blank",
+    "Occurrence of a scope phrase is provenance, not proof of the measurement's semantic scope",
+    "Publication-cue screening and literal-answer colocation are conservative heuristics, not a semantic parser",
+    "Bare years, abbreviations, relative dates and multiple requested periods are not automatically inferred",
+    "No retrieval or adjacent-span improvements"
+  ],
+  "next_action": "Freeze a new bounded local experiment with fresh fixtures for scoped multipart answers, missing dated observations and definition-versus-cause selection; only then consider conditional five-case workflows. Do not replay the old stopped experiment or request manual scores for technical failures.",
+  "boundaries": {
+    "dependencies_changed": false,
+    "public_api_changed": false,
+    "committed": false,
+    "pushed": false,
+    "deployed": false,
+    "reviewers_contacted": false
+  },
+  "verdict": "Request Changes: offline repair verified; end-to-end model quality remains unverified"
+}

@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-24",
+  "record_author": "Codex (assistant); transcription of owner judgments",
+  "reviewer": "sirapop-owner",
+  "review_status": "owner narrative review completed",
+  "external_review": "pending",
+  "numerical_ratings_assigned": false,
+  "source_path": "docs/pilot/draft-usefulness-2026-10-23.md",
+  "source_sha256": "d92982d86a9e7663a098e23a7b0cd76fda3b87f33dc334415f4e9b857452c608",
+  "section_heading": "My personal judgement (based on usefulness draft)",
+  "decisions": [
+    {
+      "case_id": "d01",
+      "verbatim_line": "- **d01**: The answer is sufficient and can respond to all requests, however, the brief is more complete after adding in the month and year (i.e. August 2026).",
+      "owner_decision": "acceptable with period clarification"
+    },
+    {
+      "case_id": "d02",
+      "verbatim_line": "- **d02**: The brief is acceptable after correction by adding the factors of the energy/global-oil prices.",
+      "owner_decision": "requires correction"
+    },
+    {
+      "case_id": "d03",
+      "verbatim_line": "- **d03**: Unacceptable. In the output it should have provide the overall information of investment and consumption. Do not discard available evidence for the output because of generic gap labels such as numbers and/or dates because these labels are not provided in the retreived source.",
+      "owner_decision": "unacceptable"
+    },
+    {
+      "case_id": "d04",
+      "verbatim_line": "- **d04**: The assessment provided is correct and cited but stated the wrong page. The cited reference is in page 7 and not page 6.",
+      "owner_decision": "assessment accepted; page clarification"
+    },
+    {
+      "case_id": "d06",
+      "verbatim_line": "- **d06**: The supplied evidence does not establish Thailand’s exact retail electricity prices for yesterday. I cannot provide a supported figure from these sources.",
+      "owner_decision": "requires abstention"
+    }
+  ],
+  "page_note": "Stored index 6 means reader-facing PDF page 7; the d04 retrieval miss remains separate.",
+  "historical_status_fields": "preserved; this sidecar records the later owner review"
+}

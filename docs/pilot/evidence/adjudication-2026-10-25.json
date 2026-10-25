@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-25",
+  "record_author": "assistant transcription of owner instructions",
+  "origin": "Owner message and explicit wording choices in this conversation, followed by approved implementation plan",
+  "status": "wording decisions approved by owner; future generated outputs are not owner-accepted",
+  "cases": {
+    "d03": {
+      "original_owner_revision_verbatim": "Private investment in Thailand in August 2026 was higher than July, particularly in machinery and equipment, supported by the global technology cycle and investment in data centers. Domestic expenditures, including those by foreign tourists, were the main driver of private consumption in Thailand in August 2026.",
+      "original_revision_sha256_utf8": "a84ea6820a66b4c2554656d1fab4d72719f80de8c7973c2aebd0c7254638a6d5",
+      "owner_choice": "Correct the explanation (Recommended)",
+      "approved_development_example": "Private investment in Thailand in August 2026 was higher than July, particularly in machinery and equipment, supported by the global technology cycle and investment in data centers. Private consumption increased slightly from the previous month, driven by spending on services, particularly hotels and restaurants, consistent with increased foreign tourist arrivals. Spending on semi-durable and durable goods also increased.",
+      "source_interpretation": "The PCI category/aggregate note describes measurement coverage; it does not establish the main causal driver of consumption.",
+      "source_locators": [
+        {
+          "source_id": "BOT_AUG_2026:0:3",
+          "pdf_page_index": 0,
+          "pdf_page": 1,
+          "purpose": "Monthly comparison, investment, machinery/equipment and technology-cycle overview; incomplete data-center clause"
+        },
+        {
+          "source_id": "BOT_AUG_2026:0:4",
+          "pdf_page_index": 0,
+          "pdf_page": 1,
+          "purpose": "Completes data centers; slight consumption increase"
+        },
+        {
+          "source_id": "BOT_AUG_2026:1:0",
+          "pdf_page_index": 1,
+          "pdf_page": 2,
+          "purpose": "Consumption change, services/hotels/restaurants and semi-durable/durable activities"
+        },
+        {
+          "source_id": "BOT_AUG_2026:1:1",
+          "pdf_page_index": 1,
+          "pdf_page": 2,
+          "purpose": "Seasonally adjusted investment increase from previous month"
+        },
+        {
+          "source_id": "BOT_AUG_2026:1:4",
+          "pdf_page_index": 1,
+          "pdf_page": 2,
+          "purpose": "Measurement-definition distinction; not causal support"
+        }
+      ]
+    },
+    "d06": {
+      "original_owner_no_information_verbatim": "I'm sorry, but based on our current document database, there are no documents or phrases available to answer this question. Please change your topic of question.",
+      "original_owner_gap_verbatim": "The current document database does not contain the following: Thailand's retail electricity prices yesterday",
+      "owner_choice": "Retrieved evidence (Recommended)",
+      "approved_no_information_message": "I'm sorry, but the documents retrieved from our current document database do not provide enough evidence to answer this question. Please rephrase your question or try another topic.",
+      "approved_gap_template": "The retrieved documents do not establish an answer to: [original question]",
+      "reason": "The current retriever returns selected passages and cannot establish database-wide absence.",
+      "source_status": "Intentionally missing observation in the frozen corpus; no price fact asserted"
+    }
+  },
+  "source_pdf": {
+    "path": "data/external/market_sources/bot_aug_2026.pdf",
+    "sha256": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+    "url": "https://www.bot.or.th/content/dam/bot/documents/en/thai-economy/state-of-thai-economy/monthly-report/macro-2026-08-press.pdf"
+  },
+  "corpus": {
+    "path": "data/external/market_sources/prepared/market_chunks.json",
+    "sha256": "c85c832ac6ba6bfb3b85baa47c6e2ea3ffae428875e1c1a3d47bcba4deb2b011"
+  },
+  "preserved_owner_records": {
+    "docs/pilot/draft-usefulness-2026-10-23.md": "d92982d86a9e7663a098e23a7b0cd76fda3b87f33dc334415f4e9b857452c608",
+    "reports/workflow_pilot/comparison-2026-10-21/human_review.csv": "88fd2d1a1d0c31d47cc39fd768c702ca61a1ecb619a116d679a5061ebcc8e64b"
+  },
+  "human_review": {
+    "prior_owner_review": "preserved",
+    "new_generated_outputs": "pending if assessable",
+    "external_usage": "pending",
+    "numerical_ratings_added": false
+  }
+}

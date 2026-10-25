@@ -1,0 +1,159 @@
+{
+  "date": "2026-10-25",
+  "assessment_author": "assistant-authored; no new human scores",
+  "implementation_status": "source-span selection and approved wording implemented",
+  "quality_gate": "failed; further local generation stopped",
+  "verdict": "Request Changes",
+  "identity": {
+    "started_at": "2026-10-25T11:57:20.123656+07:00",
+    "prompt_version": "analyst-pilot-v1.6",
+    "mapping_version": "requested-evidence-v3",
+    "mapping_module_sha256": "3d178fa2c07f16eb7abbdc000fc516eddb66877c338576b08ef527ace65d29a6",
+    "engine_sha256": "d824747b9ed72585e1f1d087c996975d7e96c7c21d906f14c9aecad4f78647af",
+    "mapping_prompt_sha256": "3e35b161803164ca795e6503d76b3b90ae508cf2efa013d004bfa91e229a0742",
+    "fixtures_sha256": "31c81c8c67a6ed636399c4c4251e647b7783b2a0d5f5a900ec3eaaeec8e95e67",
+    "model": "ami-llama3.1:8b-4k",
+    "model_digest": "6f3154f347c4f96858a9f259e64d96b2675f4cb2f4894b2d9714fb0752aecc23",
+    "context_limit": 4096,
+    "completion_limit": 900,
+    "temperature": 0,
+    "generation_budget": {
+      "mapper_preflights": 3,
+      "conditional_workflows": 5,
+      "workflow_call_cap": 4
+    },
+    "cloud_inference": false,
+    "ragas": "not run"
+  },
+  "offline_validation": {
+    "targeted": {
+      "passed": 116,
+      "warnings": 2,
+      "seconds": 35.35,
+      "command": ".\\.venv-pilot-clean\\Scripts\\python.exe -m pytest -q tests/test_pilot_source_spans.py tests/test_mapper_contract_repair.py tests/test_pilot_evidence.py tests/test_pilot_draft_instructions.py tests/test_pilot.py --basetemp .pytest-tmp/source-spans-targeted-unrestricted"
+    },
+    "full": {
+      "baseline_passed": 157,
+      "passed": 184,
+      "new_tests": 27,
+      "warnings": 3,
+      "seconds": 17.93,
+      "command": ".\\.venv-pilot-clean\\Scripts\\python.exe -m pytest -q --basetemp .pytest-tmp/source-spans-full"
+    },
+    "execution_note": "Sandboxed targeted run stalled at local API tests and was stopped. Completed runs used the authorized unrestricted local process for Windows asyncio loopback.",
+    "warnings": [
+      "Unity Catalog Pydantic config deprecation",
+      "Starlette/httpx TestClient deprecation",
+      "MLflow predict type hints"
+    ],
+    "evidence_limit": "Fixed-response tests establish wiring and contracts, not real model quality"
+  },
+  "adjudication_addendum": {
+    "path": "docs/pilot/evidence/adjudication-2026-10-25.json",
+    "sha256": "a954eb7b74a4d7a6aed7a2e6861799681537ce538fa0cc3fa3bce8a6a2c3883f"
+  },
+  "preflight_fixture_artifact": {
+    "path": "reports/workflow_pilot/source-spans-2026-10-25/preflight-fixtures.json",
+    "sha256": "31c81c8c67a6ed636399c4c4251e647b7783b2a0d5f5a900ec3eaaeec8e95e67"
+  },
+  "preflights": [
+    {
+      "case_id": "span-multipart",
+      "status": "failed",
+      "artifact": "reports/workflow_pilot/source-spans-2026-10-25/preflight-span-multipart.json",
+      "sha256": "0a3474ec99b3a62fcd51843cdcdb4a7bf1b51fee3daf3c49b8a17e31f6eb746c",
+      "checks": {
+        "parsed": true,
+        "not_truncated": true,
+        "mapping_valid": true,
+        "component_limit": true,
+        "all_supported": true,
+        "correct_sources": true,
+        "required_spans": true,
+        "answer_facts": false,
+        "no_distractor_claims": true,
+        "original_punctuation": true
+      },
+      "parsing_success": true,
+      "mapping_valid": true,
+      "selected_spans_correct": true,
+      "answer_quality": "Correct figure and expansion support, but required period omitted from answer text and optional scope metadata",
+      "owner_acceptance": "not requested for this synthetic technical failure",
+      "diagnosis": {
+        "failed_frozen_criterion": "April 2022 must occur in short-answer text",
+        "observed_answers": "17.5 GW new offshore links entering service",
+        "missing_answer_patterns": [
+          "April 2022"
+        ],
+        "period_preserved_elsewhere": [
+          "question anchor",
+          "resolved quotation"
+        ],
+        "empty_scope_metadata": {
+          "geography": "",
+          "period": ""
+        },
+        "not_observed": [
+          "unknown span",
+          "incorrect source assignment",
+          "quotation rewriting",
+          "output truncation",
+          "incorrect capacity figure"
+        ],
+        "interpretation_limit": "This preflight enforces a self-contained-answer period requirement. It does not show that the cited period was lost from the whole mapping or that composition would necessarily omit it; composition was not run.",
+        "next_technical_action": "Close the scope propagation contract: require supported period/geography or explicitly scoped short answers with validated provenance before composition. Keep the frozen probe unchanged and design new offline regressions before another separately bounded run; do not infer arbitrary dates from publication metadata."
+      },
+      "usage": {
+        "input_tokens": 761,
+        "output_tokens": 100,
+        "total_tokens": 861
+      },
+      "done_reason": "stop",
+      "elapsed_seconds": 59.51476830001047
+    },
+    {
+      "case_id": "span-missing",
+      "status": "not run; gate stopped at first failure"
+    },
+    {
+      "case_id": "span-cause",
+      "status": "not run; gate stopped at first failure"
+    }
+  ],
+  "workflow_attempts": {
+    "count": 0,
+    "selected_cases": [
+      "d01",
+      "d02",
+      "d03",
+      "d04",
+      "d06"
+    ],
+    "status": "not run because Gate 1 failed"
+  },
+  "measurement_limits": {
+    "workflow_calls": 0,
+    "mapper_calls": 1,
+    "nemo_calls": 0,
+    "monetary_cost": null,
+    "hardware_energy_cost": null
+  },
+  "manual_review": {
+    "required_now": false,
+    "reason": "No new completed analyst drafts; technical scope check failed before workflow testing",
+    "optional": "Inspect the retained synthetic output and source spans; no CSV score is requested",
+    "required_later": [
+      "Owner assesses factual support/completeness/usefulness of new valid drafts",
+      "Human approval of exact revision before export",
+      "External task sessions before independent-usefulness claims"
+    ]
+  },
+  "boundaries": {
+    "ragas": "not run",
+    "hosted_inference": false,
+    "committed": false,
+    "pushed": false,
+    "deployed": false,
+    "reviewers_contacted": false
+  }
+}

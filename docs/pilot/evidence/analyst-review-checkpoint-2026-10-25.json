@@ -1,0 +1,206 @@
+{
+  "date": "2026-10-25",
+  "author": "assistant-authored; awaiting human adjudication",
+  "quality_gate": "FAILED",
+  "owner_acceptance": "pending",
+  "external_usage": "pending",
+  "experiment": "reports/workflow_pilot/positional-request-validation-2026-10-25",
+  "identity": {
+    "date": "2026-10-25",
+    "started_at": "2026-10-25T19:07:38.427378+07:00",
+    "case_ids": [
+      "d01",
+      "d02",
+      "d03",
+      "d04",
+      "d06"
+    ],
+    "prompt_version": "analyst-pilot-v1.15",
+    "prompt_sha256": "b5014495a25f1a86c09c19c053dbfb489c25f3fdef09594e9b416b097405ab38",
+    "mapping_version": "requested-evidence-v12",
+    "mapping_prompt_sha256": "6836ba1c66ea8efbef2314be7fc7c4008c4e51dfb14390fe8faee979e55c33fa",
+    "mapping_module_sha256": "35ae06e4423dd2daf46c4c8b3903c036f469325e3a2ed593d635cc661e8fb597",
+    "scope_module_sha256": "34f45b35062e98f1f23a423344d78c888f4ac0011da59bfe4e56a8e7b303d764",
+    "maximum_workflow_model_calls": 4,
+    "engine_sha256": "fc03910e67e5be4fe95b06d4392e464370aa9ec7227b5372983e1020aee2d22b",
+    "model": "ami-llama3.1:8b-4k",
+    "model_digest": "6f3154f347c4f96858a9f259e64d96b2675f4cb2f4894b2d9714fb0752aecc23",
+    "context_limit": 4096,
+    "completion_limit": 900,
+    "temperature": 0,
+    "corpus_sha256": "c85c832ac6ba6bfb3b85baa47c6e2ea3ffae428875e1c1a3d47bcba4deb2b011",
+    "guardrails": "unchanged real local NeMo; internal calls uncounted",
+    "versions": {
+      "langchain-ollama": "1.1.0",
+      "langgraph": "1.0.10",
+      "nemoguardrails": "0.23.0"
+    },
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "preflight_summary_sha256": "27614e62012226344c9e5c26bb6d3de47c9bc48147a13ae8b46d41ddd00f8a33",
+    "maximum_workflow_attempts": 5,
+    "ragas": "not run",
+    "human_review": "pending for these new outputs",
+    "external_review": "pending"
+  },
+  "findings": {
+    "d01": {
+      "technical": "failed",
+      "support": "No final draft; mapper selected export passages but its first short answer is a topic label, not the cause.",
+      "scope": "Rejected geography evidence came from a different retrieved record than supported facts; do not infer country from Thai wording.",
+      "completeness": "Not established; useful export facts in the selected source did not reach a final brief.",
+      "human_action": "None: engineering failure, no score requested."
+    },
+    "d02": {
+      "technical": "failed",
+      "support": "Mapper answered external factors from the monitoring passage, rather than the requested inflation explanation.",
+      "scope": "Bank of Thailand is an issuer; its label is not proof of a measurement location. The selected geographic reference was also from another record.",
+      "completeness": "Food/weather/production costs, energy/global oil and core cost pass-through are in retrieved BOT_AUG_2026:5:0 but absent from the mapped answer.",
+      "human_action": "None: engineering failure, no score requested."
+    },
+    "d03": {
+      "technical": "failed",
+      "support": "Mapper selected the investment overview but returned an incomplete fragment ending in investment in data.",
+      "scope": "A chart heading was selected as geography from another retrieved record. The validator rejected it.",
+      "completeness": "Consumption details and the complete data-centre passage did not reach an answer; the retrieved PCI definition cannot establish a consumption cause.",
+      "human_action": "None: engineering failure, no score requested."
+    },
+    "d04": {
+      "technical": "parsed, resolved, composed and passed configured local NeMo",
+      "support": "Failed semantic support for the question: the selected page concerns Indonesia peak demand, not regional annual electricity demand.",
+      "scope": "The output's unresolved-geography warning is warranted. Despite that warning, composition added Southeast Asia and a 2024-2035 title from the question. The selected figure is Indonesia, 2023-2050, with 2035 and 2050 projections.",
+      "completeness": "Missing the regional 4% annual growth and over-1,300 to above-2,000 TWh facts. Their passage is on PDF page 7, absent from this attempt's five retrieved records.",
+      "locators": [
+        {
+          "document": "IEA_SEA_2024",
+          "source_id": "IEA_SEA_2024:139:0",
+          "pdf_index": 139,
+          "pdf_page": 140,
+          "role": "selected figure; visually inspected",
+          "url": "https://www.iea.org/reports/southeast-asia-energy-outlook-2024"
+        },
+        {
+          "document": "IEA_SEA_2024",
+          "pdf_index": 6,
+          "pdf_page": 7,
+          "role": "full-source answer passage, not retrieved in this attempt; visually inspected",
+          "url": "https://www.iea.org/reports/southeast-asia-energy-outlook-2024"
+        }
+      ],
+      "assistant_recommendation": "Reject revision 1 as an answer to d04. Do not export.",
+      "human_action": "Confirm rejection or request changes after checking the question, exact output and cited figure. No numerical scoring required."
+    },
+    "d06": {
+      "technical": "valid abstention; no composition or NeMo call needed for empty claims",
+      "support": "Appropriate evidence-limited response: none of the five retrieved historical records establishes yesterday's exact Thai retail electricity price.",
+      "scope": "Original question retains Thailand, retail prices and yesterday; attempt captured as_of 2026-10-25, so yesterday resolves to 2026-10-24. Do not generalize to absence from the entire database or external world.",
+      "completeness": "Exact approved no-information wording and full-question gap retained. No factual price invented.",
+      "assistant_recommendation": "Acknowledge the abstention wording; it is not an exportable brief.",
+      "human_action": "Optional wording acceptance or requested change. Empty claims cannot be approved/exported."
+    }
+  },
+  "preflight": "3/3 passed; synthetic diagnostic checks, not proof of real-output quality",
+  "offline_suite": {
+    "passed": 276,
+    "warnings": 3,
+    "seconds": 43.65
+  },
+  "review_revisions": [
+    {
+      "case_id": "d01",
+      "run_id": "148e6d3984224a2b97fe029e0c1e4744",
+      "revision": 0,
+      "status": "failed",
+      "has_claims": false,
+      "attempt_sha256": "fca3cf8b44e644adcf6433d416ee86051e36d033869ae9df1af304a0998fbcc2"
+    },
+    {
+      "case_id": "d02",
+      "run_id": "fb62583f13324ab0ade1fd7dae72e93d",
+      "revision": 0,
+      "status": "failed",
+      "has_claims": false,
+      "attempt_sha256": "14634bd03a80a72671f83a0593598b50530abd5a0258100fa79850663fd12c05"
+    },
+    {
+      "case_id": "d03",
+      "run_id": "082fd00d8c3644aab1536f1f056c06ad",
+      "revision": 0,
+      "status": "failed",
+      "has_claims": false,
+      "attempt_sha256": "e93503be5a044ab3edc462440c76482cd722eb8b5cbf98737316cee5b8861e4e"
+    },
+    {
+      "case_id": "d04",
+      "run_id": "e682dca0b785446cbb91f4196da45e0d",
+      "revision": 1,
+      "revision_digest": "6f87bdb19c1bdedf3fb2cf091d4140b26a81b0045605e208bed9d0e95a86fecd",
+      "status": "needs_review",
+      "has_claims": true,
+      "export_gate": "blocked until exact human-approved revision",
+      "draft_sha256": "45b65913562aded7543f2c8b6c7de97a7868f978edc6b7ecb75c4f773cd5a154",
+      "attempt_sha256": "3ab98e431648ea012ffdd6371b0a4078f70e403e15fbbaa2787b99c936336428"
+    },
+    {
+      "case_id": "d06",
+      "run_id": "5b392a524d734c5b9962b8402eec15fd",
+      "revision": 1,
+      "revision_digest": "ff73ca89d7aa5a5fae74a37b4a2077ede7cb0033cec4510214389c6f4fdef008",
+      "status": "needs_review",
+      "has_claims": false,
+      "export_gate": "blocked until exact human-approved revision",
+      "draft_sha256": "83cc4a5c8c8035b7eb6a67c33e3ae529af8ee6cd9f4f26be8d571e84c1b18a4d",
+      "attempt_sha256": "b07863ab359e987cb1bf795f892a36f88f2ee001ecf17a3907e66ac6819f7b6d"
+    }
+  ],
+  "generation_totals": {
+    "mapper_probes": 19,
+    "workflow_attempts": 15,
+    "workflow_main_calls": 47,
+    "known_input_tokens": 96613,
+    "known_output_tokens": 7669,
+    "main_calls": 66,
+    "token_usage_complete": false,
+    "nemo_internal_usage": "unmeasured",
+    "monetary_cost": null,
+    "note": "All ten goal experiments, including failures. Counts exclude assistant/Codex tokens and tests with fixed responses."
+  },
+  "integrity": {
+    "baseline": "reports/workflow_pilot/geography-validation-2026-10-25/baseline-hashes.json",
+    "baseline_files": 332,
+    "expected_modified_files": [
+      "src/pilot/_evidence.py",
+      "src/pilot/_scope.py",
+      "src/pilot/engine.py",
+      "tests/test_mapper_contract_repair.py",
+      "tests/test_pilot.py",
+      "tests/test_pilot_draft_instructions.py",
+      "tests/test_pilot_evidence.py",
+      "tests/test_pilot_geography.py",
+      "tests/test_pilot_scope.py",
+      "tests/test_pilot_source_spans.py"
+    ],
+    "unchanged_baseline_files": 322,
+    "missing_files": [],
+    "protected_inputs_unchanged": true,
+    "human_review_csv_sha256": "88fd2d1a1d0c31d47cc39fd768c702ca61a1ecb619a116d679a5061ebcc8e64b",
+    "dependency_hashes": {
+      "requirements.txt": "4bc238785549332a1196ab5954f996890ed12b1370c1834f396ede567af64726",
+      "requirements-serving.txt": "b9f8abc4b20928e4351088a14e17a2a94f6322499fbd794d5ef3ec320bc4e7be",
+      "constraints-pilot.txt": "267aab0f6a0601605fa33532f94f091809866429f340c55b335e4ecd22015836"
+    },
+    "primary_source_hashes": {
+      "data/external/market_sources/bot_aug_2026.pdf": "182962527071430875386c1200cfbdfa3aa4d90616dce00f240cb525e5596012",
+      "data/external/market_sources/iea_sea_2024.pdf": "15d45df68f8df43a499ad9ef07910f4f0ba19c6244af107bf7a50e8fa9ecf521"
+    },
+    "review_db_verified": true,
+    "reviews": 0,
+    "exports": 0
+  },
+  "next_actions": [
+    "Keep d04 unapproved: inspect/reject the Indonesia peak-demand substitution.",
+    "Repair geographic evidence selection without dropping invalid references or substituting issuer/heading labels.",
+    "Align mapped and composed geography, measure and scenario; warnings alone did not prevent an unsupported regional claim.",
+    "Evaluate multipart retrieval and complete adjacent spans in a separate measured change; d04 PDF page 7 was not retrieved and d03 cause text was cut.",
+    "Use fresh facts only after development fixes; no repeated scoring of d01-d03 technical failures."
+  ]
+}
