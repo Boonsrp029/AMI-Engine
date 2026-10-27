@@ -29,6 +29,10 @@ def test_runner_registers_action_and_aligns_neMo_model(monkeypatch):
         def register_action(self, action):
             self.registered = action
 
+        def register_output_parser(self, parser, name):
+            self.parser = parser
+            self.parser_name = name
+
         def check(self, messages, rail_types):
             self.checked_types = rail_types
             return SimpleNamespace(status=self.status, content=messages[-1]["content"], rail=None)
@@ -44,6 +48,7 @@ def test_runner_registers_action_and_aligns_neMo_model(monkeypatch):
     assert model.model == "ami-llama3.1:8b-4k"
     assert model.parameters["base_url"] == "http://localhost:11434/v1"
     assert runner.rails.registered is not None
+    assert runner.rails.parser_name == "strict_source_grounding"
 
     accepted = runner.validate_output("Supported market report.", "Market source context.")
     assert accepted["passed_guardrails"] is True

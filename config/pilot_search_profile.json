@@ -1,0 +1,13 @@
+{
+  "version": "market-corpus-search-v1",
+  "corpus_sha256": "c85c832ac6ba6bfb3b85baa47c6e2ea3ffae428875e1c1a3d47bcba4deb2b011",
+  "purpose": "Ranking policy for the pinned two-document public pilot corpus. Metadata removal is not evidence of geographic or temporal support.",
+  "ranking_metadata_phrases": ["Southeast Asia Energy Outlook 2024", "Bank of Thailand", "Southeast Asia", "Thailand", "Thai", "August 2026", "IEA"],
+  "stop_terms": ["a", "an", "the", "and", "or", "of", "in", "to", "for", "on", "by", "at", "s", "what", "which", "how", "why", "did", "does", "do", "is", "are", "was", "were", "its", "their", "them", "it", "according", "release", "report", "outlook", "scenario", "change", "changes", "changed", "activities", "projected"],
+  "geographic_names": ["Southeast Asia", "Thailand", "Indonesia", "Philippines", "Viet Nam", "Vietnam", "Malaysia", "Singapore", "Cambodia", "Lao PDR", "Myanmar", "Brunei Darussalam", "Timor-Leste", "China", "India", "Japan", "United States", "Middle East", "ASEAN"],
+  "overview_markers": ["KEY HIGHLIGHT", "Executive summary"],
+  "maximum_page_chunks": 8,
+  "maximum_page_characters": 6000,
+  "maximum_evidence_characters": 4200,
+  "maximum_evidence_spans": 20
+}

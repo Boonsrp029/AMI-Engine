@@ -2,7 +2,7 @@
 MLflow Model Registration for Databricks LangGraph Pipeline
 """
 
-import os
+from pathlib import Path
 import pandas as pd
 import mlflow
 import mlflow.pyfunc
@@ -43,7 +43,19 @@ class LangGraphAgentPyFunc(mlflow.pyfunc.PythonModel):
         return pd.DataFrame({"response": results})
 
 
+def _serving_requirements():
+    """Let MLflow copy the unchanged constraints into its portable environment."""
+    root = Path(__file__).resolve().parents[2]
+    constraints = root / "constraints-pilot.txt"
+    if not constraints.is_file():
+        raise FileNotFoundError("The baseline serving constraints are missing")
+    requirements = [line.strip() for line in (root / "requirements-serving.txt").read_text(encoding="utf-8").splitlines()
+                    if line.strip() and not line.lstrip().startswith("#")]
+    return [*requirements, f"-c {constraints}"]
+
+
 def register_agent_model():
+    pip_requirements = _serving_requirements()
     catalog = "main"
     schema = "market_intelligence"
     model_name = "market_agent_model"
@@ -56,13 +68,6 @@ def register_agent_model():
     input_example = pd.DataFrame({"query": ["What are the latest clean energy trends in APAC?"]})
     output_example = pd.DataFrame({"response": ["Synthesized analysis based on context..."]})
     signature = infer_signature(input_example, output_example)
-
-    serving_requirements_path = os.path.join(os.path.dirname(__file__), "..", "..", "requirements-serving.txt")
-    with open(serving_requirements_path, "r", encoding="utf-8") as requirements_file:
-        pip_requirements = [
-            line.strip() for line in requirements_file
-            if line.strip() and not line.lstrip().startswith("#")
-        ]
 
     with mlflow.start_run(run_name="Register_LangGraph_Model"):
         print(f"Logging MLflow model with explicit pip requirements to Unity Catalog path: {uc_model_path}...")

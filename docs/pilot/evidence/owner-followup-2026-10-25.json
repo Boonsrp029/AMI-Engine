@@ -1,0 +1,37 @@
+{
+  "author": "sirapop-owner",
+  "source": "explicit user message in this chat",
+  "judgments_verbatim": {
+    "d04": "case d04: reject as recommended by the assistant",
+    "d06": "case d06: retain the wording for now. No approval/export for empty claims"
+  },
+  "approvals": 0,
+  "exports": 0,
+  "revisions": [
+    {
+      "case_id": "d04",
+      "run_id": "e682dca0b785446cbb91f4196da45e0d",
+      "revision": 1,
+      "revision_digest": "6f87bdb19c1bdedf3fb2cf091d4140b26a81b0045605e208bed9d0e95a86fecd",
+      "status": "needs_review",
+      "has_claims": true,
+      "export_gate": "blocked until exact human-approved revision",
+      "draft_sha256": "45b65913562aded7543f2c8b6c7de97a7868f978edc6b7ecb75c4f773cd5a154",
+      "attempt_sha256": "3ab98e431648ea012ffdd6371b0a4078f70e403e15fbbaa2787b99c936336428",
+      "decision": "reject"
+    },
+    {
+      "case_id": "d06",
+      "run_id": "5b392a524d734c5b9962b8402eec15fd",
+      "revision": 1,
+      "revision_digest": "ff73ca89d7aa5a5fae74a37b4a2077ede7cb0033cec4510214389c6f4fdef008",
+      "status": "needs_review",
+      "has_claims": false,
+      "export_gate": "blocked until exact human-approved revision",
+      "draft_sha256": "83cc4a5c8c8035b7eb6a67c33e3ae529af8ee6cd9f4f26be8d571e84c1b18a4d",
+      "attempt_sha256": "b07863ab359e987cb1bf795f892a36f88f2ee001ecf17a3907e66ac6819f7b6d",
+      "decision": "retain_wording_no_approval"
+    }
+  ],
+  "worksheet_before_sha256": "801cc060f8a3eb62c078f29b3db5ee020988aedcdb06e3ebf878a6013a2ff311"
+}

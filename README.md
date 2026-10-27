@@ -1,8 +1,10 @@
+> Current source: prompt v1.38 passed 528 Windows offline tests with 15 dependency warnings. The verified Linux/container artifact remains v1.36 (502 tests plus one Windows-only skip); it has not been rebuilt for these repairs. Actual quality qualification remains FAILED. See the scope-provenance repair record for current evidence and limits.
+
 # <img width="1024" height="1024" alt="ami-engine-thumbnail" src="https://github.com/user-attachments/assets/b159db3b-7ba2-4d51-a39f-5b2763799c28" /> Autonomous Market Intelligence Engine
 
-AMI Engine is an experimental, production-oriented portfolio project for evidence-grounded market research. Its current implementation has one LangGraph runtime, Databricks Vector Search retrieval, structured LLM output, a fail-closed NeMo Guardrails check, a Bronze-to-Silver/Gold Databricks job, and Ragas evaluation recorded in MLflow.
+AMI Engine is an experimental, production-oriented portfolio project for evidence-grounded market research. It has a canonical query graph and a separate opt-in local analyst workflow, Databricks Vector Search adapters, structured LLM output, NeMo output policies, a Bronze-to-Silver/Gold Databricks job, and Ragas evaluation recorded in MLflow. The registered PyFunc currently wraps the canonical query graph; it does not host the analyst application's review lifecycle.
 
-“Production-oriented” describes the engineering direction and safeguards in code. This repository has **not** been qualified as production-ready: a mock smoke case and a six-case external-filing pilot completed on October 15, 2026, but broad market-intelligence evaluation and external deployment have not been verified. Do not use it for business-critical decisions until your workspace deployment, security, recovery, monitoring, and evaluation controls pass the operational checklist below.
+“Production-oriented” describes the engineering direction and safeguards in code. This repository has **not** been qualified as production-ready. Four exact public-source drafts are owner-approved/exported, but fresh held-out quality, independent usefulness and external deployment remain unverified. See the active [production evidence matrix](docs/production/readiness.md); local tests and owner edits do not substitute for its operational and quality gates.
 
 ## Architecture
 
@@ -83,13 +85,37 @@ The opt-in [analyst pilot](docs/pilot/workflow.md) adds a local browser workspac
 
 ```powershell
 python scripts/prepare_market_sources.py
-python -m uvicorn src.pilot.api:create_app --factory --host 127.0.0.1 --port 8000 --workers 1 --no-access-log
+python -m src.pilot.launch
 ```
 
 Start Ollama first and use the local model configuration described above. Open `http://127.0.0.1:8000`. This is a supervised local pilot; external reviewer findings are pending. See the [reviewer protocol](docs/pilot/reviewer-protocol.md) and [dependency repair record](docs/pilot/dependencies.md). Standalone PySpark is isolated in `requirements-etl.txt`; do not install it into the application environment because Databricks Connect shares its import namespace. Databricks jobs retain their workspace-provided Spark/Delta runtime.
 
 The [analyst workflow case study](docs/pilot/case-study.md) describes the implementation,
 five-case comparison, approval/recovery controls and remaining evidence gates.
+The [October 26 owner-decision record](docs/pilot/owner-decisions-2026-10-26.md)
+records the formatting changes and 341 passing offline tests. The subsequent
+[d02 approval](docs/pilot/d02-approval-2026-10-26.md) completes owner approval and
+export of all four nonempty review candidates. External usefulness and production
+readiness remain unverified.
+
+The [release contract](docs/production/release-contract.md) records owner-confirmed
+load, latency and recovery targets. The [packaging guide](docs/production/packaging.md)
+describes the analyst container and liveness/readiness checks. Actual local build,
+Linux offline tests and recovery smoke pass; real container inference remains pending.
+The [guardrail diagnostic](docs/production/guardrail-process-diagnosis.md)
+distinguishes the Windows process mitigation from source-grounding policy validation.
+
+The [fresh evaluation protocol](docs/production/evaluation-protocol.md) freezes 20
+held-out cases and owner-confirmed gates. A two-case held-out attempt stopped on
+failure; the revised pool retains 18 unattempted questions plus two replacements.
+The retained v1.34 four-case development gate failed duplicated-claim and measure-qualifier checks, so zero revised
+held-out attempts ran at that checkpoint. The subsequent v1.36 diagnostics passed, but fresh qualification stopped at r06 after four attempts. See the [findings](docs/production/qualification-v2-findings.md). See the [current continuation](docs/production/qualification-continuation.md)
+and [earlier findings](docs/production/preflight-findings-2026-10-27.md).
+The [recovery guide](docs/production/recovery.md) documents verified local SQLite
+and container restoration, with scheduling/access/deployment checks still required.
+Optional [principal tokens and roles](docs/production/identity.md) bind review aliases;
+the default shared local bootstrap is retained. The current Windows offline suite passes 528 tests. The preceding v1.36 Linux artifact passed
+502 with one Windows-only skip; current-source Linux verification remains pending. These do not prove model quality.
 
 Run unit tests without remote services:
 

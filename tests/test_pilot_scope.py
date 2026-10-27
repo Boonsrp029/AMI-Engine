@@ -162,7 +162,7 @@ def test_long_claim_is_rejected_without_truncating_the_answer():
 @pytest.mark.parametrize("guard_passes", [True, False])
 def test_final_scope_qualification_reaches_guardrails_without_extra_model_calls(tmp_path, guard_passes):
     path = tmp_path / "corpus.json"
-    path.write_text(json.dumps([{"feed_id": "known", "clean_content": SOURCES["capacity"]["content"],
+    path.write_text(json.dumps([{"feed_id": "known", "clean_content": "Capacity in Elm Bay was 9 GWh in March 2020.",
         "published": "2026-10-25"}]), encoding="utf-8")
     corpus = Corpus(path)
     tool_responses = iter([AIMessage(content="", tool_calls=[{
@@ -179,7 +179,11 @@ def test_final_scope_qualification_reaches_guardrails_without_extra_model_calls(
                     "status": "supported", "short_answer": "9 GWh",
                     "evidence": [sid]}, {"component_id": "r2", "status": "missing", "short_answer": "", "evidence": []}]}
             else:
-                value = {"title": "Capacity", "claims": []}
+                payload = json.loads(messages[1].content)
+                assert "question" not in payload
+                assert all("question_anchor" not in c and "gap_anchor" not in c
+                           for c in payload["units"])
+                value = {"title": "Analyst research brief", "claims": []}
             return {"parsed": schema.model_validate(value), "raw": AIMessage(content="")}
         return SimpleNamespace(invoke=invoke)
     model = SimpleNamespace(bind_tools=lambda _: SimpleNamespace(invoke=lambda _: next(tool_responses)),
@@ -189,10 +193,10 @@ def test_final_scope_qualification_reaches_guardrails_without_extra_model_calls(
     if guard_passes:
         result = engine.run(QUESTION, lambda *e: events.append(e))
         assert result["metrics"]["model_calls"] == 4
-        assert result["draft"]["claims"][0]["text"] == "Elm Bay, March 2020: 9 GWh"
+        assert result["draft"]["claims"][0]["text"] == "Capacity in Elm Bay was 9 GWh in March 2020."
         assert any(kind == "evidence_scope" for kind, _ in events)
     else:
         with pytest.raises(ValueError, match="guardrails"):
             engine.run(QUESTION)
-    assert checked[0]["raw_report"] == "Elm Bay, March 2020: 9 GWh"
+    assert checked[0]["raw_report"] == "Capacity in Elm Bay was 9 GWh in March 2020."
     assert stages == ["EvidenceSelection", "ComposedBrief"]

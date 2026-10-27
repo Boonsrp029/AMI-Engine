@@ -5,6 +5,8 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
+from src.pilot._presentation import without_bullet_glyphs
+
 
 class StrictModel(BaseModel):
     model_config = ConfigDict(extra="forbid")
@@ -29,11 +31,32 @@ class Claim(StrictModel):
     text: str = Field(min_length=1, max_length=800)
     source_ids: list[str] = Field(min_length=1, max_length=5)
 
+    @field_validator("text")
+    @classmethod
+    def prose_without_source_bullets(cls, value):
+        value = without_bullet_glyphs(value)
+        if not value.strip():
+            raise ValueError("Claim must contain prose, not only bullet characters")
+        return value
+
 
 class Draft(StrictModel):
     title: str = Field(min_length=1, max_length=160)
     claims: list[Claim] = Field(default_factory=list, max_length=5)
     warnings: list[str] = Field(default_factory=list, max_length=10)
+
+    @field_validator("title")
+    @classmethod
+    def title_without_source_bullets(cls, value):
+        value = without_bullet_glyphs(value)
+        if not value.strip():
+            raise ValueError("Brief title must contain text")
+        return value
+
+    @field_validator("warnings")
+    @classmethod
+    def warnings_without_source_bullets(cls, values):
+        return [cleaned for value in values if (cleaned := without_bullet_glyphs(value)).strip()]
 
 
 class EditRequest(StrictModel):

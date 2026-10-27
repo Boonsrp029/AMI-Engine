@@ -26,3 +26,39 @@ jobs:
       - run: python -m pip install -r requirements.txt -c constraints-pilot.txt
       - run: python -m pip check
       - run: python -m pytest -q
+
+  serving-environment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12.10"
+          cache: pip
+      - run: python -m pip install -r requirements-serving.txt -c constraints-pilot.txt
+      - run: python -m pip check
+      - run: python -m scripts.smoke_serving_environment --output .ci-artifacts/serving-environment.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: serving-environment-${{ github.sha }}
+          path: .ci-artifacts/
+
+  analyst-container:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build analyst image with unchanged dependency versions
+        run: docker build -f Dockerfile.pilot --build-arg SOURCE_REVISION=${{ github.sha }} -t ami-pilot:ci .
+      - name: Verify non-root startup, readiness failure and persistent restart
+        run: python scripts/smoke_pilot_container.py --image ami-pilot:ci --output .ci-artifacts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: analyst-container-${{ github.sha }}
+          path: .ci-artifacts/

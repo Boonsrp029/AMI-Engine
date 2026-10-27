@@ -151,7 +151,7 @@ def test_relative_dates_do_not_use_source_publication_as_observation_date():
 class WorkflowModel:
     def __init__(self, mapping, composed=None, fail=None):
         self.mapping = mapping
-        self.composed = composed or {"title": "Brief", "claims": []}
+        self.composed = composed or {"title": "Analyst research brief", "claims": []}
         self.fail = fail
         self.stages = []
         self.messages = {}
@@ -181,6 +181,8 @@ class WorkflowModel:
                     for component, request in zip(value["components"], requests):
                         component["component_id"] = request["component_id"]
                         component.pop("question_anchor", None)
+                        # The local decoder no longer guesses optional classifications.
+                        component.update(measure="", scenario="", kind="unknown")
                     for request in requests[len(value["components"]):]:
                         value["components"].append({"component_id": request["component_id"], "status": "missing",
                             "short_answer": "", "evidence": []})
@@ -230,9 +232,9 @@ def test_genuine_absence_returns_exact_message_and_skips_composer(corpus):
     assert result["draft"]["warnings"] == [NO_INFORMATION,
         "The retrieved documents do not establish an answer to: What was yesterday's price?"]
     assert result["draft"]["claims"] == []
-    assert result["metrics"]["model_calls"] == 3
+    assert result["metrics"]["model_calls"] == 2
     assert result["metrics"]["guardrail_invocations"] == 0
-    assert model.stages == ["EvidenceSelection"]
+    assert model.stages == []
 
 
 @pytest.mark.parametrize("value", [None, {"components": []}])
@@ -264,7 +266,7 @@ def test_new_export_pages_and_cached_export_bytes_are_stable(tmp_path, corpus):
     store = Store(tmp_path / "history.db")
     run_id, _ = store.create(ResearchRequest(query=QUESTION, request_key="unique-key"), corpus.sha)
     store.claim(run_id)
-    draft, _ = project_draft({"title": "Brief", "claims": []}, validated())
+    draft, _ = project_draft({"title": "Analyst research brief", "claims": []}, validated())
     store.save_draft(run_id, draft, corpus.sources, {})
     store.review(run_id, ReviewRequest(revision=1, decision="approve", reviewer="owner", support_confirmed=True))
     content, _ = store.export(run_id)

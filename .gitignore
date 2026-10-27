@@ -5,7 +5,9 @@
 .venv-pilot/
 .venv-pilot-*/
 .venv-etl/
+.venv-release-*/
 .pilot-work/
+.ci-artifacts/
 venv/
 __pycache__/
 *.pyc

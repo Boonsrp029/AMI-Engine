@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-26",
+  "scope": "Exact owner decisions and bounded engineering/review/export checkpoint",
+  "decisions": [
+    {
+      "case_id": "d01",
+      "run_id": "88dab2500b2e427d8bb9c1155ef96976",
+      "revision": 2,
+      "revision_digest": "f180e0b818a13c75ed6940c5e4deeac885893a20c983923ac7cb48b8790c4fc7",
+      "decision": "approve",
+      "reviewer": "sirapop-owner",
+      "support_confirmed": true,
+      "note": "Approve d01 revision 2; source support confirmed.",
+      "export": "reports/workflow_pilot/owner-decisions-2026-10-26/approved/d01-revision-2.md",
+      "export_sha256": "792c871cb743e828d388584088adb7c0f4344d4bcfbd408412ee9582ede09a2c",
+      "export_bytes": 1192,
+      "idempotent_export": true,
+      "draft_and_sources_unchanged": true
+    },
+    {
+      "case_id": "d03",
+      "run_id": "07b55102c351443ba1b4eb2608b5ee66",
+      "revision": 2,
+      "revision_digest": "38744c3e535e9de98c8b5cc81622616831670532e11182fb107b9eb5ca4f1102",
+      "decision": "approve",
+      "reviewer": "sirapop-owner",
+      "support_confirmed": true,
+      "note": "Approve d03 revision 2; source support confirmed.",
+      "export": "reports/workflow_pilot/owner-decisions-2026-10-26/approved/d03-revision-2.md",
+      "export_sha256": "96c0a2c30a74d236f781ea23c745eb1d5504bacbb9c12c522c5a89075c69a61b",
+      "export_bytes": 1445,
+      "idempotent_export": true,
+      "draft_and_sources_unchanged": true
+    },
+    {
+      "case_id": "d04",
+      "run_id": "72a79a7e13984d98a8ec3c35b553f613",
+      "revision": 2,
+      "revision_digest": "505a79ab513f6a76130d2b869a14e08075f03163229d08cfe072fa59bb42f2ca",
+      "decision": "approve",
+      "reviewer": "sirapop-owner",
+      "support_confirmed": true,
+      "note": "Approve d04 revision 2; source support confirmed.",
+      "export": "reports/workflow_pilot/owner-decisions-2026-10-26/approved/d04-revision-2.md",
+      "export_sha256": "058647ea676f072f486a3f4d4d8d56131cbfa24e04cc88d266c2eb09c3ed0d1b",
+      "export_bytes": 1009,
+      "idempotent_export": true,
+      "draft_and_sources_unchanged": true
+    }
+  ],
+  "d02": {
+    "revision": 3,
+    "digest": "ea55c67b58767c0f533c4e6a6859d7266066603afed6832d269aca9637d73d6c",
+    "status": "needs_review",
+    "claims": 2,
+    "candidate_sha256": "3325c4b441ca6adab6ff0ac55e787f674f03adc6a51720c60a1983b0f829b170",
+    "origin": "owner-directed editorial revision; no new workflow generation",
+    "source_pdf_pages": [
+      1,
+      6
+    ]
+  },
+  "d06": "empty; retained wording; no approval/export",
+  "offline_validation": {
+    "passed": 341,
+    "warnings": 3
+  },
+  "new_workflow_model_calls": 0,
+  "new_local_guardrail_invocations": 1,
+  "internal_guardrail_usage": "unmeasured",
+  "diagnostic_process_exit": {
+    "code": 1,
+    "completion_message_printed": true,
+    "traceback_observed": false,
+    "persisted_actions_independently_verified": true,
+    "cause": "unknown; not a clean process result",
+    "automatic_inference_retry": false
+  },
+  "historical_inputs_and_candidates_unchanged": true,
+  "dependencies_and_model_settings_unchanged": true,
+  "manual_review_required": "d02 revision 3 before owner acceptance/export",
+  "external_reviewer_usage": "pending",
+  "verification": "reports/workflow_pilot/owner-decisions-2026-10-26/verification.json"
+}

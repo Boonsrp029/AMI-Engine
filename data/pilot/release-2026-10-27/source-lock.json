@@ -1,0 +1,29 @@
+{
+  "version": "release-source-lock-v1",
+  "sources": {
+    "BOT_DEC2024": {
+      "file": "BOT_DEC2024.html",
+      "url": "https://www.bot.or.th/en/news-and-media/news/news-20250131.html",
+      "published": "2025-01-31",
+      "sha256": "dba6d99b9cdca7452368962b8ae9ba4f76fd4438a690c2b90fca81088cd902e7"
+    },
+    "BOI_2024": {
+      "file": "BOI_2024.pdf",
+      "url": "https://osos.boi.go.th/article_attach/PR4_2568EN.pdf",
+      "published": "2025-01-13",
+      "sha256": "2d6c56690a1ca65f1015094a904bbc02a0335fc6a454357bb47d454f05c8736a"
+    },
+    "IEA_ELECTRICITY2025": {
+      "file": "IEA_ELECTRICITY2025.html",
+      "url": "https://www.iea.org/reports/electricity-2025/executive-summary",
+      "published": "2025-02-14",
+      "sha256": "22f97929b814fc6e3719abd213cc263de9655c56956ac230ddf7f0a7b943e114"
+    },
+    "BOT_MPC_DEC2024": {
+      "file": "BOT_MPC_DEC2024.html",
+      "url": "https://www.bot.or.th/en/news-and-media/news/news-20241218.html",
+      "published": "2024-12-18",
+      "sha256": "b3ae60b0f3807140f858774bddb60a1ab172360724c8eecb6d2bceff3b92c697"
+    }
+  }
+}

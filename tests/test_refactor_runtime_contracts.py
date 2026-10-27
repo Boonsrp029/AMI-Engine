@@ -175,7 +175,7 @@ def test_registration_calls_and_output(monkeypatch, capsys):
     assert kwargs["input_example"].to_dict("list") == {"query": ["What are the latest clean energy trends in APAC?"]}
     requirements = Path(register_model.__file__).resolve().parents[2] / "requirements-serving.txt"
     assert kwargs["pip_requirements"] == [line.strip() for line in requirements.read_text().splitlines()
-        if line.strip() and not line.lstrip().startswith("#")]
+        if line.strip() and not line.lstrip().startswith("#")] + [f"-c {requirements.parent / 'constraints-pilot.txt'}"]
     assert capsys.readouterr().out == (
         "Logging MLflow model with explicit pip requirements to Unity Catalog path: main.market_intelligence.market_agent_model...\n"
         + "=" * 50 + "\nMODEL REGISTRATION COMPLETED\n" + "=" * 50
@@ -225,4 +225,4 @@ def test_active_guardrail_yaml_contract():
     config = yaml.safe_load(Path("config/guardrails/config.yml").read_text(encoding="utf-8"))
     assert config == {"colang_version": "1.0", "models": [{"type": "main", "engine": "ollama", "model": "ami-llama3.1:8b-4k"}],
         "rails": {"input": {"flows": ["self check input"]},
-                  "output": {"flows": ["self check hallucination", "verify market topic alignment"]}}}
+                  "output": {"flows": ["self check facts", "verify market topic alignment"]}}}

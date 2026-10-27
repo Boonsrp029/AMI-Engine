@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-26",
+  "author": "assistant-authored; exact-revision human adjudication pending",
+  "status": "manual_review_checkpoint",
+  "goal_status": "active",
+  "versions": {"prompt": "analyst-pilot-v1.26", "mapping": "requested-evidence-v23"},
+  "offline_validation": {"passed": 329, "warnings": 3, "elapsed_seconds": 65.48, "environment": ".venv-pilot-clean", "log": "reports/workflow_pilot/resume-scope-2026-10-26/final-offline-suite.txt", "establishes_model_quality": false},
+  "integrity": {"baseline_files": 610, "unchanged_files": 601, "expected_implementation_test_changes": 9, "unexpected_changes": 0, "missing_files": 0, "review_candidates_unchanged": 5, "record": "reports/workflow_pilot/owner-review-2026-10-26/integrity-verification.json"},
+  "current_generation": {"workflow_attempts": 6, "recorded_main_calls": 22, "later_finalization_main_calls": 0, "later_guardrail_invocations": 3},
+  "cumulative_accounting": {"recorded_main_calls": 139, "workflow_attempts": 33, "known_input_tokens": 201013, "known_output_tokens": 16074, "complete": false, "possible_unlogged_interrupted_call": true, "nemo_usage": "unmeasured", "monetary_cost": null, "record": "reports/workflow_pilot/owner-review-2026-10-26/generation-ledger.json", "scope": "Prior ledger and enumerated continuations, not all project history"},
+  "review": {"packet": "reports/workflow_pilot/owner-review-2026-10-26/review-packet.md", "manifest": "reports/workflow_pilot/owner-review-2026-10-26/review-manifest.json", "database": "reports/workflow_pilot/owner-review-2026-10-26/review.sqlite3", "revision": 2, "pending_cases": ["d01", "d02", "d03", "d04"], "empty_no_approval_export": ["d06"], "owner_decisions_recorded": 0, "exports_created": 0},
+  "api_verification": {"cases_checked": 5, "unapproved_export_status": 409, "database_unchanged": true, "generation": 0, "record": "reports/workflow_pilot/owner-review-2026-10-26/api-verification.json"},
+  "documentation_checks": {"local_links_resolve": true, "accounting_agrees": true, "git_diff_check": "passed; line-ending notices only"},
+  "cases": [
+    {"case_id": "d01", "origin": "unchanged completed workflow", "pdf_pages": [1], "finding": "Selected export facts supported; period explicit; geographic warning requires owner inspection"},
+    {"case_id": "d02", "origin": "frozen response reprojection", "pdf_pages": [1, 6], "finding": "Three inflation causes retained; cross-page context warning, overlapping claims and excerpt formatting remain"},
+    {"case_id": "d03", "origin": "assistant editorial proposal, not improved-generation evidence", "pdf_pages": [1, 2], "finding": "Investment and consumption facts retained with seasonally adjusted month-to-month wording; owner review pending"},
+    {"case_id": "d04", "origin": "frozen response reprojection", "pdf_pages": [7], "finding": "Regional electricity-demand rate and level, STEPS and report baseline retained; distinct from earlier rejected revision"},
+    {"case_id": "d06", "origin": "completed workflow abstention", "pdf_pages": [], "finding": "No dated retail-price evidence for 2026-10-25; owner-retained wording; empty claims cannot be approved or exported"}
+  ],
+  "limitations": ["Selected source support is assistant-assessed, not owner acceptance", "Source identity does not prove geographic entailment", "Lexical fallbacks are not semantic guarantees", "Date gate has limited explicit English/ISO coverage", "No fresh held-out benchmark or matched improvement claim", "External reviewer usage and production readiness unverified"],
+  "next_step": "Owner reviews the exact revision-2 packet; after explicit source-confirmed approval, verify revision identity, persist the decision and export only that revision."
+}

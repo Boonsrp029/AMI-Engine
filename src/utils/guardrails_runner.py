@@ -5,9 +5,19 @@ from typing import Dict, Any
 from nemoguardrails import RailsConfig, LLMRails
 from nemoguardrails.rails.llm.options import RailStatus, RailType
 from config.guardrails.actions import check_topic_safety
+from src.utils._periods import unestablished_report_periods
 
 # Suppress NeMo deprecation warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+
+def strict_source_grounding(value):
+    """NeMo expects [is_unsafe]; only a single affirmative verdict allows output.
+
+    A final period is ordinary verdict punctuation, not a repair of arbitrary
+    prose. Mixed verdicts, explanations, truncated/empty responses all block.
+    """
+    return [not isinstance(value, str) or value.strip().upper() not in {"YES", "YES."}]
 
 
 class GuardrailsRunner:
@@ -22,6 +32,7 @@ class GuardrailsRunner:
         self._configure_model()
         self.rails = LLMRails(self.config)
         self.rails.register_action(check_topic_safety)
+        self.rails.register_output_parser(strict_source_grounding, "strict_source_grounding")
 
     def _configure_model(self) -> None:
         """Keep NeMo's judge aligned with the graph's configured provider/model."""
@@ -51,13 +62,21 @@ class GuardrailsRunner:
 
     def validate_output(self, raw_report: str, context: str, user_input: str = "Verify market report") -> Dict[str, Any]:
         """Runs output rails against the raw synthesized report."""
+        if not raw_report.strip() or not context.strip():
+            return {"validated_report": "", "passed_guardrails": False, "raw_output": raw_report,
+                    "guardrail_status": "missing_report_or_evidence", "blocking_rail": "source_evidence"}
+        if unestablished_report_periods(raw_report, context):
+            return {"validated_report": "", "passed_guardrails": False, "raw_output": raw_report,
+                    "guardrail_status": "unestablished_report_period", "blocking_rail": "explicit_source_period"}
         messages = [
             {
                 "role": "context",
                 "content": {
                     "context": context,
                     "response": raw_report,
-                    "user_input": user_input
+                    "user_input": user_input,
+                    "relevant_chunks": context,
+                    "check_facts": True,
                 }
             },
             {

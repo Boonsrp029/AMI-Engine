@@ -1,0 +1,34 @@
+services:
+  analyst:
+    build:
+      context: .
+      dockerfile: Dockerfile.pilot
+      args:
+        SOURCE_REVISION: ${AMI_SOURCE_REVISION:-uncommitted}
+    ports:
+      - "127.0.0.1:${AMI_PILOT_PORT:-8000}:8000"
+    environment:
+      AGENT_LLM_PROVIDER: ollama
+      AGENT_LLM_MODEL: ami-llama3.1:8b-4k
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      AMI_PILOT_CORPUS: /data/market_chunks.json
+      AMI_PILOT_DB: /state/pilot.sqlite3
+    volumes:
+      - type: bind
+        source: ${AMI_PILOT_CORPUS_FILE:?Set AMI_PILOT_CORPUS_FILE to the prepared JSON corpus}
+        target: /data/market_chunks.json
+        read_only: true
+      - pilot-state:/state
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    restart: "no"
+
+volumes:
+  pilot-state:

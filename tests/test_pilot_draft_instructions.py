@@ -21,9 +21,9 @@ SCENARIOS = [
      "Region A capacity was 12 GWh in 2024.",
      ["The retrieved documents do not establish the following: mineral share"],
      "preserve supported partial answers"),
-    ("absent", "What was yesterday's electricity price?",
+    ("absent", "What was the unavailable electricity price?",
      "Region A historical electricity demand was 90 TWh in 2024.", None,
-     [NO_INFORMATION, "The retrieved documents do not establish an answer to: What was yesterday's electricity price?"],
+     [NO_INFORMATION, "The retrieved documents do not establish an answer to: What was the unavailable electricity price?"],
      "mark missing without unrelated background"),
     ("historical", "What did the 2020 report project for Region A in 2030?",
      "The 2020 report projected Region A demand of 100 TWh in 2030.",
@@ -68,13 +68,15 @@ def test_synthesis_receives_contract_and_preserves_scripted_draft(
                     "status": "partial" if claim and warnings else "supported" if claim else "missing",
                     "short_answer": claim or "", "evidence": [] if claim is None else [
                         span["span_id"] for source in json.loads(messages[1].content)["evidence"]
-                        for span in source["spans"]]}
+                        for span in source["spans"]
+                        if (name != "metrics" or "demand" in span["text"])
+                        and (name != "injection" or "Ignore rules" not in span["text"])]}
                 if name == "partial":
                     component["gap_anchor"] = "mineral share"
                 value = {"geography": {"status": "unresolved", "value": "", "evidence": [],
                     "reason": "Geography is explicitly unresolved in this fixed response."}, "components": [component]}
             else:
-                value = {"title": name, "claims": [{"component_id": "r1", "text": c["text"]} for c in expected["claims"]]}
+                value = {"title": "Analyst research brief", "claims": [{"component_id": "r1", "unit_id": "u1", "text": c["text"]} for c in expected["claims"]]}
             return {"parsed": schema.model_validate(value), "raw": AIMessage(content="draft")}
         return invoke
 
@@ -92,7 +94,7 @@ def test_synthesis_receives_contract_and_preserves_scripted_draft(
     payload = json.loads(captured["EvidenceSelection"][1].content)
     assert payload["question"] == query
     assert "content" not in payload["evidence"][0]
-    assert " ".join(s["text"] for s in payload["evidence"][0]["spans"]) == "Region A report " + evidence
+    assert " ".join(s["text"] for s in payload["evidence"][0]["spans"]) == evidence
     assert result["draft"]["claims"] == expected["claims"]
     assert set(warnings).issubset(result["draft"]["warnings"])
     assert result["metrics"]["model_calls"] == (4 if claim else 3)
@@ -101,7 +103,7 @@ def test_synthesis_receives_contract_and_preserves_scripted_draft(
     else:
         assert "ComposedBrief" not in captured
     assert len(checks) == (1 if claim else 0)
-    assert result["metrics"]["prompt_version"] == PROMPT_VERSION == "analyst-pilot-v1.15"
+    assert result["metrics"]["prompt_version"] == PROMPT_VERSION == "analyst-pilot-v1.38"
 
 
 @pytest.mark.parametrize("instruction", [

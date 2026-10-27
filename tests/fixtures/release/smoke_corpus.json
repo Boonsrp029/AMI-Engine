@@ -1,0 +1,9 @@
+[
+  {
+    "feed_id": "synthetic-container-smoke",
+    "title": "Synthetic packaging fixture, not market evidence",
+    "clean_content": "This synthetic record checks corpus loading and persistent task recovery. It is not a financial observation.",
+    "published": "2026-10-27",
+    "source": "https://example.invalid/synthetic-container-fixture"
+  }
+]

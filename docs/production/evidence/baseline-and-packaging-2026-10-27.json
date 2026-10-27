@@ -1,0 +1,44 @@
+{
+  "baseline_files": 942,
+  "unchanged_baseline_files": 931,
+  "unexpected_changes": [],
+  "missing_files": [],
+  "approved_reviews_and_exports_preserved": 4,
+  "empty_d06_unapproved": true,
+  "dependency_manifests_unchanged": true,
+  "packages_removed": [],
+  "python_version": "3.12.10",
+  "source_manifest_sha256": "4022c87a11d6305ef3f6f36b3ee06f0d2ef32d64c9adafd7f8816a3b896008bd",
+  "base_head": "ca3871148c813c52582f7ad952b13cd09fffd6c3",
+  "working_tree_is_release_revision": false,
+  "offline_tests": {
+    "passed": 359,
+    "warnings": 13
+  },
+  "docker_build_executed": false,
+  "compose_config": "passed",
+  "external_ci": "not run; no authorized push",
+  "production_qualified": false,
+  "portfolio_complete": false,
+  "phase": "baseline, process diagnosis, clean setup and local packaging",
+  "target": "local portfolio release then existing Databricks staging",
+  "accepted_slos": {
+    "reviewers": "1-3",
+    "active_workflows": 1,
+    "maximum_queued": 2,
+    "warm_p95_seconds": 120,
+    "execution_deadline_seconds": 180,
+    "backup_schedule": "daily",
+    "restore_minutes": 30
+  },
+  "slo_measurements": "not qualified; accepted targets only",
+  "policy_repair": "actual source-facts activation, strict single verdict, fixed-response flow tests and one passing local follow-up; earlier failures retained",
+  "observed_judge_responses": [
+    "YES.",
+    "YES."
+  ],
+  "guard_internal_usage": "unavailable",
+  "evidence_directory": "reports/workflow_pilot/production-readiness-2026-10-27",
+  "next_gate": "Docker engine available, container build/smoke, then fresh held-out dataset and reviewer qualification",
+  "fresh_common_version_differences": {}
+}

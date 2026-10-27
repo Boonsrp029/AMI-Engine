@@ -1,0 +1,28 @@
+# Existing dependency versions are retained; remove packages only after the
+# deployment-qualification and dependency-evidence gates permit that work.
+FROM python:3.12.10-slim AS builder
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1 PIP_NO_CACHE_DIR=1
+WORKDIR /build
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential && rm -rf /var/lib/apt/lists/*
+COPY requirements.txt constraints-pilot.txt ./
+RUN python -m venv /opt/venv && /opt/venv/bin/python -m pip install -r requirements.txt -c constraints-pilot.txt
+
+FROM python:3.12.10-slim AS pilot
+ENV PATH="/opt/venv/bin:$PATH" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 \
+    XDG_CACHE_HOME=/tmp/cache HF_HOME=/tmp/huggingface \
+    AGENT_LLM_PROVIDER=ollama AGENT_LLM_MODEL=ami-llama3.1:8b-4k \
+    AMI_PILOT_CORPUS=/data/market_chunks.json AMI_PILOT_DB=/state/pilot.sqlite3
+WORKDIR /app
+RUN groupadd --gid 10001 ami && useradd --uid 10001 --gid ami --create-home ami \
+    && mkdir -p /state /data && chown ami:ami /state /data /app
+COPY --from=builder /opt/venv /opt/venv
+COPY --chown=ami:ami src ./src
+COPY --chown=ami:ami config ./config
+COPY --chown=ami:ami scripts/pilot_backup.py ./scripts/pilot_backup.py
+USER 10001:10001
+ARG SOURCE_REVISION=uncommitted
+LABEL org.opencontainers.image.revision=$SOURCE_REVISION
+EXPOSE 8000
+HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=3 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready', timeout=3)"
+CMD ["python", "-m", "src.pilot.launch", "--host", "0.0.0.0"]

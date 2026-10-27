@@ -277,7 +277,7 @@ def pipeline_model(mode):
                     value["geography"] = {"status": "unresolved", "value": "", "evidence": [],
                         "reason": "This fixed response explicitly leaves geographic scope unresolved."}
             else:
-                value = {"title": "Capacity", "claims": []}
+                value = {"title": "Analyst research brief", "claims": []}
             try:
                 parsed = schema.model_validate(value)
                 error = None
@@ -309,7 +309,7 @@ def test_explicit_unresolved_partial_answer_reaches_guardrails_with_call_bound(p
     engine = PilotEngine(pipeline, model, guard)
     if passed:
         result = engine.run(QUESTION + " What was its share?", lambda *e: events.append(e))
-        assert result["draft"]["claims"][0]["text"] == "April 2020: 7 GWh"
+        assert result["draft"]["claims"][0]["text"] == TEXT
         assert WARNING in result["draft"]["warnings"] and NO_INFORMATION not in result["draft"]["warnings"]
         assert result["metrics"]["model_calls"] == 4
         scope = next(data for kind, data in events if kind == "evidence_scope")
@@ -318,7 +318,7 @@ def test_explicit_unresolved_partial_answer_reaches_guardrails_with_call_bound(p
         with pytest.raises(ValueError, match="guardrails"):
             engine.run(QUESTION + " What was its share?")
     assert stages == ["EvidenceSelection", "ComposedBrief"]
-    assert checked[0]["raw_report"] == "April 2020: 7 GWh"
+    assert checked[0]["raw_report"] == TEXT
 
 
 def test_unresolved_scope_draft_still_needs_human_revision_approval_for_export(tmp_path, pipeline):

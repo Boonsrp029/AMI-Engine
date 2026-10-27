@@ -63,7 +63,7 @@ class ScriptedModel:
                     "status": "supported",
                     "short_answer": self.output["claims"][0]["text"], "evidence": spans or ["unknown-span"]}]}
             else:
-                value = {"title": self.output["title"], "claims": [{"component_id": "r1", "text": c["text"]}
+                value = {"title": "Analyst research brief", "claims": [{"component_id": "r1", "unit_id": "u1", "text": c["text"]}
                     for c in self.output["claims"]]}
             return {"parsed": schema.model_validate(value), "raw": AIMessage(content="draft",
                 usage_metadata={"input_tokens": 10, "output_tokens": 5, "total_tokens": 15})}
@@ -97,6 +97,29 @@ def test_untrusted_tool_requests_cannot_gain_authority(corpus, name, args):
 def test_guardrail_failure_blocks_draft(corpus):
     with pytest.raises(ValueError, match="guardrails"):
         PilotEngine(corpus, ScriptedModel(), SimpleNamespace(validate_output=lambda **_: {"passed_guardrails": False})).run("Exports?")
+
+
+def test_generated_bullet_formatting_removed_before_final_guardrail_check(corpus):
+    class BulletedModel(ScriptedModel):
+        def with_structured_output(self, schema, **kwargs):
+            original = super().with_structured_output(schema, **kwargs)
+            if issubclass(schema, EvidenceSelection):
+                return original
+
+            def invoke(messages):
+                result = original.invoke(messages)
+                value = result["parsed"].model_dump()
+                for claim in value["claims"]:
+                    claim["text"] = "▪ " + claim["text"]
+                result["parsed"] = schema.model_validate(value)
+                return result
+            return SimpleNamespace(invoke=invoke)
+
+    guard = MagicMock(return_value={"passed_guardrails": True})
+    result = PilotEngine(corpus, BulletedModel(), SimpleNamespace(validate_output=guard)).run("Exports?")
+    assert result["draft"]["claims"][0]["text"] == "Exports increased 5% in August."
+    assert "▪" not in guard.call_args.kwargs["raw_report"]
+    assert result["metrics"]["model_calls"] == 4
 
 
 def test_model_cannot_invent_citation(corpus):

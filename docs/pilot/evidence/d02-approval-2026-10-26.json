@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-26",
+  "recorded_at_utc": "2026-10-26T14:41:33.329366+00:00",
+  "case_id": "d02",
+  "run_id": "95935adba36942c9a37978123a751c72",
+  "revision": 3,
+  "revision_digest": "ea55c67b58767c0f533c4e6a6859d7266066603afed6832d269aca9637d73d6c",
+  "candidate_sha256": "3325c4b441ca6adab6ff0ac55e787f674f03adc6a51720c60a1983b0f829b170",
+  "decision": "approve",
+  "reviewer": "sirapop-owner",
+  "support_confirmed": true,
+  "verbatim_owner_instruction": "Approve d02 revision 3; source support confirmed.",
+  "export": "reports/workflow_pilot/owner-decisions-2026-10-26/approved/d02-revision-3.md",
+  "export_sha256": "7baaaa5388731b23f795ba367d504728f9d64619256316d2bcbfbf7c1faec045",
+  "export_bytes": 1374,
+  "idempotent_export": true,
+  "draft_and_sources_unchanged": true,
+  "previous_exports_unchanged": true,
+  "historical_human_csv_unchanged": true,
+  "new_model_calls": 0,
+  "code_or_dependencies_changed": false,
+  "approved_nonempty_cases": [
+    "d01 revision 2",
+    "d02 revision 3",
+    "d03 revision 2",
+    "d04 revision 2"
+  ],
+  "d06": "empty; no approval or export",
+  "database_decisions": [
+    {
+      "run_id": "88dab2500b2e427d8bb9c1155ef96976",
+      "revision": 2,
+      "decision": "approve"
+    },
+    {
+      "run_id": "07b55102c351443ba1b4eb2608b5ee66",
+      "revision": 2,
+      "decision": "approve"
+    },
+    {
+      "run_id": "72a79a7e13984d98a8ec3c35b553f613",
+      "revision": 2,
+      "decision": "approve"
+    },
+    {
+      "run_id": "95935adba36942c9a37978123a751c72",
+      "revision": 3,
+      "decision": "approve"
+    }
+  ],
+  "database_exports": [
+    {
+      "run_id": "07b55102c351443ba1b4eb2608b5ee66",
+      "revision": 2
+    },
+    {
+      "run_id": "72a79a7e13984d98a8ec3c35b553f613",
+      "revision": 2
+    },
+    {
+      "run_id": "88dab2500b2e427d8bb9c1155ef96976",
+      "revision": 2
+    },
+    {
+      "run_id": "95935adba36942c9a37978123a751c72",
+      "revision": 3
+    }
+  ]
+}

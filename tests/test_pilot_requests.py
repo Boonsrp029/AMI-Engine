@@ -12,7 +12,7 @@ from src.pilot._requests import requested_components
     ("What drove headline and core inflation?", ["What drove headline and core inflation?"]),
     ("What changed in exports, and what supported them?", ["What changed in exports", "what supported them?"]),
     ("How did investment and consumption change, and which activities supported them?",
-     ["How did investment and consumption change", "which activities supported them?"]),
+     ["investment", "consumption"]),
     ("What was capacity? What was its share?", ["What was capacity?", "What was its share?"]),
     ("What was capacity, but what remained unknown?", ["What was capacity", "what remained unknown?"]),
     ("What did 'Rock and Roll' mean?", ["What did 'Rock and Roll' mean?"]),
@@ -29,6 +29,14 @@ def test_many_requests_keep_the_complete_question_instead_of_dropping_subtasks()
     assert requested_components(question) == [{"component_id": "r1", "question_anchor": question}]
     with pytest.raises(ValueError):
         requested_components(" ")
+
+
+def test_coordinated_change_and_activity_requests_keep_both_tasks_for_each_subject():
+    question = "How did farm output and retail spending change in May 2019, and which activities supported them?"
+    requests = requested_components(question)
+    assert [r["question_anchor"] for r in requests] == ["farm output", "retail spending"]
+    assert all("both the change" in r["instruction"] for r in requests)
+    assert all(r["question_anchor"] in question for r in requests)
 
 
 def payload():

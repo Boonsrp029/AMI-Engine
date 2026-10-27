@@ -11,5 +11,5 @@ rails:
       - self check input
   output:
     flows:
-      - self check hallucination
+      - self check facts
       - verify market topic alignment
