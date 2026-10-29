@@ -1,5 +1,6 @@
 """Source-literal decoder choices, not an automatic geographic classifier."""
 import re
+from enum import StrEnum
 from typing import Literal, Union
 
 from pydantic import Field, create_model
@@ -82,12 +83,32 @@ def period_choices(catalog, question=None):
     years = set(re.findall(r"(?<!\d)\d{4}(?!\d)", question or ""))
     for sid, span in catalog.items():
         for period in measurement_periods(span["text"]):
+            if not _standalone_period(span['text'], period):
+                continue
             if requested and period.casefold() not in requested:
                 continue
             if not requested and years and not (set(re.findall(r"\d{4}", period)) & years):
                 continue
             periods.setdefault(period, []).append(sid)
     return [{"value": value, "span_ids": ids} for value, ids in periods.items()]
+
+
+def _standalone_period(text, period):
+    """A month in an explicit range is not a standalone monthly observation.
+
+    This recognizes only the existing full-English-month date vocabulary. A
+    separate occurrence of the same period can still supply a literal choice.
+    It does not infer annual scope or decide whether a fact answers a question.
+    """
+    month = r'(?:' + '|'.join(_MONTHS.split()) + r')'
+    connector = r'(?:to|through|[-\u2010-\u2014])'
+    before = re.compile(r'\b' + month + r'(?:\s+\d{4})?\s*' + connector + r'\s*$', re.I)
+    after = re.compile(r'^\s*' + connector + r'\s*' + month + r'\b', re.I)
+    for match in _PERIOD.finditer(text):
+        if ' '.join(match.group().split()).casefold() == period.casefold():
+            if not before.search(text[:match.start()]) and not after.search(text[match.end():]):
+                return True
+    return False
 
 
 def constrained_selection(base, geography_base, choices, requests=None, periods=None, request_views=None):
@@ -117,10 +138,15 @@ def constrained_selection(base, geography_base, choices, requests=None, periods=
             views = (request_views or {}).get(request["component_id"])
             if views:
                 required = [Literal[tuple(view["span_ids"])] for view in views]
-                extra = Literal[tuple(dict.fromkeys(sid for view in views for sid in view["span_ids"]))]
+                extra_ids = list(dict.fromkeys(sid for view in views
+                    for sid in view.get("extra_span_ids", view["span_ids"])))
+                # Unknown eligible extras can be numerous. Share their enum in
+                # $defs rather than repeat all IDs in every tuple alternative.
+                extra = (StrEnum(f'RequestExtraSpans{i}', {f'span{j}': sid for j,sid in enumerate(extra_ids)})
+                         if any('extra_span_ids' in view for view in views) else Literal[tuple(extra_ids)])
                 extra_counts = range(6 - len(required)) if all(v.get("allow_extra", True) for v in views) else [0]
                 variants = [tuple[()]] + [tuple[tuple(required + [extra] * count)] for count in extra_counts]
-                component_fields["evidence"] = (Union[tuple(variants)], ...)
+                component_fields["evidence"] = (Union[tuple(variants)], Field(..., json_schema_extra={'uniqueItems': True}))
             slots.append(create_model(f"RequestSlot{i}", __base__=EvidenceSelectionComponent, **component_fields))
         slots = tuple(slots)
         if not 1 <= len(slots) <= 5:

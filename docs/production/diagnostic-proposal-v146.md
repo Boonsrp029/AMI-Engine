@@ -1,0 +1,13 @@
+# Proposed v1.46 consumed-case diagnostic
+
+**Owner authorized four local diagnostics in chat; execution results are separate.** The v1.43 diagnostic stopped on r03's source-quality failure. Its unused call ceiling does not authorize changed-code retries. The [offline repair](causal-selection-repair-2026-10-28.md) addresses the confirmed eligibility defect and comparison integration conflicts; actual model behavior remains unverified.
+
+Proposed sequence: r03, r04, r05, r06, previously consumed development cases from the unchanged frozen v2 package. One attempt per case, 180 seconds each, at most **16 workflow calls and four NeMo invocations total**. Stop immediately on the first technical or assistant-assessed source-quality failure, preserve all results and unused budget, and make no retries or automatic prompt tuning. No Ragas, hosted inference, twenty-case evaluation, approvals, exports or reviewer contact is included.
+
+Use the existing pinned local model and settings, verifying generator/package/model identities before and after execution. Inspect each completed answer against the pinned sources before proceeding: inflation causes and period; monthly/quarterly investment directions and categories; application value/count/annual changes; FDI denominators, leading value source and project-count comparison. Source-provided currency equivalents remain acceptable. Require relevant complete support, not merely valid citations. NeMo internal token usage and monetary cost remain incompletely measured.
+
+The local frozen contract is `reports/workflow_pilot/production-readiness-2026-10-27/resume-v4/diagnostic-proposal-v146/contract.json`, SHA-256 `ea1b6397ee5e6e33ab3fad4756b2c89c8b39b27528a57cb1336c0870681f2364`. Expected generator identity: `32b9550bc607f50b9cf6c69416f1dba6a2eac1f797e2f0c68153f02cbbb571bc`. This records an expected model pin, not current model availability. Earlier contracts, actual failures and approvals remain historical and unchanged.
+
+Only assessable new outputs enter a source-review packet; owner acceptance is separate from assistant checks. No repeated manual scoring of technical failures is requested. Before final qualification, separately authorize same-identity synthetic preflights and the frozen twenty-case pool after reviewing its topic mix; existing quality thresholds remain unchanged.
+
+The authorized batch subsequently stopped at r04 after its source-quality failure. r03 passed the declared fact checks with explicit limits; r05/r06 remain unattempted. See [findings](diagnostic-v146-findings.md). No unused ceiling is open to changed-code retries.

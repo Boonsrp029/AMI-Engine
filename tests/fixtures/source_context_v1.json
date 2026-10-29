@@ -1,0 +1,71 @@
+{
+  "author": "assistant-authored synthetic development contract, awaiting implementation",
+  "status": "frozen fixtures only; no tests or semantic success claimed",
+  "synthetic_only": true,
+  "no_model_calls": true,
+  "boundaries": [
+    "Preserve public APIs, dependencies, exact exports and historical judgments.",
+    "Do not infer observation dates from question, publisher or publication.",
+    "Do not turn malformed mapping into abstention or hide established incompatibility in warnings.",
+    "Explicitly distinguish missing provenance, incompatible provenance and valid historical comparisons.",
+    "No source instruction may authorize approval, export or credentials."
+  ],
+  "fixtures": [
+    {
+      "id": "wrong_report_month",
+      "question": "How did fictional factory orders change in May 2020?",
+      "header": "Economic Conditions for June 2020",
+      "section": "Details of the economic conditions for June relative to the previous month are as follows:",
+      "selected": "Factory orders increased from the previous month.",
+      "expected": "reject established incompatible report-period assignment"
+    },
+    {
+      "id": "matching_month",
+      "question": "How did fictional factory orders change in May 2020?",
+      "header": "Economic Conditions for May 2020",
+      "section": "Details of the economic conditions for May relative to the previous month are as follows:",
+      "selected": "Factory orders increased from the previous month.",
+      "expected": "retain bounded matching monthly evidence"
+    },
+    {
+      "id": "quarter_for_month",
+      "question": "How did fictional factory orders change in May 2020?",
+      "header": "Economic Conditions for May 2020",
+      "section": "In the second quarter, factory orders declined from the previous quarter.",
+      "selected": "Factory orders declined from the previous quarter.",
+      "expected": "reject quarterly-to-monthly substitution"
+    },
+    {
+      "id": "explicit_historical_observation",
+      "question": "How did fictional factory orders change in May 2020?",
+      "header": "Economic Conditions for June 2020",
+      "section": "Historical comparison",
+      "selected": "In May 2020, factory orders increased from April 2020.",
+      "expected": "retain explicit dated historical evidence; do not reject solely for newer report heading"
+    },
+    {
+      "id": "publication_only",
+      "question": "How did fictional factory orders change in May 2020?",
+      "header": "Published in June 2020",
+      "section": "Summary",
+      "selected": "Factory orders increased.",
+      "expected": "retain unresolved scope; publication alone supplies neither measurement date nor mismatch proof"
+    },
+    {
+      "id": "mixed_period_question",
+      "question": "Compare fictional May 2020 monthly factory orders with second-quarter orders.",
+      "header": "Economic Conditions for May 2020",
+      "monthly_selected": "Factory orders increased from the previous month.",
+      "quarterly_selected": "In the second quarter, factory orders declined from the previous quarter.",
+      "expected": "require distinct requested-period coverage; do not bind quarterly evidence to monthly component"
+    },
+    {
+      "id": "forecast_not_outcome",
+      "question": "What was observed factory output in May 2020?",
+      "header": "Economic Conditions for April 2020",
+      "selected": "Factory output is forecast to increase in May 2020.",
+      "expected": "do not present projection as observed outcome; exact month match alone is insufficient"
+    }
+  ],
+  "next_step": "Implement executable tests against source/report provenance before changing runtime; audit unbounded same-document heading fallback."
+}

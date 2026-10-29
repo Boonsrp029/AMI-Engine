@@ -1,4 +1,4 @@
-> Current source: prompt v1.38 passed 528 Windows offline tests with 15 dependency warnings. The verified Linux/container artifact remains v1.36 (502 tests plus one Windows-only skip); it has not been rebuilt for these repairs. Actual quality qualification remains FAILED. See the scope-provenance repair record for current evidence and limits.
+> Current checkpoint: prompt v1.53 / mapper v37 has 888 Windows / 887 Linux tests (one Windows-only skip), with 15 existing warnings. The [v1.52 mapper passed](docs/production/diagnostic-v152-findings.md), but its full workflow failed during composition before NeMo. The [request-context repair](docs/production/composition-request-context-2026-10-29.md) has offline evidence only. Its actual drafting quality remains unverified; all model-run allowances are closed.
 
 # <img width="1024" height="1024" alt="ami-engine-thumbnail" src="https://github.com/user-attachments/assets/b159db3b-7ba2-4d51-a39f-5b2763799c28" /> Autonomous Market Intelligence Engine
 
@@ -114,8 +114,8 @@ and [earlier findings](docs/production/preflight-findings-2026-10-27.md).
 The [recovery guide](docs/production/recovery.md) documents verified local SQLite
 and container restoration, with scheduling/access/deployment checks still required.
 Optional [principal tokens and roles](docs/production/identity.md) bind review aliases;
-the default shared local bootstrap is retained. The current Windows offline suite passes 528 tests. The preceding v1.36 Linux artifact passed
-502 with one Windows-only skip; current-source Linux verification remains pending. These do not prove model quality.
+the default shared local bootstrap is retained. The current offline suites pass 745 tests on Windows and 744 on Linux with one Windows-only skip.
+These establish engineering contracts, not model quality. See the [context and retrieval record](docs/production/context-and-retrieval-2026-10-28.md).
 
 Run unit tests without remote services:
 
@@ -193,11 +193,20 @@ src/agents/retriever_node.py Databricks Vector Search adapter
 src/etl/                Databricks Silver/Gold job
 src/indexers/           Delta Sync index lifecycle
 src/evals/               Ragas runner and compatibility entrypoint
+src/pilot/               Local analyst UI, bounded workflow, review storage and export controls
 src/models/              MLflow registration and serving utilities
-tests/                   Offline unit tests
+tests/                   Offline unit and integration contracts
 .github/workflows/ci.yml Offline pull request and main-branch checks
 databricks.yml           Databricks Asset Bundle job
 ```
+
+## Current validation evidence and limits
+
+The [v1.50 diagnostic](docs/production/diagnostic-v150-findings.md) passed its mapper and r05, then failed r06 comparison coverage despite a NeMo pass. After a retained [v1.51 timeout](docs/production/diagnostic-v151-findings.md), the [lightweight transport](docs/production/mapper-transport-2026-10-29.md) retained a complete response: [correct count passages selected, false conflict returned](docs/production/diagnostic-transport-v1-findings.md). No conditional workflow ran. The [v1.52 repair](docs/production/false-conflict-repair-2026-10-29.md) rejects that unsupported state and extends literal comparison checks. Its suite passes 882 Windows / 881 Linux tests; actual model quality needs a new bounded diagnostic. The tested source-overlay image uses the previously verified dependency image, not a fresh dependency rebuild.
+
+The owner [reviewed r05](docs/pilot/owner-review-v150-2026-10-29.md), requesting the 2023/2024 baht comparison and additional supported sectors in claim 1, approving unchanged claim 2, and waiving the two warnings for that reviewed candidate. The separate owner-provided editorial revision preserves original generation and creates no stored approval/export. Earlier r03/r04 country-edit adjudication remains separate.
+
+The [r06-only diagnostic](docs/production/diagnostic-proposal-v151.md) was authorized and stopped at its mapper deadline; the conditional workflow did not start and the grant is closed. The prior nine-call/two-NeMo budget is closed; no twenty-case run is authorized. See the [readiness matrix](docs/production/readiness.md) and [qualification history](docs/production/qualification-continuation.md) for remaining quality, reviewer, deployment and operational gates.
 
 ## License
 

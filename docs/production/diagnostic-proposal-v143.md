@@ -1,0 +1,17 @@
+# Proposed consumed-case diagnostic — v1.43
+
+**Owner authorized four local diagnostics in chat; execution results are separate.** The previous generation budget stopped under the failed v1.36 gate. Its unused ceiling cannot be reused with changed code. The [offline repair](evidence-roles-2026-10-28.md) is prepared; this proposal requests only a small development check, not another final qualification batch.
+
+Run previously consumed cases r03, r04, r05 and r06 in that order, once each, using the unchanged frozen v2 corpus, questions, source snapshots and source checks. These inspect the known inflation-period, investment-comparison, investment-value/count and FDI-denominator failures. Do not present them as unseen cases or a matched improvement benchmark. Source-provided currency equivalents remain acceptable; do not invent a baht-only requirement.
+
+Limits: four attempts, at most 16 main workflow calls and four NeMo invocations in total, 180 seconds per case. Pin and verify the existing local model digest and the current generator/package identities before and after execution. Stop immediately on a technical failure or an assistant-assessed source-quality failure, preserve the failed response and unused budget, and make no retry or automatic prompt revision. Internal NeMo token usage and local monetary/energy cost remain incompletely measured. No Ragas or hosted inference is included.
+
+Check clean process completion, requested facts and causal explanations, monthly versus quarterly scope, geography, application value versus realized cash, counts, annual changes, ratio denominators and appropriate evidence gaps. Known citations alone are insufficient. Source checks are assistant-authored until owner adjudication. Prepare a short packet only for technically valid, assessable new outputs; exact-revision human approval is still required before export. No approval or export is part of this diagnostic.
+
+The proposal **does not authorize the twenty-case set**, additional preflights, container inference or reviewer contact. Before final qualification, the same-identity synthetic preflights must pass, the proposed v3 pool/topic mix must be reviewed, and a separate bounded budget must be agreed. The existing quality thresholds remain unchanged.
+
+The frozen local contract is `reports/workflow_pilot/production-readiness-2026-10-27/resume-v3/diagnostic-proposal-v1/contract.json`, SHA-256 `fe08319ded07f74a1c209f7d194bbd03587fa6ce416b1f940960d6a9bb4f6224`. Its expected generator hash is `6da98d1e5c8274ecd990598fb7a618f3a8b03e901f7ca6fe20faf0aa15955b58`; this includes source/configuration/settings and the declared existing model digest, not an observation that the model is currently running. Verify actual local metadata before using it. Historical qualification failures, owner reviews and protected exports remain unchanged.
+
+The subsequent transport-only intake repair leaves the quality contract and budgets unchanged. It updates the complete generator identity to `a7ed49a172c606f4c46e0371be6eb4600f59f5725590fac326c86fd92975c5e7`, retained in `expected-identity-v2.json`; the initial expected identity remains historical. See [intake evidence](request-intake-2026-10-28.md).
+
+Execution stopped after r03 failed its source-quality check. r04–r06 remain unattempted; see [findings](diagnostic-v143-findings.md). The unused budget is closed to changed-code retries.

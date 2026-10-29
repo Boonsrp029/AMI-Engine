@@ -1,0 +1,31 @@
+# Focused evidence and separate comparison scope — 28 October 2026
+
+Prompt `analyst-pilot-v1.47`, mapper `requested-evidence-v32`. This is an offline engineering repair following the [failed v1.46 development diagnostic](diagnostic-v146-findings.md). No fresh model-quality result, owner acceptance, export or production qualification is established by this repair.
+
+## Observed failure and narrow change
+
+The r04 monthly investment record was retrieved, but sentence-level selection omitted its construction decline. The mapper selected a mixed overview and unrelated quarterly exports instead. The composer lacked independently established quarter/year scope. Both v1.46 attempts parsed and passed final NeMo; that did not establish relevance or completeness. The batch stopped at r04 after eight workflow calls and two NeMo invocations. r05/r06 remain unattempted, and the unused ceiling is closed.
+
+The private evidence layer now preserves contiguous category details for the existing literal investment/consumption vocabulary, alongside its causal-continuation support. Each window is an exact substring of one original record, at most 600 characters, with original offsets, content hash and constituent span IDs. It never crosses a paragraph, source, command-shaped text or an explicit different subject. Longer evidence remains split without truncation. The compatibility function name `complete_causal_spans()` is retained; its policy is `bounded-source-windows-v2`.
+
+When a retrieved record begins with the requested financial subject, its bounded subject passage takes priority over mixed overviews. Requests for categories/activities require its selected category windows. Optional choices stay within that passage; without a focused passage, explicit matching subjects and immediate demonstrative causal continuations remain eligible. Entirely unknown classification does not create a missing-information state. Exclusions are recorded in `evidence_subject_focus` with `absence_established: false`. This limited vocabulary and source-structure heuristic cannot prove semantic relevance or general answer completeness.
+
+The comparison path uses the same focus rule for each existing monthly/quarterly request slot. Too many required quotations fail explicitly rather than invent an abstention or silently drop evidence. Existing profile/contrast/percentage rules keep their precedence; logs identify only the focus rule actually applied.
+
+Quarterly period propagation requires an explicit, recognized shared-year report heading and a matching bounded quarterly section in the same pinned document. A monthly-only heading, publication date, ambiguous heading or mismatched source identity cannot establish the quarterly year. Known report/request comparison-year conflicts fail. Selected factual periods are not rewritten from publication metadata. Monthly and quarterly claims receive separate proven scope and supporting citations; the title lists established periods. A composed wrong period uses the existing logged exact-excerpt fallback, which is validated again.
+
+Monthly and quarterly context share **two additional original records** and the existing five-citation limit. Already retrieved section records can be reused; long section records are not fetched as additional context. Internal binding fingerprints detect mutation, not external manifest authenticity. Other document layouts and ambiguous scope remain unresolved.
+
+## Evidence and boundaries
+
+The synthetic contract was frozen before implementation in `tests/fixtures/focused_context_v1.json`; its historical status text records that freeze, not current execution status. Maintained focused-window and quarterly-context tests cover exact source offsets, cohesive categories, boundaries, unknown subjects, explicit capacity failure, monthly/quarter separation, conflicting year/ordinal, publication-only or ambiguous headings, altered identities, fallback and final guardrail failure. Existing approval/export and page-display checks remain in the full suite.
+
+Ignored evidence: `reports/workflow_pilot/production-readiness-2026-10-27/resume-v5/`. A controlled replay of the unchanged r04 sources deterministically selects required windows and reprojects them without inference. It retains the 529-character monthly passage including construction decline and labels the other claim “Fourth Quarter of 2024,” using two additional context records. It is **not** an actual model selection, NeMo check, generated quality pass, approval or benchmark result. Earlier attempts, owner comments, completed CSV and exports remain protected.
+
+Final verification: **707 Windows tests; 706 Linux tests plus one Windows-only skip; 15 existing warnings**. Both unchanged dependency environments pass their checks. Image `ami-pilot:qualification-0a29a0fafae44717`, ID `sha256:06031a4412d686314c87397dfe37868ba075df89051ba779f77ba836f2192c52`, matches sanitized context `0a29a0fafae4471743bba3fc614882a76a098913fa30e6cc952e97c5438a2e46`. Its no-inference recovery check preserves all four cached exports and blocks empty d06. Intermediate runs and the initial restricted Docker-lock failure remain retained. The integrity report records protected evidence checks. Library versions, model/settings, retrieval ranking, public APIs, `Draft`, SQLite schema, four-call ceiling, final NeMo and exact-revision approval controls are unchanged. No commit, push, hosted inference, Ragas, external deployment or reviewer contact is included.
+
+## Human checkpoint
+
+No repeated manual scoring is needed for failed r04. The existing v1.46 r03 source-review request remains pending; it is evaluation adjudication, not stored workflow approval/export. New technically valid outputs that pass assistant source checks need owner factual review before owner acceptance. Saving a brief still requires approval of that exact revision. Independent usefulness remains a separate owner-arranged reviewer session.
+
+The stopped v1.46 grant does not authorize changed-generator inference. A separate concrete bounded diagnostic is prepared for owner authorization. Fresh preflights and the revised twenty-case qualification pool require a later decision; none is authorized by this repair. Portfolio completion and production qualification remain open.

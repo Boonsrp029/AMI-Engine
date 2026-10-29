@@ -15,14 +15,21 @@ from langgraph.graph import END, START, StateGraph
 
 from src.agents.local_retriever import _bm25_scores, _read_records, _tokens
 from src.pilot.schemas import Draft, InspectArguments, SearchArguments, validate_citations
-from src.pilot._scope import resolve_scope
+from src.pilot._scope import resolve_scope, validate_mapped_answers
 from src.pilot._report_context import collect_context
+from src.pilot._source_context import context_sources, assess_mapping, reject_incompatible, mapper_context
+from src.pilot._component_retrieval import COMPONENT_VERSION, rank_components
+from src.pilot._quantities import percentage_evidence, percentage_views, UnsupportedQuantityRole
+from src.pilot._topics import topic_evidence, topic_views, reject_topic_mismatches
+from src.pilot._comparison_evidence import comparison_views, assess_comparisons, reject_incomplete_comparisons
+from src.pilot._entity_comparison import decorate_requests, evidence_views, validate_mapping_comparisons
+from src.pilot._continuations import complete_causal_spans
 from src.pilot._requests import requested_components
 from src.pilot._choices import constrained_composition, constrained_selection, geography_choices, period_choices
 from src.pilot._composition import composition_units, project as project_composition
 from src.pilot._passages import assemble
 from src.pilot._temporal import price_observation_catalog
-from src.pilot._retrieval_policy import LEXICAL_VERSION, contrast_evidence_choices, effective_query, load_profile, rank_evidence, request_evidence_choices, select_catalog
+from src.pilot._retrieval_policy import contrast_evidence_choices, effective_query, load_profile, request_evidence_choices, select_catalog
 from src.pilot._evidence import (
     COMPOSITION_INSTRUCTION, MAPPING_INSTRUCTION, MAPPING_VERSION,
     ComposedBrief, EvidenceSelection, GeographySelection, build_span_catalog, composition_payload, evidence_gaps, project_draft, relative_dates,
@@ -32,7 +39,7 @@ from src.utils.env import load_project_environment
 from src.utils.guardrails_runner import GuardrailsRunner
 
 
-PROMPT_VERSION = "analyst-pilot-v1.38"
+PROMPT_VERSION = "analyst-pilot-v1.53"
 TOOL_INSTRUCTION = (
     "You prepare public Thailand/ASEAN market research. Use search_sources to obtain evidence, "
     "Search using 3 to 6 subject/measure words, keeping requested scenarios and horizons; omit "
@@ -54,7 +61,12 @@ class Corpus:
         self.search_profile = load_profile(Path(__file__).resolve().parents[2] / "config/pilot_search_profile.json", self.sha)
         self.search_policy_sha = hashlib.sha256((Path(__file__).resolve().parents[2] / "config/pilot_search_profile.json").read_bytes()).hexdigest() if self.search_profile else None
         if self.search_profile is None:
-            self.search_policy_sha = hashlib.sha256(Path(__file__).with_name("_retrieval_policy.py").read_bytes()).hexdigest()
+            policy_files = [Path(__file__).with_name(name) for name in (
+                '_retrieval_policy.py', '_component_retrieval.py', '_source_context.py',
+                '_requests.py', '_scope.py', '_report_context.py')]
+            policy_files.append(Path(__file__).resolve().parents[1]/'utils/_periods.py')
+            hashes = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in policy_files}
+            self.search_policy_sha = hashlib.sha256(json.dumps(hashes, sort_keys=True).encode()).hexdigest()
         raw = json.loads(self.path.read_text(encoding="utf-8"))
         raw = raw if isinstance(raw, list) else [raw]
         dates = {str(row.get("feed_id")): row.get("published") for row in raw}
@@ -107,7 +119,7 @@ class Corpus:
 
     def search_evidence(self, query, limit=5, *, requested_query=None):
         if self.search_profile is None:
-            return rank_evidence(query, self.sources.values(), limit, requested_query)
+            return rank_components(query, self.sources, limit, requested_query)
         content_query, removed = effective_query(query, self.search_profile)
         seeds = self.search(content_query, limit) if content_query else []
         records, covered = [], set()
@@ -159,7 +171,7 @@ class PilotEngine:
         started = time.perf_counter()
         as_of = date.today().isoformat()
         metrics = {"prompt_version": PROMPT_VERSION, "corpus_sha256": self.corpus.sha,
-                   "search_policy_version": self.corpus.search_profile["version"] if self.corpus.search_profile else LEXICAL_VERSION,
+                   "search_policy_version": self.corpus.search_profile["version"] if self.corpus.search_profile else COMPONENT_VERSION,
                    "search_policy_sha256": self.corpus.search_policy_sha,
                    "mapping_version": MAPPING_VERSION, "as_of": as_of,
                    "model": os.getenv("AGENT_LLM_MODEL", "ami-llama3.1:8b-4k"),
@@ -265,6 +277,8 @@ class PilotEngine:
                 event("dated_price_evidence_gate", temporal_trace)
                 if not catalog:
                     return {"draft": unavailable_draft(["The retrieved documents do not establish an answer to: " + state["query"]])}
+            catalog, continuation_trace = complete_causal_spans(state['query'], catalog, state['sources'])
+            event('causal_source_context', continuation_trace)
             if self.corpus.search_profile is not None:
                 query, removed = effective_query(state["query"], self.corpus.search_profile)
                 catalog, budget_trace = select_catalog(catalog, query, self.corpus.search_profile)
@@ -272,7 +286,7 @@ class PilotEngine:
                 if not catalog:
                     return {"draft": unavailable_draft(["The retrieved documents do not establish an answer to: " + state["query"]])}
             event("evidence_span_catalog", catalog)
-            requests = requested_components(state["query"])
+            requests = decorate_requests(requested_components(state["query"]))
             event("request_components", requests)
             choices = geography_choices(catalog, state["query"], explicit_only=True, requested_only=True,
                 allowed_names=([name for name in self.corpus.search_profile["geographic_names"]
@@ -283,7 +297,30 @@ class PilotEngine:
             event("period_choices", periods)
             views = (request_evidence_choices(catalog, state["sources"], requests, self.corpus.search_profile)
                      if self.corpus.search_profile else contrast_evidence_choices(catalog, state["sources"], requests))
+            source_contexts = context_sources(state['sources'], self.corpus.sources)
+            focus_trace = {}
+            comparison_trace = {}
+            for cid, period_views in comparison_views(state['query'], catalog, state['sources'], source_contexts, comparison_trace).items():
+                if cid not in views:
+                    views[cid] = period_views
+                    if cid in comparison_trace:
+                        focus_trace[cid] = comparison_trace[cid]
+            for cid, role_views in percentage_views(catalog, requests).items():
+                views.setdefault(cid, role_views)
+            for cid, count_views in evidence_views(catalog, requests).items():
+                views[cid] = count_views
+            subject_trace = {}
+            for cid, subject_views in topic_views(catalog, state['sources'], requests, subject_trace).items():
+                if cid not in views:
+                    views[cid] = subject_views
+                    if cid in subject_trace:
+                        focus_trace[cid] = subject_trace[cid]
+            event('evidence_subject_focus', focus_trace)
             event("request_evidence_views", views)
+            event('source_scope_context', source_contexts)
+            evidence_payload = selection_payload(state['sources'], catalog)
+            for record in evidence_payload:
+                record['reporting_context'] = mapper_context(source_contexts[record['source_id']])
             selection_type = constrained_selection(EvidenceSelection, GeographySelection, choices, requests, periods, views)
             mapped = call("evidence_mapping", self._model().with_structured_output(selection_type, include_raw=True), [
                 SystemMessage(content=MAPPING_INSTRUCTION),
@@ -293,7 +330,7 @@ class PilotEngine:
                     "literal_geography_choices": [label["value"] for label in choices["labels"]],
                     "literal_period_choices": [p["value"] for p in periods],
                     "resolved_relative_dates": relative_dates(state["query"], as_of),
-                    "evidence": selection_payload(state["sources"], catalog)}, ensure_ascii=False)),
+                    "evidence": evidence_payload}, ensure_ascii=False)),
             ])
             try:
                 if mapped.get("parsed") is None:
@@ -301,10 +338,26 @@ class PilotEngine:
                 candidate = mapped["parsed"].model_dump()
                 event("evidence_selection_candidate", candidate)
                 mapping = resolve_selection(candidate, catalog, state["query"], state["sources"], as_of)
+                context_checks = assess_mapping(mapping, state['query'], source_contexts)
+                event('mapped_source_context', context_checks)
+                reject_incompatible(context_checks)
+                quantity_checks = {c.component_id: percentage_evidence(c) for c in supported_components(mapping)}
+                event('mapped_percentage_roles', quantity_checks)
+                if any(c['status'] == 'incompatible' for c in quantity_checks.values()):
+                    raise UnsupportedQuantityRole('Selected evidence has an incompatible requested percentage role')
+                topic_checks = {c.component_id: topic_evidence(c, state['sources'], state['query'])
+                                for c in supported_components(mapping)}
+                event('mapped_requested_subjects', topic_checks)
+                reject_topic_mismatches(topic_checks)
+                comparison_checks = assess_comparisons(mapping, state['query'], state['sources'], source_contexts)
+                event('mapped_comparison_coverage', comparison_checks)
+                reject_incomplete_comparisons(comparison_checks)
+                event('mapped_entity_count_coverage', validate_mapping_comparisons(mapping, state['query'], state['sources']))
                 added, bindings, context_trace = collect_context(mapping, state['query'], state['sources'], self.corpus.sources)
                 scoped_sources = {**state['sources'], **added}
                 event('reporting_context', {'source_ids': list(added), 'bindings': bindings, **context_trace})
                 mapping, scope_context = resolve_scope(mapping, state["query"], scoped_sources, reporting_bindings=bindings)
+                event('mapped_answer_alignment', validate_mapped_answers(mapping, scope_context))
             except Exception as exc:
                 event("evidence_mapping_failure", {"type": type(exc).__name__})
                 raise

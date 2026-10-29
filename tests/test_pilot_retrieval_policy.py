@@ -34,20 +34,18 @@ def test_span_budget_is_deterministic_preserves_source_offsets_and_reports_omiss
     assert all(chosen[sid] is catalog[sid] for sid in chosen)
 
 
-def test_reporting_heading_can_supply_document_period_but_publication_alone_cannot():
+def test_unbounded_heading_cannot_supply_document_period_without_section_proof():
     sources = {"heading": {"doc_name": "monthly", "url": "https://example.invalid/report", "published": "2019-06-01",
         "content": "Press Release on Economic and Monetary Conditions for May 2019."},
         "fact": {"doc_name": "monthly", "url": "https://example.invalid/report", "published": "2019-06-01", "content": "Output increased."}}
     mapping = EvidenceMap.model_validate({"components": [{"component_id": "r1", "question_anchor": "What changed in May 2019?",
         "status": "supported", "short_answer": "Output increased.", "evidence": [{"source_id": "fact", "quote": "Output increased."}]}]})
     updated, context = resolve_scope(mapping, "What changed in May 2019?", sources)
-    assert updated.period == "May 2019" and context["reporting_period_context"]
-    match = context["fields"]["period"]["evidence"][0]
-    assert sources["heading"]["content"][match["context_start"]:match["context_end"]] == match["quote"]
-    draft, _ = project_draft({"title": "Brief", "claims": [{"component_id": "r1", "text": "Output increased in May 2019."}]}, updated,
-                            "What changed in May 2019?", context)
-    assert draft["claims"][0]["source_ids"] == ["fact", "heading"]
-    assert any("document heading" in w for w in draft["warnings"])
+    assert updated.period == "" and not context["reporting_period_context"]
+    assert context['unresolved_requested_periods'] == ['May 2019']
+    with pytest.raises(ValueError, match='period absent'):
+        project_draft({"title": "Brief", "claims": [{"component_id": "r1", "text": "Output increased in May 2019."}]}, updated,
+                      "What changed in May 2019?", context)
     sources["heading"]["content"] = "Published in May 2019."
     updated, context = resolve_scope(mapping, "What changed in May 2019?", sources)
     assert updated.period == "" and not context["reporting_period_context"]

@@ -9,6 +9,7 @@ from pydantic import create_model
 
 from src.pilot._evidence import ComposedBrief, ComposedClaim, EvidenceQuote, project_draft, supported_components
 from src.pilot._scope import UnsupportedClaimPeriod, qualify_claim
+from src.pilot._entity_comparison import request_spec
 
 
 class UnitClaim(ComposedClaim):
@@ -32,8 +33,10 @@ def composition_units(mapping):
             if re.search(r"\bignore\b.{0,60}\b(?:instructions|rules)\b|\bapprove_export\b|"
                          r"\breveal\b.{0,40}\b(?:secrets|credentials)\b", evidence["quote"], re.I | re.S):
                 raise ValueError("Selected synthesis evidence contains instruction-like source content")
+    anchors = {c.component_id: c.question_anchor for c in supported_components(mapping)}
     while len(groups) < 5:
-        candidates = [i for i, group in enumerate(groups) if len(group["evidence"]) > 1]
+        candidates = [i for i, group in enumerate(groups) if len(group["evidence"]) > 1
+                      and not request_spec(anchors[group['component_id']])]
         if not candidates:
             break
         index = max(candidates, key=lambda i: (len(groups[i]["evidence"]),
@@ -53,7 +56,11 @@ def payload(mapping, as_of, scope_context=None):
     context = scope_context or {}
     units = [{k: v for k, v in unit.items() if k not in {'identity_sha256', 'scope_citation_ids'}}
              for unit in canonical_units(mapping, context)]
-    return {"as_of": as_of, "units": units}
+    # Requests describe the task, never factual evidence. Keep mapper summaries
+    # and unrestricted gap text out; preserve every alias of shared evidence.
+    requests = [{"component_id": c.component_id, "question_anchor": c.question_anchor, "status": c.status}
+                for c in supported_components(mapping)]
+    return {"as_of": as_of, "requests": requests, "units": units}
 
 
 def canonical_units(mapping, scope_context=None):
@@ -105,7 +112,7 @@ def _missing_requested_cause(text, evidence, question):
     words = lambda value: {w.casefold() for w in re.findall(r"[^\W\d_]{4,}", value) if w.casefold() not in stop}
     actual = words(text)
     for quote in evidence:
-        match = re.search(r"(?:\b(?:supported by|driven (?:primarily )?by|due to|because|reflecting)|,\s*as)\s+(.+)", quote.quote, re.I)
+        match = re.search(r"(?:\b(?:supported by|driven (?:primarily )?by|due to|because|reflect(?:s|ed|ing)|(?:as )?a result of)|,\s*as)\s+(.+)", quote.quote, re.I)
         if match:
             for part in re.split(r"\bas well as\b", match[1], flags=re.I):
                 expected = words(part)
@@ -222,21 +229,35 @@ def project(value, mapping, question, scope_context, diagnostics=None):
     # the exact evidence-unit granularity rather than an entire broad request.
     unit_mapping = mapping.model_copy(update={"components": projected})
     context = dict(scope_context)
+    context['request_component_ids'] = {u['unit_id']: u['component_id'] for u in units}
     context["components"] = {u["unit_id"]: scope_context.get("components", {}).get(u["component_id"], {}) for u in units}
     context["fields"] = {name: {**field, "evidence": [{**e, "component_id": u["unit_id"]}
         for u in units for e in field["evidence"] if e["component_id"] == u["component_id"]]}
         for name, field in scope_context.get("fields", {}).items()}
     draft, _ = project_draft({"title": composed.title, "claims": claims}, unit_mapping, question, context)
-    # Collapse only byte-identical text and ordered citations, after every unit
-    # has passed validation. A repeated public claim still covers all its units.
-    unique, positions, coverage = [], {}, []
+    # Every origin has already passed validation. A duplicate assertion may
+    # retain multiple citations; this does not establish source independence.
+    unique, positions, cross_sources, coverage, merged = [], {}, {}, [], []
     for unit, claim in zip(units, draft["claims"], strict=True):
         key = (claim["text"], tuple(claim["source_ids"]))
-        if key not in positions:
-            positions[key] = len(unique)
-            unique.append(claim)
-            coverage.append({"claim_index": len(unique) - 1, "unit_ids": [], "component_ids": []})
-        group = coverage[positions[key]]
+        signature = (unit['component_id'], claim['text'], tuple(e['quote'] for e in unit['evidence']),
+                     json.dumps(scope_context.get('components', {}).get(unit['component_id'], {}), sort_keys=True))
+        index = positions.get(key)
+        if index is None and signature in cross_sources:
+            candidate = cross_sources[signature]
+            citations = list(dict.fromkeys([*unique[candidate]['source_ids'], *claim['source_ids']]))
+            if len(citations) <= 5:
+                index = candidate
+                unique[index]['source_ids'] = citations
+                merged.append({'claim_index': index, 'unit_id': unit['unit_id'],
+                               'retained_source_ids': list(citations)})
+        if index is None:
+            index = len(unique)
+            unique.append({**claim, 'source_ids': list(claim['source_ids'])})
+            coverage.append({"claim_index": index, "unit_ids": [], "component_ids": []})
+        positions[key] = index
+        cross_sources[signature] = index
+        group = coverage[index]
         group["unit_ids"].append(unit["unit_id"])
         if unit["component_id"] not in group["component_ids"]:
             group["component_ids"].append(unit["component_id"])
@@ -250,4 +271,5 @@ def project(value, mapping, question, scope_context, diagnostics=None):
         diagnostics["public_claim_coverage"] = coverage
         diagnostics['canonical_composition_units'] = canonical
         diagnostics['omitted_measure_qualifiers'] = omitted_qualifiers
+        diagnostics['merged_duplicate_citations'] = merged
     return draft, fallback

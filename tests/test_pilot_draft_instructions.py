@@ -103,7 +103,7 @@ def test_synthesis_receives_contract_and_preserves_scripted_draft(
     else:
         assert "ComposedBrief" not in captured
     assert len(checks) == (1 if claim else 0)
-    assert result["metrics"]["prompt_version"] == PROMPT_VERSION == "analyst-pilot-v1.38"
+    assert result["metrics"]["prompt_version"] == PROMPT_VERSION == "analyst-pilot-v1.53"
 
 
 @pytest.mark.parametrize("instruction", [

@@ -1,0 +1,16 @@
+{
+  "author": "assistant-authored synthetic integration contract frozen before implementation",
+  "question": "How did private investment compare month-on-month in May 2020 and quarter-on-quarter in the second quarter, and which categories explain those directions?",
+  "expected_anchors": [
+    "month-on-month in May 2020",
+    "quarter-on-quarter in the second quarter"
+  ],
+  "checks": [
+    "Both anchors are literal question substrings with shared subject copied into their instructions.",
+    "Each period must cover direction and requested categories; no separate monthly-only anaphoric category clause.",
+    "Monthly/quarterly mapping and source-scope gates agree, without extra model calls.",
+    "Quarterly component never inherits May from the monthly component, and does not warn May is missing from quarterly evidence.",
+    "Missing quarterly evidence leaves the supported monthly answer and a specific quarterly gap.",
+    "Raw Corpus.search ranking and unsupported request grammars remain unchanged."
+  ]
+}

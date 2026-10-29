@@ -1,0 +1,19 @@
+{
+  "author": "assistant-authored synthetic monthly-summary contract frozen before implementation",
+  "fixture": {
+    "doc_name": "SYNTHETIC_SUMMARY",
+    "header": "Press Release on the Economic and Monetary Conditions for May and the Second Quarter of 2019",
+    "summary": "Factory orders increased from the previous month.",
+    "section": "Details of the economic conditions for May relative to the previous month are as follows:",
+    "detail": "Factory orders increased because machine purchases rose.",
+    "quarter": "In the second quarter, factory orders declined."
+  },
+  "checks": [
+    "Summary quote needs its own explicit previous-month cue; another sentence in the source is insufficient.",
+    "Only between the pinned header and unique matching monthly section; detailed records stay before the next quarter boundary.",
+    "Both context records and all quote/corpus/document identities must validate.",
+    "Mixed summary/detail selection may bind when every selected source qualifies.",
+    "Wrong-month, quarter, forecast, tampered boundary and publication-only sources remain rejected or unresolved.",
+    "Keep the two-context/five-citation bounds; no new model call, API or model setting."
+  ]
+}

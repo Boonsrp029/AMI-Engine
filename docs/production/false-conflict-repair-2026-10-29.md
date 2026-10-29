@@ -1,0 +1,17 @@
+# Literal comparison state repair — v1.52
+
+**Offline repair; actual model quality remains unverified.** The [transport-v1 mapper](diagnostic-transport-v1-findings.md) selected Singapore and China counts correctly, then marked them conflicting. Its source gate failed and closed the generation allowance.
+
+The comparison validator now inspects a `conflicting` component rather than skipping it outright. Where its selected quotes provide exactly one count for each requested entity, no extra non-count context, the same pinned document identity and no explicitly differing periods, it rejects the unsupported conflict state. It does not compute a replacement answer, change status, fill missing fields or call another model. Competing counts, differing document/corpus/period contexts, one-sided evidence and additional unresolved context remain unresolved for source review. Literal consistency is not general semantic support.
+
+The existing winner check also recognizes a narrow elliptical relation such as “Maple had more” within an explicit project-count comparison. A retained synthetic replay had shown this wording bypassing the prior project-noun check. Other unrecognized language still requires source review; no universal entailment guarantee is claimed.
+
+The mapper instruction now distinguishes different entity counts from conflicting observations. Prompt version is `analyst-pilot-v1.52`; mapping version is `requested-evidence-v37`. Model/digest/context/completion/temperature, retrieval, public APIs, `Draft`, SQLite, four-call ceiling, final NeMo, approval/export controls and dependency versions remain unchanged.
+
+## Verification boundaries
+
+The final targeted suite passes 126 tests; the integrated suites pass **882 Windows / 881 Linux tests**, one Windows-only skip and 15 existing warnings. New cases cover distinct/shared count spans, false conflict, real competing counts, incompatible document/corpus/period contexts, one-sided/additional context and elliptical relations. Current-engine replay rejects the actual retained false-conflict response, accepts a synthetic supported comparison and rejects a synthetic wrong elliptical winner. The installed SDK's request body matches the actual current mapper input under mocked HTTP. These are fixed-response contract checks with zero actual generation, not model-quality results. Initial full runs failed six stale assertions expecting prompt v1.51; updating the expected version preserved the behavioral checks. Their failure logs remain retained.
+
+Full-suite, image and evidence-integrity results are retained separately in local `resume-v12`. A network-disabled full Dockerfile build failed because package-install cache layers were unavailable and Debian repositories were unreachable without a build network. The failure log is preserved. A separately labeled source overlay on the exact previously verified dependency image supports current-source Linux/recovery checks; it is **not** evidence of a fresh dependency rebuild. No dependency version was changed to work around the cache condition.
+
+The [next protocol](diagnostic-proposal-v152.md) retains one mapper request and a conditional r06 workflow, with explicit time/call limits and a new human grant required. No further generation occurred during the repair. Historical outputs/judgments and approved exports remain protected; full production qualification is still open.

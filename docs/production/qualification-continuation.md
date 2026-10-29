@@ -55,3 +55,11 @@ The current repair shares identical evidence before composition, validates every
 The owner authorized one new p01/p02 plus consumed r01/r02 set, at most 16 workflow calls/four NeMo invocations, and only on all four passing a conditional 20-case run of at most 80 total workflow model calls and 20 NeMo invocations. One attempt/case, 180 seconds, pinned local digest, no retries/Ragas/hosted inference. Actual assessments remain pending; earlier failures and owner judgments remain unchanged.
 
 Current outcome: the separately authorized v1.36 development gate passed all four checks, unlocking the frozen v2 set. That run stopped on r06 mapping validation after four attempts; three returned drafts had scope/coverage failures and sixteen cases were unattempted. The qualification gate FAILED. See [complete findings and next repair gate](qualification-v2-findings.md). Earlier checkpoints above remain historical; no retry or new approval/export occurred.
+
+## 28 October offline continuation
+
+The [source-context and retrieval passes](context-and-retrieval-2026-10-28.md) pass 551 Windows /550 Linux tests plus one Windows-only skip, with 15 dependency warnings. These are offline engineering checks; no new model attempt or owner acceptance exists. The retained qualification remains failed. The r04 monthly locator is corrected by an [addendum](r04-locator-correction-2026-10-28.md), preserving its historical record. The proposed v3 pool remains frozen and unattempted; its changed topic mix needs review before qualification.
+
+## Later 28 October evidence-role checkpoint
+
+The [v1.43 repair](evidence-roles-2026-10-28.md) passes 607 Windows tests /606 Linux tests plus one Windows-only skip, with 15 warnings, and its no-inference recovery check preserves the four approved exports. It adds bounded subject, definition/cause, numeric-role and comparison-coverage checks. Actual model quality remains unverified; the old qualification is failed. A [four consumed-case diagnostic](diagnostic-proposal-v143.md) is prepared but not authorized or run.

@@ -1,0 +1,48 @@
+{
+  "author": "assistant-authored synthetic eligibility regressions; frozen before implementation",
+  "prior_contract_sha256": "674020cc13e4d3f8dd3a786868597d188cae54ec9953c85ac599f7ddb5d24df6",
+  "fixtures": [
+    {
+      "id": "hyphenated_measure",
+      "question": "What drove the headline-inflation increase?",
+      "source": "Headline inflation increased due to transport costs. Core inflation was stable.",
+      "expectation": "Recognize headline-inflation as headline inflation; do not admit core solely because the request became generic inflation."
+    },
+    {
+      "id": "bounded_causal_continuation",
+      "question": "What drove headline inflation?",
+      "source": "Headline inflation increased mainly due to transport inflation. This was partly a result of a higher harbor levy and a ferry-fuel surcharge. Core inflation was stable.",
+      "expectation": "Offer both the explicit requested-subject statement and its immediately following same-record causal continuation; retain exact offsets and source identity. Decoder must permit the supporting detail, not only validate it later."
+    },
+    {
+      "id": "continuation_boundaries",
+      "question": "What drove headline inflation?",
+      "sources": [
+        "Headline inflation increased mainly due to transport inflation.",
+        "This was partly a result of a higher harbor levy."
+      ],
+      "expectation": "No inferred antecedent across sources, blank paragraphs, different intervening subjects or unsupported scope. Unknown classification is not proof of absence."
+    },
+    {
+      "id": "duplicate_assertions",
+      "question": "What drove headline inflation?",
+      "sources": [
+        "Headline inflation increased due to transport costs.",
+        "Headline inflation increased due to transport costs."
+      ],
+      "expectation": "Prepare provenance-aware duplicate handling without dropping distinct evidence, scope validation or source citations; do not conflate same text with equivalent scope."
+    },
+    {
+      "id": "hyphen_causal_distractor",
+      "question": "What drove the headline-inflation increase?",
+      "source": "Headline inflation increased due to transport costs. Core inflation increased due to payroll costs.",
+      "expectation": "Specific headline subject required even when the unrelated core sentence is also causal."
+    },
+    {
+      "id": "unknown_extra_evidence",
+      "question": "Why did private consumption increase?",
+      "source": "Private consumption increased because hotels reopened. Receipts also reflected longer stays. Public investment declined.",
+      "expectation": "An unclassified continuation remains selectable as extra evidence; known different subjects remain excluded. Classification is not proof of absence."
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+# Proposed two mapper-only preflights for v1.48
+
+**Execution update: both mapper preflights passed the declared checks under a subsequent owner grant; that two-call budget is now closed.** The frozen proposal below records the protocol before authorization. The v1.47 grant stopped at r05 and did not fund these checks. The [offline repair](selection-contract-repair-2026-10-28.md) aligns uniqueness declarations/parsing and filters explicit reporting-range endpoints.
+
+Freeze and run m01/m02 once each using the unchanged pinned local model: **at most two mapper calls total, zero tools, composition or NeMo calls, 60 seconds per case**. No retries, hosted inference or Ragas. Stop on the first technical or assistant source-quality failure. Save raw/parsed responses, schema, catalog, resolved mapping, identities, finish reasons, available usage, timing and failures. No full workflow or twenty-case run is included.
+
+The fixtures use facts, wording and identifiers different from instruction examples. m01 requires six capacity units and nine sites in Amber in May 2018 with distinct correct evidence. m02 requires nine annual applications and a 20% increase from 2017, with no December-only scope inferred from a January–December range. Check requested meaning and support, not only parsing or the presence of numbers. Existing guardrails are not invoked because these are isolated mapper checks; no resulting brief can be approved/exported.
+
+Local frozen contract: `reports/workflow_pilot/production-readiness-2026-10-27/resume-v6/mapper-preflight-proposal-v148/contract.json`, SHA-256 `f51aba13a344b73f83897e236cc1a318b00480f38ee28930aaa97f6a009f1030`. Expected generator identity: `ed28b0e4f57b19c3a819637671c36a6ee74c13644666bd5512b74ffdc00d5109`. Expected model digest: `6f3154f347c4f96858a9f259e64d96b2675f4cb2f4894b2d9714fb0752aecc23`. Verify configured model/settings, loopback-only endpoint, source fixtures and identities before/after execution. These expected pins do not establish current availability.
+
+Prerequisites: final 723-test Windows and 722-test Linux results, no-inference recovery, and protected-evidence integrity. The prepared local runner refuses missing authorization, frozen-attempt overwrites, failed previous gates, altered fixtures and wrong identities. Passing these mapper checks would justify proposing a separate full-workflow diagnostic; it would not establish model quality, release-preflight success, owner acceptance or production readiness.
+
+## Retained execution result
+
+The owner explicitly authorized two mapper preflights. m01 selected one valid span, returned six capacity units and nine sites, and preserved the supported Amber/May 2018 scope. m02 returned nine projects and a 20% increase, reused the supporting span once per distinct request component, and left the monthly period empty. Both parsed, passed source/scope checks, exited cleanly without timeout and matched expected identities. Neither repeated an ID within a component.
+
+Actual budget: **two local mapper calls, zero NeMo/tool/composition calls, 2,226 known input tokens and 175 output tokens**. No retry, Ragas, hosted inference, approval or export occurred. These two short synthetic results do not prove general decoder uniqueness, the complete r05 workflow, or held-out quality. Results, raw/parsed responses and process/source gates are in ignored `resume-v6/mapper-preflight-v148/`; `summary.json` closes the budget. No full workflow or twenty-case run is authorized by it.

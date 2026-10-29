@@ -1,0 +1,19 @@
+{
+  "author": "assistant-authored synthetic follow-up contract, frozen after r04 failure and before implementation",
+  "status": "NOT implemented; no new inference authorized",
+  "question": "How did private investment compare month-on-month in May 2019 and quarter-on-quarter in the second quarter, and which categories explain those directions?",
+  "focused_source": "Private investment declined from the previous month. Investment in machinery decreased. Vehicle investment increased. Construction investment was unchanged.",
+  "overview_source": "The economy slowed. Merchandise exports increased. Private investment declined while tourism receipts grew.",
+  "quarter_header": "Press Release on the Economic and Monetary Conditions for May and the Second Quarter of 2019",
+  "quarter_source": "In the second quarter, activity increased. Private investment rose in vehicle and construction categories.",
+  "checks": [
+    "Coalesce bounded contiguous same-subject category evidence into exact <=600-character windows; preserve offsets and member IDs and do not cross source/paragraph/new-subject boundaries.",
+    "Prefer cohesive requested-subject records over mixed overview fragments when both are available; prevent unrelated optional tourism/export facts consuming units. Unknown classification itself must not imply absence.",
+    "Retain unknown evidence when no focused candidate exists; log all focus exclusions as context limitations, not a claim the database lacks facts.",
+    "Carry independently proven monthly and quarterly scope per component/unit; never give the quarterly claim the monthly date.",
+    "Quarter/year must be supported by a pinned recognized report heading and matching bounded quarter section, not copied from the question or publication date. Wrong quarter/year, ambiguous headings or mismatched source identities fail or remain unresolved.",
+    "Keep context/citation budgets; reuse already retrieved quarter context rather than reading an unbounded document.",
+    "Maintain four-call ceiling, model/settings/dependencies/public Draft/SQL/approval/export contracts. No automatic repair or hardcoded source answers.",
+    "Test whole-source/category completeness, five-claim grouping, unrelated optional spans, explicit gaps and final guardrail failure before requesting any new budget."
+  ]
+}

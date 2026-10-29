@@ -1,0 +1,80 @@
+{
+  "author": "assistant-authored predeclared synthetic development contract",
+  "status": "fixtures frozen; not implemented tests or model-quality evidence",
+  "model_calls": 0,
+  "fixtures": [
+    {
+      "id": "wrong_subject",
+      "question": "How did private investment change?",
+      "source": "SYNTHETIC: Private investment was stable. Private consumption increased.",
+      "selected_quote": "Private consumption increased.",
+      "expectation": "Reject known different requested measure; quotation identity is insufficient."
+    },
+    {
+      "id": "bounded_antecedent",
+      "question": "Which categories explain private investment movements?",
+      "source": "SYNTHETIC: Private investment was stable. Investment in machinery increased. Vehicle investment increased. Construction investment decreased.",
+      "selected_quote": "Investment in machinery increased.",
+      "expectation": "Permit a traceable same-paragraph requested-subject antecedent; do not demand repeated private qualifier in every sentence."
+    },
+    {
+      "id": "public_private_distinction",
+      "question": "How did private investment change?",
+      "source": "SYNTHETIC: Public investment increased. Private investment decreased.",
+      "selected_quote": "Public investment increased.",
+      "expectation": "Do not substitute public for private investment."
+    },
+    {
+      "id": "percentage_role_not_numeric_set",
+      "question": "What share of application value was FDI in 2021?",
+      "source": "SYNTHETIC: FDI represented 68% of total application value in 2021, after increasing 19% from the previous year.",
+      "candidate": "FDI represented 19% of total application value in 2021.",
+      "expectation": "Reject or source-groundedly fall back on explicit ratio-role mismatch despite every numeric token being present. Preserve separate annual growth when correctly labeled."
+    },
+    {
+      "id": "different_denominator",
+      "question": "What share of all application value was FDI?",
+      "source": "SYNTHETIC: Coastaria supplied 210 projects worth 41.6 billion baht, representing 35% of FDI application value.",
+      "candidate": "FDI represented 35% of all application value.",
+      "expectation": "Do not infer FDI share of all applications from one source-country share of FDI."
+    },
+    {
+      "id": "wrong_quantity_unit",
+      "question": "How many projects were submitted?",
+      "source": "SYNTHETIC: There were 210 projects worth 41.6 billion baht.",
+      "candidate": "There were 41.6 projects.",
+      "expectation": "Reject or source-groundedly fall back on wrong value-unit pairing; numeric token presence alone is insufficient."
+    },
+    {
+      "id": "source_currency_equivalent",
+      "question": "What was the pledged investment value?",
+      "source": "SYNTHETIC: Pledged investment totaled 41.6 billion baht, approximately USD 1.2 billion.",
+      "candidate": "Pledged investment totaled approximately USD 1.2 billion.",
+      "expectation": "Retain source-provided approximate currency equivalent; do not invent a baht-only requirement or compute a new exchange rate."
+    },
+    {
+      "id": "definition_not_cause",
+      "question": "Why did private consumption increase?",
+      "sources": [
+        "SYNTHETIC: The consumption index includes foreign tourist expenditure.",
+        "SYNTHETIC: Private consumption increased because restaurant and hotel spending rose."
+      ],
+      "selected_quote": "The consumption index includes foreign tourist expenditure.",
+      "expectation": "A measurement definition alone is not causal evidence. Prefer the available explanatory passage, without an extra model repair call."
+    },
+    {
+      "id": "qualitative_supported_answer",
+      "question": "How did private investment change and what supported it?",
+      "source": "SYNTHETIC: Private investment increased, supported by machinery purchases.",
+      "candidate": "Private investment increased, supported by machinery purchases.",
+      "expectation": "Retain supported qualitative information without inventing an unrequested growth-figure requirement."
+    }
+  ],
+  "boundaries": [
+    "No case IDs or reference answers in runtime rules.",
+    "Unknown classification is not proof of missing evidence; do not silently turn malformed mappings into abstentions.",
+    "Keep valid partial answers, dates, source IDs, strict citations and final NeMo.",
+    "Any deterministic fallback must use selected, validated evidence and retain diagnostics.",
+    "Keep dependencies, public APIs, model settings and four-call ceiling unchanged."
+  ]
+}

@@ -15,6 +15,7 @@ from src.pilot.store import Conflict, QueueFull, Store
 from src.pilot._readiness import readiness
 from src.pilot._runtime import ProcessRuntime
 from src.pilot._identity import allowed, authenticate, load_principals
+from src.pilot._request_body import RequestBodyLimit
 
 
 def create_app(corpus_path=None, database_path=None, engine=None, run_inline=False):
@@ -71,6 +72,9 @@ def create_app(corpus_path=None, database_path=None, engine=None, run_inline=Fal
                   docs_url=None, redoc_url=None, openapi_url=None)
     app.state.store, app.state.token = store, token
     app.state.runtime = runtime
+    # Registered before the browser/auth middleware so denied requests are not
+    # buffered. The inner boundary counts received bytes, including chunked data.
+    app.add_middleware(RequestBodyLimit)
 
     @app.middleware("http")
     async def local_browser_boundary(request: Request, call_next):

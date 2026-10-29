@@ -1,9 +1,11 @@
 """Conservative scope propagation; phrase occurrence is not semantic entailment."""
 
 import re
-import hashlib
 from decimal import Decimal
 from src.utils._periods import _MONTHS, _PERIOD, explicit_periods
+from src.pilot._quantities import validate_quantity_roles
+from src.pilot._topics import validate_claim_topic
+from src.pilot._requests import requested_periods
 
 
 _PUBLICATION_CUE = re.compile(r"\b(?:published|publication|released|release|issued|dated)\b", re.I)
@@ -11,6 +13,21 @@ _SCENARIO = re.compile(r"\b(?:STEPS|APS|NZE)\b")
 _RELEASE_DATELINE = re.compile(
     r"^(?:No\.?\s*)?\d+/\d{4}\s*(?:\([^)]{1,20}\)\s*)?"
     r"\d{1,2}\s+(?:" + '|'.join(_MONTHS.split()) + r")\s+\d{4}\b", re.I)
+
+
+def _numeric_values(value):
+    # The declared currency codes also occur directly beside amounts in source
+    # headings (USD33). A general letter/digit split would admit identifier
+    # suffixes such as record33, so normalize only these existing currency units.
+    value = re.sub(r"(?<!\w)(?:USD|THB)(?=\d)", " ", value, flags=re.I)
+    value = re.sub(r"(?<=\d)[ ,](?=\d{3}(?:\D|$))", "", value)
+    # Do not salvage the integer prefix or fractional suffix of a malformed
+    # identifier-like decimal. Ordinary sentence-final punctuation stays legal.
+    return {Decimal(n) for n in re.findall(r"(?<![\w.])\d+(?:\.\d+)?(?!\w|\.\d)", value)}
+
+
+def _without_established_period(text, period):
+    return re.sub(r"(?<!\w)" + re.escape(period) + r"(?!\w)", "", text, flags=re.I) if period else text
 
 
 def measurement_periods(text):
@@ -46,6 +63,10 @@ def _period_evidence(component, evidence, period, automatic=False):
     return not automatic or _contains(evidence.quote, component.short_answer)
 
 
+def _requests_period(component, question, period):
+    return period.casefold() in {p.casefold() for p in requested_periods(component.question_anchor,question)}
+
+
 def resolve_scope(mapping, question, sources=None, reporting_bindings=()):
     """Copy only source-backed scope, and retain its supporting component/quotation."""
     supported = [c for c in mapping.components if c.status in {"supported", "partial"}]
@@ -61,7 +82,8 @@ def resolve_scope(mapping, question, sources=None, reporting_bindings=()):
     period = mapping.period
     origin = "mapper"
     if not period and len(requested) == 1 and any(
-            _period_evidence(c, e, requested[0], automatic=True) for c in supported for e in c.evidence):
+            _requests_period(c,question,requested[0]) and _period_evidence(c, e, requested[0], automatic=True)
+            for c in supported for e in c.evidence):
         period = requested[0]
         origin = "requested period also present in selected quotation"
     fields, components = {}, {}
@@ -70,28 +92,13 @@ def resolve_scope(mapping, question, sources=None, reporting_bindings=()):
         from src.pilot._report_context import binding_matches
         by_id = {c.component_id: c for c in supported}
         for binding in reporting_bindings:
+            if binding.get('proof_format') == 'bounded-quarterly-v1':
+                continue
             if binding['component_id'] not in by_id or binding['period'].casefold() != requested[0].casefold():
                 raise ValueError('Reporting context does not match a supported requested component')
             heading_matches.append(binding_matches(binding, by_id[binding['component_id']], sources))
         if heading_matches:
             period, origin = requested[0], 'explicit heading and bounded monthly section; verify document context'
-    if not period and len(requested) == 1 and sources:
-        for source_id, source in sources.items():
-            match = re.search(r"\b(?:Economic and Monetary|Economic) Conditions for\s+(" + re.escape(requested[0]) + r")\b", source["content"], re.I)
-            if match is None or not source.get("doc_name") or not source.get("url"):
-                continue
-            for component in supported:
-                factual = [sources[e.source_id] for e in component.evidence]
-                if (component.kind == "projection" or any(re.search(r"\bproject(?:ed|ion|s)|\bforecast", e.quote, re.I) for e in component.evidence)
-                        or any(explicit_periods(e.quote) and not _contains(e.quote, requested[0]) for e in component.evidence)):
-                    continue
-                if all(all(record.get(key) == source.get(key) for key in ("doc_name", "url", "published")) for record in factual):
-                    heading_matches.append({"component_id": component.component_id, "source_id": source_id,
-                        "quote": match.group(), "context_start": match.start(), "context_end": match.end(),
-                        "content_sha256": hashlib.sha256(source["content"].encode()).hexdigest(),
-                        "role": "reporting-period heading in the same document"})
-        if heading_matches:
-            period, origin = requested[0], "explicit reporting-period heading; verify document context"
     for name, value in [("geography", mapping.geography), ("period", period)]:
         if not value:
             continue
@@ -102,11 +109,12 @@ def resolve_scope(mapping, question, sources=None, reporting_bindings=()):
                            sources[g.source_id], sources[e.source_id])) for e in c.evidence)]
         elif name == "period" and heading_matches:
             matches = heading_matches + [{"component_id": c.component_id, "source_id": e.source_id, "quote": e.quote}
-                for c in supported for e in c.evidence if _period_evidence(c, e, value, automatic=origin != 'mapper')]
+                for c in supported for e in c.evidence if _requests_period(c,question,value)
+                and _period_evidence(c, e, value, automatic=origin != 'mapper')]
         else:
             matches = [{"component_id": c.component_id, "source_id": e.source_id, "quote": e.quote}
                        for c in supported for e in c.evidence if (
-                           _period_evidence(c, e, value, automatic=origin != "mapper") if name == "period"
+                           _requests_period(c,question,value) and _period_evidence(c, e, value, automatic=origin != "mapper") if name == "period"
                            else _contains(e.quote, value))]
         if not matches:
             raise ValueError("Mapped " + name + " is not present in selected supporting quotations")
@@ -114,6 +122,21 @@ def resolve_scope(mapping, question, sources=None, reporting_bindings=()):
                         "evidence": matches}
         for match in matches:
             components.setdefault(match["component_id"], {})[name] = value
+    quarter_matches = []
+    if sources:
+        from src.pilot._quarter_context import quarter_binding_matches
+        by_id = {c.component_id: c for c in supported}
+        for binding in reporting_bindings:
+            if binding.get('proof_format') != 'bounded-quarterly-v1':
+                continue
+            if binding['component_id'] not in by_id:
+                raise ValueError('Reporting context does not match a supported requested component')
+            match = quarter_binding_matches(binding, by_id[binding['component_id']], sources, question)
+            quarter_matches.append(match)
+            components.setdefault(binding['component_id'], {})['period'] = binding['period']
+            field = fields.setdefault('period', {'value': '', 'origin': 'bounded per-component report headings', 'evidence': []})
+            field['evidence'].append(match)
+            field.setdefault('values_by_component', {})[binding['component_id']] = binding['period']
     requested_scenarios = set(_SCENARIO.findall(question))
     unresolved_scenarios = []
     if len(requested_scenarios) == 1:
@@ -132,8 +155,12 @@ def resolve_scope(mapping, question, sources=None, reporting_bindings=()):
     return updated, {"fields": fields, "components": components,
         "unresolved_requested_periods": [value for value in requested if not all(
             any(_period_evidence(c, e, value, automatic=True) for e in c.evidence)
-            or components.get(c.component_id, {}).get("period") == value for c in supported)],
-        "reporting_period_context": bool(heading_matches), "unresolved_requested_scenarios": sorted(set(unresolved_scenarios)), **geographic_context}
+            or components.get(c.component_id, {}).get("period") == value for c in supported
+            if value.casefold() in {p.casefold() for p in requested_periods(c.question_anchor,question)})],
+        "reporting_period_context": bool(heading_matches or quarter_matches),
+        "title_periods": list(dict.fromkeys(components.get(c.component_id, {}).get('period', '')
+                                             for c in supported if components.get(c.component_id, {}).get('period'))),
+        "unresolved_requested_scenarios": sorted(set(unresolved_scenarios)), **geographic_context}
 
 
 class UnsupportedClaimPeriod(ValueError):
@@ -142,7 +169,8 @@ class UnsupportedClaimPeriod(ValueError):
 
 def qualify_claim(text, component, context):
     """Retain verified scope without truncating claims or assigning another component's scope."""
-    for period in explicit_periods(text):
+    from src.pilot._quarter_context import _QUARTER
+    for period in [*explicit_periods(text), *(m.group() for m in _QUARTER.finditer(text))]:
         if (not any(_contains(e.quote, period) for e in component.evidence)
                 and not _contains(context.get("components", {}).get(component.component_id, {}).get("period", ""), period)):
             raise UnsupportedClaimPeriod("Composed claim uses a period absent from its selected evidence")
@@ -172,10 +200,33 @@ def validate_claim_measure_and_numbers(text, component, question=None, scope_per
     if (question and re.search(r"\bdemand\b", question, re.I) and not re.search(r"\bgeneration\b", question, re.I)
             and re.search(r"\bgeneration\b", text, re.I) and not re.search(r"\bdemand\b", text, re.I)):
         raise ValueError("Generation cannot substitute for the requested demand measure")
-    def numbers(value):
-        value = re.sub(r"(?<=\d)[ ,](?=\d{3}(?:\D|$))", "", value)
-        return {Decimal(n) for n in re.findall(r"(?<!\w)\d+(?:\.\d+)?(?!\w)", value)}
-    established = numbers(" ".join(e.quote for e in component.evidence))
-    factual_text = re.sub(r"(?<!\w)" + re.escape(scope_period) + r"(?!\w)", "", text, flags=re.I) if scope_period else text
-    if not numbers(factual_text).issubset(established):
+    established = _numeric_values(" ".join(e.quote for e in component.evidence))
+    factual_text = _without_established_period(text, scope_period)
+    if not _numeric_values(factual_text).issubset(established):
         raise ValueError("Draft introduces a numeric value absent from its selected evidence")
+    validate_quantity_roles(factual_text, component, question)
+    validate_claim_topic(factual_text, component, question)
+    from src.pilot._entity_comparison import validate_composed_comparison
+    validate_composed_comparison(factual_text, component)
+
+
+def validate_mapped_answers(mapping, context):
+    """Check numeric compatibility of each mapper answer before composition.
+
+    Use only that component's selected quotations and already established period.
+    This shares the existing numeric parsing, not stricter unit-pair rules that
+    could reject shorthand mapper answers. It is not entailment/relevance proof.
+    Unresolved components keep their existing validated state without repair.
+    """
+    checks = {}
+    for component in mapping.components:
+        if component.status not in {'supported', 'partial'}:
+            checks[component.component_id] = {'status': 'not_applicable', 'semantic_support_proven': False}
+            continue
+        period = context.get('components', {}).get(component.component_id, {}).get('period', '')
+        answer = _without_established_period(component.short_answer, period)
+        established = _numeric_values(' '.join(e.quote for e in component.evidence))
+        if not _numeric_values(answer).issubset(established):
+            raise ValueError('Mapped answer introduces a numeric value absent from its selected evidence')
+        checks[component.component_id] = {'status': 'passed_necessary_checks', 'semantic_support_proven': False}
+    return checks
