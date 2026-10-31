@@ -5,6 +5,7 @@ The owner accepted daily backups and a 30-minute recovery target. `scripts/pilot
 ```powershell
 python scripts/pilot_backup.py backup --database reports/workflow_pilot/pilot.sqlite3 --output reports/workflow_pilot/backups/NEW-UTC-TIMESTAMP
 python scripts/pilot_backup.py verify --snapshot reports/workflow_pilot/backups/NEW-UTC-TIMESTAMP
+python scripts/pilot_backup.py check-freshness --snapshot reports/workflow_pilot/backups/NEW-UTC-TIMESTAMP --max-age-hours 24
 python scripts/pilot_backup.py restore --snapshot reports/workflow_pilot/backups/NEW-UTC-TIMESTAMP --output reports/workflow_pilot/restore-drills/NEW-UTC-TIMESTAMP
 ```
 
@@ -13,7 +14,7 @@ Every output directory must be new. Existing backups/restores are never overwrit
 ## Operator procedure
 
 1. Run backup from the intended database with a unique UTC directory. Verify it. Keep copies outside the application volume with access restricted to the operator; review/public-data history can still contain names and notes. Do not commit backup files.
-2. Inspect the manifest timestamp, success status and verification result. Alert if no successful backup is newer than 24 hours. A scheduler, off-host destination and alert delivery still require configuration and exercise; none is claimed here.
+2. Run the [freshness check](backup-freshness-2026-10-30.md) against the intended backup after integrity verification: exit 0 means fresh within the selected limit (at most 24 hours), 1 means stale, and 2 means freshness could not be established. A stale backup remains restorable. A restored snapshot cannot substitute for a newly created backup. Investigate nonzero results and arrange an authorized backup/notification. A scheduler, off-host destination and alert delivery still require configuration and exercise; none is claimed here.
 3. For recovery, stop the affected application and retain its failed volume for investigation. Restore into a new directory. Never overwrite the failed database or change the original backup.
 4. Verify the intended corpus/model/config identities. Start a separate localhost instance pointing `AMI_PILOT_DB` to the restored `pilot.sqlite3`, with external access disabled. Inspect task/revision/review history, verify cached exports are unchanged and check that unapproved/empty/outdated revisions remain blocked.
 5. Measure from operator recovery start through usable application checks. Record data loss against the last verified backup, elapsed time, failures and owner rollout decision. Only then authorize switching the intended application to restored storage. The script does not switch or deploy automatically.
@@ -29,3 +30,5 @@ The final local analyst image was also exercised with that read-only snapshot re
 Daily scheduling, off-host storage, retention policy, encryption/access controls, alert delivery, operator assignment and a deployment recovery drill remain pending. No production RPO/RTO qualification is claimed from this one successful local exercise.
 
 The current v1.36 image repeated this no-inference drill successfully; evidence is in `resume-v2/container-smoke-v6/`. Daily/off-host operation and target-environment recovery remain unqualified.
+
+On 30 October, a separate freshness check correctly identified the retained 27 October snapshot as stale (about 73 hours old). A one-time new snapshot of the existing owner-reviewed history verified as fresh and retained the same logical state; the source database and original backup/manifest hashes remained unchanged. This is one controlled backup operation, not evidence of daily scheduling, off-host storage or a production recovery-point target. Evidence and final container checks are retained in `resume-v19/`; the timestamp/manifest trust limits are documented in the linked freshness record.

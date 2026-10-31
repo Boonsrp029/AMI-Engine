@@ -16,7 +16,7 @@ NO_INFORMATION = (
     "I'm sorry, but the documents retrieved from our current document database do not provide "
     "enough evidence to answer this question. Please rephrase your question or try another topic."
 )
-MAPPING_VERSION = "requested-evidence-v37"
+MAPPING_VERSION = "requested-evidence-v38"
 MAPPING_INSTRUCTION = (
     "Map only requested components: exactly one answer per supplied request, in order. "
     "Use its component_id. Select component evidence first using span IDs. Every component "
@@ -37,7 +37,9 @@ MAPPING_INSTRUCTION = (
     "For missing use short_answer='', evidence=[] and mark missing without unrelated background. "
     "For conflicting use empty answer and two differing spans about the same measure/scope. "
     "Different counts for different entities are a comparison, not a conflict: select both counts and answer which is larger or smaller. "
-    "Any gap_anchor must copy the unanswered question fragment. "
+    "For supported components gap_anchor must be ''. A supported answer is not a gap. "
+    "For unresolved components use a supplied request's question_anchor; for a partial answer "
+    "copy only the exact unanswered question fragment. Never put an answer, direction or paraphrase in gap_anchor. "
     "Geography, period and document headings are attributes, never additional components. "
     "Geography requires status/value/evidence/reason. Known requires an actual place from "
     "literal_geography_choices and its supporting span IDs, reason=''. A heading or issuer "
@@ -86,10 +88,13 @@ COMPOSITION_INSTRUCTION = (
     "(for example, A had N projects; B had M projects), and answer the requested more/fewer comparison consistently. "
     "Identical evidence units with identical established scope are supplied once. Each unit lists its origins. "
     "Return at most one claim per supplied representative unit_id and component_id; never emit claims for origin aliases. "
+    "Some components are rendered by the application and absent from these units; never add claims for them. "
     "Compose a concise English brief from the validated evidence mapping only. Return up to "
     "five claims, one per supplied evidence unit in order. Return unit_id, component_id and text "
     "for each claim; several units may belong to the same requested component. The application assigns citations from each unit's evidence. "
     "Preserve numeric value/unit pairs and percentage subject/denominator roles from those quotations. "
+    "For a requested by-value ranking, retain the selected monetary and percentage context. "
+    "For a requested project-count comparison, explicitly state which named entity has more or fewer projects, or that counts are equal. "
     "Do not return source_ids. Read the selected quotations, which are the factual authority. "
     "Use the exact unit and component IDs from the input. Cover ALL facts in each unit's quotations, including "
     "causes, activities, quantities and dates. Preserve measure, geography, period and scenario; "
@@ -104,10 +109,10 @@ COMPOSITION_INSTRUCTION = (
 )
 
 
-def composition_payload(mapping, as_of, scope_context=None):
+def composition_payload(mapping, as_of, scope_context=None, *, excluded_units=()):
     """Separate request context from evidence; exclude lossy mapper summaries."""
     from src.pilot._composition import payload
-    return payload(mapping, as_of, scope_context)
+    return payload(mapping, as_of, scope_context, excluded_units=excluded_units)
 
 
 class EvidenceQuote(StrictModel):
@@ -143,6 +148,12 @@ class EvidenceSelectionComponent(StrictModel):
     measure: str = Field(default="", max_length=100)
     scenario: str = Field(default="", max_length=100)
     kind: Literal["actual", "projection", "unknown"] = "unknown"
+
+    @model_validator(mode="after")
+    def no_gap_for_supported_component(self):
+        if self.status == "supported" and self.gap_anchor != "":
+            raise ValueError("Supported evidence cannot contain a gap anchor")
+        return self
 
     @field_validator('evidence')
     @classmethod
@@ -345,6 +356,8 @@ def validate_mapping(value, question, sources, as_of, geography_evidence=()):
         if component.component_id in seen:
             raise ValueError("Evidence mapping contains duplicate component IDs")
         seen.add(component.component_id)
+        if component.status == "supported" and component.gap_anchor != "":
+            raise ValueError("Supported evidence cannot contain a gap anchor")
         if not normalize(component.question_anchor) or normalize(component.question_anchor) not in question_text:
             raise ValueError("Evidence mapping question anchor is not in the question")
         if component.gap_anchor and (not normalize(component.gap_anchor) or normalize(component.gap_anchor) not in question_text):

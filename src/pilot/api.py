@@ -7,6 +7,7 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse
 
 from src.pilot.engine import Corpus, PilotEngine
@@ -16,6 +17,7 @@ from src.pilot._readiness import readiness
 from src.pilot._runtime import ProcessRuntime
 from src.pilot._identity import allowed, authenticate, load_principals
 from src.pilot._request_body import RequestBodyLimit
+from src.pilot._validation_errors import public_validation_details
 
 
 def create_app(corpus_path=None, database_path=None, engine=None, run_inline=False):
@@ -105,6 +107,12 @@ def create_app(corpus_path=None, database_path=None, engine=None, run_inline=Fal
             "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; "
             "connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'")
         return response
+
+    @app.exception_handler(RequestValidationError)
+    async def invalid_request(_, exc):
+        # The default handler echoes rejected input, including PII and arbitrary
+        # extra-field names. Preserve status/envelope without those values.
+        return JSONResponse({"detail": public_validation_details(exc.errors())}, status_code=422)
 
     @app.exception_handler(Conflict)
     async def conflict(_, exc):

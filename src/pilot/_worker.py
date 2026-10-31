@@ -9,6 +9,31 @@ import time
 MESSAGE_LIMIT = 1_048_576
 
 
+def isolate_console():
+    """Worker-process only: results/events use IPC, never dependency stdout.
+
+    Redirect OS descriptors as well as Windows standard handles so native
+    writes cannot bypass Python logging. Do not call this in the owner process.
+    """
+    target = os.open(os.devnull, os.O_WRONLY)
+    try:
+        os.dup2(target, 1)
+        os.dup2(target, 2)
+        if sys.platform == "win32":
+            import ctypes
+            import msvcrt
+            from ctypes import wintypes
+            kernel = ctypes.WinDLL("kernel32", use_last_error=True)
+            kernel.SetStdHandle.argtypes = [wintypes.DWORD, wintypes.HANDLE]
+            kernel.SetStdHandle.restype = wintypes.BOOL
+            for kind, descriptor in ((-11, 1), (-12, 2)):
+                if not kernel.SetStdHandle(kind, msvcrt.get_osfhandle(descriptor)):
+                    raise OSError("Cannot isolate worker console")
+    finally:
+        if target not in (1, 2):
+            os.close(target)  # open() can reuse a previously closed stdio slot.
+
+
 class OwnerWatchdog:
     """Use an identity-bound Windows process handle, or POSIX parent identity."""
     def __init__(self, owner_pid, deadline):
@@ -60,6 +85,7 @@ def send(connection, kind, payload):
 def run(job, connection):
     watchdog = None
     try:
+        isolate_console()
         watchdog = OwnerWatchdog(job["owner_pid"], job["deadline"])
         from src.pilot.launch import configure_event_loop
         configure_event_loop()

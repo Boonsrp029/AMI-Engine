@@ -168,6 +168,17 @@ def _validate_winner(text, spec, values):
     exact = text.strip(' .').casefold()
     if exact in {left.casefold(), right.casefold()} and (expected is None or exact != expected.casefold()):
         raise ValueError('Project comparison names a winner inconsistent with selected counts')
+    for entity, relation in _literal_relations(text, spec):
+        other = right if entity == left else left
+        delta = numbers[entity] - numbers[other]
+        valid = delta == 0 if relation == 'same' else (
+            delta > 0 if relation == 'more' else delta < 0)
+        if not valid:
+            raise ValueError('Project comparison relation contradicts selected counts')
+
+
+def _literal_relations(text, spec):
+    left, right = spec['entities']
     for entity in (left, right):
         other = right if entity == left else left
         for occurrence in _literal(entity).finditer(text):
@@ -180,11 +191,7 @@ def _validate_winner(text, spec, values):
                 continue
             relation = re.search(r'\b(more|fewer|less|same)\b', tail, re.I)
             if relation:
-                delta = numbers[entity] - numbers[other]
-                valid = delta == 0 if relation[1].lower() == 'same' else (
-                    delta > 0 if relation[1].lower() == 'more' else delta < 0)
-                if not valid:
-                    raise ValueError('Project comparison relation contradicts selected counts')
+                yield entity, relation[1].lower()
 
 
 def validate_composed_comparison(text, component):
@@ -201,3 +208,90 @@ def validate_composed_comparison(text, component):
         _validate_winner(text, spec, values)
     elif re.search(r'\b(?:more|fewer|less)\s+projects?\b', text, re.I):
         raise ValueError('Draft partial project evidence cannot establish a winner')
+
+
+def missing_comparison_conclusion(text, component):
+    """Derive a missing literal count conclusion; never repair incorrect facts."""
+    spec = request_spec(component.question_anchor)
+    if not spec or component.status != 'supported':
+        return None
+    validate_composed_comparison(text, component)
+    values, roles, unused, periods = _selected_counts(component, spec)
+    if (unused or any(len(p) > 1 for p in periods)
+            or any(p != periods[0] for p in periods[1:])):
+        raise ValueError('Project conclusion requires compatible literal count evidence')
+    numbers = {name: next(iter(counts)) for name, counts in values.items()}
+    relations = list(_literal_relations(text, spec))
+    if len(set(numbers.values())) == 1:
+        if any(relation == 'same' for _, relation in relations) or re.search(
+                r'\bboth\s+had\s+the\s+same\s+number\s+of\s+projects\b', text, re.I):
+            return None
+        clause = 'Both had the same number of projects.'
+    else:
+        winner = (max if spec['direction'] == 'more' else min)(numbers, key=numbers.get)
+        if any(entity == winner and ('fewer' if relation == 'less' else relation) == spec['direction']
+               for entity, relation in relations):
+            return None
+        clause = f"{winner} had {spec['direction']} projects."
+    return {'clause': clause, 'counts': {name: str(count) for name, count in numbers.items()},
+        'source_ids_by_entity': roles, 'operation': 'compare_literal_project_counts',
+        'semantic_support_proven': False}
+
+
+def render_literal_comparison(component, sources):
+    """Render a narrow source operation, never repair a model-written claim.
+
+    Unknown period/geography stays unknown. Shared document identity and literal
+    counts are necessary checks, not proof of semantic or temporal applicability.
+    """
+    spec = request_spec(component.question_anchor)
+    if not spec or component.status != 'supported':
+        return None
+    tail = component.question_anchor[_REQUEST.match(component.question_anchor).end():]
+    if not re.fullmatch(r'[?.\s]*(?:Keep (?:the )?percentage denominators clear[.!]?)?\s*', tail, re.I):
+        return None  # A further cause/measure request must not be discarded.
+    quoted = ' '.join(e.quote for e in component.evidence)
+    if re.search(r'\b(?:forecast|projected|expected|scenario|STEPS|APS|NZE|would|could|might|target)\b', quoted, re.I):
+        return None
+    values, roles, unused, periods = _selected_counts(component, spec)
+    if unused or any(len(counts) != 1 for counts in values.values()):
+        raise ValueError('Literal project rendering requires one unambiguous count per entity')
+    if any(len(period) > 1 for period in periods) or any(p != periods[0] for p in periods[1:]):
+        raise ValueError('Literal project rendering requires compatible explicit periods')
+    if periods:
+        for evidence in component.evidence:
+            counts, _, _, own_periods = _selected_counts(
+                component.model_copy(update={'evidence': [evidence]}), spec)
+            if any(counts.values()) and not own_periods:
+                return None  # Do not extend one quotation's year to another.
+    requested_year = re.search(r'\b(?:in|for|during)\s+((?:19|20|21)\d{2})\b',
+        component.question_anchor[:_REQUEST.match(component.question_anchor).end()], re.I)
+    if requested_year and (not periods or not all(any(re.search(
+            r'(?<!\d)' + requested_year[1] + r'(?!\d)', date) for date in period) for period in periods)):
+        return None
+    ids = list(dict.fromkeys(e.source_id for e in component.evidence))
+    if not ids or any(sid not in sources for sid in ids):
+        raise ValueError('Literal project rendering references an unknown source')
+    if any(not same_pinned_document(sources[ids[0]], sources[sid]) for sid in ids):
+        raise ValueError('Literal project rendering requires shared pinned document identity')
+    for evidence in component.evidence:
+        quote = ' '.join(evidence.quote.split())
+        if not quote or quote not in ' '.join(sources[evidence.source_id].get('content', '').split()):
+            raise ValueError('Literal project rendering quotation does not match its source')
+    # A wrong mapper summary also remains a failure; it is not silently fixed.
+    actual = linked_counts(component.short_answer, spec['entities'])
+    if any(counts and counts != values[name] for name, counts in actual.items()):
+        raise ValueError('Mapped project counts contradict selected source operands')
+    _validate_winner(component.short_answer, spec, values)
+    numbers = {name: next(iter(counts)) for name, counts in values.items()}
+    text = '; '.join(f'{name} had {count:f} projects' for name, count in numbers.items()) + '.'
+    conclusion = missing_comparison_conclusion(text, component)
+    if conclusion:
+        text += ' ' + conclusion['clause']
+    if len(text) > 800:
+        raise ValueError('Literal project rendering exceeds the claim limit')
+    validate_composed_comparison(text, component)
+    return {'text': text, 'counts': {name: str(count) for name, count in numbers.items()},
+        'source_ids_by_entity': roles, 'operation': 'render_literal_project_comparison',
+        'model_generated': False, 'semantic_support_proven': False,
+        'scope_note': 'No date/geography inferred; unresolved scope still requires review.'}

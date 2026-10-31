@@ -25,6 +25,8 @@ def check_protocol(path, digest):
     if sha(path) != digest:
         raise ValueError('Protocol identity changed')
     protocol = read_json(path)
+    if protocol.get('validation_entrypoint','run_engine_mapper') not in {'run_engine_mapper','run_engine_composer'}:
+        raise ValueError('Unsupported diagnostic validation entrypoint')
     for name, expected in protocol['files'].items():
         if sha(_inside(path.parent, name)) != expected:
             raise ValueError('Frozen diagnostic artifact changed')
@@ -91,9 +93,15 @@ def validate_response(protocol_path, digest, service_path, output):
                 parsed, error = None, exc
                 result['parsing_error_type'] = type(exc).__name__
             return {'raw':raw, 'parsed':parsed, 'parsing_error':error}
-        checked = helper['run_engine_mapper'](fixed_response)
+        checked = helper[protocol.get('validation_entrypoint','run_engine_mapper')](fixed_response)
         result.update(status='engine_validated; assistant source assessment pending',
                       events=checked['events'], reused_service_response=True)
+        if protocol.get('validation_entrypoint') == 'run_engine_composer':
+            if checked.get('nemo_invocations') != 0 or not checked.get('draft') or not checked.get('sources'):
+                raise ValueError('Composer validation must retain draft/sources without invoking NeMo')
+            result.update(draft=checked['draft'], sources=checked['sources'],
+                validation_target='composition; safety not executed',
+                event_attribution=checked['event_attribution'])
         check_protocol(protocol_path, digest)
     except Exception as error:
         result.update(status='failed', error_type=type(error).__name__)

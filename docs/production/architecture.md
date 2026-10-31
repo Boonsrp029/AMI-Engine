@@ -5,7 +5,7 @@
 | Component | Current path | Evidence boundary |
 |---|---|---|
 | Legacy query runtime | `src/agents/graph.py` | Retrieval → structured analysis → NeMo wrapper; existing query API retained |
-| Reviewed analyst runtime | `src/pilot/engine.py` | Separate opt-in graph with bounded tools, span mapping and composition; local Ollama only |
+| Reviewed analyst runtime | `src/pilot/engine.py` | Separate opt-in graph with bounded tools, span mapping, application-rendered eligible literal count comparisons and remaining free-form composition; local Ollama only |
 | Reviewer application | `src/pilot/api.py`, `index.html`, `schemas.py`, `store.py`, `_identity.py` | SQLite exact-revision human approval/export. Shared local bootstrap by default; optional per-principal tokens/roles with bound review identity; target deployment identity remains unqualified |
 | Process control | `src/pilot/_runtime.py`, `_worker.py` | One owned process, two waiting slots, deadline/cancellation, owner-death watchdog, attempt fence and single-instance lease; offline fault tests are not a sustained live workload |
 | Local retrieval | `local_retriever.py`, pilot `_passages`, `_choices`, `_scope`, `_retrieval_policy` | Raw lower-level BM25 preserved; analyst intent-fused lexical ranking or existing corpus-pinned profile; exact spans and narrow contrast/list checks, no general quality guarantee |

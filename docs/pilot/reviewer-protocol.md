@@ -14,7 +14,11 @@ these invitations have been sent or that a session has occurred until it has.
 
 ## Two tasks per reviewer
 
-Use tasks of comparable complexity drawn from the frozen cases. For reviewer 1,
+Use consumed development tasks only, such as the r03/r04 task cards in the
+[session kit](reviewer-session-kit-2026-10-31.md). Do not use reserved v4
+qualification cases r07–r22 or r27–r30 for practice, demonstrations or tuning.
+The historical label `heldout` on a consumed case does not make it unseen.
+Use tasks of comparable complexity. For reviewer 1,
 do the first task manually with the supplied PDFs, then the second with AMI.
 Reverse the order for reviewer 2 where possible. Supply the same source access.
 Avoid having a reviewer memorize the answer before testing it with assistance.
@@ -26,10 +30,17 @@ mode, corpus revision, run/revision IDs, missing facts, unsupported claims,
 corrections, usefulness (1–5), and whether the output was approved. The UI stores
 these measurements with the review; leave unknown fields blank rather than zero.
 
-For the five-case technical comparison, open `human_review.csv` in the generated
+Separate a live assisted task from inspection of a previously saved draft.
+The latter can provide source-review/usability feedback, but cannot establish
+fresh generation quality or live end-to-end task time. Generation requires its
+own authorized budget; a reviewer invitation or consent is not that grant.
+
+For the historical five-case technical comparison, open `human_review.csv` in the generated
 comparison directory. Check correctness, completeness, and source support against
 the references and original pages. Fill reviewer alias and review status only
 after reading the evidence. Distinguish human findings from automated checks.
+Its existing owner ratings are historical evidence: do not overwrite them with
+external-session results. Use a new session record instead.
 
 ## Follow-up and release gate
 

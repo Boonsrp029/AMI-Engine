@@ -7,6 +7,7 @@ from unittest.mock import Mock
 import pytest
 
 from src.pilot import launch
+from src.pilot._server_logging import server_logging_config
 
 
 def test_windows_selector_policy_is_explicit_and_other_platforms_unchanged(monkeypatch):
@@ -31,7 +32,8 @@ def test_launcher_configures_policy_before_importing_application_and_has_one_wor
     launch.main([])
     assert events == ["policy", "server"]
     invoke.assert_called_once_with("src.pilot.api:create_app", factory=True, host="127.0.0.1", port=8000,
-                                   workers=1, access_log=False, loop="asyncio")
+                                   workers=1, access_log=False, loop="asyncio",
+                                   log_config=server_logging_config())
 
 
 @pytest.mark.parametrize("args", [["--port", "0"], ["--port", "65536"], ["--host", "public.example"]])

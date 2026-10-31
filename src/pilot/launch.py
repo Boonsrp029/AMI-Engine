@@ -26,9 +26,10 @@ def main(argv=None):
     if not 1 <= args.port <= 65535:
         parser.error("port must be between 1 and 65535")
     configure_event_loop()
+    from src.pilot._server_logging import server_logging_config
     import uvicorn
     uvicorn.run("src.pilot.api:create_app", factory=True, host=args.host, port=args.port,
-                workers=1, access_log=False, loop="asyncio")
+                workers=1, access_log=False, loop="asyncio", log_config=server_logging_config())
 
 
 if __name__ == "__main__":

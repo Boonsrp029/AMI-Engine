@@ -40,7 +40,7 @@ class MarketVectorSearchIndexer:
         self.endpoint_name = os.getenv("DATABRICKS_VECTOR_SEARCH_ENDPOINT", endpoint_name)
         self.source_table = os.getenv("DATABRICKS_SOURCE_TABLE", source_table)
         self.index_name = os.getenv("DATABRICKS_VECTOR_SEARCH_INDEX", index_name)
-        self.primary_key = primary_key
+        self.primary_key = os.getenv("DATABRICKS_VECTOR_SEARCH_PRIMARY_KEY", primary_key)
         self.embedding_column = os.getenv("DATABRICKS_EMBEDDING_SOURCE_COLUMN", embedding_column)
         self.embedding_model = os.getenv("DATABRICKS_EMBEDDING_MODEL_ENDPOINT", embedding_model)
 
@@ -57,12 +57,39 @@ class MarketVectorSearchIndexer:
         else:
             self.vsc.wait_for_endpoint(name=self.endpoint_name, timeout=timeout)
 
+    def _validate_existing_index(self, metadata, pipeline_type):
+        """Refuse to synchronize an index built for a different resource contract."""
+        if not isinstance(metadata, dict):
+            raise ValueError("Existing index metadata is unavailable")
+        spec = metadata.get("delta_sync_index_spec")
+        if not isinstance(spec, dict):
+            raise ValueError("Existing index is not a managed Delta Sync index")
+        expected = {
+            "name": self.index_name,
+            "index_type": "DELTA_SYNC",
+            "primary_key": self.primary_key,
+        }
+        mismatches = [key for key, value in expected.items() if metadata.get(key) != value]
+        if spec.get("source_table") != self.source_table:
+            mismatches.append("source_table")
+        if not isinstance(pipeline_type, str) or spec.get("pipeline_type") != pipeline_type.upper():
+            mismatches.append("pipeline_type")
+        columns = spec.get("embedding_source_columns")
+        if (not isinstance(columns, list) or len(columns) != 1 or not isinstance(columns[0], dict)
+                or columns[0].get("name") != self.embedding_column
+                or columns[0].get("embedding_model_endpoint_name") != self.embedding_model):
+            mismatches.append("embedding_source_columns")
+        if mismatches:
+            # Report field labels only, never arbitrary returned metadata values.
+            raise ValueError("Existing index configuration is incompatible: " + ", ".join(mismatches))
+
     def sync_index(self, pipeline_type: str = "TRIGGERED") -> None:
         """Creates or updates the Delta Sync index via AI Search."""
         self.ensure_endpoint_exists()
         
         if self.vsc.index_exists(endpoint_name=self.endpoint_name, index_name=self.index_name):
             index = self.vsc.get_index(endpoint_name=self.endpoint_name, index_name=self.index_name)
+            self._validate_existing_index(index.describe(), pipeline_type)
             print(f"Triggering sync for existing index '{self.index_name}'...")
             index.sync()
             index.wait_until_ready(timeout=timedelta(seconds=int(os.getenv("VECTOR_INDEX_TIMEOUT_SECONDS", "3600"))))

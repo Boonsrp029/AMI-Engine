@@ -1,0 +1,74 @@
+{
+  "status": "frozen preparation; no generation or qualification scores",
+  "author": "assistant; source/reference adjudication pending",
+  "spec": "data/pilot/release-2026-10-30-v4/spec.json",
+  "spec_sha256": "b83b23acfadee33de21bd071ff78c0218a607638d2f8985c94b092766bc39958",
+  "package": "data/external/release_qualification_2026_10_30_v4/frozen-v4",
+  "manifest_sha256": "36ab8c6f99cbd88385914a12f62139b16c99d76702db337dfe1bb7e0dcad5ce1",
+  "generator_sha256": "1a7e4e1e42cbd76c54ebacedd6ec11fae33d12691a1558386be104002ac009f0",
+  "public_corpus_sha256": "a98d0c4c9d6b131360213f77f58d8a70ef16ab7b0302f68758a30243d269b20e",
+  "retained_case_ids": [
+    "r07",
+    "r08",
+    "r09",
+    "r10",
+    "r11",
+    "r12",
+    "r13",
+    "r14",
+    "r15",
+    "r16",
+    "r17",
+    "r18",
+    "r19",
+    "r20",
+    "r21",
+    "r22"
+  ],
+  "new_case_ids": [
+    "r27",
+    "r28",
+    "r29",
+    "r30"
+  ],
+  "archived_unchanged_case_ids": [
+    "r23",
+    "r24",
+    "r25",
+    "r26"
+  ],
+  "preflights_unchanged": [
+    "p01",
+    "p02"
+  ],
+  "category_counts": {
+    "answerable": 10,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "adversarial": 2
+  },
+  "answerable_source_mix": {
+    "IEA": 3,
+    "BOT": 5,
+    "BOI": 2
+  },
+  "all_corpora_unchanged": true,
+  "all_retained_records_equal": true,
+  "locators_resolve": true,
+  "offline_reproduction": {
+    "all_11_files_byte_identical": true,
+    "network_calls": 0
+  },
+  "targeted_tests": 18,
+  "new_model_NeMo_Ragas_hosted_calls": 0,
+  "runtime_and_dependencies_unchanged": true,
+  "generation_authorization": false,
+  "human_review": "New references awaiting adjudication; new generated answers need source/completeness review before owner acceptance. No repeat scoring requested for identical old drafts. Exact revision approval required before export.",
+  "limits": [
+    "Same documents, source families and retrieval corpus; not statistically independent facts.",
+    "Source author knows references; no author-blindness or pretraining-novelty claim.",
+    "Prior synthetic-input exposure disclosed; no new generation or runtime tuning."
+  ],
+  "local_evidence": "reports/workflow_pilot/production-readiness-2026-10-27/resume-v32"
+}

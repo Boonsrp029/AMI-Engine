@@ -26,7 +26,7 @@ from src.pilot._entity_comparison import decorate_requests, evidence_views, vali
 from src.pilot._continuations import complete_causal_spans
 from src.pilot._requests import requested_components
 from src.pilot._choices import constrained_composition, constrained_selection, geography_choices, period_choices
-from src.pilot._composition import composition_units, project as project_composition
+from src.pilot._composition import composition_units, literal_units, project as project_composition
 from src.pilot._passages import assemble
 from src.pilot._temporal import price_observation_catalog
 from src.pilot._retrieval_policy import contrast_evidence_choices, effective_query, load_profile, request_evidence_choices, select_catalog
@@ -39,7 +39,7 @@ from src.utils.env import load_project_environment
 from src.utils.guardrails_runner import GuardrailsRunner
 
 
-PROMPT_VERSION = "analyst-pilot-v1.53"
+PROMPT_VERSION = "analyst-pilot-v1.57"
 TOOL_INSTRUCTION = (
     "You prepare public Thailand/ASEAN market research. Use search_sources to obtain evidence, "
     "Search using 3 to 6 subject/measure words, keeping requested scenarios and horizons; omit "
@@ -367,17 +367,26 @@ class PilotEngine:
                 return {"draft": unavailable_draft(evidence_gaps(mapping, state["query"])), 'sources': scoped_sources}
             # Request anchors and the original question are not answer evidence. In
             # particular, an unresolved country must not leak back in from them.
-            composition_input = composition_payload(mapping, as_of, scope_context)
+            rendered = literal_units(mapping, scope_context, scoped_sources)
+            event('source_rendered_project_comparisons', list(rendered.values()))
+            composition_input = composition_payload(mapping, as_of, scope_context, excluded_units=rendered)
             event("composition_input", composition_input)
-            result = call("draft", self._model().with_structured_output(constrained_composition(mapping, scope_context), include_raw=True), [
-                SystemMessage(content=DRAFT_INSTRUCTION),
-                HumanMessage(content=json.dumps(composition_input, ensure_ascii=False)),
-            ])
-            if result.get("parsed") is None:
-                raise ValueError("The local model did not return a valid draft schema")
+            if composition_input['units']:
+                result = call("draft", self._model().with_structured_output(constrained_composition(
+                    mapping, scope_context, excluded_units=rendered), include_raw=True), [
+                    SystemMessage(content=DRAFT_INSTRUCTION),
+                    HumanMessage(content=json.dumps(composition_input, ensure_ascii=False)),
+                ])
+                if result.get("parsed") is None:
+                    raise ValueError("The local model did not return a valid draft schema")
+                composed = result['parsed'].model_dump()
+            else:
+                composed = {'title': 'Analyst research brief', 'claims': []}
+                event('composition_model_skipped', {'reason': 'all units are source-rendered project comparisons'})
             composition_diagnostics = {}
             draft, fallback_ids = project_composition(
-                result["parsed"].model_dump(), mapping, state["query"], scope_context, diagnostics=composition_diagnostics)
+                composed, mapping, state["query"], scope_context, diagnostics=composition_diagnostics,
+                source_records=scoped_sources)
             draft = validate_citations(draft, scoped_sources)
             event("component_coverage", {"supported": [c.component_id for c in supported_components(mapping)],
                                           "fallback_component_ids": list(dict.fromkeys(u["component_id"]

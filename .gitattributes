@@ -1,0 +1,4 @@
+# Frozen files are byte-addressed by data/pilot/manifest.json.
+# Preserve their existing bytes; line-ending conversion invalidates the hashes.
+/data/pilot/cases.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/data/pilot/synthetic_corpus.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

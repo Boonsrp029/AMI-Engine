@@ -119,7 +119,8 @@ def test_inspect_process_has_no_engine_or_framework_imports():
     assert result.stdout.strip()=='False'
 
 
-def test_offline_parser_replays_fixed_response_without_model(tmp_path,monkeypatch):
+@pytest.mark.parametrize('target',['mapper','composer','composer_guard_forbidden'])
+def test_offline_parser_replays_fixed_response_without_model(tmp_path,monkeypatch,target):
     path,digest,protocol=fixture(tmp_path,monkeypatch)
     from langchain_core.messages import SystemMessage,HumanMessage
     from pydantic import BaseModel
@@ -130,6 +131,7 @@ def test_offline_parser_replays_fixed_response_without_model(tmp_path,monkeypatc
     write_json(path.parent/'input.json',frozen)
     write_json(path.parent/'native.json',request_body(frozen))
     for name in ('input.json','native.json'):protocol['files'][name]=sha(path.parent/name)
+    if target.startswith('composer'):protocol['validation_entrypoint']='run_engine_composer'
     write_json(path,protocol);digest=sha(path)
     write_json(tmp_path/'service.json',{'status':'completed_transport','response_complete':True,
         'identity_before':True,'identity_after':True,'finish':{'done_reason':'stop'},'usage':None,
@@ -140,10 +142,26 @@ def test_offline_parser_replays_fixed_response_without_model(tmp_path,monkeypatc
             response=callback(Reply,[SystemMessage(content=frozen['messages'][0]['content']),
                                      HumanMessage(content=frozen['messages'][1]['content'])])
             assert response['parsed'].label=='fixed' and response['parsing_error'] is None
-            return {'events':[{'kind':'synthetic validation only'}]}
-        return {'run_engine_mapper':run}
+            return {'events':[{'kind':'synthetic validation only'}],
+                'draft':{'title':'Synthetic validated draft'},'sources':{'s':{'content':'Synthetic source'}},
+                'nemo_invocations':1 if target=='composer_guard_forbidden' else 0,
+                'event_attribution':'fixed diagnostic replay'}
+        return {'run_engine_mapper':run,'run_engine_composer':run}
     monkeypatch.setattr(runpy,'run_path',helper)
     output=tmp_path/'validation';output.mkdir()
     result=check.validate_response(path,digest,tmp_path/'service.json',output)
-    assert result['status'].startswith('engine_validated') and result['parsed']=={'label':'fixed'}
+    assert result['parsed']=={'label':'fixed'}
+    if target=='composer_guard_forbidden':
+        assert result['status']=='failed'
+        return
+    assert result['status'].startswith('engine_validated')
     assert result['model_calls']==0 and result['reused_service_response']
+    if target=='composer':
+        assert result['draft']['title']=='Synthetic validated draft' and result['sources']
+        assert result['validation_target']=='composition; safety not executed'
+
+
+def test_unknown_validation_hook_fails_before_loading_helper(tmp_path,monkeypatch):
+    path,digest,protocol=fixture(tmp_path,monkeypatch)
+    protocol['validation_entrypoint']='run_unrelated_job';write_json(path,protocol)
+    with pytest.raises(ValueError,match='validation entrypoint'):check.check_protocol(path,sha(path))

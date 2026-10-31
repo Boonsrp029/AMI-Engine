@@ -1,0 +1,126 @@
+{
+  "kind": "companion provenance clarification; not a benchmark modification",
+  "author": "assistant",
+  "date": "2026-10-30",
+  "frozen_v3_manifest_sha256": "c8ee93dd983022549bd43d7cb3dadcf2d223dc36606d7bc5dc1e296ff6782fe0",
+  "frozen_v2_manifest_sha256": "f28098dc9e43ce2048f154f9b3e59c5fd99ea9c67d682e97ec2179131925aa20",
+  "authoritative_v3_heldout_ids": [
+    "r07",
+    "r08",
+    "r09",
+    "r10",
+    "r11",
+    "r12",
+    "r13",
+    "r14",
+    "r15",
+    "r16",
+    "r17",
+    "r18",
+    "r19",
+    "r20",
+    "r21",
+    "r22",
+    "r23",
+    "r24",
+    "r25",
+    "r26"
+  ],
+  "v3_preflight_ids": [
+    "p01",
+    "p02"
+  ],
+  "v3_category_counts": {
+    "answerable": 10,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "adversarial": 2
+  },
+  "v3_answerable_source_document_counts": {
+    "IEA_ELECTRICITY2025": 7,
+    "BOT_MPC_DEC2024": 1,
+    "BOT_JAN2025": 2
+  },
+  "v2_answerable_source_document_counts": {
+    "BOT_DEC2024": 2,
+    "BOI_2024": 2,
+    "IEA_ELECTRICITY2025": 3,
+    "BOT_MPC_DEC2024": 1,
+    "BOT_JAN2025": 2
+  },
+  "inherited_continuation_block": "Historical v1-to-v2 record, not the current v3 roster; lists r03-r06 despite their replacement in actual v3 cases",
+  "retained_unattempted_v2_ids": [
+    "r07",
+    "r08",
+    "r09",
+    "r10",
+    "r11",
+    "r12",
+    "r13",
+    "r14",
+    "r15",
+    "r16",
+    "r17",
+    "r18",
+    "r19",
+    "r20",
+    "r21",
+    "r22"
+  ],
+  "v3_replacement_ids": [
+    "r23",
+    "r24",
+    "r25",
+    "r26"
+  ],
+  "v3_retained_attempt_records_observed": 0,
+  "observation_scope": "Existing qualification reports matching attempt-*.json package identity; no global claim about user activity outside these artifacts",
+  "coverage_status": "Do not silently use altered answerable mix as equivalent broad market qualification",
+  "recommended_successor": {
+    "status": "proposed only; no new cases created",
+    "retain_ids": [
+      "r07",
+      "r08",
+      "r09",
+      "r10",
+      "r11",
+      "r12",
+      "r13",
+      "r14",
+      "r15",
+      "r16",
+      "r17",
+      "r18",
+      "r19",
+      "r20",
+      "r21",
+      "r22"
+    ],
+    "archive_unattempted_v3_additions": [
+      "r23",
+      "r24",
+      "r25",
+      "r26"
+    ],
+    "proposed_new_ids": [
+      "r27",
+      "r28",
+      "r29",
+      "r30"
+    ],
+    "new_source_mix": {
+      "BOT_DEC2024": 2,
+      "BOI_2024": 2
+    },
+    "target_answerable_mix": {
+      "BOT_total": 5,
+      "BOI": 2,
+      "IEA": 3
+    },
+    "selection_rule": "New supported facts distinct from consumed r03-r06; freeze before any generation, preserve v1/v2/v3 untouched and do not select using model outcomes"
+  },
+  "exposure_and_independence": "The earlier public-spec metadata print also displayed existing synthetic source text. Runtime was already frozen before inspection and remains unchanged. This pool is held out from generation/tuning, not blind to its preparation author or statistically independent.",
+  "runtime_or_reference_changes": false,
+  "new_generation_calls": 0
+}

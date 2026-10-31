@@ -103,6 +103,11 @@ def main(argv=None):
                 raise ValueError("Supervised bootstrap marker absent; this smoke expects identity configuration to be unset")
             return match[1].decode()
         token = session_token()
+        private_marker = "synthetic-private-person@example.invalid"
+        code, invalid = request("/api/runs", "POST", {"query": private_marker,
+            "request_key": "synthetic-validation-redaction"}, token)
+        assert code == 422 and private_marker not in json.dumps(invalid)
+        assert all(set(error) == {"type", "loc", "msg"} for error in invalid["detail"])
         code, rejected = request("/api/runs", "POST", {"query": "Give me personal financial advice", "request_key": "synthetic-scope-rejection"}, token)
         assert code == 202
         deadline = time.monotonic() + 90
@@ -143,6 +148,7 @@ print(r)
         if args.review_snapshot is not None:
             assert hashlib.sha256((args.review_snapshot / "pilot.sqlite3").read_bytes()).hexdigest() == snapshot_sha
         report.update(status="passed", non_root=True, missing_model_readiness_503=True,
+                      validation_response_redacted=True,
                       persistent_restart_recovery=True, corpus_sha256=health["corpus_sha256"],
                       real_worker_scope_rejection_zero_calls=True, cached_export_checks=cached,
                       bootstrap_token_recorded=False)

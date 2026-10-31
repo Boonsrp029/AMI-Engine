@@ -2,9 +2,6 @@ bundle:
   name: autonomous-market-intelligence-engine
 
 variables:
-  workspace_host:
-    description: Databricks workspace URL (no credentials)
-    default: https://dbc-567e5110-5578.cloud.databricks.com
   spark_version:
     description: Runtime compatible with the workspace
     default: 14.3.x-scala2.12
@@ -21,6 +18,8 @@ targets:
     mode: development
     default: true
     workspace:
+      # Authentication fields cannot use custom ${var.*} substitutions.
+      # Set this target's literal host explicitly when selecting a workspace.
       host: https://dbc-567e5110-5578.cloud.databricks.com
       auth_type: databricks-cli
 

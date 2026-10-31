@@ -10,6 +10,7 @@ from src.pilot._component_retrieval import retrieval_facets
 from src.pilot._source_context import assess_mapping
 from src.pilot._topics import topic_evidence,focused_choices,_DETAIL_REQUEST
 from src.utils._periods import _COMMAND
+from src.pilot._directions import assess_direction
 
 
 def _facets(question):
@@ -61,15 +62,20 @@ def assess_comparisons(mapping, question, sources, contexts):
             evidence = [_check(facet, e, sources, contexts) for e in component.evidence]
             status = ('compatible' if any(e['status'] == 'compatible' for e in evidence) else
                       'incompatible' if evidence and all(e['status'] == 'incompatible' for e in evidence) else 'unknown')
-            roles.append({'role': facet['role'], 'status': status, 'evidence': evidence})
+            roles.append({'role': facet['role'], 'status': status, 'evidence': evidence,
+                          'direction': assess_direction(facet, component, evidence)})
         unresolved = [r['role'] for r in roles if r['status'] != 'compatible']
         status = ('compatible' if not unresolved else
                   'incompatible' if all(r['status']=='incompatible' for r in roles) else
                   'partial' if component.status=='partial' and any(r['status']=='compatible' for r in roles) else 'unknown')
-        result[component.component_id] = {'status': status, 'unresolved_roles': unresolved, 'roles': roles}
+        direction_conflict = any(r['direction']['status'] == 'incompatible' for r in roles)
+        result[component.component_id] = {'status': 'incompatible' if direction_conflict else status,
+            'direction_conflict': direction_conflict, 'unresolved_roles': unresolved, 'roles': roles}
     return result
 
 
 def reject_incomplete_comparisons(checks):
+    if any(c.get('direction_conflict') for c in checks.values()):
+        raise ValueError('Mapped aggregate direction contradicts selected comparison evidence')
     if any(c['status'] == 'incompatible' for c in checks.values()):
         raise ValueError('Supported comparison omits an established requested period or subject')

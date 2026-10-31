@@ -4,12 +4,14 @@ from contextlib import closing
 from datetime import datetime, timezone
 import hashlib
 import json
+import math
 from pathlib import Path
 import sqlite3
 import time
 
 
 TABLES = ("runs", "revisions", "events", "reviews", "exports")
+_COPY_TIMEOUT_SECONDS = 60.0
 
 
 def file_sha(path):
@@ -47,7 +49,16 @@ def snapshot(source, destination, kind="backup", parent_manifest=None):
     destination.mkdir(parents=True, exist_ok=False)
     target = destination / "pilot.sqlite3"
     with closing(readonly(source)) as incoming, closing(sqlite3.connect(target)) as outgoing:
-        incoming.backup(outgoing)
+        # Connection timeout alone does not bound backup(): SQLite retries busy
+        # source pages. Check a monotonic deadline between bounded copy steps.
+        incoming.execute("PRAGMA busy_timeout=250")
+        deadline = time.monotonic() + _COPY_TIMEOUT_SECONDS
+
+        def check_copy_deadline(status, remaining, total):
+            if time.monotonic() >= deadline:
+                raise TimeoutError("SQLite snapshot copy deadline exceeded")
+
+        incoming.backup(outgoing, pages=128, progress=check_copy_deadline, sleep=0.05)
     state = inspect(target)
     record = {"format": "ami-pilot-sqlite-v1", "kind": kind,
               "created_utc": datetime.now(timezone.utc).isoformat(), "database": "pilot.sqlite3",
@@ -83,6 +94,41 @@ def restore(directory, destination):
     return restored
 
 
+def check_freshness(directory, max_age_hours=24, *, now=None):
+    """Verify one explicit snapshot before assessing its backup timestamp.
+
+    A new restore of old data is not a new backup. The clock override is for
+    offline tests only; the CLI always uses the current clock after verification.
+    """
+    if (type(max_age_hours) not in (int, float) or not 0 < max_age_hours <= 24
+            or not math.isfinite(max_age_hours)):
+        raise ValueError("Backup age limit must be positive and at most 24 hours")
+    manifest = verify(directory)
+    if manifest.get("kind") != "backup" or manifest.get("parent_manifest_sha256") is not None:
+        raise ValueError("Freshness requires an original backup, not a restoration")
+    created = manifest.get("created_utc")
+    if not isinstance(created, str) or len(created) > 100:
+        raise ValueError("Backup timestamp is unavailable")
+    created = datetime.fromisoformat(created)
+    checked = datetime.now(timezone.utc) if now is None else now
+    if (not isinstance(checked, datetime) or created.tzinfo is None or created.utcoffset() is None
+            or checked.tzinfo is None or checked.utcoffset() is None):
+        raise ValueError("Backup and check timestamps must include a timezone")
+    try:
+        created, checked = created.astimezone(timezone.utc), checked.astimezone(timezone.utc)
+    except OverflowError:
+        raise ValueError("Backup timestamps must resolve to a valid UTC instant") from None
+    age = (checked - created).total_seconds()
+    if age < 0:
+        raise ValueError("Backup timestamp is in the future")
+    return {"format": "ami-pilot-backup-freshness-v1", "status": "fresh" if age <= max_age_hours * 3600 else "stale",
+            "checked_utc": checked.isoformat(), "backup_created_utc": created.isoformat(),
+            "age_seconds": age, "max_age_hours": max_age_hours,
+            "database_sha256": manifest["database_sha256"], "logical_sha256": manifest["logical_sha256"],
+            "scope": "One verified backup timestamp; not source-data freshness, daily scheduling or off-host recovery",
+            "alert_delivery_performed": False}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -91,12 +137,30 @@ def main(argv=None):
     backup.add_argument("--output", type=Path, required=True)
     check = sub.add_parser("verify")
     check.add_argument("--snapshot", type=Path, required=True)
+    freshness = sub.add_parser("check-freshness")
+    freshness.add_argument("--snapshot", type=Path, required=True)
+    freshness.add_argument("--max-age-hours", type=float, default=24)
     drill = sub.add_parser("restore")
     drill.add_argument("--snapshot", type=Path, required=True)
     drill.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
-    result = (snapshot(args.database, args.output) if args.command == "backup" else
-              verify(args.snapshot) if args.command == "verify" else restore(args.snapshot, args.output))
+    if args.command == "check-freshness":
+        try:
+            result = check_freshness(args.snapshot, args.max_age_hours)
+        except (OSError, ValueError, KeyError, TypeError, AttributeError, RecursionError, sqlite3.Error):
+            # A monitor needs a nonzero, non-sensitive result, not a traceback
+            # containing host paths or malformed manifest values.
+            print(json.dumps({"format": "ami-pilot-backup-freshness-v1", "status": "unavailable",
+                "reason": "Backup freshness could not be established", "alert_delivery_performed": False}))
+            return 2
+        print(json.dumps(result, indent=2))
+        return 0 if result["status"] == "fresh" else 1
+    try:
+        result = (snapshot(args.database, args.output) if args.command == "backup" else
+                  verify(args.snapshot) if args.command == "verify" else restore(args.snapshot, args.output))
+    except TimeoutError:
+        print(json.dumps({"status": "unavailable", "reason": "SQLite snapshot copy deadline exceeded"}))
+        return 2
     print(json.dumps(result, indent=2))
     return 0
 

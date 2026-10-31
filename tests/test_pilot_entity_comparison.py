@@ -237,12 +237,14 @@ def test_actual_engine_boundary_and_call_ceiling(tmp_path, mode):
     model = SimpleNamespace(bind_tools=lambda _:SimpleNamespace(invoke=lambda _:next(turns)),with_structured_output=structured)
     guard = SimpleNamespace(validate_output=lambda **kw:guards.append(kw) or {'passed_guardrails':mode!='guard_rejected'})
     run = lambda:PilotEngine(Corpus(path),model,guard).run(Q,lambda k,v:events.append((k,v)))
-    if mode != 'valid':
+    if mode in {'wrong_selection', 'guard_rejected'}:
         with pytest.raises(ValueError):run()
         if mode=='wrong_selection':assert not composition and not guards
-        elif mode=='omitted_count':assert composition and not guards
         else:assert len(guards)==1
     else:
-        result=run();assert result['metrics']['model_calls']==4 and len(guards)==1
+        result=run();assert result['metrics']['model_calls']==3 and len(guards)==1
+        # The old omitted-count composer response is no longer requested.
+        assert not composition
         assert '12 projects' in result['draft']['claims'][0]['text']
         assert any(k=='mapped_entity_count_coverage' for k,_ in events)
+        assert any(k=='composition_model_skipped' for k,_ in events)

@@ -147,7 +147,11 @@ def constrained_selection(base, geography_base, choices, requests=None, periods=
                 extra_counts = range(6 - len(required)) if all(v.get("allow_extra", True) for v in views) else [0]
                 variants = [tuple[()]] + [tuple[tuple(required + [extra] * count)] for count in extra_counts]
                 component_fields["evidence"] = (Union[tuple(variants)], Field(..., json_schema_extra={'uniqueItems': True}))
-            slots.append(create_model(f"RequestSlot{i}", __base__=EvidenceSelectionComponent, **component_fields))
+            supported = create_model(f"SupportedRequestSlot{i}", __base__=EvidenceSelectionComponent,
+                **{**component_fields, "status": (Literal["supported"], ...), "gap_anchor": (Literal[""], "")})
+            unresolved = create_model(f"UnresolvedRequestSlot{i}", __base__=EvidenceSelectionComponent,
+                **{**component_fields, "status": (Literal["partial", "missing", "conflicting"], ...)})
+            slots.append(Union[supported, unresolved])
         slots = tuple(slots)
         if not 1 <= len(slots) <= 5:
             raise ValueError("Expected one to five canonical request slots")
@@ -155,6 +159,6 @@ def constrained_selection(base, geography_base, choices, requests=None, periods=
     return create_model("EvidenceSelection", __base__=base, **fields)
 
 
-def constrained_composition(mapping, scope_context=None):
+def constrained_composition(mapping, scope_context=None, *, excluded_units=()):
     from src.pilot._composition import response_schema
-    return response_schema(mapping, scope_context)
+    return response_schema(mapping, scope_context, excluded_units=excluded_units)

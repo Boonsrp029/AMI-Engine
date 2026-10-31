@@ -8,8 +8,9 @@ from typing import Literal, Union
 from pydantic import create_model
 
 from src.pilot._evidence import ComposedBrief, ComposedClaim, EvidenceQuote, project_draft, supported_components
-from src.pilot._scope import UnsupportedClaimPeriod, qualify_claim
-from src.pilot._entity_comparison import request_spec
+from src.pilot._scope import UnsupportedClaimPeriod, qualify_claim, validate_claim_measure_and_numbers
+from src.pilot._entity_comparison import request_spec, missing_comparison_conclusion, render_literal_comparison
+from src.pilot._quantities import quantity_pairs
 
 
 class UnitClaim(ComposedClaim):
@@ -51,15 +52,16 @@ def composition_units(mapping):
     return groups
 
 
-def payload(mapping, as_of, scope_context=None):
+def payload(mapping, as_of, scope_context=None, *, excluded_units=()):
     # Global title scope must not be offered as factual scope for every unit.
     context = scope_context or {}
     units = [{k: v for k, v in unit.items() if k not in {'identity_sha256', 'scope_citation_ids'}}
-             for unit in canonical_units(mapping, context)]
+             for unit in _model_units(mapping, context, excluded_units)]
     # Requests describe the task, never factual evidence. Keep mapper summaries
     # and unrestricted gap text out; preserve every alias of shared evidence.
+    active = {origin['component_id'] for unit in units for origin in unit['origins']}
     requests = [{"component_id": c.component_id, "question_anchor": c.question_anchor, "status": c.status}
-                for c in supported_components(mapping)]
+                for c in supported_components(mapping) if c.component_id in active]
     return {"as_of": as_of, "requests": requests, "units": units}
 
 
@@ -90,10 +92,41 @@ def canonical_units(mapping, scope_context=None):
     return result
 
 
-def response_schema(mapping, scope_context=None):
+def _model_units(mapping, scope_context, excluded_units):
     units = canonical_units(mapping, scope_context)
-    if not 1 <= len(units) <= 5:
+    excluded = set(excluded_units)
+    if not excluded.issubset({unit['unit_id'] for unit in units}):
+        raise ValueError('Unknown application-owned composition unit')
+    return [unit for unit in units if unit['unit_id'] not in excluded]
+
+
+def literal_units(mapping, scope_context, sources):
+    """Own a canonical unit only when every origin has the same literal answer."""
+    components = {component.component_id: component for component in mapping.components}
+    result = {}
+    for unit in canonical_units(mapping, scope_context):
+        if any(_measure_qualifiers(e['quote']) for e in unit['evidence']):
+            continue
+        answers = []
+        for origin in unit['origins']:
+            component = components[origin['component_id']].model_copy(update={
+                'evidence': [EvidenceQuote.model_validate(e) for e in unit['evidence']]})
+            answer = render_literal_comparison(component, sources)
+            if answer is None:
+                break
+            answers.append(answer)
+        if len(answers) == len(unit['origins']) and len({a['text'] for a in answers}) == 1:
+            result[unit['unit_id']] = {**answers[0], 'unit_id': unit['unit_id'], 'origins': unit['origins']}
+    return result
+
+
+def response_schema(mapping, scope_context=None, *, excluded_units=()):
+    if not 1 <= len(canonical_units(mapping, scope_context)) <= 5:
         raise ValueError("Composition requires one to five evidence units")
+    units = _model_units(mapping, scope_context, excluded_units)
+    if not units:
+        return create_model('ComposedBrief', __base__=UnitBrief,
+            title=(Literal['Analyst research brief'], ...), claims=(tuple[()], ...))
     slots = tuple(create_model(f"EvidenceUnit{i}", __base__=UnitClaim,
         unit_id=(Literal[unit["unit_id"]], ...), component_id=(Literal[unit["component_id"]], ...))
         for i, unit in enumerate(units))
@@ -165,14 +198,36 @@ def _measure_qualifiers(text):
     return labels
 
 
-def project(value, mapping, question, scope_context, diagnostics=None):
+def _missing_requested_value_context(text, component, period=''):
+    """Detect literal omissions only; the existing source excerpt supplies facts."""
+    if not re.search(r'\b(?:which|what)\b.{0,60}\b(?:led|leads|leading|largest|top|first)\b'
+                     r'.{0,30}\bby\s+(?:application\s+)?value\b', component.question_anchor, re.I):
+        return False
+    quoted = ' '.join(e.quote for e in component.evidence)
+    if not re.search(r'\b(?:led|leads|leading|largest|rankings?)\b', quoted, re.I):
+        return False
+    expected = {pair for pair in quantity_pairs(quoted) if pair[0] in {'baht', 'usd'}}
+    if not expected:
+        return False
+    validate_claim_measure_and_numbers(text, component, component.question_anchor, period)
+    percentages = lambda value: {re.sub(r'\s+', '', m[0]) for m in re.finditer(r'\d+(?:\.\d+)?\s*%', value)}
+    return (not expected.issubset(quantity_pairs(text))
+        or not percentages(quoted).issubset(percentages(text))
+        or not re.search(r'\b(?:led|leads|leading|largest|rankings?)\b', text, re.I))
+
+
+def project(value, mapping, question, scope_context, diagnostics=None, *, source_records=None):
     composed = UnitBrief.model_validate(value)
     units = composition_units(mapping)
     canonical = canonical_units(mapping, scope_context)
     by_id = {unit['unit_id']: unit for unit in canonical}
     representatives = {origin['unit_id']: unit['unit_id'] for unit in canonical for origin in unit['origins']}
+    rendered = literal_units(mapping, scope_context, source_records) if source_records is not None else {}
+    rendered_origins = {origin['unit_id']: item for item in rendered.values() for origin in item['origins']}
     chosen = {}
     for claim in composed.claims:
+        if claim.unit_id in rendered:
+            raise ValueError('Composed claim attempts to replace an application-owned project comparison')
         if claim.unit_id not in by_id or claim.component_id != by_id[claim.unit_id]["component_id"]:
             raise ValueError("Composed claim references an unknown or mismatched evidence unit")
         if claim.unit_id in chosen:
@@ -183,11 +238,13 @@ def project(value, mapping, question, scope_context, diagnostics=None):
     fallback_reasons = {}
     omitted_qualifiers = {}
     baseline_normalizations = []
+    comparison_conclusions = []
     for unit in units:
         uid = unit["unit_id"]
         evidence = [EvidenceQuote.model_validate(e) for e in unit["evidence"]]
         projected.append(components[unit["component_id"]].model_copy(update={"component_id": uid, "evidence": evidence}))
-        text = chosen.get(representatives[uid])
+        is_literal = uid in rendered_origins
+        text = rendered_origins[uid]['text'] if is_literal else chosen.get(representatives[uid])
         invalid_period = False
         if text is not None:
             # Reject the composed assertion; only the original selected excerpt
@@ -200,12 +257,14 @@ def project(value, mapping, question, scope_context, diagnostics=None):
                         for name, field in scope_context.get("fields", {}).items()}})
             except UnsupportedClaimPeriod:
                 invalid_period = True
-        missing_cause = text is not None and _missing_requested_cause(text, evidence, question)
-        missing_list = text is not None and _missing_requested_list_item(text, evidence, question)
+        missing_cause = not is_literal and text is not None and _missing_requested_cause(text, evidence, question)
+        missing_list = not is_literal and text is not None and _missing_requested_list_item(text, evidence, question)
+        missing_value = text is not None and not invalid_period and _missing_requested_value_context(
+            text, projected[-1], scope_context.get('components', {}).get(unit['component_id'], {}).get('period', ''))
         missing_qualifiers = sorted(set().union(*(_measure_qualifiers(e.quote) for e in evidence)) - _measure_qualifiers(text or ''))
         if text is not None and missing_qualifiers:
             omitted_qualifiers[uid] = missing_qualifiers
-        if text is None or missing_cause or missing_list or missing_qualifiers or invalid_period:
+        if text is None or missing_cause or missing_list or missing_value or missing_qualifiers or invalid_period:
             # An explicitly logged extractive fallback, never the lossy summary.
             text = " ".join(e.quote for e in evidence)
             if len(text) > 800:
@@ -214,6 +273,7 @@ def project(value, mapping, question, scope_context, diagnostics=None):
             fallback_reasons[uid] = ("unestablished_composed_period" if invalid_period else
                 'source_measure_qualifier_absent' if missing_qualifiers and representatives[uid] in chosen else
                 "requested_cause_absent_from_synthesis" if missing_cause else
+                "requested_value_context_absent_from_synthesis" if missing_value else
                 "requested_list_items_absent_from_synthesis" if missing_list else "unit_omitted")
         elif (scope_context.get("components", {}).get(unit["component_id"], {}).get("scenario")
               and any(re.search(r"\btoday\b", e.quote, re.I) for e in evidence)):
@@ -223,6 +283,13 @@ def project(value, mapping, question, scope_context, diagnostics=None):
                 baseline_normalizations.append({"unit_id": uid, "before": text, "after": clarified,
                     "role": "source-relative baseline; no measurement year inferred"})
                 text = clarified
+        conclusion = missing_comparison_conclusion(text, projected[-1])
+        if conclusion:
+            before = text
+            text = text.rstrip() + (' ' if text.rstrip().endswith(('.', '!', '?')) else '. ') + conclusion['clause']
+            if len(text) > 800:
+                raise ValueError('Explicit project conclusion exceeds the claim limit')
+            comparison_conclusions.append({'unit_id': uid, 'before': before, 'after': text, **conclusion})
         claims.append({"component_id": uid, "text": text})
     projected += [c for c in mapping.components if c.status not in {"supported", "partial"}]
     # Reuse the existing citation, gap, scope, measure and number checks, now at
@@ -272,4 +339,6 @@ def project(value, mapping, question, scope_context, diagnostics=None):
         diagnostics['canonical_composition_units'] = canonical
         diagnostics['omitted_measure_qualifiers'] = omitted_qualifiers
         diagnostics['merged_duplicate_citations'] = merged
+        diagnostics['literal_comparison_conclusions'] = comparison_conclusions
+        diagnostics['source_rendered_comparisons'] = list(rendered.values())
     return draft, fallback
