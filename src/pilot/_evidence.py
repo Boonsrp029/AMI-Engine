@@ -16,7 +16,7 @@ NO_INFORMATION = (
     "I'm sorry, but the documents retrieved from our current document database do not provide "
     "enough evidence to answer this question. Please rephrase your question or try another topic."
 )
-MAPPING_VERSION = "requested-evidence-v38"
+MAPPING_VERSION = "requested-evidence-v39"
 MAPPING_INSTRUCTION = (
     "Map only requested components: exactly one answer per supplied request, in order. "
     "Use its component_id. Select component evidence first using span IDs. Every component "
@@ -66,18 +66,22 @@ MAPPING_INSTRUCTION = (
     "Example supported: question='What was capacity in the Cedar region in May 2022?'; span demo-cap: "
     "'The region of Cedar had capacity of 7 GWh in May 2022.'\n"
     '{"components":[{"component_id":"r1",'
-    '"status":"supported","short_answer":"7 GWh","evidence":["demo-cap"]}],'
+    '"status":"supported","evidence":["demo-cap"],"short_answer":"Capacity in the region of Cedar was 7 GWh in May 2022."}],'
     '"geography":{"status":"known","value":"Cedar","evidence":["demo-cap"],"reason":""},'
     '"period":"May 2022"}\n'
     "Example missing: question='What was Cedar revenue in 2025?'; span demo-plan: "
     "'A plan published in 2020 projects Cedar revenue for 2025.'\n"
     '{"geography":{"status":"unresolved","value":"","evidence":[],"reason":"No selected '
     'answer evidence establishes a location."},"components":[{"component_id":"r1",'
-    '"status":"missing","short_answer":"","evidence":[],"gap_anchor":"revenue in 2025"}]}'
-    "\nExample supported with unknown location: question='What was capacity in Cedar in May 2022?'; "
-    "span demo-anon: 'Capacity was 7 GWh in May 2022.'\n"
-    '{"components":[{"component_id":"r1","status":"supported","short_answer":"7 GWh",'
-    '"evidence":["demo-anon"]}],"geography":{"status":"unresolved","value":"","evidence":[],'
+    '"status":"missing","evidence":[],"short_answer":"","gap_anchor":"revenue in 2025"}]}'
+    "\nExample supported with unknown location: question='How did output change in April 2021 and in the first quarter, and why?'; "
+    "span demo-month: 'Output increased in April 2021 because an overnight shift was added.'; "
+    "span demo-quarter: 'Output fell in the first quarter of 2021 because maintenance halted production.'\n"
+    '{"components":[{"component_id":"r1","status":"supported","evidence":["demo-month"],'
+    '"short_answer":"Output increased in April 2021 because an overnight shift was added."},'
+    '{"component_id":"r2","status":"supported","evidence":["demo-quarter"],'
+    '"short_answer":"Output fell in the first quarter of 2021 because maintenance halted production."}],'
+    '"geography":{"status":"unresolved","value":"","evidence":[],'
     '"reason":"Selected evidence does not identify a location."}}'
 )
 COMPOSITION_INSTRUCTION = (
@@ -141,9 +145,11 @@ class EvidenceMap(StrictModel):
 class EvidenceSelectionComponent(StrictModel):
     component_id: str = Field(min_length=1, max_length=30, description="ID from the supplied requests list")
     status: Literal["supported", "partial", "missing", "conflicting"]
-    short_answer: str = Field(max_length=800)
     evidence: list[Annotated[str, Field(min_length=1, max_length=100)]] = Field(
         max_length=5, json_schema_extra={'uniqueItems': True})
+    short_answer: str = Field(max_length=800, description=(
+        "Answer from the selected evidence in complete sentences, retaining the requested "
+        "measure, direction and supported causes/categories. Use an empty string for missing or conflicting evidence."))
     gap_anchor: str = Field(default="", max_length=1200)
     measure: str = Field(default="", max_length=100)
     scenario: str = Field(default="", max_length=100)
@@ -204,13 +210,28 @@ class EvidenceSelection(StrictModel):
     period: str = Field(default="", max_length=60)
 
 
+def _sentence_boundaries(text):
+    """Keep a declared abbreviation's continuation, without interpreting its facts.
+
+    Paragraphs still end reading windows. Unknown abbreviations retain the old
+    punctuation behavior; the 600-character splitting below remains authoritative.
+    """
+    yield 0
+    for match in re.finditer(r"(?<=[.!?;])\s+", text):
+        abbreviation = re.search(r"(?<!\w)(?:ca|approx|e\.g|i\.e)\.$", text[:match.start()], re.I)
+        paragraph = re.search(r"\r?\n[ \t]*\r?\n", match.group())
+        if not abbreviation or paragraph:
+            yield match.end()
+    yield len(text)
+
+
 def build_span_catalog(sources):
     """Index exact substrings; offsets are Python character indexes into source content."""
     catalog = {}
     for source_id, source in sources.items():
         text = source["content"]
         content_sha = hashlib.sha256(text.encode("utf-8")).hexdigest()
-        boundaries = [0, *(match.end() for match in re.finditer(r"(?<=[.!?;])\s+", text)), len(text)]
+        boundaries = list(_sentence_boundaries(text))
         for left, right in zip(boundaries, boundaries[1:]):
             while left < right:
                 while left < right and text[left].isspace():

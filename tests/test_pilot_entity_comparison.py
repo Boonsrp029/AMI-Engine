@@ -1,4 +1,6 @@
 """Literal project-count contracts; synthetic responses are not quality evidence."""
+
+from selection_fixtures import selection_fixture
 import json
 from decimal import Decimal
 from types import SimpleNamespace
@@ -183,7 +185,7 @@ def test_decoder_preserves_multiple_quotes_needed_for_a_genuine_conflict(with_ot
     schema = constrained_selection(EvidenceSelection, GeographySelection, {'labels':[]}, requests, [], views)
     raw = {'components':[{'component_id':'r1','status':'conflicting','short_answer':'','evidence':ids}],
         'geography':{'status':'unresolved','value':'','evidence':[],'reason':'No resolved scope.'}}
-    parsed = schema.model_validate(raw)
+    parsed = selection_fixture(schema, raw)
     resolved = resolve_selection(parsed.model_dump(),catalog,Q,records,'2026-10-29')
     assert resolved.components[0].status == 'conflicting'
     assert len(resolved.components[0].evidence) == len(ids)
@@ -225,13 +227,13 @@ def test_actual_engine_boundary_and_call_ceiling(tmp_path, mode):
                     'geography':{'status':'unresolved','value':'','evidence':[],'reason':'No geographic inference.'}}
                 # Base parsing deliberately bypasses decoder views for this
                 # invalid-response test; engine validation must still reject it.
-                parsed = EvidenceSelection.model_validate(raw) if mode=='wrong_selection' else schema.model_validate(raw)
+                parsed = EvidenceSelection.model_validate(raw) if mode=='wrong_selection' else selection_fixture(schema, raw)
             else:
                 composition.append(payload)
                 assert len(payload['units']) == 1 and len(payload['units'][0]['evidence']) == 2
                 text = 'Cedar had more projects.' if mode=='omitted_count' else 'Cedar had 12 projects; Maple had 8 projects. Cedar had more projects.'
                 raw = {'title':'Analyst research brief','claims':[{'component_id':'r1','unit_id':'u1','text':text}]}
-                parsed = schema.model_validate(raw)
+                parsed = selection_fixture(schema, raw)
             return {'parsed':parsed,'raw':AIMessage(content='Fixed synthetic response')}
         return SimpleNamespace(invoke=invoke)
     model = SimpleNamespace(bind_tools=lambda _:SimpleNamespace(invoke=lambda _:next(turns)),with_structured_output=structured)

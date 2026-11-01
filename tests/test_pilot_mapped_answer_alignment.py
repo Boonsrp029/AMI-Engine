@@ -1,4 +1,6 @@
 """Necessary evidence alignment gates; no semantic-support or model-quality claim."""
+
+from selection_fixtures import selection_fixture
 import json
 
 import pytest
@@ -112,7 +114,7 @@ def test_one_requests_measure_does_not_override_another_components_question():
     assert all(c['status'] == 'passed_necessary_checks' for c in checks.values())
 
 
-@pytest.mark.parametrize('mode', ['invalid_mapping', 'valid', 'guard_rejected'])
+@pytest.mark.parametrize('mode', ['forbidden_answer_field', 'valid', 'guard_rejected'])
 def test_engine_checks_mapping_before_composition_and_keeps_final_guardrail(tmp_path, mode):
     from types import SimpleNamespace
     from langchain_core.messages import AIMessage
@@ -133,7 +135,7 @@ def test_engine_checks_mapping_before_composition_and_keeps_final_guardrail(tmp_
             if issubclass(schema, EvidenceSelection):
                 assert payload['request_evidence_views'] == {}
                 sid = next(span['span_id'] for source in payload['evidence']
-                           if source['source_id'] == ('header' if mode == 'invalid_mapping' else 'fact')
+                           if source['source_id'] == 'fact'
                            for span in source['spans'])
                 raw = {'components': [{'component_id': 'r1', 'status': 'supported',
                     'short_answer': '2.5 billion credits', 'evidence': [sid]}],
@@ -143,7 +145,14 @@ def test_engine_checks_mapping_before_composition_and_keeps_final_guardrail(tmp_
                 raw = {'title': 'Analyst research brief', 'claims': [
                     {'component_id': unit['component_id'], 'unit_id': unit['unit_id'], 'text': unit['evidence'][0]['quote']}
                     for unit in payload['units']]}
-            return {'parsed': schema.model_validate(raw), 'raw': AIMessage(content='fixed synthetic response')}
+            if issubclass(schema, EvidenceSelection) and mode == 'forbidden_answer_field':
+                # New-wire malformed-output check bypasses fixture migration.
+                # Legacy numeric-answer rejection is still exercised directly
+                # by the retained tests above; extracts are not model answers.
+                raw['wire_version'] = 'source-selection-v1'
+                raw['components'][0]['gap_anchor'] = ''
+                return {'parsed': schema.model_validate(raw), 'raw': AIMessage(content='malformed fixed response')}
+            return {'parsed': selection_fixture(schema, raw), 'raw': AIMessage(content='fixed synthetic response')}
         return SimpleNamespace(invoke=invoke)
     model = SimpleNamespace(bind_tools=lambda _: SimpleNamespace(invoke=lambda _: next(tools)),
                             with_structured_output=structured)
@@ -152,8 +161,8 @@ def test_engine_checks_mapping_before_composition_and_keeps_final_guardrail(tmp_
         return {'passed_guardrails': mode != 'guard_rejected'}
     run = lambda: PilotEngine(Corpus(path), model, SimpleNamespace(validate_output=guard)).run(
         'What value was reported for investment applications?', lambda k, v: events.append((k, v)))
-    if mode == 'invalid_mapping':
-        with pytest.raises(ValueError, match='Mapped answer'):
+    if mode == 'forbidden_answer_field':
+        with pytest.raises(ValueError, match='Extra inputs are not permitted'):
             run()
         assert not composed and not guards
         assert sum(k == 'model_request_started' for k, _ in events) == 3

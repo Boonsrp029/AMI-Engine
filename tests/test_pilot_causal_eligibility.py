@@ -1,4 +1,6 @@
 """Frozen synthetic eligibility tests; no model generation or semantic guarantee."""
+
+from selection_fixtures import selection_fixture
 import copy
 import hashlib
 import json
@@ -55,7 +57,7 @@ def test_exact_causal_continuation_is_retained_without_catalog_duplication():
     views = topic_views(catalog, sources, requests)
     assert all('harbor levy' in catalog[s]['text'] for s in views['r1'][0]['span_ids'])
     schema = constrained_selection(EvidenceSelection, GeographySelection, {'labels': []}, requests, [], views)
-    selected = schema.model_validate(value([next(s for s,v in catalog.items() if v is span)]))
+    selected = selection_fixture(schema, value([next(s for s,v in catalog.items() if v is span)]))
     mapping = resolve_selection(selected.model_dump(), catalog, c['question'], sources, '2026-10-28')
     assert mapping.components[0].evidence[0].quote == span['text']
     assert trace['joined'][0]['member_ids'] == list(original)[:2]
@@ -148,11 +150,11 @@ def test_unknown_extras_are_selectable_but_known_different_subjects_are_not():
     unknown = next(s for s,v in catalog.items() if v['text'].startswith('Receipts'))
     wrong = next(s for s,v in catalog.items() if v['text'].startswith('Public investment'))
     schema = constrained_selection(EvidenceSelection, GeographySelection, {'labels': []}, requests, [], views)
-    assert schema.model_validate(value([main,unknown]))
-    assert json.loads(json.dumps(schema.model_validate(value([main,unknown])).model_dump()))['components'][0]['evidence'] == [main,unknown]
+    assert selection_fixture(schema, value([main,unknown]))
+    assert json.loads(json.dumps(selection_fixture(schema, value([main,unknown])).model_dump()))['components'][0]['evidence'] == [main,unknown]
     assert json.dumps(schema.model_json_schema()).count(unknown) == 1
     with pytest.raises(ValidationError):
-        schema.model_validate(value([main,wrong]))
+        selection_fixture(schema, value([main,wrong]))
 
 
 def test_missing_and_conflicting_states_still_have_their_contracts():
@@ -161,7 +163,7 @@ def test_missing_and_conflicting_states_still_have_their_contracts():
     views = topic_views(catalog,sources,requests)
     schema = constrained_selection(EvidenceSelection,GeographySelection,{'labels':[]},requests,[],views)
     empty = value([]);empty['components'][0].update(status='missing',short_answer='',gap_anchor=c['question'])
-    assert schema.model_validate(empty).components[0].status == 'missing'
+    assert selection_fixture(schema, empty).components[0].status == 'missing'
 
 
 @pytest.mark.parametrize('guard_passes', [True,False])
@@ -184,7 +186,7 @@ def test_engine_keeps_causal_detail_with_four_calls_and_final_guardrails(tmp_pat
             else:
                 result={'title':'Analyst research brief','claims':[{'component_id':'r1','unit_id':'u1',
                     'text':'Headline inflation increased mainly due to transport inflation.'}]}
-            return {'parsed':schema.model_validate(result),'raw':AIMessage(content='fixed synthetic response')}
+            return {'parsed':selection_fixture(schema, result),'raw':AIMessage(content='fixed synthetic response')}
         return SimpleNamespace(invoke=invoke)
     model=SimpleNamespace(bind_tools=lambda _:SimpleNamespace(invoke=lambda _:next(tools)),with_structured_output=structured)
     guards=[];events=[]
@@ -212,6 +214,6 @@ def test_conflict_quotes_remain_selectable_for_the_same_requested_measure():
     views=topic_views(catalog,sources,requests)
     schema=constrained_selection(EvidenceSelection,GeographySelection,{'labels':[]},requests,[],views)
     raw=value(list(catalog));raw['components'][0].update(status='conflicting',short_answer='',gap_anchor=question)
-    parsed=schema.model_validate(raw)
+    parsed=selection_fixture(schema, raw)
     mapping=resolve_selection(parsed.model_dump(),catalog,question,sources,'2026-10-28')
     assert mapping.components[0].status=='conflicting'

@@ -1,5 +1,7 @@
 """Synthetic instruction and plumbing checks, not evidence of LLM quality."""
 
+from selection_fixtures import selection_fixture
+
 import json
 from types import SimpleNamespace
 
@@ -8,19 +10,20 @@ from langchain_core.messages import AIMessage
 
 from src.pilot.engine import Corpus, DRAFT_INSTRUCTION, PROMPT_VERSION, PilotEngine
 from src.pilot.schemas import Draft
-from src.pilot._evidence import EvidenceSelection, MAPPING_INSTRUCTION, NO_INFORMATION
+from src.pilot._evidence import EvidenceSelection, NO_INFORMATION
+from src.pilot._source_selection import SOURCE_SELECTION_INSTRUCTION as MAPPING_INSTRUCTION
 
 
 SCENARIOS = [
     ("complete", "What supported exports in Region A in 2024?",
      "Region A exports in 2024 were supported by electronics demand.",
      "Region A exports in 2024 were supported by electronics demand.", [],
-     "Include all requested causes/activities"),
+     "Select evidence covering all requested causes/activities"),
     ("partial", "What were Region A capacity and mineral share?",
      "Region A capacity was 12 GWh in 2024.",
      "Region A capacity was 12 GWh in 2024.",
      ["The retrieved documents do not establish the following: mineral share"],
-     "preserve supported partial answers"),
+     "preserve supported partial evidence"),
     ("absent", "What was the unavailable electricity price?",
      "Region A historical electricity demand was 90 TWh in 2024.", None,
      [NO_INFORMATION, "The retrieved documents do not establish an answer to: What was the unavailable electricity price?"],
@@ -77,7 +80,7 @@ def test_synthesis_receives_contract_and_preserves_scripted_draft(
                     "reason": "Geography is explicitly unresolved in this fixed response."}, "components": [component]}
             else:
                 value = {"title": "Analyst research brief", "claims": [{"component_id": "r1", "unit_id": "u1", "text": c["text"]} for c in expected["claims"]]}
-            return {"parsed": schema.model_validate(value), "raw": AIMessage(content="draft")}
+            return {"parsed": selection_fixture(schema, value), "raw": AIMessage(content="draft")}
         return invoke
 
     model = SimpleNamespace(
@@ -103,7 +106,7 @@ def test_synthesis_receives_contract_and_preserves_scripted_draft(
     else:
         assert "ComposedBrief" not in captured
     assert len(checks) == (1 if claim else 0)
-    assert result["metrics"]["prompt_version"] == PROMPT_VERSION == "analyst-pilot-v1.57"
+    assert result["metrics"]["prompt_version"] == PROMPT_VERSION == "analyst-pilot-v1.62"
 
 
 @pytest.mark.parametrize("instruction", [

@@ -4,6 +4,7 @@ Logical engine events include frozen tool/mapper replays; they are not new model
 requests. Only an explicitly supplied callback can produce a target response.
 """
 import json
+from contextlib import ExitStack
 from datetime import date
 from pathlib import Path
 from types import SimpleNamespace
@@ -38,8 +39,18 @@ def capture_composer(attempt_path, corpus_path, as_of, callback=None, *, expecte
     from langchain_core.messages import AIMessage
     from langchain_core.output_parsers import PydanticOutputParser
     from langgraph.graph import StateGraph
-    from src.pilot._evidence import EvidenceSelection
+    from src.pilot._evidence import (EvidenceSelection, EvidenceSelectionComponent,
+        MAPPING_INSTRUCTION, MAPPING_VERSION, resolve_selection)
+    from src.pilot._source_selection import SourceSelection, WIRE_VERSION
     from src.pilot.engine import Corpus, PilotEngine
+
+    # This offline harness can replay a valid historical wire under its original
+    # contract. It never adapts it into a new-wire model response. Production
+    # engine calls have no such legacy acceptance path.
+    retained_mapping = json.loads(outputs[2]['content'])
+    legacy = 'wire_version' not in retained_mapping
+    (EvidenceSelection if legacy else SourceSelection).model_validate(retained_mapping)
+    mapper_contract = 'legacy-model-written-answer-replay' if legacy else WIRE_VERSION
 
     class FrozenDate(date):
         @classmethod
@@ -86,7 +97,20 @@ def capture_composer(attempt_path, corpus_path, as_of, callback=None, *, expecte
             action = before_safety
         return original_add(graph, node, action, **kwargs)
     try:
-        with patch('src.pilot.engine.date', FrozenDate), patch.object(StateGraph, 'add_node', add_node):
+        with ExitStack() as replay_scope:
+            replay_scope.enter_context(patch('src.pilot.engine.date', FrozenDate))
+            replay_scope.enter_context(patch.object(StateGraph, 'add_node', add_node))
+            if legacy:
+                def legacy_resolve(value, catalog, question, sources, as_of):
+                    return resolve_selection(value, catalog, question, sources, as_of), None
+                for name, value in {
+                    'SourceSelection': EvidenceSelection,
+                    'SourceSelectionComponent': EvidenceSelectionComponent,
+                    'SOURCE_SELECTION_INSTRUCTION': MAPPING_INSTRUCTION,
+                    'SOURCE_MAPPING_VERSION': MAPPING_VERSION,
+                    'resolve_source_selection': legacy_resolve,
+                }.items():
+                    replay_scope.enter_context(patch('src.pilot.engine.' + name, value))
             PilotEngine(Corpus(corpus_path), model, SimpleNamespace(validate_output=forbidden_guard)).run(
                 attempt['query'], lambda kind,payload: events.append({'kind':kind,'payload':payload}))
     except CapturedComposer:
@@ -98,5 +122,6 @@ def capture_composer(attempt_path, corpus_path, as_of, callback=None, *, expecte
     if any(e['kind'] in {'guard_invocation_started','guardrails'} for e in events):
         raise AssertionError('Unexpected guard event in composer-only replay')
     return {'status':status,'captured':captured,'events':events,**final_state,**counts,
+        'mapper_contract':mapper_contract,
         'actual_model_calls':0,'nemo_invocations':0,
         'event_attribution':'logical engine events include fixed tool/mapper replays; not new inference counts'}

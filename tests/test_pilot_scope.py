@@ -1,5 +1,7 @@
 """Offline scope propagation; synthetic values are not generated quality evidence."""
 
+from selection_fixtures import selection_fixture
+
 import json
 from types import SimpleNamespace
 
@@ -184,7 +186,7 @@ def test_final_scope_qualification_reaches_guardrails_without_extra_model_calls(
                 assert all("question_anchor" not in c and "gap_anchor" not in c
                            for c in payload["units"])
                 value = {"title": "Analyst research brief", "claims": []}
-            return {"parsed": schema.model_validate(value), "raw": AIMessage(content="")}
+            return {"parsed": selection_fixture(schema, value), "raw": AIMessage(content="")}
         return SimpleNamespace(invoke=invoke)
     model = SimpleNamespace(bind_tools=lambda _: SimpleNamespace(invoke=lambda _: next(tool_responses)),
                             with_structured_output=structured)

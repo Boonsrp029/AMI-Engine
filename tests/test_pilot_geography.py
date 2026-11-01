@@ -1,5 +1,7 @@
 """Explicit geography regressions with fixed responses; no new model judging."""
 
+from selection_fixtures import selection_fixture
+
 import copy
 import hashlib
 import json
@@ -279,7 +281,7 @@ def pipeline_model(mode):
             else:
                 value = {"title": "Analyst research brief", "claims": []}
             try:
-                parsed = schema.model_validate(value)
+                parsed = selection_fixture(schema, value)
                 error = None
             except ValidationError as exc:
                 parsed, error = None, exc

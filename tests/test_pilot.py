@@ -1,3 +1,5 @@
+
+from selection_fixtures import selection_fixture
 import hashlib
 import json
 import os
@@ -65,7 +67,7 @@ class ScriptedModel:
             else:
                 value = {"title": "Analyst research brief", "claims": [{"component_id": "r1", "unit_id": "u1", "text": c["text"]}
                     for c in self.output["claims"]]}
-            return {"parsed": schema.model_validate(value), "raw": AIMessage(content="draft",
+            return {"parsed": selection_fixture(schema, value), "raw": AIMessage(content="draft",
                 usage_metadata={"input_tokens": 10, "output_tokens": 5, "total_tokens": 15})}
         return SimpleNamespace(invoke=invoke)
 
@@ -111,7 +113,7 @@ def test_generated_bullet_formatting_removed_before_final_guardrail_check(corpus
                 value = result["parsed"].model_dump()
                 for claim in value["claims"]:
                     claim["text"] = "▪ " + claim["text"]
-                result["parsed"] = schema.model_validate(value)
+                result["parsed"] = selection_fixture(schema, value)
                 return result
             return SimpleNamespace(invoke=invoke)
 

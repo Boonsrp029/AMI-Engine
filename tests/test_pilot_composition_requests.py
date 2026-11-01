@@ -1,4 +1,6 @@
 """Task context and factual authority stay separate; fixed responses only."""
+
+from selection_fixtures import selection_fixture
 import copy
 import json
 from types import SimpleNamespace
@@ -69,7 +71,7 @@ def test_actual_engine_delivers_request_to_composer_and_retains_guard_and_call_b
                 assert value['requests']==[{'component_id':'r1','question_anchor':'What share of total application value was foreign?','status':'supported'}]
                 assert '61%' in value['units'][0]['evidence'][0]['quote']
                 raw={'title':'Analyst research brief','claims':[{'component_id':'r1','unit_id':'u1','text':'Foreign applications represented 61% of total application value.'}]}
-            return {'parsed':schema.model_validate(raw),'raw':AIMessage(content='fixed response')}
+            return {'parsed':selection_fixture(schema, raw),'raw':AIMessage(content='fixed response')}
         return SimpleNamespace(invoke=invoke)
     model=SimpleNamespace(bind_tools=lambda _:SimpleNamespace(invoke=lambda _:next(tools)),with_structured_output=structured)
     def guard(**kwargs):guards.append(kwargs);return {'passed_guardrails':guard_passes}

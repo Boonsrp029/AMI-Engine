@@ -1,4 +1,6 @@
 """Frozen synthetic subject checks, not model-quality or general entailment tests."""
+
+from selection_fixtures import selection_fixture
 import json
 from pathlib import Path
 from types import SimpleNamespace
@@ -161,7 +163,7 @@ def test_subject_checks_stop_before_composition_or_guardrails_without_retry(tmp_
         def invoke(messages):
             spans = [s for record in json.loads(messages[1].content)['evidence'] for s in record['spans']]
             selected = next(s['span_id'] for s in spans if s['text'] == c['selected_quote'])
-            return {'parsed': schema.model_validate({'components': [{'component_id': 'r1',
+            return {'parsed': selection_fixture(schema, {'components': [{'component_id': 'r1',
                 'status': 'supported', 'short_answer': c['selected_quote'], 'evidence': [selected]}],
                 'geography': {'status': 'unresolved', 'value': '', 'evidence': [], 'reason': 'No location.'}}),
                 'raw': AIMessage(content='fixed synthetic response')}
@@ -195,6 +197,6 @@ def test_decoder_views_keep_known_wrong_subject_out_but_allow_explicit_missing()
     value = {'geography': {'status': 'unresolved', 'value': '', 'evidence': [], 'reason': 'Not established.'},
         'components': [{'component_id': 'r1', 'status': 'supported', 'short_answer': c['selected_quote'], 'evidence': [wrong]}]}
     with pytest.raises(ValidationError):
-        schema.model_validate(value)
+        selection_fixture(schema, value)
     value['components'][0].update(status='missing', short_answer='', evidence=[], gap_anchor=c['question'])
-    assert schema.model_validate(value).components[0].status == 'missing'
+    assert selection_fixture(schema, value).components[0].status == 'missing'

@@ -1,4 +1,6 @@
 """Synthetic report/section binding; contextual dates are not semantic entailment."""
+
+from selection_fixtures import selection_fixture
 import copy
 import json
 from types import SimpleNamespace
@@ -134,7 +136,7 @@ def test_full_fixed_workflow_adds_context_after_mapper_within_call_budget(tmp_pa
                 else:
                     calls.append('draft')
                     value = {'title': 'Analyst research brief', 'claims': []}
-                return {'parsed': schema.model_validate(value), 'raw': AIMessage(content='Synthetic fixed response')}
+                return {'parsed': selection_fixture(schema, value), 'raw': AIMessage(content='Synthetic fixed response')}
             return SimpleNamespace(invoke=invoke)
     guard = SimpleNamespace(validate_output=lambda **kwargs: guards.append(kwargs) or {'passed_guardrails': True})
     result = PilotEngine(corpus, model=Model(), guardrails=guard).run(QUESTION, lambda k, p: events.append((k, p)))

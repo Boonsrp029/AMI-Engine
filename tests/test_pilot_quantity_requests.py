@@ -1,4 +1,6 @@
 """Quantity-slot contracts and numeric boundaries, not actual model-quality evidence."""
+
+from selection_fixtures import selection_fixture
 import copy
 import json
 from decimal import Decimal
@@ -121,10 +123,10 @@ def test_decoder_schema_requires_all_four_ordered_slots():
     sources, catalog, raw = selections()
     schema = constrained_selection(EvidenceSelection, GeographySelection, {'labels': []},
                                    requested_components(QUESTION), [], {})
-    schema.model_validate(raw)
+    selection_fixture(schema, raw)
     raw['components'] = raw['components'][:2]
     with pytest.raises(ValidationError):
-        schema.model_validate(raw)
+        selection_fixture(schema, raw)
 
 
 def test_missing_changes_remain_distinguishable_with_shared_question_anchor():
@@ -181,7 +183,7 @@ def test_four_slot_engine_preserves_budget_final_guard_and_public_draft(tmp_path
                 compositions.append(payload)
                 raw = {'title': 'Analyst research brief', 'claims': [{'component_id': u['component_id'],
                     'unit_id': u['unit_id'], 'text': u['evidence'][0]['quote']} for u in payload['units']]}
-            return {'parsed': schema.model_validate(raw), 'raw': AIMessage(content='Fixed synthetic response')}
+            return {'parsed': selection_fixture(schema, raw), 'raw': AIMessage(content='Fixed synthetic response')}
         return SimpleNamespace(invoke=invoke)
     model = SimpleNamespace(bind_tools=lambda _: SimpleNamespace(invoke=lambda _: next(calls)),
                             with_structured_output=structured)
@@ -191,7 +193,7 @@ def test_four_slot_engine_preserves_budget_final_guard_and_public_draft(tmp_path
     run = lambda: PilotEngine(Corpus(path), model, SimpleNamespace(validate_output=guard)).run(
         QUESTION, lambda k, v: events.append((k, v)))
     if mode == 'wrong_span':
-        with pytest.raises(ValueError, match='Mapped answer'):
+        with pytest.raises(ValueError, match='incompatible requested quantity measure'):
             run()
         assert not compositions and not guards
         assert sum(k == 'model_request_started' for k, _ in events) == 3

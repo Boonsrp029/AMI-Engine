@@ -1,4 +1,6 @@
 """Independent literal-operation contracts; no model-quality or live-safety claim."""
+
+from selection_fixtures import selection_fixture
 import copy
 import json
 from types import SimpleNamespace
@@ -234,7 +236,7 @@ def test_real_mixed_graph_keeps_four_call_ceiling_and_final_guard(tmp_path, mode
                     raw['claims'].append({'unit_id': 'u2', 'component_id': 'r2', 'text': 'Alder had more projects.'})
                     # Deliberately bypass SDK parsing to test projection fencing.
                     return {'parsed': UnitBrief.model_validate(raw), 'raw': AIMessage(content='synthetic')}
-            return {'parsed': schema.model_validate(raw), 'raw': AIMessage(content='synthetic')}
+            return {'parsed': selection_fixture(schema, raw), 'raw': AIMessage(content='synthetic')}
         return SimpleNamespace(invoke=invoke)
     model = SimpleNamespace(bind_tools=lambda _: SimpleNamespace(invoke=lambda _: next(turns)), with_structured_output=structured)
     guard = SimpleNamespace(validate_output=lambda **kw: guards.append(kw) or {'passed_guardrails': mode != 'guard_rejected'})

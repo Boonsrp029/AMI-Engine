@@ -87,6 +87,8 @@ Treat these as defaults, not proof that the workspace resources exist. Use `DATA
 
 ## Local runs
 
+For the current Docker Desktop browser app, use the [verified local startup instructions](docs/production/docker-desktop-startup-2026-11-01.md). The analyst server starts through `src.pilot.launch`; `main.py` runs evaluation. The host launcher checks the corpus path before Docker starts and uses an already-built local image.
+
 The opt-in [analyst pilot](docs/pilot/workflow.md) adds a local browser workspace with bounded read-only tools, source inspection, draft corrections, human approval and revision-specific export:
 
 ```powershell

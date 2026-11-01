@@ -1,4 +1,6 @@
 """Frozen synthetic provenance contracts; no model-quality claims."""
+
+from selection_fixtures import selection_fixture
 import copy
 import json
 from pathlib import Path
@@ -180,7 +182,7 @@ def test_runtime_offers_context_and_checks_mapping_before_composition(tmp_path, 
                 else:
                     calls.append('composition')
                     value = {'title': 'Analyst research brief', 'claims': []}
-                return {'parsed': schema.model_validate(value), 'raw': AIMessage(content='Fixed test response')}
+                return {'parsed': selection_fixture(schema, value), 'raw': AIMessage(content='Fixed test response')}
             return SimpleNamespace(invoke=invoke)
     guard = SimpleNamespace(validate_output=lambda **kwargs: guards.append(kwargs) or {'passed_guardrails': True})
     run = lambda: PilotEngine(corpus, Model(), guard).run(query, lambda k, v: events.append((k, v)))

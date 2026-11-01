@@ -1,5 +1,7 @@
 """Private mapping constraints and workflow integration with fixed model responses."""
 
+from selection_fixtures import selection_fixture
+
 import copy
 import json
 from datetime import date
@@ -192,7 +194,7 @@ class WorkflowModel:
                     if geography in span["text"]][:1]} if geography else {
                     "status": "unresolved", "value": "", "evidence": [],
                     "reason": "This fixture does not establish geography."})
-            return {"parsed": schema.model_validate(value) if value is not None else None,
+            return {"parsed": selection_fixture(schema, value) if value is not None else None,
                     "raw": AIMessage(content="", usage_metadata={"input_tokens": 10, "output_tokens": 5, "total_tokens": 15})}
         return SimpleNamespace(invoke=invoke)
 

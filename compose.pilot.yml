@@ -18,6 +18,8 @@ services:
         source: ${AMI_PILOT_CORPUS_FILE:?Set AMI_PILOT_CORPUS_FILE to the prepared JSON corpus}
         target: /data/market_chunks.json
         read_only: true
+        bind:
+          create_host_path: false
       - pilot-state:/state
     extra_hosts:
       - "host.docker.internal:host-gateway"

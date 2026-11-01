@@ -1,4 +1,6 @@
 """Source-derived focus contracts; no model-quality or absence claims."""
+
+from selection_fixtures import selection_fixture
 import json
 from pathlib import Path
 
@@ -113,7 +115,7 @@ def test_engine_retains_category_window_scope_and_guardrail_contract(tmp_path, g
             else:
                 captured['composition_input'] = payload
                 value = {'title': 'Analyst research brief', 'claims': []}  # Existing exact-excerpt fallback.
-            return {'parsed': schema.model_validate(value), 'raw': AIMessage(content='fixed synthetic response')}
+            return {'parsed': selection_fixture(schema, value), 'raw': AIMessage(content='fixed synthetic response')}
         return SimpleNamespace(invoke=invoke)
     model = SimpleNamespace(bind_tools=lambda _: SimpleNamespace(invoke=lambda _: next(tools)),
                             with_structured_output=structured)

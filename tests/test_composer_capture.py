@@ -51,6 +51,8 @@ def test_capture_has_request_context_and_no_guard_or_model_client(tmp_path,monke
     assert StateGraph.add_node is original_add
     assert result['actual_model_calls']==result['nemo_invocations']==result['target_callback_invocations']==0
     assert result['frozen_tool_replays']==2 and result['frozen_mapper_replays']==1
+    assert result['mapper_contract']=='legacy-model-written-answer-replay'
+    assert not any(e['kind']=='application_evidence_extracts' for e in result['events'])
     payload=json.loads(result['captured']['messages'][1]['content'])
     assert payload['requests'][0]['question_anchor']=='What happened to sales'
     assert len(payload['units'])==1 and len(payload['units'][0]['evidence'])==1
@@ -114,3 +116,29 @@ def test_count_only_capture_never_calls_composer_or_guard(tmp_path):
     assert result['actual_model_calls']==result['nemo_invocations']==0
     assert result['draft']['claims'][0]['text'].endswith('Maple had more projects.')
     assert not any(e['kind'] in {'guard_invocation_started','guardrails'} for e in result['events'])
+
+
+def test_new_wire_replay_is_explicit_and_provenance_is_not_legacy(tmp_path):
+    attempt,corpus=fixture(tmp_path)
+    data=json.loads(attempt.read_text(encoding='utf-8'))
+    mapper=json.loads(data['captured_model_outputs'][2]['content'])
+    mapper['wire_version']='source-selection-v1'
+    for component in mapper['components']:
+        del component['short_answer']
+        component['gap_anchor']=''
+    data['captured_model_outputs'][2]['content']=json.dumps(mapper)
+    attempt.write_text(json.dumps(data),encoding='utf-8')
+    result=replay(attempt,corpus)
+    assert result['mapper_contract']=='source-selection-v1'
+    assert any(e['kind']=='application_evidence_extracts' for e in result['events'])
+    assert result['actual_model_calls']==result['nemo_invocations']==0
+
+
+def test_malformed_legacy_replay_cannot_become_a_new_selection(tmp_path):
+    attempt,corpus=fixture(tmp_path)
+    data=json.loads(attempt.read_text(encoding='utf-8'))
+    mapper=json.loads(data['captured_model_outputs'][2]['content'])
+    del mapper['components'][0]['short_answer']
+    data['captured_model_outputs'][2]['content']=json.dumps(mapper)
+    attempt.write_text(json.dumps(data),encoding='utf-8')
+    with pytest.raises(ValueError):replay(attempt,corpus)

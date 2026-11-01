@@ -111,7 +111,7 @@ def _standalone_period(text, period):
     return False
 
 
-def constrained_selection(base, geography_base, choices, requests=None, periods=None, request_views=None):
+def constrained_selection(base, geography_base, choices, requests=None, periods=None, request_views=None, *, component_base=None):
     variants = []
     for i, label in enumerate(choices["labels"]):
         variant = create_model(f"KnownGeography{i}", __base__=geography_base,
@@ -131,12 +131,20 @@ def constrained_selection(base, geography_base, choices, requests=None, periods=
         # Positional schemas prevent invented or repeated request IDs at decoding time.
         # Semantic validation still checks every selected quotation after parsing.
         from src.pilot._evidence import EvidenceSelectionComponent
+        selection_component = component_base or EvidenceSelectionComponent
         slots = []
         for i, request in enumerate(requests):
             component_fields = {"component_id": (Literal[request["component_id"]], ...),
                 "measure": (Literal[""], ""), "scenario": (Literal[""], ""), "kind": (Literal["unknown"], "unknown")}
             views = (request_views or {}).get(request["component_id"])
-            if views:
+            if views and views[0].get('unordered_coverage'):
+                # One span may satisfy several roles. A positional role tuple
+                # would require duplicate IDs; coverage is validated explicitly
+                # after selection, rather than silently adding missing spans.
+                ids = views[0]['span_ids']
+                component_fields['evidence'] = (list[Literal[tuple(ids)]],
+                    Field(..., max_length=5, json_schema_extra={'uniqueItems': True}))
+            elif views:
                 required = [Literal[tuple(view["span_ids"])] for view in views]
                 extra_ids = list(dict.fromkeys(sid for view in views
                     for sid in view.get("extra_span_ids", view["span_ids"])))
@@ -147,9 +155,10 @@ def constrained_selection(base, geography_base, choices, requests=None, periods=
                 extra_counts = range(6 - len(required)) if all(v.get("allow_extra", True) for v in views) else [0]
                 variants = [tuple[()]] + [tuple[tuple(required + [extra] * count)] for count in extra_counts]
                 component_fields["evidence"] = (Union[tuple(variants)], Field(..., json_schema_extra={'uniqueItems': True}))
-            supported = create_model(f"SupportedRequestSlot{i}", __base__=EvidenceSelectionComponent,
-                **{**component_fields, "status": (Literal["supported"], ...), "gap_anchor": (Literal[""], "")})
-            unresolved = create_model(f"UnresolvedRequestSlot{i}", __base__=EvidenceSelectionComponent,
+            supported = create_model(f"SupportedRequestSlot{i}", __base__=selection_component,
+                **{**component_fields, "status": (Literal["supported"], ...),
+                   "gap_anchor": (Literal[""], ... if selection_component.model_fields['gap_anchor'].is_required() else "")})
+            unresolved = create_model(f"UnresolvedRequestSlot{i}", __base__=selection_component,
                 **{**component_fields, "status": (Literal["partial", "missing", "conflicting"], ...)})
             slots.append(Union[supported, unresolved])
         slots = tuple(slots)

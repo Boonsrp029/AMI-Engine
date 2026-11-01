@@ -25,6 +25,7 @@ from src.pilot._comparison_evidence import comparison_views, assess_comparisons,
 from src.pilot._entity_comparison import decorate_requests, evidence_views, validate_mapping_comparisons
 from src.pilot._continuations import complete_causal_spans
 from src.pilot._requests import requested_components
+from src.pilot._financial_coverage import financial_views
 from src.pilot._choices import constrained_composition, constrained_selection, geography_choices, period_choices
 from src.pilot._composition import composition_units, literal_units, project as project_composition
 from src.pilot._passages import assemble
@@ -37,9 +38,13 @@ from src.pilot._evidence import (
 )
 from src.utils.env import load_project_environment
 from src.utils.guardrails_runner import GuardrailsRunner
+from src.pilot._source_selection import (
+    SOURCE_MAPPING_VERSION, SOURCE_SELECTION_INSTRUCTION, SourceSelection,
+    SourceSelectionComponent, resolve_source_selection,
+)
 
 
-PROMPT_VERSION = "analyst-pilot-v1.57"
+PROMPT_VERSION = "analyst-pilot-v1.62"
 TOOL_INSTRUCTION = (
     "You prepare public Thailand/ASEAN market research. Use search_sources to obtain evidence, "
     "Search using 3 to 6 subject/measure words, keeping requested scenarios and horizons; omit "
@@ -173,7 +178,7 @@ class PilotEngine:
         metrics = {"prompt_version": PROMPT_VERSION, "corpus_sha256": self.corpus.sha,
                    "search_policy_version": self.corpus.search_profile["version"] if self.corpus.search_profile else COMPONENT_VERSION,
                    "search_policy_sha256": self.corpus.search_policy_sha,
-                   "mapping_version": MAPPING_VERSION, "as_of": as_of,
+                   "mapping_version": SOURCE_MAPPING_VERSION, "as_of": as_of,
                    "model": os.getenv("AGENT_LLM_MODEL", "ami-llama3.1:8b-4k"),
                    "model_calls": 0, "known_input_tokens": 0, "known_output_tokens": 0,
                    "missing_usage_calls": 0, "guardrail_invocations": 0,
@@ -315,15 +320,18 @@ class PilotEngine:
                     views[cid] = subject_views
                     if cid in subject_trace:
                         focus_trace[cid] = subject_trace[cid]
+            for cid, financial_roles in financial_views(catalog, state['sources'], requests, state['query']).items():
+                views[cid] = financial_roles
             event('evidence_subject_focus', focus_trace)
             event("request_evidence_views", views)
             event('source_scope_context', source_contexts)
             evidence_payload = selection_payload(state['sources'], catalog)
             for record in evidence_payload:
                 record['reporting_context'] = mapper_context(source_contexts[record['source_id']])
-            selection_type = constrained_selection(EvidenceSelection, GeographySelection, choices, requests, periods, views)
+            selection_type = constrained_selection(SourceSelection, GeographySelection, choices, requests, periods, views,
+                component_base=SourceSelectionComponent)
             mapped = call("evidence_mapping", self._model().with_structured_output(selection_type, include_raw=True), [
-                SystemMessage(content=MAPPING_INSTRUCTION),
+                SystemMessage(content=SOURCE_SELECTION_INSTRUCTION),
                 HumanMessage(content=json.dumps({"as_of": as_of, "question": state["query"],
                     "requests": requests,
                     "request_evidence_views": views,
@@ -337,7 +345,10 @@ class PilotEngine:
                     raise ValueError("The local model did not return a valid evidence mapping schema")
                 candidate = mapped["parsed"].model_dump()
                 event("evidence_selection_candidate", candidate)
-                mapping = resolve_selection(candidate, catalog, state["query"], state["sources"], as_of)
+                mapping, extracts = resolve_source_selection(candidate, catalog, state["query"], state["sources"], as_of)
+                if extracts is not None:
+                    event('application_evidence_extracts', {'wire_version': candidate['wire_version'],
+                        'mapping_version': SOURCE_MAPPING_VERSION, 'extracts': extracts})
                 context_checks = assess_mapping(mapping, state['query'], source_contexts)
                 event('mapped_source_context', context_checks)
                 reject_incompatible(context_checks)

@@ -1,4 +1,6 @@
 """Integration of request identity, source scope and comparison evidence."""
+
+from selection_fixtures import selection_fixture
 import json
 from pathlib import Path
 from types import SimpleNamespace
@@ -60,7 +62,7 @@ def test_comparison_uses_four_calls_and_keeps_periods_separate(tmp_path,wrong_co
                 units=json.loads(messages[1].content)['units']
                 raw={'title':'Analyst research brief','claims':[{'component_id':u['component_id'],'unit_id':u['unit_id'],
                     'text':('May 2020: ' if wrong_composed_date and u['component_id']=='r2' else '')+u['evidence'][0]['quote']} for u in units]}
-            return {'parsed':schema.model_validate(raw),'raw':AIMessage(content='Fixed synthetic response')}
+            return {'parsed':selection_fixture(schema, raw),'raw':AIMessage(content='Fixed synthetic response')}
         return SimpleNamespace(invoke=invoke)
     model=SimpleNamespace(bind_tools=lambda _:SimpleNamespace(invoke=lambda _:next(tools)),with_structured_output=structured)
     guard=SimpleNamespace(validate_output=lambda **kwargs:guards.append(kwargs) or {'passed_guardrails':True})

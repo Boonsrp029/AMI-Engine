@@ -1,0 +1,13 @@
+# Local Docker Desktop launch using an already-built analyst image.
+# The legacy main.py entry point runs evaluation; the browser app uses launch.
+services:
+  market-agent:
+    extends:
+      file: compose.pilot.yml
+      service: analyst
+    image: ${AMI_PILOT_IMAGE:?Set AMI_PILOT_IMAGE to the locally validated analyst image}
+    pull_policy: never
+    container_name: market-intelligence-agent
+
+volumes:
+  pilot-state:

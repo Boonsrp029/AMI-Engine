@@ -11,6 +11,9 @@ from src.pilot._evidence import ComposedBrief, ComposedClaim, EvidenceQuote, pro
 from src.pilot._scope import UnsupportedClaimPeriod, qualify_claim, validate_claim_measure_and_numbers
 from src.pilot._entity_comparison import request_spec, missing_comparison_conclusion, render_literal_comparison
 from src.pilot._quantities import quantity_pairs
+from src.pilot._investment_coverage import missing_investment_categories
+from src.pilot._financial_coverage import quantity_anchor, financial_context_omissions
+from src.pilot._requests import requested_components
 
 
 class UnitClaim(ComposedClaim):
@@ -37,7 +40,8 @@ def composition_units(mapping):
     anchors = {c.component_id: c.question_anchor for c in supported_components(mapping)}
     while len(groups) < 5:
         candidates = [i for i, group in enumerate(groups) if len(group["evidence"]) > 1
-                      and not request_spec(anchors[group['component_id']])]
+                      and not request_spec(anchors[group['component_id']])
+                      and not quantity_anchor(anchors[group['component_id']])]
         if not candidates:
             break
         index = max(candidates, key=lambda i: (len(groups[i]["evidence"]),
@@ -239,6 +243,8 @@ def project(value, mapping, question, scope_context, diagnostics=None, *, source
     omitted_qualifiers = {}
     baseline_normalizations = []
     comparison_conclusions = []
+    financial_omissions = {}
+    request_slots = {r['component_id']: r for r in requested_components(question)}
     for unit in units:
         uid = unit["unit_id"]
         evidence = [EvidenceQuote.model_validate(e) for e in unit["evidence"]]
@@ -259,12 +265,23 @@ def project(value, mapping, question, scope_context, diagnostics=None, *, source
                 invalid_period = True
         missing_cause = not is_literal and text is not None and _missing_requested_cause(text, evidence, question)
         missing_list = not is_literal and text is not None and _missing_requested_list_item(text, evidence, question)
+        missing_categories = not is_literal and text is not None and missing_investment_categories(
+            text, projected[-1], question,
+            scope_context.get('components', {}).get(unit['component_id'], {}).get('period', ''))
         missing_value = text is not None and not invalid_period and _missing_requested_value_context(
             text, projected[-1], scope_context.get('components', {}).get(unit['component_id'], {}).get('period', ''))
+        missing_financial = (financial_context_omissions(text, evidence,
+            request_slots.get(unit['component_id'], {}), question) if text is not None and not invalid_period else {})
+        if missing_financial:
+            # Missing facts may use the logged source fallback; an invented
+            # numeric assertion still fails existing validation explicitly.
+            validate_claim_measure_and_numbers(text, projected[-1], projected[-1].question_anchor,
+                scope_context.get('components', {}).get(unit['component_id'], {}).get('period', ''))
+            financial_omissions[uid] = missing_financial
         missing_qualifiers = sorted(set().union(*(_measure_qualifiers(e.quote) for e in evidence)) - _measure_qualifiers(text or ''))
         if text is not None and missing_qualifiers:
             omitted_qualifiers[uid] = missing_qualifiers
-        if text is None or missing_cause or missing_list or missing_value or missing_qualifiers or invalid_period:
+        if text is None or missing_cause or missing_list or missing_categories or missing_value or missing_financial or missing_qualifiers or invalid_period:
             # An explicitly logged extractive fallback, never the lossy summary.
             text = " ".join(e.quote for e in evidence)
             if len(text) > 800:
@@ -272,8 +289,10 @@ def project(value, mapping, question, scope_context, diagnostics=None, *, source
             fallback.append(uid)
             fallback_reasons[uid] = ("unestablished_composed_period" if invalid_period else
                 'source_measure_qualifier_absent' if missing_qualifiers and representatives[uid] in chosen else
+                'selected_financial_context_absent_from_synthesis' if missing_financial else
                 "requested_cause_absent_from_synthesis" if missing_cause else
                 "requested_value_context_absent_from_synthesis" if missing_value else
+                "requested_investment_categories_absent_from_synthesis" if missing_categories else
                 "requested_list_items_absent_from_synthesis" if missing_list else "unit_omitted")
         elif (scope_context.get("components", {}).get(unit["component_id"], {}).get("scenario")
               and any(re.search(r"\btoday\b", e.quote, re.I) for e in evidence)):
@@ -333,6 +352,7 @@ def project(value, mapping, question, scope_context, diagnostics=None, *, source
         draft["warnings"] = list(dict.fromkeys([*draft["warnings"],
             "Some claims retain verbatim source excerpts because synthesis omitted evidence, its causal explanation, or used an unestablished period; review their relevance and readability."]))[:10]
     if diagnostics is not None:
+        diagnostics['omitted_financial_context'] = financial_omissions
         diagnostics["fallback_reasons"] = fallback_reasons
         diagnostics["source_baseline_normalizations"] = baseline_normalizations
         diagnostics["public_claim_coverage"] = coverage
