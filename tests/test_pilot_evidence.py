@@ -187,7 +187,7 @@ class WorkflowModel:
                         component.update(measure="", scenario="", kind="unknown")
                     for request in requests[len(value["components"]):]:
                         value["components"].append({"component_id": request["component_id"], "status": "missing",
-                            "short_answer": "", "evidence": []})
+                            "short_answer": "", "evidence": [], "gap_anchor": request['question_anchor']})
                 geography = value.get("geography", "")
                 value["geography"] = ({"status": "known", "value": geography, "reason": "", "evidence": [
                     span["span_id"] for source in sources for span in source["spans"]

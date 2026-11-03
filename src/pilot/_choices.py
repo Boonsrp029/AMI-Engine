@@ -111,7 +111,8 @@ def _standalone_period(text, period):
     return False
 
 
-def constrained_selection(base, geography_base, choices, requests=None, periods=None, request_views=None, *, component_base=None):
+def constrained_selection(base, geography_base, choices, requests=None, periods=None, request_views=None, *, component_base=None,
+                          question_bound_missing=False):
     variants = []
     for i, label in enumerate(choices["labels"]):
         variant = create_model(f"KnownGeography{i}", __base__=geography_base,
@@ -137,13 +138,21 @@ def constrained_selection(base, geography_base, choices, requests=None, periods=
             component_fields = {"component_id": (Literal[request["component_id"]], ...),
                 "measure": (Literal[""], ""), "scenario": (Literal[""], ""), "kind": (Literal["unknown"], "unknown")}
             views = (request_views or {}).get(request["component_id"])
+            covered_evidence = None
             if views and views[0].get('unordered_coverage'):
-                # One span may satisfy several roles. A positional role tuple
-                # would require duplicate IDs; coverage is validated explicitly
-                # after selection, rather than silently adding missing spans.
+                from src.pilot._financial_coverage import decoder_coverage
                 ids = views[0]['span_ids']
                 component_fields['evidence'] = (list[Literal[tuple(ids)]],
                     Field(..., max_length=5, json_schema_extra={'uniqueItems': True}))
+                minimum, sequences = decoder_coverage(views[0])
+                if sequences is None:
+                    covered_evidence = (list[Literal[tuple(ids)]], Field(...,
+                        min_length=minimum, max_length=5, json_schema_extra={'uniqueItems': True},
+                        description='Necessary coverage count only; all financial roles are validated after selection.'))
+                else:
+                    alternatives = [tuple[tuple(Literal[sid] for sid in sequence)] for sequence in sequences]
+                    covered_evidence = (Union[tuple(alternatives)] if len(alternatives) > 1 else alternatives[0],
+                        Field(..., json_schema_extra={'uniqueItems': True}))
             elif views:
                 required = [Literal[tuple(view["span_ids"])] for view in views]
                 extra_ids = list(dict.fromkeys(sid for view in views
@@ -156,11 +165,32 @@ def constrained_selection(base, geography_base, choices, requests=None, periods=
                 variants = [tuple[()]] + [tuple[tuple(required + [extra] * count)] for count in extra_counts]
                 component_fields["evidence"] = (Union[tuple(variants)], Field(..., json_schema_extra={'uniqueItems': True}))
             supported = create_model(f"SupportedRequestSlot{i}", __base__=selection_component,
-                **{**component_fields, "status": (Literal["supported"], ...),
+                **{**component_fields, **({'evidence': covered_evidence} if covered_evidence else {}),
+                   "status": (Literal["supported"], ...),
                    "gap_anchor": (Literal[""], ... if selection_component.model_fields['gap_anchor'].is_required() else "")})
+            if question_bound_missing:
+                unresolved_statuses = ['conflicting'] if covered_evidence else ['partial', 'conflicting']
+            else:
+                unresolved_statuses = ['missing', 'conflicting'] if covered_evidence else ['partial', 'missing', 'conflicting']
             unresolved = create_model(f"UnresolvedRequestSlot{i}", __base__=selection_component,
-                **{**component_fields, "status": (Literal["partial", "missing", "conflicting"], ...)})
-            slots.append(Union[supported, unresolved])
+                **{**component_fields, "status": (Literal[tuple(unresolved_statuses)], ...)})
+            alternatives = [supported, unresolved]
+            if covered_evidence:
+                partial = create_model(f"PartialRequestSlot{i}", __base__=selection_component,
+                    **{**component_fields, 'evidence': covered_evidence, 'status': (Literal['partial'], ...)})
+                alternatives.insert(1, partial)
+            if question_bound_missing:
+                anchor = request.get('question_anchor')
+                if not isinstance(anchor, str) or not anchor.strip() or len(anchor) > 1200:
+                    raise ValueError('Missing-state decoder requires a nonempty supplied question anchor')
+                # Only missing states have no supported subpart to qualify.
+                # Partial states retain their exact unanswered-fragment field.
+                missing = create_model(f"MissingRequestSlot{i}", __base__=selection_component,
+                    **{**component_fields, 'status': (Literal['missing'], ...),
+                       'evidence': (list[str], Field(..., max_length=0)),
+                       'gap_anchor': (Literal[anchor], ...)})
+                alternatives.append(missing)
+            slots.append(Union[tuple(alternatives)])
         slots = tuple(slots)
         if not 1 <= len(slots) <= 5:
             raise ValueError("Expected one to five canonical request slots")

@@ -44,7 +44,7 @@ from src.pilot._source_selection import (
 )
 
 
-PROMPT_VERSION = "analyst-pilot-v1.62"
+PROMPT_VERSION = "analyst-pilot-v1.69"
 TOOL_INSTRUCTION = (
     "You prepare public Thailand/ASEAN market research. Use search_sources to obtain evidence, "
     "Search using 3 to 6 subject/measure words, keeping requested scenarios and horizons; omit "
@@ -175,6 +175,7 @@ class PilotEngine:
     def run(self, query, event=lambda *_: None):
         started = time.perf_counter()
         as_of = date.today().isoformat()
+        verified_publication_context = set()
         metrics = {"prompt_version": PROMPT_VERSION, "corpus_sha256": self.corpus.sha,
                    "search_policy_version": self.corpus.search_profile["version"] if self.corpus.search_profile else COMPONENT_VERSION,
                    "search_policy_sha256": self.corpus.search_policy_sha,
@@ -329,7 +330,7 @@ class PilotEngine:
             for record in evidence_payload:
                 record['reporting_context'] = mapper_context(source_contexts[record['source_id']])
             selection_type = constrained_selection(SourceSelection, GeographySelection, choices, requests, periods, views,
-                component_base=SourceSelectionComponent)
+                component_base=SourceSelectionComponent, question_bound_missing=True)
             mapped = call("evidence_mapping", self._model().with_structured_output(selection_type, include_raw=True), [
                 SystemMessage(content=SOURCE_SELECTION_INSTRUCTION),
                 HumanMessage(content=json.dumps({"as_of": as_of, "question": state["query"],
@@ -380,7 +381,8 @@ class PilotEngine:
             # particular, an unresolved country must not leak back in from them.
             rendered = literal_units(mapping, scope_context, scoped_sources)
             event('source_rendered_project_comparisons', list(rendered.values()))
-            composition_input = composition_payload(mapping, as_of, scope_context, excluded_units=rendered)
+            composition_input = composition_payload(mapping, as_of, scope_context,
+                excluded_units=rendered, question=state['query'])
             event("composition_input", composition_input)
             if composition_input['units']:
                 result = call("draft", self._model().with_structured_output(constrained_composition(
@@ -398,6 +400,11 @@ class PilotEngine:
             draft, fallback_ids = project_composition(
                 composed, mapping, state["query"], scope_context, diagnostics=composition_diagnostics,
                 source_records=scoped_sources)
+            for proof in composition_diagnostics.get('source_excerpt_presentations', {}).values():
+                verified_publication_context.add('Source publication date: ' + proof['publication_label'] + '.')
+            if verified_publication_context:
+                event('verified_source_publication_context', {'annotations': sorted(verified_publication_context),
+                    'origin': 'verified release marker/date and unchanged selected source provenance'})
             draft = validate_citations(draft, scoped_sources)
             event("component_coverage", {"supported": [c.component_id for c in supported_components(mapping)],
                                           "fallback_component_ids": list(dict.fromkeys(u["component_id"]
@@ -420,7 +427,8 @@ class PilotEngine:
                 event("guard_invocation_started", {"internal_token_usage": None})
                 checked = (self.guardrails or GuardrailsRunner()).validate_output(
                     raw_report="\n".join(c["text"] for c in draft["claims"]),
-                    context="\n".join(s["content"] for s in state["sources"].values()), user_input=query,
+                    context="\n".join([*(s["content"] for s in state["sources"].values()),
+                                       *sorted(verified_publication_context)]), user_input=query,
                 )
                 metrics["stage_seconds"]["guardrails"] = time.perf_counter() - before
                 if not checked.get("passed_guardrails"):

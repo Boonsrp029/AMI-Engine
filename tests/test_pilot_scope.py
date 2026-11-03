@@ -179,7 +179,8 @@ def test_final_scope_qualification_reaches_guardrails_without_extra_model_calls(
                 value = {"geography": {"status": "known", "value": "Elm Bay", "evidence": [sid], "reason": ""},
                     "components": [{"component_id": "r1",
                     "status": "supported", "short_answer": "9 GWh",
-                    "evidence": [sid]}, {"component_id": "r2", "status": "missing", "short_answer": "", "evidence": []}]}
+                    "evidence": [sid]}, {"component_id": "r2", "status": "missing", "short_answer": "", "evidence": [],
+                     "gap_anchor": payload["requests"][1]["question_anchor"]}]}
             else:
                 payload = json.loads(messages[1].content)
                 assert "question" not in payload

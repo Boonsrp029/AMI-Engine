@@ -1,10 +1,10 @@
-> Current status (30 October 2026): **owner-reviewed local analyst pilot; production qualification incomplete**. Latest offline checks: 975 Windows / 974 Linux tests, one Linux-only skip. See the [readiness matrix](docs/production/readiness.md) for implemented controls, evidence and remaining gates.
+> Current status (3 November 2026): **owner-reviewed local analyst pilot; qualification incomplete**. The [v1.69 source-cue change](docs/production/unit-source-cues-v169-2026-11-03.md) passes 1,294 Windows tests and 1,293 Linux tests plus one skip, with clean unchanged dependencies and recovery preserving four cached exports. Its real-model effect is unverified; a [reduced consumed-r07 diagnostic](docs/production/reduced-r07-proposal-v169-2026-11-03.md) is prepared and needs a new grant.
 >
-> The owner-authorized [CI byte-preservation fix is published](docs/production/ci-publication-2026-10-30.md) at `e433bd5`, and its exact GitHub Actions run passed unit, serving-environment and analyst-container jobs. Newer local v1.54 changes were not included and still need their own release qualification. The [actual v1.53 composer](docs/production/composer-v153-findings-2026-10-30.md) passed technical checks but failed its frozen completeness gate. The owner subsequently [accepted separate editorial wording](docs/pilot/owner-review-composer-v153-2026-10-30.md); this is not a fresh generation success or stored approval. That allowance is closed.
+> The [retained v1.68 full Docker recipe](docs/production/full-recipe-v168-2026-11-03.md) also passes Linux and recovery checks with all 221 installed package versions unchanged; installation layers were cached, so this is not a fresh install or remote CI.
 >
-> The [v1.54 completeness repair](docs/production/completeness-v154-2026-10-30.md) passes offline tests and consumed-response replay. Mapper v37 and model settings are unchanged. Its [authorized actual composer diagnostic failed](docs/production/composer-v154-findings-2026-10-30.md): JSON parsed, but the comparison omitted source counts and named the wrong winner. The validator rejected it; no conditional full workflow or NeMo call ran, and the allowance is closed.
-
-> The [v1.55 offline change](docs/production/literal-comparison-v155-2026-10-30.md) renders eligible literal project-count comparisons before free-form composition and prevents the model from replacing them. It passes 1,017 Windows / 1,016 Linux tests; the original bad response remains rejected. The [authorized bounded diagnostic](docs/production/diagnostic-v155-findings-2026-10-30.md) completed one full r06 workflow with final NeMo and assistant source checks passing; the combined answer uses a logged source fallback and application-rendered comparison. Raw composer completeness remains limited. The [owner requested a Claim 3 wording change](docs/pilot/owner-review-v155-2026-10-30.md), now saved as a separate editorial candidate; no fresh twenty-case or production-quality claim follows.
+> The [authorized v1.68 batch](docs/production/qualification-v168-findings-2026-11-03.md) passed both development preflights, then stopped at the first held-out case: the raw composer repeated a historical figure in a forecast evidence slot, and strict numeric validation rejected it. **One of twenty held-out cases was attempted; nineteen remain unattempted.** The allowance is closed, and qualification failed. Raw-composer financial reliability remains unverified.
+>
+> The [owner's r05 v1.66 prose/source acceptance](docs/pilot/owner-acceptance-r05-v166-2026-11-02.md) remains bounded historical evidence. Current changes are local; fresh quality, independent reviewer usage, exact-release remote CI and actual production deployment remain incomplete. See the [readiness matrix](docs/production/readiness.md).
 
 # <img width="1024" height="1024" alt="ami-engine-thumbnail" src="https://github.com/user-attachments/assets/b159db3b-7ba2-4d51-a39f-5b2763799c28" /> Autonomous Market Intelligence Engine
 
@@ -113,17 +113,11 @@ Linux offline tests and recovery smoke pass; real container inference remains pe
 The [guardrail diagnostic](docs/production/guardrail-process-diagnosis.md)
 distinguishes the Windows process mitigation from source-grounding policy validation.
 
-The [fresh evaluation protocol](docs/production/evaluation-protocol.md) freezes 20
-held-out cases and owner-confirmed gates. A two-case held-out attempt stopped on
-failure; the revised pool retains 18 unattempted questions plus two replacements.
-The retained v1.34 four-case development gate failed duplicated-claim and measure-qualifier checks, so zero revised
-held-out attempts ran at that checkpoint. The subsequent v1.36 diagnostics passed, but fresh qualification stopped at r06 after four attempts. See the [findings](docs/production/qualification-v2-findings.md). See the [current continuation](docs/production/qualification-continuation.md)
-and [earlier findings](docs/production/preflight-findings-2026-10-27.md).
+The [evaluation protocol](docs/production/evaluation-protocol.md) records the owner-confirmed quality gates. Earlier failed attempts remain in their dated reports. The [balanced v4 package](docs/production/qualification-pool-v4-2026-10-30.md) is frozen for fresh qualification; no current twenty-case run is authorized or completed. The [v1.65 findings](docs/production/consumed-v165-findings-2026-11-02.md) and [actual r05 v1.66 follow-up](docs/production/r05-prose-v166-findings-2026-11-02.md) cover consumed development cases only. Independent reviewer tasks and feedback measurements remain pending.
 The [recovery guide](docs/production/recovery.md) documents verified local SQLite
 and container restoration, with scheduling/access/deployment checks still required.
 Optional [principal tokens and roles](docs/production/identity.md) bind review aliases;
-the default shared local bootstrap is retained. The current offline suites pass 745 tests on Windows and 744 on Linux with one Windows-only skip.
-These establish engineering contracts, not model quality. See the [context and retrieval record](docs/production/context-and-retrieval-2026-10-28.md).
+the default shared local bootstrap is retained. The current v1.69 offline suites pass 1,294 tests on Windows and 1,293 on Linux with one Windows-only skip. These establish engineering contracts, not model quality or multi-user production security. See the [current source-cue validation](docs/production/unit-source-cues-v169-2026-11-03.md).
 
 Run unit tests without remote services:
 
@@ -157,11 +151,11 @@ For a Thailand and Southeast Asia market-intelligence slice, run `python scripts
 
 ## Databricks Asset Bundle deployment
 
-The bundle defines a single-user job cluster with a Silver/Gold ETL task followed by vector index synchronization. It expects a pre-existing Bronze table. Supply the workspace host, available node type, and approved Databricks Runtime version:
+The bundle defines a single-user job cluster with a Silver/Gold ETL task followed by vector index synchronization. It expects a pre-existing Bronze table. Before authorized workspace operations, configure the intended literal host in `databricks.yml` under `targets.dev.workspace.host` and verify its authentication configuration. There is no `workspace_host` bundle variable. See the [staging configuration repair](docs/production/staging-overrides-2026-10-31.md). Choose an available node type and approved Databricks Runtime version:
 
 ```powershell
-databricks bundle validate -t dev -var="workspace_host=https://<workspace-host>" -var="node_type_id=<workspace-node-type>"
-databricks bundle deploy -t dev -var="workspace_host=https://<workspace-host>" -var="node_type_id=<workspace-node-type>"
+databricks bundle validate -t dev -var="node_type_id=<workspace-node-type>" -var="spark_version=<approved-runtime-version>"
+databricks bundle deploy -t dev -var="node_type_id=<workspace-node-type>" -var="spark_version=<approved-runtime-version>"
 databricks bundle run market_intelligence_pipeline -t dev
 ```
 

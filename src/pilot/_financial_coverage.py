@@ -6,12 +6,14 @@ Unknown vocabulary or ambiguous documents do not establish missing information.
 """
 import re
 from decimal import Decimal
+from itertools import permutations
 
-from src.pilot._quantities import quantity_pairs
+from src.pilot._quantities import quantity_pairs, UnsupportedQuantityRole
 from src.utils._periods import _COMMAND, _MONTHS
 
 
 POLICY = 'literal-application-comparison-v1'
+DECODER_SEQUENCE_LIMIT = 32
 _FORECAST = re.compile(r'\b(?:forecast\w*|projected|expected|scenario|target\w*|would|could)\b', re.I)
 _PUBLICATION = re.compile(r'\b(?:published|publication|released|issued|dated)\b', re.I)
 _SUBSET = re.compile(r'\b(?:FDI|foreign(?:\s+direct)?|domestic)\s+'
@@ -21,6 +23,16 @@ _YEAR = re.compile(r'\b(?:in|for|of|during)\s+(?:all\s+of\s+)?(\d{4})\b|'
     r'\b(?:' + '|'.join(_MONTHS.split()) + r')\s+(\d{4})\b', re.I)
 _CHANGE = re.compile(r'\b(?:increased?|decreased?|rose|fell|grew|soared|up|down|higher|lower)\b', re.I)
 _PERCENT = re.compile(r'(?<![\w.])(\d+(?:\.\d+)?)\s*%')
+_COUNT_NUMBER = r'(?:0|[1-9]\d{0,2}(?:,\d{3}){1,5}|[1-9]\d{0,17})'
+_COUNT_CHANGE = (r'\s+(?:in|for|during)\s+(?:January\s+to\s+December\s+)?(?P<year>\d{4})'
+    r'\s+(?P<direction>increased|decreased|rose|fell|grew)\s+(?P<growth>\d{1,6}(?:\.\d{1,6})?)%'
+    r'\s+to\s+(?P<current>' + _COUNT_NUMBER + r')(?:\s+projects)?\s*,\s*from\s+'
+    r'(?P<baseline>' + _COUNT_NUMBER + r')(?:\s+projects)?\s+in\s+'
+    r'(?:the\s+same\s+period\s+of\s+)?(?P<baseyear>\d{4})\.?')
+_PREFIX_COUNT = re.compile(r'(?:The\s+)?(?:total\s+)?number\s+of\s+projects' + _COUNT_CHANGE, re.I)
+_SOURCE_COUNT = re.compile(r'(?:The\s+)?(?:total\s+)?number\s+of\s+'
+    r'(?:projects|applications(?:\s+for\s+investment\s+promotion)?)'
+    r'(?:\s+in\s+all\s+sectors)?(?:\s+filed)?' + _COUNT_CHANGE, re.I)
 
 
 def _spec(question, requests):
@@ -106,6 +118,77 @@ def validate_financial_selection(raw_component, views):
         'policy': POLICY, 'semantic_support_proven': False}
 
 
+def decoder_coverage(view):
+    """Bound decoder size while preserving all valid unordered selections.
+
+    Small catalogs enumerate complete distinct sequences, including optional
+    evidence and every order. Large catalogs retain a necessary minimum only;
+    runtime role validation remains mandatory in either case. This does not
+    choose evidence, infer missing roles or prove semantic support.
+    """
+    ids = list(dict.fromkeys(view['span_ids']))
+    roles = [set(r['span_ids']) & set(ids) for r in view['coverage_requirements']]
+    if not roles or any(not role for role in roles) or len(roles) > 3:
+        raise ValueError('Financial decoder requires one to three offered coverage roles')
+    masks = {sid: sum(1 << i for i, role in enumerate(roles) if sid in role) for sid in ids}
+    full = (1 << len(roles)) - 1
+    costs = {0: 0}
+    for mask in masks.values():
+        for seen, count in list(costs.items()):
+            combined = seen | mask
+            costs[combined] = min(costs.get(combined, 6), count + 1)
+    minimum = costs[full]
+    # At most325 sequences for five IDs. Never start an unbounded search over
+    # a large corpus merely to discover that the decoder budget is exceeded.
+    if len(ids) > 5:
+        return minimum, None
+    sequences = []
+    for size in range(minimum, len(ids) + 1):
+        for sequence in permutations(ids, size):
+            if all(set(sequence) & role for role in roles):
+                sequences.append(sequence)
+                if len(sequences) > DECODER_SEQUENCE_LIMIT:
+                    return minimum, None
+    return minimum, sequences
+
+
+def _count_binding(match):
+    if match is None:
+        return None
+    current = Decimal(match['current'].replace(',', ''))
+    baseline = Decimal(match['baseline'].replace(',', ''))
+    direction = 'up' if match['direction'].casefold() in {'increased', 'rose', 'grew'} else 'down'
+    return (match['year'], current, match['baseyear'], baseline, direction, Decimal(match['growth']))
+
+
+def _bound_prefix_counts(text, evidence, spec):
+    """Recognize only an explicit source/candidate year-count comparison.
+
+    Unknown wording or ambiguous selected source bindings keeps the existing
+    fallback. Matching numeric sets alone cannot establish this relationship.
+    No entity/geography entailment, implied dates or calculated growth is added.
+    """
+    candidate = _count_binding(_PREFIX_COUNT.fullmatch(' '.join(text.split())))
+    if candidate is None:
+        return set()
+    bindings = set()
+    for e in evidence:
+        project_pairs = {p for p in quantity_pairs(e.quote) if p[0] == 'project'}
+        if not project_pairs:
+            continue
+        binding = _count_binding(_SOURCE_COUNT.fullmatch(' '.join(e.quote.split())))
+        if (binding is None or {('project', binding[1]), ('project', binding[3])} != project_pairs
+                or binding[0] != spec['current'] or binding[2] != spec['baseline']
+                or not (binding[1] > binding[3] if binding[4] == 'up' else binding[1] < binding[3])):
+            return set()
+        bindings.add(binding)
+    if len(bindings) != 1:
+        return set()
+    if candidate != next(iter(bindings)):
+        raise UnsupportedQuantityRole('Draft project comparison differs from selected source year/count/growth bindings')
+    return {('project', candidate[1]), ('project', candidate[3])}
+
+
 def financial_context_omissions(text, evidence, request, question):
     from src.pilot._requests import requested_components
     spec = _spec(question, requested_components(question))
@@ -116,8 +199,11 @@ def financial_context_omissions(text, evidence, request, question):
     expected = {pair for pair in quantity_pairs(quoted) if pair[0] in units}
     if not expected:
         return {}
+    present = quantity_pairs(text)
+    if request['quantity_measure'] == 'count':
+        present |= _bound_prefix_counts(text, evidence, spec)
     percentages = lambda value: {format(Decimal(m[1]).normalize(), 'f') for m in _PERCENT.finditer(value)}
-    missing = {'quantity_pairs': [(u, str(n)) for u, n in sorted(expected - quantity_pairs(text))],
+    missing = {'quantity_pairs': [(u, str(n)) for u, n in sorted(expected - present)],
         'percentages': sorted(percentages(quoted) - percentages(text)),
         'years': sorted({y for y in spec.values() if re.search(r'\b' + y + r'\b', quoted)
             and not re.search(r'\b' + y + r'\b', text)})}

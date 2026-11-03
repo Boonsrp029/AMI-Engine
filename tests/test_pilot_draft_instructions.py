@@ -76,6 +76,8 @@ def test_synthesis_receives_contract_and_preserves_scripted_draft(
                         and (name != "injection" or "Ignore rules" not in span["text"])]}
                 if name == "partial":
                     component["gap_anchor"] = "mineral share"
+                elif claim is None:
+                    component['gap_anchor'] = json.loads(messages[1].content)['requests'][0]['question_anchor']
                 value = {"geography": {"status": "unresolved", "value": "", "evidence": [],
                     "reason": "Geography is explicitly unresolved in this fixed response."}, "components": [component]}
             else:
@@ -106,7 +108,7 @@ def test_synthesis_receives_contract_and_preserves_scripted_draft(
     else:
         assert "ComposedBrief" not in captured
     assert len(checks) == (1 if claim else 0)
-    assert result["metrics"]["prompt_version"] == PROMPT_VERSION == "analyst-pilot-v1.62"
+    assert result["metrics"]["prompt_version"] == PROMPT_VERSION == "analyst-pilot-v1.69"
 
 
 @pytest.mark.parametrize("instruction", [

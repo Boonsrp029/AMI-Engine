@@ -97,6 +97,17 @@ COMPOSITION_INSTRUCTION = (
     "five claims, one per supplied evidence unit in order. Return unit_id, component_id and text "
     "for each claim; several units may belong to the same requested component. The application assigns citations from each unit's evidence. "
     "Preserve numeric value/unit pairs and percentage subject/denominator roles from those quotations. "
+    "Compose each unit independently from its own quotations before moving to the next unit. "
+    "When source_literal_cues is present, use its percentage literals and quoted context to avoid copying "
+    "another unit's rate or period. Preserve annual versus cumulative rates and observed versus forecast wording. "
+    "These are lexical cues, not factual labels: four-digit tokens are not automatically years, and modality "
+    "words do not resolve negation or establish that an entire quotation is a forecast. Read the full quotation. "
+    "Never duplicate a prior unit's claim when this unit supplies a different rate, period or observation/forecast basis. "
+    "When a unit includes required_literal_coverage, retain every listed quantity/unit pair, percentage and year "
+    "in that unit's claim, preserving their relationships from its quotations. Include both current and prior-year "
+    "values for a requested comparison; a growth percentage alone is not a substitute. "
+    "The checklist is a literal coverage aid, not evidence of relationships: never guess which year, entity or "
+    "denominator a number belongs to, calculate missing values, or transfer facts between units. "
     "For a requested by-value ranking, retain the selected monetary and percentage context. "
     "For a requested project-count comparison, explicitly state which named entity has more or fewer projects, or that counts are equal. "
     "Do not return source_ids. Read the selected quotations, which are the factual authority. "
@@ -113,10 +124,10 @@ COMPOSITION_INSTRUCTION = (
 )
 
 
-def composition_payload(mapping, as_of, scope_context=None, *, excluded_units=()):
+def composition_payload(mapping, as_of, scope_context=None, *, excluded_units=(), question=''):
     """Separate request context from evidence; exclude lossy mapper summaries."""
     from src.pilot._composition import payload
-    return payload(mapping, as_of, scope_context, excluded_units=excluded_units)
+    return payload(mapping, as_of, scope_context, excluded_units=excluded_units, question=question)
 
 
 class EvidenceQuote(StrictModel):

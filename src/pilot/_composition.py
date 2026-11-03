@@ -14,6 +14,7 @@ from src.pilot._quantities import quantity_pairs
 from src.pilot._investment_coverage import missing_investment_categories
 from src.pilot._financial_coverage import quantity_anchor, financial_context_omissions
 from src.pilot._requests import requested_components
+from src.pilot._source_excerpt import render_fallback_prose
 
 
 class UnitClaim(ComposedClaim):
@@ -56,7 +57,24 @@ def composition_units(mapping):
     return groups
 
 
-def payload(mapping, as_of, scope_context=None, *, excluded_units=()):
+def _source_literal_cues(evidence):
+    """Quote-local lexical hints, never inferred dates or forecast classification.
+
+    Only percentage-bearing units get this compact aid. Four-digit tokens may
+    be counts rather than years; reading the quotation remains necessary.
+    """
+    text = " ".join(e.quote for e in evidence)
+    percentages = list(dict.fromkeys(re.findall(r"(?<![\w.])[+-]?\d+(?:\.\d+)?\s*%", text)))
+    if not percentages:
+        return {}
+    return {"percentage_literals": percentages,
+        "four_digit_literals": list(dict.fromkeys(re.findall(r"(?<![\w.])\d{4}(?!\w|\.\d)", text))),
+        "modality_words": list(dict.fromkeys(re.findall(
+            r"\b(?:forecasts?|forecasted|projected|projections?|expected|observed|recorded|historical|annually|annual)\b",
+            text, re.I)))}
+
+
+def payload(mapping, as_of, scope_context=None, *, excluded_units=(), question=''):
     # Global title scope must not be offered as factual scope for every unit.
     context = scope_context or {}
     units = [{k: v for k, v in unit.items() if k not in {'identity_sha256', 'scope_citation_ids'}}
@@ -66,6 +84,20 @@ def payload(mapping, as_of, scope_context=None, *, excluded_units=()):
     active = {origin['component_id'] for unit in units for origin in unit['origins']}
     requests = [{"component_id": c.component_id, "question_anchor": c.question_anchor, "status": c.status}
                 for c in supported_components(mapping) if c.component_id in active]
+    slots = {r['component_id']: r for r in requested_components(question)} if question else {}
+    for unit in units:
+        # Expose the same narrow literal obligations checked after synthesis.
+        # The quotations remain authoritative: this checklist establishes no
+        # entity, causal, geographic or quantity-to-year relationship.
+        evidence = [EvidenceQuote.model_validate(e) for e in unit['evidence']]
+        requirements = (financial_context_omissions('', evidence,
+            slots.get(unit['component_id'], {}), question) if question else {})
+        if requirements:
+            unit['required_literal_coverage'] = requirements
+        elif question:
+            cues = _source_literal_cues(evidence)
+            if cues:
+                unit['source_literal_cues'] = cues
     return {"as_of": as_of, "requests": requests, "units": units}
 
 
@@ -244,6 +276,7 @@ def project(value, mapping, question, scope_context, diagnostics=None, *, source
     baseline_normalizations = []
     comparison_conclusions = []
     financial_omissions = {}
+    excerpt_presentations = {}
     request_slots = {r['component_id']: r for r in requested_components(question)}
     for unit in units:
         uid = unit["unit_id"]
@@ -286,6 +319,10 @@ def project(value, mapping, question, scope_context, diagnostics=None, *, source
             text = " ".join(e.quote for e in evidence)
             if len(text) > 800:
                 raise ValueError("Omitted evidence unit exceeds the safe extractive fallback limit")
+            presented, provenance = render_fallback_prose(evidence, source_records, question)
+            if provenance and not (set().union(*(_measure_qualifiers(e.quote) for e in evidence)) - _measure_qualifiers(presented)):
+                text = presented
+                excerpt_presentations[uid] = provenance
             fallback.append(uid)
             fallback_reasons[uid] = ("unestablished_composed_period" if invalid_period else
                 'source_measure_qualifier_absent' if missing_qualifiers and representatives[uid] in chosen else
@@ -353,6 +390,7 @@ def project(value, mapping, question, scope_context, diagnostics=None, *, source
             "Some claims retain verbatim source excerpts because synthesis omitted evidence, its causal explanation, or used an unestablished period; review their relevance and readability."]))[:10]
     if diagnostics is not None:
         diagnostics['omitted_financial_context'] = financial_omissions
+        diagnostics['source_excerpt_presentations'] = excerpt_presentations
         diagnostics["fallback_reasons"] = fallback_reasons
         diagnostics["source_baseline_normalizations"] = baseline_normalizations
         diagnostics["public_claim_coverage"] = coverage

@@ -274,7 +274,8 @@ def pipeline_model(mode):
                 sid = payload["evidence"][0]["spans"][0]["span_id"]
                 value = {"components": [{"component_id": "r1",
                     "status": "supported", "short_answer": "7 GWh", "evidence": [sid]},
-                    {"component_id": "r2", "status": "missing", "short_answer": "", "evidence": []}]}
+                    {"component_id": "r2", "status": "missing", "short_answer": "", "evidence": [],
+                     "gap_anchor": payload["requests"][-1]["question_anchor"]}]}
                 if mode != "omitted":
                     value["geography"] = {"status": "unresolved", "value": "", "evidence": [],
                         "reason": "This fixed response explicitly leaves geographic scope unresolved."}

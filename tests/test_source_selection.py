@@ -215,7 +215,7 @@ def test_runtime_uses_explicit_new_wire_and_validates_application_extract(tmp_pa
     if guard_passes:
         result = engine.run(QUESTION, lambda k, v: events.append((k, v)))
         assert result['metrics']['model_calls'] == 4
-        assert result['metrics']['mapping_version'] == 'requested-evidence-v42'
+        assert result['metrics']['mapping_version'] == 'requested-evidence-v44'
         assert result['draft']['claims'] == [{'text': quote, 'source_ids': ['output']}]
     else:
         with pytest.raises(ValueError, match='guardrail'):

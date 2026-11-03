@@ -19,7 +19,7 @@ from src.pilot._quantities import quantity_pairs
 from src.pilot._financial_coverage import financial_views, validate_financial_selection
 
 
-SOURCE_MAPPING_VERSION = 'requested-evidence-v42'
+SOURCE_MAPPING_VERSION = 'requested-evidence-v44'
 WIRE_VERSION = 'source-selection-v1'
 
 
@@ -52,12 +52,17 @@ def _instruction():
     return (f'Return wire_version="{WIRE_VERSION}". No short_answer field is permitted. '
         + text + 'For unordered financial views, select each available coverage role at least once; '
         'one span may cover several roles and must not be repeated. Role labels are not proof of semantic support. '
-        'Return actual values in the new selection-only format. Examples are synthetic.\n'
+        'For missing, copy gap_anchor exactly from that supplied request question_anchor; '
+        'this identifies the unanswered request, never factual support. For partial, retain only '
+        'the exact unanswered question fragment. Return actual values in the new selection-only format. '
+        'Examples are synthetic.\n'
         '{"wire_version":"source-selection-v1","components":[{"component_id":"r1",'
         '"status":"supported","evidence":["example-output"],"gap_anchor":""}],'
         '"geography":{"status":"unresolved","value":"","evidence":[],"reason":"No place stated."},"period":""}\n'
+        'Missing example question: What was the trial operator annual profit in 2021? '
+        'Supplied request: {"component_id":"r1","question_anchor":"annual profit in 2021"}.\n'
         '{"wire_version":"source-selection-v1","components":[{"component_id":"r1",'
-        '"status":"missing","evidence":[],"gap_anchor":"requested dated observation"}],'
+        '"status":"missing","evidence":[],"gap_anchor":"annual profit in 2021"}],'
         '"geography":{"status":"unresolved","value":"","evidence":[],"reason":"No place stated."},"period":""}')
 
 

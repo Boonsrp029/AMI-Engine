@@ -1,4 +1,25 @@
-> Current checkpoint - 1 November 2026: Offline [financial comparison coverage](financial-comparison-coverage-2026-11-01.md) is implemented as runtime v1.62 / mapping v42, retaining optional unknown-date facts without treating them as verified year evidence. Final checks: 1,181 Windows tests; 1,180 Linux tests plus one skip; clean dependencies; container recovery and four cached exports unchanged. [Owner r03 review](../pilot/owner-review-r03-v160-2026-11-01.md) accepts source support; the exact requested Headline inflation prefix is applied separately, without stored approval/export. No new inference occurred. Original v1.60 r05 remains failed, r06 unattempted and allowance closed. Next is a concrete bounded real-model diagnostic proposal; fresh quality, independent usefulness, release CI and actual production qualification remain incomplete.
+> Current checkpoint — 3 November 2026: [v1.69 offline input guidance](unit-source-cues-v169-2026-11-03.md) passes 1,294 Windows / 1,293 Linux tests plus one skip, 25 reduced-diagnostic admission checks and preserved exports. The previous actual v1.68 qualification remains failed at r07 (one held-out attempt, nineteen unattempted, allowance closed). No v1.69 inference has run; strict per-unit validation still rejects the saved bad response. A new reduced composer/workflow grant is required.
+
+
+
+See the [current requirement-by-requirement completion audit](completion-audit-2026-11-03.md) for explicit remaining gates and human actions.
+
+## Current qualification status
+
+| Requirement | Current evidence | Remaining gate |
+|---|---|---|
+| Protected history and APIs | Original attempts, owner CSV/DB/exports, previous owner copies and dependencies unchanged; source-selected evidence stays exact | Continue exact-revision approval controls; no retrospective acceptance |
+| Current engineering behavior | v1.69 offline suite/source-only image/recovery; actual prior v1.68 preflight passes retained | Added per-unit source cues, not semantic proof. Original r07 still rejects; real-model improvement and new owner acceptance unverified |
+| Packaging/recovery | [Current v1.68 full recipe](full-recipe-v168-2026-11-03.md), unchanged 221 installed versions, Linux suite and non-root restore/restart preserving four cached exports | Cache-free installation/exact-release remote CI; actual container inference and target operation; running application not upgraded |
+| Owner quality | v1.65 r05 presentation rejected; r06 source support and separate editorial change confirmed | v1.66 r05 prose/source support accepted; source fallback is not model-only completeness or stored approval/export |
+| Fresh quality | [v1.68 actual batch](qualification-v168-findings-2026-11-03.md): both preflights passed; r07 technical failure; nineteen unattempted | Qualification failed; old/current allowances closed. r07 now consumed; future tuning must not count it as unseen. Preserve remaining reserved facts and predeclare any new pool/grant |
+| Independent usefulness | Reviewer protocol and packet exist | Owner-arranged real tasks, checking/correction time, usefulness and feedback-driven improvement |
+| Security and runtime | Offline controls/tests and runbooks exist; no new deployment claimed | Named deployment identities/least privilege, actual cancellation/alert/retention/backup schedule and scope-specific checks |
+| CI/publication | Older focused commit has green remote CI | Current release remains unpublished; separate authorization and exact-revision CI |
+| Databricks and production | Scoped staging is the later target; adapters/utilities retained | Authorized actual data/index/model/serving path, deployment/rollback/recovery/load and owner risk acceptance |
+| Milestones | Owner-reviewed portfolio pilot | Neither portfolio-complete nor production-qualified; dependency pruning deferred until deployability is demonstrated |
+
+The matrix and dated checkpoints below are retained historical evidence; the current table above governs present status.
 
 # Production readiness evidence matrix — active work
 

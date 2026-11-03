@@ -1,5 +1,49 @@
 # Reproduce and package the local analyst application
 
+## Current source-only test image — v1.69, 3 November 2026
+
+`ami-pilot:source-cues-v169`, immutable image ID `sha256:934746ec47dcc64a1e85e28aa4ae717160dbdf54fd0f28805c03e94b07c8dd7f`, copies three runtime files over the verified v1.68 full-recipe image. Current Linux checks pass 1,293 tests plus one platform skip; disposable non-root restoration/restart preserves all four cached exports. Windows passes 1,294 tests. Existing dependency versions and source/config/model prerequisites remain unchanged.
+
+[Evidence and limits](unit-source-cues-v169-2026-11-03.md): this is a source overlay, not a new full recipe, fresh installation, actual inference, remote CI or running Desktop-service upgrade. The actual v1.68 qualification failure remains retained. The reduced v1.69 diagnostic needs a new grant; no twenty-case run is proposed.
+
+## Earlier full-recipe verification — v1.68, 3 November 2026
+
+The unchanged Dockerfile directly built `ami-pilot:recipe-v168-final`, image `sha256:7cbe33bc7d099528b707b738088f3d3a639dd87c94edbcfe24db4e159aa8760d`. [Current evidence](full-recipe-v168-2026-11-03.md): 1,275 Linux tests plus one skip, clean dependency check, all 221 installed versions unchanged and disposable non-root restoration/restart preserving four cached exports. Context `c40d14fb0fbbb0fbb2263d867576d14756b4c7e77c7b29e3c6dab31503457227` includes the exact extensionless Modelfile after the hash gate caught its omission from the first temporary context.
+
+Installation layers were cached; normal build mode used registry metadata. A preceding network-disabled build lacked a compatible compiler-install cache and failed before assembly. This is not cache-free reproduction, real inference, current remote CI or deployment. The [actual v1.68 batch](qualification-v168-findings-2026-11-03.md) later passed both preflights and stopped at its first held-out case; that allowance is closed. Future inference needs a new bounded protocol/grant after repair. The Desktop application was not upgraded.
+
+## Earlier source overlay — v1.68, 3 November 2026
+
+The source-only overlay is `ami-pilot:missing-gap-v168`, immutable ID `sha256:77088b7f16b122c0740682bad7ddf5c07a1e5751d93b48e78baee16761ae84e2`. The current sanitized test snapshot passes 1,275 Linux tests plus one platform skip; Windows passes 1,276 tests. Disposable non-root restoration/restart preserved four cached exports. Recovery preceded only synthetic-fixture edits; runtime hashes remain identical. Dependencies are unchanged and reused, not rebuilt. See the [repair evidence](missing-gap-contract-v168-2026-11-03.md).
+
+The Docker engine was stopped on resumption; after starting and verifying it, the offline Linux check passed. There is no v1.68 inference, remote CI, fresh dependency build or upgrade of the running Desktop analyst service. The previous actual v1.67 qualification stopped at p02; its allowance is closed. The [new proposal](fresh-qualification-v168-proposal-2026-11-03.md) is unexecuted and requires a new grant.
+
+## Earlier offline image — v1.67, 2 November 2026
+
+The current tested source overlay is `ami-pilot:composer-v167`, immutable image ID `sha256:26874ad9179b60a0fcf2be5d77d29303d6e649696070830a581d815b5f5ec10c`. It passes 1,256 Linux tests plus one skip and disposable recovery preserving four cached exports. Dependencies are reused unchanged. The side conversation retains 1,257 Windows passes; this is not a fresh dependency build or current remote CI.
+
+The [host-Python qualification](qualification-v167-preflight-findings-2026-11-02.md) stopped at the second preflight. It does not establish actual container inference or fresh quality. The running Desktop service remains unchanged. Earlier image checkpoints below remain historical.
+
+## Earlier offline image — v1.66, retained checkpoint
+
+The locally tested source overlay is `ami-pilot:attributed-prose-v166-final`, immutable image ID `sha256:96eb379f92fac52aee01a6618e1f707c7d6867380627255319d098215e3b68a0`. The [attributed-prose repair](source-attributed-prose-2026-11-02.md) passes 1,253 Windows tests, 1,252 Linux tests plus one skip, clean dependencies and disposable non-root recovery preserving four cached exports. The earlier intermediate layout/image was rejected during engineering inspection and is not the qualified final artifact.
+
+This reuses unchanged dependency layers, not a fresh dependency build or exact-release remote CI. The [actual r05 v1.66 workflow](r05-prose-v166-findings-2026-11-02.md) ran in host Python and passed real final NeMo, with [owner source/wording acceptance](../pilot/owner-acceptance-r05-v166-2026-11-02.md) now recorded; no stored approval/export or fresh quality claim follows. It is not evidence of inference inside this container; the earlier saved-response replay uses a fake safety result. The running Desktop service remains v1.60. Do not infer current release identity from inherited image labels, upgrade the service or replace its storage automatically.
+
+## Earlier v1.65 evidence — retained checkpoint
+
+The current locally tested source-overlay image is **`ami-pilot:source-excerpt-v165`**, immutable image ID **`sha256:29fb0e531cb63f76f079a9fa00e3e34c87d6f12fd15f0ac82d50abe25036ca73`**. The [source-excerpt record](source-excerpt-presentation-2026-11-02.md) documents 1,238 Windows tests, 1,237 Linux tests with one skip, clean dependencies and non-root disposable restart/restoration preserving four cached exports. This overlay reuses verified dependency layers; it is not a fresh dependency installation or exact-release remote CI result. Its inherited image revision label is not current release identity: use the immutable digest and recorded source hashes.
+
+The [actual v1.65 diagnostic pair](consumed-v165-findings-2026-11-02.md) ran through local Python, not inside this container. It does not establish real container generation, guardrail/cache prerequisites, backend cancellation or sustained-load performance. Owner acceptance of the new exact outputs remains pending.
+
+The repaired **running Docker Desktop service remains v1.60**; it was not upgraded during diagnostics. Follow the [Desktop startup record](docker-desktop-startup-2026-11-01.md) for that installed instance. Do not substitute a newer tag or recreate its storage merely to match this guide. A future chosen image needs its own launch review and storage-preservation checks.
+
+For a fresh checkout, use the reproducible build/launch commands below with the unchanged requirements and explicit corpus/model prerequisites. A local tag is not available automatically on another machine. Keep a fresh setup, the current test overlay, the existing Desktop instance and an externally qualified release distinct.
+
+## Historical image and validation checkpoints
+
+The dated “latest/current” labels below refer to their recorded checkpoints, not the current artifact described above. Retained commands and general setup instructions follow these records; no new build or deployment is implied by this documentation refresh.
+
 > Latest local image: `ami-pilot:literal-v155`, ID `sha256:a991e3fe9ed993dc2a720c42f845417e132e361459b4a9e7dcd0062a107cee93`, context `deb8b83661513e3bf7930f5b26f1803de60de27c5c5c343e6b29554f5955e07d`. The [literal-comparison change](literal-comparison-v155-2026-10-30.md) passes 1,017 Windows / 1,016 Linux tests, clean dependency checks with all 221 image versions unchanged, and no-inference restart/restoration preserving four cached exports. Dependencies were cached; no actual inference, new remote CI or deployment is established.
 
 > Published CI checkpoint: the owner-authorized [focused byte fix](ci-publication-2026-10-30.md) at `e433bd5` passed remote unit, serving-environment and analyst-container jobs. That commit excludes the newer local v1.54 source, so it does not establish remote CI for the image described next.
