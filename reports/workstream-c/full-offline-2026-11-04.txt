@@ -1,0 +1,188 @@
+.......FFF.............................................................. [  5%]
+........................................................................ [ 10%]
+........................................................................ [ 15%]
+........................................................................ [ 21%]
+........................................................................ [ 26%]
+........................................................................ [ 31%]
+........................................................................ [ 37%]
+........................................................................ [ 42%]
+........................................................................ [ 47%]
+........................................................................ [ 53%]
+........................................................................ [ 58%]
+........................................................................ [ 63%]
+........................................................................ [ 69%]
+...........................................................FFF.......... [ 74%]
+........................................................................ [ 79%]
+........................................................................ [ 85%]
+........................................................................ [ 90%]
+........................................................................ [ 95%]
+...................................................F......               [100%]
+================================== FAILURES ===================================
+__________ test_concurrent_same_request_key_creates_exactly_one_run ___________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/workstream-c-full/test_concurrent_same_request_k0')
+
+    def test_concurrent_same_request_key_creates_exactly_one_run(tmp_path):
+        store=Store(tmp_path/'duplicates.sqlite3');gate=threading.Barrier(3)
+        def create():
+            gate.wait(timeout=10)
+            return store.create(ResearchRequest(query='Fictional independent measures',request_key='same-request-key'),SHA)
+        with ThreadPoolExecutor(2) as pool:
+>           fs=[pool.submit(create) for _ in range(2)];gate.wait(timeout=10);values=[f.result(timeout=10) for f in fs]
+                                                                                     ^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\subtasks\test_subtasks_execution_integration.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py:456: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py:401: in __get_result
+    raise self._exception
+C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\thread.py:59: in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def create():
+        gate.wait(timeout=10)
+>       return store.create(ResearchRequest(query='Fictional independent measures',request_key='same-request-key'),SHA)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for ResearchRequest
+E       request_key
+E         String should have at least 8 characters [type=string_too_short, input_value='same', input_type=str]
+E           For further information visit https://errors.pydantic.dev/2.12/v/string_too_short
+
+tests\integration\subtasks\test_subtasks_execution_integration.py:124: ValidationError
+__________ test_event_redelivery_does_not_duplicate_durable_history ___________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/workstream-c-full/test_event_redelivery_does_not0')
+
+    def test_event_redelivery_does_not_duplicate_durable_history(tmp_path):
+        store,plan,rid,aid,sink=setup(tmp_path,count=1)
+        child=uuid.uuid4().hex
+        event=Progress(identity=sink.identity,subtask_id='s01',child_attempt_id=child,ordinal=1,status='queued',created_at=datetime.now(timezone.utc)).model_dump(mode='json')
+        sink('subtask_progress',event);sink('subtask_progress',event)
+>       assert len([e for e in store.get(rid)['events'] if e['kind']=='subtask_progress'])==1
+E       AssertionError: assert 2 == 1
+E        +  where 2 = len([{'seq': 3, 'run_id': '37d9bf392c6e45669e840a5510c9db45', 'kind': 'subtask_progress', 'payload': {'version': 'ami-subt...aaaaaaaaaaaaaaaaaaaaaaaaaaa'}, 'subtask_id': 's01', 'child_attempt_id': '914ab359937d43108e695a9713a4964d', ...}, ...}])
+
+tests\integration\subtasks\test_subtasks_execution_integration.py:136: AssertionError
+______________ test_persisted_terminal_state_cannot_be_reopened _______________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/workstream-c-full/test_persisted_terminal_state_0')
+
+    def test_persisted_terminal_state_cannot_be_reopened(tmp_path):
+        store,plan,rid,aid,sink=setup(tmp_path,count=1);child=uuid.uuid4().hex
+        for ordinal,state in enumerate(['queued','running','completed'],1):
+            e=Progress(identity=sink.identity,subtask_id='s01',child_attempt_id=child,ordinal=ordinal,status=state,created_at=datetime.now(timezone.utc)).model_dump(mode='json');sink('subtask_progress',e)
+        late=Progress(identity=sink.identity,subtask_id='s01',child_attempt_id=child,ordinal=4,status='running',created_at=datetime.now(timezone.utc)).model_dump(mode='json')
+>       with pytest.raises((Conflict,ValueError)):sink('subtask_progress',late)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE any of (Conflict, ValueError)
+
+tests\integration\subtasks\test_subtasks_execution_integration.py:144: Failed
+__________ test_corpus_changed_during_execution_prevents_publication __________
+
+setup_runtime = (<src.pilot._runtime.ProcessRuntime object at 0x0000022BAE28DC40>, <src.pilot.store.Store object at 0x0000022BAE28C3B0...Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/workstream-c-full/test_corpus_changed_during_exe0/corpus.json'))
+
+    def test_corpus_changed_during_execution_prevents_publication(setup_runtime):
+        runtime, store, path = setup_runtime
+        rid = submit(runtime, store, "wait then finish")
+        until(lambda: any(e["kind"] == "model_call" for e in store.get(rid)["events"]))
+        path.write_text("[]", encoding="utf-8")
+        path.with_suffix(".release").write_text("release synthetic worker", encoding="utf-8")
+>       assert finished(store, rid)["metrics"]["failure_reason"] == "corpus_changed"
+E       AssertionError: assert 'deadline' == 'corpus_changed'
+E         
+E         - corpus_changed
+E         + deadline
+
+tests\test_pilot_runtime.py:133: AssertionError
+________ test_shutdown_reaps_active_and_recovers_queued_without_drafts ________
+
+setup_runtime = (<src.pilot._runtime.ProcessRuntime object at 0x0000022BAE268920>, <src.pilot.store.Store object at 0x0000022BAE268320...Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/workstream-c-full/test_shutdown_reaps_active_and0/corpus.json'))
+
+    def test_shutdown_reaps_active_and_recovers_queued_without_drafts(setup_runtime):
+        runtime, store, _ = setup_runtime
+        rid = submit(runtime, store, "hang guard")
+>       until(lambda: any(e["kind"] == "guard_invocation_started" for e in store.get(rid)["events"]))
+
+tests\test_pilot_runtime.py:139: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+predicate = <function test_shutdown_reaps_active_and_recovers_queued_without_drafts.<locals>.<lambda> at 0x0000022BAE3C8360>
+timeout = 15
+
+    def until(predicate, timeout=15):
+        stop = time.monotonic() + timeout
+        while time.monotonic() < stop:
+            value = predicate()
+            if value:
+                return value
+            time.sleep(0.02)
+>       raise AssertionError("Synthetic runtime condition did not complete within bound")
+E       AssertionError: Synthetic runtime condition did not complete within bound
+
+tests\test_pilot_runtime.py:25: AssertionError
+____ test_http_factory_uses_process_runtime_and_authenticated_cancellation ____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000022BAE26A930>
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/workstream-c-full/test_http_factory_uses_process0')
+
+    def test_http_factory_uses_process_runtime_and_authenticated_cancellation(monkeypatch, tmp_path):
+        monkeypatch.syspath_prepend(str(Path("tests/fixtures/workers").resolve()))
+        child = importlib.import_module("runtime_child")
+        monkeypatch.setattr(api, "ProcessRuntime", lambda store, path, sha: ProcessRuntime(store, path, sha, worker=child.run, deadline_seconds=3))
+        app = api.create_app(corpus_path="tests/fixtures/release/smoke_corpus.json", database_path=tmp_path / "api.sqlite3")
+        with TestClient(app, base_url="http://127.0.0.1", headers={"X-Pilot-Token": app.state.token}) as client:
+            rid = client.post("/api/runs", json={"query": "hang model", "request_key": "http-synthetic-run"}).json()["id"]
+            until(lambda: any(e["kind"] == "model_request_started" for e in app.state.store.get(rid)["events"]))
+            assert client.post(f"/api/runs/{rid}/cancel", headers={"X-Pilot-Token": "wrong"}).status_code == 403
+            canceled = client.post(f"/api/runs/{rid}/cancel")
+>           assert canceled.status_code == 200 and canceled.json()["status"] == "interrupted"
+E           assert (409 == 200)
+E            +  where 409 = <Response [409 Conflict]>.status_code
+
+tests\test_pilot_runtime.py:156: AssertionError
+_____________ test_branch_crossing_rejected_even_if_source_exists _____________
+
+    def test_branch_crossing_rejected_even_if_source_exists():
+     p,r,m,c,b=fixture();b={'r1':('s01',),'r2':('s02',)}
+>    m['components'].append({'component_id':'r2','question_anchor':Q,'status':'missing','short_answer':'','evidence':[],'gap_anchor':'projected electricity demand'})
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    AssertionError: Regex pattern did not match.
+E      Expected regex: 'crosses branch'
+E      Actual message: 'Unbound branch coverage would be omitted'
+
+tests\test_subtask_synthesis.py:64: AssertionError
+============================== warnings summary ===============================
+.venv-release-check\Lib\site-packages\unitycatalog\ai\langchain\toolkit.py:29
+  D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\unitycatalog\ai\langchain\toolkit.py:29: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class UCFunctionToolkit(BaseModel):
+
+.venv-release-check\Lib\site-packages\fastapi\testclient.py:1
+  D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+.venv-release-check\Lib\site-packages\mlflow\pyfunc\utils\data_validation.py:187
+  D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\mlflow\pyfunc\utils\data_validation.py:187: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+    color_warning(
+
+tests/test_guardrail_grounding.py: 11 warnings
+  D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\nemoguardrails\rails\llm\config.py:934: DeprecationWarning: Use 'nim_base_url' instead. This field will be removed in a future version.
+    if self.nim_url and not self.nim_base_url:
+
+tests/test_serving_artifact.py::test_saved_artifact_embeds_constraints_and_loads_after_relocation
+  D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\mlflow\pyfunc\__init__.py:3344: UserWarning: [1;33mAn input example was not provided when logging the model. To ensure the model signature functions correctly, specify the `input_example` parameter. See https://mlflow.org/docs/latest/model/signatures.html#model-input-example for more details about the benefits of using input_example.[0m
+    color_warning(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/integration/subtasks/test_subtasks_execution_integration.py::test_concurrent_same_request_key_creates_exactly_one_run
+FAILED tests/integration/subtasks/test_subtasks_execution_integration.py::test_event_redelivery_does_not_duplicate_durable_history
+FAILED tests/integration/subtasks/test_subtasks_execution_integration.py::test_persisted_terminal_state_cannot_be_reopened
+FAILED tests/test_pilot_runtime.py::test_corpus_changed_during_execution_prevents_publication
+FAILED tests/test_pilot_runtime.py::test_shutdown_reaps_active_and_recovers_queued_without_drafts
+FAILED tests/test_pilot_runtime.py::test_http_factory_uses_process_runtime_and_authenticated_cancellation
+FAILED tests/test_subtask_synthesis.py::test_branch_crossing_rejected_even_if_source_exists
+7 failed, 1347 passed, 15 warnings in 681.58s (0:11:21)
