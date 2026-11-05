@@ -176,6 +176,13 @@ def create_app(corpus_path=None, database_path=None, engine=None, run_inline=Fal
     def get(run_id: str):
         return store.get(run_id)
 
+    @app.get("/api/runs/{run_id}/progress")
+    def progress(run_id: str):
+        from src.pilot.subtasks.persistence import progress_view
+        run = store.get(run_id)
+        return {"run": run, "progress": progress_view(run, detailed=True),
+                "sequence": max((event["seq"] for event in run["events"]), default=0)}
+
     @app.post("/api/runs/{run_id}/retry", status_code=202)
     def retry(run_id: str, http: Request):
         run = store.get(run_id)

@@ -1,13 +1,25 @@
 # Shared subtask contract: ami-subtasks-v1
 
-Status: executable contract published before scheduler implementation. No model execution or browser activation is enabled by this package.
+Status: the private contract, scheduler, persistence adapter and opt-in owned-process runner are implemented, including C's typed composition-lineage handoff. Integrated Windows/Linux offline validation passes; no model execution or browser activation is enabled by this package. See [usage and acceptance evidence](workstream-a.md).
 
-The caller supplies a validated explicit Plan for one analyst request. Plan identity is SHA256 of canonical validated JSON (including resource policy, ordered tasks, query and corpus hash), without timestamps. Existing run/parent-attempt UUIDs are retained; each child execution has its own UUID. Task IDs follow declared order s01ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“s05. Forward dependencies are allowed, cycles and unknown IDs are rejected.
+The caller supplies a validated explicit Plan for one analyst request. Plan identity is SHA256 of canonical validated JSON (including resource policy, ordered tasks, query and corpus hash), without timestamps. Existing run/parent-attempt UUIDs are retained; each child execution has its own UUID. Task IDs follow declared order s01 through s05. Forward dependencies are allowed, cycles and unknown IDs are rejected.
+
+| Identifier | Meaning and lifetime |
+|---|---|
+| Existing `ResearchRequest.request_key` | Caller-supplied idempotency key handled by `Store.create`; unchanged request-key conflict rules. |
+| `Identity.run_id` | Existing stored parent request UUID; stable across explicit retries. |
+| `Identity.attempt_id` | Fresh parent execution UUID for every explicit retry; fences all child events and final publication. |
+| `Plan.plan_id` | Canonical hash of the explicit plan and resource policy; stable for identical validated input. |
+| `Subtask.subtask_id` | Declared plan position, `s01` through `s05`; not completion order. |
+| `child_attempt_id` | Fresh UUID per launched branch attempt; propagated through progress, results and dependency references. |
+| `corpus_sha256` / `content_sha256` | Exact corpus bytes / exact source-text UTF-8 bytes. B must verify source membership; a matching claimed hash alone does not prove it. |
+
+Dependency references retain the upstream subtask ID, child attempt ID and hash of its validated serialized result. A worker cannot substitute another attempt's dependency result. Workers return evidence envelopes, never arbitrary mutable task state or authority to launch extra branches.
 
 ## Execution rules
 
 - One to five read-only retrieve/inspect_sources branches. Default concurrency two, configurable down to one. Local model concurrency one and parent-wide main-call ceiling four. No LLM planner or branch inference.
-- Parent execution deadline at most180seconds; branch deadline defaults30seconds from branch start and is capped by remaining parent time. Dependency waiting consumes parent time. The existing owned-process boundary remains the hard stop; threads must cooperate and cannot promise backend cancellation.
+- Parent execution deadline at most 180 seconds; branch deadline defaults 30 seconds from branch start and is capped by remaining parent time. Dependency waiting consumes parent time. The existing owned-process boundary remains the hard stop; threads must cooperate and cannot promise backend cancellation.
 - States: queued, waiting_on_dependency, running, completed, failed, cancelled, blocked. Terminal transitions cannot be revised. Duplicate event delivery must be deduplicated by the persistence adapter, never interpreted as a new transition.
 - Every event/result carries parent/child identity and pinned corpus hash. Coordinator ordinal is per parent attempt; SQLite's existing global event sequence remains the durable replay order. Times are timezone-aware; elapsed/deadline accounting uses monotonic clocks.
 - Completed evidence/missing/conflicting outcomes are distinct from technical failure. Missing can retain context records but cannot assert support. Conflicting is a structural label requiring source support, not a proof of contradiction.
@@ -24,7 +36,7 @@ Workers receive isolated validated operation inputs plus declared dependency res
 
 | Owner | Modules / boundary |
 |---|---|
-| A | src/pilot/subtasks/contracts.py, future scheduler.py, aggregation.py and persistence.py; sole integrator of existing shared runtime/worker/store/API/config |
+| A | src/pilot/subtasks/contracts.py, scheduler.py (including aggregation), persistence.py and runner.py; sole integrator of existing shared runtime/worker/store/API/config |
 | B | Retrieval/inspection adapters and module tests; consume Subtask/Identity and return Result |
 | C | Compose aggregate evidence with branch provenance and missing-branch records; preserve public Draft/safety contracts |
 | D | Cross-component barrier-driven integration tests, failure/restart/cancellation/approval races |
@@ -35,26 +47,14 @@ Delivery sequence: contract/types/fixtures first; bounded coordinator second; de
 
 ## Qualification boundaries
 
-Synthetic contract tests prove structural rules only. Scheduler overlap, deadlines, cancellation, persistence and review/export integration remain unfinished until executable integration evidence exists. v1.69 actual model quality and production readiness remain unqualified. Generation is held. Source/benchmark/owner artifacts and dependency versions must remain unchanged.
+Synthetic tests establish structural and lifecycle behavior only. Barrier-driven scheduler, real SQLite, spawned-worker and review/export checks are implemented. Final integrated evidence and exclusions are recorded in the usage and acceptance document; historical pass counts below are checkpoints, not current release qualification. v1.69 actual model quality and production readiness remain unqualified. Generation is held. Source/benchmark/owner artifacts and dependency versions must remain unchanged.
 
 
-## Coordinator implementation checkpoint
+## Coordinator and persistence boundary
 
-The private scheduler.run_plan entrypoint now accepts a validated plan, existing parent IDs, a trusted read-only operation callback and a parent event sink. It returns a Report with plan-ordered results, stable aggregate sources/origins, missing branches and an explicit can_compose gate. Source role is per branch: identical source records can carry support in one branch and context in another, preserved in origins. Other source metadata mismatches fail aggregation.
+`scheduler.run_plan` validates each returned result against the actual launched parent/child/plan/corpus and declared dependency references. All progress/results are emitted by the coordinator. A sink failure aborts admission and signals cancellation. A timed-out thread retains physical capacity until it exits; direct scheduler callers need cooperative adapters. Late completion cannot publish.
 
-All branch progress/results are emitted on the coordinator thread. A sink exception aborts execution and signals worker cancellation. Timed-out threads retain physical capacity until they exit; no replacement work is admitted merely because the logical status is failed. Late worker completion never emits a result. Threads cannot be force-killed: direct programmatic callers must supply cooperative bounded adapters, and production integration must retain the owned-process hard stop. Current tests prove fencing and status/deadline decisions, not actual backend termination.
-
-Current evidence:31 targeted contract/coordinator tests pass, including actual barrier overlap, dependency/cap control, optional/required failure, parent cancellation, fake-clock deadlines, identity mismatch and source collision/deduplication. Persistence adapter, restart replay, composition/safety handoff, full offline integration and review/export race checks are pending. This checkpoint does not complete Workstream A or qualify model quality.
-
-
-## Persistence integration checkpoint
-
-AttemptSink registers exactly one plan per parent attempt in an immediate SQLite transaction, using the existing events table and current-attempt fence. Subsequent progress/results require the same plan/run/attempt/corpus identity; durable cancellation/restart closes the sink. The scheduler polls this fence before admitting/accepting work. No child thread receives database access.
-
-progress_view is a read-only latest-attempt projection for E. After parent termination, unfinished branch states are shown as cancelled/interrupted with derived=true rather than fabricated persisted transition events. Earlier events remain untouched; retries have a fresh attempt and no automatic reuse. No schema migration or public endpoint is added.
-
-Temporary real SQLite integration tests cover late completion after cancellation/restart, stale-attempt writes, explicit retry with fresh IDs, duplicate plan registration, current-revision review, approval invalidation after edits and byte-stable cached exports. These are synthetic test decisions, not new owner approvals. Programmatic composition/safety handoff and owned-process integration remain the next pass; this adapter alone does not enable concurrent browser requests or prove hard thread/backend termination.
-
+`AttemptSink` registers one plan per parent attempt using the existing SQLite events table and current-attempt fence. Durable cancellation/restart closes the sink; the scheduler checks the fence before admitting or accepting work. No child thread writes the database. `progress_view` projects the latest attempt and explicitly labels derived interruption states. Prior history is retained and retries create fresh identities without automatic reuse.
 
 ## Opt-in owned-process runner
 
@@ -65,3 +65,9 @@ Trusted adapters must route model-provider invocations through model_access.main
 The parent verifies corpus bytes before and after execution, persists child events through the attempt fence and saves only a valid final draft after clean child exit. It reuses the existing owned-process stop and owner-death/deadline watchdog, preventing abandoned branch threads from escaping into a later parent request. Direct scheduler callers still have cooperative-thread limits; use the stored runner for the owned-process boundary. Process termination is not proof that an external inference server stopped computing.
 
 Existing sequential entry points, API/SQLite schema and approval/export behavior stay unchanged. Spawned callback functions/objects must be importable and pickleable. Browser opt-in activation, concrete B/C production adapters, UI progress exposure, live model quality and deployment qualification remain separate workstreams.
+
+## Durable event validation
+
+Progress/result delivery is validated in an immediate SQLite transaction. Identical progress ordinals and identical completed-result redelivery are idempotent. Reused ordinals with changed payloads, changed child identity, out-of-order ordinals and reopened terminal states are rejected without adding history. A result requires its matching completed child. Parent-attempt fencing applies before duplicate acceptance, so a stale attempt cannot publish by replaying an old event.
+
+Typed composition callbacks may return C's unguarded `SynthesisResult` instead of a dictionary. The runner validates lineage, binds exact draft/source/lineage content to final safety, and the parent persists the verified candidate and revision metrics through existing fences. A candidate is neither approval nor publication evidence. See the completion audit for current test scope.

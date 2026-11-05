@@ -1,0 +1,26 @@
+{
+  "observed_utc": "2026-11-05T15:21:16.164865+00:00",
+  "scope": "G inspection snapshot only, not integrated build qualification",
+  "sha256": {
+    "README.md": "da123944f277822ec8fed874d2e30a01b06952885b98554e697fb7534ead648d",
+    "AGENTS.md": "3cec0adfaa0d09dddf582f8ec7c6841250668ee6c4046797c691a923f1105af8",
+    "docs/production/readiness.md": "1e749d3907bc7436087f7152ba877aef20f969a971800e506a4e90df33b6f596",
+    "docs/production/release-contract.md": "176295172df4c5df5341487559ed1e0794f67d590b04e8b9ddbbd28fe41fc634",
+    "docs/pilot/reviewer-session-kit-2026-10-31.md": "7f96024a8e620e32fac196c8d1fdcd02966fae0239e1916653a0169542f98708",
+    "docs/pilot/reviewer-session-template.csv": "a6b5d6a10b8fcf6a2912d1f8fe2426cf1ce8d4788c78c141c2d25060693df781",
+    "docs/concurrency/contract-v1.md": "61dcf09e1d07c01a7e95470ce44fd5e3f85b027524658d987ec97d3981693e6c",
+    "docs/concurrency/completion-audit-a.md": "8a9e213e77c322443487526251692eb54798efdf4ed893cc190c44fb407386bd",
+    "docs/concurrency/a-c-integration-pass.md": "8a0f24d3c3c8ceeffc18986f1b01a4a20becaa17d524370295ba76d4a962cda0",
+    "docs/concurrency/synthesis-v1.md": "8aa3efdbc2c682d2c715ed34c6c26c1aadd2d544b81a703ec91fee5191c2db70",
+    "src/pilot/subtasks/contracts.py": "5f405bae533274888a6bc868f8c044280bb9724d09538a166a4eb49bcf9fbade",
+    "src/pilot/subtasks/runner.py": "f4190f9568bccc080674a25d73d1930a113edff3f8984819d28cb64da488fe34",
+    "src/pilot/subtasks/persistence.py": "0af05e0f0c268abca7927c8b0cc483f204e26c7673fbe9df24967b050d2e5c68"
+  },
+  "markdown_links_checked": 18,
+  "json_templates_parsed": 3,
+  "actual_sessions_recorded": 0,
+  "actual_generation_performed": false,
+  "operations_performed": false,
+  "source_files_modified_by_G": false,
+  "limitations": "Other workstreams may change the shared checkout; revalidate identities before an exercise. Test counts in older README are not promoted to new concurrent-release evidence."
+}

@@ -213,3 +213,27 @@ def test_cached_export_preserved_but_edit_requires_new_approval(tmp_path):
     with store.connection() as db:
         row=db.execute('SELECT content FROM exports WHERE run_id=? AND revision=1',(rid,)).fetchone()
         assert row['content']==original[0]
+
+
+
+def test_concurrent_redelivery_is_one_transactional_history_event(tmp_path):
+    store,plan,rid,aid,sink=setup(tmp_path,count=1);gate=threading.Barrier(3)
+    event=Progress(identity=sink.identity,subtask_id='s01',child_attempt_id=uuid.uuid4().hex,ordinal=1,status='queued',created_at=datetime.now(timezone.utc)).model_dump(mode='json')
+    def deliver():
+        duplicate=AttemptSink(store,plan,rid,aid);gate.wait(timeout=10);duplicate('subtask_progress',event)
+    with ThreadPoolExecutor(2) as pool:
+        futures=[pool.submit(deliver) for _ in range(2)];gate.wait(timeout=10)
+        for future in futures:future.result(timeout=10)
+    events=[e for e in store.get(rid)['events'] if e['kind']=='subtask_progress']
+    assert len(events)==1 and events[0]['payload']['ordinal']==1
+
+
+@pytest.mark.parametrize('damage',['ordinal','child'])
+def test_conflicting_delivery_cannot_corrupt_persisted_child_history(tmp_path,damage):
+    store,plan,rid,aid,sink=setup(tmp_path,count=1)
+    event=Progress(identity=sink.identity,subtask_id='s01',child_attempt_id=uuid.uuid4().hex,ordinal=1,status='queued',created_at=datetime.now(timezone.utc)).model_dump(mode='json')
+    sink('subtask_progress',event);before=store.get(rid)['events']
+    bad={**event,'status':'running','ordinal':1 if damage=='ordinal' else 2}
+    if damage=='child':bad['child_attempt_id']=uuid.uuid4().hex
+    with pytest.raises((Conflict,ValueError)):sink('subtask_progress',bad)
+    assert store.get(rid)['events']==before

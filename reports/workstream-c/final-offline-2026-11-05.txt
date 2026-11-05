@@ -1,0 +1,51 @@
+Timeout (0:01:00)!
+Thread 0x00007928 (most recent call first):
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\thread.py", line 90 in _worker
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1012 in run
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x0000befc (most recent call first):
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\ragas\_analytics.py", line 158 in _flush_loop
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1012 in run
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x00008db0 (most recent call first):
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\synchronize.py", line 297 in notify
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\synchronize.py", line 304 in notify_all
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\synchronize.py", line 345 in set
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\tests\integration\subtasks\test_subtasks_owned_runner_integration.py", line 49 in test_owned_runner_overlap_faults_and_no_late_draft
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\python.py", line 167 in pytest_pyfunc_call
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_callers.py", line 121 in _multicall
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_manager.py", line 120 in _hookexec
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_hooks.py", line 512 in __call__
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\python.py", line 1707 in runtest
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\runner.py", line 184 in pytest_runtest_call
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_callers.py", line 121 in _multicall
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_manager.py", line 120 in _hookexec
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_hooks.py", line 512 in __call__
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\runner.py", line 250 in <lambda>
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\runner.py", line 361 in from_call
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\runner.py", line 249 in call_and_report
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\runner.py", line 139 in runtestprotocol
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\runner.py", line 118 in pytest_runtest_protocol
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_callers.py", line 121 in _multicall
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_manager.py", line 120 in _hookexec
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_hooks.py", line 512 in __call__
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\main.py", line 408 in pytest_runtestloop
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_callers.py", line 121 in _multicall
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_manager.py", line 120 in _hookexec
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_hooks.py", line 512 in __call__
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\main.py", line 384 in _main
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\main.py", line 330 in wrap_session
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\main.py", line 377 in pytest_cmdline_main
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_callers.py", line 121 in _multicall
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_manager.py", line 120 in _hookexec
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_hooks.py", line 512 in __call__
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\config\__init__.py", line 229 in _main
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\config\__init__.py", line 253 in _console_main
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pytest\__main__.py", line 9 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 198 in _run_module_as_main
+....................F

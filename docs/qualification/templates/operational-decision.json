@@ -1,0 +1,13 @@
+{
+  "template_only": true,
+  "decision_id": null,
+  "topic": null,
+  "status": "pending",
+  "proposed_value": null,
+  "accepted_value": null,
+  "approver": null,
+  "accepted_at": null,
+  "evidence_reference": null,
+  "target_environment": null,
+  "residual_risk": null
+}

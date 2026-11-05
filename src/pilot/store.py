@@ -63,6 +63,8 @@ class Store:
 
     def get(self, run_id):
         with self.connection() as db:
+            # Run, events and reviews must describe the same read snapshot.
+            db.execute("BEGIN")
             row = db.execute("SELECT * FROM runs WHERE id=?", (run_id,)).fetchone()
             if row is None:
                 raise KeyError(run_id)

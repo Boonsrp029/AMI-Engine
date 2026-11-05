@@ -15,6 +15,7 @@ from src.pilot.store import Conflict
 from .contracts import Plan
 from .persistence import AttemptSink
 from .scheduler import run_plan
+from ._handoff import prepare, snapshot, fingerprint, seal, verify_seal
 
 
 class ModelAccess:
@@ -57,19 +58,29 @@ def _child(job,connection,operation,compose,safety):
         report=run_plan(plan,job['run_id'],job['attempt_id'],operation,event=event,deadline_at=job['deadline'])
         if not report.can_compose:raise ValueError('Required branch or deadline failed')
         access=ModelAccess(job['deadline'],event)
-        draft=compose(report,access)
+        draft,lineage=prepare(compose(report,access),report)
         sources={s.source.source_id:s.source.model_dump() for s in report.sources}
         if report.missing_branches:
             draft={**draft,'warnings':list(draft.get('warnings',[]))+[f'Subtask {sid} did not complete; this brief is partial.' for sid in report.missing_branches]}
         draft=validate_citations(draft,sources)
+        checked=fingerprint(draft,sources,lineage)
         # Empty-claim abstention preserves the existing no-safety-call policy.
         if draft['claims'] and access.guard(lambda:safety(draft,sources)) is not True:
             raise ValueError('Safety rejected draft')
+        # Detach callback-owned state before sending; never publish content that
+        # differs from the exact snapshot supplied to final safety.
+        final=snapshot({'draft':draft,'sources':sources,'lineage':lineage})
+        if fingerprint(final['draft'],final['sources'],final['lineage'])!=checked:
+            raise ValueError('Composition changed during safety')
+        draft,sources,lineage=final['draft'],final['sources'],final['lineage']
         if _corpus(job['corpus_path'])!=plan.corpus_sha256:raise ValueError('Corpus changed')
         metrics={'corpus_sha256':plan.corpus_sha256,'plan_id':plan.plan_id,'workflow':'ami-subtasks-v1',
             'model_calls':access.calls,'guardrail_invocations':access.guards,'token_usage_complete':False,
             'missing_branches':list(report.missing_branches)}
-        send(connection,'result',{'draft':draft,'sources':sources,'metrics':metrics})
+        candidate={'draft':draft,'sources':sources,'metrics':metrics}
+        if lineage is not None:
+            candidate['composition_candidate']=seal(draft,sources,lineage,report.identity.model_dump())
+        send(connection,'result',candidate)
     except Exception as exc:
         try:send(connection,'failure',{'type':type(exc).__name__})
         except Exception:pass
@@ -117,6 +128,13 @@ def run_stored_plan(store,run_id,plan,corpus_path,operation,compose,safety,*,can
                         if counts['model_request_started']>4 or counts['guard_invocation_started']>1:raise ValueError('Worker call budget exceeded')
                     sink(payload['event'],payload['data'])
                 elif kind=='result' and candidate is None:candidate=payload
+                elif kind=='failure' and candidate is None:
+                    # The child may detect a changed corpus before producing a
+                    # candidate. Classify from parent-owned bytes, not child text.
+                    try: corpus_changed=_corpus(corpus_path)!=plan.corpus_sha256
+                    except OSError: corpus_changed=True
+                    if corpus_changed:reason='corpus_changed'
+                    raise ValueError('Worker failed')
                 else:raise ValueError('Worker failed or invalid message')
                 continue
             if not process.is_alive():
@@ -127,6 +145,16 @@ def run_stored_plan(store,run_id,plan,corpus_path,operation,compose,safety,*,can
                 if _corpus(corpus_path)!=plan.corpus_sha256:reason='corpus_changed';break
                 if candidate['metrics']['corpus_sha256']!=plan.corpus_sha256:break
                 if candidate['metrics']['model_calls']!=counts['model_request_started'] or candidate['metrics']['guardrail_invocations']!=counts['guard_invocation_started']:raise ValueError('Call accounting mismatch')
+                artifact=candidate.get('composition_candidate')
+                if artifact is not None:
+                    identity={'run_id':run_id,'attempt_id':attempt,'plan_id':plan.plan_id,'corpus_sha256':plan.corpus_sha256}
+                    lineage=verify_seal(candidate['draft'],candidate['sources'],artifact,identity)
+                    if not store.attempt_event(run_id,attempt,'composition_candidate',artifact):
+                        raise Conflict('Parent stopped before candidate persistence')
+                    candidate['metrics']={**candidate['metrics'],
+                        'composition_provenance':lineage['claim_provenance'],
+                        'composition_diagnostics':lineage['diagnostics'],
+                        'composition_content_sha256':artifact['content_sha256']}
                 store.save_draft(run_id,candidate['draft'],candidate['sources'],
                     {**candidate['metrics'],'attempt_id':attempt,'execution_elapsed_seconds':time.monotonic()-started},attempt_id=attempt)
                 return attempt

@@ -1,0 +1,31 @@
+{
+  "observed_utc": "2026-11-05T15:23:29.698754+00:00",
+  "human_reply_verbatim": "No sessions arranged yet",
+  "session_status": "not_arranged",
+  "actual_session_records_ingested": 0,
+  "ratings_or_times_created": false,
+  "technical_evidence": {
+    "scope": "A integrated offline snapshot only; no inference/browser/production qualification",
+    "source_manifest": ".pilot-work\\subtasks-a\\verified-snapshot-v6-identity.json",
+    "source_manifest_sha256": "ea7416dc73adb7f83f69618a829eb59d7f69bdb21293173e3f2d45821fd1d0ce",
+    "context_sha256": "3ebb6b5a9fa7e2e5312821b893261e5d04abf9516da8c5b89b2c6d15b9d8defb",
+    "selected_files_verified": 233,
+    "changed_selected_files": [],
+    "additional_source_config_test_files": [],
+    "windows": {
+      "passed": 1440,
+      "process_sha256": "53df36fb473ba44c285daf9f580a96d66e8302e7068cd5f78ff61f734f0925da",
+      "log_sha256": "fb5a43f743035972b639968c1f453e44ea32527c3c40d5e91d4f5e7989b68275"
+    },
+    "linux": {
+      "passed": 1439,
+      "skipped": 1,
+      "result_sha256": "e92a2826dfeb38ab1d7401ae623651f6ef458fb649208b84ec722f2c46673aa4",
+      "log_sha256": "8610f1ecdb160591d420512eab4acc354e54a4af9045392522ec1f3503deec41",
+      "network": "none",
+      "remote_CI": false
+    }
+  },
+  "qualification": "incomplete",
+  "limitations": "Comparison valid at inspection; invalidate affected gates if upstream source changes. No reviewer session or target operation occurred."
+}

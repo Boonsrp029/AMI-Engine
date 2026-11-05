@@ -10,6 +10,8 @@
 
 AMI Engine is an experimental, production-oriented portfolio project for evidence-grounded market research. It has a canonical query graph and a separate opt-in local analyst workflow, Databricks Vector Search adapters, structured LLM output, NeMo output policies, a Bronze-to-Silver/Gold Databricks job, and Ragas evaluation recorded in MLflow. The registered PyFunc currently wraps the canonical query graph; it does not host the analyst application's review lifecycle.
 
+A private [bounded-subtask path](docs/concurrency/workstream-a.md) adds explicit dependency plans, read-only branch concurrency, durable progress and an owned-process boundary before composition and safety. It is programmatic and opt-in; the sequential browser workflow remains the default. Offline worker checks do not establish fresh model quality or production readiness; integrated validation status and exclusions are recorded in that document.
+
 “Production-oriented” describes the engineering direction and safeguards in code. This repository has **not** been qualified as production-ready. Four exact public-source drafts are owner-approved/exported, but fresh held-out quality, independent usefulness and external deployment remain unverified. See the active [production evidence matrix](docs/production/readiness.md); local tests and owner edits do not substitute for its operational and quality gates.
 
 ## Architecture

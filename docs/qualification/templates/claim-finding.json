@@ -1,0 +1,18 @@
+{
+  "template_only": true,
+  "finding_id": null,
+  "session_id": null,
+  "task_id": null,
+  "run_id": null,
+  "revision": null,
+  "claim_or_requested_component": null,
+  "finding_type": null,
+  "source_id": null,
+  "source_locator": null,
+  "source_hash": null,
+  "reviewer_judgment_verbatim": null,
+  "assessor_type": null,
+  "resolution": null,
+  "improvement_reference": null,
+  "affected_check_evidence": null
+}

@@ -46,7 +46,7 @@ def authenticate(token, principals):
 
 def allowed(role, method, path):
     if method == "GET" and (path in {"/api/session", "/api/runs"}
-                            or re.fullmatch(r"/api/runs/[a-f0-9]{32}", path)):
+                            or re.fullmatch(r"/api/runs/[a-f0-9]{32}(?:/progress)?", path)):
         return True
     if method == "GET" and re.fullmatch(r"/api/runs/[a-f0-9]{32}/export", path):
         return role in {"analyst", "reviewer", "operator"}

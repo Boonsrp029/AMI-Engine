@@ -16,6 +16,7 @@ class SynthesisResult:
     provenance: tuple
     diagnostics: dict
     safety_passed: bool = False
+    guarded_sha256: str = ""
 
 
 def project_report(plan: Plan, report: Report, mapping, composed, bindings, *, as_of,
@@ -128,15 +129,24 @@ def project_report(plan: Plan, report: Report, mapping, composed, bindings, *, a
     return SynthesisResult(draft, tuple(provenance), diagnostics)
 
 
+def _guard_fingerprint(report, result):
+    import hashlib
+    import json
+    value = {'draft':result.draft, 'provenance':result.provenance,
+        'diagnostics':result.diagnostics, 'sources':[r.model_dump(mode='json') for r in report.results]}
+    return hashlib.sha256(json.dumps(value,sort_keys=True,ensure_ascii=False,allow_nan=False).encode()).hexdigest()
+
+
 def compose_report(plan, report, mapping, composed, bindings, *, as_of, guard, is_current):
     result = project_report(plan, report, mapping, composed, bindings, as_of=as_of, is_current=is_current)
+    fingerprint = _guard_fingerprint(report, result)
     sources = {s.source_id:s.content for r in report.results for s in r.sources}
     if result.draft['claims']:
         verdict = guard.validate_output(user_input=plan.query, raw_report='\n'.join(c['text'] for c in result.draft['claims']),
             context='\n'.join(sources.values()))
         if verdict.get('passed_guardrails') is not True: raise ValueError('Final safety check failed')
     if not is_current(): raise ValueError('Stale or cancelled synthesis attempt')
-    return SynthesisResult(result.draft, result.provenance, result.diagnostics, True)
+    return SynthesisResult(result.draft, result.provenance, result.diagnostics, True, fingerprint)
 
 
 def persist_synthesis(store, report, result):
@@ -149,6 +159,8 @@ def persist_synthesis(store, report, result):
     import json
     if not result.safety_passed or result.diagnostics.get('identity') != report.identity.model_dump():
         raise ValueError('Guarded synthesis identity required')
+    if not result.guarded_sha256 or result.guarded_sha256 != _guard_fingerprint(report, result):
+        raise ValueError('Guarded synthesis changed after safety validation')
     row = store.get(report.identity.run_id)
     if row['corpus_sha'] != report.identity.corpus_sha256:
         raise ValueError('Stored corpus differs from synthesis')

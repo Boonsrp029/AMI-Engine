@@ -179,3 +179,52 @@ def test_required_real_scheduler_failure_remains_explicit():
  def fail(ctx):raise RuntimeError('Synthetic unavailable retrieval')
  r=run_plan(p,'b'*32,'c'*32,fail)
  with pytest.raises(ValueError,match='Required branch unavailable.*s01'):execute((p,r,m,c,b))
+
+
+@pytest.mark.parametrize('damage',['draft','provenance','diagnostics'])
+def test_post_guard_mutation_cannot_persist(tmp_path,damage):
+ from src.pilot.subtasks.synthesis import persist_synthesis
+ from src.pilot.store import Store
+ p,r,m,c,b=fixture();result,_=execute((p,r,m,c,b))
+ if damage=='draft':result.draft['claims'][0]['text']='Tampered fact 99%'
+ elif damage=='provenance':result.provenance[0]['origins'][0]['subtask_id']='s05'
+ else:result.diagnostics['fallback_unit_ids']=['forged']
+ store=Store(tmp_path/'state.sqlite3')
+ with pytest.raises(ValueError,match='changed after safety'):persist_synthesis(store,r,result)
+
+
+def test_explicit_partial_component_retains_supported_fact_and_precise_gap():
+ p,r,m,c,b=fixture()
+ missing=r.results[1].model_copy(update={'outcome':'missing','sources':()})
+ r=replace(r,results=(r.results[0],missing),sources=aggregate((r.results[0],missing)))
+ m['components'][0].update(status='partial',short_answer=A,gap_anchor='projected electricity demand',evidence=m['components'][0]['evidence'][:1])
+ c['claims']=c['claims'][:1]
+ result,_=execute((p,r,m,c,b))
+ assert [claim['text'] for claim in result.draft['claims']]==[A]
+ assert any('projected electricity demand' in w for w in result.draft['warnings'])
+ assert any('s02 returned missing' in w for w in result.draft['warnings'])
+
+
+def test_all_missing_abstains_without_safety_call_or_claim_lineage():
+ p,r,m,c,b=fixture();results=tuple(item.model_copy(update={'outcome':'missing','sources':()}) for item in r.results)
+ r=replace(r,results=results,sources=aggregate(results))
+ m['components'][0].update(status='missing',short_answer='',evidence=[],gap_anchor=Q)
+ result,calls=execute((p,r,m,None,b))
+ assert result.draft['claims']==[] and not calls and not result.provenance
+ assert any(Q in w for w in result.draft['warnings'])
+ assert sum('returned missing' in w for w in result.draft['warnings'])==2
+
+
+@pytest.mark.parametrize(("claim_index", "text"), [
+    (0, "Electricity demand is projected to grow 4.5% in 2018."),
+    (1, "Electricity demand recorded growth of 2.25% annually through 2032."),
+])
+def test_basis_substitution_rejected_before_safety_with_unchanged_numbers(claim_index, text):
+    # Different development facts from r07; every number remains in its own unit.
+    values = fixture()
+    values[3]["claims"][claim_index]["text"] = text
+    calls = []
+    guard = SimpleNamespace(validate_output=lambda **kw: calls.append(kw))
+    with pytest.raises(ValueError, match="Observation/forecast basis mismatch"):
+        compose_report(*values, as_of="2026-11-05", guard=guard, is_current=lambda: True)
+    assert calls == []

@@ -1,0 +1,11 @@
+{
+  "pinned_source_changes": [],
+  "frozen_package_hashes_verified": 10,
+  "r07_sha256": "5c09d7eaa6eb1f5c7a6434e531c8d4281af4efe46658f8bcd432aecfc82ebfd9",
+  "dependency_manifests_unchanged": [
+    "requirements.txt",
+    "requirements-serving.txt",
+    "constraints-pilot.txt"
+  ],
+  "generation_calls": 0
+}
