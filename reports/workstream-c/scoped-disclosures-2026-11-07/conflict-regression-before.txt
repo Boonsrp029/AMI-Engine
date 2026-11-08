@@ -1,0 +1,30 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_______ test_mapper_conflict_is_not_hidden_by_a_separate_missing_branch _______
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/scoped-conflict-regression/test_mapper_conflict_is_not_hi0')
+
+    def test_mapper_conflict_is_not_hidden_by_a_separate_missing_branch(tmp_path):
+        path, _, _ = fixture(tmp_path)
+        records = [{'feed_id': 'solar12', 'clean_content': FACT},
+            {'feed_id': 'solar14', 'clean_content': FACT.replace('12%', '14%')}]
+        path.write_text(json.dumps(records), encoding='utf-8')
+        plan = Plan(query=QUESTION, corpus_sha256=hashlib.sha256(path.read_bytes()).hexdigest(), subtasks=(
+            Subtask(subtask_id='s01', operation='retrieve', query='solar'),
+            Subtask(subtask_id='s02', operation='retrieve', query='unknowntariffs')))
+        report = run_plan(plan, 'a'*32, 'b'*32, LocalBM25Adapter(path))
+        # Retrieval reports evidence; the fixed mapper separately marks its selected
+        # passages conflicting. Missing tariffs must not hide that conflict signal.
+        assert report.results[0].outcome == 'evidence'
+        callback, access, _ = compose(plan, report, mode='conflicting')
+        result = callback(report, access)
+        assert result.draft['claims'] == [] and access.calls == 1
+        assert any('Subtask s02' in warning for warning in result.draft['warnings'])
+>       assert any('conflicting' in warning for warning in result.draft['warnings'])
+E       assert False
+E        +  where False = any(<generator object test_mapper_conflict_is_not_hidden_by_a_separate_missing_branch.<locals>.<genexpr> at 0x0000021415091490>)
+
+tests\test_scoped_disclosures.py:254: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_scoped_disclosures.py::test_mapper_conflict_is_not_hidden_by_a_separate_missing_branch
+1 failed, 38 deselected in 2.75s

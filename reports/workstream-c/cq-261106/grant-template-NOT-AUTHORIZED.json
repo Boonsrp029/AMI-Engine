@@ -1,0 +1,15 @@
+{
+  "contract_sha256": "ecba95044a1764f1770c1f58acd4b226ef05a4292c201d978d8a895e7d1b7963",
+  "case_ids": [
+    "cq-p01",
+    "cq-p02"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "authorization_reference": null,
+  "note": "Template only. Null reference blocks execution. Do not treat this as a user grant."
+}

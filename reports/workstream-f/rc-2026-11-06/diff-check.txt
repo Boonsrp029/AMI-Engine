@@ -1,0 +1,6 @@
+warning: in the working copy of 'src/pilot/_identity.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/pilot/_runtime.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/pilot/api.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/pilot/schemas.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/pilot/store.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/test_pilot_identity.py', LF will be replaced by CRLF the next time Git touches it

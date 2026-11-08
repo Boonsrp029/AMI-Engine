@@ -1,0 +1,16 @@
+{
+  "synthetic_fixed_response": true,
+  "actual_model_calls": 0,
+  "fixture_note": "Fabricated transport envelope for offline plumbing; model_calls_started is a simulated counter, not observed inference.",
+  "status": "completed_transport",
+  "response_complete": true,
+  "model_calls_started": 1,
+  "identity_before": true,
+  "identity_after": true,
+  "finish": {
+    "done_reason": "stop"
+  },
+  "content": "{\"wire_version\": \"cq-question-span-v1\", \"components\": [{\"component_id\": \"r1\", \"status\": \"partial\", \"evidence\": [\"s_165fe1a5aff7d74a\"], \"gap\": {\"start\": 56, \"end\": 99}}], \"geography\": {\"status\": \"unresolved\", \"value\": \"\", \"evidence\": [], \"reason\": \"Fixed offline fixture; no model selection.\"}}",
+  "usage": null,
+  "inflight_usage_unknown": false
+}

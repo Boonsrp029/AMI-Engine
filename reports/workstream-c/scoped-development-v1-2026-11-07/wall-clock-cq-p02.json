@@ -1,0 +1,12 @@
+{
+  "case_id": "cq-p02",
+  "returncode": 1,
+  "timed_out": false,
+  "wall_limit_seconds": 180,
+  "retry_performed": false,
+  "source_review_pending": true,
+  "backend_cancellation_verified": false,
+  "termination_targets": "only this invocation owned process tree",
+  "elapsed_seconds": 37.96899999998277,
+  "wall_budget_exceeded": false
+}

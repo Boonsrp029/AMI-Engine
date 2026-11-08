@@ -1,0 +1,8 @@
+{
+  "observed_utc": "2026-11-07 00:38:33 UTC",
+  "five_hour_remaining_percent": 97,
+  "weekly_remaining_percent": 42,
+  "usage_source": "Codex get_usage_limits",
+  "threshold_remaining_percent": 10,
+  "pause_threshold_reached": false
+}

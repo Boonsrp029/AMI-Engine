@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-06",
+  "platform": "Windows",
+  "python": "3.12.10",
+  "git_head": "9b5e665ede286409346de0759c19e6fe5b231b34",
+  "source_files": 252,
+  "source_manifest_sha256": "80bd4341ddfca545ab55326fe867eeb6252a918db3ec38def79cce1f4b9d3c77",
+  "full_suite": "new full integrated Windows offline run; not E reuse",
+  "expected_tests": 1503,
+  "generation_calls_authorized": 0,
+  "docs_evidence_excluded_from_drift": "F may update docs/reports only; those are not execution inputs",
+  "test_command": [
+    ".venv-release-check/Scripts/python.exe",
+    "-m",
+    "pytest",
+    "-q",
+    "--basetemp",
+    ".pytest-tmp/d-rc-integrated-final-20261106",
+    "--junitxml",
+    "reports\\workstream-d\\release-candidate-2026-11-06\\integrated-final\\junit.xml"
+  ]
+}

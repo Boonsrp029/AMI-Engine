@@ -1,0 +1,25 @@
+{
+  "status": "integrated offline checks pass; actual current-revision quality unverified",
+  "full_suite": "1630passed14warnings453.07seconds;terminalexit0",
+  "targeted": "98passed6.05seconds",
+  "input_hashes_verified": 128,
+  "manifest_checks": {
+    "reports\\workstream-c\\concurrent-qualification-2026-11-06": 4,
+    "reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1": 10,
+    "data\\external\\release_qualification_2026_10_30_v4\\frozen-v4": 10
+  },
+  "historical_actual_outputs_and_snapshot_unchanged": true,
+  "dependencies_sequential_engine_prompt_unchanged": true,
+  "r07_unchanged": true,
+  "generation_calls_this_repair": 0,
+  "contract_sha256": "63aadb35493d68c78e2988c8e675ffb5ee5769ae9ff0a92e8daaf6a6da8ed92f",
+  "new_grant": null,
+  "new_attempt": null,
+  "owner_raw_claim_review": "pending; no new judgment inferred",
+  "usage": {
+    "observed_utc": "2026-11-07 02:38:44 UTC",
+    "five_hour_remaining_percent": 70,
+    "weekly_remaining_percent": 38,
+    "pause_threshold_reached": false
+  }
+}

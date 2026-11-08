@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\reports\workstream-c\concurrent-qualification-2026-11-06\qualification-builder\build_qualification.py", line 127, in <module>
+    if __name__=="__main__":raise SystemExit(main())
+                                             ^^^^^^
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\reports\workstream-c\concurrent-qualification-2026-11-06\qualification-builder\build_qualification.py", line 121, in main
+    contract=build(args.development_contract,args.expected_identity,args.pool,args.destination,args.output_directory,args.as_of,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\reports\workstream-c\concurrent-qualification-2026-11-06\qualification-builder\build_qualification.py", line 49, in build
+    raise ValueError("Two passing current development results/assessments are missing")
+ValueError: Two passing current development results/assessments are missing

@@ -1,0 +1,16 @@
+{
+  "contract_sha256": "008983029a7b3d7b1523b680fe80b1c909d484821bb2b8904228ef0091bf85c8",
+  "case_ids": [
+    "cq-p01",
+    "cq-p02"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "authorization_reference": "Explicit user reply to call_9de214b6ed604c4a831aca60a97d0888: Authorize v6 diagnostic runs",
+  "scope": "Two development cases only; cq-p02 conditional on cq-p01 passing all declared checks; no CQ1/retries/warmups/publication/deployment",
+  "status": "user-authorized"
+}

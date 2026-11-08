@@ -1,0 +1,11 @@
+{
+  "owner": "C; A retains runtime activation ownership",
+  "sha256": {
+    "src/pilot/subtasks/_disclosures.py": "d8f94aa275640859640c8f4da9b2a75d47b832ff1c6d50c31e41619504c5e9be",
+    "src/pilot/subtasks/_scoped_generation.py": "ada4aefc8a0eced94a29b1fa74f7163035a88774c181fb054633de5c302e354c",
+    "src/pilot/subtasks/synthesis.py": "e2347a7c4296ebb6c0cf54f9b395d72a269b8882300fed59f20e43bf0cd1a73c",
+    "tests/test_scoped_disclosures.py": "18608942daed6f7b9f76ae562ab871e952ab277284baa91ef39fca5cc7f15fdf"
+  },
+  "default_sequential_and_old_concurrent_callback": "unchanged",
+  "new_model_calls": 0
+}

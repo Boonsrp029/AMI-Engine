@@ -1,0 +1,11 @@
+{
+  "decision": "Keep generation held",
+  "authorization_reference": "Direct reply to request_user_input_async call_7ac69d651e8b4e1994be1e02216cc787",
+  "contract_sha256": "f5eb8a4de2eecf482746e5e513525ceeef4e37fc951b8d1e43506c2780391405",
+  "execution_authorized": false,
+  "grant_issued": false,
+  "new_model_calls": 0,
+  "repeat_authorization_request": "Only if owner explicitly reopens generation",
+  "frozen_preparation": "preserved unchanged",
+  "goal": "incomplete; generation explicitly held; no Goal status change issued"
+}

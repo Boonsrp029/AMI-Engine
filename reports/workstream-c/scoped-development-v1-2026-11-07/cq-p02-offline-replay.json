@@ -1,0 +1,14 @@
+{
+  "reproduced_failure": true,
+  "type": "ValueError",
+  "message": "Composed percentage denominator differs from selected evidence",
+  "traceback": "Traceback (most recent call last):\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-development-v1-2026-11-07\\replay-cq-p02.py\", line 38, in <module>\n    projection = callback(report, ModelAccess(time.monotonic() + 30))\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_scoped_activation.py\", line 41, in __call__\n    result = ScopedConcurrentComposer(runtime, self.bindings, self.as_of, self.transport,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_scoped_generation.py\", line 128, in __call__\n    result = project_report(self.plan, report, mapping.model_dump(exclude={\"geography_resolution\"}),\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\synthesis.py\", line 94, in project_report\n    validate_relationships(claim.text, component.evidence)\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_relationships.py\", line 38, in validate_relationships\n    raise ValueError(\"Composed percentage denominator differs from selected evidence\")\nValueError: Composed percentage denominator differs from selected evidence\n",
+  "offline": true,
+  "sockets_blocked": true,
+  "actual_model_calls": 0,
+  "replayed_stages": [
+    "mapping",
+    "composition"
+  ],
+  "nemo_invocations": 0
+}

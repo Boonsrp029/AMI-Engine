@@ -1,0 +1,22 @@
+[
+  {
+    "case_id": "cq-p01",
+    "mapping_version": "cq-mapper-v3-constrained-states",
+    "content_tokens": 456,
+    "schema_format_tokens_separate": 1464,
+    "context_budget": 1612,
+    "framing_reserve": 256,
+    "completion_reserve": 900,
+    "model_calls": 0
+  },
+  {
+    "case_id": "cq-p02",
+    "mapping_version": "cq-mapper-v3-constrained-states",
+    "content_tokens": 377,
+    "schema_format_tokens_separate": 1259,
+    "context_budget": 1533,
+    "framing_reserve": 256,
+    "completion_reserve": 900,
+    "model_calls": 0
+  }
+]

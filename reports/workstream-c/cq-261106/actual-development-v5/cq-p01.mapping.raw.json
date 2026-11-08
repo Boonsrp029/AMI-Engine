@@ -1,0 +1,30 @@
+{
+  "stage": "mapping",
+  "identity": {
+    "run_id": "7085797eb489479eb2c5896d1905e1b5",
+    "attempt_id": "0c148f5a0357484a8ce2d7136fd3a5be",
+    "plan_id": "27ae87f46a6c8dd12d30f384d1d8317e49eb0bb0c985a5c9431dbff55ac65d9e",
+    "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+  },
+  "raw": "{\n  \"components\": [\n    {\n      \"component_id\": \"r1\",\n      \"status\": \"supported\",\n      \"evidence\": [\n        \"s_e1d4995121a522b8\",\n        \"s_d92f4eb0e82c6815\"\n      ],\n      \"gap_anchor\": \"\",\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    }\n  ],\n  \"geography\": {\n    \"status\": \"known\",\n    \"value\": \"Canada\",\n    \"evidence\": [\n      \"s_e1d4995121a522b8\"\n    ],\n    \"reason\": \"\"\n  },\n  \"wire_version\": \"source-selection-v1\"\n}",
+  "usage": {
+    "input_tokens": 602,
+    "output_tokens": 154,
+    "total_tokens": 756
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-06T14:47:41.3907387Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 9756127700,
+    "load_duration": 5432332100,
+    "prompt_eval_count": 602,
+    "prompt_eval_duration": 410623000,
+    "eval_count": 154,
+    "eval_duration": 3900282000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "contract_sha256": "16fc7cb7396496445f26c9f3a5c76c000967a345abfd832eaa693cdcdf16eb08",
+  "case_ids": [
+    "cq-p01",
+    "cq-p02"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "authorization_reference": "User explicit reply: Authorize the two frozen development diagnostics; request call_17729b96088a4832acd459356666d201; 2026-11-06 Asia/Bangkok",
+  "combined_limits": {
+    "main_calls": 8,
+    "nemo_invocations": 2,
+    "case_attempts": 2,
+    "automatic_retries": 0
+  },
+  "conditional_case": "cq-p02 only after cq-p01 technical/source/completeness checks pass",
+  "excluded": [
+    "CQ1 twenty-case run",
+    "Ragas",
+    "hosted inference",
+    "approval/export",
+    "publication",
+    "deployment"
+  ]
+}

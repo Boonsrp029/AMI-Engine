@@ -20,9 +20,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.12.10"
           cache: pip
-      - run: python -m pip install --upgrade pip
       - run: python -m pip install -r requirements.txt -c constraints-pilot.txt
       - run: python -m pip check
       - name: Run offline tests and retain failure details
@@ -60,11 +59,15 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.12.10"
       - name: Build analyst image with unchanged dependency versions
-        run: docker build -f Dockerfile.pilot --build-arg SOURCE_REVISION=${{ github.sha }} -t ami-pilot:ci .
+        run: python -m scripts.prepare_local_release --output .ci-artifacts/release --image ami-pilot:ci
+      - name: Verify packaged source and integrated Linux offline suite
+        run: python scripts/check_linux_container.py --image ami-pilot:ci --output .ci-artifacts/linux
+      - name: Verify opt-in runner and synthetic review lifecycle
+        run: python scripts/smoke_subtasks_container.py --image ami-pilot:ci --qa .ci-artifacts/release/qa --output .ci-artifacts/concurrent
       - name: Verify non-root startup, readiness failure and persistent restart
-        run: python scripts/smoke_pilot_container.py --image ami-pilot:ci --output .ci-artifacts
+        run: python scripts/smoke_pilot_container.py --image ami-pilot:ci --output .ci-artifacts/sequential
       - uses: actions/upload-artifact@v4
         if: always()
         with:

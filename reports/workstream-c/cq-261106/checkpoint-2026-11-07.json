@@ -1,0 +1,34 @@
+{
+  "status": "candidate verified and unapplied; execution blocked pending explicit grant",
+  "candidate_checks": 27,
+  "candidate_test_seconds": 1.48,
+  "patch_applies_check": true,
+  "actual_runtime_unchanged": true,
+  "pending_protocol_unchanged": true,
+  "generation_calls_this_pass": 0,
+  "usage": {
+    "observed_utc": "2026-11-07 00:38:33 UTC",
+    "five_hour_remaining_percent": 97,
+    "weekly_remaining_percent": 42,
+    "usage_source": "Codex get_usage_limits",
+    "threshold_remaining_percent": 10,
+    "pause_threshold_reached": false
+  },
+  "remaining_goal_gates": [
+    "applicable composer diagnostic grant and actual source/completeness result",
+    "actual passing two-case development gate",
+    "integrated lineage hardening before CQ1",
+    "new applicable CQ1 grant and20case quality/source adjudication",
+    "required exact-output and qualification-bundle owner adjudication"
+  ],
+  "blocking_audit": {
+    "condition": "No explicit grant for the frozen composer-only protocol",
+    "consecutive_goal_turns": 3,
+    "evidence": [
+      "unit-local preparation ended with this same protocol awaiting its grant",
+      "requirements audit confirmed no grant and no actual attempt",
+      "candidate hardening pass reverified same protocol; still no grant or actual attempt"
+    ],
+    "current_impasse": "Candidate preparation is complete. Integrating its runtime patch now would invalidate the outstanding frozen protocol; actual quality requires explicit authorized generation. No redundant tests or unrelated work are needed."
+  }
+}

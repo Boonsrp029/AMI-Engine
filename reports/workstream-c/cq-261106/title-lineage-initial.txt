@@ -1,0 +1,393 @@
+.....FFFFFFFFFFFFFFF.................................................... [ 88%]
+.........                                                                [100%]
+================================== FAILURES ===================================
+_______________ test_rehashed_wrong_records_still_reject[query] _______________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-title-lineage-initial/test_rehashed_wrong_records_st0')
+damage = 'query'
+
+    @pytest.mark.parametrize("damage",["query","corpus","plan","plan_identity","duplicate_run","duplicate_attempt","bounds","findings","status"])
+    def test_rehashed_wrong_records_still_reject(tmp_path,damage):
+        l = fixture(tmp_path)
+        cases = l.contract["development_gate"]["cases"]
+        case = cases[1] if damage.startswith("duplicate") else cases[0]
+        rp,ap = Path(case["result_path"]),Path(case["assessment_path"])
+        r,a = json.loads(rp.read_text()),json.loads(ap.read_text())
+        s = r["stored_run"]
+        if damage=="query":s["query"]="Different query"
+        elif damage=="corpus":s["corpus_sha"]="f"*64
+        elif damage=="plan":s["events"][1]["payload"]["plan"]["query"]="Different query"
+        elif damage=="plan_identity":s["events"][1]["payload"]["identity"]["plan_id"]="f"*64
+        elif damage=="duplicate_run":s["id"]="1"*32
+        elif damage=="duplicate_attempt":s["metrics"]["attempt_id"]="3"*32
+        elif damage=="bounds":r["main_calls"]=5
+        elif damage=="findings":a["source_findings"]=[" "]
+        else:s["status"]="failed"
+>       write(rp,r);write(ap,a);rehash(l)
+        ^^^^^
+E       NameError: name 'write' is not defined
+
+tests\test_subtask_development_lineage.py:48: NameError
+______________ test_rehashed_wrong_records_still_reject[corpus] _______________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-title-lineage-initial/test_rehashed_wrong_records_st1')
+damage = 'corpus'
+
+    @pytest.mark.parametrize("damage",["query","corpus","plan","plan_identity","duplicate_run","duplicate_attempt","bounds","findings","status"])
+    def test_rehashed_wrong_records_still_reject(tmp_path,damage):
+        l = fixture(tmp_path)
+        cases = l.contract["development_gate"]["cases"]
+        case = cases[1] if damage.startswith("duplicate") else cases[0]
+        rp,ap = Path(case["result_path"]),Path(case["assessment_path"])
+        r,a = json.loads(rp.read_text()),json.loads(ap.read_text())
+        s = r["stored_run"]
+        if damage=="query":s["query"]="Different query"
+        elif damage=="corpus":s["corpus_sha"]="f"*64
+        elif damage=="plan":s["events"][1]["payload"]["plan"]["query"]="Different query"
+        elif damage=="plan_identity":s["events"][1]["payload"]["identity"]["plan_id"]="f"*64
+        elif damage=="duplicate_run":s["id"]="1"*32
+        elif damage=="duplicate_attempt":s["metrics"]["attempt_id"]="3"*32
+        elif damage=="bounds":r["main_calls"]=5
+        elif damage=="findings":a["source_findings"]=[" "]
+        else:s["status"]="failed"
+>       write(rp,r);write(ap,a);rehash(l)
+        ^^^^^
+E       NameError: name 'write' is not defined
+
+tests\test_subtask_development_lineage.py:48: NameError
+_______________ test_rehashed_wrong_records_still_reject[plan] ________________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-title-lineage-initial/test_rehashed_wrong_records_st2')
+damage = 'plan'
+
+    @pytest.mark.parametrize("damage",["query","corpus","plan","plan_identity","duplicate_run","duplicate_attempt","bounds","findings","status"])
+    def test_rehashed_wrong_records_still_reject(tmp_path,damage):
+        l = fixture(tmp_path)
+        cases = l.contract["development_gate"]["cases"]
+        case = cases[1] if damage.startswith("duplicate") else cases[0]
+        rp,ap = Path(case["result_path"]),Path(case["assessment_path"])
+        r,a = json.loads(rp.read_text()),json.loads(ap.read_text())
+        s = r["stored_run"]
+        if damage=="query":s["query"]="Different query"
+        elif damage=="corpus":s["corpus_sha"]="f"*64
+        elif damage=="plan":s["events"][1]["payload"]["plan"]["query"]="Different query"
+        elif damage=="plan_identity":s["events"][1]["payload"]["identity"]["plan_id"]="f"*64
+        elif damage=="duplicate_run":s["id"]="1"*32
+        elif damage=="duplicate_attempt":s["metrics"]["attempt_id"]="3"*32
+        elif damage=="bounds":r["main_calls"]=5
+        elif damage=="findings":a["source_findings"]=[" "]
+        else:s["status"]="failed"
+>       write(rp,r);write(ap,a);rehash(l)
+        ^^^^^
+E       NameError: name 'write' is not defined
+
+tests\test_subtask_development_lineage.py:48: NameError
+___________ test_rehashed_wrong_records_still_reject[plan_identity] ___________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-title-lineage-initial/test_rehashed_wrong_records_st3')
+damage = 'plan_identity'
+
+    @pytest.mark.parametrize("damage",["query","corpus","plan","plan_identity","duplicate_run","duplicate_attempt","bounds","findings","status"])
+    def test_rehashed_wrong_records_still_reject(tmp_path,damage):
+        l = fixture(tmp_path)
+        cases = l.contract["development_gate"]["cases"]
+        case = cases[1] if damage.startswith("duplicate") else cases[0]
+        rp,ap = Path(case["result_path"]),Path(case["assessment_path"])
+        r,a = json.loads(rp.read_text()),json.loads(ap.read_text())
+        s = r["stored_run"]
+        if damage=="query":s["query"]="Different query"
+        elif damage=="corpus":s["corpus_sha"]="f"*64
+        elif damage=="plan":s["events"][1]["payload"]["plan"]["query"]="Different query"
+        elif damage=="plan_identity":s["events"][1]["payload"]["identity"]["plan_id"]="f"*64
+        elif damage=="duplicate_run":s["id"]="1"*32
+        elif damage=="duplicate_attempt":s["metrics"]["attempt_id"]="3"*32
+        elif damage=="bounds":r["main_calls"]=5
+        elif damage=="findings":a["source_findings"]=[" "]
+        else:s["status"]="failed"
+>       write(rp,r);write(ap,a);rehash(l)
+        ^^^^^
+E       NameError: name 'write' is not defined
+
+tests\test_subtask_development_lineage.py:48: NameError
+___________ test_rehashed_wrong_records_still_reject[duplicate_run] ___________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-title-lineage-initial/test_rehashed_wrong_records_st4')
+damage = 'duplicate_run'
+
+    @pytest.mark.parametrize("damage",["query","corpus","plan","plan_identity","duplicate_run","duplicate_attempt","bounds","findings","status"])
+    def test_rehashed_wrong_records_still_reject(tmp_path,damage):
+        l = fixture(tmp_path)
+        cases = l.contract["development_gate"]["cases"]
+        case = cases[1] if damage.startswith("duplicate") else cases[0]
+        rp,ap = Path(case["result_path"]),Path(case["assessment_path"])
+        r,a = json.loads(rp.read_text()),json.loads(ap.read_text())
+        s = r["stored_run"]
+        if damage=="query":s["query"]="Different query"
+        elif damage=="corpus":s["corpus_sha"]="f"*64
+        elif damage=="plan":s["events"][1]["payload"]["plan"]["query"]="Different query"
+        elif damage=="plan_identity":s["events"][1]["payload"]["identity"]["plan_id"]="f"*64
+        elif damage=="duplicate_run":s["id"]="1"*32
+        elif damage=="duplicate_attempt":s["metrics"]["attempt_id"]="3"*32
+        elif damage=="bounds":r["main_calls"]=5
+        elif damage=="findings":a["source_findings"]=[" "]
+        else:s["status"]="failed"
+>       write(rp,r);write(ap,a);rehash(l)
+        ^^^^^
+E       NameError: name 'write' is not defined
+
+tests\test_subtask_development_lineage.py:48: NameError
+_________ test_rehashed_wrong_records_still_reject[duplicate_attempt] _________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-title-lineage-initial/test_rehashed_wrong_records_st5')
+damage = 'duplicate_attempt'
+
+    @pytest.mark.parametrize("damage",["query","corpus","plan","plan_identity","duplicate_run","duplicate_attempt","bounds","findings","status"])
+    def test_rehashed_wrong_records_still_reject(tmp_path,damage):
+        l = fixture(tmp_path)
+        cases = l.contract["development_gate"]["cases"]
+        case = cases[1] if damage.startswith("duplicate") else cases[0]
+        rp,ap = Path(case["result_path"]),Path(case["assessment_path"])
+        r,a = json.loads(rp.read_text()),json.loads(ap.read_text())
+        s = r["stored_run"]
+        if damage=="query":s["query"]="Different query"
+        elif damage=="corpus":s["corpus_sha"]="f"*64
+        elif damage=="plan":s["events"][1]["payload"]["plan"]["query"]="Different query"
+        elif damage=="plan_identity":s["events"][1]["payload"]["identity"]["plan_id"]="f"*64
+        elif damage=="duplicate_run":s["id"]="1"*32
+        elif damage=="duplicate_attempt":s["metrics"]["attempt_id"]="3"*32
+        elif damage=="bounds":r["main_calls"]=5
+        elif damage=="findings":a["source_findings"]=[" "]
+        else:s["status"]="failed"
+>       write(rp,r);write(ap,a);rehash(l)
+        ^^^^^
+E       NameError: name 'write' is not defined
+
+tests\test_subtask_development_lineage.py:48: NameError
+______________ test_rehashed_wrong_records_still_reject[bounds] _______________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-title-lineage-initial/test_rehashed_wrong_records_st6')
+damage = 'bounds'
+
+    @pytest.mark.parametrize("damage",["query","corpus","plan","plan_identity","duplicate_run","duplicate_attempt","bounds","findings","status"])
+    def test_rehashed_wrong_records_still_reject(tmp_path,damage):
+        l = fixture(tmp_path)
+        cases = l.contract["development_gate"]["cases"]
+        case = cases[1] if damage.startswith("duplicate") else cases[0]
+        rp,ap = Path(case["result_path"]),Path(case["assessment_path"])
+        r,a = json.loads(rp.read_text()),json.loads(ap.read_text())
+        s = r["stored_run"]
+        if damage=="query":s["query"]="Different query"
+        elif damage=="corpus":s["corpus_sha"]="f"*64
+        elif damage=="plan":s["events"][1]["payload"]["plan"]["query"]="Different query"
+        elif damage=="plan_identity":s["events"][1]["payload"]["identity"]["plan_id"]="f"*64
+        elif damage=="duplicate_run":s["id"]="1"*32
+        elif damage=="duplicate_attempt":s["metrics"]["attempt_id"]="3"*32
+        elif damage=="bounds":r["main_calls"]=5
+        elif damage=="findings":a["source_findings"]=[" "]
+        else:s["status"]="failed"
+>       write(rp,r);write(ap,a);rehash(l)
+        ^^^^^
+E       NameError: name 'write' is not defined
+
+tests\test_subtask_development_lineage.py:48: NameError
+_____________ test_rehashed_wrong_records_still_reject[findings] ______________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-title-lineage-initial/test_rehashed_wrong_records_st7')
+damage = 'findings'
+
+    @pytest.mark.parametrize("damage",["query","corpus","plan","plan_identity","duplicate_run","duplicate_attempt","bounds","findings","status"])
+    def test_rehashed_wrong_records_still_reject(tmp_path,damage):
+        l = fixture(tmp_path)
+        cases = l.contract["development_gate"]["cases"]
+        case = cases[1] if damage.startswith("duplicate") else cases[0]
+        rp,ap = Path(case["result_path"]),Path(case["assessment_path"])
+        r,a = json.loads(rp.read_text()),json.loads(ap.read_text())
+        s = r["stored_run"]
+        if damage=="query":s["query"]="Different query"
+        elif damage=="corpus":s["corpus_sha"]="f"*64
+        elif damage=="plan":s["events"][1]["payload"]["plan"]["query"]="Different query"
+        elif damage=="plan_identity":s["events"][1]["payload"]["identity"]["plan_id"]="f"*64
+        elif damage=="duplicate_run":s["id"]="1"*32
+        elif damage=="duplicate_attempt":s["metrics"]["attempt_id"]="3"*32
+        elif damage=="bounds":r["main_calls"]=5
+        elif damage=="findings":a["source_findings"]=[" "]
+        else:s["status"]="failed"
+>       write(rp,r);write(ap,a);rehash(l)
+        ^^^^^
+E       NameError: name 'write' is not defined
+
+tests\test_subtask_development_lineage.py:48: NameError
+______________ test_rehashed_wrong_records_still_reject[status] _______________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-title-lineage-initial/test_rehashed_wrong_records_st8')
+damage = 'status'
+
+    @pytest.mark.parametrize("damage",["query","corpus","plan","plan_identity","duplicate_run","duplicate_attempt","bounds","findings","status"])
+    def test_rehashed_wrong_records_still_reject(tmp_path,damage):
+        l = fixture(tmp_path)
+        cases = l.contract["development_gate"]["cases"]
+        case = cases[1] if damage.startswith("duplicate") else cases[0]
+        rp,ap = Path(case["result_path"]),Path(case["assessment_path"])
+        r,a = json.loads(rp.read_text()),json.loads(ap.read_text())
+        s = r["stored_run"]
+        if damage=="query":s["query"]="Different query"
+        elif damage=="corpus":s["corpus_sha"]="f"*64
+        elif damage=="plan":s["events"][1]["payload"]["plan"]["query"]="Different query"
+        elif damage=="plan_identity":s["events"][1]["payload"]["identity"]["plan_id"]="f"*64
+        elif damage=="duplicate_run":s["id"]="1"*32
+        elif damage=="duplicate_attempt":s["metrics"]["attempt_id"]="3"*32
+        elif damage=="bounds":r["main_calls"]=5
+        elif damage=="findings":a["source_findings"]=[" "]
+        else:s["status"]="failed"
+>       write(rp,r);write(ap,a);rehash(l)
+        ^^^^^
+E       NameError: name 'write' is not defined
+
+tests\test_subtask_development_lineage.py:48: NameError
+_ test_wrong_start_or_retained_contract_rejects_even_with_new_file_hashes[case] _
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-title-lineage-initial/test_wrong_start_or_retained_c0')
+damage = 'case'
+
+    @pytest.mark.parametrize("damage",["case","contract","self_hash","model","settings"])
+    def test_wrong_start_or_retained_contract_rejects_even_with_new_file_hashes(tmp_path,damage):
+        l = fixture(tmp_path);case=l.contract["development_gate"]["cases"][0]
+        sp,dp = Path(case["started_path"]),Path(case["development_contract_path"])
+        start,dev = json.loads(sp.read_text()),json.loads(dp.read_text())
+        if damage=="case":start["case_id"]="d2"
+        elif damage=="contract":start["contract_sha256"]="f"*64
+        elif damage=="self_hash":dev["pipeline_identity"]="edited without canonical update"
+        else:
+            dev["model_snapshot" if damage=="model" else "settings"]={"changed":True}
+            dev["contract_sha256"]=canonical_hash(dev)
+            for c in l.contract["development_gate"]["cases"]:
+                path=Path(c["started_path"]);st=json.loads(path.read_text());st["contract_sha256"]=dev["contract_sha256"];write(path,st)
+            start=json.loads(sp.read_text())
+>       write(sp,start);write(dp,dev);rehash(l)
+        ^^^^^
+E       NameError: name 'write' is not defined
+
+tests\test_subtask_development_lineage.py:66: NameError
+_ test_wrong_start_or_retained_contract_rejects_even_with_new_file_hashes[contract] _
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-title-lineage-initial/test_wrong_start_or_retained_c1')
+damage = 'contract'
+
+    @pytest.mark.parametrize("damage",["case","contract","self_hash","model","settings"])
+    def test_wrong_start_or_retained_contract_rejects_even_with_new_file_hashes(tmp_path,damage):
+        l = fixture(tmp_path);case=l.contract["development_gate"]["cases"][0]
+        sp,dp = Path(case["started_path"]),Path(case["development_contract_path"])
+        start,dev = json.loads(sp.read_text()),json.loads(dp.read_text())
+        if damage=="case":start["case_id"]="d2"
+        elif damage=="contract":start["contract_sha256"]="f"*64
+        elif damage=="self_hash":dev["pipeline_identity"]="edited without canonical update"
+        else:
+            dev["model_snapshot" if damage=="model" else "settings"]={"changed":True}
+            dev["contract_sha256"]=canonical_hash(dev)
+            for c in l.contract["development_gate"]["cases"]:
+                path=Path(c["started_path"]);st=json.loads(path.read_text());st["contract_sha256"]=dev["contract_sha256"];write(path,st)
+            start=json.loads(sp.read_text())
+>       write(sp,start);write(dp,dev);rehash(l)
+        ^^^^^
+E       NameError: name 'write' is not defined
+
+tests\test_subtask_development_lineage.py:66: NameError
+_ test_wrong_start_or_retained_contract_rejects_even_with_new_file_hashes[self_hash] _
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-title-lineage-initial/test_wrong_start_or_retained_c2')
+damage = 'self_hash'
+
+    @pytest.mark.parametrize("damage",["case","contract","self_hash","model","settings"])
+    def test_wrong_start_or_retained_contract_rejects_even_with_new_file_hashes(tmp_path,damage):
+        l = fixture(tmp_path);case=l.contract["development_gate"]["cases"][0]
+        sp,dp = Path(case["started_path"]),Path(case["development_contract_path"])
+        start,dev = json.loads(sp.read_text()),json.loads(dp.read_text())
+        if damage=="case":start["case_id"]="d2"
+        elif damage=="contract":start["contract_sha256"]="f"*64
+        elif damage=="self_hash":dev["pipeline_identity"]="edited without canonical update"
+        else:
+            dev["model_snapshot" if damage=="model" else "settings"]={"changed":True}
+            dev["contract_sha256"]=canonical_hash(dev)
+            for c in l.contract["development_gate"]["cases"]:
+                path=Path(c["started_path"]);st=json.loads(path.read_text());st["contract_sha256"]=dev["contract_sha256"];write(path,st)
+            start=json.loads(sp.read_text())
+>       write(sp,start);write(dp,dev);rehash(l)
+        ^^^^^
+E       NameError: name 'write' is not defined
+
+tests\test_subtask_development_lineage.py:66: NameError
+_ test_wrong_start_or_retained_contract_rejects_even_with_new_file_hashes[model] _
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-title-lineage-initial/test_wrong_start_or_retained_c3')
+damage = 'model'
+
+    @pytest.mark.parametrize("damage",["case","contract","self_hash","model","settings"])
+    def test_wrong_start_or_retained_contract_rejects_even_with_new_file_hashes(tmp_path,damage):
+        l = fixture(tmp_path);case=l.contract["development_gate"]["cases"][0]
+        sp,dp = Path(case["started_path"]),Path(case["development_contract_path"])
+        start,dev = json.loads(sp.read_text()),json.loads(dp.read_text())
+        if damage=="case":start["case_id"]="d2"
+        elif damage=="contract":start["contract_sha256"]="f"*64
+        elif damage=="self_hash":dev["pipeline_identity"]="edited without canonical update"
+        else:
+            dev["model_snapshot" if damage=="model" else "settings"]={"changed":True}
+            dev["contract_sha256"]=canonical_hash(dev)
+            for c in l.contract["development_gate"]["cases"]:
+>               path=Path(c["started_path"]);st=json.loads(path.read_text());st["contract_sha256"]=dev["contract_sha256"];write(path,st)
+                                                                                                                          ^^^^^
+E               NameError: name 'write' is not defined
+
+tests\test_subtask_development_lineage.py:64: NameError
+_ test_wrong_start_or_retained_contract_rejects_even_with_new_file_hashes[settings] _
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-title-lineage-initial/test_wrong_start_or_retained_c4')
+damage = 'settings'
+
+    @pytest.mark.parametrize("damage",["case","contract","self_hash","model","settings"])
+    def test_wrong_start_or_retained_contract_rejects_even_with_new_file_hashes(tmp_path,damage):
+        l = fixture(tmp_path);case=l.contract["development_gate"]["cases"][0]
+        sp,dp = Path(case["started_path"]),Path(case["development_contract_path"])
+        start,dev = json.loads(sp.read_text()),json.loads(dp.read_text())
+        if damage=="case":start["case_id"]="d2"
+        elif damage=="contract":start["contract_sha256"]="f"*64
+        elif damage=="self_hash":dev["pipeline_identity"]="edited without canonical update"
+        else:
+            dev["model_snapshot" if damage=="model" else "settings"]={"changed":True}
+            dev["contract_sha256"]=canonical_hash(dev)
+            for c in l.contract["development_gate"]["cases"]:
+>               path=Path(c["started_path"]);st=json.loads(path.read_text());st["contract_sha256"]=dev["contract_sha256"];write(path,st)
+                                                                                                                          ^^^^^
+E               NameError: name 'write' is not defined
+
+tests\test_subtask_development_lineage.py:64: NameError
+____ test_mixed_development_contracts_reject_even_when_each_case_is_linked ____
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-title-lineage-initial/test_mixed_development_contrac0')
+
+    def test_mixed_development_contracts_reject_even_when_each_case_is_linked(tmp_path):
+        l = fixture(tmp_path);case=l.contract["development_gate"]["cases"][1]
+        original=Path(case["development_contract_path"])
+        dev=json.loads(original.read_text());dev["output_directory"]="different-synthetic-batch"
+        dev["contract_sha256"]=canonical_hash(dev)
+>       different=tmp_path/"second-contract.json";write(different,dev)
+                                                  ^^^^^
+E       NameError: name 'write' is not defined
+
+tests\test_subtask_development_lineage.py:75: NameError
+=========================== short test summary info ===========================
+FAILED tests/test_subtask_development_lineage.py::test_rehashed_wrong_records_still_reject[query]
+FAILED tests/test_subtask_development_lineage.py::test_rehashed_wrong_records_still_reject[corpus]
+FAILED tests/test_subtask_development_lineage.py::test_rehashed_wrong_records_still_reject[plan]
+FAILED tests/test_subtask_development_lineage.py::test_rehashed_wrong_records_still_reject[plan_identity]
+FAILED tests/test_subtask_development_lineage.py::test_rehashed_wrong_records_still_reject[duplicate_run]
+FAILED tests/test_subtask_development_lineage.py::test_rehashed_wrong_records_still_reject[duplicate_attempt]
+FAILED tests/test_subtask_development_lineage.py::test_rehashed_wrong_records_still_reject[bounds]
+FAILED tests/test_subtask_development_lineage.py::test_rehashed_wrong_records_still_reject[findings]
+FAILED tests/test_subtask_development_lineage.py::test_rehashed_wrong_records_still_reject[status]
+FAILED tests/test_subtask_development_lineage.py::test_wrong_start_or_retained_contract_rejects_even_with_new_file_hashes[case]
+FAILED tests/test_subtask_development_lineage.py::test_wrong_start_or_retained_contract_rejects_even_with_new_file_hashes[contract]
+FAILED tests/test_subtask_development_lineage.py::test_wrong_start_or_retained_contract_rejects_even_with_new_file_hashes[self_hash]
+FAILED tests/test_subtask_development_lineage.py::test_wrong_start_or_retained_contract_rejects_even_with_new_file_hashes[model]
+FAILED tests/test_subtask_development_lineage.py::test_wrong_start_or_retained_contract_rejects_even_with_new_file_hashes[settings]
+FAILED tests/test_subtask_development_lineage.py::test_mixed_development_contracts_reject_even_when_each_case_is_linked
+15 failed, 66 passed in 7.41s

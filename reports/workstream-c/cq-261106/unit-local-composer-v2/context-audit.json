@@ -1,0 +1,16 @@
+{
+  "composition_version": "cq-composer-v2-unit-local",
+  "message_content_tokens": 671,
+  "previous_message_content_tokens": 904,
+  "framing_allowance": 256,
+  "completion_reservation": 900,
+  "total_budget": 1827,
+  "limit": 4096,
+  "schema_format_tokens_not_in_messages": 457,
+  "within_conservative_allowance": true,
+  "count_scope": "exact frozen cq-p01 mapping only; not every future mapping",
+  "generation_calls": 0,
+  "actual_backend_latency": "unverified",
+  "payload_unchanged_from_v6": true,
+  "retained_bad_composer_rejects": true
+}

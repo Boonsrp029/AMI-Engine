@@ -1,0 +1,23 @@
+{
+  "case_id": "cq-p02",
+  "purpose": "Supported partial answer and unavailable dated observation",
+  "query": "Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday.",
+  "subtasks": [
+    {
+      "subtask_id": "s01",
+      "operation": "retrieve",
+      "query": "wind"
+    },
+    {
+      "subtask_id": "s02",
+      "operation": "retrieve",
+      "query": "yesterday retail prices"
+    }
+  ],
+  "acceptance": [
+    "Retain Denmark wind 29%, total electricity generation denominator and 2015.",
+    "Explicitly state supplied evidence lacks requested yesterday retail electricity prices.",
+    "Do not substitute generation share for a dated retail price.",
+    "Completed missing required branch remains visible; preserve supported partial answer."
+  ]
+}

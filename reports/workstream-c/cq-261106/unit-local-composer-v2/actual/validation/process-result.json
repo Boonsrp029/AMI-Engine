@@ -1,0 +1,9 @@
+{
+  "returncode": 0,
+  "timed_out": false,
+  "elapsed_seconds": 18.98399999999674,
+  "spawn_returned_monotonic": 135087.812,
+  "process_finished_monotonic": 135106.796,
+  "backend_cancellation_verified": false,
+  "retry_performed": false
+}

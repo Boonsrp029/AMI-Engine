@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+    "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+    "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+    "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"In Canada, observed electricity demand grew 5.7% in 2016.\",\n      \"unit_id\": \"u1\"\n    },\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"In Japan, electricity demand is projected to grow 2.6% annually through 2036.\",\n      \"unit_id\": \"u2\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 686,
+    "output_tokens": 115,
+    "total_tokens": 801
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-07T03:08:01.0710592Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3016116100,
+    "load_duration": 30712300,
+    "prompt_eval_count": 686,
+    "prompt_eval_duration": 409277000,
+    "eval_count": 115,
+    "eval_duration": 2479237000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

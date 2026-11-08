@@ -1,0 +1,15 @@
+{
+  "snapshot_files_verified": 128,
+  "original_actual_output_files_verified": 15,
+  "dependency_constraint_hashes": {
+    "requirements.txt": "4bc238785549332a1196ab5954f996890ed12b1370c1834f396ede567af64726",
+    "requirements-serving.txt": "b9f8abc4b20928e4351088a14e17a2a94f6322499fbd794d5ef3ec320bc4e7be",
+    "constraints-pilot.txt": "267aab0f6a0601605fa33532f94f091809866429f340c55b335e4ecd22015836"
+  },
+  "r07_unchanged": true,
+  "CQ1_manifest_unchanged": true,
+  "CQ1_plans_unchanged": true,
+  "prepared_current_runtime_files_verified": 87,
+  "prepared_request_files_verified": 2,
+  "actual_generation_calls": 0
+}

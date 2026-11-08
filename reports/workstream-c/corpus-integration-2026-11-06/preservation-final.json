@@ -1,0 +1,20 @@
+{
+  "reserved_manifest_files_verified": 10,
+  "unchanged_owned_boundaries_and_dependencies": {
+    "src\\pilot\\subtasks\\contracts.py": "5f405bae533274888a6bc868f8c044280bb9724d09538a166a4eb49bcf9fbade",
+    "src\\pilot\\subtasks\\persistence.py": "7a9576b6315219f8125f36cedb0b52da0e9ef69e1e941c03622587851799d276",
+    "src\\pilot\\subtasks\\retrieval.py": "dc7f271b77ed6ae8fbfd4d79f36efb0a450a84fd638cda69ce20de306fb13f08",
+    "src\\pilot\\subtasks\\runner.py": "f4190f9568bccc080674a25d73d1930a113edff3f8984819d28cb64da488fe34",
+    "src\\pilot\\subtasks\\scheduler.py": "d53c514e2934e430ff7977960620f83c525a5f26bf37368aab539668abc73491",
+    "src\\pilot\\subtasks\\_handoff.py": "69fbe56dc78863a590b8348995d3b7a15706a761671e33967fc97ab4f083151c",
+    "requirements.txt": "4bc238785549332a1196ab5954f996890ed12b1370c1834f396ede567af64726",
+    "requirements-serving.txt": "b9f8abc4b20928e4351088a14e17a2a94f6322499fbd794d5ef3ec320bc4e7be",
+    "constraints-pilot.txt": "267aab0f6a0601605fa33532f94f091809866429f340c55b335e4ecd22015836"
+  },
+  "r07_sha256": "5c09d7eaa6eb1f5c7a6434e531c8d4281af4efe46658f8bcd432aecfc82ebfd9",
+  "generation_calls": 0,
+  "final_source_drift": [],
+  "pinned_file_count": 183,
+  "full_suite": "1487passed15warnings422.52seconds;terminalexit0",
+  "full_log_sha256": "e9380f9107086748c7f37aca1f9a0cdfe1e81c3c22acfa72337c6662565e72ee"
+}

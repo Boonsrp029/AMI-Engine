@@ -1,0 +1,338 @@
+[
+  {
+    "case_id": "cq1-a01",
+    "plan_id": "4f95318af0b668dc4be09a1ffdbf699d1538ba692fe639486947a31e574af104",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "eia-measurement"
+      ],
+      "s02": [
+        "eia-measurement",
+        "eia-generation-2023"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14393,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-a02",
+    "plan_id": "78cee26ec1685d0a35af51be0fce73e9862308124c890dc254fc0a269cc3e229",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "eia-measurement"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14308,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-a03",
+    "plan_id": "a0d1fb312f12aa10ef0b4ab188159833fc8135e05e82ba316ad0f899fb0a0ece",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "eia-measurement"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14294,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-a04",
+    "plan_id": "441895ad888d79cf46fc99d9ec4d2a7e7e3bf20feb762100cadc447a86a682e8",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "eia-measurement"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14300,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-a05",
+    "plan_id": "fe377db8fd31d4a1ee19269520a4a05bbdfd8722bcf59770ec5dfe8ec23ba872",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "eia-measurement"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14304,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-a06",
+    "plan_id": "1b14d87c114f9c140a151f6e3452b48976bbe5b8916428a2c3b7e5316754f2f1",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "eia-measurement"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14294,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-a07",
+    "plan_id": "67fbffdb797c22c3536552636bbbdc5c285687fdd3715d06158ab88c47305862",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "eia-measurement"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14306,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-a08",
+    "plan_id": "53f4c6eb0e2719b126ff344f642a9dfd98d150883501e3517c1a56261add4d17",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "eia-measurement"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14296,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-a09",
+    "plan_id": "72623a945d0ea99fabba73245b56e573bd17cbc3669241c2e9783eb6902a22ad",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "eia-measurement"
+      ],
+      "s02": [
+        "eia-generation-2023",
+        "eia-measurement"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14407,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-a10",
+    "plan_id": "099da64deb65a4724a420d7d222cabe5f98a9233521e2cf71b2cd3f5cadba1b8",
+    "sources_by_branch": {
+      "s01": [
+        "eia-measurement",
+        "eia-generation-2023"
+      ],
+      "s02": [
+        "eia-measurement",
+        "eia-generation-2023"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14407,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-p01",
+    "plan_id": "3871b1e5a0af33f68722a80cd7606245bd4c57af1f59976c9f043bef09d831fa",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "eia-measurement"
+      ],
+      "s02": [
+        "eia-generation-2023",
+        "eia-measurement"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14361,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-p02",
+    "plan_id": "d3d06fa44cd2eaa12435fb9ba0bcf546635c35b63a6f40986106879cd3ba1767",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "eia-measurement"
+      ],
+      "s02": [
+        "eia-generation-2023",
+        "eia-measurement"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14377,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-m01",
+    "plan_id": "98abfa3cd6e3c057731caa95662a4e9e8eb3f8c65b5609cf47bb19cb3076725e",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "eia-measurement"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14242,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-m02",
+    "plan_id": "17edec43770f24f076cb3e4f8b5f790740f20cff28a3551289bc782e885be9a2",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "eia-measurement"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14244,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-m03",
+    "plan_id": "602113c6ffe474e0087aed096a78235e3f0df32326f79a1703a5c6534637839c",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "eia-measurement"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14270,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-m04",
+    "plan_id": "772301dd4fb1fd541c478f8d67dc24ec4da35190dfabe09684e1971dfd84eac2",
+    "sources_by_branch": {
+      "s01": [
+        "eia-measurement",
+        "eia-generation-2023"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14252,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-c01",
+    "plan_id": "878c8bfdec5372f07bf6b847de068026699112c6d0f772f66fef4c7c86fcd91e",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "controlled-conflict-1",
+        "eia-measurement"
+      ],
+      "s02": [
+        "controlled-conflict-1"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14703,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-c02",
+    "plan_id": "298e1cf413867b85395d1c3fb096cb0df22d9d5e9ac073e6fb95a43ab581d458",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "controlled-conflict-2",
+        "eia-measurement"
+      ],
+      "s02": [
+        "controlled-conflict-2"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14712,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-i01",
+    "plan_id": "937fbc6ce7b224d39800323c0dc58c52a2d9085582559601acbd2ccf87671d4f",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "eia-measurement",
+        "controlled-injection-1"
+      ],
+      "s02": [
+        "controlled-injection-1"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14605,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  },
+  {
+    "case_id": "cq1-i02",
+    "plan_id": "24e646ab7760624d1464665ffd14eb08c16c2fd1c96997a244ff924050d1cc14",
+    "sources_by_branch": {
+      "s01": [
+        "eia-generation-2023",
+        "eia-measurement",
+        "controlled-injection-2"
+      ],
+      "s02": [
+        "controlled-injection-2"
+      ]
+    },
+    "serialized_mapping_characters_schema_instruction_input": 14612,
+    "token_count": "unverified: character count is not model tokenization",
+    "completion_reservation": 900,
+    "context_limit": 4096,
+    "context_admission": "pending pinned Llama tokenizer measurement"
+  }
+]

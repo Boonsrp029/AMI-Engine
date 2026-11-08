@@ -110,6 +110,29 @@ def _project_progress(row):
     if attempt is None:
         if any(e['kind'] in {'subtask_plan','subtask_progress','subtask_result'} for e in row['events']):
             raise ValueError('Subtask records lack a parent attempt')
+        submissions=[e['payload'] for e in row['events'] if e['kind']=='subtask_submission']
+        if len(submissions)>1:raise ValueError('Duplicate workflow submission')
+        if submissions:
+            submission=submissions[0]
+            plan=Plan.model_validate_json(json.dumps(submission['plan']))
+            if (submission.get('workflow')!='bounded_subtasks' or submission.get('plan_id')!=plan.plan_id
+                    or plan.query!=row['query'] or plan.corpus_sha256!=row['corpus_sha']):
+                raise ValueError('Submitted workflow plan identity mismatch')
+            if row['status']=='queued':
+                status,reason='queued','none'
+            elif row['status']=='interrupted':
+                status,reason='cancelled','interrupted'
+            else:
+                status,reason='failed','operation_failed'
+            branches=[{'subtask_id':task.subtask_id,'operation':task.operation,
+                'required':task.required,'depends_on':list(task.dependencies),'status':status,
+                'reason':reason,'derived':True,'child_attempt_id':None,'outcome':None}
+                for task in plan.subtasks]
+            view.update(availability='available',mode='subtasks',reason='none',
+                plan_id=plan.plan_id,
+                plan={'plan_id':plan.plan_id,**plan.model_dump(mode='json',exclude={'query','subtasks','corpus_sha256'}),
+                    'subtask_count':len(plan.subtasks)},
+                branches=branches,phase=row['status'],attempt_current=False)
         return view
     Identity(run_id=row['id'],attempt_id=attempt,plan_id='0'*64,corpus_sha256=row['corpus_sha'])
     history=[e for e in row['events'] if e['payload'].get('attempt_id')==attempt]
@@ -123,6 +146,10 @@ def _project_progress(row):
     identity=Identity(run_id=row['id'],attempt_id=attempt,plan_id=plan.plan_id,corpus_sha256=row['corpus_sha'])
     if Identity.model_validate_json(json.dumps(plans[0]['identity']))!=identity or plan.query!=row['query'] or plan.corpus_sha256!=row['corpus_sha']:
         raise ValueError('Persisted plan identity mismatch')
+    submissions=[e['payload'] for e in row['events'] if e['kind']=='subtask_submission']
+    if submissions and (len(submissions)!=1 or submissions[0].get('plan_id')!=plan.plan_id
+            or Plan.model_validate_json(json.dumps(submissions[0].get('plan'))).plan_id!=plan.plan_id):
+        raise ValueError('Attempt plan differs from submitted workflow')
     tasks={t.subtask_id:t for t in plan.subtasks};states={};children={};outcomes={};results={};ordinal=0
     phase='retrieval'
     for event in history:

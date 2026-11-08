@@ -1,0 +1,22 @@
+{
+  "report": {
+    "exit_code": 0,
+    "output_chars": 1653
+  },
+  "coach": {
+    "exit_code": 0,
+    "output_chars": 13490
+  },
+  "quality": {
+    "exit_code": 0,
+    "output_chars": 5534
+  },
+  "state": {
+    "exit_code": 0,
+    "output_chars": 9536
+  },
+  "doctor": {
+    "exit_code": 1,
+    "output_chars": 2366
+  }
+}

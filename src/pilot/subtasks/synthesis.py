@@ -8,6 +8,8 @@ from .._evidence import validate_mapping, unavailable_draft, evidence_gaps, Evid
 from .._composition import project, composition_units, response_schema
 from .._scope import validate_claim_measure_and_numbers
 from ..schemas import Draft
+from ._relationships import validate_relationships
+from ._title_scope import qualify_title
 
 
 @dataclass(frozen=True)
@@ -20,7 +22,7 @@ class SynthesisResult:
 
 
 def project_report(plan: Plan, report: Report, mapping, composed, bindings, *, as_of,
-                   is_current):
+                   is_current, geographic_resolution=None, disclosure_scopes=None):
     """Caller provides mapped selection and composition; these are not trusted facts.
 
     bindings maps every requested component to its declared branch IDs. This returns
@@ -89,6 +91,7 @@ def project_report(plan: Plan, report: Report, mapping, composed, bindings, *, a
             component = components[unit['component_id']].model_copy(update={'evidence':[
                 EvidenceQuote.model_validate(e) for e in unit['evidence']]})
             validate_claim_measure_and_numbers(claim.text, component, plan.query)
+            validate_relationships(claim.text, component.evidence)
             quoted = ' '.join(e.quote for e in component.evidence)
             projected = bool(re.search(r'\b(?:forecast|projected)\b',quoted,re.I))
             observed = bool(re.search(r'\b(?:observed|recorded)\b',quoted,re.I))
@@ -106,6 +109,15 @@ def project_report(plan: Plan, report: Report, mapping, composed, bindings, *, a
         if result.outcome in {'missing','conflicting'}:
             anchors = list(dict.fromkeys(c.question_anchor for c in selected.components if bid in bindings[c.component_id]))
             warnings.append(f'Subtask {bid} returned {result.outcome} evidence for: ' + '; '.join(anchors))
+    if disclosure_scopes is not None:
+        from ._disclosures import project_disclosures
+        projection = project_disclosures(plan, report, selected, bindings, disclosure_scopes)
+        # Replace only the known legacy gap messages; retain fallback, geographic,
+        # period and no-information messages. Never let the composer write gaps.
+        legacy_gaps = set(evidence_gaps(selected, plan.query))
+        draft['warnings'] = [w for w in draft['warnings'] if w not in legacy_gaps]
+        warnings = projection['warnings']
+        diagnostics['scoped_disclosures'] = projection
     if len(draft['warnings']) + len(warnings) > 10:
         raise ValueError('Warning capacity exceeded; no silent truncation')
     draft['warnings'] += warnings
@@ -124,6 +136,9 @@ def project_report(plan: Plan, report: Report, mapping, composed, bindings, *, a
                                     'child_attempt_id':result.child_attempt_id,'source_id':source.source_id,
                                     'content_sha256':source.content_sha256,'corpus_sha256':source.corpus_sha256})
         provenance.append({'claim_index':coverage['claim_index'],'origins':origins})
+    if supported and draft['claims']:
+        draft, title_scope = qualify_title(draft, parsed.title, selected, sources, geographic_resolution)
+        diagnostics['title_geography'] = title_scope
     draft = Draft.model_validate(draft).model_dump()
     if not is_current(): raise ValueError('Stale or cancelled synthesis attempt')
     return SynthesisResult(draft, tuple(provenance), diagnostics)

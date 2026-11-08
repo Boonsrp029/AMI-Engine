@@ -1,0 +1,42 @@
+{
+  "status": "validated; source assessment required; no workflow authorized",
+  "model_calls_started": 1,
+  "maximum_main_calls": 1,
+  "nemo_invocations": 0,
+  "source_assessment": "pending",
+  "owner_adjudication": "pending",
+  "conditional_workflow_authorized": false,
+  "backend_cancellation_verified": false,
+  "retry_performed": false,
+  "phase_results": {
+    "service": {
+      "returncode": 0,
+      "timed_out": false,
+      "elapsed_seconds": 14.64000000001397,
+      "spawn_returned_monotonic": 135073.171,
+      "process_finished_monotonic": 135087.796,
+      "backend_cancellation_verified": false,
+      "retry_performed": false
+    },
+    "validation": {
+      "returncode": 0,
+      "timed_out": false,
+      "elapsed_seconds": 18.98399999999674,
+      "spawn_returned_monotonic": 135087.812,
+      "process_finished_monotonic": 135106.796,
+      "backend_cancellation_verified": false,
+      "retry_performed": false
+    }
+  },
+  "inflight_usage_unknown": false,
+  "usage": {
+    "input_tokens": 686,
+    "output_tokens": 115,
+    "total_tokens": 801
+  },
+  "elapsed_seconds": 33.812000000005355,
+  "overall_seconds": 95,
+  "elapsed_budget_exceeded": false,
+  "approvals_created": 0,
+  "exports_created": 0
+}

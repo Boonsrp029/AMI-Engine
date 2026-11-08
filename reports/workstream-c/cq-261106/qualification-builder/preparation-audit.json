@@ -1,0 +1,11 @@
+{
+  "scope": "offline compiler and current real refusal check",
+  "actual_model_calls": 0,
+  "synthetic_checks": 9,
+  "real_build_returncode": 1,
+  "real_refusal_reason": "Two passing current development results/assessments are missing",
+  "real_qualification_contract_created": false,
+  "real_qualification_attempt_created": false,
+  "authorization_created": false,
+  "v7_grant_present": false
+}

@@ -1,0 +1,132 @@
+{
+  "status": "local_release_candidate_complete",
+  "date": "2026-11-06",
+  "source_revision": "9b5e665ede286409346de0759c19e6fe5b231b34",
+  "dirty": true,
+  "source_sha256": "7d3bda77ceaa87957ab596ac87761bb50c74c424f0806033fe45562b4554f50f",
+  "qa_context_sha256": "d5a285cb84c662d7858353ef0f7ed1d911b61763771d01c12cc9898f15136041",
+  "image_id": "sha256:2c84f32b2cfc0620c19d0cac5c823b77aff98de17c1036ae753ad15cf5ce6f56",
+  "revision_label": "9b5e665ede286409346de0759c19e6fe5b231b34-source-7d3bda77ceaa8795",
+  "windows": {
+    "passed": 1503,
+    "failed": 0,
+    "warnings": 14,
+    "seconds": 464.02,
+    "junit_sha256": "c1380f970fe2d41bb6d495738b5a249a59e913186211717d8822b8d53873376b"
+  },
+  "linux": {
+    "passed": 1502,
+    "skipped": 1,
+    "failed": 0,
+    "warnings": 14,
+    "seconds": 168.44
+  },
+  "dependency_parity": {
+    "installed_distributions": 221,
+    "all_versions_match_previous_verified_environment": true,
+    "manifest_hashes_unchanged": true,
+    "package_install_cached": true,
+    "clean_install_evidence": false
+  },
+  "cached_historical_exports_preserved": 4,
+  "actual_provider_calls": 0,
+  "source_drift_detected": false,
+  "checks": [
+    {
+      "item": 1,
+      "requirement": "Source revision and dirty-source manifest",
+      "status": "passed",
+      "evidence": [
+        ".ci-artifacts/f-rc-final/source.json",
+        "reports/workstream-d/release-candidate-2026-11-06/integrated-final/source-before.json"
+      ]
+    },
+    {
+      "item": 2,
+      "requirement": "Intended Docker recipe and explicit prerequisites",
+      "status": "passed",
+      "evidence": [
+        ".ci-artifacts/f-rc-final/docker-build.txt",
+        "reports/workstream-f/rc-2026-11-06/prerequisites.json",
+        "docs/release/local-candidate.md"
+      ]
+    },
+    {
+      "item": 3,
+      "requirement": "Excluded credentials/owner DBs/venvs/unrelated artifacts",
+      "status": "passed within declared allowlist/scan boundaries",
+      "evidence": [
+        "scripts/prepare_local_release.py",
+        "tests/test_release_context.py",
+        "reports/workstream-f/rc-2026-11-06/image-content-audit.json"
+      ]
+    },
+    {
+      "item": 4,
+      "requirement": "Unchanged dependency versions and consistency",
+      "status": "passed",
+      "evidence": [
+        ".ci-artifacts/f-rc-final/dependencies.json",
+        "reports/workstream-f/rc-2026-11-06/dependency-parity.json"
+      ]
+    },
+    {
+      "item": 5,
+      "requirement": "Integrated Windows/Linux offline regression",
+      "status": "passed",
+      "evidence": [
+        "reports/workstream-d/release-candidate-2026-11-06/integrated-final/junit.xml",
+        "reports/workstream-d/release-candidate-2026-11-06/integrated-final/pytest.txt",
+        ".ci-artifacts/f-linux-final/linux-pytest.txt"
+      ]
+    },
+    {
+      "item": 6,
+      "requirement": "Nonroot/truthful readiness/restart/isolated restore",
+      "status": "passed",
+      "evidence": [
+        ".ci-artifacts/f-sequential-final/container-smoke.json",
+        ".ci-artifacts/f-concurrent-final/result.json"
+      ]
+    },
+    {
+      "item": 7,
+      "requirement": "Cached approved export bytes; stale/empty rejection",
+      "status": "passed",
+      "evidence": [
+        ".ci-artifacts/f-sequential-final/container-smoke.json",
+        ".ci-artifacts/f-concurrent-final/result.json",
+        "tests/fixtures/release/concurrent_smoke.py"
+      ]
+    },
+    {
+      "item": 8,
+      "requirement": "Runnable setup/rollback/troubleshooting",
+      "status": "prepared and exercised within documented offline limits",
+      "evidence": [
+        "docs/release/local-candidate.md"
+      ]
+    },
+    {
+      "item": 9,
+      "requirement": "Reviewable CI and publication actions",
+      "status": "prepared; remote CI pending",
+      "evidence": [
+        ".github/workflows/ci.yml",
+        "reports/workstream-f/rc-2026-11-06/publication-review.json",
+        "docs/release/local-candidate.md"
+      ]
+    }
+  ],
+  "remote_CI": "pending authorized publication and actual success for exact reviewed commit",
+  "publication_authorized": false,
+  "production_qualified": false,
+  "model_quality": "not established; generation remains held",
+  "current_model_server": "not probed or qualified",
+  "cache_free_install": "not established; installation layers cached",
+  "reviewer_usefulness": "not established",
+  "default_mode": "sequential browser",
+  "concurrent_mode": "explicit Plan/trusted callbacks; fixed-callback image smoke only",
+  "D_terminal_verification": "reports\\workstream-d\\release-candidate-2026-11-06\\integrated-final\\verification.json",
+  "D_terminal_verification_sha256": "715a10f3c7b9b107765186a4699e104d43f1bce55e8f052d01ca6ea674c1d8dc"
+}

@@ -1,0 +1,22 @@
+{
+  "generation_calls": 0,
+  "baseline_paths_checked": 204,
+  "declared_existing_path_changes": [
+    "src\\pilot\\subtasks\\generation.py",
+    "tests\\test_subtask_request_coverage.py",
+    "scripts\\audit_concurrent_context.py"
+  ],
+  "manifests_verified": {
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\manifest.json": 4,
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\manifest.json": 10,
+    "data\\external\\release_qualification_2026_10_30_v4\\frozen-v4\\manifest.json": 10
+  },
+  "r07_unchanged": true,
+  "dependencies_unchanged": true,
+  "v5_raw_sha256": "15fb141a9dfc457e42fe1f060092e705a1eb0fc4b7a02b1e802aafbc539d6b83",
+  "saved_response_replay": {
+    "rejected": true,
+    "error_type": "ValidationError"
+  },
+  "qualification": "not established"
+}

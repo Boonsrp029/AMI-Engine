@@ -1,0 +1,41 @@
+F...................                                                     [100%]
+================================== FAILURES ===================================
+_________ test_real_owned_runner_with_fixed_transport_and_review_gate _________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-qualification-wire-fixed/test_real_owned_runner_with_fi0')
+
+    def test_real_owned_runner_with_fixed_transport_and_review_gate(tmp_path):
+        l = ledger(tmp_path)
+>       result = execute_development(l, "p01", FixedTransport(), safety, verify_identity)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_subtask_qualification_runner.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\pilot\subtasks\qualification_runner.py:52: in execute_development
+    ledger.finish(case_id, result)  # Retain failed result before closing allowance.
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <src.pilot.subtasks.qualification.DevelopmentLedger object at 0x0000021885CE2990>
+case_id = 'p01'
+result = {'technical_pass': False, 'main_calls': 1, 'nemo_invocations': 0, 'elapsed_seconds': 2.952999999994063, ...}
+
+    def finish(self, case_id, result):
+        self._verify()
+        if not (self.output / (case_id + ".started.json")).exists():
+            raise ValueError("Case has not started")
+        _write_once(self.output / (case_id + ".result.json"), result)
+        valid = (result.get("technical_pass") is True
+                 and type(result.get("main_calls")) is int and 0 <= result["main_calls"] <= 4
+                 and type(result.get("nemo_invocations")) is int and 0 <= result["nemo_invocations"] <= 1
+                 and type(result.get("elapsed_seconds")) in (int, float)
+                 and 0 <= result["elapsed_seconds"] <= 180)
+        if not valid:
+            _write_once(self.output / "stopped.json", {"case_id": case_id, "reason": "technical or budget failure"})
+>           raise ValueError("Attempt failed its execution gate")
+E           ValueError: Attempt failed its execution gate
+
+src\pilot\subtasks\qualification.py:88: ValueError
+=========================== short test summary info ===========================
+FAILED tests/test_subtask_qualification_runner.py::test_real_owned_runner_with_fixed_transport_and_review_gate
+1 failed, 19 passed in 7.20s

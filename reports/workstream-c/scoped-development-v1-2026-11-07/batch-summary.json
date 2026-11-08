@@ -1,0 +1,27 @@
+{
+  "status": "failed; allowance closed; paused at weekly usage threshold",
+  "contract_sha256": "f5eb8a4de2eecf482746e5e513525ceeef4e37fc951b8d1e43506c2780391405",
+  "frozen_inputs": 106,
+  "unchanged_inputs": 106,
+  "cq_p01": "assistant technical/source/completeness/safety/persistence pass; owner acceptance pending",
+  "cq_p02": "composition ValueError; offline socket-blocked replay reproduces denominator-phrase boundary failure",
+  "new_main_calls": 4,
+  "new_nemo_invocations": 1,
+  "known_new_input_tokens": 2304,
+  "known_new_output_tokens": 487,
+  "known_new_total_tokens": 2791,
+  "cumulative_observed_main_starts": 16,
+  "cumulative_nemo_wrappers": 3,
+  "cumulative_known_input_tokens": 9411,
+  "cumulative_known_output_tokens": 1853,
+  "cumulative_known_total_tokens": 11264,
+  "internal_or_interrupted_usage": "unknown",
+  "cq1_attempted": 0,
+  "cq1_total": 20,
+  "usage": {
+    "five_hour_remaining_percent": 44,
+    "weekly_remaining_percent": 10
+  },
+  "next_step": "Offline regression with different facts: distinguish denominator noun phrase from trailing locative/date without permitting denominator/measure/unit/geography substitutions. Prepare explicit contract-change proposal and strict negative checks before editing runtime. Do not retry generation; new concrete grant required.",
+  "human_review": "cq-p01 exact draft can be reviewed for semantic acceptance; cq-p02 technical failure requires no repeated manual scoring; no approval/export performed"
+}

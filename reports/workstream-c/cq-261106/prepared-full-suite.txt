@@ -1,0 +1,99 @@
+........................................................................ [  4%]
+........................................................................ [  9%]
+........................................................................ [ 13%]
+........................................................................ [ 18%]
+........................................................................ [ 23%]
+........................................................................ [ 27%]
+........................................................................ [ 32%]
+........................................................................ [ 37%]
+........................................................................ [ 41%]
+........................................................................ [ 46%]
+........................................................................ [ 51%]
+........................................................................ [ 55%]
+........................................................................ [ 60%]
+........................................................................ [ 65%]
+........................................................................ [ 69%]
+........................................................................ [ 74%]
+........................................................................ [ 79%]
+Timeout (0:01:00)!
+Thread 0x0000c1ec (most recent call first):
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 1599 in _readerthread
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1012 in run
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x000088b4 (most recent call first):
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 1599 in _readerthread
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1012 in run
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x0000b6e8 (most recent call first):
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\ragas\_analytics.py", line 158 in _flush_loop
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1012 in run
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x00009dc0 (most recent call first):
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1169 in _wait_for_tstate_lock
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1153 in join
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 1628 in _communicate
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 1209 in communicate
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 550 in run
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\tests\test_serving_artifact.py", line 56 in test_saved_artifact_embeds_constraints_and_loads_after_relocation
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\python.py", line 167 in pytest_pyfunc_call
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_callers.py", line 121 in _multicall
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_manager.py", line 120 in _hookexec
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_hooks.py", line 512 in __call__
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\python.py", line 1707 in runtest
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\runner.py", line 184 in pytest_runtest_call
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_callers.py", line 121 in _multicall
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_manager.py", line 120 in _hookexec
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_hooks.py", line 512 in __call__
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\runner.py", line 250 in <lambda>
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\runner.py", line 361 in from_call
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\runner.py", line 249 in call_and_report
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\runner.py", line 139 in runtestprotocol
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\runner.py", line 118 in pytest_runtest_protocol
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_callers.py", line 121 in _multicall
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_manager.py", line 120 in _hookexec
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_hooks.py", line 512 in __call__
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\main.py", line 408 in pytest_runtestloop
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_callers.py", line 121 in _multicall
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_manager.py", line 120 in _hookexec
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_hooks.py", line 512 in __call__
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\main.py", line 384 in _main
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\main.py", line 330 in wrap_session
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\main.py", line 377 in pytest_cmdline_main
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_callers.py", line 121 in _multicall
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_manager.py", line 120 in _hookexec
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pluggy\_hooks.py", line 512 in __call__
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\config\__init__.py", line 229 in _main
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\_pytest\config\__init__.py", line 253 in _console_main
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\pytest\__main__.py", line 9 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 198 in _run_module_as_main
+........................................................................ [ 83%]
+........................................................................ [ 88%]
+........................................................................ [ 93%]
+........................................................................ [ 97%]
+...............................                                          [100%]
+============================== warnings summary ===============================
+.venv-release-check\Lib\site-packages\fastapi\testclient.py:1
+  D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+.venv-release-check\Lib\site-packages\mlflow\pyfunc\utils\data_validation.py:187
+  D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\mlflow\pyfunc\utils\data_validation.py:187: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+    color_warning(
+
+tests/test_guardrail_grounding.py: 11 warnings
+  D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\nemoguardrails\rails\llm\config.py:934: DeprecationWarning: Use 'nim_base_url' instead. This field will be removed in a future version.
+    if self.nim_url and not self.nim_base_url:
+
+tests/test_serving_artifact.py::test_saved_artifact_embeds_constraints_and_loads_after_relocation
+  D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-release-check\Lib\site-packages\mlflow\pyfunc\__init__.py:3344: UserWarning: [1;33mAn input example was not provided when logging the model. To ensure the model signature functions correctly, specify the `input_example` parameter. See https://mlflow.org/docs/latest/model/signatures.html#model-input-example for more details about the benefits of using input_example.[0m
+    color_warning(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1543 passed, 14 warnings in 463.46s (0:07:43)

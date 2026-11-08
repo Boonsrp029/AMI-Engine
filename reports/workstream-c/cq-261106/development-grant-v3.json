@@ -1,0 +1,29 @@
+{
+  "contract_sha256": "113d3629ebe6a75de9f1b1a4c6702b34fdd1bcb306c668736ca8a3f63c4d9d0a",
+  "case_ids": [
+    "cq-p01",
+    "cq-p02"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "authorization_reference": "User explicit reply Authorize the new two-case allowance, call_eca2bc77cdb44d07843d38743616a6e5, 2026-11-06",
+  "combined_limits": {
+    "main_calls": 8,
+    "nemo_invocations": 2,
+    "case_attempts": 2,
+    "automatic_retries": 0
+  },
+  "conditional_case": "cq-p02 only if cq-p01 passes technical/source/completeness/safety",
+  "excluded": [
+    "CQ1",
+    "Ragas",
+    "hosted inference",
+    "approval/export",
+    "publication",
+    "deployment"
+  ]
+}

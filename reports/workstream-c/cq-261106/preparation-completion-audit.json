@@ -1,0 +1,22 @@
+{
+  "status": "preparation ready; actual-generation quality Goal not complete",
+  "development_contract": "16fc7cb7396496445f26c9f3a5c76c000967a345abfd832eaa693cdcdf16eb08",
+  "frozen_files_verified": 91,
+  "source_drift": [],
+  "full_suite": "1543passed14warnings463.46seconds;session78217terminalexit0",
+  "full_log_sha256": "09e8688b2db6ad3183d04c4ac4a3d772f3b9b046245e55c9033af450801aadc7",
+  "r07_unchanged": true,
+  "reserved_manifest_files_verified": 10,
+  "cq1_content_and_plans_verified": true,
+  "generation_calls": 0,
+  "development_attempted": 0,
+  "development_unattempted": [
+    "cq-p01",
+    "cq-p02"
+  ],
+  "qualification_attempted": 0,
+  "qualification_planned": 20,
+  "owner_adjudication": "pending; no actual output exists",
+  "authorization": "none",
+  "output_directory_created": false
+}

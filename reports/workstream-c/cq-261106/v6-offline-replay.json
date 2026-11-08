@@ -1,0 +1,87 @@
+{
+  "live_model_calls": 0,
+  "fixed_responses_replayed": 2,
+  "failure": {
+    "error_type": "ValueError",
+    "message": "Draft introduces a numeric value absent from its selected evidence",
+    "traceback": "Traceback (most recent call last):\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\replay_v6_failure.py\", line 49, in main\n    ConcurrentComposer(plan, case[\"bindings\"], contract[\"as_of\"], transport,\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\generation.py\", line 135, in __call__\n    result = project_report(self.plan, report,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\synthesis.py\", line 92, in project_report\n    validate_claim_measure_and_numbers(claim.text, component, plan.query)\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_scope.py\", line 206, in validate_claim_measure_and_numbers\n    raise ValueError(\"Draft introduces a numeric value absent from its selected evidence\")\nValueError: Draft introduces a numeric value absent from its selected evidence\n"
+  },
+  "composition_inputs": {
+    "as_of": "2026-11-06",
+    "requests": [
+      {
+        "component_id": "r1",
+        "question_anchor": "Compare observed electricity demand in Canada in 2016 with projected electricity demand in Japan through 2036.",
+        "status": "supported"
+      }
+    ],
+    "units": [
+      {
+        "component_id": "r1",
+        "evidence": [
+          {
+            "source_id": "cq-observed",
+            "quote": "In Canada, observed electricity demand grew 5.7% in 2016."
+          }
+        ],
+        "unit_id": "u1",
+        "established_scope": {},
+        "origins": [
+          {
+            "unit_id": "u1",
+            "component_id": "r1"
+          }
+        ],
+        "source_literal_cues": {
+          "percentage_literals": [
+            "5.7%"
+          ],
+          "four_digit_literals": [
+            "2016"
+          ],
+          "modality_words": [
+            "observed"
+          ]
+        }
+      },
+      {
+        "component_id": "r1",
+        "evidence": [
+          {
+            "source_id": "cq-projected",
+            "quote": "In Japan, electricity demand is projected to grow 2.6% annually through 2036."
+          }
+        ],
+        "unit_id": "u2",
+        "established_scope": {},
+        "origins": [
+          {
+            "unit_id": "u2",
+            "component_id": "r1"
+          }
+        ],
+        "source_literal_cues": {
+          "percentage_literals": [
+            "2.6%"
+          ],
+          "four_digit_literals": [
+            "2036"
+          ],
+          "modality_words": [
+            "projected",
+            "annually"
+          ]
+        }
+      }
+    ]
+  },
+  "actual_json_sha256": {
+    "cq-p01.composition.raw.json": "94d1c6c1fe5b2b21f35086d9e9460d4b89d4daa5109532e64449244d792188b6",
+    "cq-p01.mapping.raw.json": "38bac20cf467414ceaeb4e0647ce3d9c8410a2fa69504ad1b2946f423ac78846",
+    "cq-p01.result.json": "8e2389deac534d5dc7f68659e937f0ed1fdb638a62e5a139d12642d5ef81de6f",
+    "cq-p01.started.json": "f36cee55f03573e72b0f62717ce7a9b474dcef7982fadac6dbfb19711519f058",
+    "stopped.json": "2768471f80ee3c2130ae5caca75836e102422ad17f2253fa90b32c5e84885a31"
+  },
+  "original_actual_files_unchanged": true,
+  "regrading": false
+}

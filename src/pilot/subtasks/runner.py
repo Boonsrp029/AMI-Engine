@@ -49,21 +49,29 @@ def _corpus(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
 def _child(job,connection,operation,compose,safety):
+    stage='initialization'
     try:
         isolate_console()
         watchdog=OwnerWatchdog(job['owner_pid'],job['deadline'])
+        # Match the established sequential worker before loading callbacks that
+        # may initialize NeMo/async clients. Import has no policy side effect.
+        from src.pilot.launch import configure_event_loop
+        configure_event_loop()
         plan=Plan.model_validate_json(job['plan'])
         if _corpus(job['corpus_path'])!=plan.corpus_sha256:raise ValueError('Corpus changed')
         event=lambda k,p:send(connection,'event',{'event':k,'data':p})
+        stage='retrieval'
         report=run_plan(plan,job['run_id'],job['attempt_id'],operation,event=event,deadline_at=job['deadline'])
         if not report.can_compose:raise ValueError('Required branch or deadline failed')
         access=ModelAccess(job['deadline'],event)
+        stage='composition'
         draft,lineage=prepare(compose(report,access),report)
         sources={s.source.source_id:s.source.model_dump() for s in report.sources}
         if report.missing_branches:
             draft={**draft,'warnings':list(draft.get('warnings',[]))+[f'Subtask {sid} did not complete; this brief is partial.' for sid in report.missing_branches]}
         draft=validate_citations(draft,sources)
         checked=fingerprint(draft,sources,lineage)
+        stage='safety'
         # Empty-claim abstention preserves the existing no-safety-call policy.
         if draft['claims'] and access.guard(lambda:safety(draft,sources)) is not True:
             raise ValueError('Safety rejected draft')
@@ -73,6 +81,7 @@ def _child(job,connection,operation,compose,safety):
         if fingerprint(final['draft'],final['sources'],final['lineage'])!=checked:
             raise ValueError('Composition changed during safety')
         draft,sources,lineage=final['draft'],final['sources'],final['lineage']
+        stage='candidate'
         if _corpus(job['corpus_path'])!=plan.corpus_sha256:raise ValueError('Corpus changed')
         metrics={'corpus_sha256':plan.corpus_sha256,'plan_id':plan.plan_id,'workflow':'ami-subtasks-v1',
             'model_calls':access.calls,'guardrail_invocations':access.guards,'token_usage_complete':False,
@@ -82,20 +91,24 @@ def _child(job,connection,operation,compose,safety):
             candidate['composition_candidate']=seal(draft,sources,lineage,report.identity.model_dump())
         send(connection,'result',candidate)
     except Exception as exc:
-        try:send(connection,'failure',{'type':type(exc).__name__})
+        try:send(connection,'failure',{'type':type(exc).__name__,'stage':stage})
         except Exception:pass
         raise SystemExit(1) from None
     finally:connection.close()
 
 
-def run_stored_plan(store,run_id,plan,corpus_path,operation,compose,safety,*,cancellation=None):
+def run_stored_plan(store,run_id,plan,corpus_path,operation,compose,safety,*,cancellation=None,lease=None):
     """Explicit opt-in; callback functions/objects must be spawn-pickleable.
 
     Parent is the sole DB writer and waits for a clean child exit before saving.
     Reuses the sequential runtime lease, preventing whole-request overlap.
     """
     plan=Plan.model_validate_json(plan.model_dump_json())
-    lease=RuntimeLease(store.path);lease.acquire()
+    owns_lease = lease is None
+    if owns_lease:
+        lease=RuntimeLease(store.path);lease.acquire()
+    elif lease.file is None:
+        raise RuntimeError('The supplied runtime lease is not held')
     attempt=uuid.uuid4().hex;process=None;receiver=sender=None;claimed=False
     started=time.monotonic();deadline=started+plan.deadline_seconds;reason='worker_error'
     try:
@@ -129,6 +142,12 @@ def run_stored_plan(store,run_id,plan,corpus_path,operation,compose,safety,*,can
                     sink(payload['event'],payload['data'])
                 elif kind=='result' and candidate is None:candidate=payload
                 elif kind=='failure' and candidate is None:
+                    safe_type=payload.get('type') if payload.get('type') in {
+                        'ValueError','RuntimeError','TimeoutError','ValidationError','ModelIdentityError'} else 'other'
+                    safe_stage=payload.get('stage') if payload.get('stage') in {
+                        'initialization','retrieval','composition','safety','candidate'} else 'unknown'
+                    store.attempt_event(run_id,attempt,'subtask_worker_failure',
+                        {'error_type':safe_type,'stage':safe_stage})
                     # The child may detect a changed corpus before producing a
                     # candidate. Classify from parent-owned bytes, not child text.
                     try: corpus_changed=_corpus(corpus_path)!=plan.corpus_sha256
@@ -139,6 +158,8 @@ def run_stored_plan(store,run_id,plan,corpus_path,operation,compose,safety,*,can
                 continue
             if not process.is_alive():
                 process.join()
+                store.attempt_event(run_id,attempt,'subtask_worker_terminal',
+                    {'exit_code':process.exitcode,'candidate_received':candidate is not None})
                 if process.exitcode!=0 or candidate is None:
                     if process.exitcode==124:reason='deadline'
                     break
@@ -167,4 +188,5 @@ def run_stored_plan(store,run_id,plan,corpus_path,operation,compose,safety,*,can
         finally:
             if receiver is not None:receiver.close()
             if sender is not None:sender.close()
-            lease.release()
+            if owns_lease:
+                lease.release()

@@ -1,0 +1,212 @@
+{
+  "score": 56.2,
+  "grade": "C",
+  "score_version": 2,
+  "resource_health": 56.2,
+  "resource_health_grade": "C",
+  "session_efficiency": 66.0,
+  "session_efficiency_grade": "C",
+  "compactions": 3,
+  "recovery_status": "observing",
+  "recovery_score": null,
+  "recovery_evidence": [
+    {
+      "boundary_id": "codex-1",
+      "ordinal": 1,
+      "line": 636,
+      "ts": "2026-11-05T10:32:45.587Z",
+      "trigger": "auto",
+      "pre_tokens": 450998,
+      "post_tokens": null,
+      "host_version": null,
+      "model": "gpt-6.1-sol",
+      "pre_seg_calls": 0,
+      "post_seg_calls": 0,
+      "matched_calls": 0,
+      "eligible": false,
+      "window_data": false,
+      "restore_transcript": false,
+      "capture_notice": false,
+      "db_loops": 0,
+      "restore_evidence": "none",
+      "status": "unmeasurable",
+      "score": null,
+      "flags": []
+    },
+    {
+      "boundary_id": "codex-2",
+      "ordinal": 2,
+      "line": 3237,
+      "ts": "2026-11-06T14:34:34.878Z",
+      "trigger": "auto",
+      "pre_tokens": 450216,
+      "post_tokens": null,
+      "host_version": null,
+      "model": "gpt-6.1-sol",
+      "pre_seg_calls": 0,
+      "post_seg_calls": 0,
+      "matched_calls": 0,
+      "eligible": false,
+      "window_data": false,
+      "restore_transcript": false,
+      "capture_notice": false,
+      "db_loops": 0,
+      "restore_evidence": "none",
+      "status": "unmeasurable",
+      "score": null,
+      "flags": []
+    },
+    {
+      "boundary_id": "codex-3",
+      "ordinal": 3,
+      "line": 5104,
+      "ts": "2026-11-07T03:33:16.282Z",
+      "trigger": "auto",
+      "pre_tokens": 453292,
+      "post_tokens": null,
+      "host_version": null,
+      "model": "gpt-6.1-sol",
+      "pre_seg_calls": 0,
+      "post_seg_calls": 0,
+      "matched_calls": 0,
+      "eligible": false,
+      "window_data": false,
+      "restore_transcript": false,
+      "capture_notice": false,
+      "db_loops": 0,
+      "restore_evidence": "none",
+      "status": "unmeasurable",
+      "score": null,
+      "flags": []
+    }
+  ],
+  "recovery_coverage": {
+    "errors": true,
+    "rereads": true,
+    "repeats": true,
+    "loops_transcript": true,
+    "loops_db": false,
+    "restore_db": false,
+    "corrections": false,
+    "state_sections": "not_applicable_v1"
+  },
+  "top_drag": {
+    "key": "context_fill",
+    "label": "48% context fill",
+    "points": 32.5
+  },
+  "signals": {
+    "context_fill_degradation": 54.5,
+    "stale_reads": 100,
+    "bloated_results": 0,
+    "duplicates": 100,
+    "decision_density": 100,
+    "agent_efficiency": 80,
+    "absolute_waste_tokens": 60.5
+  },
+  "breakdown": {
+    "context_fill_degradation": {
+      "score": 54.5,
+      "fill_pct": 47.7,
+      "model_fill_pct": 47.7,
+      "compact_window": 475000,
+      "compact_window_source": "Codex model window (gpt-6.1-sol)",
+      "compact_window_reduced": false,
+      "quality_estimate": 88,
+      "quality_curve": "anthropic-default",
+      "model": "gpt-6.1-sol",
+      "model_context_window": 475000,
+      "model_context_window_source": "session data",
+      "window_contradicted": false,
+      "window_inferred_from_tokens": false,
+      "host_disagreement": null,
+      "fill_source": "transcript-tokens",
+      "band": "PEAK ZONE",
+      "detail": "48% fill, peak zone (anthropic-default)"
+    },
+    "stale_reads": {
+      "score": 100,
+      "count": 0,
+      "total_reads": 0,
+      "window_reads": 0,
+      "window_stale": 0,
+      "estimated_waste_tokens": 0,
+      "detail": "No stale reads"
+    },
+    "bloated_results": {
+      "score": 0,
+      "count": 7,
+      "total_results": 82,
+      "window_results": 20,
+      "window_bloated": 7,
+      "estimated_waste_tokens": 18742,
+      "detail": "7 bloated results (20 in window)"
+    },
+    "duplicates": {
+      "score": 100,
+      "count": 0,
+      "estimated_waste_tokens": 0,
+      "detail": "No duplicates"
+    },
+    "compactions": {
+      "count": 3,
+      "weighted": false,
+      "detail": "3 compaction(s)"
+    },
+    "compaction_recovery": {
+      "status": "observing",
+      "score": null,
+      "detail": "3 compaction(s); no restore observed; observing"
+    },
+    "decision_density": {
+      "score": 100,
+      "substantive_messages": 19,
+      "total_messages": 36,
+      "window_messages": 20,
+      "ratio": 0.95,
+      "detail": "95% substantive (20 in window)"
+    },
+    "agent_efficiency": {
+      "score": 80,
+      "dispatch_count": 0,
+      "window_dispatches": 0,
+      "detail": "No agents used"
+    },
+    "absolute_waste_tokens": {
+      "score": 60.5,
+      "total_waste_tokens": 18742,
+      "waste_fraction": 0.0395,
+      "detail": "18742 waste tokens (3.9% of window)"
+    },
+    "snr": {
+      "score": 100,
+      "signal_chars": 55461,
+      "noise_chars": 0,
+      "ratio": 1.0,
+      "detail": "100% signal"
+    },
+    "reread_loops": {
+      "count": 0,
+      "excess_reads": 0,
+      "paths": [],
+      "estimated_waste_tokens": 0,
+      "detail": "No re-reading loops"
+    },
+    "total_estimated_waste_tokens": 18742
+  },
+  "fill_warning": null,
+  "tool_call_warning": null,
+  "regime_change": null,
+  "tool_calls": 0,
+  "fill_denominator": 475000,
+  "compact_window": 475000,
+  "compact_window_source": "Codex model window (gpt-6.1-sol)",
+  "compact_window_reduced": false,
+  "model_fill_pct": 47.7,
+  "session_file": "rollout-2026-11-04T21-57-42-01a1a710-dc5f-72f0-a9cb-58806d649751.jsonl",
+  "total_messages": 36,
+  "decisions_found": 9,
+  "runtime": "codex",
+  "runtime_label": "Codex",
+  "estimated": true
+}

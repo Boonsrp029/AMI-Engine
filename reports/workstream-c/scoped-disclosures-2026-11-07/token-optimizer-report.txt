@@ -1,0 +1,24 @@
+
+=======================================================
+  TOKEN OVERHEAD REPORT
+=======================================================
+
+=======================================================
+  Snapshot: current (2026-11-07T13:12)
+=======================================================
+  agents_md_project_AMI-Engine_AGENTS_md  3,014 tokens  [253 lines]
+  Codex memories (all threads)             0 tokens  [0 threads]
+  Skills (frontmatter)                   931 tokens  [7 skills]
+    + Plugin skills                    3,479 tokens  [41: 7 app-6a2f6c66e6348191abac0a9c9716cb89@openai-curated-remote, 1 computer-use@openai-bundled, 1 documents@openai-primary-runtime, 20 openai-templates@openai-curated-remote, 1 pdf@openai-primary-runtime, 1 plugin-management@openai-curated-remote, 1 presentations@openai-primary-runtime, 2 sites@openai-curated-remote, 2 spreadsheets@openai-primary-runtime, 1 template-creator@openai-primary-runtime, 1 visualize@openai-bundled, 3 work-pets@openai-curated-remote]
+  Commands (frontmatter)                   0 tokens  [0 commands]
+  MCP tools (deferred, tool surface)      15 tokens  [1 servers, ~1 tools]
+  Core system (fixed)                 12,900 tokens
+  =====================================================
+  ESTIMATED TOTAL                     21,206 tokens
+  Context used before typing            4.5% of 475K window
+
+  File exclusion rules: NONE
+  Hooks: NONE
+  Verbose skill descriptions (>200 chars): 46 (Presentations, Spreadsheets, artifact-template-analytics-dashboard, artifact-template-business-review, artifact-template-design-report...)
+
+=======================================================

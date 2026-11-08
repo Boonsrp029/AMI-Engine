@@ -1,0 +1,54 @@
+............F................................................            [100%]
+================================== FAILURES ===================================
+______ test_activated_development_entry_retains_original_scope_identity _______
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/scoped-landed-final/test_activated_development_ent0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001FDDD34BB00>
+
+    def test_activated_development_entry_retains_original_scope_identity(tmp_path, monkeypatch):
+        from src.pilot.subtasks.qualification import DevelopmentLedger
+        from src.pilot.subtasks.qualification_runner import execute_development
+        from test_scoped_disclosures import allow
+        _, plan, sidecar, frozen, contract = packet(tmp_path)
+        contract.update(case_ids=['p01', 'p02'], cases={'p01': frozen, 'p02': frozen},
+            model_snapshot={'synthetic': True}, limits={'main_calls_per_case': 4,
+                'nemo_per_case': 1, 'seconds_per_case': 180, 'retries': 0})
+        corpus = tmp_path/'corpus.json'
+        frozen['corpus_path'] = str(corpus)
+        contract['input_sha256'][str(corpus)] = hashlib.sha256(corpus.read_bytes()).hexdigest()
+        contract['contract_sha256'] = hashlib.sha256(json.dumps(contract, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+        grant = {'contract_sha256': contract['contract_sha256'], 'case_ids': contract['case_ids'],
+            'limits': contract['limits'], 'authorization_reference': 'SYNTHETIC TEST ONLY; no inference authorization'}
+        ledger = DevelopmentLedger(tmp_path/'out', contract, grant)
+        def identity(value):
+            assert value == {'synthetic': True}
+        # Model one second of preparation deterministically; do not depend on the
+        # host clock's resolution or sleep to force a changed plan ID.
+        real_clock = time.monotonic
+        first = [True]
+        def prepared_clock():
+            if first[0]:
+                first[0] = False
+                return real_clock()-1
+            return real_clock()
+        monkeypatch.setattr(time, 'monotonic', prepared_clock)
+        result = execute_development(ledger, 'p01', FixedScoped(), allow, identity)
+        assert result['technical_pass'] and result['main_calls'] == 2 and result['nemo_invocations'] == 1
+        provenance = result['stored_run']['metrics']['composition_diagnostics']['scope_deadline_binding']
+        assert provenance['declared_plan_id'] == plan.plan_id
+        assert provenance['runtime_plan_id'] != plan.plan_id
+        assert 0 < provenance['runtime_deadline_seconds'] < provenance['declared_deadline_seconds']
+        assert result['source_assessment'] == result['owner_adjudication'] == 'pending'
+        raw = json.loads((ledger.output/'p01.mapping.raw.json').read_text())
+        assert json.loads(raw['raw'])['wire_version'] == 'cq-scoped-selection-v1'
+        with pytest.raises(ValueError, match='review is pending'):
+            execute_development(ledger, 'p02', FixedScoped(), allow, identity)
+        with pytest.raises(ValueError, match='current human-approved revision'):
+>           store.export(run_id)
+            ^^^^^
+E           NameError: name 'store' is not defined
+
+tests\test_scoped_activation.py:135: NameError
+=========================== short test summary info ===========================
+FAILED tests/test_scoped_activation.py::test_activated_development_entry_retains_original_scope_identity
+1 failed, 60 passed in 27.41s

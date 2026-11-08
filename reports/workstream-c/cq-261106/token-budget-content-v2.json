@@ -1,0 +1,212 @@
+{
+  "method": "GGUF byte-unicode vocabulary reconstructed into tiktoken; Llama3 pretokenizer; tokenizers-BPE independent parity on4samples",
+  "model_token_count": 128256,
+  "parity_samples": 4,
+  "template_status": "256-token framing allowance provisional; exact Ollama template still unverified",
+  "cases": [
+    {
+      "case_id": "cq1-a01",
+      "system_user_content_tokens": 2371,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 825,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": false
+    },
+    {
+      "case_id": "cq1-a02",
+      "system_user_content_tokens": 2353,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 843,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": false
+    },
+    {
+      "case_id": "cq1-a03",
+      "system_user_content_tokens": 2351,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 845,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": false
+    },
+    {
+      "case_id": "cq1-a04",
+      "system_user_content_tokens": 2351,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 845,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": false
+    },
+    {
+      "case_id": "cq1-a05",
+      "system_user_content_tokens": 2351,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 845,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": false
+    },
+    {
+      "case_id": "cq1-a06",
+      "system_user_content_tokens": 2351,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 845,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": false
+    },
+    {
+      "case_id": "cq1-a07",
+      "system_user_content_tokens": 2355,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 841,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": false
+    },
+    {
+      "case_id": "cq1-a08",
+      "system_user_content_tokens": 2351,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 845,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": false
+    },
+    {
+      "case_id": "cq1-a09",
+      "system_user_content_tokens": 2367,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 829,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": false
+    },
+    {
+      "case_id": "cq1-a10",
+      "system_user_content_tokens": 2381,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 815,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": false
+    },
+    {
+      "case_id": "cq1-p01",
+      "system_user_content_tokens": 2367,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 829,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": false
+    },
+    {
+      "case_id": "cq1-p02",
+      "system_user_content_tokens": 2369,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 827,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": false
+    },
+    {
+      "case_id": "cq1-m01",
+      "system_user_content_tokens": 2333,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 863,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": true
+    },
+    {
+      "case_id": "cq1-m02",
+      "system_user_content_tokens": 2339,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 857,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": true
+    },
+    {
+      "case_id": "cq1-m03",
+      "system_user_content_tokens": 2341,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 855,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": true
+    },
+    {
+      "case_id": "cq1-m04",
+      "system_user_content_tokens": 2337,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 859,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": true
+    },
+    {
+      "case_id": "cq1-c01",
+      "system_user_content_tokens": 2458,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 738,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": false
+    },
+    {
+      "case_id": "cq1-c02",
+      "system_user_content_tokens": 2459,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 737,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": false
+    },
+    {
+      "case_id": "cq1-i01",
+      "system_user_content_tokens": 2439,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 757,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": false
+    },
+    {
+      "case_id": "cq1-i02",
+      "system_user_content_tokens": 2438,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 758,
+      "template_schema_allowance_proposed": 850,
+      "fits_provisional_conservative_budget": false
+    }
+  ],
+  "mapping_version": "cq-mapper-v2",
+  "mapping_instruction_sha256": "d3d0c9fb68c448fad0486889167b45fe8efb9f0b187e2148957db33ad6bfce65",
+  "counter_script_sha256": "890a7c5bfcc8fb97170626d7def7f36d939f958dba8f318aac37abadb2ee0191",
+  "tokenizer_metadata_sha256": "fa1ba7031fa5853b7f1f766c35c2627b5e56235939d52c2694e5f8744ae71cf5"
+}

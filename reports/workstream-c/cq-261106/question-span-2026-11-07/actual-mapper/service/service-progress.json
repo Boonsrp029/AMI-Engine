@@ -1,0 +1,87 @@
+{
+  "transport": "ollama-native-stream-v1",
+  "created_utc": "2026-11-07T03:52:18.898436+00:00",
+  "status": "completed_transport; engine validation pending",
+  "model_calls_started": 1,
+  "response_complete": true,
+  "content": "{\n  \"wire_version\": \"cq-question-span-v1\",\n  \"components\": [\n    {\n      \"component_id\": \"r1\",\n      \"status\": \"partial\",\n      \"evidence\": [\n        \"s_165fe1a5aff7d74a\"\n      ],\n      \"gap\": {\n        \"start\": 44,\n        \"end\": 47\n      }\n    }\n  ],\n  \"geography\": {\n    \"status\": \"known\",\n    \"value\": \"Denmark\",\n    \"evidence\": [\n      \"s_165fe1a5aff7d74a\"\n    ],\n    \"reason\": \"\"\n  }\n}",
+  "finish": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-07T03:52:31.5923255Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 8499554100,
+    "load_duration": 5074757200,
+    "prompt_eval_count": 730,
+    "prompt_eval_duration": 407553000,
+    "eval_count": 141,
+    "eval_duration": 3000458000
+  },
+  "usage": {
+    "input_tokens": 730,
+    "output_tokens": 141,
+    "total_tokens": 871
+  },
+  "chunks_received": 141,
+  "bytes_received": 19254,
+  "identity_before": true,
+  "identity_after": true,
+  "inflight_usage_unknown": false,
+  "started_monotonic": 141010.421,
+  "backend_cancellation_verified": false,
+  "stages": [
+    {
+      "stage": "worker_ready",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "stage": "identity_before_verified",
+      "elapsed_seconds": 2.1570000000065193
+    },
+    {
+      "stage": "invocation_started",
+      "elapsed_seconds": 2.1570000000065193
+    },
+    {
+      "stage": "request_written",
+      "elapsed_seconds": 4.2039999999979045
+    },
+    {
+      "stage": "response_headers",
+      "elapsed_seconds": 9.703999999997905
+    },
+    {
+      "stage": "first_body_bytes",
+      "elapsed_seconds": 9.703999999997905
+    },
+    {
+      "stage": "first_chunk",
+      "elapsed_seconds": 9.719000000011874
+    },
+    {
+      "stage": "stream_progress",
+      "elapsed_seconds": 9.719000000011874
+    },
+    {
+      "stage": "stream_progress",
+      "elapsed_seconds": 10.73499999998603
+    },
+    {
+      "stage": "stream_progress",
+      "elapsed_seconds": 11.75
+    },
+    {
+      "stage": "response_done",
+      "elapsed_seconds": 12.703999999997905
+    },
+    {
+      "stage": "completed",
+      "elapsed_seconds": 14.75
+    }
+  ],
+  "http_status": 200,
+  "elapsed_seconds": 14.75,
+  "worker_entry_monotonic": 141010.421,
+  "bootstrap_to_stream_seconds": 0.0,
+  "raw_stream_file": "response.ndjson"
+}

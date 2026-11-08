@@ -1,0 +1,12 @@
+{
+  "runtime_frozen_unchanged": true,
+  "declared_post_close_test_edit": [
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\tests\\test_subtask_request_coverage.py"
+  ],
+  "actual_artifacts_unchanged": true,
+  "cq_p02_unattempted": true,
+  "new_generation_after_failure": 0,
+  "targeted_checks": "42passed;4.85seconds",
+  "full_suite": "prior1570passrun;not repeated for test-only additions",
+  "new_runtime_or_prompt_repair": false
+}

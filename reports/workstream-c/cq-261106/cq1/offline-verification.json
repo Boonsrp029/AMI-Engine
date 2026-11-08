@@ -1,0 +1,14 @@
+{
+  "cases": 20,
+  "categories": {
+    "answerable": 10,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2
+  },
+  "manifest_hashes_verified": 10,
+  "source_ranges_verified": 2,
+  "generation_calls": 0,
+  "fresh_independent_evaluation": false
+}

@@ -1,0 +1,33 @@
+{
+  "status": "development fixtures frozen; NOT execution authorization",
+  "as_of": "2026-11-06",
+  "source_kind": "synthetic development fixtures; not a real-world quality benchmark",
+  "sha256": {
+    "cq-p01\\case.json": "e4ae8247fec44cfa421415711e7ddf61bed8b065dd141f04deb4143816f93736",
+    "cq-p01\\corpus.json": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13",
+    "cq-p02\\case.json": "2654243eea215f2b60db954ce0c7448a8922a796e8c66c04a97e91be0c9ebfca",
+    "cq-p02\\corpus.json": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+  },
+  "model": {
+    "name": "ami-llama3.1:8b-4k",
+    "expected_historical_digest": "6f3154f347c4f96858a9f259e64d96b2675f4cb2f4894b2d9714fb0752aecc23",
+    "installed_identity_verified": false,
+    "num_ctx": 4096,
+    "num_predict": 900,
+    "temperature": 0,
+    "client_timeout_seconds": 90
+  },
+  "generation_grant": null,
+  "as_of_policy": "capture once immediately before each attempt; retain actual date and resolved yesterday date",
+  "gate": "both cases pass technical/source/coverage/safety; stop at first failure",
+  "maxima": {
+    "diagnostic_cases": 2,
+    "main_calls": 8,
+    "nemo_invocations": 2,
+    "seconds_per_attempt": 180,
+    "retries": 0,
+    "local_inference_concurrency": 1,
+    "retrieval_concurrency": 2
+  },
+  "execution_readiness": "blocked: real concurrent inference callbacks/controller and exact source/model identity freeze not yet verified"
+}

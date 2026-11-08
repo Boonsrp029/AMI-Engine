@@ -1,0 +1,24 @@
+{
+  "case_id": "cq-p01",
+  "purpose": "Multipart evidence binding",
+  "query": "Compare observed electricity demand in Canada in 2016 with projected electricity demand in Japan through 2036.",
+  "subtasks": [
+    {
+      "subtask_id": "s01",
+      "operation": "retrieve",
+      "query": "observed"
+    },
+    {
+      "subtask_id": "s02",
+      "operation": "retrieve",
+      "query": "projected"
+    }
+  ],
+  "acceptance": [
+    "Answer both requested measures and periods with exact source identities.",
+    "Never put 5.7% in the Japan forecast unit.",
+    "Retain Canada/Japan, 2016/2036 and observation/projection distinctions.",
+    "Retain unit/component/subtask/child-attempt/source/corpus lineage.",
+    "Report raw completeness and final completeness separately; no editorial rescue."
+  ]
+}

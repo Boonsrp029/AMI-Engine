@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "3e99c524e59d434aa243ba89cb8c8dc4",
+    "attempt_id": "be37234a5dd44735974f652ab86f3275",
+    "plan_id": "9e532ff9169fb310a0cc79ea6ddf8b53712eaec2bf5ae3114f02286447de0c2a",
+    "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"In 2015, wind supplied 29% of total electricity generation in Denmark.\",\n      \"unit_id\": \"u1\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 578,
+    "output_tokens": 68,
+    "total_tokens": 646
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-07T12:04:01.6521108Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2225625600,
+    "load_duration": 19351900,
+    "prompt_eval_count": 578,
+    "prompt_eval_duration": 273162000,
+    "eval_count": 68,
+    "eval_duration": 1536643000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

@@ -1,0 +1,1 @@
+{"image": "ami-pilot:concurrent-rc-f", "context_sha256": "6c06b679934cb3f0058b483775e0836c4abd0bc43b9839fe2fb7875fd3a55609", "network": "none", "status": "failed", "remote_github_ci": false, "credentials_or_owner_reports_mounted": false, "returncode": 1}

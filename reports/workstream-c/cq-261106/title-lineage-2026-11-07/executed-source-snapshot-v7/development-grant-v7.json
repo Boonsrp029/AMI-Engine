@@ -1,0 +1,15 @@
+{
+  "contract_sha256": "63aadb35493d68c78e2988c8e675ffb5ee5769ae9ff0a92e8daaf6a6da8ed92f",
+  "case_ids": [
+    "cq-p01",
+    "cq-p02"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "authorization_reference": "Explicit user reply to call_ea8d83a5e6de48b3b5c3a966d47c2c59 on2026-11-07: Authorize",
+  "scope": "cq-p01 once; cq-p02 once only after all first-case gates pass; max8main+2NeMo;180seconds/case;no retries/warmups/CQ1"
+}

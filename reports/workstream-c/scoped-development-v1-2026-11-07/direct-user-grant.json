@@ -1,0 +1,21 @@
+{
+  "contract_sha256": "f5eb8a4de2eecf482746e5e513525ceeef4e37fc951b8d1e43506c2780391405",
+  "case_ids": [
+    "cq-p01",
+    "cq-p02"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "authorization_reference": "Direct user message: Authorize regeneration; receiptSHA256=462005562c438f7ea099641c578bb3d72deaa703832dff1f6daa561db088ff67",
+  "human_reply": "Authorize scoped v1 two-case development diagnostic",
+  "human_reply_field_role": "canonical authorized scope label required by frozen operator; not a verbatim quotation",
+  "verbatim_user_reply": "Authorize regeneration",
+  "receipt_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-development-v1-2026-11-07\\authorization-receipt.json",
+  "warmups": 0,
+  "CQ1_authorized": false,
+  "owner_acceptance": false
+}

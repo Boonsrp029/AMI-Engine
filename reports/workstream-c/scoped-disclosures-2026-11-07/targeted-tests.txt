@@ -1,0 +1,276 @@
+..................F.FFFFF.......F                                        [100%]
+================================== FAILURES ===================================
+____________ test_fallback_is_labeled_and_wrong_numbers_still_fail ____________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/scoped-disclosures/test_fallback_is_labeled_and_w0')
+
+    def test_fallback_is_labeled_and_wrong_numbers_still_fail(tmp_path):
+        _, plan, report = fixture(tmp_path)
+        callback, access, _ = compose(plan, report, mode='fallback')
+        result = callback(report, access)
+        assert result.draft['claims'][0]['text'] == FACT and result.diagnostics['fallback_unit_ids']
+>       assert result.diagnostics['raw_composer_output']['claims'] == []
+E       assert () == []
+E         
+E         Use -v to get more diff
+
+tests\test_scoped_disclosures.py:157: AssertionError
+__ test_real_report_diagnostic_distinctions_and_optional_policy[unselected] ___
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/scoped-disclosures/test_real_report_diagnostic_di0')
+outcome = 'unselected'
+
+    @pytest.mark.parametrize('outcome', ['unselected', 'conflicting', 'failed', 'cancelled', 'blocked'])
+    def test_real_report_diagnostic_distinctions_and_optional_policy(tmp_path, outcome):
+        _, plan, report = fixture(tmp_path, optional=True)
+        callback, access, _ = compose(plan, report)
+        result = callback(report, access)
+        mapping = ResolvedEvidenceMap.model_validate_json(json.dumps(result.diagnostics['resolved_evidence_mapping']))
+        first, second = report.results
+        if outcome in {'failed', 'cancelled', 'blocked'}:
+            changed = replace(report, status='partial', states=(('s01', 'completed'), ('s02', outcome)),
+                results=(first,), sources=aggregate((first,)), missing_branches=('s02',))
+        else:
+            second = second.model_copy(update={'outcome': 'conflicting' if outcome == 'conflicting' else 'evidence',
+                'sources': tuple(s.model_copy(update={'source_id': 'other'}) for s in first.sources)})
+            changed = replace(report, results=(first, second), sources=aggregate((first, second)))
+        projection = project_disclosures(plan, changed, mapping, BINDINGS, scopes(plan))
+        item = projection['records'][1]
+        expected = {'unselected': 'unselected_evidence', 'conflicting': 'reported_conflict',
+            'failed': 'unverified_execution', 'cancelled': 'unverified_execution', 'blocked': 'unverified_execution'}[outcome]
+>       assert item['kind'] == expected and projection['warnings'] == []  # optional omission
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert ('unselected_evidence' == 'unselected_evidence'
+E         
+E           unselected_evidence and ['Component r...riffs today.'] == []
+E         
+E         Left contains one more item: 'Component r1 remains partial; branch selection does not locate every unresolved fact. Original request: Describe solar generation in Chile in 2012 and provide Chile retail gas tariffs today.'
+E         Use -v to get more diff)
+
+tests\test_scoped_disclosures.py:190: AssertionError
+__ test_real_report_diagnostic_distinctions_and_optional_policy[conflicting] __
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/scoped-disclosures/test_real_report_diagnostic_di1')
+outcome = 'conflicting'
+
+    @pytest.mark.parametrize('outcome', ['unselected', 'conflicting', 'failed', 'cancelled', 'blocked'])
+    def test_real_report_diagnostic_distinctions_and_optional_policy(tmp_path, outcome):
+        _, plan, report = fixture(tmp_path, optional=True)
+        callback, access, _ = compose(plan, report)
+        result = callback(report, access)
+        mapping = ResolvedEvidenceMap.model_validate_json(json.dumps(result.diagnostics['resolved_evidence_mapping']))
+        first, second = report.results
+        if outcome in {'failed', 'cancelled', 'blocked'}:
+            changed = replace(report, status='partial', states=(('s01', 'completed'), ('s02', outcome)),
+                results=(first,), sources=aggregate((first,)), missing_branches=('s02',))
+        else:
+            second = second.model_copy(update={'outcome': 'conflicting' if outcome == 'conflicting' else 'evidence',
+                'sources': tuple(s.model_copy(update={'source_id': 'other'}) for s in first.sources)})
+            changed = replace(report, results=(first, second), sources=aggregate((first, second)))
+        projection = project_disclosures(plan, changed, mapping, BINDINGS, scopes(plan))
+        item = projection['records'][1]
+        expected = {'unselected': 'unselected_evidence', 'conflicting': 'reported_conflict',
+            'failed': 'unverified_execution', 'cancelled': 'unverified_execution', 'blocked': 'unverified_execution'}[outcome]
+>       assert item['kind'] == expected and projection['warnings'] == []  # optional omission
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert ('reported_conflict' == 'reported_conflict'
+E         
+E           reported_conflict and ['Component r...riffs today.'] == []
+E         
+E         Left contains one more item: 'Component r1 remains partial; branch selection does not locate every unresolved fact. Original request: Describe solar generation in Chile in 2012 and provide Chile retail gas tariffs today.'
+E         Use -v to get more diff)
+
+tests\test_scoped_disclosures.py:190: AssertionError
+____ test_real_report_diagnostic_distinctions_and_optional_policy[failed] _____
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/scoped-disclosures/test_real_report_diagnostic_di2')
+outcome = 'failed'
+
+    @pytest.mark.parametrize('outcome', ['unselected', 'conflicting', 'failed', 'cancelled', 'blocked'])
+    def test_real_report_diagnostic_distinctions_and_optional_policy(tmp_path, outcome):
+        _, plan, report = fixture(tmp_path, optional=True)
+        callback, access, _ = compose(plan, report)
+        result = callback(report, access)
+        mapping = ResolvedEvidenceMap.model_validate_json(json.dumps(result.diagnostics['resolved_evidence_mapping']))
+        first, second = report.results
+        if outcome in {'failed', 'cancelled', 'blocked'}:
+            changed = replace(report, status='partial', states=(('s01', 'completed'), ('s02', outcome)),
+                results=(first,), sources=aggregate((first,)), missing_branches=('s02',))
+        else:
+            second = second.model_copy(update={'outcome': 'conflicting' if outcome == 'conflicting' else 'evidence',
+                'sources': tuple(s.model_copy(update={'source_id': 'other'}) for s in first.sources)})
+            changed = replace(report, results=(first, second), sources=aggregate((first, second)))
+        projection = project_disclosures(plan, changed, mapping, BINDINGS, scopes(plan))
+        item = projection['records'][1]
+        expected = {'unselected': 'unselected_evidence', 'conflicting': 'reported_conflict',
+            'failed': 'unverified_execution', 'cancelled': 'unverified_execution', 'blocked': 'unverified_execution'}[outcome]
+>       assert item['kind'] == expected and projection['warnings'] == []  # optional omission
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert ('unverified_execution' == 'unverified_execution'
+E         
+E           unverified_execution and ['Component r...riffs today.'] == []
+E         
+E         Left contains one more item: 'Component r1 remains partial; branch selection does not locate every unresolved fact. Original request: Describe solar generation in Chile in 2012 and provide Chile retail gas tariffs today.'
+E         Use -v to get more diff)
+
+tests\test_scoped_disclosures.py:190: AssertionError
+___ test_real_report_diagnostic_distinctions_and_optional_policy[cancelled] ___
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/scoped-disclosures/test_real_report_diagnostic_di3')
+outcome = 'cancelled'
+
+    @pytest.mark.parametrize('outcome', ['unselected', 'conflicting', 'failed', 'cancelled', 'blocked'])
+    def test_real_report_diagnostic_distinctions_and_optional_policy(tmp_path, outcome):
+        _, plan, report = fixture(tmp_path, optional=True)
+        callback, access, _ = compose(plan, report)
+        result = callback(report, access)
+        mapping = ResolvedEvidenceMap.model_validate_json(json.dumps(result.diagnostics['resolved_evidence_mapping']))
+        first, second = report.results
+        if outcome in {'failed', 'cancelled', 'blocked'}:
+            changed = replace(report, status='partial', states=(('s01', 'completed'), ('s02', outcome)),
+                results=(first,), sources=aggregate((first,)), missing_branches=('s02',))
+        else:
+            second = second.model_copy(update={'outcome': 'conflicting' if outcome == 'conflicting' else 'evidence',
+                'sources': tuple(s.model_copy(update={'source_id': 'other'}) for s in first.sources)})
+            changed = replace(report, results=(first, second), sources=aggregate((first, second)))
+        projection = project_disclosures(plan, changed, mapping, BINDINGS, scopes(plan))
+        item = projection['records'][1]
+        expected = {'unselected': 'unselected_evidence', 'conflicting': 'reported_conflict',
+            'failed': 'unverified_execution', 'cancelled': 'unverified_execution', 'blocked': 'unverified_execution'}[outcome]
+>       assert item['kind'] == expected and projection['warnings'] == []  # optional omission
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert ('unverified_execution' == 'unverified_execution'
+E         
+E           unverified_execution and ['Component r...riffs today.'] == []
+E         
+E         Left contains one more item: 'Component r1 remains partial; branch selection does not locate every unresolved fact. Original request: Describe solar generation in Chile in 2012 and provide Chile retail gas tariffs today.'
+E         Use -v to get more diff)
+
+tests\test_scoped_disclosures.py:190: AssertionError
+____ test_real_report_diagnostic_distinctions_and_optional_policy[blocked] ____
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/scoped-disclosures/test_real_report_diagnostic_di4')
+outcome = 'blocked'
+
+    @pytest.mark.parametrize('outcome', ['unselected', 'conflicting', 'failed', 'cancelled', 'blocked'])
+    def test_real_report_diagnostic_distinctions_and_optional_policy(tmp_path, outcome):
+        _, plan, report = fixture(tmp_path, optional=True)
+        callback, access, _ = compose(plan, report)
+        result = callback(report, access)
+        mapping = ResolvedEvidenceMap.model_validate_json(json.dumps(result.diagnostics['resolved_evidence_mapping']))
+        first, second = report.results
+        if outcome in {'failed', 'cancelled', 'blocked'}:
+            changed = replace(report, status='partial', states=(('s01', 'completed'), ('s02', outcome)),
+                results=(first,), sources=aggregate((first,)), missing_branches=('s02',))
+        else:
+            second = second.model_copy(update={'outcome': 'conflicting' if outcome == 'conflicting' else 'evidence',
+                'sources': tuple(s.model_copy(update={'source_id': 'other'}) for s in first.sources)})
+            changed = replace(report, results=(first, second), sources=aggregate((first, second)))
+        projection = project_disclosures(plan, changed, mapping, BINDINGS, scopes(plan))
+        item = projection['records'][1]
+        expected = {'unselected': 'unselected_evidence', 'conflicting': 'reported_conflict',
+            'failed': 'unverified_execution', 'cancelled': 'unverified_execution', 'blocked': 'unverified_execution'}[outcome]
+>       assert item['kind'] == expected and projection['warnings'] == []  # optional omission
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert ('unverified_execution' == 'unverified_execution'
+E         
+E           unverified_execution and ['Component r...riffs today.'] == []
+E         
+E         Left contains one more item: 'Component r1 remains partial; branch selection does not locate every unresolved fact. Original request: Describe solar generation in Chile in 2012 and provide Chile retail gas tariffs today.'
+E         Use -v to get more diff)
+
+tests\test_scoped_disclosures.py:190: AssertionError
+_______ test_existing_runner_safety_and_exact_revision_lifecycle[deny] ________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/scoped-disclosures/test_existing_runner_safety_an1')
+safety = <function deny at 0x0000022250C53600>
+
+    @pytest.mark.parametrize('safety', [allow, deny])
+    def test_existing_runner_safety_and_exact_revision_lifecycle(tmp_path, safety):
+        path, plan, _ = fixture(tmp_path)
+        store = Store(tmp_path/'history.sqlite3')
+        rid, _ = store.create(ResearchRequest(query=QUESTION, request_key='scoped-case'), plan.corpus_sha256)
+        callback = ScopedConcurrentComposer(plan, BINDINGS, '2026-11-07', FixedScoped(), scopes(plan), complete_required_branches=BINDINGS)
+>       run_stored_plan(store, rid, plan, path, LocalBM25Adapter(path), callback, safety)
+
+tests\test_scoped_disclosures.py:230: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+store = <src.pilot.store.Store object at 0x0000022251077350>
+run_id = '58e5ae33db194aa68eb9e44234ef3dbb'
+plan = Plan(version='ami-subtasks-v1', query='Describe solar generation in Chile in 2012 and provide Chile retail gas tariffs...ue, timeout_seconds=30.0)), retrieval_concurrency=2, deadline_seconds=180.0, model_concurrency=1, maximum_main_calls=4)
+corpus_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/scoped-disclosures/test_existing_runner_safety_an1/corpus.json')
+operation = <src.pilot.subtasks.retrieval.LocalBM25Adapter object at 0x0000022251074E30>
+compose = ScopedConcurrentComposer(plan=Plan(version='ami-subtasks-v1', query='Describe solar generation in Chile in 2012 and pr...s02', question_span=QuestionSpan(start=55, end=85)))), capture=None, complete_required_branches={'r1': ['s01', 's02']})
+safety = <function deny at 0x0000022250C53600>, cancellation = None
+lease = <src.pilot._runtime.RuntimeLease object at 0x0000022251074A10>
+
+    def run_stored_plan(store,run_id,plan,corpus_path,operation,compose,safety,*,cancellation=None,lease=None):
+        """Explicit opt-in; callback functions/objects must be spawn-pickleable.
+    
+        Parent is the sole DB writer and waits for a clean child exit before saving.
+        Reuses the sequential runtime lease, preventing whole-request overlap.
+        """
+        plan=Plan.model_validate_json(plan.model_dump_json())
+        owns_lease = lease is None
+        if owns_lease:
+            lease=RuntimeLease(store.path);lease.acquire()
+        elif lease.file is None:
+            raise RuntimeError('The supplied runtime lease is not held')
+        attempt=uuid.uuid4().hex;process=None;receiver=sender=None;claimed=False
+        started=time.monotonic();deadline=started+plan.deadline_seconds;reason='worker_error'
+        try:
+            if not store.claim(run_id,attempt):raise Conflict('Parent is not queued')
+            claimed=True;sink=AttemptSink(store,plan,run_id,attempt);sink.start()
+            if _corpus(corpus_path)!=plan.corpus_sha256:reason='corpus_changed';raise ValueError('Corpus changed')
+            ctx=multiprocessing.get_context('spawn');receiver,sender=ctx.Pipe(duplex=False)
+            job={'owner_pid':os.getpid(),'deadline':deadline,'plan':plan.model_dump_json(),'run_id':run_id,
+                'attempt_id':attempt,'corpus_path':str(Path(corpus_path).resolve())}
+            process=ctx.Process(target=_child,args=(job,sender,operation,compose,safety),daemon=True)
+            process.start();sender.close()
+            if not store.attempt_event(run_id,attempt,'subtask_worker_started',{'pid':process.pid}):raise Conflict('Parent stopped')
+            candidate=None;pipe_open=True;messages=0;counts={'model_request_started':0,'guard_invocation_started':0}
+            while True:
+                if cancellation is not None and cancellation.is_set():reason='canceled';break
+                if not sink.current():raise Conflict('Parent stopped or superseded')
+                if time.monotonic()>=deadline:reason='deadline';break
+                try: ready=pipe_open and receiver.poll(.02)
+                except (BrokenPipeError,EOFError,OSError):
+                    pipe_open=False;ready=False
+                if ready:
+                    try:message=json.loads(receiver.recv_bytes(MESSAGE_LIMIT).decode('utf-8'))
+                    except (EOFError,BrokenPipeError):pipe_open=False;continue
+                    messages+=1
+                    if messages>128 or set(message)!={'kind','payload'}:raise ValueError('Invalid worker message')
+                    kind,payload=message['kind'],message['payload']
+                    if kind=='event' and candidate is None:
+                        if payload['event'] in counts:
+                            counts[payload['event']]+=1
+                            if counts['model_request_started']>4 or counts['guard_invocation_started']>1:raise ValueError('Worker call budget exceeded')
+                        sink(payload['event'],payload['data'])
+                    elif kind=='result' and candidate is None:candidate=payload
+                    elif kind=='failure' and candidate is None:
+                        safe_type=payload.get('type') if payload.get('type') in {
+                            'ValueError','RuntimeError','TimeoutError','ValidationError','ModelIdentityError'} else 'other'
+                        safe_stage=payload.get('stage') if payload.get('stage') in {
+                            'initialization','retrieval','composition','safety','candidate'} else 'unknown'
+                        store.attempt_event(run_id,attempt,'subtask_worker_failure',
+                            {'error_type':safe_type,'stage':safe_stage})
+                        # The child may detect a changed corpus before producing a
+                        # candidate. Classify from parent-owned bytes, not child text.
+                        try: corpus_changed=_corpus(corpus_path)!=plan.corpus_sha256
+                        except OSError: corpus_changed=True
+                        if corpus_changed:reason='corpus_changed'
+>                       raise ValueError('Worker failed')
+E                       ValueError: Worker failed
+
+src\pilot\subtasks\runner.py:156: ValueError
+=========================== short test summary info ===========================
+FAILED tests/test_scoped_disclosures.py::test_fallback_is_labeled_and_wrong_numbers_still_fail
+FAILED tests/test_scoped_disclosures.py::test_real_report_diagnostic_distinctions_and_optional_policy[unselected]
+FAILED tests/test_scoped_disclosures.py::test_real_report_diagnostic_distinctions_and_optional_policy[conflicting]
+FAILED tests/test_scoped_disclosures.py::test_real_report_diagnostic_distinctions_and_optional_policy[failed]
+FAILED tests/test_scoped_disclosures.py::test_real_report_diagnostic_distinctions_and_optional_policy[cancelled]
+FAILED tests/test_scoped_disclosures.py::test_real_report_diagnostic_distinctions_and_optional_policy[blocked]
+FAILED tests/test_scoped_disclosures.py::test_existing_runner_safety_and_exact_revision_lifecycle[deny]
+7 failed, 26 passed in 14.16s

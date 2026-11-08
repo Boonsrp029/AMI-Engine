@@ -1,0 +1,17 @@
+{
+  "protocol_sha256": "18f0cb6c0081602d17a6870f7ed245b488e6070948a85ad59d9fe562c51ce7dc",
+  "manifest_file_counts": {
+    "reports\\workstream-c\\concurrent-qualification-2026-11-06\\manifest.json": 4,
+    "reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\manifest.json": 10,
+    "data\\external\\release_qualification_2026_10_30_v4\\frozen-v4\\manifest.json": 10
+  },
+  "snapshot_inputs_verified": 128,
+  "actual_outputs_verified": 15,
+  "new_actual_model_calls": 0,
+  "new_nemo_invocations": 0,
+  "new_grant_exists": false,
+  "new_execution_directories_exist": false,
+  "controller_targeted_result": "47 passed4.57seconds;terminalexit0",
+  "real_subprocess_fixed_response": "validated with sockets blocked; quality pending; no inference",
+  "git_diff_check": "passed; existing line-ending warnings only"
+}

@@ -1,0 +1,23 @@
+{
+  "result_sha256": "f114296e55108b3a8ec5026b12f2d128a8320465bd06eb27c94ab2fff3b1ea36",
+  "verdict": "pass",
+  "authorship": "assistant source assessment; awaiting owner judgment",
+  "source_findings": {
+    "raw_supported": true,
+    "raw_complete": true,
+    "final_supported": true,
+    "final_complete": true,
+    "unit_period_measure_geography_and_basis": "Both exact source sentences retained; no level/growth or observed/forecast substitution.",
+    "citations": "cq-observed and cq-projected resolve to exact pinned source text and correct separate units.",
+    "title": "Neutral after logged application suppression of a partial Canada suffix; raw title already neutral.",
+    "scoped_disclosures": "Both required declared scopes selected; no unresolved branch or gap; no warnings.",
+    "fallback_used": false,
+    "editorial_correction_used": false,
+    "safety": "one actual NeMo PASSED",
+    "publication": "revision1 needs_review reopened read-only, exact draft retained;zero reviews/exports",
+    "scope_deadline_lineage": "original and reduced runtime plan IDs and frozen declaration SHA retained",
+    "source_kind": "synthetic consumed development fixtures; not verified real-world statistics",
+    "owner_acceptance": "pending;not inferred"
+  },
+  "next_case_allowed": true
+}

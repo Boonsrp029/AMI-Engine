@@ -1,0 +1,7 @@
+{
+  "source_content_manifest_sha256": "d587da3c69e9edde1e7f2a5ddcc7dcefe402b6532c7d9f0a21a70b256ea6e26b",
+  "plans_sha256": "312958637c816ba7c56f2286173a92f53c4ccb522998dde7b3f91b0b873992e5",
+  "checks_sha256": "d02df76a3e6953144867a0f94c91017121a545957da4ba362fe6f3928bf88725",
+  "generation_calls": 0,
+  "status": "plans frozen; prompt token capacity unverified"
+}

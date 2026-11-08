@@ -1,0 +1,29 @@
+{
+  "contract_sha256": "af23323de0515807aaa390a5dd365df4c193f45a9f5956f10b81516dbe133022",
+  "case_ids": [
+    "cq-p01",
+    "cq-p02"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "authorization_reference": "User explicit reply Authorize repaired v4 diagnostics; call_3641bf78779948e1ae2081692dccdd8b; 2026-11-06",
+  "combined_limits": {
+    "main_calls": 8,
+    "nemo_invocations": 2,
+    "case_attempts": 2,
+    "retries": 0
+  },
+  "condition": "cq-p02 only if first-case technical/source/completeness/safety gates pass",
+  "excluded": [
+    "CQ1",
+    "Ragas",
+    "hosted inference",
+    "approval/export",
+    "publication",
+    "deployment"
+  ]
+}

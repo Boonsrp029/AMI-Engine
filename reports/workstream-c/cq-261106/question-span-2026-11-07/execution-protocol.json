@@ -1,0 +1,63 @@
+{
+  "kind": "concurrent-mapper-only-v1",
+  "limits": {
+    "overall_seconds": 95,
+    "service_seconds": 60,
+    "validation_seconds": 30,
+    "main_calls": 1,
+    "nemo_invocations": 0,
+    "composer_calls": 0,
+    "retries": 0,
+    "warmups": 0
+  },
+  "model": "ami-llama3.1:8b-4k",
+  "case_id": "cq-p02",
+  "output_directory": "actual-mapper",
+  "input": "mapper-input.json",
+  "native_body": "mapper-request-body.json",
+  "proposal": "mapper-preflight-proposal.json",
+  "native_body_sha256": "d98a4296926472897cae525122ab33dd3e312de3d51e85fbc55952fffd0cc0fa",
+  "model_digest": "6f3154f347c4f96858a9f259e64d96b2675f4cb2f4894b2d9714fb0752aecc23",
+  "authorization_reply": "Authorize one cq-p02 question-span mapper diagnostic",
+  "project_files": {
+    "scripts/_llama_token_count.py": "890a7c5bfcc8fb97170626d7def7f36d939f958dba8f318aac37abadb2ee0191",
+    "scripts/_mapper_transport.py": "39e4cca405ebd857b0b7d014382ba06f7e964efa9a82071b7977a6360ed72fc5",
+    "scripts/concurrent_mapper_check.py": "4ca29aa00a5ea9dcaae9905d3a69b5cb9fb93b520e6befb01a47ac3f9930f61d",
+    "scripts/concurrent_mapper_envelope.py": "e4177d2d11d8a47fe0d9e0339f71e87bd3c8fba4f3539d8e89b44d594252a813",
+    "tests/test_concurrent_mapper_check.py": "ec63941b6856791778c63bd3a1001611e83da8a8c2715d9aeb09b18ac607aee0",
+    "tests/test_concurrent_mapper_envelope.py": "fe76d3d5cec35ff580039b0abdea893a2b7049fd421d1500ec67ef37590b9826"
+  },
+  "files": {
+    "mapper-input.json": "b6048b77ed15a3b8454b9ffddbe67002fd31333bdb87df72083fde9b8b6d407e",
+    "mapper-request-body.json": "d98a4296926472897cae525122ab33dd3e312de3d51e85fbc55952fffd0cc0fa",
+    "mapper-preflight-proposal.json": "503cfff71364a66f4c25c815eeaf8a668ffccb15cb8fdf147884c4db125be6c4",
+    "mapper-context-audit.json": "1c28ccf009aeed7c45d0b8417f3bc3b9cb48272d5ca03c5917ad53507f3cf1d5"
+  },
+  "acceptance": [
+    "Strict current wire parses and resolves through existing source validators",
+    "Retain supported wind share, generation measure, country and historical period",
+    "Partial component identifies unanswered Denmark retail electricity prices yesterday using exact question offsets",
+    "Do not call wind fact missing; do not invent price facts; no contradictory source assignments",
+    "Valid offset membership alone does not pass semantic missingness or completeness"
+  ],
+  "as_of": "2026-11-07",
+  "source_review": {
+    "after_response": "assistant checks exact selected facts, denominator, geography, period and unresolved price span before any later grant",
+    "technical_validation_is_quality_acceptance": false,
+    "raw_selection": "retain unchanged",
+    "application_resolution": "retain separately",
+    "editorial_correction": "none authorized; never count as raw success",
+    "owner_acceptance": "not inferred"
+  },
+  "excluded": [
+    "full workflow",
+    "CQ1",
+    "Ragas",
+    "hosted inference",
+    "approval/export",
+    "deployment"
+  ],
+  "prior_allowances": "all closed; unused calls cannot be reused",
+  "output_policy": "new immutable operator-envelope and actual-mapper directories; no retry, warmup or conditional workflow",
+  "process_boundary": "95-second Windows owned-controller envelope includes pin checks and child CLI startup; timeout terminates owned process tree; backend cancellation unverified"
+}

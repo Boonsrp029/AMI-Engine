@@ -1,0 +1,10 @@
+{
+  "live_phase_unchanged_sha256": "a204e1b75d07d38c6276b0b1d647fb04572b5be6ac2c20f1debd7e6e4324388d",
+  "integration_state": "unapplied offline candidate",
+  "sha256": {
+    "lineage_candidate.py": "f306b398d15b4ae09894013598d6d7fdb5e7a56d4de1acc9892f04e1bf8214fb",
+    "proposed_development_lineage.py": "4a1daa4a2e072920bd0775e1b9e6051bd27c31931d9518c2efd79650948ffcf1",
+    "proposed_qualification_phase.py": "49c710f2d477b01500177681b0c2d75f2f67456933db23f990926e6b3b4570c8",
+    "integration.patch": "ae56618963cf14761acb43a2a90a64c717db1f3cd843b762019859628700e8df"
+  }
+}

@@ -51,7 +51,9 @@ def test_configured_home_never_distributes_bootstrap_or_principal_token(configur
     assert client.get("/api/runs", headers={"X-Pilot-Token": app.state.token}).status_code == 403
     assert client.get("/api/runs", headers=headers("reader")).status_code == 200
     assert client.get("/api/session", headers=headers("reviewer")).json() == {
-        "identity": "reviewer-test", "role": "reviewer", "mode": "principal-tokens"}
+        "identity": "reviewer-test", "role": "reviewer", "mode": "principal-tokens",
+        "capabilities": {"sequential": True, "bounded_subtasks": False},
+        "workflow_modes": {"sequential": "sequential", "bounded_subtasks": "disabled"}}
 
 
 def test_roles_and_exact_authenticated_review_identity(configured):

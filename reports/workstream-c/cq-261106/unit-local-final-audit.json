@@ -1,0 +1,18 @@
+{
+  "status": "offline preparation ready; actual quality unverified; new grant absent",
+  "application_capture_suite": "1583passed14warnings463.42seconds;terminalexit0",
+  "later_controller_checks": "6passed4.62seconds;separate from1583",
+  "targeted_instruction_runner_checks": 62,
+  "capture_checks": 7,
+  "protocol_sha256": "8da1a51cd9239cd54ec5617dff9d7859ddd39b419cd0d743823eb59d24811b37",
+  "project_inputs_checked": 119,
+  "request_artifacts_checked": 6,
+  "actual_model_calls_this_pass": 0,
+  "standalone_socket_blocked_validation": "passed synthetic fixed response; not inference",
+  "failed_v5_v6_artifacts_unchanged": true,
+  "r07_and_reserved_sources_unchanged": true,
+  "dependencies_and_sequential_prompt_unchanged": true,
+  "human_adjudication": "pending new assessable output; no technical rescoring requested",
+  "production_qualification": "not established",
+  "usage": "five-hour reading unavailable"
+}

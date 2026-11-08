@@ -12,9 +12,12 @@
 <p class="muted">Inspect the original evidence, correct omissions, and approve only the revision you have checked.</p>
 <div id="notice" class="status">Ready. Use public questions and a reviewer alias; do not enter customer or identity data.</div>
 <section id="access" class="card" hidden><h2>Connect to this workspace</h2><label for="access-token">Your access token</label><input id="access-token" type="password" autocomplete="off"><button id="connect">Connect</button><p class="muted">Use the token supplied by the workspace operator. It stays in this page's memory; reconnect after reloading.</p></section>
-<section class="card"><h2>1. Research request</h2><label for="query">Question</label>
+<section class="card"><h2>1. Research request</h2>
+<label for="workflow">Workflow</label><select id="workflow"><option value="sequential" selected>Sequential analyst workflow (default)</option><option value="bounded_subtasks" disabled>Bounded subtasks (opt-in)</option></select>
+<p id="workflow-availability" class="muted">Connect to check workflow availability.</p><label for="query">Question</label>
 <textarea id="query" rows="3" placeholder="What supported Thailand’s exports in August 2026, and how did technology exports change?"></textarea>
-<button class="primary" id="start">Prepare draft</button><button id="example">Use example</button><button id="retry" hidden>Retry interrupted task</button><button id="cancel" hidden>Cancel task</button></section>
+<fieldset id="plan-editor" hidden><legend>Explicit retrieval plan</legend><p class="muted">Define 1–5 read-only retrieval branches. There is no automatic planner. At most two branches retrieve at once; composition and safety follow. Dependencies use branch IDs such as s01. A required failure blocks the brief; an optional failure leaves incomplete coverage.</p><div id="plan-branches"></div><button id="add-branch">Add retrieval branch</button><button id="remove-branch">Remove last branch</button></fieldset>
+<button class="primary" id="start">Prepare draft</button><button id="example">Use example</button><button id="retry" hidden>Retry interrupted task</button><button id="cancel" hidden>Cancel task</button><p id="submission-status" class="muted" role="status" aria-live="polite"></p></section>
 <section class="card"><label class="check"><input id="show-subtasks" type="checkbox"><span>Show persisted subtask progress (read-only)</span></label><button id="refresh-task" disabled>Refresh selected task</button><button id="refresh-history">Refresh history</button><p id="connection-status" class="muted" role="status" aria-live="polite"></p></section>
 <div id="workspace" hidden><div id="revision-conflict" class="conflict" hidden><p>A newer revision or attempt is available. Your local edits have been retained. Reload the latest revision before saving or reviewing.</p><button id="reload-revision">Reload latest revision and discard local changes</button></div><section id="subtask-panel" class="card" hidden><h2>Subtasks</h2><p id="subtask-summary" role="status" aria-live="polite"></p><p id="subtask-consequence"></p><div id="subtask-list"></div></section><div class="row"><section class="card"><h2>2. Draft & evidence gaps</h2><div id="brief"></div><h2>Evidence gaps</h2><div id="warnings"></div>
 <details><summary>Correct this draft</summary><p class="muted">Edit claims and select the sources you checked. Saving creates an unapproved revision.</p><label for="edit-title">Brief title</label><input id="edit-title" maxlength="160"><div id="claim-editors"></div><button id="add-claim">Add claim</button><label for="edit-warnings">Evidence gaps (one per line)</label><textarea id="edit-warnings" rows="4" maxlength="4000"></textarea><button id="save">Save new revision</button></details></section>
@@ -30,6 +33,8 @@
 let token='__PILOT_TOKEN__',role='reader',connected=false,active=null,run=null,key=null,poll=null;
 let epoch=0,controller=null,watermark=-1,lastFresh=null,failures=0,fresh=false;
 let editorDirty=false,reviewDirty=false,editorRevision=null,editorAttempt=null,conflict=false,rendered=null,progressIdentity=null;
+let boundedAvailable=false,submitting=false,pendingSubmission=null,submissionBlocked=false;
+const pendingStorageKey='ami.pending-submission.v1';
 const $=id=>document.getElementById(id);
 const text=(tag,value)=>{const e=document.createElement(tag);e.textContent=value;return e};
 const labels={queued:'Queued',waiting_on_dependency:'Waiting on dependency',running:'Running',completed:'Completed',failed:'Failed',cancelled:'Cancelled',blocked:'Blocked'};
@@ -38,7 +43,15 @@ function notice(message,error=false){$('notice').textContent=message;$('notice')
 function dirty(){return editorDirty||reviewDirty}
 function updateControls(){
  const live=connected&&fresh&&!conflict,edit=live&&['analyst','operator'].includes(role),review=live&&['reviewer','operator'].includes(role);
- $('start').disabled=!connected||!['analyst','operator'].includes(role);
+ $('start').disabled=!connected||!['analyst','operator'].includes(role)||submitting||submissionBlocked||(!pendingSubmission&&$('workflow').value==='bounded_subtasks'&&!boundedAvailable);
+ $('start').textContent=submitting?'Confirming request…':pendingSubmission?'Check submission':'Prepare draft';
+ $('workflow').disabled=submitting||!!pendingSubmission;
+ $('query').disabled=submitting||!!pendingSubmission?.query;
+ $('example').disabled=submitting||!!pendingSubmission;
+ $('plan-editor').hidden=$('workflow').value!=='bounded_subtasks';
+ for(const control of $('plan-editor').querySelectorAll('input,textarea,button'))control.disabled=submitting||!!pendingSubmission?.body;
+ $('add-branch').disabled||=$('plan-branches').children.length>=5;
+ $('remove-branch').disabled||=$('plan-branches').children.length<=1;
  for(const id of ['save','add-claim'])$(id).disabled=!edit||!run?.draft;
  for(const id of ['retry','cancel'])$(id).disabled=!edit||!run;
  $('approve').disabled=!review||editorDirty||run?.status!=='needs_review'||!run?.draft?.claims.length;
@@ -60,8 +73,12 @@ async function refreshHistory(){
 function locationState(){const url=new URL(location.href);if(active)url.searchParams.set('run',active);else url.searchParams.delete('run');if($('show-subtasks').checked)url.searchParams.set('progress','1');else url.searchParams.delete('progress');window.history.replaceState(null,'',url)}
 async function connect(){
  const session=await(await api('session')).json();role=session.role;connected=true;
+ boundedAvailable=session.capabilities?.bounded_subtasks===true;
+ $('workflow').querySelector('[value="bounded_subtasks"]').disabled=!boundedAvailable;
+ $('workflow-availability').textContent=boundedAvailable?'Bounded subtasks are available only when explicitly selected. Subtask completion still requires composition, safety and human review.':'Bounded task creation is unavailable in this workspace. Existing persisted progress can still be inspected.';
  if(session.identity){$('reviewer').value=session.identity;$('reviewer').readOnly=true}
  $('access-token').value='';$('access').hidden=true;await refreshHistory();updateControls();
+ if(pendingSubmission&&await findSubmission())return;
  const selected=active||new URL(location.href).searchParams.get('run');
  if(selected&&/^[a-f0-9]{32}$/.test(selected)){if(active)await refreshActive();else await selectRun(selected)}
  else notice(session.identity?'Connected as '+session.identity+' ('+role+').':'Supervised local session. Use public data only.');
@@ -105,7 +122,10 @@ function renderProgress(progress){
  $('subtask-summary').textContent=(progress.attempt_current===false&&run.status==='queued'?'Previous attempt (retry queued): ':'')+(counts.completed||0)+' of '+branches.length+' subtasks completed'+(counts.running?'; '+counts.running+' running':'')+(counts.waiting_on_dependency?'; '+counts.waiting_on_dependency+' waiting':'')+'. Subtask completion does not approve a brief.';
  const terminal=['completed','failed','cancelled','blocked'];
  const missing=branches.filter(b=>['failed','blocked','cancelled'].includes(b.status));
+ const evidenceMissing=branches.filter(b=>b.status==='completed'&&(b.outcome||b.result_outcome)==='missing');
+ const evidenceConflicts=branches.filter(b=>b.status==='completed'&&(b.outcome||b.result_outcome)==='conflicting');
  if(missing.length)$('subtask-consequence').textContent=missing.some(b=>b.required!==false)?'Required work did not complete. A complete brief cannot be assumed.':'Optional work did not complete. Any resulting brief has incomplete coverage: '+missing.map(b=>b.subtask_id).join(', ')+'.';
+ else if(evidenceMissing.length||evidenceConflicts.length)$('subtask-consequence').textContent=(evidenceMissing.length?'Completed searches found missing evidence in '+evidenceMissing.map(b=>b.subtask_id).join(', ')+'. Coverage is incomplete. ':'')+(evidenceConflicts.length?'Conflicting evidence in '+evidenceConflicts.map(b=>b.subtask_id).join(', ')+'. Resolve the disagreement during review. ':'')+'A completed operation does not establish a complete or approved brief.';
  else if(branches.length&&branches.every(b=>terminal.includes(b.status))&&run.status==='running')$('subtask-consequence').textContent=progress.phase==='safety'?'Subtasks finished; checking the brief.':progress.phase==='composition'?'Subtasks finished; preparing the brief.':'Subtasks finished; the brief is still being prepared or checked.';
  for(const b of branches){
   const d=document.createElement('details');d.className='branch';d.dataset.status=b.status;d.dataset.subtaskId=b.subtask_id;d.open=opened.has(b.subtask_id);
@@ -120,11 +140,11 @@ function renderProgress(progress){
  }
 }
 function applySnapshot(row,progress,sequence){
- if(row.id!==active)return;if(!Number.isSafeInteger(sequence)||sequence<0)throw Error('Invalid progress snapshot.');if(sequence<watermark)return;
+ if(row.id!==active)return;if(!Number.isSafeInteger(sequence)||sequence<0)throw Error('Invalid progress snapshot.');if(sequence<watermark)throw Error('An older progress snapshot was received. Refresh before acting.');
  watermark=sequence;const attempt=progress?.attempt_id||row.events.filter(e=>e.kind==='attempt_started').at(-1)?.payload.attempt_id||null;
  if(run&&(editorRevision!==row.revision||editorAttempt!==attempt)&&dirty())conflict=true;
  const reset=!run||(!dirty()&&!conflict&&(editorRevision!==row.revision||editorAttempt!==attempt));
- if(!run){$('query').value=row.query;key=row.request_key}run=row;fresh=true;lastFresh=new Date();failures=0;$('workspace').hidden=false;
+ if(!run&&!pendingSubmission){$('query').value=row.query;key=null}run=row;fresh=true;lastFresh=new Date();failures=0;$('workspace').hidden=false;
  if(reset){editorRevision=row.revision;editorAttempt=attempt;editorDirty=false;reviewDirty=false;editDraft(row.draft);$('support').checked=false}
  renderDraft(row);renderProgress(progress);
  const historyButton=[...$('history').children].find(b=>b.dataset.runId===row.id);if(historyButton)historyButton.textContent=row.query+' \u00b7 '+row.status;
@@ -164,8 +184,9 @@ $('show-subtasks').onchange=()=>{locationState();if(active)refreshActive()};
 $('refresh-task').onclick=()=>action(refreshActive);$('refresh-history').onclick=()=>action(refreshHistory);
 $('reload-revision').onclick=()=>{if(dirty()&&!confirm('Discard local changes and reload the latest revision?'))return;editorDirty=false;reviewDirty=false;conflict=false;editorRevision=null;editorAttempt=null;refreshActive()};
 $('example').onclick=()=>{$('query').value='According to the Bank of Thailand’s August 2026 release, what supported merchandise exports and what changed in technology-related exports?';key=null};
-$('query').oninput=()=>key=null;
-$('start').onclick=()=>action(async()=>{if(dirty()&&!confirm('Discard unsaved changes and prepare a new task?'))return;key=key||crypto.randomUUID();const result=await(await api('runs',{method:'POST',body:JSON.stringify({query:$('query').value,request_key:key})})).json();editorDirty=false;reviewDirty=false;await selectRun(result.id);await refreshHistory()});
+$('query').oninput=()=>{if(!pendingSubmission)key=null};
+$('workflow').onchange=()=>{if(!pendingSubmission)key=null;updateControls()};
+$('start').onclick=()=>action(submitRequest);
 $('save').onclick=()=>action(async()=>{requireCurrent();await api('runs/'+active+'/draft',{method:'PUT',body:JSON.stringify({revision:editorRevision,draft:editedDraft()})});editorDirty=false;reviewDirty=false;await refreshActive();await refreshHistory()});
 async function review(decision){requireCurrent();if(editorDirty)throw Error('Save or discard draft edits before reviewing.');await api('runs/'+active+'/review',{method:'POST',body:JSON.stringify({revision:editorRevision,decision,reviewer:$('reviewer').value,support_confirmed:$('support').checked,note:$('note').value,task_seconds:$('assisted').value?Number($('assisted').value):null,manual_seconds:$('manual').value?Number($('manual').value):null,usefulness:$('usefulness').value?Number($('usefulness').value):null})});reviewDirty=false;await refreshActive();await refreshHistory()}
 $('approve').onclick=()=>action(()=>review('approve'));$('reject').onclick=()=>action(()=>review('reject'));
@@ -173,5 +194,69 @@ $('retry').onclick=()=>action(async()=>{requireCurrent();await api('runs/'+activ
 $('cancel').onclick=()=>action(async()=>{requireCurrent();await api('runs/'+active+'/cancel',{method:'POST'});await refreshActive();await refreshHistory()});
 $('export').onclick=()=>action(async()=>{requireCurrent();if(editorDirty)throw Error('Save or discard local edits before downloading.');const revision=editorRevision,id=active;const response=await api('runs/'+id+'/export');const u=URL.createObjectURL(await response.blob());const a=text('a','Download');a.href=u;a.download='ami-'+id+'-v'+revision+'.md';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)});
 window.addEventListener('beforeunload',event=>{if(dirty()){event.preventDefault();event.returnValue=''}});
+function restoreSubmission(){
+ try{const saved=sessionStorage.getItem(pendingStorageKey);if(!saved)return;const value=JSON.parse(saved);
+  if(value.version!==1||!/^[-a-f0-9]{36}$/.test(value.request_key)||!['sequential','bounded_subtasks'].includes(value.workflow))throw Error('Invalid saved request');
+  pendingSubmission={request_key:value.request_key,workflow:value.workflow,query:null,body:null,uncertain:true};key=value.request_key;$('workflow').value=value.workflow;
+  $('submission-status').textContent='A submission is awaiting confirmation. Reconnect to look it up without restarting work. If no record is found, re-enter the original question and check again.';
+ }catch(e){submissionBlocked=true;$('submission-status').textContent='Saved submission identity cannot be read. New submission is blocked to avoid duplicate work. Ask the operator to reconcile the request.'}
+}
+function saveSubmission(){sessionStorage.setItem(pendingStorageKey,JSON.stringify({version:1,request_key:pendingSubmission.request_key,workflow:pendingSubmission.workflow}))}
+function clearSubmission(){sessionStorage.removeItem(pendingStorageKey);pendingSubmission=null;key=null;$('submission-status').textContent=''}
+async function acceptSubmission(result){
+ if(!/^[a-f0-9]{32}$/.test(result.id))throw Error('Invalid task confirmation.');
+ const workflow=pendingSubmission.workflow;clearSubmission();
+ if(workflow==='bounded_subtasks')$('show-subtasks').checked=true;
+ await selectRun(result.id);await refreshHistory();updateControls();
+ if(active!==result.id)notice('Request accepted. Your current edits are retained; select the new task from research history when ready.');
+}
+async function findSubmission(){
+ try{const result=await(await api('runs/by-request/'+encodeURIComponent(pendingSubmission.request_key))).json();
+  if(result.workflow!==pendingSubmission.workflow)throw Error('Request workflow changed. Ask the operator to reconcile this submission.');
+  await acceptSubmission(result);return true;
+ }catch(e){if(e.status===404)return false;throw e}
+}
+async function submitRequest(){
+ if(submitting||submissionBlocked)return;
+ submitting=true;updateControls();let admission=false;
+ try{
+  if(pendingSubmission&&await findSubmission())return;
+  if(!pendingSubmission){
+   const request_key=crypto.randomUUID(),workflow=$('workflow').value,body=requestBody(request_key,workflow);
+   pendingSubmission={request_key,workflow,query:body.query,body,uncertain:false};
+   try{saveSubmission()}catch(e){pendingSubmission=null;throw Error('Tab storage is unavailable. No request was sent; enable it before submitting so lost confirmations can be recovered safely.')}
+  }
+  if(pendingSubmission.body===null){pendingSubmission.body=requestBody(pendingSubmission.request_key,pendingSubmission.workflow);pendingSubmission.query=pendingSubmission.body.query}
+  const abort=new AbortController(),timer=setTimeout(()=>abort.abort(),15000);
+  try{admission=true;const result=await(await api(pendingSubmission.workflow==='bounded_subtasks'?'runs/subtasks':'runs',{method:'POST',signal:abort.signal,body:JSON.stringify(pendingSubmission.body)})).json();await acceptSubmission(result)}finally{clearTimeout(timer)}
+ }catch(e){
+  if(pendingSubmission){
+   if(admission&&!pendingSubmission.uncertain&&[400,401,403,404,409,422,429].includes(e.status))clearSubmission();
+   else{pendingSubmission.uncertain=true;$('submission-status').textContent='Submission is unconfirmed. Check submission to recover or resend the same request identity. Refresh/reconnect never automatically resubmits.'}
+  }throw e;
+ }finally{submitting=false;updateControls()}
+}
+function addBranch(){
+ if($('plan-branches').children.length>=5)return;
+ const id='s0'+($('plan-branches').children.length+1),field=document.createElement('fieldset');field.dataset.branchId=id;field.append(text('legend',id+' · Retrieve evidence'));
+ const label=text('label','Branch question'),query=document.createElement('textarea');query.className='branch-query';query.maxLength=500;query.rows=2;label.append(query);field.append(label);
+ const deps=text('label','Wait for branch IDs (comma-separated, optional)'),input=document.createElement('input');input.className='branch-dependencies';input.placeholder='s01';deps.append(input);field.append(deps);
+ const required=text('label','Required for the brief'),box=document.createElement('input');required.className='check';box.type='checkbox';box.className='branch-required';box.checked=true;required.prepend(box);field.append(required);$('plan-branches').append(field);updateControls();
+}
+function requestBody(request_key,workflow){
+ const query=$('query').value.trim();if(query.length<3||query.length>1200)throw Error('Enter the original research question (3–1200 characters).');
+ const body={query,request_key};if(workflow==='sequential')return body;
+ body.subtasks=[...$('plan-branches').children].map(field=>{
+  const query=field.querySelector('.branch-query').value.trim(),dependencies=field.querySelector('.branch-dependencies').value.split(',').map(s=>s.trim()).filter(Boolean);
+  if(!query||query.length>500)throw Error('Each retrieval branch needs a question (1–500 characters).');
+  return {subtask_id:field.dataset.branchId,operation:'retrieve',query,dependencies,required:field.querySelector('.branch-required').checked};
+ });
+ const ids=body.subtasks.map(b=>b.subtask_id),visiting=new Set(),visited=new Set();
+ function visit(id){if(visiting.has(id))throw Error('Branch dependencies cannot contain a cycle.');if(visited.has(id))return;visiting.add(id);const b=body.subtasks.find(b=>b.subtask_id===id);if(!b)throw Error('Dependencies must reference a branch in this plan.');for(const d of b.dependencies)visit(d);visiting.delete(id);visited.add(id)}
+ for(const b of body.subtasks){if(new Set(b.dependencies).size!==b.dependencies.length)throw Error('Remove duplicate branch dependencies.');visit(b.subtask_id)}
+ return body;
+}
+$('add-branch').onclick=addBranch;$('remove-branch').onclick=()=>{if($('plan-branches').children.length>1)$('plan-branches').lastElementChild.remove();updateControls()};
+addBranch();addBranch();restoreSubmission();
 if(token){connect().catch(e=>notice(e.message,true))}else{$('access').hidden=false;updateControls();notice('Enter your workspace access token to connect.')}
 </script></body></html>

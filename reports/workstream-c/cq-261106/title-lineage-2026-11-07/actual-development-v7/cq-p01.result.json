@@ -1,0 +1,1019 @@
+{
+  "technical_pass": true,
+  "main_calls": 2,
+  "nemo_invocations": 1,
+  "elapsed_seconds": 55.375,
+  "failure_type": null,
+  "stored_run": {
+    "id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+    "request_key": "qualify-961b63a0c0c8e05c19d9c07f7b7615ec",
+    "query": "Compare observed electricity demand in Canada in 2016 with projected electricity demand in Japan through 2036.",
+    "corpus_sha": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13",
+    "status": "needs_review",
+    "revision": 1,
+    "draft": {
+      "title": "Analyst research brief",
+      "claims": [
+        {
+          "text": "In Canada, observed electricity demand grew 5.7% in 2016.",
+          "source_ids": [
+            "cq-observed"
+          ]
+        },
+        {
+          "text": "In Japan, electricity demand is projected to grow 2.6% annually through 2036.",
+          "source_ids": [
+            "cq-projected"
+          ]
+        }
+      ],
+      "warnings": []
+    },
+    "sources": {
+      "cq-observed": {
+        "source_id": "cq-observed",
+        "content": "In Canada, observed electricity demand grew 5.7% in 2016.",
+        "content_sha256": "32551050b7e35b9d74c27df373a4448d70494ce8967ded49cbd0aa32daf01b6b",
+        "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13",
+        "role": "support",
+        "title": "Observed",
+        "url": "",
+        "published": null,
+        "doc_name": null,
+        "page_num": null
+      },
+      "cq-projected": {
+        "source_id": "cq-projected",
+        "content": "In Japan, electricity demand is projected to grow 2.6% annually through 2036.",
+        "content_sha256": "0501a99bcf96d21189aa75cc3ee1d0a0c767b693d3d4738b25dcd78a1f7744c4",
+        "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13",
+        "role": "support",
+        "title": "Projected",
+        "url": "",
+        "published": null,
+        "doc_name": null,
+        "page_num": null
+      }
+    },
+    "metrics": {
+      "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13",
+      "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+      "workflow": "ami-subtasks-v1",
+      "model_calls": 2,
+      "guardrail_invocations": 1,
+      "token_usage_complete": false,
+      "missing_branches": [],
+      "composition_provenance": [
+        {
+          "claim_index": 0,
+          "origins": [
+            {
+              "unit_id": "u1",
+              "component_id": "r1",
+              "subtask_id": "s01",
+              "child_attempt_id": "08538ca7e8984177a72a54c3598c7005",
+              "source_id": "cq-observed",
+              "content_sha256": "32551050b7e35b9d74c27df373a4448d70494ce8967ded49cbd0aa32daf01b6b",
+              "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+            }
+          ]
+        },
+        {
+          "claim_index": 1,
+          "origins": [
+            {
+              "unit_id": "u2",
+              "component_id": "r1",
+              "subtask_id": "s02",
+              "child_attempt_id": "0295a1b7403f4957904af14914e6b837",
+              "source_id": "cq-projected",
+              "content_sha256": "0501a99bcf96d21189aa75cc3ee1d0a0c767b693d3d4738b25dcd78a1f7744c4",
+              "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+            }
+          ]
+        }
+      ],
+      "composition_diagnostics": {
+        "identity": {
+          "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+          "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+          "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+          "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+        },
+        "raw_composer_output": {
+          "title": "Analyst research brief",
+          "claims": [
+            {
+              "component_id": "r1",
+              "text": "In Canada, observed electricity demand grew 5.7% in 2016.",
+              "unit_id": "u1"
+            },
+            {
+              "component_id": "r1",
+              "text": "In Japan, electricity demand is projected to grow 2.6% annually through 2036.",
+              "unit_id": "u2"
+            }
+          ]
+        },
+        "editorial_correction": false,
+        "branch_states": {
+          "s01": "completed",
+          "s02": "completed"
+        },
+        "missing_branches": [],
+        "omitted_financial_context": {},
+        "source_excerpt_presentations": {},
+        "fallback_reasons": {},
+        "source_baseline_normalizations": [],
+        "public_claim_coverage": [
+          {
+            "claim_index": 0,
+            "unit_ids": [
+              "u1"
+            ],
+            "component_ids": [
+              "r1"
+            ]
+          },
+          {
+            "claim_index": 1,
+            "unit_ids": [
+              "u2"
+            ],
+            "component_ids": [
+              "r1"
+            ]
+          }
+        ],
+        "canonical_composition_units": [
+          {
+            "component_id": "r1",
+            "evidence": [
+              {
+                "source_id": "cq-observed",
+                "quote": "In Canada, observed electricity demand grew 5.7% in 2016."
+              }
+            ],
+            "unit_id": "u1",
+            "identity_sha256": "f94ade783430a1c322463d3fb8a6ec4f5759af13c62050bebef787a5faa7f8f4",
+            "established_scope": {},
+            "scope_citation_ids": [],
+            "origins": [
+              {
+                "unit_id": "u1",
+                "component_id": "r1"
+              }
+            ]
+          },
+          {
+            "component_id": "r1",
+            "evidence": [
+              {
+                "source_id": "cq-projected",
+                "quote": "In Japan, electricity demand is projected to grow 2.6% annually through 2036."
+              }
+            ],
+            "unit_id": "u2",
+            "identity_sha256": "12cebad9a97b15c2a1c6b6716cd9e7351fb302684d0f5548cdb5f356731b11a3",
+            "established_scope": {},
+            "scope_citation_ids": [],
+            "origins": [
+              {
+                "unit_id": "u2",
+                "component_id": "r1"
+              }
+            ]
+          }
+        ],
+        "omitted_measure_qualifiers": {},
+        "merged_duplicate_citations": [],
+        "literal_comparison_conclusions": [],
+        "source_rendered_comparisons": [],
+        "fallback_unit_ids": [],
+        "title_geography": {
+          "version": "cq-title-scope-v1",
+          "candidate": "",
+          "title_before": "Analyst research brief",
+          "semantic_applicability_proven": false,
+          "evidence_coverage": [],
+          "status": "not_applicable",
+          "title_after": "Analyst research brief"
+        },
+        "source_selection": {
+          "components": [
+            {
+              "component_id": "r1",
+              "status": "supported",
+              "evidence": [
+                "s_e1d4995121a522b8",
+                "s_d92f4eb0e82c6815"
+              ],
+              "gap_anchor": "",
+              "measure": "",
+              "scenario": "",
+              "kind": "unknown"
+            }
+          ],
+          "geography": {
+            "status": "unresolved",
+            "value": "",
+            "evidence": [],
+            "reason": "geography unresolved"
+          },
+          "period": "",
+          "wire_version": "source-selection-v1"
+        },
+        "requested_branch_coverage": {
+          "r1": {
+            "status": "supported",
+            "required_branches": [
+              "s01",
+              "s02"
+            ],
+            "unselected_branches": [],
+            "semantic_support_proven": false
+          }
+        },
+        "coverage_decoder": {
+          "r1": {
+            "required_branches": [
+              "s01",
+              "s02"
+            ],
+            "minimal_cover_patterns": 1,
+            "supported_available": true,
+            "semantic_support_proven": false
+          }
+        },
+        "model_responses": [
+          {
+            "stage": "mapping",
+            "identity": {
+              "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+              "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+              "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+              "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+            },
+            "raw": "{\n  \"components\": [\n    {\n      \"component_id\": \"r1\",\n      \"status\": \"supported\",\n      \"evidence\": [\n        \"s_e1d4995121a522b8\",\n        \"s_d92f4eb0e82c6815\"\n      ],\n      \"gap_anchor\": \"\",\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    }\n  ],\n  \"geography\": {\n    \"status\": \"unresolved\",\n    \"value\": \"\",\n    \"evidence\": [],\n    \"reason\": \"geography unresolved\"\n  },\n  \"wire_version\": \"source-selection-v1\"\n}",
+            "usage": {
+              "input_tokens": 602,
+              "output_tokens": 141,
+              "total_tokens": 743
+            },
+            "response_metadata": {
+              "model": "ami-llama3.1:8b-4k",
+              "created_at": "2026-11-07T03:07:50.7846904Z",
+              "done": true,
+              "done_reason": "stop",
+              "total_duration": 17588618200,
+              "load_duration": 14098409600,
+              "prompt_eval_count": 602,
+              "prompt_eval_duration": 359349000,
+              "eval_count": 141,
+              "eval_duration": 3106808000,
+              "logprobs": null,
+              "model_name": "ami-llama3.1:8b-4k",
+              "model_provider": "ollama"
+            }
+          },
+          {
+            "stage": "composition",
+            "identity": {
+              "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+              "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+              "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+              "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+            },
+            "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"In Canada, observed electricity demand grew 5.7% in 2016.\",\n      \"unit_id\": \"u1\"\n    },\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"In Japan, electricity demand is projected to grow 2.6% annually through 2036.\",\n      \"unit_id\": \"u2\"\n    }\n  ]\n}",
+            "usage": {
+              "input_tokens": 686,
+              "output_tokens": 115,
+              "total_tokens": 801
+            },
+            "response_metadata": {
+              "model": "ami-llama3.1:8b-4k",
+              "created_at": "2026-11-07T03:08:01.0710592Z",
+              "done": true,
+              "done_reason": "stop",
+              "total_duration": 3016116100,
+              "load_duration": 30712300,
+              "prompt_eval_count": 686,
+              "prompt_eval_duration": 409277000,
+              "eval_count": 115,
+              "eval_duration": 2479237000,
+              "logprobs": null,
+              "model_name": "ami-llama3.1:8b-4k",
+              "model_provider": "ollama"
+            }
+          }
+        ],
+        "concurrent_mapping_version": "cq-mapper-v5-decoder-coverage",
+        "concurrent_composition_version": "cq-composer-v2-unit-local",
+        "span_catalog": {
+          "s_e1d4995121a522b8": {
+            "source_id": "cq-observed",
+            "content_sha256": "32551050b7e35b9d74c27df373a4448d70494ce8967ded49cbd0aa32daf01b6b",
+            "start": 0,
+            "end": 57,
+            "text": "In Canada, observed electricity demand grew 5.7% in 2016."
+          },
+          "s_d92f4eb0e82c6815": {
+            "source_id": "cq-projected",
+            "content_sha256": "0501a99bcf96d21189aa75cc3ee1d0a0c767b693d3d4738b25dcd78a1f7744c4",
+            "start": 0,
+            "end": 77,
+            "text": "In Japan, electricity demand is projected to grow 2.6% annually through 2036."
+          }
+        },
+        "application_extracts": [
+          {
+            "component_id": "r1",
+            "financial_comparison_coverage": {
+              "status": "not_checked",
+              "semantic_support_proven": false
+            },
+            "origin": "application-selected-source-extract",
+            "text": "In Canada, observed electricity demand grew 5.7% in 2016. In Japan, electricity demand is projected to grow 2.6% annually through 2036.",
+            "span_ids": [
+              "s_e1d4995121a522b8",
+              "s_d92f4eb0e82c6815"
+            ],
+            "evidence": [
+              {
+                "source_id": "cq-observed",
+                "quote": "In Canada, observed electricity demand grew 5.7% in 2016.",
+                "span_id": "s_e1d4995121a522b8",
+                "content_sha256": "32551050b7e35b9d74c27df373a4448d70494ce8967ded49cbd0aa32daf01b6b",
+                "start": 0,
+                "end": 57
+              },
+              {
+                "source_id": "cq-projected",
+                "quote": "In Japan, electricity demand is projected to grow 2.6% annually through 2036.",
+                "span_id": "s_d92f4eb0e82c6815",
+                "content_sha256": "0501a99bcf96d21189aa75cc3ee1d0a0c767b693d3d4738b25dcd78a1f7744c4",
+                "start": 0,
+                "end": 77
+              }
+            ],
+            "quantity_measure_check": "not_applicable"
+          }
+        ],
+        "geography_resolution": {
+          "status": "unresolved",
+          "value": "",
+          "evidence": [],
+          "reason": "geography unresolved",
+          "original_value": "",
+          "normalization": "none",
+          "context_only": false,
+          "document_context_bindings": []
+        }
+      },
+      "composition_content_sha256": "d21b2372bb4b6fd7fdb344eb2f11eac01652590546528e0ff676d4e77e1ee278",
+      "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+      "execution_elapsed_seconds": 50.219000000011874
+    },
+    "error": null,
+    "created": "2026-11-07T03:07:23.250239+00:00",
+    "updated": "2026-11-07T03:08:13.564570+00:00",
+    "events": [
+      {
+        "seq": 1,
+        "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+        "kind": "attempt_started",
+        "payload": {
+          "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594"
+        },
+        "created": "2026-11-07T03:07:23.345567+00:00"
+      },
+      {
+        "seq": 2,
+        "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+        "kind": "subtask_plan",
+        "payload": {
+          "identity": {
+            "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+            "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+            "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "plan": {
+            "version": "ami-subtasks-v1",
+            "query": "Compare observed electricity demand in Canada in 2016 with projected electricity demand in Japan through 2036.",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13",
+            "subtasks": [
+              {
+                "subtask_id": "s01",
+                "operation": "retrieve",
+                "query": "observed",
+                "source_ids": [],
+                "dependencies": [],
+                "required": true,
+                "timeout_seconds": 30.0
+              },
+              {
+                "subtask_id": "s02",
+                "operation": "retrieve",
+                "query": "projected",
+                "source_ids": [],
+                "dependencies": [],
+                "required": true,
+                "timeout_seconds": 30.0
+              }
+            ],
+            "retrieval_concurrency": 2,
+            "deadline_seconds": 177.70300000000861,
+            "model_concurrency": 1,
+            "maximum_main_calls": 4
+          },
+          "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594"
+        },
+        "created": "2026-11-07T03:07:23.440455+00:00"
+      },
+      {
+        "seq": 3,
+        "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+        "kind": "subtask_worker_started",
+        "payload": {
+          "pid": 37044,
+          "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594"
+        },
+        "created": "2026-11-07T03:07:23.646501+00:00"
+      },
+      {
+        "seq": 4,
+        "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+            "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+            "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "08538ca7e8984177a72a54c3598c7005",
+          "ordinal": 1,
+          "status": "queued",
+          "created_at": "2026-11-07T03:07:24.712550Z",
+          "reason": "none",
+          "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594"
+        },
+        "created": "2026-11-07T03:07:24.716555+00:00"
+      },
+      {
+        "seq": 5,
+        "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+            "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+            "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "0295a1b7403f4957904af14914e6b837",
+          "ordinal": 2,
+          "status": "queued",
+          "created_at": "2026-11-07T03:07:24.712550Z",
+          "reason": "none",
+          "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594"
+        },
+        "created": "2026-11-07T03:07:24.941047+00:00"
+      },
+      {
+        "seq": 6,
+        "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+            "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+            "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "08538ca7e8984177a72a54c3598c7005",
+          "ordinal": 3,
+          "status": "running",
+          "created_at": "2026-11-07T03:07:24.713546Z",
+          "reason": "none",
+          "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594"
+        },
+        "created": "2026-11-07T03:07:25.098274+00:00"
+      },
+      {
+        "seq": 7,
+        "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+            "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+            "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "0295a1b7403f4957904af14914e6b837",
+          "ordinal": 4,
+          "status": "running",
+          "created_at": "2026-11-07T03:07:24.713546Z",
+          "reason": "none",
+          "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594"
+        },
+        "created": "2026-11-07T03:07:25.323656+00:00"
+      },
+      {
+        "seq": 8,
+        "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+            "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+            "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "08538ca7e8984177a72a54c3598c7005",
+          "ordinal": 5,
+          "status": "completed",
+          "created_at": "2026-11-07T03:07:24.717674Z",
+          "reason": "none",
+          "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594"
+        },
+        "created": "2026-11-07T03:07:25.501311+00:00"
+      },
+      {
+        "seq": 9,
+        "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+        "kind": "subtask_result",
+        "payload": {
+          "identity": {
+            "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+            "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+            "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "08538ca7e8984177a72a54c3598c7005",
+          "dependencies": [],
+          "outcome": "evidence",
+          "sources": [
+            {
+              "source_id": "cq-observed",
+              "content": "In Canada, observed electricity demand grew 5.7% in 2016.",
+              "content_sha256": "32551050b7e35b9d74c27df373a4448d70494ce8967ded49cbd0aa32daf01b6b",
+              "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13",
+              "role": "support",
+              "title": "Observed",
+              "url": "",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            }
+          ],
+          "elapsed_seconds": 0.0,
+          "diagnostic": "none",
+          "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594"
+        },
+        "created": "2026-11-07T03:07:25.593516+00:00"
+      },
+      {
+        "seq": 10,
+        "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+            "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+            "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "0295a1b7403f4957904af14914e6b837",
+          "ordinal": 6,
+          "status": "completed",
+          "created_at": "2026-11-07T03:07:24.719673Z",
+          "reason": "none",
+          "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594"
+        },
+        "created": "2026-11-07T03:07:25.698119+00:00"
+      },
+      {
+        "seq": 11,
+        "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+        "kind": "subtask_result",
+        "payload": {
+          "identity": {
+            "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+            "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+            "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "0295a1b7403f4957904af14914e6b837",
+          "dependencies": [],
+          "outcome": "evidence",
+          "sources": [
+            {
+              "source_id": "cq-projected",
+              "content": "In Japan, electricity demand is projected to grow 2.6% annually through 2036.",
+              "content_sha256": "0501a99bcf96d21189aa75cc3ee1d0a0c767b693d3d4738b25dcd78a1f7744c4",
+              "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13",
+              "role": "support",
+              "title": "Projected",
+              "url": "",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            }
+          ],
+          "elapsed_seconds": 0.0,
+          "diagnostic": "none",
+          "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594"
+        },
+        "created": "2026-11-07T03:07:25.824736+00:00"
+      },
+      {
+        "seq": 12,
+        "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+        "kind": "model_request_started",
+        "payload": {
+          "stage": "subtask_compose",
+          "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594"
+        },
+        "created": "2026-11-07T03:07:25.982578+00:00"
+      },
+      {
+        "seq": 13,
+        "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+        "kind": "model_request_started",
+        "payload": {
+          "stage": "subtask_compose",
+          "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594"
+        },
+        "created": "2026-11-07T03:07:52.950972+00:00"
+      },
+      {
+        "seq": 14,
+        "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+        "kind": "guard_invocation_started",
+        "payload": {
+          "stage": "subtask_safety",
+          "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594"
+        },
+        "created": "2026-11-07T03:08:03.360247+00:00"
+      },
+      {
+        "seq": 15,
+        "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+        "kind": "subtask_worker_terminal",
+        "payload": {
+          "exit_code": 0,
+          "candidate_received": true,
+          "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594"
+        },
+        "created": "2026-11-07T03:08:13.193745+00:00"
+      },
+      {
+        "seq": 16,
+        "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+        "kind": "composition_candidate",
+        "payload": {
+          "status": "candidate; publication and approval are separate",
+          "identity": {
+            "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+            "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+            "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "claim_provenance": [
+            {
+              "claim_index": 0,
+              "origins": [
+                {
+                  "unit_id": "u1",
+                  "component_id": "r1",
+                  "subtask_id": "s01",
+                  "child_attempt_id": "08538ca7e8984177a72a54c3598c7005",
+                  "source_id": "cq-observed",
+                  "content_sha256": "32551050b7e35b9d74c27df373a4448d70494ce8967ded49cbd0aa32daf01b6b",
+                  "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+                }
+              ]
+            },
+            {
+              "claim_index": 1,
+              "origins": [
+                {
+                  "unit_id": "u2",
+                  "component_id": "r1",
+                  "subtask_id": "s02",
+                  "child_attempt_id": "0295a1b7403f4957904af14914e6b837",
+                  "source_id": "cq-projected",
+                  "content_sha256": "0501a99bcf96d21189aa75cc3ee1d0a0c767b693d3d4738b25dcd78a1f7744c4",
+                  "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+                }
+              ]
+            }
+          ],
+          "diagnostics": {
+            "identity": {
+              "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+              "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+              "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+              "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+            },
+            "raw_composer_output": {
+              "title": "Analyst research brief",
+              "claims": [
+                {
+                  "component_id": "r1",
+                  "text": "In Canada, observed electricity demand grew 5.7% in 2016.",
+                  "unit_id": "u1"
+                },
+                {
+                  "component_id": "r1",
+                  "text": "In Japan, electricity demand is projected to grow 2.6% annually through 2036.",
+                  "unit_id": "u2"
+                }
+              ]
+            },
+            "editorial_correction": false,
+            "branch_states": {
+              "s01": "completed",
+              "s02": "completed"
+            },
+            "missing_branches": [],
+            "omitted_financial_context": {},
+            "source_excerpt_presentations": {},
+            "fallback_reasons": {},
+            "source_baseline_normalizations": [],
+            "public_claim_coverage": [
+              {
+                "claim_index": 0,
+                "unit_ids": [
+                  "u1"
+                ],
+                "component_ids": [
+                  "r1"
+                ]
+              },
+              {
+                "claim_index": 1,
+                "unit_ids": [
+                  "u2"
+                ],
+                "component_ids": [
+                  "r1"
+                ]
+              }
+            ],
+            "canonical_composition_units": [
+              {
+                "component_id": "r1",
+                "evidence": [
+                  {
+                    "source_id": "cq-observed",
+                    "quote": "In Canada, observed electricity demand grew 5.7% in 2016."
+                  }
+                ],
+                "unit_id": "u1",
+                "identity_sha256": "f94ade783430a1c322463d3fb8a6ec4f5759af13c62050bebef787a5faa7f8f4",
+                "established_scope": {},
+                "scope_citation_ids": [],
+                "origins": [
+                  {
+                    "unit_id": "u1",
+                    "component_id": "r1"
+                  }
+                ]
+              },
+              {
+                "component_id": "r1",
+                "evidence": [
+                  {
+                    "source_id": "cq-projected",
+                    "quote": "In Japan, electricity demand is projected to grow 2.6% annually through 2036."
+                  }
+                ],
+                "unit_id": "u2",
+                "identity_sha256": "12cebad9a97b15c2a1c6b6716cd9e7351fb302684d0f5548cdb5f356731b11a3",
+                "established_scope": {},
+                "scope_citation_ids": [],
+                "origins": [
+                  {
+                    "unit_id": "u2",
+                    "component_id": "r1"
+                  }
+                ]
+              }
+            ],
+            "omitted_measure_qualifiers": {},
+            "merged_duplicate_citations": [],
+            "literal_comparison_conclusions": [],
+            "source_rendered_comparisons": [],
+            "fallback_unit_ids": [],
+            "title_geography": {
+              "version": "cq-title-scope-v1",
+              "candidate": "",
+              "title_before": "Analyst research brief",
+              "semantic_applicability_proven": false,
+              "evidence_coverage": [],
+              "status": "not_applicable",
+              "title_after": "Analyst research brief"
+            },
+            "source_selection": {
+              "components": [
+                {
+                  "component_id": "r1",
+                  "status": "supported",
+                  "evidence": [
+                    "s_e1d4995121a522b8",
+                    "s_d92f4eb0e82c6815"
+                  ],
+                  "gap_anchor": "",
+                  "measure": "",
+                  "scenario": "",
+                  "kind": "unknown"
+                }
+              ],
+              "geography": {
+                "status": "unresolved",
+                "value": "",
+                "evidence": [],
+                "reason": "geography unresolved"
+              },
+              "period": "",
+              "wire_version": "source-selection-v1"
+            },
+            "requested_branch_coverage": {
+              "r1": {
+                "status": "supported",
+                "required_branches": [
+                  "s01",
+                  "s02"
+                ],
+                "unselected_branches": [],
+                "semantic_support_proven": false
+              }
+            },
+            "coverage_decoder": {
+              "r1": {
+                "required_branches": [
+                  "s01",
+                  "s02"
+                ],
+                "minimal_cover_patterns": 1,
+                "supported_available": true,
+                "semantic_support_proven": false
+              }
+            },
+            "model_responses": [
+              {
+                "stage": "mapping",
+                "identity": {
+                  "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+                  "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+                  "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+                  "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+                },
+                "raw": "{\n  \"components\": [\n    {\n      \"component_id\": \"r1\",\n      \"status\": \"supported\",\n      \"evidence\": [\n        \"s_e1d4995121a522b8\",\n        \"s_d92f4eb0e82c6815\"\n      ],\n      \"gap_anchor\": \"\",\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    }\n  ],\n  \"geography\": {\n    \"status\": \"unresolved\",\n    \"value\": \"\",\n    \"evidence\": [],\n    \"reason\": \"geography unresolved\"\n  },\n  \"wire_version\": \"source-selection-v1\"\n}",
+                "usage": {
+                  "input_tokens": 602,
+                  "output_tokens": 141,
+                  "total_tokens": 743
+                },
+                "response_metadata": {
+                  "model": "ami-llama3.1:8b-4k",
+                  "created_at": "2026-11-07T03:07:50.7846904Z",
+                  "done": true,
+                  "done_reason": "stop",
+                  "total_duration": 17588618200,
+                  "load_duration": 14098409600,
+                  "prompt_eval_count": 602,
+                  "prompt_eval_duration": 359349000,
+                  "eval_count": 141,
+                  "eval_duration": 3106808000,
+                  "logprobs": null,
+                  "model_name": "ami-llama3.1:8b-4k",
+                  "model_provider": "ollama"
+                }
+              },
+              {
+                "stage": "composition",
+                "identity": {
+                  "run_id": "a6b9455c33ac4ccb88d7f2b22e7ad2d4",
+                  "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594",
+                  "plan_id": "fc1695ce86fff3a36fd02dcb7aa8f0268ab9a279f0fe4f4994686978fe3bce37",
+                  "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+                },
+                "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"In Canada, observed electricity demand grew 5.7% in 2016.\",\n      \"unit_id\": \"u1\"\n    },\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"In Japan, electricity demand is projected to grow 2.6% annually through 2036.\",\n      \"unit_id\": \"u2\"\n    }\n  ]\n}",
+                "usage": {
+                  "input_tokens": 686,
+                  "output_tokens": 115,
+                  "total_tokens": 801
+                },
+                "response_metadata": {
+                  "model": "ami-llama3.1:8b-4k",
+                  "created_at": "2026-11-07T03:08:01.0710592Z",
+                  "done": true,
+                  "done_reason": "stop",
+                  "total_duration": 3016116100,
+                  "load_duration": 30712300,
+                  "prompt_eval_count": 686,
+                  "prompt_eval_duration": 409277000,
+                  "eval_count": 115,
+                  "eval_duration": 2479237000,
+                  "logprobs": null,
+                  "model_name": "ami-llama3.1:8b-4k",
+                  "model_provider": "ollama"
+                }
+              }
+            ],
+            "concurrent_mapping_version": "cq-mapper-v5-decoder-coverage",
+            "concurrent_composition_version": "cq-composer-v2-unit-local",
+            "span_catalog": {
+              "s_e1d4995121a522b8": {
+                "source_id": "cq-observed",
+                "content_sha256": "32551050b7e35b9d74c27df373a4448d70494ce8967ded49cbd0aa32daf01b6b",
+                "start": 0,
+                "end": 57,
+                "text": "In Canada, observed electricity demand grew 5.7% in 2016."
+              },
+              "s_d92f4eb0e82c6815": {
+                "source_id": "cq-projected",
+                "content_sha256": "0501a99bcf96d21189aa75cc3ee1d0a0c767b693d3d4738b25dcd78a1f7744c4",
+                "start": 0,
+                "end": 77,
+                "text": "In Japan, electricity demand is projected to grow 2.6% annually through 2036."
+              }
+            },
+            "application_extracts": [
+              {
+                "component_id": "r1",
+                "financial_comparison_coverage": {
+                  "status": "not_checked",
+                  "semantic_support_proven": false
+                },
+                "origin": "application-selected-source-extract",
+                "text": "In Canada, observed electricity demand grew 5.7% in 2016. In Japan, electricity demand is projected to grow 2.6% annually through 2036.",
+                "span_ids": [
+                  "s_e1d4995121a522b8",
+                  "s_d92f4eb0e82c6815"
+                ],
+                "evidence": [
+                  {
+                    "source_id": "cq-observed",
+                    "quote": "In Canada, observed electricity demand grew 5.7% in 2016.",
+                    "span_id": "s_e1d4995121a522b8",
+                    "content_sha256": "32551050b7e35b9d74c27df373a4448d70494ce8967ded49cbd0aa32daf01b6b",
+                    "start": 0,
+                    "end": 57
+                  },
+                  {
+                    "source_id": "cq-projected",
+                    "quote": "In Japan, electricity demand is projected to grow 2.6% annually through 2036.",
+                    "span_id": "s_d92f4eb0e82c6815",
+                    "content_sha256": "0501a99bcf96d21189aa75cc3ee1d0a0c767b693d3d4738b25dcd78a1f7744c4",
+                    "start": 0,
+                    "end": 77
+                  }
+                ],
+                "quantity_measure_check": "not_applicable"
+              }
+            ],
+            "geography_resolution": {
+              "status": "unresolved",
+              "value": "",
+              "evidence": [],
+              "reason": "geography unresolved",
+              "original_value": "",
+              "normalization": "none",
+              "context_only": false,
+              "document_context_bindings": []
+            }
+          },
+          "draft_sources_sha256": "8aabb0b25a25139b0a68ddb80f85be542db27c1c09cf0a1e2bbd11e6d5b11e6b",
+          "content_sha256": "d21b2372bb4b6fd7fdb344eb2f11eac01652590546528e0ff676d4e77e1ee278",
+          "attempt_id": "0d9d89fc5eab4c61850ac46c2f049594"
+        },
+        "created": "2026-11-07T03:08:13.447415+00:00"
+      }
+    ],
+    "reviews": []
+  },
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured",
+  "source_assessment": "pending",
+  "owner_adjudication": "pending"
+}

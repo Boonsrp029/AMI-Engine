@@ -1,0 +1,13 @@
+{
+  "status": "closed at semantic quality failure",
+  "assessment_sha256": "c5e272c4d14b767bb63a198642cafb0a69a5e17d05d92131e8db4287d92374b1",
+  "protocol_sha256": "18f0cb6c0081602d17a6870f7ed245b488e6070948a85ad59d9fe562c51ce7dc",
+  "main_calls": 1,
+  "composer_calls": 0,
+  "nemo_invocations": 0,
+  "retry_allowed": false,
+  "new_grant_required_for_any_later_generation": true,
+  "workflow_pair_authorized": false,
+  "CQ1attempted": 0,
+  "CQ1unattempted": 20
+}

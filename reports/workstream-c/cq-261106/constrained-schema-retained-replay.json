@@ -1,0 +1,6 @@
+{
+  "status": "retained invalid raw response rejected by repaired schema",
+  "error_count": 11,
+  "generation_calls": 0,
+  "semantic_completeness": "not proven by decoder rejection"
+}

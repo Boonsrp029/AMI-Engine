@@ -1,0 +1,34 @@
+{
+  "src/pilot/subtasks/generation.py": {
+    "snapshot": "generation.py",
+    "sha256": "63ba5e3e7fb82f8f673b9b4ef9713f5c1a0c83acbb8834159b4f42865e118666"
+  },
+  "src/pilot/subtasks/_coverage_decoder.py": {
+    "snapshot": "_coverage_decoder.py",
+    "sha256": "b949914cc8fee5c3244062055545231c093e910ab45f45cf312c1862f05d2789"
+  },
+  "src/pilot/subtasks/_coverage.py": {
+    "snapshot": "_coverage.py",
+    "sha256": "fcf3109b118df05d24522bf264337c9534733137db42cfd4d6e5233ec3f3b5a6"
+  },
+  "src/pilot/subtasks/synthesis.py": {
+    "snapshot": "synthesis.py",
+    "sha256": "1ab33ed152c6b9e3833b08b8e719c6c00526c2f84637fee614e768fc7c2fde4c"
+  },
+  "src/pilot/subtasks/_relationships.py": {
+    "snapshot": "_relationships.py",
+    "sha256": "ba6e69c390280a37d7d9cd9810b4709af985717356560125a8bcf9d1a6e46012"
+  },
+  "src/pilot/_composition.py": {
+    "snapshot": "_composition.py",
+    "sha256": "6b0dda5169b2543d04ef077a376f27b7a3cfb80e625a5a04590eb87caf194eaa"
+  },
+  "src/pilot/_scope.py": {
+    "snapshot": "_scope.py",
+    "sha256": "5a1587e721bbd7eb746895338ea828a0cba1c07f14621106ff01bcae297c2aa6"
+  },
+  "src/pilot/subtasks/runner.py": {
+    "snapshot": "runner.py",
+    "sha256": "0fa7caac4a73e728de6b7875da0d89907e884cb75c883faa5baf725e69bf5815"
+  }
+}

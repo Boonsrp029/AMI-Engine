@@ -1,0 +1,209 @@
+{
+  "mapping_version": "cq-mapper-v5-decoder-coverage",
+  "tokenizer_sha256": "fa1ba7031fa5853b7f1f766c35c2627b5e56235939d52c2694e5f8744ae71cf5",
+  "template_status": "known no-tools template; framing allowance, not server-observed tokens",
+  "generation_calls": 0,
+  "cases": [
+    {
+      "case_id": "cq1-a01",
+      "message_content_tokens": 2342,
+      "schema_format_tokens_not_in_messages": 17317,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3498,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-a02",
+      "message_content_tokens": 2293,
+      "schema_format_tokens_not_in_messages": 8994,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3449,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-a03",
+      "message_content_tokens": 2291,
+      "schema_format_tokens_not_in_messages": 8993,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3447,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-a04",
+      "message_content_tokens": 2291,
+      "schema_format_tokens_not_in_messages": 8993,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3447,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-a05",
+      "message_content_tokens": 2291,
+      "schema_format_tokens_not_in_messages": 8993,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3447,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-a06",
+      "message_content_tokens": 2291,
+      "schema_format_tokens_not_in_messages": 8993,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3447,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-a07",
+      "message_content_tokens": 2295,
+      "schema_format_tokens_not_in_messages": 8995,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3451,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-a08",
+      "message_content_tokens": 2291,
+      "schema_format_tokens_not_in_messages": 8993,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3447,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-a09",
+      "message_content_tokens": 2338,
+      "schema_format_tokens_not_in_messages": 17315,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3494,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-a10",
+      "message_content_tokens": 2352,
+      "schema_format_tokens_not_in_messages": 17322,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3508,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-p01",
+      "message_content_tokens": 2338,
+      "schema_format_tokens_not_in_messages": 17315,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3494,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-p02",
+      "message_content_tokens": 2340,
+      "schema_format_tokens_not_in_messages": 17316,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3496,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-m01",
+      "message_content_tokens": 2273,
+      "schema_format_tokens_not_in_messages": 8984,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3429,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-m02",
+      "message_content_tokens": 2279,
+      "schema_format_tokens_not_in_messages": 8987,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3435,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-m03",
+      "message_content_tokens": 2281,
+      "schema_format_tokens_not_in_messages": 8988,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3437,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-m04",
+      "message_content_tokens": 2277,
+      "schema_format_tokens_not_in_messages": 8986,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3433,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-c01",
+      "message_content_tokens": 2415,
+      "schema_format_tokens_not_in_messages": 6939,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3571,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-c02",
+      "message_content_tokens": 2416,
+      "schema_format_tokens_not_in_messages": 6955,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3572,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-i01",
+      "message_content_tokens": 2393,
+      "schema_format_tokens_not_in_messages": 9233,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3549,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    },
+    {
+      "case_id": "cq1-i02",
+      "message_content_tokens": 2392,
+      "schema_format_tokens_not_in_messages": 9201,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 3548,
+      "limit": 4096,
+      "within_conservative_allowance": true
+    }
+  ],
+  "all_within_conservative_allowance": true
+}

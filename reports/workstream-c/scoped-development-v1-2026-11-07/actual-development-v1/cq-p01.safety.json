@@ -1,0 +1,7 @@
+{
+  "validated_report": "In Canada, observed electricity demand grew 5.7% in 2016.\nIn Japan, electricity demand is projected to grow 2.6% annually through 2036.",
+  "passed_guardrails": true,
+  "raw_output": "In Canada, observed electricity demand grew 5.7% in 2016.\nIn Japan, electricity demand is projected to grow 2.6% annually through 2036.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

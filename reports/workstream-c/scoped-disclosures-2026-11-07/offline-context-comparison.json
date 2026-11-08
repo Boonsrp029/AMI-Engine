@@ -1,0 +1,27 @@
+{
+  "purpose": "Offline payload comparison on consumed cq-p02; wire semantics changed, not a quality A/B test",
+  "before": {
+    "message_content_tokens": 715,
+    "framing_reservation": 256,
+    "completion_reservation": 900,
+    "conservative_total": 1871,
+    "limit": 4096,
+    "schema_format_tokens_separate": 1069
+  },
+  "after": {
+    "message_content_tokens": 460,
+    "framing_reservation": 256,
+    "completion_reservation": 900,
+    "conservative_total": 1616,
+    "limit": 4096,
+    "schema_format_tokens_separate": 953
+  },
+  "message_content_reduction": 255,
+  "old_input_sha256": "b6048b77ed15a3b8454b9ffddbe67002fd31333bdb87df72083fde9b8b6d407e",
+  "tokenizer_sha256": "fa1ba7031fa5853b7f1f766c35c2627b5e56235939d52c2694e5f8744ae71cf5",
+  "actual_model_calls": 0,
+  "server_observed_after_tokens": null,
+  "model_quality": "unverified",
+  "Codex_context_savings": "not measured; this compares AMI mapper payloads",
+  "runtime_activation": "pending A handoff; existing caller remains unchanged"
+}

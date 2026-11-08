@@ -1,0 +1,22 @@
+{
+  "observed_utc": "2026-11-07T06:50:01.539393+00:00",
+  "goal_complete": false,
+  "previous_turn_classification": "progress: prepared scoped case sidecars and mapper inputs",
+  "current_turn_classification": "no progress; third verified unchanged integration ownership blocker",
+  "consecutive_blocked_goal_turns": 3,
+  "blocker": "A-owned scoped activation unapplied; no executable current-revision contract or applicable generation grant",
+  "requirements": {
+    "1_frozen_diagnostic": "data prepared and hashed; executable integrated contract pending A",
+    "2_limits": "proposal8main+2NeMo,180seconds/case,no retries/warmups;ungranted",
+    "3_development_gate": "latest actual allowance failed;current scoped two-case gate unrun",
+    "4_fresh_pool": "CQ1 20cases/thresholds frozen;unattempted;original19reservedpreserved",
+    "5_source_protocol": "raw/application/fallback/editorial separation documented;required actual adjudication incomplete"
+  },
+  "allowed_now": "read-only audit and ownership coordination; no generation or A-owned source changes",
+  "not_allowed": "claiming qualification, repeating model calls, silently taking integration ownership",
+  "needed_external_action": "Owner keeps A and has A apply/validate handoff, or explicitly reassigns this chat as offline integration owner; generation remains separately unauthorized",
+  "status": "blocked audit threshold met",
+  "handoff": "docs/concurrency/c-scoped-disclosures-handoff-a.md",
+  "patch": "reports/workstream-c/scoped-disclosures-2026-11-07/a-activation-candidate.patch",
+  "prepared_inputs": "reports/workstream-c/scoped-disclosures-2026-11-07/prepared-development-data/preparation.json"
+}

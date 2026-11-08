@@ -1,0 +1,23 @@
+...........F............................................................ [ 87%]
+..........                                                               [100%]
+================================== FAILURES ===================================
+_________ test_corpus_invalid_content_identity_fails_required_branch __________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-corpus-repair/test_corpus_invalid_content_id0')
+
+    def test_corpus_invalid_content_identity_fails_required_branch(tmp_path):
+        path, plan, store, rid = setup_corpus(tmp_path)
+        with pytest.raises((ValueError, RuntimeError)):
+            run_stored_plan(store, rid, plan, path, ControlledAdapter(str(path), corrupt=True),
+                FixedCorpusComposer(plan), allow)
+        row = store.get(rid)
+        assert row["revision"] == 0 and row["status"] == "failed"
+>       assert any(e["kind"] == "subtask_transition" and e["payload"].get("status") == "failed"
+                   for e in row["events"])
+E       assert False
+E        +  where False = any(<generator object test_corpus_invalid_content_identity_fails_required_branch.<locals>.<genexpr> at 0x000001DCFB13C790>)
+
+tests\test_subtask_corpus_synthesis.py:165: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_subtask_corpus_synthesis.py::test_corpus_invalid_content_identity_fails_required_branch
+1 failed, 81 passed in 74.79s (0:01:14)

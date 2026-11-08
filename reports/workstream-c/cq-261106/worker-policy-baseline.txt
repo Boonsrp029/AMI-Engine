@@ -1,0 +1,81 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_________ test_spawned_concurrent_child_uses_existing_selector_policy _________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-concurrent-policy-baseline/test_spawned_concurrent_child_0')
+
+    @pytest.mark.skipif(sys.platform != "win32", reason="Windows worker policy contract")
+    def test_spawned_concurrent_child_uses_existing_selector_policy(tmp_path):
+        store, rid, plan, corpus = setup(tmp_path)
+>       run_stored_plan(store, rid, plan, corpus, operation, Composer(plan), require_selector_policy)
+
+tests\test_subtask_worker_policy.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+store = <src.pilot.store.Store object at 0x0000018AF6888800>
+run_id = 'adcdc45a2d804189b879064ad3495ea8'
+plan = Plan(version='ami-subtasks-v1', query='Compare observed electricity demand in 2018 and projected electricity demand th...ue, timeout_seconds=30.0)), retrieval_concurrency=2, deadline_seconds=180.0, model_concurrency=1, maximum_main_calls=4)
+corpus_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-concurrent-policy-baseline/test_spawned_concurrent_child_0/corpus.json')
+operation = <function operation at 0x0000018AF677C9A0>
+compose = Composer(plan=Plan(version='ami-subtasks-v1', query='Compare observed electricity demand in 2018 and projected electri...onds=30.0)), retrieval_concurrency=2, deadline_seconds=180.0, model_concurrency=1, maximum_main_calls=4), mode='valid')
+safety = <function require_selector_policy at 0x0000018AF677C720>
+cancellation = None
+lease = <src.pilot._runtime.RuntimeLease object at 0x0000018AF6888DA0>
+
+    def run_stored_plan(store,run_id,plan,corpus_path,operation,compose,safety,*,cancellation=None,lease=None):
+        """Explicit opt-in; callback functions/objects must be spawn-pickleable.
+    
+        Parent is the sole DB writer and waits for a clean child exit before saving.
+        Reuses the sequential runtime lease, preventing whole-request overlap.
+        """
+        plan=Plan.model_validate_json(plan.model_dump_json())
+        owns_lease = lease is None
+        if owns_lease:
+            lease=RuntimeLease(store.path);lease.acquire()
+        elif lease.file is None:
+            raise RuntimeError('The supplied runtime lease is not held')
+        attempt=uuid.uuid4().hex;process=None;receiver=sender=None;claimed=False
+        started=time.monotonic();deadline=started+plan.deadline_seconds;reason='worker_error'
+        try:
+            if not store.claim(run_id,attempt):raise Conflict('Parent is not queued')
+            claimed=True;sink=AttemptSink(store,plan,run_id,attempt);sink.start()
+            if _corpus(corpus_path)!=plan.corpus_sha256:reason='corpus_changed';raise ValueError('Corpus changed')
+            ctx=multiprocessing.get_context('spawn');receiver,sender=ctx.Pipe(duplex=False)
+            job={'owner_pid':os.getpid(),'deadline':deadline,'plan':plan.model_dump_json(),'run_id':run_id,
+                'attempt_id':attempt,'corpus_path':str(Path(corpus_path).resolve())}
+            process=ctx.Process(target=_child,args=(job,sender,operation,compose,safety),daemon=True)
+            process.start();sender.close()
+            if not store.attempt_event(run_id,attempt,'subtask_worker_started',{'pid':process.pid}):raise Conflict('Parent stopped')
+            candidate=None;pipe_open=True;messages=0;counts={'model_request_started':0,'guard_invocation_started':0}
+            while True:
+                if cancellation is not None and cancellation.is_set():reason='canceled';break
+                if not sink.current():raise Conflict('Parent stopped or superseded')
+                if time.monotonic()>=deadline:reason='deadline';break
+                try: ready=pipe_open and receiver.poll(.02)
+                except (BrokenPipeError,EOFError,OSError):
+                    pipe_open=False;ready=False
+                if ready:
+                    try:message=json.loads(receiver.recv_bytes(MESSAGE_LIMIT).decode('utf-8'))
+                    except (EOFError,BrokenPipeError):pipe_open=False;continue
+                    messages+=1
+                    if messages>128 or set(message)!={'kind','payload'}:raise ValueError('Invalid worker message')
+                    kind,payload=message['kind'],message['payload']
+                    if kind=='event' and candidate is None:
+                        if payload['event'] in counts:
+                            counts[payload['event']]+=1
+                            if counts['model_request_started']>4 or counts['guard_invocation_started']>1:raise ValueError('Worker call budget exceeded')
+                        sink(payload['event'],payload['data'])
+                    elif kind=='result' and candidate is None:candidate=payload
+                    elif kind=='failure' and candidate is None:
+                        # The child may detect a changed corpus before producing a
+                        # candidate. Classify from parent-owned bytes, not child text.
+                        try: corpus_changed=_corpus(corpus_path)!=plan.corpus_sha256
+                        except OSError: corpus_changed=True
+                        if corpus_changed:reason='corpus_changed'
+>                       raise ValueError('Worker failed')
+E                       ValueError: Worker failed
+
+src\pilot\subtasks\runner.py:141: ValueError
+=========================== short test summary info ===========================
+FAILED tests/test_subtask_worker_policy.py::test_spawned_concurrent_child_uses_existing_selector_policy
+1 failed in 4.70s

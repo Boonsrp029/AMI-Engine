@@ -1,0 +1,30 @@
+{
+  "stage": "mapping",
+  "identity": {
+    "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+    "attempt_id": "0ed26c4554664750963a186d92f6a79e",
+    "plan_id": "0a4655b6e8acac6435ee1e767495dfc19976fe346144536549e9279ea3098003",
+    "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+  },
+  "raw": "{\n  \"components\": [\n    {\n      \"component_id\": \"r1\",\n      \"status\": \"partial\",\n      \"evidence\": [\n        \"s_165fe1a5aff7d74a\"\n      ],\n      \"gap_anchor\": \"In Denmark, wind supplied 29% of total electricity generation in 2015.\",\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    }\n  ],\n  \"geography\": {\n    \"status\": \"unresolved\",\n    \"value\": \"\",\n    \"evidence\": [],\n    \"reason\": \"geography unknown\"\n  },\n  \"wire_version\": \"source-selection-v1\"\n}",
+  "usage": {
+    "input_tokens": 518,
+    "output_tokens": 145,
+    "total_tokens": 663
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-07T03:09:54.3289131Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3548000300,
+    "load_duration": 28627400,
+    "prompt_eval_count": 518,
+    "prompt_eval_duration": 234497000,
+    "eval_count": 145,
+    "eval_duration": 3177796000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

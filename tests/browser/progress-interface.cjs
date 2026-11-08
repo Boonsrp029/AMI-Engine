@@ -77,7 +77,12 @@ const server=http.createServer((req,res)=>{
    assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);assert.ok(!page.url().includes(token));
   });
   await check('older watermark cannot roll back current revision',async()=>{
-   const old=structuredClone(state.snapshots[A]);state.snapshots[A].sequence=1;state.snapshots[A].run.revision=0;await refresh();assert.match(await page.locator('#notice').innerText(),/revision 2/);state.snapshots[A]=old;
+   const old=structuredClone(state.snapshots[A]);state.snapshots[A].sequence=1;state.snapshots[A].run.revision=0;await refresh();assert.match(await page.locator('#notice').innerText(),/revision 2/);assert.ok(await page.locator('#approve').isDisabled());assert.ok(await page.locator('#save').isDisabled());assert.match(await page.locator('#connection-status').innerText(),/Updates unavailable/);state.snapshots[A]=old;await refresh();
+  });
+  await check('successful retrieval with missing or conflicting evidence exposes incomplete coverage',async()=>{
+   await change(s=>{s.progress.branches[0].outcome='missing';s.progress.branches[1].outcome='conflicting'});
+   assert.match(await page.locator('#subtask-consequence').innerText(),/Coverage is incomplete/);assert.match(await page.locator('#subtask-consequence').innerText(),/Conflicting evidence in s02/);
+   await change(s=>{s.progress.branches[0].outcome='evidence';s.progress.branches[1].outcome='evidence'});
   });
   await check('optional failures expose partial coverage and required failures block readiness',async()=>{
    await change(s=>{s.progress.branches[4]={...branch('s05','failed',false),reason:'operation_failed'};s.run.draft.warnings=['Optional s05 is missing; brief is partial.']});

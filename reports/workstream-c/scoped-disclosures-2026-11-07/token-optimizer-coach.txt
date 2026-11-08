@@ -1,0 +1,351 @@
+{
+  "snapshot": {
+    "total_overhead": 21206,
+    "controllable": 8306,
+    "fixed": 12900,
+    "context_window": 475000,
+    "overhead_pct": 4.5,
+    "usable_tokens": 420794,
+    "skill_count": 48,
+    "skill_tokens": 4410,
+    "claude_md_tokens": 3014,
+    "instruction_label": "AGENTS.md",
+    "memory_md_lines": 0,
+    "memory_md_scope": "all_threads",
+    "memory_md_lines_measured": false,
+    "mcp_server_count": 1,
+    "mcp_tokens": 15,
+    "rules_count": 0,
+    "rules_always_loaded": 0,
+    "imports_count": 0,
+    "imports_tokens": 0,
+    "skills_basis": "installed inventory advertised to the model (user skills + enabled-plugin skills); per-session prompt inclusion not directly observed",
+    "agents_md_tokens": 3014
+  },
+  "patterns_good": [
+    {
+      "name": "Installed Skill Set",
+      "detail": "48 skills (4,410 tokens, 0.9% of context)"
+    },
+    {
+      "name": "Lean AGENTS.md",
+      "detail": "3,014 tokens (0.6% of context)",
+      "earned": true
+    },
+    {
+      "name": "MCP Servers",
+      "detail": "1 servers (15 tokens, 0.0% of context)"
+    }
+  ],
+  "patterns_bad": [
+    {
+      "name": "No Codex Stop Hook",
+      "severity": "low",
+      "detail": "Automatic dashboard refresh and continuity checkpoints are not active",
+      "fix": "Run: python C:/Users/PC/.codex/.tmp/marketplaces/alexgreensh-token-optimizer/plugins/token-optimizer/skills/token-optimizer/scripts/measure.py --runtime codex codex-install --project .",
+      "savings": "Enables trends data for better coaching"
+    },
+    {
+      "name": "Verbose Skill Descriptions",
+      "severity": "low",
+      "detail": "37 skills have descriptions over 200 chars",
+      "fix": "Tighten descriptions to under 80 characters for efficiency",
+      "savings": "Minor per-skill, adds up with many skills"
+    },
+    {
+      "name": "Cache Hit Rate Dropping",
+      "severity": "medium",
+      "detail": "Cache hit rate fell from 94% to 70%. Lower cache = higher cost per turn",
+      "fix": "Check for new MCP servers or AGENTS.md changes that shift the stable prefix. Avoid tools that rewrite existing context",
+      "savings": "Cost impact depends on the session model and uncached input volume"
+    },
+    {
+      "name": "Many Low-Grade Sessions",
+      "severity": "medium",
+      "detail": "49% of recent sessions scored D or below",
+      "fix": "Focus on the longest sessions first. Quality degrades fastest after context passes 60%",
+      "savings": "Each grade improvement saves ~5-10% per session"
+    },
+    {
+      "name": "High Cost Per Session",
+      "severity": "medium",
+      "detail": "Estimated API-equivalent cost: $5.42/session ($216.92 across 40 sessions in 30 days); not a billing statement",
+      "fix": "Choose a lower reasoning effort or a smaller Codex model for simple tasks. Compact long sessions when needed",
+      "savings": "Not estimated: requires a measured model-routing or compression comparison"
+    }
+  ],
+  "questions": [],
+  "health_score": 62,
+  "focus_area": null,
+  "history": {
+    "quality_recent_avg": 57.4,
+    "quality_prior_avg": 44.3,
+    "duration_recent_avg": 20.5,
+    "duration_prior_avg": 239.6,
+    "multi_model_session_pct": 2.7,
+    "cache_hit_recent_avg": 0.701,
+    "cache_hit_prior_avg": 0.942,
+    "grade_d_pct_recent": 48.6,
+    "grade_distribution": {
+      "C": 11,
+      "B": 8,
+      "F": 2,
+      "D": 16
+    },
+    "total_cost_usd": 216.92,
+    "cost_per_session_usd": 5.4229,
+    "sessions_in_period": 40,
+    "quality_short_sessions": 59.3,
+    "quality_long_sessions": 35.0,
+    "optimal_session_hint": "Sessions under 60 min score significantly higher. Consider breaking long tasks into focused sessions"
+  },
+  "deterministic_candidates": {
+    "runtime": "codex",
+    "days": 30,
+    "basis": "measured on your transcripts",
+    "tokens_note": "Moving a step to code removes those turns; the saving is at most this much.",
+    "partial": false,
+    "candidates": [
+      {
+        "kind": "repeated_sequence",
+        "example": "exec() -> exec() -> request_user_input_async(questions=<list>) -> exec() -> exec() -> exec() -> exec() -> exec()",
+        "times_seen": 15,
+        "sessions_seen": 4,
+        "tokens": {
+          "input_tokens": 33845685,
+          "cache_read_tokens": 33719552,
+          "output_tokens": 98101,
+          "total_tokens": 33943786
+        },
+        "cost_usd": 7.7359,
+        "cost_complete": true,
+        "suggestion": "Wrap this exact sequence in one script (or a skill/hook that runs it) and let the model read only the result.",
+        "basis": "measured on your transcripts",
+        "sequence_length": 8
+      },
+      {
+        "kind": "repeated_sequence",
+        "example": "request_user_input_async(questions=<list>) -> exec() -> exec() -> exec() -> exec() -> exec() -> exec() -> exec()",
+        "times_seen": 14,
+        "sessions_seen": 4,
+        "tokens": {
+          "input_tokens": 33413359,
+          "cache_read_tokens": 33301376,
+          "output_tokens": 98942,
+          "total_tokens": 33512301
+        },
+        "cost_usd": 7.715,
+        "cost_complete": true,
+        "suggestion": "Wrap this exact sequence in one script (or a skill/hook that runs it) and let the model read only the result.",
+        "basis": "measured on your transcripts",
+        "sequence_length": 8
+      },
+      {
+        "kind": "repeated_sequence",
+        "example": "exec() -> request_user_input_async(questions=<list>) -> exec() -> exec() -> exec() -> exec() -> exec() -> exec()",
+        "times_seen": 14,
+        "sessions_seen": 4,
+        "tokens": {
+          "input_tokens": 33068940,
+          "cache_read_tokens": 32955520,
+          "output_tokens": 94510,
+          "total_tokens": 33163450
+        },
+        "cost_usd": 7.6288,
+        "cost_complete": true,
+        "suggestion": "Wrap this exact sequence in one script (or a skill/hook that runs it) and let the model read only the result.",
+        "basis": "measured on your transcripts",
+        "sequence_length": 8
+      },
+      {
+        "kind": "repeated_sequence",
+        "example": "exec() -> exec() -> exec() -> request_user_input_async(questions=<list>) -> exec() -> exec() -> exec() -> exec()",
+        "times_seen": 14,
+        "sessions_seen": 4,
+        "tokens": {
+          "input_tokens": 31156710,
+          "cache_read_tokens": 31036288,
+          "output_tokens": 92564,
+          "total_tokens": 31249274
+        },
+        "cost_usd": 7.0677,
+        "cost_complete": true,
+        "suggestion": "Wrap this exact sequence in one script (or a skill/hook that runs it) and let the model read only the result.",
+        "basis": "measured on your transcripts",
+        "sequence_length": 8
+      },
+      {
+        "kind": "repeated_sequence",
+        "example": "exec() -> exec() -> exec() -> exec() -> request_user_input_async(questions=<list>) -> exec() -> exec() -> exec()",
+        "times_seen": 12,
+        "sessions_seen": 4,
+        "tokens": {
+          "input_tokens": 26547794,
+          "cache_read_tokens": 26435200,
+          "output_tokens": 72774,
+          "total_tokens": 26620568
+        },
+        "cost_usd": 5.9152,
+        "cost_complete": true,
+        "suggestion": "Wrap this exact sequence in one script (or a skill/hook that runs it) and let the model read only the result.",
+        "basis": "measured on your transcripts",
+        "sequence_length": 8
+      },
+      {
+        "kind": "repeated_sequence",
+        "example": "exec() -> exec() -> exec() -> exec() -> exec() -> exec() -> request_user_input_async(questions=<list>) -> exec()",
+        "times_seen": 11,
+        "sessions_seen": 5,
+        "tokens": {
+          "input_tokens": 24233101,
+          "cache_read_tokens": 23763584,
+          "output_tokens": 63850,
+          "total_tokens": 24296951
+        },
+        "cost_usd": 6.7479,
+        "cost_complete": true,
+        "suggestion": "Wrap this exact sequence in one script (or a skill/hook that runs it) and let the model read only the result.",
+        "basis": "measured on your transcripts",
+        "sequence_length": 8
+      },
+      {
+        "kind": "repeated_sequence",
+        "example": "exec() -> exec() -> exec() -> exec() -> exec() -> request_user_input_async(questions=<list>) -> exec() -> exec()",
+        "times_seen": 11,
+        "sessions_seen": 4,
+        "tokens": {
+          "input_tokens": 23641047,
+          "cache_read_tokens": 23535744,
+          "output_tokens": 62965,
+          "total_tokens": 23704012
+        },
+        "cost_usd": 5.1313,
+        "cost_complete": true,
+        "suggestion": "Wrap this exact sequence in one script (or a skill/hook that runs it) and let the model read only the result.",
+        "basis": "measured on your transcripts",
+        "sequence_length": 8
+      },
+      {
+        "kind": "repeated_sequence",
+        "example": "exec() -> exec() -> exec() -> exec() -> exec() -> exec() -> exec() -> request_user_input_async(questions=<list>)",
+        "times_seen": 10,
+        "sessions_seen": 4,
+        "tokens": {
+          "input_tokens": 21090512,
+          "cache_read_tokens": 20643584,
+          "output_tokens": 65632,
+          "total_tokens": 21156144
+        },
+        "cost_usd": 6.0483,
+        "cost_complete": true,
+        "suggestion": "Wrap this exact sequence in one script (or a skill/hook that runs it) and let the model read only the result.",
+        "basis": "measured on your transcripts",
+        "sequence_length": 8
+      },
+      {
+        "kind": "repeated_sequence",
+        "example": "exec() -> request_user_input(questions=<list>) -> exec() -> exec() -> exec() -> exec() -> exec() -> exec()",
+        "times_seen": 4,
+        "sessions_seen": 4,
+        "tokens": {
+          "input_tokens": 10757698,
+          "cache_read_tokens": 10411520,
+          "output_tokens": 13114,
+          "total_tokens": 10770812
+        },
+        "cost_usd": 2.9931,
+        "cost_complete": true,
+        "suggestion": "Wrap this exact sequence in one script (or a skill/hook that runs it) and let the model read only the result.",
+        "basis": "measured on your transcripts",
+        "sequence_length": 8
+      },
+      {
+        "kind": "repeated_sequence",
+        "example": "exec() -> exec() -> request_user_input(questions=<list>) -> exec() -> exec() -> exec() -> exec() -> exec()",
+        "times_seen": 4,
+        "sessions_seen": 4,
+        "tokens": {
+          "input_tokens": 10609127,
+          "cache_read_tokens": 9932160,
+          "output_tokens": 12510,
+          "total_tokens": 10621637
+        },
+        "cost_usd": 4.1695,
+        "cost_complete": true,
+        "suggestion": "Wrap this exact sequence in one script (or a skill/hook that runs it) and let the model read only the result.",
+        "basis": "measured on your transcripts",
+        "sequence_length": 8
+      }
+    ],
+    "runtime_support": [
+      {
+        "runtime": "claude",
+        "measurable": true
+      },
+      {
+        "runtime": "codex",
+        "measurable": true
+      },
+      {
+        "runtime": "opencode",
+        "measurable": false,
+        "reason": "not measurable on opencode: OpenCode runs Token Optimizer as a native TypeScript plugin; measure.py has no reader for its session store"
+      },
+      {
+        "runtime": "copilot",
+        "measurable": false,
+        "reason": "not measurable on copilot: Copilot adapters keep tool-call counts and names, not ordered tool inputs"
+      },
+      {
+        "runtime": "hermes",
+        "measurable": false,
+        "reason": "not measurable on hermes: Hermes sessions are read from state.db, which keeps a tool-call count, not ordered tool inputs"
+      },
+      {
+        "runtime": "cursor",
+        "measurable": false,
+        "reason": "not measurable on cursor: Cursor sessions are read from a hook tally of tool counts, not ordered tool inputs"
+      },
+      {
+        "runtime": "antigravity",
+        "measurable": false,
+        "reason": "not measurable on antigravity: Antigravity sessions are read from a conversation store that keeps a tool-call count, not ordered tool inputs"
+      },
+      {
+        "runtime": "grok",
+        "measurable": false,
+        "reason": "not measurable on grok: Grok Build sessions keep a tool-call count, not ordered tool inputs"
+      },
+      {
+        "runtime": "pi",
+        "measurable": false,
+        "reason": "not measurable on pi: Pi runs Token Optimizer as a native TypeScript extension; measure.py has no reader for its session store"
+      }
+    ],
+    "sessions_not_scanned_cap": 35,
+    "status": "ok",
+    "totals": {
+      "input_tokens": 68768794,
+      "cache_read_tokens": 67502080,
+      "output_tokens": 200765,
+      "total_tokens": 68969559,
+      "cost_usd": 18.8663,
+      "cost_complete": true,
+      "turns": 236
+    },
+    "sessions_scanned": 60,
+    "sessions_found": 95,
+    "elapsed_s": 0.34,
+    "cached": false,
+    "summary": "Deterministic candidates: 10 workflow pattern(s) that could be plain code; the turns that ran them used 68,969,559 tokens (~$18.87 API-equivalent) (last 30d, 60 sessions; measured on your transcripts). Top: repeated_sequence x15: exec() -> exec() -> request_user_input_async(questions=<list>) -> exec() -> exec"
+  },
+  "subagent_cache": {
+    "state": "platform-gap",
+    "set_by": null,
+    "payoff": null,
+    "recommendation": null,
+    "hint": null,
+    "reason": "not Claude Code (Cowork and other runtimes are a documented no-op)",
+    "estimate": true
+  }
+}

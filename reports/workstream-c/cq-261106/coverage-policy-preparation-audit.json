@@ -1,0 +1,14 @@
+{
+  "status": "preparation ready; actual quality unverified",
+  "full_suite": "1562passed14warnings450.53seconds;50174terminalexit0",
+  "tested_source_count": 204,
+  "source_drift": [],
+  "contract_sha256": "b4a72910c7dae180d6ca894bcc7aecb1acfc50a33a0736a7480b31a13c3248c1",
+  "contract_frozen_files": 105,
+  "failed_actual_batches_preserved": true,
+  "reserved_package_preserved": true,
+  "r07_preserved": true,
+  "CQ1content_preserved": true,
+  "new_run_directory_created": false,
+  "new_grant": null
+}

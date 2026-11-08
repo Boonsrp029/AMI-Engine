@@ -1,0 +1,18 @@
+F..                                                                      [100%]
+================================== FAILURES ===================================
+_______ test_corpus_relationship_substitution_cannot_publish[geography] _______
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/c-corpus-scope/test_corpus_relationship_subst0')
+mode = 'geography'
+
+    @pytest.mark.parametrize("mode", ["quantity", "period", "measure", "basis", "geography", "invalid_source", "lost_provenance"])
+    def test_corpus_relationship_substitution_cannot_publish(tmp_path, mode):
+        path, plan, store, rid = setup_corpus(tmp_path)
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests\test_subtask_corpus_synthesis.py:116: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_subtask_corpus_synthesis.py::test_corpus_relationship_substitution_cannot_publish[geography]
+1 failed, 2 passed, 8 deselected in 14.33s

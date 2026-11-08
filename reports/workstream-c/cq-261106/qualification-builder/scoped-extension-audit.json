@@ -1,0 +1,19 @@
+{
+  "status": "offline scoped compiler preparation complete; generation explicitly held",
+  "held_development_contract_sha256": "f5eb8a4de2eecf482746e5e513525ceeef4e37fc951b8d1e43506c2780391405",
+  "all_frozen_inputs_unchanged": 106,
+  "library_runtime_changes": false,
+  "compiler_checks": "19passed8.77seconds plus1positive_scoped1.42seconds;20distinct checks",
+  "real_compilation": "refused: two passing current development results/assessments missing",
+  "real_CQ1_contract_created": false,
+  "actual_model_calls": 0,
+  "CQ1attempted": 0,
+  "scope_semantics": "not established by structural checks",
+  "original_compiler_backups": "scoped-extension-baseline/manifest.json",
+  "sha256": {
+    "build_qualification.py": "232c0508fa09de9e20f4d2519760cac84be0e93fbc30e99a1a1c9d9905ebe706",
+    "test_scoped_builder.py": "3661fa2b21c177d82a424de9843d0c455a9694e170f865dd35c5dd161f35070b",
+    "scoped-compiler-tests.txt": "dd7ceb2087518c90933096c565c4214d9e9cc4726f0537db0ddbfd11238c2536",
+    "scoped-positive-compilation.txt": "5f72f51082fc7d06427c800498649ed4bc21a73bb1ea94d18bbce2332d0227f5"
+  }
+}

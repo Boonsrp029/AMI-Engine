@@ -1,0 +1,59 @@
+{
+  "protocol_id": "concurrent-development-v6-decoder-coverage",
+  "status": "prepared only; execution grant absent",
+  "purpose": "Actual local span-selection/composition quality after bounded corpus retrieval, with C typed lineage and final local NeMo through A owned runner",
+  "case_order": [
+    "cq-p01",
+    "cq-p02"
+  ],
+  "case_acceptance": {
+    "cq-p01": [
+      "Answer both requested measures and periods with exact source identities.",
+      "Never put 5.7% in the Japan forecast unit.",
+      "Retain Canada/Japan, 2016/2036 and observation/projection distinctions.",
+      "Retain unit/component/subtask/child-attempt/source/corpus lineage.",
+      "Report raw completeness and final completeness separately; no editorial rescue."
+    ],
+    "cq-p02": [
+      "Retain Denmark wind 29%, total electricity generation denominator and 2015.",
+      "Explicitly state supplied evidence lacks requested yesterday retail electricity prices.",
+      "Do not substitute generation share for a dated retail price.",
+      "Completed missing required branch remains visible; preserve supported partial answer."
+    ]
+  },
+  "limits": {
+    "case_attempts": 2,
+    "main_calls_total": 8,
+    "nemo_invocations_total": 2,
+    "seconds_per_case": 180,
+    "automatic_retries": 0,
+    "retrieval_concurrency": 2,
+    "inference_concurrency": 1,
+    "hosted_inference": false,
+    "ragas": false
+  },
+  "stop": "Stop and close at first technical, source-support/completeness, safety, identity, context or budget failure. No tuning, case substitution, repair or retries within the batch. Case2 requires immutable passing source assessment of case1.",
+  "source_review": "Record source/exact span, correct measures/units/dates/geography/denominators and observation/basis for every claim. Assess missing facts against supplied evidence. Record raw support/completeness separately from application fallback; editorial corrections cannot count as success.",
+  "human_review": "Assistant source assessment gates advancement. New assessable outputs need explicit owner review before owner-acceptance claims. Technical failures do not request repeated human scoring. No stored approval/export is authorized.",
+  "conditional_qualification": "CQ1 predeclared content/plans remain separate. Twenty-case execution requires both diagnostics to pass plus applicable matching authorization and QualificationLedger admission. This development grant alone cannot execute CQ1.",
+  "unavailable_measurements": [
+    "internal NeMo request/token totals where not exposed",
+    "energy/hardware cost",
+    "monetary cost"
+  ],
+  "preservation": "Old r07 remains failed/consumed. Old nineteen reserved cases and source snapshots remain unchanged; they are not used for tuning.",
+  "usage": "At standing90percent threshold save exact handoff and pause. Shared usage reading currently unavailable; do not invent it.",
+  "prior_batch_assessment": "reports\\workstream-c\\concurrent-qualification-2026-11-06\\interruption-assessment-v1.json",
+  "prior_batch_sha256": "3dc1b036e3b408bb76ef288ad81361a258369c822944d97c7cf205179d3f30e4",
+  "development_freshness": "Both cases are development evidence. cq-p01 has retained failed/interrupted attempts and was used for diagnosis; never count it as unseen.",
+  "repair": "Supported-state provenance cover prefix; every eligible span remains a choice. Partial/missing/conflict alternatives and application guard remain.",
+  "prior_failure_sha256": "7d5130c7143cbb4190f85e7637dad9b681f4dc577de83a0289a615e04ed911ef",
+  "freshness": "Both diagnostics are development evidence; cq-p01 was inspected after prior failure and cannot be counted as unseen.",
+  "context_policy": "Message content plus256framing+900completion <=4096. Explicit json_schema format grammar is separate from prompt; record its size and latency, do not hide resource failures.",
+  "mapping_version": "cq-mapper-v5-decoder-coverage",
+  "changes": [
+    "Private supported wire now uses a deterministic coverage prefix with optional distinct extra spans.",
+    "Shared/overlapping origins use minimal covers without duplicate forced citations.",
+    "Grammar size is separate from message context; real compatibility and latency are unverified."
+  ]
+}

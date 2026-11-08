@@ -1,0 +1,28 @@
+{
+  "result_sha256": "67c21c31374ab843b15aa3b3d07e47f9df736ac41f53536d9a31f38ca0561d50",
+  "verdict": "pass",
+  "assessor": "assistant; awaiting owner source/wording adjudication",
+  "source_findings": [
+    "cq-observed exact quotation supports Canada, observed demand growth5.7percent and2016; no relative comparison introduced.",
+    "cq-projected exact quotation supports Japan, projected demand growth2.6percentannually through2036; observation/projection and unit identities retained.",
+    "Both raw/final claims are complete for the supplied synthetic question, no fallback/editorial correction, neutral two-country title and no misleading warning.",
+    "One actual NeMo invocation passed; reopened SQLite contains revision1 needs_review, exact draft/sources/lineage, zero reviews/exports."
+  ],
+  "raw_supported": true,
+  "raw_complete": true,
+  "final_supported": true,
+  "final_complete": true,
+  "title_scope_pass": true,
+  "safety_pass": true,
+  "persistence_pass": true,
+  "fallback_used": false,
+  "owner_verdict": "pending",
+  "owner_reference": "",
+  "synthetic_development_only": true,
+  "wall_elapsed_seconds": 71.89100000000326,
+  "application_elapsed_seconds": 55.375,
+  "read_only_database_check": {
+    "reviews": 0,
+    "exports": 0
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "ami-d-integrated-windows-rc-v1",
+  "date": "2026-11-06",
+  "recorded_at": "2026-11-06T08:24:19.801902+00:00",
+  "status": "passed",
+  "execution": "fresh full Windows offline suite including integrated F additions; supersedes source-scope of historical E reuse",
+  "python": "3.12.10",
+  "git_head_before": "9b5e665ede286409346de0759c19e6fe5b231b34",
+  "git_head_after": "9b5e665ede286409346de0759c19e6fe5b231b34",
+  "passed": 1503,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "deselected": 0,
+  "warnings": 14,
+  "seconds": 464.02,
+  "exit_code": 0,
+  "session": "92659 terminal0; historical handle",
+  "snapshot": {
+    "files": 252,
+    "before": "source-before.json",
+    "after": "source-after.json",
+    "sha256": "6796fbe5fa6d1bf4f5563a58600b880700eda811ab55b6dff3267a437cb8b130",
+    "changed": [],
+    "added": [],
+    "deleted": [],
+    "documentation_and_report_edits_excluded": true,
+    "logical_LF_json_sha256": "80bd4341ddfca545ab55326fe867eeb6252a918db3ec38def79cce1f4b9d3c77",
+    "hash_format_note": "hash-format-note.json"
+  },
+  "artifacts": {
+    "log": {
+      "path": "pytest.txt",
+      "sha256": "468b30225cb75a88ab8376bcd7436ee3db2c2955ca378ab0e345225460d518a4"
+    },
+    "junit": {
+      "path": "junit.xml",
+      "sha256": "c1380f970fe2d41bb6d495738b5a249a59e913186211717d8822b8d53873376b",
+      "counts": {
+        "tests": 1503,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  },
+  "dependency_manifest_sha256": {
+    "constraints-pilot.txt": "267aab0f6a0601605fa33532f94f091809866429f340c55b335e4ecd22015836",
+    "requirements-etl.txt": "6d987c055f02ff572fc60c1cf87a922fe573ff417641307700d1b3fa6fddee1b",
+    "requirements-serving.txt": "b9f8abc4b20928e4351088a14e17a2a94f6322499fbd794d5ef3ec320bc4e7be",
+    "requirements.txt": "4bc238785549332a1196ab5954f996890ed12b1370c1834f396ede567af64726"
+  },
+  "scope_notes": [
+    "1503 is 1499 original baseline plus 4 F release-context tests; helper138 overlaps and is not added",
+    "No production-source edits by D",
+    "No inference/live endpoints/publication/deployment",
+    "F owns full Linux/container/build/smoke and later packaging evidence",
+    "No model quality, independent usefulness, remote CI or production qualification implied"
+  ],
+  "diff_check": "passed; Git line-ending conversion notices only"
+}

@@ -47,11 +47,13 @@ class RuntimeLease:
 
 
 class ProcessRuntime:
-    def __init__(self, store, corpus_path, corpus_sha, *, deadline_seconds=180, worker=run):
+    def __init__(self, store, corpus_path, corpus_sha, *, deadline_seconds=180, worker=run,
+                 subtask_executor=None):
         if not 0 < deadline_seconds <= 180:
             raise ValueError("Execution deadline must be positive and no greater than 180 seconds")
         self.store, self.corpus_path, self.corpus_sha = store, str(Path(corpus_path).resolve()), corpus_sha
         self.deadline_seconds, self.worker = deadline_seconds, worker
+        self.subtask_executor = subtask_executor
         self.context = multiprocessing.get_context("spawn")
         self.lease = RuntimeLease(store.path)
         self.stopping, self.wake = threading.Event(), threading.Event()
@@ -89,7 +91,9 @@ class ProcessRuntime:
         with self.lock:
             elapsed = time.monotonic() - self.active["started"] if self.active and self.active["run_id"] == run_id else None
             attempt_id = self.store.cancel(run_id, elapsed_seconds=elapsed)
-            if self.active and self.active["run_id"] == run_id and self.active["attempt_id"] == attempt_id:
+            if (self.active and self.active["run_id"] == run_id
+                    and self.active.get("workflow") != "bounded_subtasks"
+                    and self.active["attempt_id"] == attempt_id):
                 self.stop_process(self.active["process"])
         self.wake.set()
 
@@ -101,8 +105,14 @@ class ProcessRuntime:
         with self.lock:
             if self.active:
                 active = self.active
-                self.stop_process(active["process"])
-                self.store.finish_attempt(active["run_id"], active["attempt_id"], "shutdown", time.monotonic() - active["started"])
+                if active.get("workflow") == "bounded_subtasks":
+                    try:
+                        self.store.cancel(active["run_id"], elapsed_seconds=time.monotonic() - active["started"])
+                    except Conflict:
+                        pass
+                else:
+                    self.stop_process(active["process"])
+                    self.store.finish_attempt(active["run_id"], active["attempt_id"], "shutdown", time.monotonic() - active["started"])
         if self.thread is not None:
             self.thread.join(timeout=10)
             if self.thread.is_alive():
@@ -112,7 +122,7 @@ class ProcessRuntime:
 
     def dispatch(self):
         while not self.stopping.is_set():
-            pending = self.store.next_queued()
+            pending = self.store.next_queued(include_subtasks=self.subtask_executor is not None)
             if pending is None:
                 self.wake.wait(0.2)
                 self.wake.clear()
@@ -125,6 +135,8 @@ class ProcessRuntime:
                 break
 
     def execute(self, pending):
+        if pending.get("workflow") == "bounded_subtasks":
+            return self.execute_subtask(pending)
         run_id, attempt_id = pending["id"], uuid.uuid4().hex
         started = time.monotonic()
         receiver, sender = self.context.Pipe(duplex=False)
@@ -223,4 +235,37 @@ class ProcessRuntime:
                 self.store.finish_attempt(run_id, attempt_id, reason, time.monotonic() - started)
             with self.lock:
                 if self.active and self.active["attempt_id"] == attempt_id:
+                    self.active = None
+
+    def execute_subtask(self, pending):
+        """Dispatch a persisted plan through the configured owned-runner adapter."""
+        if self.subtask_executor is None:
+            return
+        run_id = pending["id"]
+        started = time.monotonic()
+        with self.lock:
+            if self.stopping.is_set():
+                return
+            self.active = {"run_id": run_id, "attempt_id": None, "process": None,
+                           "started": started, "workflow": "bounded_subtasks"}
+        try:
+            plan = self.store.subtask_plan(run_id)
+            if pending["corpus_sha"] != self.corpus_sha:
+                raise Conflict("Subtask corpus differs from configured corpus")
+            self.subtask_executor.execute(self.store, run_id, plan, self.corpus_path,
+                                          lease=self.lease)
+        except Conflict as exc:
+            # Cancellation or a stale parent fence wins over buffered child work.
+            try:
+                if self.store.get(run_id)["status"] == "queued":
+                    self.store.fail_queued(run_id, type(exc).__name__)
+            except (KeyError, Conflict):
+                pass
+        except Exception as exc:
+            # Runner failures normally finish their own claimed attempt. A plan
+            # that cannot even be loaded/started is failed while still queued.
+            self.store.fail_queued(run_id, type(exc).__name__)
+        finally:
+            with self.lock:
+                if self.active and self.active["run_id"] == run_id and self.active.get("workflow") == "bounded_subtasks":
                     self.active = None

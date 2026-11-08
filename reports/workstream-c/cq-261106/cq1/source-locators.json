@@ -1,0 +1,24 @@
+[
+  {
+    "source_id": "eia-generation-2023",
+    "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+    "snapshot_text": "eia-generation.txt",
+    "snapshot_sha256": "589bd0fb1cc81aed2717f51c4535ab6aaf18e327aac96c6c9c94248c135d0b3a",
+    "character_start": 442,
+    "character_end": 3012,
+    "line_start_one_based": 17,
+    "line_end_one_based": 117,
+    "page_num": null
+  },
+  {
+    "source_id": "eia-measurement",
+    "url": "https://www.eia.gov/energyexplained/electricity/measuring-electricity.php",
+    "snapshot_text": "eia-measuring.txt",
+    "snapshot_sha256": "f6c38739b230c14602c34875f2a2c0a6addd107d02af853e25941c8e65368f39",
+    "character_start": 5257,
+    "character_end": 7028,
+    "line_start_one_based": 273,
+    "line_end_one_based": 284,
+    "page_num": null
+  }
+]

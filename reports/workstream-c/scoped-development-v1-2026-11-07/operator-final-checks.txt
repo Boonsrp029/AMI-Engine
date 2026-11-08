@@ -1,0 +1,9 @@
+test_exhausted_preparation_budget_never_launches (__main__.Checks.test_exhausted_preparation_budget_never_launches) ... ok
+test_missing_or_wrong_grant_never_launches (__main__.Checks.test_missing_or_wrong_grant_never_launches) ... ok
+test_once_only_success_preserves_source_review_gate (__main__.Checks.test_once_only_success_preserves_source_review_gate) ... ok
+test_timeout_closes_and_never_restarts (__main__.Checks.test_timeout_closes_and_never_restarts) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.022s
+
+OK

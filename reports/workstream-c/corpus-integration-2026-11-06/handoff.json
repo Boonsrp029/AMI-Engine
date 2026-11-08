@@ -1,0 +1,17 @@
+{
+  "status": "complete_corpus_backed_offline_integration",
+  "owned_files": [
+    "tests/test_subtask_corpus_synthesis.py",
+    "docs/concurrency/c-corpus-integration.md"
+  ],
+  "initial_checks": "8passed29.28seconds",
+  "adversarial_checks": "1failed2passed; geography substitution accepted; source identity and lost provenance rejected",
+  "next": "No remaining offline integration work under this Goal. Fresh model diagnostics require separate applicable purpose/scope/budget authorization; semantic acceptance and production qualification remain separate.",
+  "generation_calls": 0,
+  "live_sessions": [],
+  "current_checks": "81passed1fixture-assertionfailure74.79sec; corrected event-name assertion and new denominator test:7passed6.63sec",
+  "active_session": null,
+  "active_log": "reports/workstream-c/corpus-integration-2026-11-06/integrated-full.txt",
+  "full_suite": "1487passed15warnings422.52seconds;terminalexit0",
+  "source_drift": "none across183pinnedfiles"
+}

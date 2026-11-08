@@ -1,0 +1,7 @@
+{
+  "validated_report": "Canada had 5.7% more observed electricity demand in 2016.",
+  "passed_guardrails": true,
+  "raw_output": "Canada had 5.7% more observed electricity demand in 2016.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

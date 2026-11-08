@@ -1,0 +1,14 @@
+[
+  {
+    "case_id": "cq-p01",
+    "conservative_mapping_budget": 2206,
+    "max": 4096,
+    "generation_calls": 0
+  },
+  {
+    "case_id": "cq-p02",
+    "conservative_mapping_budget": 2127,
+    "max": 4096,
+    "generation_calls": 0
+  }
+]

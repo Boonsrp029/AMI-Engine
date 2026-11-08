@@ -1,0 +1,18 @@
+{
+  "reports\\workstream-f\\rc-2026-11-06\\release-candidate-verification.json": "fd805f7a14425b1849d68fb7fe1cf561c3d1b12553cac746003a73c5b61a1bae",
+  "reports\\workstream-f\\rc-2026-11-06\\publication-review.json": "dcaa612fa666c9af4e4608547987ecacdc841181372f6e8b113b269543d9b92f",
+  ".ci-artifacts\\f-rc-final\\source.json": "c00ae1b0d7f1869b43e9438981cece449186a4ef02f338fd0aa5fa3aa6247e5a",
+  ".ci-artifacts\\f-rc-final\\build-status.json": "c79543ef6f17483d1db255b43e39a1544a1bea161680686bf09e5a1f09f23d7f",
+  ".ci-artifacts\\f-rc-final\\image-inspect.json": "433ea336072027fa11132b10a82cf47c3b0df30dc4b07756df8eebbbd92777d7",
+  ".ci-artifacts\\f-rc-final\\dependencies.json": "77a01bff145cb04837bae822281bee0729333debd384e5d5366ee254c5c10240",
+  ".ci-artifacts\\f-linux-final\\result.json": "f63ae567b7f24351a9cec7483c654c2adfcc744a012991fb17abe73ac399245b",
+  ".ci-artifacts\\f-linux-final\\linux-pytest.txt": "82f05c860860d864b2add63a2ec14d6af3ff545e7846c62814e2b9a997ca1e7d",
+  ".ci-artifacts\\f-sequential-final\\container-smoke.json": "7ef832017f5931b6fed77e9541afccb46c0244b60215863a222b654aa857f9fa",
+  ".ci-artifacts\\f-concurrent-final\\result.json": "65e75f6d76acfec94cfae45a3d7da055cf13e1fee02b64445547eb16f3e47350",
+  "reports\\workstream-d\\release-candidate-2026-11-06\\integrated-final\\verification.json": "715a10f3c7b9b107765186a4699e104d43f1bce55e8f052d01ca6ea674c1d8dc",
+  "reports\\workstream-d\\release-candidate-2026-11-06\\integrated-final\\junit.xml": "c1380f970fe2d41bb6d495738b5a249a59e913186211717d8822b8d53873376b",
+  "reports\\workstream-d\\release-candidate-2026-11-06\\integrated-final\\pytest.txt": "468b30225cb75a88ab8376bcd7436ee3db2c2955ca378ab0e345225460d518a4",
+  "reports\\workstream-d\\release-candidate-2026-11-06\\integrated-final\\source-after.json": "6796fbe5fa6d1bf4f5563a58600b880700eda811ab55b6dff3267a437cb8b130",
+  "docs\\release\\local-candidate.md": "08c9bd10632430cc7adbe26c719aa8bd1dc238edddfaa588f731e8dcb9e6ee98",
+  "docs\\release\\candidate-verification.json": "e2134b41c972c808110f7f6bd123acc81dcd7a97796362a187ccff06cd03a796"
+}

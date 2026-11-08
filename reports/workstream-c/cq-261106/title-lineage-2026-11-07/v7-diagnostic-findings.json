@@ -1,0 +1,102 @@
+{
+  "status": "v7 stopped at cq-p02; allowance closed; two-case gate not passed",
+  "contract_sha256": "63aadb35493d68c78e2988c8e675ffb5ee5769ae9ff0a92e8daaf6a6da8ed92f",
+  "development_planned": 2,
+  "development_attempted": 2,
+  "assistant_passed": [
+    "cq-p01"
+  ],
+  "failed": [
+    "cq-p02"
+  ],
+  "unattempted": [],
+  "cq_p01": {
+    "technical_pass": true,
+    "source_complete": true,
+    "raw_complete": true,
+    "fallback": false,
+    "title": "neutral; mapper global geography unresolved, suppression branch not exercised by this actual case",
+    "safety": "one actual NeMo PASSED",
+    "persistence": "revision1 needs_review reopened read-only; zero reviews/exports",
+    "owner_verdict": "pending",
+    "application_seconds": 55.375,
+    "wall_seconds": 71.89100000000326
+  },
+  "cq_p02": {
+    "technical_pass": false,
+    "phase": "mapping",
+    "raw_status": "partial",
+    "evidence": "correct supported wind span selected; retail-price branch correctly returned missing",
+    "defect": "gap_anchor copies the supported source sentence instead of the unresolved question fragment",
+    "confirmed_error": "Evidence mapping gap anchor is not in the question",
+    "composition_requests": 0,
+    "nemo_invocations": 0,
+    "saved_revision": 0,
+    "application_seconds": 16.014999999984866,
+    "wall_seconds": 17.34399999998277
+  },
+  "main_requests": 3,
+  "nemo_invocations": 1,
+  "known_main_usage": {
+    "input_tokens": 1806,
+    "output_tokens": 401,
+    "total_tokens": 2207
+  },
+  "responses": [
+    {
+      "case_id": "cq-p01",
+      "stage": "mapping",
+      "usage": {
+        "input_tokens": 602,
+        "output_tokens": 141,
+        "total_tokens": 743
+      },
+      "finish_reason": "stop"
+    },
+    {
+      "case_id": "cq-p01",
+      "stage": "composition",
+      "usage": {
+        "input_tokens": 686,
+        "output_tokens": 115,
+        "total_tokens": 801
+      },
+      "finish_reason": "stop"
+    },
+    {
+      "case_id": "cq-p02",
+      "stage": "mapping",
+      "usage": {
+        "input_tokens": 518,
+        "output_tokens": 145,
+        "total_tokens": 663
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "incomplete_usage": "NeMo internal request/token counts; historical interrupted request; monetary/hardware costs",
+  "CQ1attempted": 0,
+  "CQ1unattempted": 20,
+  "approvals_created": 0,
+  "exports_created": 0,
+  "new_calls_for_diagnosis": 0,
+  "inputs_unchanged_through_batch": true,
+  "output_hashes": {
+    "cq-p01.assessment.json": "5b89d9a3ccf2ce4a053380d961ca5f37696e336def8945fe6dbe21d425087c01",
+    "cq-p01.composition.raw.json": "9b1c72b6e57bc8a45bf896d311e76fe43bc5ebccede7c6fa40ae48224f94d597",
+    "cq-p01.mapping.raw.json": "0b50f01cbd444f97549001d90951494a15af473e5174b0231bda287f4fc3d834",
+    "cq-p01.result.json": "67c21c31374ab843b15aa3b3d07e47f9df736ac41f53536d9a31f38ca0561d50",
+    "cq-p01.review.json": "13373bf850e1caf343fd3909584509dea0b179abe2698532df89555790ab0ae4",
+    "cq-p01.safety.json": "a4dbf0d4fb04155d8d4e25883cb02e5895bd0b77f2b86fa47605b0a91b5196f0",
+    "cq-p01.sqlite3": "905a0f4721a58abf5b985fea3c34bb09d7880e3e08e695a59c4f81a0d3f0dd44",
+    "cq-p01.sqlite3.runtime.lock": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+    "cq-p01.started.json": "71df2caf02ae31237d2e1d146e59bf5a1c3caddd68ac17db8c36936d4649b086",
+    "cq-p02.mapping.raw.json": "9f23d4cc197d0adc70216e0fa0c5181948a288e89973dba1573f44abc0955600",
+    "cq-p02.result.json": "1ce7c755d9c1fc27b24865e05fe1148c7157cdae52a447b27fd6328ce2cc546b",
+    "cq-p02.sqlite3": "72c78739e3efa065a4dc77e8f49a36ccec41a097054e78224c43015f59826963",
+    "cq-p02.sqlite3.runtime.lock": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+    "cq-p02.started.json": "5a81e5c1aaeef0bc62f45366bd2b70fa444e50677a4060163144289485334628",
+    "stopped.json": "3b4d71441828f5e10dae0ab062fa0d64ced615dfdc2e0cf270a5084394ab89a6"
+  },
+  "next": "Offline bounded question-fragment decoder design for partial/conflicting anchors; do not relax validation, fill omitted fields or repair the saved response. No further inference without a new grant."
+}

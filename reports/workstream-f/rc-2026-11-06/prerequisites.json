@@ -1,0 +1,36 @@
+{
+  "build_host": [
+    "Git",
+    "Python3.12.10",
+    "DockerLinuxEngine"
+  ],
+  "model": {
+    "provider": "ollama",
+    "tag": "ami-llama3.1:8b-4k",
+    "historical_digest_reference": "6f3154f347c4f96858a9f259e64d96b2675f4cb2f4894b2d9714fb0752aecc23",
+    "current_server_verified": false,
+    "context": 4096,
+    "completion": 900,
+    "temperature": 0,
+    "generation_held": true
+  },
+  "corpus": {
+    "mount": "/data/market_chunks.json",
+    "mode": "read-only",
+    "operator_supplied_required": true,
+    "offline_smoke_fixture_sha256": "842348c1f735229734777987a5e03e7500093a3551de6a17fd90779bcdb09641"
+  },
+  "storage": {
+    "path": "/state/pilot.sqlite3",
+    "durable_named_volume": true,
+    "uid_gid": "10001:10001",
+    "owner_history_not_baked_in": true
+  },
+  "workflows": {
+    "default": "sequential browser",
+    "optin": "explicit Plan / trusted spawn-compatible callbacks",
+    "inference_concurrency": 1,
+    "retrieval_concurrency_cap": 2,
+    "public_browser_activation_automatic": false
+  }
+}

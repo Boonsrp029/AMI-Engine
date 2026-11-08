@@ -1,0 +1,14 @@
+{
+  "offline_suite": "1570 passed,14 warnings,451.25seconds; terminal exit0",
+  "targeted": "34passed",
+  "frozen_contract_inputs_checked": 112,
+  "contract_sha256": "008983029a7b3d7b1523b680fe80b1c909d484821bb2b8904228ef0091bf85c8",
+  "v5_actual_artifacts_unchanged": true,
+  "generation_calls_this_repair": 0,
+  "new_grant_exists": false,
+  "new_output_directory_exists": false,
+  "owner_acceptance": "pending new assessable outputs",
+  "actual_quality": "v5 failed; repaired decoder unverified",
+  "production_qualification": "not established",
+  "usage": "five-hour reading unavailable"
+}

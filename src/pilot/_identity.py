@@ -48,9 +48,13 @@ def allowed(role, method, path):
     if method == "GET" and (path in {"/api/session", "/api/runs"}
                             or re.fullmatch(r"/api/runs/[a-f0-9]{32}(?:/progress)?", path)):
         return True
+    if method == "GET" and re.fullmatch(r"/api/runs/by-request/[\w-]{8,100}", path):
+        return role in {"analyst", "operator"}
     if method == "GET" and re.fullmatch(r"/api/runs/[a-f0-9]{32}/export", path):
         return role in {"analyst", "reviewer", "operator"}
     if method == "POST" and path == "/api/runs":
+        return role in {"analyst", "operator"}
+    if method == "POST" and path == "/api/runs/subtasks":
         return role in {"analyst", "operator"}
     if method == "POST" and re.fullmatch(r"/api/runs/[a-f0-9]{32}/review", path):
         return role in {"reviewer", "operator"}

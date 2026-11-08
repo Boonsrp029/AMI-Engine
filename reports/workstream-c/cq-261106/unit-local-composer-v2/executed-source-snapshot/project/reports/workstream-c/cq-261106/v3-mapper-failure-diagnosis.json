@@ -1,0 +1,51 @@
+{
+  "classification": "actual mapper schema-contract failure; final answer/source quality unqualified",
+  "raw_json_valid": true,
+  "finish_reason": "stop",
+  "schema_errors": [
+    {
+      "loc": [
+        "components",
+        0
+      ],
+      "type": "value_error",
+      "message": "Value error, Supported evidence cannot contain a gap anchor"
+    }
+  ],
+  "selected_evidence": [
+    {
+      "component_id": "r1",
+      "span_id": "s_e1d4995121a522b8",
+      "source_id": "cq-observed",
+      "text": "In Canada, observed electricity demand grew 5.7% in 2016.",
+      "known_span": true
+    }
+  ],
+  "known_usage": {
+    "input_tokens": 471,
+    "output_tokens": 141,
+    "total_tokens": 612
+  },
+  "model_load_seconds": 14.1053959,
+  "model_total_seconds": 42.1685917,
+  "wall_elapsed_seconds": 57.04700000000594,
+  "main_calls": 1,
+  "nemo_invocations": 0,
+  "development_planned": 2,
+  "development_attempted": [
+    "cq-p01"
+  ],
+  "development_unattempted": [
+    "cq-p02"
+  ],
+  "cq1_attempted": 0,
+  "cq1_unattempted": 20,
+  "grant_status": "closed at first failure; no retry or tuning within batch",
+  "evidence_sha256": {
+    "cq-p01.mapping.raw.json": "fde08912907de7cb8c08e452abe29436eb9a2dc7f31eafee2e2833e00fe3de37",
+    "cq-p01.result.json": "708169a113a792f7f7139ba45c55f73c10320ad039f7392edf5f231cde8efe00",
+    "cq-p01.started.json": "ef49fc866fe7ae76c2a42314cc9ef18765722f3cc0ff0a236b8fe005823cba50",
+    "stopped.json": "2768471f80ee3c2130ae5caca75836e102422ad17f2253fa90b32c5e84885a31"
+  },
+  "network_during_diagnosis": "blocked"
+}

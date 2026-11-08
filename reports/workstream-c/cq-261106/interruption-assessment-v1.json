@@ -1,0 +1,26 @@
+{
+  "status": "owner-interrupted; not a model/source quality verdict",
+  "result_sha256": "1021859bbee59cd3cf001b04b4c1ce836fdaa5c842bb07472dac2d841d4d6a06",
+  "technical_pass": false,
+  "main_requests_started": 1,
+  "raw_responses_captured": 0,
+  "nemo_invocations": 0,
+  "elapsed_seconds": 52.171999999991385,
+  "retrieval_branches_completed": [
+    "s01",
+    "s02"
+  ],
+  "draft_revision": 0,
+  "source_support": "unassessable; no generated response retained",
+  "internal_usage_and_backend_cancellation": "unknown; owned execution process terminated, not proof of backend inference cancellation",
+  "development_planned": 2,
+  "development_attempted": [
+    "cq-p01"
+  ],
+  "development_unattempted": [
+    "cq-p02"
+  ],
+  "qualification_attempted": 0,
+  "qualification_unattempted": 20,
+  "grant_status": "closed on interrupted first attempt; no unused allowance reused"
+}

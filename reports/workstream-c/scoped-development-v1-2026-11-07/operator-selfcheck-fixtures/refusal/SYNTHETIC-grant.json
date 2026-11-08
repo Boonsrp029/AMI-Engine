@@ -1,0 +1,1 @@
+{"contract_sha256": "ced6ba3a520a47932917c6b2556a0966a60a2289ed9d851ef6b44ced43d8d8b1", "case_ids": ["cq-p01", "cq-p02"], "limits": {"main_calls_per_case": 4, "nemo_per_case": 1, "seconds_per_case": 180, "retries": 0}, "authorization_reference": null, "human_reply": "SYNTHETIC TEST ONLY"}

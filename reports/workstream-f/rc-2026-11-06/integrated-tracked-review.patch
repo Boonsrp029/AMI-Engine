@@ -1,0 +1,851 @@
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index 8b6518b..10f968d 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -20,9 +20,8 @@ jobs:
+       - uses: actions/checkout@v4
+       - uses: actions/setup-python@v5
+         with:
+-          python-version: "3.12"
++          python-version: "3.12.10"
+           cache: pip
+-      - run: python -m pip install --upgrade pip
+       - run: python -m pip install -r requirements.txt -c constraints-pilot.txt
+       - run: python -m pip check
+       - name: Run offline tests and retain failure details
+@@ -60,11 +59,15 @@ jobs:
+       - uses: actions/checkout@v4
+       - uses: actions/setup-python@v5
+         with:
+-          python-version: "3.12"
++          python-version: "3.12.10"
+       - name: Build analyst image with unchanged dependency versions
+-        run: docker build -f Dockerfile.pilot --build-arg SOURCE_REVISION=${{ github.sha }} -t ami-pilot:ci .
++        run: python -m scripts.prepare_local_release --output .ci-artifacts/release --image ami-pilot:ci
++      - name: Verify packaged source and integrated Linux offline suite
++        run: python scripts/check_linux_container.py --image ami-pilot:ci --output .ci-artifacts/linux
++      - name: Verify opt-in runner and synthetic review lifecycle
++        run: python scripts/smoke_subtasks_container.py --image ami-pilot:ci --qa .ci-artifacts/release/qa --output .ci-artifacts/concurrent
+       - name: Verify non-root startup, readiness failure and persistent restart
+-        run: python scripts/smoke_pilot_container.py --image ami-pilot:ci --output .ci-artifacts
++        run: python scripts/smoke_pilot_container.py --image ami-pilot:ci --output .ci-artifacts/sequential
+       - uses: actions/upload-artifact@v4
+         if: always()
+         with:
+diff --git a/compose.pilot.yml b/compose.pilot.yml
+index ce86c74..f1a2f75 100644
+--- a/compose.pilot.yml
++++ b/compose.pilot.yml
+@@ -1,5 +1,6 @@
+ services:
+   analyst:
++    image: ${AMI_PILOT_IMAGE:-ami-pilot:local}
+     build:
+       context: .
+       dockerfile: Dockerfile.pilot
+diff --git a/docs/concurrency/progress-interface-e.md b/docs/concurrency/progress-interface-e.md
+index d8405f3..489ec92 100644
+--- a/docs/concurrency/progress-interface-e.md
++++ b/docs/concurrency/progress-interface-e.md
+@@ -1,5 +1,7 @@
+ # Workstream E — persisted progress interface
+ 
++The original read-only milestone below is retained for context. The expanded, capability-gated request-to-review/export interface is documented in [E workflow interface](e-workflow-interface.md), with API construction in [A's workflow handoff](e-workflow-api-handoff.md). The new selector does not activate bounded creation in the default server configuration.
++
+ Implemented opt-in read-only display of existing concurrent runs. Enable **Show persisted subtask progress** or open an existing run with `?run=<id>&progress=1`. Current request creation stays sequential. A owns the additive authenticated snapshot endpoint documented in [API handoff](e-api-handoff.md); E owns HTML and UI-specific tests.
+ 
+ The panel shows declared branch order, required/optional labels, dependencies, safe reasons, result outcomes and recovery-derived interruption. Counts use the fixed persisted plan; no percentages or ETAs are invented. Finished retrieval is distinct from composition, safety, parent review readiness and exact-revision approval. Optional failures expose incomplete coverage; unavailable projections never silently become sequential runs.
+@@ -12,7 +14,7 @@ Same-revision polling preserves draft edits, notes, support confirmation and exp
+ 
+ Fifteen headless Edge synthetic browser scenarios passed, including allstatefamilies, partial/required failure, completedbrancheswithunfinishedbrief, sourceescaping/PDFpage7, dirtyeditpreservation, equal-sequence revisionchange, backoff, authenticationreconnect, late selectionresponses, reload restoration, emptyclaims, readerpermissionsandcachedexportdownload. Screenshotreview corrected UTF8 and badge spacing. No realmodelorownerdata.
+ 
+-A real API/storage integration test additionally checks branchcompletioncannotapprove/export, then exact-revision review/edit invalidation and cachedexportbytes. Its first run correctlyfound that the testexpected409forinvalidrevision0while theexistingschema returns422. The fixture nowtests422andavalid-but-stale409 separately. Finaltargetedrun isinprogress; fullintegratedofflinesuite remains pending. Do not claim Goal completion from the browser checks alone.
++A real API/storage integration test additionally checks branchcompletioncannotapprove/export, then exact-revision review/edit invalidation and cachedexportbytes. Its first run correctlyfound that the testexpected409forinvalidrevision0while theexistingschema returns422. The fixture nowtests422andavalid-but-stale409 separately. The historical targeted run passed 84 tests. Its earlier full-suite log ended at 98% without a terminal summary; that is not a pass. Current expanded-Goal evidence is recorded in the linked workflow-interface document.
+ 
+ Run browser checks using an existing Playwright installation and Edge, without changing projectdependencies:
+ 
+diff --git a/src/pilot/_identity.py b/src/pilot/_identity.py
+index 889d724..069228a 100644
+--- a/src/pilot/_identity.py
++++ b/src/pilot/_identity.py
+@@ -48,10 +48,14 @@ def allowed(role, method, path):
+     if method == "GET" and (path in {"/api/session", "/api/runs"}
+                             or re.fullmatch(r"/api/runs/[a-f0-9]{32}(?:/progress)?", path)):
+         return True
++    if method == "GET" and re.fullmatch(r"/api/runs/by-request/[\w-]{8,100}", path):
++        return role in {"analyst", "operator"}
+     if method == "GET" and re.fullmatch(r"/api/runs/[a-f0-9]{32}/export", path):
+         return role in {"analyst", "reviewer", "operator"}
+     if method == "POST" and path == "/api/runs":
+         return role in {"analyst", "operator"}
++    if method == "POST" and path == "/api/runs/subtasks":
++        return role in {"analyst", "operator"}
+     if method == "POST" and re.fullmatch(r"/api/runs/[a-f0-9]{32}/review", path):
+         return role in {"reviewer", "operator"}
+     if ((method == "POST" and re.fullmatch(r"/api/runs/[a-f0-9]{32}/(?:retry|cancel)", path))
+diff --git a/src/pilot/_runtime.py b/src/pilot/_runtime.py
+index 362b729..cc5d0d4 100644
+--- a/src/pilot/_runtime.py
++++ b/src/pilot/_runtime.py
+@@ -47,11 +47,13 @@ class RuntimeLease:
+ 
+ 
+ class ProcessRuntime:
+-    def __init__(self, store, corpus_path, corpus_sha, *, deadline_seconds=180, worker=run):
++    def __init__(self, store, corpus_path, corpus_sha, *, deadline_seconds=180, worker=run,
++                 subtask_executor=None):
+         if not 0 < deadline_seconds <= 180:
+             raise ValueError("Execution deadline must be positive and no greater than 180 seconds")
+         self.store, self.corpus_path, self.corpus_sha = store, str(Path(corpus_path).resolve()), corpus_sha
+         self.deadline_seconds, self.worker = deadline_seconds, worker
++        self.subtask_executor = subtask_executor
+         self.context = multiprocessing.get_context("spawn")
+         self.lease = RuntimeLease(store.path)
+         self.stopping, self.wake = threading.Event(), threading.Event()
+@@ -89,7 +91,9 @@ class ProcessRuntime:
+         with self.lock:
+             elapsed = time.monotonic() - self.active["started"] if self.active and self.active["run_id"] == run_id else None
+             attempt_id = self.store.cancel(run_id, elapsed_seconds=elapsed)
+-            if self.active and self.active["run_id"] == run_id and self.active["attempt_id"] == attempt_id:
++            if (self.active and self.active["run_id"] == run_id
++                    and self.active.get("workflow") != "bounded_subtasks"
++                    and self.active["attempt_id"] == attempt_id):
+                 self.stop_process(self.active["process"])
+         self.wake.set()
+ 
+@@ -101,8 +105,14 @@ class ProcessRuntime:
+         with self.lock:
+             if self.active:
+                 active = self.active
+-                self.stop_process(active["process"])
+-                self.store.finish_attempt(active["run_id"], active["attempt_id"], "shutdown", time.monotonic() - active["started"])
++                if active.get("workflow") == "bounded_subtasks":
++                    try:
++                        self.store.cancel(active["run_id"], elapsed_seconds=time.monotonic() - active["started"])
++                    except Conflict:
++                        pass
++                else:
++                    self.stop_process(active["process"])
++                    self.store.finish_attempt(active["run_id"], active["attempt_id"], "shutdown", time.monotonic() - active["started"])
+         if self.thread is not None:
+             self.thread.join(timeout=10)
+             if self.thread.is_alive():
+@@ -112,7 +122,7 @@ class ProcessRuntime:
+ 
+     def dispatch(self):
+         while not self.stopping.is_set():
+-            pending = self.store.next_queued()
++            pending = self.store.next_queued(include_subtasks=self.subtask_executor is not None)
+             if pending is None:
+                 self.wake.wait(0.2)
+                 self.wake.clear()
+@@ -125,6 +135,8 @@ class ProcessRuntime:
+                 break
+ 
+     def execute(self, pending):
++        if pending.get("workflow") == "bounded_subtasks":
++            return self.execute_subtask(pending)
+         run_id, attempt_id = pending["id"], uuid.uuid4().hex
+         started = time.monotonic()
+         receiver, sender = self.context.Pipe(duplex=False)
+@@ -224,3 +236,36 @@ class ProcessRuntime:
+             with self.lock:
+                 if self.active and self.active["attempt_id"] == attempt_id:
+                     self.active = None
++
++    def execute_subtask(self, pending):
++        """Dispatch a persisted plan through the configured owned-runner adapter."""
++        if self.subtask_executor is None:
++            return
++        run_id = pending["id"]
++        started = time.monotonic()
++        with self.lock:
++            if self.stopping.is_set():
++                return
++            self.active = {"run_id": run_id, "attempt_id": None, "process": None,
++                           "started": started, "workflow": "bounded_subtasks"}
++        try:
++            plan = self.store.subtask_plan(run_id)
++            if pending["corpus_sha"] != self.corpus_sha:
++                raise Conflict("Subtask corpus differs from configured corpus")
++            self.subtask_executor.execute(self.store, run_id, plan, self.corpus_path,
++                                          lease=self.lease)
++        except Conflict as exc:
++            # Cancellation or a stale parent fence wins over buffered child work.
++            try:
++                if self.store.get(run_id)["status"] == "queued":
++                    self.store.fail_queued(run_id, type(exc).__name__)
++            except (KeyError, Conflict):
++                pass
++        except Exception as exc:
++            # Runner failures normally finish their own claimed attempt. A plan
++            # that cannot even be loaded/started is failed while still queued.
++            self.store.fail_queued(run_id, type(exc).__name__)
++        finally:
++            with self.lock:
++                if self.active and self.active["run_id"] == run_id and self.active.get("workflow") == "bounded_subtasks":
++                    self.active = None
+diff --git a/src/pilot/api.py b/src/pilot/api.py
+index 4173d08..a5b45e0 100644
+--- a/src/pilot/api.py
++++ b/src/pilot/api.py
+@@ -9,26 +9,39 @@ from pathlib import Path
+ from fastapi import FastAPI, HTTPException, Request
+ from fastapi.exceptions import RequestValidationError
+ from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse
++from pydantic import ValidationError
+ 
+ from src.pilot.engine import Corpus, PilotEngine
+-from src.pilot.schemas import EditRequest, ResearchRequest, ReviewRequest
++from src.pilot.schemas import EditRequest, ResearchRequest, ReviewRequest, SubtaskResearchRequest
+ from src.pilot.store import Conflict, QueueFull, Store
+ from src.pilot._readiness import readiness
+ from src.pilot._runtime import ProcessRuntime
+ from src.pilot._identity import allowed, authenticate, load_principals
+ from src.pilot._request_body import RequestBodyLimit
+ from src.pilot._validation_errors import public_validation_details
++from src.pilot.subtasks.api_runtime import OwnedSubtaskExecutor
+ 
+ 
+-def create_app(corpus_path=None, database_path=None, engine=None, run_inline=False):
++def create_app(corpus_path=None, database_path=None, engine=None, run_inline=False, *, subtask_executor=None):
+     principals = load_principals(os.getenv("AMI_PILOT_IDENTITY_FILE"))
+     corpus_path = corpus_path or os.getenv("AMI_PILOT_CORPUS", "data/external/market_sources/prepared/market_chunks.json")
+     database_path = database_path or os.getenv("AMI_PILOT_DB", "reports/workflow_pilot/pilot.sqlite3")
+     corpus = engine.corpus if engine else Corpus(corpus_path)
+     controlled_engine = engine is not None or run_inline
++    if (subtask_executor is not None and not controlled_engine
++            and not isinstance(subtask_executor, OwnedSubtaskExecutor)):
++        raise ValueError("Production subtask capability requires OwnedSubtaskExecutor")
+     engine = (engine or PilotEngine(corpus)) if controlled_engine else None
+     store = Store(database_path, queue_limit=2)
+-    runtime = None if controlled_engine else ProcessRuntime(store, corpus.path, corpus.sha)
++    if controlled_engine:
++        runtime = None
++    elif subtask_executor is None:
++        # Keep the default sequential constructor call compatible with existing
++        # runtime adapters and test doubles that implement the original API.
++        runtime = ProcessRuntime(store, corpus.path, corpus.sha)
++    else:
++        runtime = ProcessRuntime(store, corpus.path, corpus.sha,
++                                 subtask_executor=subtask_executor)
+     executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="ami-pilot") if controlled_engine else None
+     token = secrets.token_hex(24)
+ 
+@@ -56,6 +69,37 @@ def create_app(corpus_path=None, database_path=None, engine=None, run_inline=Fal
+         else:
+             executor.submit(execute, run_id)
+ 
++    def execute_subtasks(run_id):
++        try:
++            plan = store.subtask_plan(run_id)
++            subtask_executor.execute(store, run_id, plan, corpus.path)
++        except Conflict as exc:
++            # A cancellation, retry, or active duplicate owns the persisted state.
++            try:
++                if store.get(run_id)["status"] == "queued":
++                    store.fail_queued(run_id, type(exc).__name__)
++            except (KeyError, Conflict):
++                pass
++            return
++        except Exception as exc:
++            # A claimed runner records its own failed attempt. This covers only a
++            # plan that could not be loaded/started while still queued.
++            store.fail_queued(run_id, type(exc).__name__)
++
++    def submit_subtasks(run_id):
++        if subtask_executor is None:
++            raise Conflict("Bounded subtask workflow is disabled")
++        if runtime is not None:
++            try:
++                runtime.submit(run_id)
++            except RuntimeError:
++                store.cancel(run_id)
++                raise HTTPException(503, "Analyst runtime is stopping") from None
++        elif run_inline:
++            execute_subtasks(run_id)
++        else:
++            executor.submit(execute_subtasks, run_id)
++
+     @asynccontextmanager
+     async def lifespan(_):
+         if runtime is not None:
+@@ -134,8 +178,13 @@ def create_app(corpus_path=None, database_path=None, engine=None, run_inline=Fal
+     @app.get("/api/session")
+     def session(request: Request):
+         principal = getattr(request.state, "principal", None)
++        execution_mode = ("disabled" if subtask_executor is None else
++                          "owned_runner" if isinstance(subtask_executor, OwnedSubtaskExecutor) else
++                          "synthetic_test")
+         return {"mode": "principal-tokens" if principal else "supervised-bootstrap",
+-                "identity": principal.identity if principal else None, "role": principal.role if principal else "operator"}
++                "identity": principal.identity if principal else None, "role": principal.role if principal else "operator",
++                "capabilities": {"sequential": True, "bounded_subtasks": subtask_executor is not None},
++                "workflow_modes": {"sequential": "sequential", "bounded_subtasks": execution_mode}}
+ 
+     def audit(http, run_id, action):
+         principal = getattr(http.state, "principal", None)
+@@ -172,6 +221,24 @@ def create_app(corpus_path=None, database_path=None, engine=None, run_inline=Fal
+             submit(run_id)
+         return {"id": run_id, "created": created}
+ 
++    @app.post("/api/runs/subtasks", status_code=202)
++    def create_subtasks(request: SubtaskResearchRequest, http: Request):
++        if subtask_executor is None:
++            raise Conflict("Bounded subtask workflow is disabled")
++        try:
++            plan = request.make_plan(corpus.sha)
++        except ValidationError:
++            raise HTTPException(422, "Invalid bounded subtask plan") from None
++        run_id, created = store.create_subtask(request, plan)
++        if created:
++            audit(http, run_id, "create_bounded_subtasks")
++            submit_subtasks(run_id)
++        return {"id": run_id, "created": created, "workflow": "bounded_subtasks"}
++
++    @app.get("/api/runs/by-request/{request_key}")
++    def by_request(request_key: str):
++        return store.workflow_for_request(request_key)
++
+     @app.get("/api/runs/{run_id}")
+     def get(run_id: str):
+         return store.get(run_id)
+@@ -186,20 +253,31 @@ def create_app(corpus_path=None, database_path=None, engine=None, run_inline=Fal
+     @app.post("/api/runs/{run_id}/retry", status_code=202)
+     def retry(run_id: str, http: Request):
+         run = store.get(run_id)
++        workflow = "bounded_subtasks" if any(event["kind"] in {
++            "subtask_submission", "subtask_plan", "subtask_progress", "subtask_result"}
++            for event in run["events"]) else "sequential"
++        if workflow == "bounded_subtasks" and subtask_executor is None:
++            raise Conflict("Bounded subtask workflow is disabled; the stored task was not changed")
+         if run["corpus_sha"] != corpus.sha:
+             raise Conflict("The corpus has changed; create a new task to preserve the old task's provenance")
+         audit(http, run_id, "retry")
+         store.retry(run_id)
+-        submit(run_id)
++        submit_subtasks(run_id) if workflow == "bounded_subtasks" else submit(run_id)
+         return {"id": run_id}
+ 
+     @app.post("/api/runs/{run_id}/cancel")
+     def cancel(run_id: str, http: Request):
+-        if runtime is None:
++        run = store.get(run_id)
++        is_subtasks = any(event["kind"] in {
++            "subtask_submission", "subtask_plan", "subtask_progress", "subtask_result"}
++            for event in run["events"])
++        if runtime is None and not (is_subtasks and subtask_executor is not None):
+             raise Conflict("Owned-process cancellation is unavailable for an injected test engine")
+-        store.get(run_id)
+         audit(http, run_id, "cancel")
+-        runtime.cancel(run_id)
++        if runtime is None:
++            store.cancel(run_id)
++        else:
++            runtime.cancel(run_id)
+         return {"id": run_id, "status": store.get(run_id)["status"]}
+ 
+     @app.put("/api/runs/{run_id}/draft")
+diff --git a/src/pilot/index.html b/src/pilot/index.html
+index 7ecdf4e..5e59ea4 100644
+--- a/src/pilot/index.html
++++ b/src/pilot/index.html
+@@ -12,9 +12,12 @@
+ <p class="muted">Inspect the original evidence, correct omissions, and approve only the revision you have checked.</p>
+ <div id="notice" class="status">Ready. Use public questions and a reviewer alias; do not enter customer or identity data.</div>
+ <section id="access" class="card" hidden><h2>Connect to this workspace</h2><label for="access-token">Your access token</label><input id="access-token" type="password" autocomplete="off"><button id="connect">Connect</button><p class="muted">Use the token supplied by the workspace operator. It stays in this page's memory; reconnect after reloading.</p></section>
+-<section class="card"><h2>1. Research request</h2><label for="query">Question</label>
++<section class="card"><h2>1. Research request</h2>
++<label for="workflow">Workflow</label><select id="workflow"><option value="sequential" selected>Sequential analyst workflow (default)</option><option value="bounded_subtasks" disabled>Bounded subtasks (opt-in)</option></select>
++<p id="workflow-availability" class="muted">Connect to check workflow availability.</p><label for="query">Question</label>
+ <textarea id="query" rows="3" placeholder="What supported Thailand’s exports in August 2026, and how did technology exports change?"></textarea>
+-<button class="primary" id="start">Prepare draft</button><button id="example">Use example</button><button id="retry" hidden>Retry interrupted task</button><button id="cancel" hidden>Cancel task</button></section>
++<fieldset id="plan-editor" hidden><legend>Explicit retrieval plan</legend><p class="muted">Define 1–5 read-only retrieval branches. There is no automatic planner. At most two branches retrieve at once; composition and safety follow. Dependencies use branch IDs such as s01. A required failure blocks the brief; an optional failure leaves incomplete coverage.</p><div id="plan-branches"></div><button id="add-branch">Add retrieval branch</button><button id="remove-branch">Remove last branch</button></fieldset>
++<button class="primary" id="start">Prepare draft</button><button id="example">Use example</button><button id="retry" hidden>Retry interrupted task</button><button id="cancel" hidden>Cancel task</button><p id="submission-status" class="muted" role="status" aria-live="polite"></p></section>
+ <section class="card"><label class="check"><input id="show-subtasks" type="checkbox"><span>Show persisted subtask progress (read-only)</span></label><button id="refresh-task" disabled>Refresh selected task</button><button id="refresh-history">Refresh history</button><p id="connection-status" class="muted" role="status" aria-live="polite"></p></section>
+ <div id="workspace" hidden><div id="revision-conflict" class="conflict" hidden><p>A newer revision or attempt is available. Your local edits have been retained. Reload the latest revision before saving or reviewing.</p><button id="reload-revision">Reload latest revision and discard local changes</button></div><section id="subtask-panel" class="card" hidden><h2>Subtasks</h2><p id="subtask-summary" role="status" aria-live="polite"></p><p id="subtask-consequence"></p><div id="subtask-list"></div></section><div class="row"><section class="card"><h2>2. Draft & evidence gaps</h2><div id="brief"></div><h2>Evidence gaps</h2><div id="warnings"></div>
+ <details><summary>Correct this draft</summary><p class="muted">Edit claims and select the sources you checked. Saving creates an unapproved revision.</p><label for="edit-title">Brief title</label><input id="edit-title" maxlength="160"><div id="claim-editors"></div><button id="add-claim">Add claim</button><label for="edit-warnings">Evidence gaps (one per line)</label><textarea id="edit-warnings" rows="4" maxlength="4000"></textarea><button id="save">Save new revision</button></details></section>
+@@ -30,6 +33,8 @@
+ let token='__PILOT_TOKEN__',role='reader',connected=false,active=null,run=null,key=null,poll=null;
+ let epoch=0,controller=null,watermark=-1,lastFresh=null,failures=0,fresh=false;
+ let editorDirty=false,reviewDirty=false,editorRevision=null,editorAttempt=null,conflict=false,rendered=null,progressIdentity=null;
++let boundedAvailable=false,submitting=false,pendingSubmission=null,submissionBlocked=false;
++const pendingStorageKey='ami.pending-submission.v1';
+ const $=id=>document.getElementById(id);
+ const text=(tag,value)=>{const e=document.createElement(tag);e.textContent=value;return e};
+ const labels={queued:'Queued',waiting_on_dependency:'Waiting on dependency',running:'Running',completed:'Completed',failed:'Failed',cancelled:'Cancelled',blocked:'Blocked'};
+@@ -38,7 +43,15 @@ function notice(message,error=false){$('notice').textContent=message;$('notice')
+ function dirty(){return editorDirty||reviewDirty}
+ function updateControls(){
+  const live=connected&&fresh&&!conflict,edit=live&&['analyst','operator'].includes(role),review=live&&['reviewer','operator'].includes(role);
+- $('start').disabled=!connected||!['analyst','operator'].includes(role);
++ $('start').disabled=!connected||!['analyst','operator'].includes(role)||submitting||submissionBlocked||(!pendingSubmission&&$('workflow').value==='bounded_subtasks'&&!boundedAvailable);
++ $('start').textContent=submitting?'Confirming request…':pendingSubmission?'Check submission':'Prepare draft';
++ $('workflow').disabled=submitting||!!pendingSubmission;
++ $('query').disabled=submitting||!!pendingSubmission?.query;
++ $('example').disabled=submitting||!!pendingSubmission;
++ $('plan-editor').hidden=$('workflow').value!=='bounded_subtasks';
++ for(const control of $('plan-editor').querySelectorAll('input,textarea,button'))control.disabled=submitting||!!pendingSubmission?.body;
++ $('add-branch').disabled||=$('plan-branches').children.length>=5;
++ $('remove-branch').disabled||=$('plan-branches').children.length<=1;
+  for(const id of ['save','add-claim'])$(id).disabled=!edit||!run?.draft;
+  for(const id of ['retry','cancel'])$(id).disabled=!edit||!run;
+  $('approve').disabled=!review||editorDirty||run?.status!=='needs_review'||!run?.draft?.claims.length;
+@@ -60,8 +73,12 @@ async function refreshHistory(){
+ function locationState(){const url=new URL(location.href);if(active)url.searchParams.set('run',active);else url.searchParams.delete('run');if($('show-subtasks').checked)url.searchParams.set('progress','1');else url.searchParams.delete('progress');window.history.replaceState(null,'',url)}
+ async function connect(){
+  const session=await(await api('session')).json();role=session.role;connected=true;
++ boundedAvailable=session.capabilities?.bounded_subtasks===true;
++ $('workflow').querySelector('[value="bounded_subtasks"]').disabled=!boundedAvailable;
++ $('workflow-availability').textContent=boundedAvailable?'Bounded subtasks are available only when explicitly selected. Subtask completion still requires composition, safety and human review.':'Bounded task creation is unavailable in this workspace. Existing persisted progress can still be inspected.';
+  if(session.identity){$('reviewer').value=session.identity;$('reviewer').readOnly=true}
+  $('access-token').value='';$('access').hidden=true;await refreshHistory();updateControls();
++ if(pendingSubmission&&await findSubmission())return;
+  const selected=active||new URL(location.href).searchParams.get('run');
+  if(selected&&/^[a-f0-9]{32}$/.test(selected)){if(active)await refreshActive();else await selectRun(selected)}
+  else notice(session.identity?'Connected as '+session.identity+' ('+role+').':'Supervised local session. Use public data only.');
+@@ -105,7 +122,10 @@ function renderProgress(progress){
+  $('subtask-summary').textContent=(progress.attempt_current===false&&run.status==='queued'?'Previous attempt (retry queued): ':'')+(counts.completed||0)+' of '+branches.length+' subtasks completed'+(counts.running?'; '+counts.running+' running':'')+(counts.waiting_on_dependency?'; '+counts.waiting_on_dependency+' waiting':'')+'. Subtask completion does not approve a brief.';
+  const terminal=['completed','failed','cancelled','blocked'];
+  const missing=branches.filter(b=>['failed','blocked','cancelled'].includes(b.status));
++ const evidenceMissing=branches.filter(b=>b.status==='completed'&&(b.outcome||b.result_outcome)==='missing');
++ const evidenceConflicts=branches.filter(b=>b.status==='completed'&&(b.outcome||b.result_outcome)==='conflicting');
+  if(missing.length)$('subtask-consequence').textContent=missing.some(b=>b.required!==false)?'Required work did not complete. A complete brief cannot be assumed.':'Optional work did not complete. Any resulting brief has incomplete coverage: '+missing.map(b=>b.subtask_id).join(', ')+'.';
++ else if(evidenceMissing.length||evidenceConflicts.length)$('subtask-consequence').textContent=(evidenceMissing.length?'Completed searches found missing evidence in '+evidenceMissing.map(b=>b.subtask_id).join(', ')+'. Coverage is incomplete. ':'')+(evidenceConflicts.length?'Conflicting evidence in '+evidenceConflicts.map(b=>b.subtask_id).join(', ')+'. Resolve the disagreement during review. ':'')+'A completed operation does not establish a complete or approved brief.';
+  else if(branches.length&&branches.every(b=>terminal.includes(b.status))&&run.status==='running')$('subtask-consequence').textContent=progress.phase==='safety'?'Subtasks finished; checking the brief.':progress.phase==='composition'?'Subtasks finished; preparing the brief.':'Subtasks finished; the brief is still being prepared or checked.';
+  for(const b of branches){
+   const d=document.createElement('details');d.className='branch';d.dataset.status=b.status;d.dataset.subtaskId=b.subtask_id;d.open=opened.has(b.subtask_id);
+@@ -120,11 +140,11 @@ function renderProgress(progress){
+  }
+ }
+ function applySnapshot(row,progress,sequence){
+- if(row.id!==active)return;if(!Number.isSafeInteger(sequence)||sequence<0)throw Error('Invalid progress snapshot.');if(sequence<watermark)return;
++ if(row.id!==active)return;if(!Number.isSafeInteger(sequence)||sequence<0)throw Error('Invalid progress snapshot.');if(sequence<watermark)throw Error('An older progress snapshot was received. Refresh before acting.');
+  watermark=sequence;const attempt=progress?.attempt_id||row.events.filter(e=>e.kind==='attempt_started').at(-1)?.payload.attempt_id||null;
+  if(run&&(editorRevision!==row.revision||editorAttempt!==attempt)&&dirty())conflict=true;
+  const reset=!run||(!dirty()&&!conflict&&(editorRevision!==row.revision||editorAttempt!==attempt));
+- if(!run){$('query').value=row.query;key=row.request_key}run=row;fresh=true;lastFresh=new Date();failures=0;$('workspace').hidden=false;
++ if(!run&&!pendingSubmission){$('query').value=row.query;key=null}run=row;fresh=true;lastFresh=new Date();failures=0;$('workspace').hidden=false;
+  if(reset){editorRevision=row.revision;editorAttempt=attempt;editorDirty=false;reviewDirty=false;editDraft(row.draft);$('support').checked=false}
+  renderDraft(row);renderProgress(progress);
+  const historyButton=[...$('history').children].find(b=>b.dataset.runId===row.id);if(historyButton)historyButton.textContent=row.query+' \u00b7 '+row.status;
+@@ -164,8 +184,9 @@ $('show-subtasks').onchange=()=>{locationState();if(active)refreshActive()};
+ $('refresh-task').onclick=()=>action(refreshActive);$('refresh-history').onclick=()=>action(refreshHistory);
+ $('reload-revision').onclick=()=>{if(dirty()&&!confirm('Discard local changes and reload the latest revision?'))return;editorDirty=false;reviewDirty=false;conflict=false;editorRevision=null;editorAttempt=null;refreshActive()};
+ $('example').onclick=()=>{$('query').value='According to the Bank of Thailand’s August 2026 release, what supported merchandise exports and what changed in technology-related exports?';key=null};
+-$('query').oninput=()=>key=null;
+-$('start').onclick=()=>action(async()=>{if(dirty()&&!confirm('Discard unsaved changes and prepare a new task?'))return;key=key||crypto.randomUUID();const result=await(await api('runs',{method:'POST',body:JSON.stringify({query:$('query').value,request_key:key})})).json();editorDirty=false;reviewDirty=false;await selectRun(result.id);await refreshHistory()});
++$('query').oninput=()=>{if(!pendingSubmission)key=null};
++$('workflow').onchange=()=>{if(!pendingSubmission)key=null;updateControls()};
++$('start').onclick=()=>action(submitRequest);
+ $('save').onclick=()=>action(async()=>{requireCurrent();await api('runs/'+active+'/draft',{method:'PUT',body:JSON.stringify({revision:editorRevision,draft:editedDraft()})});editorDirty=false;reviewDirty=false;await refreshActive();await refreshHistory()});
+ async function review(decision){requireCurrent();if(editorDirty)throw Error('Save or discard draft edits before reviewing.');await api('runs/'+active+'/review',{method:'POST',body:JSON.stringify({revision:editorRevision,decision,reviewer:$('reviewer').value,support_confirmed:$('support').checked,note:$('note').value,task_seconds:$('assisted').value?Number($('assisted').value):null,manual_seconds:$('manual').value?Number($('manual').value):null,usefulness:$('usefulness').value?Number($('usefulness').value):null})});reviewDirty=false;await refreshActive();await refreshHistory()}
+ $('approve').onclick=()=>action(()=>review('approve'));$('reject').onclick=()=>action(()=>review('reject'));
+@@ -173,5 +194,69 @@ $('retry').onclick=()=>action(async()=>{requireCurrent();await api('runs/'+activ
+ $('cancel').onclick=()=>action(async()=>{requireCurrent();await api('runs/'+active+'/cancel',{method:'POST'});await refreshActive();await refreshHistory()});
+ $('export').onclick=()=>action(async()=>{requireCurrent();if(editorDirty)throw Error('Save or discard local edits before downloading.');const revision=editorRevision,id=active;const response=await api('runs/'+id+'/export');const u=URL.createObjectURL(await response.blob());const a=text('a','Download');a.href=u;a.download='ami-'+id+'-v'+revision+'.md';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)});
+ window.addEventListener('beforeunload',event=>{if(dirty()){event.preventDefault();event.returnValue=''}});
++function restoreSubmission(){
++ try{const saved=sessionStorage.getItem(pendingStorageKey);if(!saved)return;const value=JSON.parse(saved);
++  if(value.version!==1||!/^[-a-f0-9]{36}$/.test(value.request_key)||!['sequential','bounded_subtasks'].includes(value.workflow))throw Error('Invalid saved request');
++  pendingSubmission={request_key:value.request_key,workflow:value.workflow,query:null,body:null,uncertain:true};key=value.request_key;$('workflow').value=value.workflow;
++  $('submission-status').textContent='A submission is awaiting confirmation. Reconnect to look it up without restarting work. If no record is found, re-enter the original question and check again.';
++ }catch(e){submissionBlocked=true;$('submission-status').textContent='Saved submission identity cannot be read. New submission is blocked to avoid duplicate work. Ask the operator to reconcile the request.'}
++}
++function saveSubmission(){sessionStorage.setItem(pendingStorageKey,JSON.stringify({version:1,request_key:pendingSubmission.request_key,workflow:pendingSubmission.workflow}))}
++function clearSubmission(){sessionStorage.removeItem(pendingStorageKey);pendingSubmission=null;key=null;$('submission-status').textContent=''}
++async function acceptSubmission(result){
++ if(!/^[a-f0-9]{32}$/.test(result.id))throw Error('Invalid task confirmation.');
++ const workflow=pendingSubmission.workflow;clearSubmission();
++ if(workflow==='bounded_subtasks')$('show-subtasks').checked=true;
++ await selectRun(result.id);await refreshHistory();updateControls();
++ if(active!==result.id)notice('Request accepted. Your current edits are retained; select the new task from research history when ready.');
++}
++async function findSubmission(){
++ try{const result=await(await api('runs/by-request/'+encodeURIComponent(pendingSubmission.request_key))).json();
++  if(result.workflow!==pendingSubmission.workflow)throw Error('Request workflow changed. Ask the operator to reconcile this submission.');
++  await acceptSubmission(result);return true;
++ }catch(e){if(e.status===404)return false;throw e}
++}
++async function submitRequest(){
++ if(submitting||submissionBlocked)return;
++ submitting=true;updateControls();let admission=false;
++ try{
++  if(pendingSubmission&&await findSubmission())return;
++  if(!pendingSubmission){
++   const request_key=crypto.randomUUID(),workflow=$('workflow').value,body=requestBody(request_key,workflow);
++   pendingSubmission={request_key,workflow,query:body.query,body,uncertain:false};
++   try{saveSubmission()}catch(e){pendingSubmission=null;throw Error('Tab storage is unavailable. No request was sent; enable it before submitting so lost confirmations can be recovered safely.')}
++  }
++  if(pendingSubmission.body===null){pendingSubmission.body=requestBody(pendingSubmission.request_key,pendingSubmission.workflow);pendingSubmission.query=pendingSubmission.body.query}
++  const abort=new AbortController(),timer=setTimeout(()=>abort.abort(),15000);
++  try{admission=true;const result=await(await api(pendingSubmission.workflow==='bounded_subtasks'?'runs/subtasks':'runs',{method:'POST',signal:abort.signal,body:JSON.stringify(pendingSubmission.body)})).json();await acceptSubmission(result)}finally{clearTimeout(timer)}
++ }catch(e){
++  if(pendingSubmission){
++   if(admission&&!pendingSubmission.uncertain&&[400,401,403,404,409,422,429].includes(e.status))clearSubmission();
++   else{pendingSubmission.uncertain=true;$('submission-status').textContent='Submission is unconfirmed. Check submission to recover or resend the same request identity. Refresh/reconnect never automatically resubmits.'}
++  }throw e;
++ }finally{submitting=false;updateControls()}
++}
++function addBranch(){
++ if($('plan-branches').children.length>=5)return;
++ const id='s0'+($('plan-branches').children.length+1),field=document.createElement('fieldset');field.dataset.branchId=id;field.append(text('legend',id+' · Retrieve evidence'));
++ const label=text('label','Branch question'),query=document.createElement('textarea');query.className='branch-query';query.maxLength=500;query.rows=2;label.append(query);field.append(label);
++ const deps=text('label','Wait for branch IDs (comma-separated, optional)'),input=document.createElement('input');input.className='branch-dependencies';input.placeholder='s01';deps.append(input);field.append(deps);
++ const required=text('label','Required for the brief'),box=document.createElement('input');required.className='check';box.type='checkbox';box.className='branch-required';box.checked=true;required.prepend(box);field.append(required);$('plan-branches').append(field);updateControls();
++}
++function requestBody(request_key,workflow){
++ const query=$('query').value.trim();if(query.length<3||query.length>1200)throw Error('Enter the original research question (3–1200 characters).');
++ const body={query,request_key};if(workflow==='sequential')return body;
++ body.subtasks=[...$('plan-branches').children].map(field=>{
++  const query=field.querySelector('.branch-query').value.trim(),dependencies=field.querySelector('.branch-dependencies').value.split(',').map(s=>s.trim()).filter(Boolean);
++  if(!query||query.length>500)throw Error('Each retrieval branch needs a question (1–500 characters).');
++  return {subtask_id:field.dataset.branchId,operation:'retrieve',query,dependencies,required:field.querySelector('.branch-required').checked};
++ });
++ const ids=body.subtasks.map(b=>b.subtask_id),visiting=new Set(),visited=new Set();
++ function visit(id){if(visiting.has(id))throw Error('Branch dependencies cannot contain a cycle.');if(visited.has(id))return;visiting.add(id);const b=body.subtasks.find(b=>b.subtask_id===id);if(!b)throw Error('Dependencies must reference a branch in this plan.');for(const d of b.dependencies)visit(d);visiting.delete(id);visited.add(id)}
++ for(const b of body.subtasks){if(new Set(b.dependencies).size!==b.dependencies.length)throw Error('Remove duplicate branch dependencies.');visit(b.subtask_id)}
++ return body;
++}
++$('add-branch').onclick=addBranch;$('remove-branch').onclick=()=>{if($('plan-branches').children.length>1)$('plan-branches').lastElementChild.remove();updateControls()};
++addBranch();addBranch();restoreSubmission();
+ if(token){connect().catch(e=>notice(e.message,true))}else{$('access').hidden=false;updateControls();notice('Enter your workspace access token to connect.')}
+ </script></body></html>
+diff --git a/src/pilot/schemas.py b/src/pilot/schemas.py
+index 69fc132..8d715d2 100644
+--- a/src/pilot/schemas.py
++++ b/src/pilot/schemas.py
+@@ -6,6 +6,7 @@ from typing import Literal
+ from pydantic import BaseModel, ConfigDict, Field, field_validator
+ 
+ from src.pilot._presentation import without_bullet_glyphs
++from src.pilot.subtasks.contracts import Plan, Subtask
+ 
+ 
+ class StrictModel(BaseModel):
+@@ -27,6 +28,38 @@ class ResearchRequest(StrictModel):
+         return value
+ 
+ 
++class SubtaskResearchRequest(ResearchRequest):
++    """Explicit, bounded plan for the opt-in workflow; no automatic planner."""
++
++    subtasks: tuple[Subtask, ...] = Field(min_length=1, max_length=5)
++    retrieval_concurrency: int = Field(default=2, ge=1, le=2)
++    deadline_seconds: float = Field(default=180.0, gt=0, le=180, allow_inf_nan=False)
++
++    @field_validator("subtasks", mode="before")
++    @classmethod
++    def json_sequences(cls, value):
++        # The internal contract is strict and immutable; adapt JSON arrays to
++        # tuples at this HTTP boundary before validating each Subtask.
++        if not isinstance(value, (list, tuple)):
++            return value
++        normalized = []
++        for raw in value:
++            if not isinstance(raw, dict):
++                normalized.append(raw)
++                continue
++            task = dict(raw)
++            for field in ("source_ids", "dependencies"):
++                if isinstance(task.get(field), list):
++                    task[field] = tuple(task[field])
++            normalized.append(task)
++        return tuple(normalized)
++
++    def make_plan(self, corpus_sha256: str) -> Plan:
++        return Plan(query=self.query, corpus_sha256=corpus_sha256,
++                    subtasks=self.subtasks, retrieval_concurrency=self.retrieval_concurrency,
++                    deadline_seconds=self.deadline_seconds)
++
++
+ class Claim(StrictModel):
+     text: str = Field(min_length=1, max_length=800)
+     source_ids: list[str] = Field(min_length=1, max_length=5)
+diff --git a/src/pilot/store.py b/src/pilot/store.py
+index 4be0d67..bff296d 100644
+--- a/src/pilot/store.py
++++ b/src/pilot/store.py
+@@ -10,6 +10,7 @@ from pathlib import Path
+ 
+ from src.pilot.schemas import validate_citations
+ from src.pilot._presentation import pdf_page_label
++from src.pilot.subtasks.contracts import Plan
+ 
+ 
+ class Conflict(ValueError):
+@@ -89,6 +90,10 @@ class Store:
+             if old:
+                 if old["query"] != request.query or old["corpus_sha"] != corpus_sha:
+                     raise Conflict("Request key is already used for different input")
++                if db.execute("SELECT 1 FROM events WHERE run_id=? AND kind IN "
++                              "('subtask_submission','subtask_plan','subtask_progress','subtask_result') LIMIT 1",
++                              (old["id"],)).fetchone():
++                    raise Conflict("Request key is already bound to the bounded subtask workflow")
+                 return old["id"], False
+             self._check_queue_capacity(db)
+             run_id = uuid.uuid4().hex
+@@ -96,6 +101,87 @@ class Store:
+                        (run_id, request.request_key, request.query, corpus_sha, "queued", now(), now()))
+             return run_id, True
+ 
++    def create_subtask(self, request, plan):
++        """Atomically bind a request key to one canonical bounded plan."""
++        plan = Plan.model_validate_json(plan.model_dump_json())
++        if plan.query != request.query:
++            raise Conflict("Subtask plan query differs from parent request")
++        with self.connection() as db:
++            db.execute("BEGIN IMMEDIATE")
++            old = db.execute("SELECT * FROM runs WHERE request_key=?", (request.request_key,)).fetchone()
++            if old:
++                if old["query"] != request.query or old["corpus_sha"] != plan.corpus_sha256:
++                    raise Conflict("Request key is already used for different input")
++                submissions = list(db.execute(
++                    "SELECT payload FROM events WHERE run_id=? AND kind='subtask_submission' ORDER BY seq",
++                    (old["id"],)))
++                if len(submissions) != 1:
++                    raise Conflict("Request key is already bound to another workflow")
++                payload = json.loads(submissions[0]["payload"])
++                if payload.get("plan_id") != plan.plan_id or payload.get("plan") != plan.model_dump(mode="json"):
++                    raise Conflict("Request key is already used for a different subtask plan")
++                return old["id"], False
++            self._check_queue_capacity(db)
++            run_id = uuid.uuid4().hex
++            created = now()
++            db.execute("INSERT INTO runs(id,request_key,query,corpus_sha,status,created,updated) VALUES(?,?,?,?,?,?,?)",
++                       (run_id, request.request_key, request.query, plan.corpus_sha256, "queued", created, created))
++            payload = {"workflow": "bounded_subtasks", "plan_id": plan.plan_id,
++                       "plan": plan.model_dump(mode="json")}
++            db.execute("INSERT INTO events(run_id,kind,payload,created) VALUES(?,?,?,?)",
++                       (run_id, "subtask_submission", json.dumps(payload, ensure_ascii=False), created))
++            return run_id, True
++
++    def workflow_for_request(self, request_key):
++        """Return minimal id/mode for safe lost-response lookup by opaque key."""
++        with self.connection() as db:
++            row = db.execute("SELECT id FROM runs WHERE request_key=?", (request_key,)).fetchone()
++            if row is None:
++                raise KeyError(request_key)
++            event = db.execute("SELECT kind,payload FROM events WHERE run_id=? AND kind IN "
++                               "('subtask_submission','subtask_plan','subtask_progress','subtask_result') ORDER BY seq",
++                               (row["id"],)).fetchall()
++            submissions = [record for record in event if json.loads(record["payload"]).get("workflow") == "bounded_subtasks"]
++            if len(submissions) > 1:
++                raise Conflict("Workflow submission history is invalid")
++            if event:
++                if any(record["kind"] == "subtask_submission" for record in event):
++                    payload = json.loads(submissions[0]["payload"]) if len(submissions)==1 else {}
++                    if payload.get("workflow") != "bounded_subtasks":
++                        raise Conflict("Workflow submission history is invalid")
++                return {"id": row["id"], "workflow": "bounded_subtasks"}
++            return {"id": row["id"], "workflow": "sequential"}
++
++    def subtask_plan(self, run_id):
++        """Load and validate the immutable submitted plan for this run."""
++        with self.connection() as db:
++            row = db.execute("SELECT query,corpus_sha FROM runs WHERE id=?", (run_id,)).fetchone()
++            if row is None:
++                raise KeyError(run_id)
++            records = list(db.execute("SELECT kind,payload FROM events WHERE run_id=? AND kind IN "
++                                      "('subtask_submission','subtask_plan') ORDER BY seq",
++                                      (run_id,)))
++        submissions = [record for record in records if record["kind"] == "subtask_submission"]
++        if len(submissions) > 1:
++            raise Conflict("Bounded subtask plan is ambiguous")
++        if submissions:
++            payload = json.loads(submissions[0]["payload"])
++        else:
++            # Compatibility with programmatic ami-subtasks-v1 runs created
++            # before the browser submission event existed: reuse the last
++            # attempt's persisted plan, never reinterpret it as sequential.
++            previous = [record for record in records if record["kind"] == "subtask_plan"]
++            if not previous:
++                raise Conflict("Bounded subtask plan is missing")
++            payload = json.loads(previous[-1]["payload"])
++        plan = Plan.model_validate_json(json.dumps(payload.get("plan")))
++        expected_plan_id = payload.get("plan_id") if submissions else plan.plan_id
++        if ((submissions and payload.get("workflow") != "bounded_subtasks")
++                or expected_plan_id != plan.plan_id
++                or plan.query != row["query"] or plan.corpus_sha256 != row["corpus_sha"]):
++            raise Conflict("Persisted subtask plan does not match parent request")
++        return plan
++
+     def claim(self, run_id, attempt_id=None):
+         with self.connection() as db:
+             db.execute("BEGIN IMMEDIATE")
+@@ -106,9 +192,20 @@ class Store:
+                            (run_id, "attempt_started", json.dumps({"attempt_id": attempt_id}), now()))
+             return claimed
+ 
+-    def next_queued(self):
++    def next_queued(self, *, include_subtasks=False):
+         with self.connection() as db:
+-            row = db.execute("SELECT id,query,corpus_sha,updated FROM runs WHERE status='queued' ORDER BY created,id LIMIT 1").fetchone()
++            if include_subtasks:
++                row = db.execute("""SELECT r.id,r.query,r.corpus_sha,r.updated,
++                    CASE WHEN EXISTS(SELECT 1 FROM events e WHERE e.run_id=r.id AND e.kind IN
++                        ('subtask_submission','subtask_plan','subtask_progress','subtask_result'))
++                    THEN 'bounded_subtasks' ELSE 'sequential' END AS workflow
++                    FROM runs r WHERE r.status='queued' ORDER BY r.created,r.id LIMIT 1""").fetchone()
++            else:
++                row = db.execute("""SELECT r.id,r.query,r.corpus_sha,r.updated FROM runs r
++                    WHERE r.status='queued' AND NOT EXISTS(
++                    SELECT 1 FROM events e WHERE e.run_id=r.id AND e.kind IN
++                    ('subtask_submission','subtask_plan','subtask_progress','subtask_result'))
++                    ORDER BY r.created,r.id LIMIT 1""").fetchone()
+             return dict(row) if row else None
+ 
+     @staticmethod
+@@ -212,6 +309,22 @@ class Store:
+             db.execute("UPDATE runs SET status='failed',error=?,metrics=?,updated=? WHERE id=? AND status='running'",
+                        (error, json.dumps(metrics), now(), run_id))
+ 
++    def fail_queued(self, run_id, failure_type):
++        """Fail an opt-in job that could not be launched before an attempt."""
++        if not isinstance(failure_type, str) or not failure_type.isidentifier():
++            failure_type = "RuntimeError"
++        with self.connection() as db:
++            db.execute("BEGIN IMMEDIATE")
++            changed = db.execute("UPDATE runs SET status='failed',error=?,metrics=?,updated=? "
++                "WHERE id=? AND status='queued'",
++                ("Bounded subtask workflow could not start; inspect event history and retry safely",
++                 json.dumps({"partial": True, "failure_type": failure_type,
++                             "token_usage_complete": False, "monetary_cost": None}), now(), run_id)).rowcount
++            if changed:
++                db.execute("INSERT INTO events(run_id,kind,payload,created) VALUES(?,?,?,?)",
++                    (run_id, "subtask_start_failure", json.dumps({"type": failure_type}), now()))
++            return changed == 1
++
+     def save_draft(self, run_id, draft, sources, metrics, expected_revision=None, attempt_id=None):
+         draft = validate_citations(draft, sources)
+         encoded = json.dumps(draft, ensure_ascii=False)
+diff --git a/src/pilot/subtasks/persistence.py b/src/pilot/subtasks/persistence.py
+index 0b96825..710b108 100644
+--- a/src/pilot/subtasks/persistence.py
++++ b/src/pilot/subtasks/persistence.py
+@@ -110,6 +110,29 @@ def _project_progress(row):
+     if attempt is None:
+         if any(e['kind'] in {'subtask_plan','subtask_progress','subtask_result'} for e in row['events']):
+             raise ValueError('Subtask records lack a parent attempt')
++        submissions=[e['payload'] for e in row['events'] if e['kind']=='subtask_submission']
++        if len(submissions)>1:raise ValueError('Duplicate workflow submission')
++        if submissions:
++            submission=submissions[0]
++            plan=Plan.model_validate_json(json.dumps(submission['plan']))
++            if (submission.get('workflow')!='bounded_subtasks' or submission.get('plan_id')!=plan.plan_id
++                    or plan.query!=row['query'] or plan.corpus_sha256!=row['corpus_sha']):
++                raise ValueError('Submitted workflow plan identity mismatch')
++            if row['status']=='queued':
++                status,reason='queued','none'
++            elif row['status']=='interrupted':
++                status,reason='cancelled','interrupted'
++            else:
++                status,reason='failed','operation_failed'
++            branches=[{'subtask_id':task.subtask_id,'operation':task.operation,
++                'required':task.required,'depends_on':list(task.dependencies),'status':status,
++                'reason':reason,'derived':True,'child_attempt_id':None,'outcome':None}
++                for task in plan.subtasks]
++            view.update(availability='available',mode='subtasks',reason='none',
++                plan_id=plan.plan_id,
++                plan={'plan_id':plan.plan_id,**plan.model_dump(mode='json',exclude={'query','subtasks','corpus_sha256'}),
++                    'subtask_count':len(plan.subtasks)},
++                branches=branches,phase=row['status'],attempt_current=False)
+         return view
+     Identity(run_id=row['id'],attempt_id=attempt,plan_id='0'*64,corpus_sha256=row['corpus_sha'])
+     history=[e for e in row['events'] if e['payload'].get('attempt_id')==attempt]
+@@ -123,6 +146,10 @@ def _project_progress(row):
+     identity=Identity(run_id=row['id'],attempt_id=attempt,plan_id=plan.plan_id,corpus_sha256=row['corpus_sha'])
+     if Identity.model_validate_json(json.dumps(plans[0]['identity']))!=identity or plan.query!=row['query'] or plan.corpus_sha256!=row['corpus_sha']:
+         raise ValueError('Persisted plan identity mismatch')
++    submissions=[e['payload'] for e in row['events'] if e['kind']=='subtask_submission']
++    if submissions and (len(submissions)!=1 or submissions[0].get('plan_id')!=plan.plan_id
++            or Plan.model_validate_json(json.dumps(submissions[0].get('plan'))).plan_id!=plan.plan_id):
++        raise ValueError('Attempt plan differs from submitted workflow')
+     tasks={t.subtask_id:t for t in plan.subtasks};states={};children={};outcomes={};results={};ordinal=0
+     phase='retrieval'
+     for event in history:
+diff --git a/src/pilot/subtasks/runner.py b/src/pilot/subtasks/runner.py
+index c6559a7..070a19b 100644
+--- a/src/pilot/subtasks/runner.py
++++ b/src/pilot/subtasks/runner.py
+@@ -88,14 +88,18 @@ def _child(job,connection,operation,compose,safety):
+     finally:connection.close()
+ 
+ 
+-def run_stored_plan(store,run_id,plan,corpus_path,operation,compose,safety,*,cancellation=None):
++def run_stored_plan(store,run_id,plan,corpus_path,operation,compose,safety,*,cancellation=None,lease=None):
+     """Explicit opt-in; callback functions/objects must be spawn-pickleable.
+ 
+     Parent is the sole DB writer and waits for a clean child exit before saving.
+     Reuses the sequential runtime lease, preventing whole-request overlap.
+     """
+     plan=Plan.model_validate_json(plan.model_dump_json())
+-    lease=RuntimeLease(store.path);lease.acquire()
++    owns_lease = lease is None
++    if owns_lease:
++        lease=RuntimeLease(store.path);lease.acquire()
++    elif lease.file is None:
++        raise RuntimeError('The supplied runtime lease is not held')
+     attempt=uuid.uuid4().hex;process=None;receiver=sender=None;claimed=False
+     started=time.monotonic();deadline=started+plan.deadline_seconds;reason='worker_error'
+     try:
+@@ -167,4 +171,5 @@ def run_stored_plan(store,run_id,plan,corpus_path,operation,compose,safety,*,can
+         finally:
+             if receiver is not None:receiver.close()
+             if sender is not None:sender.close()
+-            lease.release()
++            if owns_lease:
++                lease.release()
+diff --git a/src/pilot/subtasks/synthesis.py b/src/pilot/subtasks/synthesis.py
+index d1a4294..fea2f08 100644
+--- a/src/pilot/subtasks/synthesis.py
++++ b/src/pilot/subtasks/synthesis.py
+@@ -8,6 +8,7 @@ from .._evidence import validate_mapping, unavailable_draft, evidence_gaps, Evid
+ from .._composition import project, composition_units, response_schema
+ from .._scope import validate_claim_measure_and_numbers
+ from ..schemas import Draft
++from ._relationships import validate_relationships
+ 
+ 
+ @dataclass(frozen=True)
+@@ -89,6 +90,7 @@ def project_report(plan: Plan, report: Report, mapping, composed, bindings, *, a
+             component = components[unit['component_id']].model_copy(update={'evidence':[
+                 EvidenceQuote.model_validate(e) for e in unit['evidence']]})
+             validate_claim_measure_and_numbers(claim.text, component, plan.query)
++            validate_relationships(claim.text, component.evidence)
+             quoted = ' '.join(e.quote for e in component.evidence)
+             projected = bool(re.search(r'\b(?:forecast|projected)\b',quoted,re.I))
+             observed = bool(re.search(r'\b(?:observed|recorded)\b',quoted,re.I))
+diff --git a/tests/browser/progress-interface.cjs b/tests/browser/progress-interface.cjs
+index 5ec555b..a879a8f 100644
+--- a/tests/browser/progress-interface.cjs
++++ b/tests/browser/progress-interface.cjs
+@@ -77,7 +77,12 @@ const server=http.createServer((req,res)=>{
+    assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);assert.ok(!page.url().includes(token));
+   });
+   await check('older watermark cannot roll back current revision',async()=>{
+-   const old=structuredClone(state.snapshots[A]);state.snapshots[A].sequence=1;state.snapshots[A].run.revision=0;await refresh();assert.match(await page.locator('#notice').innerText(),/revision 2/);state.snapshots[A]=old;
++   const old=structuredClone(state.snapshots[A]);state.snapshots[A].sequence=1;state.snapshots[A].run.revision=0;await refresh();assert.match(await page.locator('#notice').innerText(),/revision 2/);assert.ok(await page.locator('#approve').isDisabled());assert.ok(await page.locator('#save').isDisabled());assert.match(await page.locator('#connection-status').innerText(),/Updates unavailable/);state.snapshots[A]=old;await refresh();
++  });
++  await check('successful retrieval with missing or conflicting evidence exposes incomplete coverage',async()=>{
++   await change(s=>{s.progress.branches[0].outcome='missing';s.progress.branches[1].outcome='conflicting'});
++   assert.match(await page.locator('#subtask-consequence').innerText(),/Coverage is incomplete/);assert.match(await page.locator('#subtask-consequence').innerText(),/Conflicting evidence in s02/);
++   await change(s=>{s.progress.branches[0].outcome='evidence';s.progress.branches[1].outcome='evidence'});
+   });
+   await check('optional failures expose partial coverage and required failures block readiness',async()=>{
+    await change(s=>{s.progress.branches[4]={...branch('s05','failed',false),reason:'operation_failed'};s.run.draft.warnings=['Optional s05 is missing; brief is partial.']});
+diff --git a/tests/test_pilot_identity.py b/tests/test_pilot_identity.py
+index f978989..fe8ed36 100644
+--- a/tests/test_pilot_identity.py
++++ b/tests/test_pilot_identity.py
+@@ -51,7 +51,9 @@ def test_configured_home_never_distributes_bootstrap_or_principal_token(configur
+     assert client.get("/api/runs", headers={"X-Pilot-Token": app.state.token}).status_code == 403
+     assert client.get("/api/runs", headers=headers("reader")).status_code == 200
+     assert client.get("/api/session", headers=headers("reviewer")).json() == {
+-        "identity": "reviewer-test", "role": "reviewer", "mode": "principal-tokens"}
++        "identity": "reviewer-test", "role": "reviewer", "mode": "principal-tokens",
++        "capabilities": {"sequential": True, "bounded_subtasks": False},
++        "workflow_modes": {"sequential": "sequential", "bounded_subtasks": "disabled"}}
+ 
+ 
+ def test_roles_and_exact_authenticated_review_identity(configured):

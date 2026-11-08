@@ -1,0 +1,8 @@
+test_missing_or_wrong_grant_never_launches (__main__.Checks.test_missing_or_wrong_grant_never_launches) ... ok
+test_once_only_success_preserves_source_review_gate (__main__.Checks.test_once_only_success_preserves_source_review_gate) ... ok
+test_timeout_closes_and_never_restarts (__main__.Checks.test_timeout_closes_and_never_restarts) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.018s
+
+OK

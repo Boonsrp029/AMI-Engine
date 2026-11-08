@@ -1,0 +1,57 @@
+{
+  "input": "D:\\Learning for jobs\\Resume-CV\\Sirapop_Remote_AI_Data_Cover_Letter_Master.docx",
+  "fonts_by_char_count": {},
+  "direct_run_formatting_runs": 4,
+  "direct_paragraph_formatting_paragraphs": 4,
+  "heading_like_paragraphs_not_heading_style": [],
+  "examples": {
+    "direct_run_formatting": [
+      {
+        "para_index": 2,
+        "run_text": "Software Developer, DevOps",
+        "style": "Contact Info"
+      },
+      {
+        "para_index": 9,
+        "run_text": "Software Developer, DevOps (Bangkok-based, 10-month Contract)",
+        "style": "Normal"
+      },
+      {
+        "para_index": 9,
+        "run_text": " ",
+        "style": "Normal"
+      },
+      {
+        "para_index": 9,
+        "run_text": "Agoda",
+        "style": "Normal"
+      }
+    ],
+    "direct_paragraph_formatting": [
+      {
+        "para_index": 4,
+        "text": "github.com/Boonsrp029  |  linkedin.com/in/sirapop-foosuwan-37a621328/",
+        "style": "Contact Info"
+      },
+      {
+        "para_index": 6,
+        "text": "",
+        "style": "Normal"
+      },
+      {
+        "para_index": 8,
+        "text": "",
+        "style": "Normal"
+      },
+      {
+        "para_index": 13,
+        "text": "",
+        "style": "Normal"
+      }
+    ]
+  },
+  "notes": [
+    "Direct formatting is not always wrong, but it often causes inconsistent output when templates change.",
+    "Heading-like paragraphs not using Heading styles can break TOC and accessibility."
+  ]
+}

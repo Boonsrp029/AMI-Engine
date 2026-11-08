@@ -1,0 +1,35 @@
+{
+  "status": "local_release_candidate_complete",
+  "date": "2026-11-06",
+  "source_revision": "9b5e665ede286409346de0759c19e6fe5b231b34",
+  "dirty": true,
+  "source_sha256": "7d3bda77ceaa87957ab596ac87761bb50c74c424f0806033fe45562b4554f50f",
+  "qa_context_sha256": "d5a285cb84c662d7858353ef0f7ed1d911b61763771d01c12cc9898f15136041",
+  "image_id": "sha256:2c84f32b2cfc0620c19d0cac5c823b77aff98de17c1036ae753ad15cf5ce6f56",
+  "revision_label": "9b5e665ede286409346de0759c19e6fe5b231b34-source-7d3bda77ceaa8795",
+  "windows": {
+    "passed": 1503,
+    "failed": 0,
+    "warnings": 14,
+    "seconds": 464.02,
+    "junit_sha256": "c1380f970fe2d41bb6d495738b5a249a59e913186211717d8822b8d53873376b"
+  },
+  "linux": {
+    "passed": 1502,
+    "skipped": 1,
+    "failed": 0,
+    "warnings": 14,
+    "seconds": 168.44
+  },
+  "cached_historical_exports_preserved": 4,
+  "remote_CI": "pending authorized publication and actual success for exact reviewed commit",
+  "publication_authorized": false,
+  "production_qualified": false,
+  "model_quality": "not established; generation remains held",
+  "current_model_server": "not probed or qualified",
+  "cache_free_install": "not established; installation layers cached",
+  "default_mode": "sequential browser",
+  "concurrent_mode": "explicit Plan/trusted callbacks; fixed-callback image smoke only",
+  "evidence_matrix": "reports/workstream-f/rc-2026-11-06/release-candidate-verification.json",
+  "installed_distribution_versions_unchanged": 221
+}

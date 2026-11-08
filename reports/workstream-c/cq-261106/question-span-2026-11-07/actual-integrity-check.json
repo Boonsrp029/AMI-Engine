@@ -1,0 +1,21 @@
+{
+  "executed_snapshot_files": 93,
+  "old_snapshot_files": 128,
+  "original_v7_outputs": 15,
+  "all_manifests_and_r07_unchanged": true,
+  "all_dependencies_unchanged": true,
+  "new_model_calls": 1,
+  "new_composer_calls": 0,
+  "new_nemo_invocations": 0,
+  "semantic_quality_gate_pass": false,
+  "CQ1attempted": 0,
+  "cumulative": {
+    "main_request_starts": 12,
+    "nemo_invocations": 2,
+    "known_completed_main_input_tokens": 7107,
+    "known_completed_main_output_tokens": 1366,
+    "known_completed_main_total_tokens": 8473,
+    "historical_interrupted_backend_usage": "unknown",
+    "internal_nemo_usage": "unknown"
+  }
+}

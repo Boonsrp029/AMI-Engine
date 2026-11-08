@@ -1,0 +1,37 @@
+{
+  "status": "mapping coverage gate failed correctly; allowance closed",
+  "replay_error": "Supported request leaves required branch coverage unselected: s02",
+  "schema_parse": "passed",
+  "selected_source_ids": [
+    "cq-observed"
+  ],
+  "omitted_required_branch": "s02",
+  "omitted_available_fact": "Japan projected electricity demand2.6percentannuallythrough2036",
+  "main_requests": 1,
+  "nemo_invocations": 0,
+  "known_main_usage": {
+    "input_tokens": 602,
+    "output_tokens": 127,
+    "total_tokens": 729
+  },
+  "finish_reason": "stop",
+  "elapsed_seconds": 23.078000000008615,
+  "publication": "not attempted; revision0",
+  "development_planned": 2,
+  "development_attempted": [
+    "cq-p01"
+  ],
+  "development_unattempted": [
+    "cq-p02"
+  ],
+  "CQ1attempted": 0,
+  "CQ1unattempted": 20,
+  "frozen_source_verified": true,
+  "evidence_sha256": {
+    "cq-p01.mapping.raw.json": "15fb141a9dfc457e42fe1f060092e705a1eb0fc4b7a02b1e802aafbc539d6b83",
+    "cq-p01.result.json": "76e76710a19b500415b93fb5bdc268f206e322cde213815d2ae0932876de542a",
+    "cq-p01.started.json": "03ad819526c88f4dabd23f1b4773094883574727e8e4b251d10126629b3180c8",
+    "stopped.json": "2768471f80ee3c2130ae5caca75836e102422ad17f2253fa90b32c5e84885a31"
+  },
+  "new_calls_for_diagnosis": 0
+}

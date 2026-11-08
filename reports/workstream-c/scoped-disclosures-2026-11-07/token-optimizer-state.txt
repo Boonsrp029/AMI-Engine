@@ -1,0 +1,347 @@
+{
+  "subagents": {
+    "available": true,
+    "total_subagents": 0,
+    "open_subagents": 0,
+    "closed_subagents": 0,
+    "leaked_subagents": 0,
+    "total_child_tokens": 0,
+    "by_parent": [],
+    "leaked": [],
+    "selected_thread_id": "01a1a710-dc5f-72f0-a9cb-58806d649751",
+    "aggregation_edges": []
+  },
+  "memory": {
+    "available": false,
+    "thread_count": 0,
+    "truncated": false,
+    "total_raw_memory_chars": 0,
+    "total_rollout_summary_chars": 0,
+    "total_memory_tokens": 0,
+    "max_thread_memory_tokens": 0,
+    "by_thread": []
+  },
+  "goals": {
+    "available": true,
+    "total_goals": 1,
+    "active_goals": 1,
+    "budget_limited": 0,
+    "usage_limited": 0,
+    "over_budget": 0,
+    "goals": [
+      {
+        "thread_id": "01a1a710-dc5f-72f0-a9cb-58806d649751",
+        "objective": "Prepare and, only under an applicable grant, execute a bounded actual-generation qualification for the integrated con...",
+        "status": "active",
+        "token_budget": null,
+        "tokens_used": 1016041,
+        "utilization": null,
+        "time_used_seconds": 16312
+      }
+    ],
+    "selected_thread_id": "01a1a710-dc5f-72f0-a9cb-58806d649751",
+    "aggregation_edges": []
+  },
+  "selected_thread_id": "01a1a710-dc5f-72f0-a9cb-58806d649751",
+  "thread_resolution": "resolved",
+  "thread_resolution_reason": null,
+  "rate_limits": {
+    "limit_id": "codex",
+    "limit_name": null,
+    "primary": {
+      "used_percent": 19.0,
+      "window_minutes": 300,
+      "resets_at": 1794047971
+    },
+    "secondary": {
+      "used_percent": 74.0,
+      "window_minutes": 10080,
+      "resets_at": 1794484344
+    },
+    "credits": {
+      "has_credits": false,
+      "unlimited": false,
+      "balance": "0"
+    },
+    "individual_limit": null,
+    "spend_control_reached": null,
+    "plan_type": "plus",
+    "rate_limit_reached_type": null,
+    "observed_at": "2026-11-07T06:12:06.123Z"
+  },
+  "effort": "medium",
+  "compaction": {
+    "count": 3,
+    "ratios": [
+      {
+        "before_context_tokens": 450998,
+        "after_context_tokens": 49292,
+        "replacement_msgs": 134,
+        "ratio": 0.109
+      },
+      {
+        "before_context_tokens": 450216,
+        "after_context_tokens": 51174,
+        "replacement_msgs": 140,
+        "ratio": 0.114
+      },
+      {
+        "before_context_tokens": 453292,
+        "after_context_tokens": 52339,
+        "replacement_msgs": 143,
+        "ratio": 0.115
+      }
+    ],
+    "avg_ratio": 0.113
+  },
+  "available_models": [
+    {
+      "id": "gpt-6.1-sol",
+      "name": "GPT-6.1-Sol",
+      "effective_context_window": 475000,
+      "reasoning_efforts": [
+        {
+          "effort": "low",
+          "description": "Fast responses with lighter reasoning"
+        },
+        {
+          "effort": "medium",
+          "description": "Balances speed and reasoning depth for everyday tasks"
+        },
+        {
+          "effort": "high",
+          "description": "Greater reasoning depth for complex problems"
+        },
+        {
+          "effort": "xhigh",
+          "description": "Extra high reasoning depth for complex problems"
+        },
+        {
+          "effort": "max",
+          "description": "Maximum reasoning depth for the hardest problems"
+        },
+        {
+          "effort": "ultra",
+          "description": "Maximum reasoning with automatic task delegation"
+        }
+      ]
+    },
+    {
+      "id": "gpt-6-astra",
+      "name": "GPT-6-Astra",
+      "effective_context_window": 258400,
+      "reasoning_efforts": [
+        {
+          "effort": "low",
+          "description": "Fast responses with lighter reasoning"
+        },
+        {
+          "effort": "medium",
+          "description": "Balances speed and reasoning depth for everyday tasks"
+        },
+        {
+          "effort": "high",
+          "description": "Greater reasoning depth for complex problems"
+        },
+        {
+          "effort": "xhigh",
+          "description": "Extra high reasoning depth for complex problems"
+        },
+        {
+          "effort": "max",
+          "description": "Maximum reasoning depth for the hardest problems"
+        },
+        {
+          "effort": "ultra",
+          "description": "Maximum reasoning with automatic task delegation"
+        }
+      ]
+    },
+    {
+      "id": "gpt-6.1-terra",
+      "name": "GPT-6.1 Terra",
+      "effective_context_window": 475000,
+      "reasoning_efforts": [
+        {
+          "effort": "low",
+          "description": "Fast responses with lighter reasoning"
+        },
+        {
+          "effort": "medium",
+          "description": "Balances speed and reasoning depth for everyday tasks"
+        },
+        {
+          "effort": "high",
+          "description": "Greater reasoning depth for complex problems"
+        },
+        {
+          "effort": "xhigh",
+          "description": "Extra high reasoning depth for complex problems"
+        },
+        {
+          "effort": "max",
+          "description": "Maximum reasoning depth for the hardest problems"
+        },
+        {
+          "effort": "ultra",
+          "description": "Maximum reasoning with automatic task delegation"
+        }
+      ]
+    },
+    {
+      "id": "gpt-6-sol",
+      "name": "GPT-6-Sol",
+      "effective_context_window": 258400,
+      "reasoning_efforts": [
+        {
+          "effort": "low",
+          "description": "Fast responses with lighter reasoning"
+        },
+        {
+          "effort": "medium",
+          "description": "Balances speed and reasoning depth for everyday tasks"
+        },
+        {
+          "effort": "high",
+          "description": "Greater reasoning depth for complex problems"
+        },
+        {
+          "effort": "xhigh",
+          "description": "Extra high reasoning depth for complex problems"
+        },
+        {
+          "effort": "max",
+          "description": "Maximum reasoning depth for the hardest problems"
+        },
+        {
+          "effort": "ultra",
+          "description": "Maximum reasoning with automatic task delegation"
+        }
+      ]
+    },
+    {
+      "id": "gpt-6-luna",
+      "name": "GPT-6-Luna",
+      "effective_context_window": 258400,
+      "reasoning_efforts": [
+        {
+          "effort": "low",
+          "description": "Fast responses with lighter reasoning"
+        },
+        {
+          "effort": "medium",
+          "description": "Balances speed and reasoning depth for everyday tasks"
+        },
+        {
+          "effort": "high",
+          "description": "Greater reasoning depth for complex problems"
+        },
+        {
+          "effort": "xhigh",
+          "description": "Extra high reasoning depth for complex problems"
+        },
+        {
+          "effort": "max",
+          "description": "Maximum reasoning depth for the hardest problems"
+        }
+      ]
+    },
+    {
+      "id": "gpt-5.6-sol",
+      "name": "GPT-5.6-Sol",
+      "effective_context_window": 258400,
+      "reasoning_efforts": [
+        {
+          "effort": "low",
+          "description": "Fast responses with lighter reasoning"
+        },
+        {
+          "effort": "medium",
+          "description": "Balances speed and reasoning depth for everyday tasks"
+        },
+        {
+          "effort": "high",
+          "description": "Greater reasoning depth for complex problems"
+        },
+        {
+          "effort": "xhigh",
+          "description": "Extra high reasoning depth for complex problems"
+        },
+        {
+          "effort": "max",
+          "description": "Maximum reasoning depth for the hardest problems"
+        },
+        {
+          "effort": "ultra",
+          "description": "Maximum reasoning with automatic task delegation"
+        }
+      ]
+    },
+    {
+      "id": "gpt-5.6-terra",
+      "name": "GPT-5.6-Terra",
+      "effective_context_window": 258400,
+      "reasoning_efforts": [
+        {
+          "effort": "low",
+          "description": "Fast responses with lighter reasoning"
+        },
+        {
+          "effort": "medium",
+          "description": "Balances speed and reasoning depth for everyday tasks"
+        },
+        {
+          "effort": "high",
+          "description": "Greater reasoning depth for complex problems"
+        },
+        {
+          "effort": "xhigh",
+          "description": "Extra high reasoning depth for complex problems"
+        },
+        {
+          "effort": "max",
+          "description": "Maximum reasoning depth for the hardest problems"
+        },
+        {
+          "effort": "ultra",
+          "description": "Maximum reasoning with automatic task delegation"
+        }
+      ]
+    },
+    {
+      "id": "gpt-5.6-luna",
+      "name": "GPT-5.6-Luna",
+      "effective_context_window": 258400,
+      "reasoning_efforts": [
+        {
+          "effort": "low",
+          "description": "Fast responses with lighter reasoning"
+        },
+        {
+          "effort": "medium",
+          "description": "Balances speed and reasoning depth for everyday tasks"
+        },
+        {
+          "effort": "high",
+          "description": "Greater reasoning depth for complex problems"
+        },
+        {
+          "effort": "xhigh",
+          "description": "Extra high reasoning depth for complex problems"
+        },
+        {
+          "effort": "max",
+          "description": "Maximum reasoning depth for the hardest problems"
+        }
+      ]
+    }
+  ],
+  "effort_breakdown": {
+    "medium": 53,
+    "low": 11,
+    "high": 3
+  },
+  "tool_duration_p90_ms": null,
+  "task_duration_ms_max": 1468425.0,
+  "ttft_ms_avg": 10743.6
+}

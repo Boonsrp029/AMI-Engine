@@ -1,0 +1,46 @@
+{
+  "status": "v6 composition gate failed; allowance closed",
+  "contract_sha256": "008983029a7b3d7b1523b680fe80b1c909d484821bb2b8904228ef0091bf85c8",
+  "technical_pass": false,
+  "mapping_schema": "passed with both required source spans",
+  "mapping_coverage": "passed",
+  "raw_composition": "duplicated unsupported relative comparison in both units; omitted2.6percentprojection",
+  "confirmed_replay_error": "Draft introduces a numeric value absent from its selected evidence",
+  "failure_class": "unit-local evidence binding; not a demonstrated retrieval/schema/truncation/GPU-capacity defect",
+  "main_requests": 2,
+  "nemo_invocations": 0,
+  "known_main_usage_from_raw": {
+    "input_tokens": 1521,
+    "output_tokens": 264,
+    "total_tokens": 1785
+  },
+  "finish_reasons": [
+    "stop",
+    "stop"
+  ],
+  "elapsed_seconds": 36.28100000000268,
+  "stored_metrics_usage": "incomplete because worker failed; raw response usage retained separately",
+  "internal_nemo_usage": "none invoked in this batch",
+  "monetary_hardware_cost": "unmeasured",
+  "publication": "not attempted; revision0, draft null",
+  "development_planned": 2,
+  "development_attempted": [
+    "cq-p01"
+  ],
+  "development_unattempted": [
+    "cq-p02"
+  ],
+  "CQ1attempted": 0,
+  "CQ1unattempted": 20,
+  "evidence_sha256": {
+    "cq-p01.composition.raw.json": "94d1c6c1fe5b2b21f35086d9e9460d4b89d4daa5109532e64449244d792188b6",
+    "cq-p01.mapping.raw.json": "38bac20cf467414ceaeb4e0647ce3d9c8410a2fa69504ad1b2946f423ac78846",
+    "cq-p01.result.json": "8e2389deac534d5dc7f68659e937f0ed1fdb638a62e5a139d12642d5ef81de6f",
+    "cq-p01.started.json": "f36cee55f03573e72b0f62717ce7a9b474dcef7982fadac6dbfb19711519f058",
+    "stopped.json": "2768471f80ee3c2130ae5caca75836e102422ad17f2253fa90b32c5e84885a31"
+  },
+  "frozen_contract_verified_after_execution": true,
+  "new_model_calls_for_diagnosis": 0,
+  "owner_review": "not requested for rejected technical output",
+  "next": "Offline composition-contract diagnosis and different-fact regressions; no automatic retries, tuning within closed batch or qualification claim"
+}

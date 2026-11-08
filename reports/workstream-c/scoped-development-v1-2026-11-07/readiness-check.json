@@ -1,0 +1,11 @@
+{
+  "contract_sha256": "f5eb8a4de2eecf482746e5e513525ceeef4e37fc951b8d1e43506c2780391405",
+  "input_files_verified": 106,
+  "new_grant": false,
+  "new_actual_model_calls": 0,
+  "execution_output_exists": false,
+  "combined_offline": "1731passed14warnings500.90seconds",
+  "targeted": "61passed22.18seconds",
+  "operator_checks": "4passed;fakeownedprocesses",
+  "A_activation": "present;checkedactualentrypointoffline"
+}

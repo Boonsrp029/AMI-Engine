@@ -1,0 +1,45 @@
+{
+  "claims": [
+    {
+      "text": "Synthetic example: Chile solar share was 12% in 2012.",
+      "sources": [
+        "solar"
+      ]
+    }
+  ],
+  "required_disclosures": [
+    {
+      "subtask_id": "s02",
+      "required": true,
+      "state": "completed",
+      "outcome": "missing",
+      "retrieval_query": "today retail gas tariffs",
+      "original_question": "Report Chile solar share in 2012 and Chile retail gas tariffs today.",
+      "disclosure": "This retrieval returned no supporting evidence; this does not establish absence in the database.",
+      "source_ids": [],
+      "selected_source_ids": [],
+      "precise_requested_subpart": "Chile retail gas tariffs today",
+      "requested_scope_basis": "predeclared annotation; membership only",
+      "semantic_support_proven": false
+    }
+  ],
+  "branch_diagnostics": [
+    {
+      "subtask_id": "s02",
+      "required": true,
+      "state": "completed",
+      "outcome": "missing",
+      "retrieval_query": "today retail gas tariffs",
+      "original_question": "Report Chile solar share in 2012 and Chile retail gas tariffs today.",
+      "disclosure": "This retrieval returned no supporting evidence; this does not establish absence in the database.",
+      "source_ids": [],
+      "selected_source_ids": [],
+      "precise_requested_subpart": "Chile retail gas tariffs today",
+      "requested_scope_basis": "predeclared annotation; membership only",
+      "semantic_support_proven": false
+    }
+  ],
+  "generation_calls": 0,
+  "owner_acceptance": "not inferred",
+  "runtime_activated": false
+}

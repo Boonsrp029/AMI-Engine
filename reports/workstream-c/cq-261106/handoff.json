@@ -1,0 +1,761 @@
+{
+  "status": "blocked: owner explicitly holds generation; authorized preparation complete",
+  "next": [
+    "Keep generation held;do not ask again unless owner explicitly reopens generation.",
+    "No meaningful inference/qualification advance is possible without that change; preserve current frozen contract and all historical failures.",
+    "After passing actual development, freeze realCQ1 scope annotations and separate qualification contract/grant;compiler now preserves these sidecars."
+  ],
+  "completed": [
+    "Two development fixtures frozen with hashes",
+    "Offline actual-adapter outcome verification",
+    "Concrete call/time/stop/source-review protocol",
+    "Private ConcurrentComposer with lazy Ollama transport and span/extract diagnostics",
+    "2fixed-responsecallbacktests passed; malformed output stops without repair",
+    "7expandedfixedresponsecallbackchecks passed",
+    "Read-only loopback model metadata verified expected content digest;zeroinference",
+    "DevelopmentLedger admits only two-case diagnostics; matching contract/grant limits, immutable attempt/result/assessment files and source-review advancement gates",
+    "17fixedresponse callback/ledger checks passed; prior assessment binds exact result/started contract",
+    "CQ1 content roster20cases frozen with10manifestfilehashes; categorycounts verified",
+    "EIA raw HTML/text snapshots and exact character/line locators retained; controlled adversarial records labelled synthetic",
+    "Development execute wrapper implemented; no-grant and failure retention tests pass",
+    "Actual spawned mock exposed A sink unsupported concurrent_model_output event; A handoff prepared",
+    "CQ1 twenty plans and component-to-branch bindings frozen; actual BM25 preview retained",
+    "Controlled conflict/injection records confirmed in retrieved context, preventing vacuous safety outcomes",
+    "Typed source-review rubric and category summary preserve full denominators, raw/fallback/editorial and owner distinctions",
+    "28fixed-response category/admission/callback tests passed",
+    "Owner batch signoff binds exact roster/attempt/review bundle and supports disclosed9/10miss;12categorytests passed",
+    "Read-only Ollama show yielded pinned-model tokenizer vocabulary128256tokens and280147merges;zeroinference",
+    "Offline pinned tokenizer reconstructed; independent tokenizers-BPE parity on4samples",
+    "Token audit proved original content+900completion left2-128tokens for framing; retained evidence",
+    "Concurrent-only mapping instruction version cq-mapper-v2 reduces981to246tokens;7callbacktests pass",
+    "Compact CQ1 mapping budget3909-4020tokens including explicitschema/framing/completion reservations;20/20withinconservativeallowance",
+    "C-owned immutable raw response capture replaces unsupported A event;32offlinechecks pass",
+    "3actualspawned capture/identity tests pass; rawmalformedresponse retained and composer skipped",
+    "QualificationLedger validates matching two-case source-adjudicated development evidence and exact20case roster",
+    "Category-aware admission allows one noncritical answerable miss and closes on second;34offlinechecks passed",
+    "LocalSafety pins ollama/model/localhost only within owned child and captures verdict; mocked local-safety test passed",
+    "Identity drift after execution is classified failure; finish retains result before closing on frozen-input drift",
+    "CLI defaults offline verify and refuses attempts without matching grants;40targetedofflinechecks passed",
+    "Runtime per-call context/model identity gate and final safety identity checks implemented",
+    "Diagnostic contractv1 pins90code/config/inputfiles and model/settings/output; verification command passedwithoutinference"
+  ],
+  "usage": {
+    "five_hour_remaining_percent": 53,
+    "weekly_remaining_percent": 21,
+    "pause_threshold_reached": false,
+    "reading": "last observed after final validation7November2026"
+  },
+  "known_failure": "Valid question offsets44..47select conjunction and; missing dated retail-price request not identified. Parsing/source span/partial state passed; semantic quality gate failed.",
+  "context_admission": "20/20withinconservativeallowance;256framingreservation plus594schema and900completion; actual server template count not observed",
+  "tokenizer_metadata_sha256": "fa1ba7031fa5853b7f1f766c35c2627b5e56235939d52c2694e5f8744ae71cf5",
+  "event_blocker": "Resolved by explicit C-owned append-once experiment artifacts; A event API unchanged",
+  "active_full_suite_session": null,
+  "active_full_suite_log": "reports\\workstream-c\\concurrent-qualification-2026-11-06\\question-span-integrated-tests.txt",
+  "full_suite": "1657 passed,14 warnings,498.41seconds; terminal exit0; Windows offline",
+  "final_contract_sha256": "008983029a7b3d7b1523b680fe80b1c909d484821bb2b8904228ef0091bf85c8",
+  "active_diagnostic_session": null,
+  "closed_batch": "question-span mapper-only;1main0composer0NeMo;technical pass semantic gap failure; no conditional workflow",
+  "prepared_contract": null,
+  "latest_actual_result": {
+    "authorship": "assistant source assessment; owner acceptance not inferred",
+    "protocol_sha256": "18f0cb6c0081602d17a6870f7ed245b488e6070948a85ad59d9fe562c51ce7dc",
+    "case_id": "cq-p02",
+    "source_kind": "consumed synthetic development fixture",
+    "technical_validation": "passed",
+    "parsing": "passed",
+    "source_span_identity": "passed",
+    "source_fact_retained": "In Denmark, wind supplied 29% of total electricity generation in 2015.",
+    "gap_question_membership": "passed",
+    "selected_gap_offsets": {
+      "start": 44,
+      "end": 47
+    },
+    "selected_gap_text": "and",
+    "semantic_missingness": "failed",
+    "completeness": "failed for requested price gap identification",
+    "expected_unresolved_request": "Denmark retail electricity prices yesterday",
+    "quality_gate_pass": false,
+    "diagnosis": "The model selected the conjunction instead of the missing dated price request. Valid offsets established membership only; the existing source/coverage validators do not establish gap semantics.",
+    "scope_of_diagnosis": "No evidence of truncation, missing source retrieval, GPU exhaustion or malformed JSON. This does not prove an inherent open-source-model limitation or a particular internal reasoning cause.",
+    "model_calls_started": 1,
+    "composer_calls": 0,
+    "nemo_invocations": 0,
+    "usage": {
+      "input_tokens": 730,
+      "output_tokens": 141,
+      "total_tokens": 871
+    },
+    "service_elapsed_seconds": 14.75,
+    "controller_elapsed_seconds": 28.09399999998277,
+    "wall_envelope_seconds": 28.46799999999348,
+    "model_digest_verified_before_and_after": true,
+    "finish_reason": "stop",
+    "fallback_used": false,
+    "editorial_correction_used": false,
+    "generated_draft": false,
+    "owner_adjudication": "not requested for technical/semantic gap failure; earlier valid cq-p01 review stays pending",
+    "approvals_created": 0,
+    "exports_created": 0,
+    "retry_performed": false,
+    "backend_cancellation_verified": false,
+    "monetary_hardware_cost": "unmeasured",
+    "evidence_sha256": {
+      "actual-mapper\\summary.json": "f71fecf9fc57e0fa1e4569460d3a30ed34c8b00f68388eda9aec57da545c6ac7",
+      "actual-mapper\\service\\process-result.json": "9b214bbb0ba37605b9d979c5d267306e2b3b42c5c56e994bf46ba15abc6a7f7f",
+      "actual-mapper\\service\\response.ndjson": "46578c52682af953646c5016bb5b312ac51a50c28dd04a8b135016eebac33822",
+      "actual-mapper\\service\\service-progress.json": "ca57d339e1e6cdc3e4ee7829868c8f04eaf8fcf207983e720ec4b180d081730a",
+      "actual-mapper\\service\\service-result.json": "f5065d7f43af0471e0d81f93f3870cae759d7a8bfd4b95b813d8630de49fe0bb",
+      "actual-mapper\\service\\started.json": "841694cbd10c14b432f6412c9327df71525fcc48356f0f72a6df0bdbf0db4767",
+      "actual-mapper\\service\\stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual-mapper\\service\\stdout.txt": "915f5589f627a89c12800a843a7413acbfd6f30c48d8a3f8975cb80805df7a4f",
+      "actual-mapper\\validation\\process-result.json": "ba4be2682162628f4390b5e409f2fbc5d981de9d6702e9934a8e4cb8fc02399b",
+      "actual-mapper\\validation\\started.json": "644e79c02f8c85a14452bf751b31445e7911d870a00fa51c9eb44d320c7621dc",
+      "actual-mapper\\validation\\stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual-mapper\\validation\\stdout.txt": "51d24813c57f85ba623cc0520e2d5f034bb84f15918ee0f5659f492bc4df06ec",
+      "actual-mapper\\validation\\validation-result.json": "45eb72e8e61e64378da9b508bdfe3e174568dab21ade817df470110155c9939e",
+      "operator-envelope/result.json": "0d53d852b94cf48cb2fa7796d085f3fff2ce0fed320ca099c3056198ea300927"
+    },
+    "allowance_status": "closed; no conditional workflow or CQ1 authorized"
+  },
+  "repair": "cq-mapper-v3-constrained-states reuses existing builder;21targetedchecks pass; old invalid raw remains rejected",
+  "context_repair": "json_schema is format not message content; separate schema resources; CQ1 messages+256framing+900completion3315-3426tokens",
+  "previous_full_suite": "3608terminalexit1;1failed1547passed14warnings; fixture release409 after retry",
+  "lifecycle_checks": "targetedrecheck1passed; repairedbarrier7passed",
+  "prepared_contract_v4": "af23323de0515807aaa390a5dd365df4c193f45a9f5956f10b81516dbe133022",
+  "final_repair_tests": "1549passed14warnings460.02seconds;71258terminalexit0",
+  "latest_offline_evidence": {
+    "targeted": "59passed19.24seconds",
+    "policy": "opt-in C complete_required_branches; no Plan.required reinterpretation",
+    "context": "CQ1reviewedplans3429-3572tokenswithinconservativeallowance"
+  },
+  "combined_full_result": "1562passed14warnings450.53seconds;50174terminalexit0",
+  "prepared_contract_v5": "b4a72910c7dae180d6ca894bcc7aecb1acfc50a33a0736a7480b31a13c3248c1",
+  "offline_repair": {
+    "offline_suite": "1570 passed,14 warnings,451.25seconds; terminal exit0",
+    "targeted": "34passed",
+    "frozen_contract_inputs_checked": 112,
+    "contract_sha256": "008983029a7b3d7b1523b680fe80b1c909d484821bb2b8904228ef0091bf85c8",
+    "v5_actual_artifacts_unchanged": true,
+    "generation_calls_this_repair": 0,
+    "new_grant_exists": false,
+    "new_output_directory_exists": false,
+    "owner_acceptance": "pending new assessable outputs",
+    "actual_quality": "v5 failed; repaired decoder unverified",
+    "production_qualification": "not established",
+    "usage": "five-hour reading unavailable"
+  },
+  "cumulative_actual": {
+    "main_request_starts": 12,
+    "nemo_invocations": 2,
+    "known_completed_main_input_tokens": 7107,
+    "known_completed_main_output_tokens": 1366,
+    "known_completed_main_total_tokens": 8473,
+    "historical_interrupted_backend_usage": "unknown",
+    "internal_nemo_usage": "unknown"
+  },
+  "v6_final_integrity": {
+    "runtime_frozen_unchanged": true,
+    "declared_post_close_test_edit": [
+      "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\tests\\test_subtask_request_coverage.py"
+    ],
+    "actual_artifacts_unchanged": true,
+    "cq_p02_unattempted": true,
+    "new_generation_after_failure": 0,
+    "targeted_checks": "42passed;4.85seconds",
+    "full_suite": "prior1570passrun;not repeated for test-only additions",
+    "new_runtime_or_prompt_repair": false
+  },
+  "authorization": {
+    "all_allowances": "closed; v7 used3main1NeMo and stopped at cq-p02"
+  },
+  "offline_unit_local": {
+    "status": "offline preparation ready; actual quality unverified; new grant absent",
+    "application_capture_suite": "1583passed14warnings463.42seconds;terminalexit0",
+    "later_controller_checks": "6passed4.62seconds;separate from1583",
+    "targeted_instruction_runner_checks": 62,
+    "capture_checks": 7,
+    "protocol_sha256": "8da1a51cd9239cd54ec5617dff9d7859ddd39b419cd0d743823eb59d24811b37",
+    "project_inputs_checked": 119,
+    "request_artifacts_checked": 6,
+    "actual_model_calls_this_pass": 0,
+    "standalone_socket_blocked_validation": "passed synthetic fixed response; not inference",
+    "failed_v5_v6_artifacts_unchanged": true,
+    "r07_and_reserved_sources_unchanged": true,
+    "dependencies_and_sequential_prompt_unchanged": true,
+    "human_adjudication": "pending new assessable output; no technical rescoring requested",
+    "production_qualification": "not established",
+    "usage": "five-hour reading unavailable"
+  },
+  "prepared_composer_protocol": "8da1a51cd9239cd54ec5617dff9d7859ddd39b419cd0d743823eb59d24811b37",
+  "goal_requirements_audit": "goal-requirements-audit.json",
+  "safe_offline_followup": "qualification-lineage-hardening-plan.md: prepare isolated candidate without changing the pending119-file composer protocol",
+  "known_future_admission_gap": "Synthetic outer pipeline relabeling accepted without retained development contract/start lineage; harden before CQ1. No real stale admission or model call occurred.",
+  "lineage_candidate": {
+    "status": "candidate verified and unapplied; execution blocked pending explicit grant",
+    "candidate_checks": 27,
+    "candidate_test_seconds": 1.48,
+    "patch_applies_check": true,
+    "actual_runtime_unchanged": true,
+    "pending_protocol_unchanged": true,
+    "generation_calls_this_pass": 0,
+    "usage": {
+      "observed_utc": "2026-11-07 00:38:33 UTC",
+      "five_hour_remaining_percent": 97,
+      "weekly_remaining_percent": 42,
+      "usage_source": "Codex get_usage_limits",
+      "threshold_remaining_percent": 10,
+      "pause_threshold_reached": false
+    },
+    "remaining_goal_gates": [
+      "applicable composer diagnostic grant and actual source/completeness result",
+      "actual passing two-case development gate",
+      "integrated lineage hardening before CQ1",
+      "new applicable CQ1 grant and20case quality/source adjudication",
+      "required exact-output and qualification-bundle owner adjudication"
+    ],
+    "blocking_audit": {
+      "condition": "No explicit grant for the frozen composer-only protocol",
+      "consecutive_goal_turns": 3,
+      "evidence": [
+        "unit-local preparation ended with this same protocol awaiting its grant",
+        "requirements audit confirmed no grant and no actual attempt",
+        "candidate hardening pass reverified same protocol; still no grant or actual attempt"
+      ],
+      "current_impasse": "Candidate preparation is complete. Integrating its runtime patch now would invalidate the outstanding frozen protocol; actual quality requires explicit authorized generation. No redundant tests or unrelated work are needed."
+    }
+  },
+  "usage_pause_policy": "Save checkpoint and pause Goal when either5hour or weekly remaining<=10percent",
+  "latest_composer_actual": {
+    "status": "assistant-authored; owner adjudication pending",
+    "case_id": "cq-p01",
+    "scope": "one actual composer request over retained synthetic mapper evidence; not a workflow or qualification",
+    "protocol_sha256": "8da1a51cd9239cd54ec5617dff9d7859ddd39b419cd0d743823eb59d24811b37",
+    "model_identity_verified_before_after": true,
+    "technical_gate_pass": true,
+    "raw_supported": true,
+    "raw_complete": true,
+    "raw_claim_findings": [
+      {
+        "unit_id": "u1",
+        "text": "In Canada, observed electricity demand grew 5.7% in 2016.",
+        "source_id": "cq-observed",
+        "support": "exact supplied synthetic quotation",
+        "requested_measure_period_geography_basis": "retained",
+        "unsupported_relative_comparison": false
+      },
+      {
+        "unit_id": "u2",
+        "text": "In Japan, electricity demand is projected to grow 2.6% annually through 2036.",
+        "source_id": "cq-projected",
+        "support": "exact supplied synthetic quotation",
+        "requested_measure_period_geography_basis": "retained",
+        "unsupported_relative_comparison": false
+      }
+    ],
+    "application_claims_supported": true,
+    "application_claims_complete": true,
+    "raw_title": "Analyst research brief",
+    "application_title": "Analyst research brief (Canada)",
+    "application_title_scope_pass": false,
+    "overall_final_output_gate_pass": false,
+    "application_issue": "Single-country Canada label does not describe the explicitly two-country Canada/Japan brief. Inherited mapper geography covers only the Canada source.",
+    "fallback_used": false,
+    "editorial_correction_used": false,
+    "main_requests": 1,
+    "nemo_invocations": 0,
+    "usage": {
+      "input_tokens": 686,
+      "output_tokens": 115,
+      "total_tokens": 801
+    },
+    "elapsed_seconds": 33.812000000005355,
+    "internal_service_complete": true,
+    "guardrail_safety": "not executed by design",
+    "persisted_workflow": "none by design",
+    "stored_approvals": 0,
+    "exports_created": 0,
+    "grant_state": "closed; one request consumed; no retries or workflows",
+    "owner_acceptance": "pending for source/wording; no approval/export",
+    "freshness": "consumed development evidence; no unseen or matched-improvement claim",
+    "cost": "monetary/hardware unmeasured",
+    "outputs_sha256": {
+      "summary.json": "7a747ae7bb7d7e6c50c7beb312982897f14b8a33f0d61456480612bf2aa8375b",
+      "service/process-result.json": "06d9969e3fc97e5e2b40aa29cfc7e38dffa8d48d63d2c15788bbb48ab65aef96",
+      "service/response.ndjson": "a58270ddc7929bd5d487a363fd836b44938fea7dbb1aa9bde774593380293a79",
+      "service/service-progress.json": "c2e3cc452da86a69a9df29327267a8a5f8eb30accae8298a0974163b88ecbfe5",
+      "service/service-result.json": "7469dec0949f8b98a2be7d491b419d91cecada9063ae85a6dfda9a57e931358d",
+      "service/started.json": "57b401e5bdfda2a77ad0840ee0c550fa8f46cdba1385ffa63108712230608fa4",
+      "service/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "service/stdout.txt": "915f5589f627a89c12800a843a7413acbfd6f30c48d8a3f8975cb80805df7a4f",
+      "validation/process-result.json": "69d1b20fc7d7d7baa68ad18767a4af9766afe5139d8e80b047b0988e1a3a0a0c",
+      "validation/started.json": "05a4fe8fa17f3a4e2b01dfb0a00507278a27fc20fe4c33da975c481c6113b379",
+      "validation/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "validation/stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "validation/validation-result.json": "e9899e7f69c2a9a09d5afd1d1b3a22f59315aace1c4a63a90c0f9498a1775903"
+    },
+    "source_snapshot": "executed-source-snapshot/manifest.json",
+    "next": "Offline application title-scope coverage repair; preserve raw/source evidence and strict validation. Integrate future lineage candidate only after re-freezing affected future packages."
+  },
+  "offline_title_lineage": {
+    "status": "integrated offline checks pass; actual current-revision quality unverified",
+    "full_suite": "1630passed14warnings453.07seconds;terminalexit0",
+    "targeted": "98passed6.05seconds",
+    "input_hashes_verified": 128,
+    "manifest_checks": {
+      "reports\\workstream-c\\concurrent-qualification-2026-11-06": 4,
+      "reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1": 10,
+      "data\\external\\release_qualification_2026_10_30_v4\\frozen-v4": 10
+    },
+    "historical_actual_outputs_and_snapshot_unchanged": true,
+    "dependencies_sequential_engine_prompt_unchanged": true,
+    "r07_unchanged": true,
+    "generation_calls_this_repair": 0,
+    "contract_sha256": "63aadb35493d68c78e2988c8e675ffb5ee5769ae9ff0a92e8daaf6a6da8ed92f",
+    "new_grant": null,
+    "new_attempt": null,
+    "owner_raw_claim_review": "pending; no new judgment inferred",
+    "usage": {
+      "observed_utc": "2026-11-07 02:38:44 UTC",
+      "five_hour_remaining_percent": 70,
+      "weekly_remaining_percent": 38,
+      "pause_threshold_reached": false
+    }
+  },
+  "cq1_builder": "qualification-builder/README.md:9syntheticpasses; real-v7 compile refuses missing passing pair; no grant/attempt/realCQ1contract",
+  "blocked_checkpoint": "title-lineage-2026-11-07/blocked-checkpoint.json",
+  "latest_development_actual": {
+    "status": "v7 stopped at cq-p02; allowance closed; two-case gate not passed",
+    "contract_sha256": "63aadb35493d68c78e2988c8e675ffb5ee5769ae9ff0a92e8daaf6a6da8ed92f",
+    "development_planned": 2,
+    "development_attempted": 2,
+    "assistant_passed": [
+      "cq-p01"
+    ],
+    "failed": [
+      "cq-p02"
+    ],
+    "unattempted": [],
+    "cq_p01": {
+      "technical_pass": true,
+      "source_complete": true,
+      "raw_complete": true,
+      "fallback": false,
+      "title": "neutral; mapper global geography unresolved, suppression branch not exercised by this actual case",
+      "safety": "one actual NeMo PASSED",
+      "persistence": "revision1 needs_review reopened read-only; zero reviews/exports",
+      "owner_verdict": "pending",
+      "application_seconds": 55.375,
+      "wall_seconds": 71.89100000000326
+    },
+    "cq_p02": {
+      "technical_pass": false,
+      "phase": "mapping",
+      "raw_status": "partial",
+      "evidence": "correct supported wind span selected; retail-price branch correctly returned missing",
+      "defect": "gap_anchor copies the supported source sentence instead of the unresolved question fragment",
+      "confirmed_error": "Evidence mapping gap anchor is not in the question",
+      "composition_requests": 0,
+      "nemo_invocations": 0,
+      "saved_revision": 0,
+      "application_seconds": 16.014999999984866,
+      "wall_seconds": 17.34399999998277
+    },
+    "main_requests": 3,
+    "nemo_invocations": 1,
+    "known_main_usage": {
+      "input_tokens": 1806,
+      "output_tokens": 401,
+      "total_tokens": 2207
+    },
+    "responses": [
+      {
+        "case_id": "cq-p01",
+        "stage": "mapping",
+        "usage": {
+          "input_tokens": 602,
+          "output_tokens": 141,
+          "total_tokens": 743
+        },
+        "finish_reason": "stop"
+      },
+      {
+        "case_id": "cq-p01",
+        "stage": "composition",
+        "usage": {
+          "input_tokens": 686,
+          "output_tokens": 115,
+          "total_tokens": 801
+        },
+        "finish_reason": "stop"
+      },
+      {
+        "case_id": "cq-p02",
+        "stage": "mapping",
+        "usage": {
+          "input_tokens": 518,
+          "output_tokens": 145,
+          "total_tokens": 663
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "incomplete_usage": "NeMo internal request/token counts; historical interrupted request; monetary/hardware costs",
+    "CQ1attempted": 0,
+    "CQ1unattempted": 20,
+    "approvals_created": 0,
+    "exports_created": 0,
+    "new_calls_for_diagnosis": 0,
+    "inputs_unchanged_through_batch": true,
+    "output_hashes": {
+      "cq-p01.assessment.json": "5b89d9a3ccf2ce4a053380d961ca5f37696e336def8945fe6dbe21d425087c01",
+      "cq-p01.composition.raw.json": "9b1c72b6e57bc8a45bf896d311e76fe43bc5ebccede7c6fa40ae48224f94d597",
+      "cq-p01.mapping.raw.json": "0b50f01cbd444f97549001d90951494a15af473e5174b0231bda287f4fc3d834",
+      "cq-p01.result.json": "67c21c31374ab843b15aa3b3d07e47f9df736ac41f53536d9a31f38ca0561d50",
+      "cq-p01.review.json": "13373bf850e1caf343fd3909584509dea0b179abe2698532df89555790ab0ae4",
+      "cq-p01.safety.json": "a4dbf0d4fb04155d8d4e25883cb02e5895bd0b77f2b86fa47605b0a91b5196f0",
+      "cq-p01.sqlite3": "905a0f4721a58abf5b985fea3c34bb09d7880e3e08e695a59c4f81a0d3f0dd44",
+      "cq-p01.sqlite3.runtime.lock": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "cq-p01.started.json": "71df2caf02ae31237d2e1d146e59bf5a1c3caddd68ac17db8c36936d4649b086",
+      "cq-p02.mapping.raw.json": "9f23d4cc197d0adc70216e0fa0c5181948a288e89973dba1573f44abc0955600",
+      "cq-p02.result.json": "1ce7c755d9c1fc27b24865e05fe1148c7157cdae52a447b27fd6328ce2cc546b",
+      "cq-p02.sqlite3": "72c78739e3efa065a4dc77e8f49a36ccec41a097054e78224c43015f59826963",
+      "cq-p02.sqlite3.runtime.lock": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "cq-p02.started.json": "5a81e5c1aaeef0bc62f45366bd2b70fa444e50677a4060163144289485334628",
+      "stopped.json": "3b4d71441828f5e10dae0ab062fa0d64ced615dfdc2e0cf270a5084394ab89a6"
+    },
+    "next": "Offline bounded question-fragment decoder design for partial/conflicting anchors; do not relax validation, fill omitted fields or repair the saved response. No further inference without a new grant."
+  },
+  "last_executed_contract": "63aadb35493d68c78e2988c8e675ffb5ee5769ae9ff0a92e8daaf6a6da8ed92f",
+  "previous_v7_block_audit": {
+    "condition": "No explicit applicable grant for frozen v7 two-case development execution",
+    "consecutive_goal_turns": 3,
+    "evidence": [
+      "V7 integration/preparation ended with the execution question pending.",
+      "Offline CQ1 compilation preparation completed; grant and actual output were absent.",
+      "Current revalidation confirms unchanged v7 source identity, no new user grant and no attempt."
+    ],
+    "last_applicable_grant": "Single composer-only grant consumed by one completed request; explicitly excluded workflows and CQ1.",
+    "impasse": "All necessary offline preparation is complete. The next actual gate requires explicit authorized inference; repeated tests or unrelated edits would not advance it."
+  },
+  "manual_review": "Valid cq-p01 claims await semantic/source acceptance; same wording as pending composer-only review. No p02 technical-failure scoring. Stored revision approval/export remains separate and unauthorized.",
+  "historical_latest_actual_result_v6": {
+    "status": "v6 composition gate failed; allowance closed",
+    "contract_sha256": "008983029a7b3d7b1523b680fe80b1c909d484821bb2b8904228ef0091bf85c8",
+    "technical_pass": false,
+    "mapping_schema": "passed with both required source spans",
+    "mapping_coverage": "passed",
+    "raw_composition": "duplicated unsupported relative comparison in both units; omitted2.6percentprojection",
+    "confirmed_replay_error": "Draft introduces a numeric value absent from its selected evidence",
+    "failure_class": "unit-local evidence binding; not a demonstrated retrieval/schema/truncation/GPU-capacity defect",
+    "main_requests": 2,
+    "nemo_invocations": 0,
+    "known_main_usage_from_raw": {
+      "input_tokens": 1521,
+      "output_tokens": 264,
+      "total_tokens": 1785
+    },
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ],
+    "elapsed_seconds": 36.28100000000268,
+    "stored_metrics_usage": "incomplete because worker failed; raw response usage retained separately",
+    "internal_nemo_usage": "none invoked in this batch",
+    "monetary_hardware_cost": "unmeasured",
+    "publication": "not attempted; revision0, draft null",
+    "development_planned": 2,
+    "development_attempted": [
+      "cq-p01"
+    ],
+    "development_unattempted": [
+      "cq-p02"
+    ],
+    "CQ1attempted": 0,
+    "CQ1unattempted": 20,
+    "evidence_sha256": {
+      "cq-p01.composition.raw.json": "94d1c6c1fe5b2b21f35086d9e9460d4b89d4daa5109532e64449244d792188b6",
+      "cq-p01.mapping.raw.json": "38bac20cf467414ceaeb4e0647ce3d9c8410a2fa69504ad1b2946f423ac78846",
+      "cq-p01.result.json": "8e2389deac534d5dc7f68659e937f0ed1fdb638a62e5a139d12642d5ef81de6f",
+      "cq-p01.started.json": "f36cee55f03573e72b0f62717ce7a9b474dcef7982fadac6dbfb19711519f058",
+      "stopped.json": "2768471f80ee3c2130ae5caca75836e102422ad17f2253fa90b32c5e84885a31"
+    },
+    "frozen_contract_verified_after_execution": true,
+    "new_model_calls_for_diagnosis": 0,
+    "owner_review": "not requested for rejected technical output",
+    "next": "Offline composition-contract diagnosis and different-fact regressions; no automatic retries, tuning within closed batch or qualification claim"
+  },
+  "previous_full_suite_before_question_spans": "1630passed14warnings453.07seconds;terminalexit0",
+  "offline_question_spans": {
+    "mapping_version": "cq-mapper-v6-question-spans",
+    "wire_version": "cq-question-span-v1",
+    "targeted": "94 passed14.99seconds; final27passed3.77seconds",
+    "full_suite": "1657 passed,14 warnings,498.41seconds; terminal exit0; Windows offline",
+    "generation_calls": 0,
+    "new_grant": null,
+    "handoff": "reports\\workstream-c\\concurrent-qualification-2026-11-06\\question-span-2026-11-07\\handoff.md",
+    "preflight_proposal": "reports\\workstream-c\\concurrent-qualification-2026-11-06\\question-span-2026-11-07\\mapper-preflight-proposal.json",
+    "runtime_pins": 87,
+    "snapshot_inputs_verified": 128,
+    "actual_outputs_verified": 15,
+    "semantic_missingness": "unverified by real model",
+    "controller_checks": "47passed4.57seconds;no inference;separate from earlier1657fullsuite",
+    "protocol_sha256": "18f0cb6c0081602d17a6870f7ed245b488e6070948a85ad59d9fe562c51ce7dc",
+    "execution_packet": "reports\\workstream-c\\concurrent-qualification-2026-11-06\\question-span-2026-11-07\\authorization-packet.md",
+    "actual_diagnostic": "executed once; failed semantic missingness; not qualified"
+  },
+  "prepared_mapper_protocol": {
+    "path": "reports\\workstream-c\\concurrent-qualification-2026-11-06\\question-span-2026-11-07\\execution-protocol.json",
+    "sha256": "18f0cb6c0081602d17a6870f7ed245b488e6070948a85ad59d9fe562c51ce7dc",
+    "authorization": "directly authorized once; executed and closed at semantic gate failure",
+    "limits": {
+      "main_calls": 1,
+      "composer_calls": 0,
+      "nemo_invocations": 0,
+      "seconds": 95,
+      "retries": 0,
+      "warmups": 0
+    },
+    "grant": "reports\\workstream-c\\concurrent-qualification-2026-11-06\\question-span-2026-11-07\\direct-user-grant.json"
+  },
+  "cumulative_before_question_span_attempt": {
+    "main_request_starts": 11,
+    "nemo_invocations": 2,
+    "known_completed_main_input_tokens": 6377,
+    "known_completed_main_output_tokens": 1225,
+    "known_completed_main_total_tokens": 7602,
+    "historical_interrupted_backend_usage": "unknown",
+    "internal_nemo_usage": "unknown"
+  },
+  "latest_mapper_actual": {
+    "authorship": "assistant source assessment; owner acceptance not inferred",
+    "protocol_sha256": "18f0cb6c0081602d17a6870f7ed245b488e6070948a85ad59d9fe562c51ce7dc",
+    "case_id": "cq-p02",
+    "source_kind": "consumed synthetic development fixture",
+    "technical_validation": "passed",
+    "parsing": "passed",
+    "source_span_identity": "passed",
+    "source_fact_retained": "In Denmark, wind supplied 29% of total electricity generation in 2015.",
+    "gap_question_membership": "passed",
+    "selected_gap_offsets": {
+      "start": 44,
+      "end": 47
+    },
+    "selected_gap_text": "and",
+    "semantic_missingness": "failed",
+    "completeness": "failed for requested price gap identification",
+    "expected_unresolved_request": "Denmark retail electricity prices yesterday",
+    "quality_gate_pass": false,
+    "diagnosis": "The model selected the conjunction instead of the missing dated price request. Valid offsets established membership only; the existing source/coverage validators do not establish gap semantics.",
+    "scope_of_diagnosis": "No evidence of truncation, missing source retrieval, GPU exhaustion or malformed JSON. This does not prove an inherent open-source-model limitation or a particular internal reasoning cause.",
+    "model_calls_started": 1,
+    "composer_calls": 0,
+    "nemo_invocations": 0,
+    "usage": {
+      "input_tokens": 730,
+      "output_tokens": 141,
+      "total_tokens": 871
+    },
+    "service_elapsed_seconds": 14.75,
+    "controller_elapsed_seconds": 28.09399999998277,
+    "wall_envelope_seconds": 28.46799999999348,
+    "model_digest_verified_before_and_after": true,
+    "finish_reason": "stop",
+    "fallback_used": false,
+    "editorial_correction_used": false,
+    "generated_draft": false,
+    "owner_adjudication": "not requested for technical/semantic gap failure; earlier valid cq-p01 review stays pending",
+    "approvals_created": 0,
+    "exports_created": 0,
+    "retry_performed": false,
+    "backend_cancellation_verified": false,
+    "monetary_hardware_cost": "unmeasured",
+    "evidence_sha256": {
+      "actual-mapper\\summary.json": "f71fecf9fc57e0fa1e4569460d3a30ed34c8b00f68388eda9aec57da545c6ac7",
+      "actual-mapper\\service\\process-result.json": "9b214bbb0ba37605b9d979c5d267306e2b3b42c5c56e994bf46ba15abc6a7f7f",
+      "actual-mapper\\service\\response.ndjson": "46578c52682af953646c5016bb5b312ac51a50c28dd04a8b135016eebac33822",
+      "actual-mapper\\service\\service-progress.json": "ca57d339e1e6cdc3e4ee7829868c8f04eaf8fcf207983e720ec4b180d081730a",
+      "actual-mapper\\service\\service-result.json": "f5065d7f43af0471e0d81f93f3870cae759d7a8bfd4b95b813d8630de49fe0bb",
+      "actual-mapper\\service\\started.json": "841694cbd10c14b432f6412c9327df71525fcc48356f0f72a6df0bdbf0db4767",
+      "actual-mapper\\service\\stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual-mapper\\service\\stdout.txt": "915f5589f627a89c12800a843a7413acbfd6f30c48d8a3f8975cb80805df7a4f",
+      "actual-mapper\\validation\\process-result.json": "ba4be2682162628f4390b5e409f2fbc5d981de9d6702e9934a8e4cb8fc02399b",
+      "actual-mapper\\validation\\started.json": "644e79c02f8c85a14452bf751b31445e7911d870a00fa51c9eb44d320c7621dc",
+      "actual-mapper\\validation\\stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual-mapper\\validation\\stdout.txt": "51d24813c57f85ba623cc0520e2d5f034bb84f15918ee0f5659f492bc4df06ec",
+      "actual-mapper\\validation\\validation-result.json": "45eb72e8e61e64378da9b508bdfe3e174568dab21ade817df470110155c9939e",
+      "operator-envelope/result.json": "0d53d852b94cf48cb2fa7796d085f3fff2ce0fed320ca099c3056198ea300927"
+    },
+    "allowance_status": "closed; no conditional workflow or CQ1 authorized"
+  },
+  "scoped_disclosure_prototype": {
+    "status": "owner adopted design; C implementation now exists separately; historical prototype remains nonruntime",
+    "tests": "10unittestchecks passed;different synthetic facts;0inference",
+    "path": "reports\\workstream-c\\concurrent-qualification-2026-11-06\\question-span-2026-11-07\\branch_disclosure_prototype.py",
+    "review": "reports\\workstream-c\\concurrent-qualification-2026-11-06\\question-span-2026-11-07\\scoped-disclosure-review.md",
+    "runtime_files_unchanged": 93,
+    "actual_outputs_unchanged": true,
+    "limitations": "Does not infer trusted request annotations or within-branch factual completeness; no revised quality claim"
+  },
+  "pause_checkpoint": "reports\\workstream-c\\concurrent-qualification-2026-11-06\\question-span-2026-11-07\\usage-pause-checkpoint.json",
+  "offline_scoped_disclosures": {
+    "owner_choice": "Adopt scoped disclosures for offline C implementation and A handoff",
+    "version": "cq-scoped-disclosures-v1",
+    "mapper": "cq-mapper-v7-scoped-disclosures",
+    "wire": "cq-scoped-selection-v1",
+    "focused": "39passed15.58seconds",
+    "previous_full": "1717passed14warnings458.16seconds;before final conflict regression repair",
+    "active_full_session": null,
+    "active_full_log": "reports/workstream-c/scoped-disclosures-2026-11-07/final-full-offline-tests.txt",
+    "handoff": "docs/concurrency/c-scoped-disclosures-handoff-a.md",
+    "runtime_activation": "pending A; default/current callback unchanged",
+    "new_model_calls": 0,
+    "owner_acceptance": "not inferred",
+    "context_comparison": "715to460offlineAMI mapper contenttokens;noCodexcontextsavingclaim",
+    "full_suite": {
+      "passed": 1718,
+      "warnings": 14,
+      "seconds": 484.31,
+      "log_sha256": "50dc5170716aaa857d22f43466df215bf3aada08b3d3b5b78ea6d3b31740c619"
+    },
+    "completion_evidence": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\completion-evidence.json",
+    "source_integrity": "final source manifest matches current files",
+    "report": "reports\\workstream-c\\scoped-disclosures-2026-11-07\\implementation-report.md",
+    "activation_adapter": {
+      "status": "C activation adapter prepared; A patch unapplied; no generation grant",
+      "targeted": "12passed5.00seconds;fixedresponses;syntheticspawnedrunner",
+      "core_full_suite": "1718passed14warnings;precededadapter;notrepeatedforunusedhelper",
+      "sha256": {
+        "src/pilot/subtasks/_scoped_activation.py": "e47e63f0f3b488482a1d0b608f3723a8bedf294a13db2b5877aff2c9821deb02",
+        "tests/test_scoped_activation.py": "df902955484d7ad450ebb212e157ee06b2a768aa944496058bfd73be398f0e41",
+        "reports\\workstream-c\\scoped-disclosures-2026-11-07\\a-activation-candidate.patch": "6835d53dbf9237843e646d3ec078c20232c3ac21b08f04acaeb1f8229b4b1cc8"
+      },
+      "A_caller_unchanged_sha256": "2cebb73c29a4761ed6fdb235e40583639481d7b5241ac79fe79a17dfd25d5a1a",
+      "activation": "pending A",
+      "new_model_calls": 0,
+      "CQ1attempted": 0,
+      "exact_next_step": "A applies candidate and validates integrated source/sidecar admission, then C freezes new protocol; no inference without a new grant"
+    }
+  },
+  "prepared_scoped_development_data": {
+    "preparation_sha256": "32699e8aef4f29894cf897b8e1d6159b46b147465ab8a5c01f2f69e0963e8353",
+    "input_files_verified": 6,
+    "case_ids": [
+      "cq-p01",
+      "cq-p02"
+    ],
+    "source_identity": "same consumed case/corpus identities as retained v7",
+    "A_activation": "still unapplied; verified caller SHA unchanged",
+    "new_actual_model_calls": 0,
+    "executable_contract": false,
+    "new_grant": false,
+    "path": "reports\\workstream-c\\scoped-disclosures-2026-11-07\\prepared-development-data\\preparation.json"
+  },
+  "previous_blocked_audit_resolved_by_A_activation": {
+    "observed_utc": "2026-11-07T06:50:01.539393+00:00",
+    "goal_complete": false,
+    "previous_turn_classification": "progress: prepared scoped case sidecars and mapper inputs",
+    "current_turn_classification": "no progress; third verified unchanged integration ownership blocker",
+    "consecutive_blocked_goal_turns": 3,
+    "blocker": "A-owned scoped activation unapplied; no executable current-revision contract or applicable generation grant",
+    "requirements": {
+      "1_frozen_diagnostic": "data prepared and hashed; executable integrated contract pending A",
+      "2_limits": "proposal8main+2NeMo,180seconds/case,no retries/warmups;ungranted",
+      "3_development_gate": "latest actual allowance failed;current scoped two-case gate unrun",
+      "4_fresh_pool": "CQ1 20cases/thresholds frozen;unattempted;original19reservedpreserved",
+      "5_source_protocol": "raw/application/fallback/editorial separation documented;required actual adjudication incomplete"
+    },
+    "allowed_now": "read-only audit and ownership coordination; no generation or A-owned source changes",
+    "not_allowed": "claiming qualification, repeating model calls, silently taking integration ownership",
+    "needed_external_action": "Owner keeps A and has A apply/validate handoff, or explicitly reassigns this chat as offline integration owner; generation remains separately unauthorized",
+    "status": "blocked audit threshold met",
+    "handoff": "docs/concurrency/c-scoped-disclosures-handoff-a.md",
+    "patch": "reports/workstream-c/scoped-disclosures-2026-11-07/a-activation-candidate.patch",
+    "prepared_inputs": "reports/workstream-c/scoped-disclosures-2026-11-07/prepared-development-data/preparation.json"
+  },
+  "prepared_scoped_contract": {
+    "path": "reports\\workstream-c\\scoped-development-v1-2026-11-07\\development-contract.json",
+    "sha256": "f5eb8a4de2eecf482746e5e513525ceeef4e37fc951b8d1e43506c2780391405",
+    "pinned_files": 106,
+    "grant": null,
+    "new_model_calls": 0,
+    "packet": "reports\\workstream-c\\scoped-development-v1-2026-11-07\\authorization-packet.md"
+  },
+  "grant_wait_audit": {
+    "consecutive_blocked_goal_turns": 3,
+    "previous_turn": "progress: applied revision verified and current contract frozen",
+    "current_turn": "no progress; same pending direct grant; source kept frozen; no repeated tests",
+    "contract_sha256": "f5eb8a4de2eecf482746e5e513525ceeef4e37fc951b8d1e43506c2780391405",
+    "no_new_grant_or_output": true,
+    "next": "Wait for existing explicit authorization question;do not repeat tests or infer consent from Goal continuation",
+    "status": "blocked threshold met: direct applicable generation grant pending",
+    "exact_next_step": "Receive an explicit reply authorizing the scoped v1 two-case contract; then recheck usage/date/source/model pins and execute cq-p01 once before source review. No inference or grant-file creation before that reply.",
+    "packet": "reports\\workstream-c\\scoped-development-v1-2026-11-07\\authorization-packet.md"
+  },
+  "owner_generation_decision": {
+    "decision": "Keep generation held",
+    "authorization_reference": "Direct reply to request_user_input_async call_7ac69d651e8b4e1994be1e02216cc787",
+    "contract_sha256": "f5eb8a4de2eecf482746e5e513525ceeef4e37fc951b8d1e43506c2780391405",
+    "execution_authorized": false,
+    "grant_issued": false,
+    "new_model_calls": 0,
+    "repeat_authorization_request": "Only if owner explicitly reopens generation",
+    "frozen_preparation": "preserved unchanged",
+    "goal": "incomplete; generation explicitly held; no Goal status change issued"
+  },
+  "scoped_qualification_compiler": {
+    "status": "offline scoped compiler preparation complete; generation explicitly held",
+    "held_development_contract_sha256": "f5eb8a4de2eecf482746e5e513525ceeef4e37fc951b8d1e43506c2780391405",
+    "all_frozen_inputs_unchanged": 106,
+    "library_runtime_changes": false,
+    "compiler_checks": "19passed8.77seconds plus1positive_scoped1.42seconds;20distinct checks",
+    "real_compilation": "refused: two passing current development results/assessments missing",
+    "real_CQ1_contract_created": false,
+    "actual_model_calls": 0,
+    "CQ1attempted": 0,
+    "scope_semantics": "not established by structural checks",
+    "original_compiler_backups": "scoped-extension-baseline/manifest.json",
+    "sha256": {
+      "build_qualification.py": "232c0508fa09de9e20f4d2519760cac84be0e93fbc30e99a1a1c9d9905ebe706",
+      "test_scoped_builder.py": "3661fa2b21c177d82a424de9843d0c455a9694e170f865dd35c5dd161f35070b",
+      "scoped-compiler-tests.txt": "dd7ceb2087518c90933096c565c4214d9e9cc4726f0537db0ddbfd11238c2536",
+      "scoped-positive-compilation.txt": "5f72f51082fc7d06427c800498649ed4bc21a73bb1ea94d18bbce2332d0227f5"
+    }
+  },
+  "owner_hold_blocked_audit": {
+    "consecutive_blocked_goal_turns": 3,
+    "previous_turn": "progress: scoped compiler preparation and20offlinechecks",
+    "current_turn": "third unchanged blocker verified; no source/test/inference changes",
+    "safe_work_remaining_now": "none required before the held actual-development gate; realCQ1scope freezing is downstream",
+    "needed_change": "owner explicitly reopens generation and grants a bounded current diagnostic; do not repeat permission request",
+    "status": "blocked: owner explicitly holds generation; authorized preparation complete",
+    "exact_next_step": "Do not repeat authorization request. Wait for owner to explicitly reopen generation; then reverify current date/source/model identities and obtain matching bounded grant before any attempt."
+  },
+  "latest_scoped_v1_checkpoint": {
+    "status": "failed; allowance closed; paused at weekly usage threshold",
+    "contract_sha256": "f5eb8a4de2eecf482746e5e513525ceeef4e37fc951b8d1e43506c2780391405",
+    "frozen_inputs": 106,
+    "unchanged_inputs": 106,
+    "cq_p01": "assistant technical/source/completeness/safety/persistence pass; owner acceptance pending",
+    "cq_p02": "composition ValueError; offline socket-blocked replay reproduces denominator-phrase boundary failure",
+    "new_main_calls": 4,
+    "new_nemo_invocations": 1,
+    "known_new_input_tokens": 2304,
+    "known_new_output_tokens": 487,
+    "known_new_total_tokens": 2791,
+    "cumulative_observed_main_starts": 16,
+    "cumulative_nemo_wrappers": 3,
+    "cumulative_known_input_tokens": 9411,
+    "cumulative_known_output_tokens": 1853,
+    "cumulative_known_total_tokens": 11264,
+    "internal_or_interrupted_usage": "unknown",
+    "cq1_attempted": 0,
+    "cq1_total": 20,
+    "usage": {
+      "five_hour_remaining_percent": 44,
+      "weekly_remaining_percent": 10
+    },
+    "next_step": "Offline regression with different facts: distinguish denominator noun phrase from trailing locative/date without permitting denominator/measure/unit/geography substitutions. Prepare explicit contract-change proposal and strict negative checks before editing runtime. Do not retry generation; new concrete grant required.",
+    "human_review": "cq-p01 exact draft can be reviewed for semantic acceptance; cq-p02 technical failure requires no repeated manual scoring; no approval/export performed"
+  },
+  "latest_scoped_v1_evidence": "reports\\workstream-c\\scoped-development-v1-2026-11-07\\completion-and-handoff.md"
+}

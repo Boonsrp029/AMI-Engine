@@ -1,0 +1,11 @@
+{
+  "returncode": 0,
+  "timed_out": false,
+  "elapsed_seconds": 28.46799999999348,
+  "maximum_seconds": 95,
+  "retry_performed": false,
+  "backend_cancellation_verified": false,
+  "status": "controller returned; inspect its retained result",
+  "source_assessment": "pending",
+  "owner_adjudication": "pending"
+}

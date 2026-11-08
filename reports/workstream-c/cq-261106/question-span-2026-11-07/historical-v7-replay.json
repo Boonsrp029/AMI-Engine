@@ -1,0 +1,12 @@
+{
+  "source": "exact v7 executed snapshot",
+  "mapper_version": "cq-mapper-v5-decoder-coverage",
+  "replayed_failure": "Evidence mapping gap anchor is not in the question",
+  "current_private_wire_used": false,
+  "actual_model_calls": 0,
+  "nemo_invocations": 0,
+  "socket_connections_blocked": true,
+  "original_raw_mapper_unchanged": true,
+  "original_mapper_sha256": "9f23d4cc197d0adc70216e0fa0c5181948a288e89973dba1573f44abc0955600",
+  "snapshot_source_hashes_verified": 128
+}

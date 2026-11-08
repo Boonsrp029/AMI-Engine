@@ -10,6 +10,7 @@ from pathlib import Path
 
 from src.pilot.schemas import validate_citations
 from src.pilot._presentation import pdf_page_label
+from src.pilot.subtasks.contracts import Plan
 
 
 class Conflict(ValueError):
@@ -89,12 +90,97 @@ class Store:
             if old:
                 if old["query"] != request.query or old["corpus_sha"] != corpus_sha:
                     raise Conflict("Request key is already used for different input")
+                if db.execute("SELECT 1 FROM events WHERE run_id=? AND kind IN "
+                              "('subtask_submission','subtask_plan','subtask_progress','subtask_result') LIMIT 1",
+                              (old["id"],)).fetchone():
+                    raise Conflict("Request key is already bound to the bounded subtask workflow")
                 return old["id"], False
             self._check_queue_capacity(db)
             run_id = uuid.uuid4().hex
             db.execute("INSERT INTO runs(id,request_key,query,corpus_sha,status,created,updated) VALUES(?,?,?,?,?,?,?)",
                        (run_id, request.request_key, request.query, corpus_sha, "queued", now(), now()))
             return run_id, True
+
+    def create_subtask(self, request, plan):
+        """Atomically bind a request key to one canonical bounded plan."""
+        plan = Plan.model_validate_json(plan.model_dump_json())
+        if plan.query != request.query:
+            raise Conflict("Subtask plan query differs from parent request")
+        with self.connection() as db:
+            db.execute("BEGIN IMMEDIATE")
+            old = db.execute("SELECT * FROM runs WHERE request_key=?", (request.request_key,)).fetchone()
+            if old:
+                if old["query"] != request.query or old["corpus_sha"] != plan.corpus_sha256:
+                    raise Conflict("Request key is already used for different input")
+                submissions = list(db.execute(
+                    "SELECT payload FROM events WHERE run_id=? AND kind='subtask_submission' ORDER BY seq",
+                    (old["id"],)))
+                if len(submissions) != 1:
+                    raise Conflict("Request key is already bound to another workflow")
+                payload = json.loads(submissions[0]["payload"])
+                if payload.get("plan_id") != plan.plan_id or payload.get("plan") != plan.model_dump(mode="json"):
+                    raise Conflict("Request key is already used for a different subtask plan")
+                return old["id"], False
+            self._check_queue_capacity(db)
+            run_id = uuid.uuid4().hex
+            created = now()
+            db.execute("INSERT INTO runs(id,request_key,query,corpus_sha,status,created,updated) VALUES(?,?,?,?,?,?,?)",
+                       (run_id, request.request_key, request.query, plan.corpus_sha256, "queued", created, created))
+            payload = {"workflow": "bounded_subtasks", "plan_id": plan.plan_id,
+                       "plan": plan.model_dump(mode="json")}
+            db.execute("INSERT INTO events(run_id,kind,payload,created) VALUES(?,?,?,?)",
+                       (run_id, "subtask_submission", json.dumps(payload, ensure_ascii=False), created))
+            return run_id, True
+
+    def workflow_for_request(self, request_key):
+        """Return minimal id/mode for safe lost-response lookup by opaque key."""
+        with self.connection() as db:
+            row = db.execute("SELECT id FROM runs WHERE request_key=?", (request_key,)).fetchone()
+            if row is None:
+                raise KeyError(request_key)
+            event = db.execute("SELECT kind,payload FROM events WHERE run_id=? AND kind IN "
+                               "('subtask_submission','subtask_plan','subtask_progress','subtask_result') ORDER BY seq",
+                               (row["id"],)).fetchall()
+            submissions = [record for record in event if json.loads(record["payload"]).get("workflow") == "bounded_subtasks"]
+            if len(submissions) > 1:
+                raise Conflict("Workflow submission history is invalid")
+            if event:
+                if any(record["kind"] == "subtask_submission" for record in event):
+                    payload = json.loads(submissions[0]["payload"]) if len(submissions)==1 else {}
+                    if payload.get("workflow") != "bounded_subtasks":
+                        raise Conflict("Workflow submission history is invalid")
+                return {"id": row["id"], "workflow": "bounded_subtasks"}
+            return {"id": row["id"], "workflow": "sequential"}
+
+    def subtask_plan(self, run_id):
+        """Load and validate the immutable submitted plan for this run."""
+        with self.connection() as db:
+            row = db.execute("SELECT query,corpus_sha FROM runs WHERE id=?", (run_id,)).fetchone()
+            if row is None:
+                raise KeyError(run_id)
+            records = list(db.execute("SELECT kind,payload FROM events WHERE run_id=? AND kind IN "
+                                      "('subtask_submission','subtask_plan') ORDER BY seq",
+                                      (run_id,)))
+        submissions = [record for record in records if record["kind"] == "subtask_submission"]
+        if len(submissions) > 1:
+            raise Conflict("Bounded subtask plan is ambiguous")
+        if submissions:
+            payload = json.loads(submissions[0]["payload"])
+        else:
+            # Compatibility with programmatic ami-subtasks-v1 runs created
+            # before the browser submission event existed: reuse the last
+            # attempt's persisted plan, never reinterpret it as sequential.
+            previous = [record for record in records if record["kind"] == "subtask_plan"]
+            if not previous:
+                raise Conflict("Bounded subtask plan is missing")
+            payload = json.loads(previous[-1]["payload"])
+        plan = Plan.model_validate_json(json.dumps(payload.get("plan")))
+        expected_plan_id = payload.get("plan_id") if submissions else plan.plan_id
+        if ((submissions and payload.get("workflow") != "bounded_subtasks")
+                or expected_plan_id != plan.plan_id
+                or plan.query != row["query"] or plan.corpus_sha256 != row["corpus_sha"]):
+            raise Conflict("Persisted subtask plan does not match parent request")
+        return plan
 
     def claim(self, run_id, attempt_id=None):
         with self.connection() as db:
@@ -106,9 +192,20 @@ class Store:
                            (run_id, "attempt_started", json.dumps({"attempt_id": attempt_id}), now()))
             return claimed
 
-    def next_queued(self):
+    def next_queued(self, *, include_subtasks=False):
         with self.connection() as db:
-            row = db.execute("SELECT id,query,corpus_sha,updated FROM runs WHERE status='queued' ORDER BY created,id LIMIT 1").fetchone()
+            if include_subtasks:
+                row = db.execute("""SELECT r.id,r.query,r.corpus_sha,r.updated,
+                    CASE WHEN EXISTS(SELECT 1 FROM events e WHERE e.run_id=r.id AND e.kind IN
+                        ('subtask_submission','subtask_plan','subtask_progress','subtask_result'))
+                    THEN 'bounded_subtasks' ELSE 'sequential' END AS workflow
+                    FROM runs r WHERE r.status='queued' ORDER BY r.created,r.id LIMIT 1""").fetchone()
+            else:
+                row = db.execute("""SELECT r.id,r.query,r.corpus_sha,r.updated FROM runs r
+                    WHERE r.status='queued' AND NOT EXISTS(
+                    SELECT 1 FROM events e WHERE e.run_id=r.id AND e.kind IN
+                    ('subtask_submission','subtask_plan','subtask_progress','subtask_result'))
+                    ORDER BY r.created,r.id LIMIT 1""").fetchone()
             return dict(row) if row else None
 
     @staticmethod
@@ -211,6 +308,22 @@ class Store:
                        "token_usage_complete": False, "monetary_cost": None}
             db.execute("UPDATE runs SET status='failed',error=?,metrics=?,updated=? WHERE id=? AND status='running'",
                        (error, json.dumps(metrics), now(), run_id))
+
+    def fail_queued(self, run_id, failure_type):
+        """Fail an opt-in job that could not be launched before an attempt."""
+        if not isinstance(failure_type, str) or not failure_type.isidentifier():
+            failure_type = "RuntimeError"
+        with self.connection() as db:
+            db.execute("BEGIN IMMEDIATE")
+            changed = db.execute("UPDATE runs SET status='failed',error=?,metrics=?,updated=? "
+                "WHERE id=? AND status='queued'",
+                ("Bounded subtask workflow could not start; inspect event history and retry safely",
+                 json.dumps({"partial": True, "failure_type": failure_type,
+                             "token_usage_complete": False, "monetary_cost": None}), now(), run_id)).rowcount
+            if changed:
+                db.execute("INSERT INTO events(run_id,kind,payload,created) VALUES(?,?,?,?)",
+                    (run_id, "subtask_start_failure", json.dumps({"type": failure_type}), now()))
+            return changed == 1
 
     def save_draft(self, run_id, draft, sources, metrics, expected_revision=None, attempt_id=None):
         draft = validate_citations(draft, sources)

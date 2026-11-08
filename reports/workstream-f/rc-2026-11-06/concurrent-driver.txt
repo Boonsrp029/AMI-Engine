@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.pilot-work\workstream-f\release-worktree\scripts\smoke_subtasks_container.py", line 28, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ^^^^^^
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.pilot-work\workstream-f\release-worktree\scripts\smoke_subtasks_container.py", line 17, in main
+    text=docker(*(command+extra));(a.output/(phase+'.txt')).write_text(text,encoding='utf-8');report[phase]=json.loads(text)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.pilot-work\workstream-f\release-worktree\scripts\smoke_subtasks_container.py", line 10, in docker
+    def docker(*args):return subprocess.run(['docker',*args],capture_output=True,text=True,check=True,timeout=180).stdout
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['docker', 'run', '--rm', '--network', 'none', '--read-only', '--tmpfs', '/tmp', '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges:true', '--mount', 'type=volume,source=ami-f-smoke-d16f91936be34f1eb77fe6507a037011,target=/state', '--mount', 'type=bind,source=D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\.pilot-work\\workstream-f\\release-worktree\\.ci-artifacts\\f-candidate\\qa,target=/qa,readonly', '--env', 'PYTHONPATH=/app:/qa/tests/fixtures/workers', '--workdir', '/app', 'ami-pilot:concurrent-rc-f', 'python', '/qa/tests/fixtures/release/concurrent_smoke.py']' returned non-zero exit status 1.

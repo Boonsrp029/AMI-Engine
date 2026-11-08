@@ -1,0 +1,60 @@
+{
+  "schema": "ami-e-verification-v1",
+  "recorded_at": "2026-11-06T06:56:54.000156+00:00",
+  "status": "scoped_engineering_goal_complete",
+  "head": "9b5e665ede286409346de0759c19e6fe5b231b34",
+  "source_state": "uncommitted integrated A/B/C/D/E source; no publication",
+  "source_snapshot": {
+    "path": ".pilot-work\\workstream-e\\lifecycle-2026-11-06\\tested-source-final.json",
+    "sha256": "4dac813921071be52806d132a95a361e3bb89bae0f8c25114adbd66aca28a4a9",
+    "files": 216,
+    "changed": [],
+    "added": [],
+    "deleted": []
+  },
+  "offline_windows": {
+    "passed": 1499,
+    "failed": 0,
+    "skipped": 0,
+    "deselected": 0,
+    "warnings": 14,
+    "seconds": 460.62,
+    "exit_code": 0,
+    "log": ".pilot-work\\workstream-e\\lifecycle-2026-11-06\\full-offline-final.txt"
+  },
+  "browser": {
+    "progress_fixed_http": 16,
+    "submission_fixed_http": 7,
+    "real_api_sqlite_owned_runner": 10,
+    "total": 33,
+    "logs": [
+      "progress-final.txt",
+      "submission-final.txt",
+      "lifecycle-final.txt"
+    ],
+    "actual_provider_calls": 0
+  },
+  "first_full_run_retained": {
+    "passed": 1498,
+    "failed": 1,
+    "seconds": 487.62,
+    "log": ".pilot-work\\workstream-e\\lifecycle-2026-11-06\\full-offline.txt",
+    "failure": "Default ProcessRuntime factory keyword compatibility; narrow A fix, original regression retained"
+  },
+  "dependency_manifests": {
+    "requirements.txt": "4bc238785549332a1196ab5954f996890ed12b1370c1834f396ede567af64726",
+    "requirements-serving.txt": "b9f8abc4b20928e4351088a14e17a2a94f6322499fbd794d5ef3ec320bc4e7be",
+    "requirements-etl.txt": "6d987c055f02ff572fc60c1cf87a922fe573ff417641307700d1b3fa6fddee1b",
+    "constraints-pilot.txt": "267aab0f6a0601605fa33532f94f091809866429f340c55b335e4ecd22015836"
+  },
+  "dependency_manifest_git_diff": false,
+  "diff_check": "passed",
+  "limits": [
+    "No current Linux/container qualification",
+    "No actual inference quality claim",
+    "No independent reviewer usefulness claim",
+    "No production qualification",
+    "No commits, pushes, external deployment or real reviewer approvals"
+  ],
+  "manual_review": "No factual scoring required for synthetic fixtures. Real drafts still require source review and exact-revision human approval."
+}

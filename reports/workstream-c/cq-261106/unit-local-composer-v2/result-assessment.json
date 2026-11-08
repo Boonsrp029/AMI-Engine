@@ -1,0 +1,71 @@
+{
+  "status": "assistant-authored; owner adjudication pending",
+  "case_id": "cq-p01",
+  "scope": "one actual composer request over retained synthetic mapper evidence; not a workflow or qualification",
+  "protocol_sha256": "8da1a51cd9239cd54ec5617dff9d7859ddd39b419cd0d743823eb59d24811b37",
+  "model_identity_verified_before_after": true,
+  "technical_gate_pass": true,
+  "raw_supported": true,
+  "raw_complete": true,
+  "raw_claim_findings": [
+    {
+      "unit_id": "u1",
+      "text": "In Canada, observed electricity demand grew 5.7% in 2016.",
+      "source_id": "cq-observed",
+      "support": "exact supplied synthetic quotation",
+      "requested_measure_period_geography_basis": "retained",
+      "unsupported_relative_comparison": false
+    },
+    {
+      "unit_id": "u2",
+      "text": "In Japan, electricity demand is projected to grow 2.6% annually through 2036.",
+      "source_id": "cq-projected",
+      "support": "exact supplied synthetic quotation",
+      "requested_measure_period_geography_basis": "retained",
+      "unsupported_relative_comparison": false
+    }
+  ],
+  "application_claims_supported": true,
+  "application_claims_complete": true,
+  "raw_title": "Analyst research brief",
+  "application_title": "Analyst research brief (Canada)",
+  "application_title_scope_pass": false,
+  "overall_final_output_gate_pass": false,
+  "application_issue": "Single-country Canada label does not describe the explicitly two-country Canada/Japan brief. Inherited mapper geography covers only the Canada source.",
+  "fallback_used": false,
+  "editorial_correction_used": false,
+  "main_requests": 1,
+  "nemo_invocations": 0,
+  "usage": {
+    "input_tokens": 686,
+    "output_tokens": 115,
+    "total_tokens": 801
+  },
+  "elapsed_seconds": 33.812000000005355,
+  "internal_service_complete": true,
+  "guardrail_safety": "not executed by design",
+  "persisted_workflow": "none by design",
+  "stored_approvals": 0,
+  "exports_created": 0,
+  "grant_state": "closed; one request consumed; no retries or workflows",
+  "owner_acceptance": "pending for source/wording; no approval/export",
+  "freshness": "consumed development evidence; no unseen or matched-improvement claim",
+  "cost": "monetary/hardware unmeasured",
+  "outputs_sha256": {
+    "summary.json": "7a747ae7bb7d7e6c50c7beb312982897f14b8a33f0d61456480612bf2aa8375b",
+    "service/process-result.json": "06d9969e3fc97e5e2b40aa29cfc7e38dffa8d48d63d2c15788bbb48ab65aef96",
+    "service/response.ndjson": "a58270ddc7929bd5d487a363fd836b44938fea7dbb1aa9bde774593380293a79",
+    "service/service-progress.json": "c2e3cc452da86a69a9df29327267a8a5f8eb30accae8298a0974163b88ecbfe5",
+    "service/service-result.json": "7469dec0949f8b98a2be7d491b419d91cecada9063ae85a6dfda9a57e931358d",
+    "service/started.json": "57b401e5bdfda2a77ad0840ee0c550fa8f46cdba1385ffa63108712230608fa4",
+    "service/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "service/stdout.txt": "915f5589f627a89c12800a843a7413acbfd6f30c48d8a3f8975cb80805df7a4f",
+    "validation/process-result.json": "69d1b20fc7d7d7baa68ad18767a4af9766afe5139d8e80b047b0988e1a3a0a0c",
+    "validation/started.json": "05a4fe8fa17f3a4e2b01dfb0a00507278a27fc20fe4c33da975c481c6113b379",
+    "validation/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "validation/stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "validation/validation-result.json": "e9899e7f69c2a9a09d5afd1d1b3a22f59315aace1c4a63a90c0f9498a1775903"
+  },
+  "source_snapshot": "executed-source-snapshot/manifest.json",
+  "next": "Offline application title-scope coverage repair; preserve raw/source evidence and strict validation. Integrate future lineage candidate only after re-freezing affected future packages."
+}

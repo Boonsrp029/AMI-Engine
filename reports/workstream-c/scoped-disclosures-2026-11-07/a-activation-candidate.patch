@@ -1,0 +1,23 @@
+--- a/src/pilot/subtasks/qualification_runner.py
++++ b/src/pilot/subtasks/qualification_runner.py
+@@ -13,7 +13,7 @@
+ from ..schemas import ResearchRequest
+ from ..store import Store
+ from .contracts import Plan
+-from .generation import ConcurrentComposer
++from ._scoped_activation import prepare_composer
+ from .retrieval import LocalBM25Adapter
+ from .runner import run_stored_plan
+ from .qualification import _write_once
+@@ -83,9 +83,8 @@
+         try:
+             run_stored_plan(store, run_id, plan, frozen["corpus_path"],
+                 LocalBM25Adapter(frozen["corpus_path"]),
+-                ConcurrentComposer(plan, frozen["bindings"], ledger.contract["as_of"], transport,
+-                    CaptureResponse(str(ledger.output), case_id),
+-                    complete_required_branches=frozen.get("complete_required_branches")), safety)
++                prepare_composer(ledger.contract, frozen, plan, transport,
++                    CaptureResponse(str(ledger.output), case_id)), safety)
+         finally:
+             row = store.get(run_id)
+         verify_identity(ledger.contract["model_snapshot"])

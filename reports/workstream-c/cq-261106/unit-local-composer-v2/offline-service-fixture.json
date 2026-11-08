@@ -1,0 +1,14 @@
+{
+  "status": "completed_transport.synthetic_offline_fixture",
+  "response_complete": true,
+  "model_calls_started": 1,
+  "identity_before": true,
+  "identity_after": true,
+  "finish": {
+    "done_reason": "stop"
+  },
+  "content": "{\"title\": \"Analyst research brief\", \"claims\": [{\"unit_id\": \"u1\", \"component_id\": \"r1\", \"text\": \"In Canada, observed electricity demand grew 5.7% in 2016.\"}, {\"unit_id\": \"u2\", \"component_id\": \"r1\", \"text\": \"In Japan, electricity demand is projected to grow 2.6% annually through 2036.\"}]}",
+  "usage": null,
+  "actual_calls_this_fixture": 0,
+  "note": "Fixed response only. Transport/identity flags are synthetic; no request was made."
+}

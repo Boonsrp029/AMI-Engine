@@ -1,0 +1,8 @@
+{
+  "contract_sha256": "18f0cb6c0081602d17a6870f7ed245b488e6070948a85ad59d9fe562c51ce7dc",
+  "human_reply": "Authorize one cq-p02 question-span mapper diagnostic",
+  "authorization_reference": "request_user_input_async call_dfb9bf59094e444182fa9c2ff4d2ce8c; direct user reply received2026-11-07",
+  "scope": "cq-p02 mapper once;1main0composer0NeMo;95seconds;no retry/warmup/workflow/CQ1",
+  "five_hour_remaining_before_percent": 17,
+  "weekly_remaining_before_percent": 30
+}

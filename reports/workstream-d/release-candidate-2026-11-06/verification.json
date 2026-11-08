@@ -1,0 +1,63 @@
+{
+  "schema": "ami-d-windows-rc-reliability-v1",
+  "date": "2026-11-06",
+  "status": "passed_for_unchanged_E_application_baseline",
+  "decision": "reuse verified E full suite plus new helper-specific offline check; no duplicate full run",
+  "git_head": "9b5e665ede286409346de0759c19e6fe5b231b34",
+  "python": "3.12.10",
+  "E_application_snapshot": {
+    "files": 216,
+    "sha256": "4dac813921071be52806d132a95a361e3bb89bae0f8c25114adbd66aca28a4a9",
+    "changed": [],
+    "new_source_test_config_files": [],
+    "full_suite": {
+      "passed": 1499,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": 14,
+      "seconds": 460.62,
+      "recorded_exit_code": 0,
+      "evidence": "e-retained-full-suite.txt",
+      "log_sha256": "8e45d00ced6ce4408d0ad57a2b9f1880a3e048922ad1b666152487559d374250",
+      "execution": "reused E terminal run, not newly executed by D",
+      "original_JUnit": null
+    }
+  },
+  "fresh_helper_check": {
+    "passed": 138,
+    "failed": 0,
+    "skipped": 0,
+    "warnings": 1,
+    "seconds": 46.48,
+    "exit_code": 0,
+    "log": "helpers-pytest.txt",
+    "log_sha256": "cda23101b52dd0f191db00e61bf73af0eca4b8f9d2e6f084f5e78c2ebe808a59",
+    "junit": "helpers-junit.xml",
+    "junit_sha256": "3c6254e54147e783134590a969b87eecedbfb80b4dcedb0867eb0d75a098e10b",
+    "source_changes_during_check": [],
+    "new_helper_files": [],
+    "count_note": "Overlaps the 1499 baseline; do not add the denominators"
+  },
+  "later_F_additions": {
+    "source_test_config": [],
+    "helpers": [],
+    "ownership": "F validates its later packaging/CI/helper changes separately; E baseline excludes additions"
+  },
+  "dependency_manifest_sha256": {
+    "constraints-pilot.txt": "267aab0f6a0601605fa33532f94f091809866429f340c55b335e4ecd22015836",
+    "requirements-etl.txt": "6d987c055f02ff572fc60c1cf87a922fe573ff417641307700d1b3fa6fddee1b",
+    "requirements-serving.txt": "b9f8abc4b20928e4351088a14e17a2a94f6322499fbd794d5ef3ec320bc4e7be",
+    "requirements.txt": "4bc238785549332a1196ab5954f996890ed12b1370c1834f396ede567af64726"
+  },
+  "diff_check": "passed with line-ending conversion notices only",
+  "all_D_processes_terminal": true,
+  "actual_generation_calls": 0,
+  "production_source_edits_by_D": false,
+  "not_established": [
+    "current Linux/container/build/smoke: F-owned",
+    "clean install or remote CI",
+    "actual model quality or inference-server cancellation",
+    "independent reviewer usefulness",
+    "production qualification"
+  ]
+}

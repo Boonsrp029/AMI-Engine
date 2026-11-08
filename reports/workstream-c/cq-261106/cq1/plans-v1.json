@@ -1,0 +1,682 @@
+{
+  "cq1-a01": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What was total US utility-scale electricity generation in 2023, and were these preliminary or final figures?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What was total US utility-scale electricity generation in 2023",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        },
+        {
+          "subtask_id": "s02",
+          "operation": "retrieve",
+          "query": "were these preliminary or final figures?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ],
+      "r2": [
+        "s02"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "answerable"
+  },
+  "cq1-a02": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What were natural gas generation and its share of US utility-scale generation in 2023?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What were natural gas generation and its share of US utility-scale generation in 2023?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "answerable"
+  },
+  "cq1-a03": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What were coal generation and its share of US utility-scale generation in 2023?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What were coal generation and its share of US utility-scale generation in 2023?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "answerable"
+  },
+  "cq1-a04": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What were nuclear generation and its share of US utility-scale generation in 2023?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What were nuclear generation and its share of US utility-scale generation in 2023?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "answerable"
+  },
+  "cq1-a05": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What were renewable generation and its share of US utility-scale generation in 2023?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What were renewable generation and its share of US utility-scale generation in 2023?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "answerable"
+  },
+  "cq1-a06": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What were wind generation and its share of US utility-scale generation in 2023?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What were wind generation and its share of US utility-scale generation in 2023?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "answerable"
+  },
+  "cq1-a07": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What were hydropower generation and its share of US utility-scale generation in 2023?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What were hydropower generation and its share of US utility-scale generation in 2023?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "answerable"
+  },
+  "cq1-a08": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What were solar generation and its share of US utility-scale generation in 2023?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What were solar generation and its share of US utility-scale generation in 2023?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "answerable"
+  },
+  "cq1-a09": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What capacity threshold defines utility-scale generation, and how does the source distinguish small-scale solar PV?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What capacity threshold defines utility-scale generation",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        },
+        {
+          "subtask_id": "s02",
+          "operation": "retrieve",
+          "query": "how does the source distinguish small-scale solar PV?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ],
+      "r2": [
+        "s02"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "answerable"
+  },
+  "cq1-a10": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What does a watt measure compared with a watthour, and how much electricity does the source light-bulb example use?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What does a watt measure compared with a watthour",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        },
+        {
+          "subtask_id": "s02",
+          "operation": "retrieve",
+          "query": "how much electricity does the source light-bulb example use?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ],
+      "r2": [
+        "s02"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "answerable"
+  },
+  "cq1-p01": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What was US nuclear electricity generation in 2023, and what was its exact output yesterday?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What was US nuclear electricity generation in 2023",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        },
+        {
+          "subtask_id": "s02",
+          "operation": "retrieve",
+          "query": "what was its exact output yesterday?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ],
+      "r2": [
+        "s02"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "partial"
+  },
+  "cq1-p02": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What was US wind generation share in 2023, and what was Thailand retail electricity price yesterday?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What was US wind generation share in 2023",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        },
+        {
+          "subtask_id": "s02",
+          "operation": "retrieve",
+          "query": "what was Thailand retail electricity price yesterday?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ],
+      "r2": [
+        "s02"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "partial"
+  },
+  "cq1-m01": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What was Thailand retail electricity price yesterday?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What was Thailand retail electricity price yesterday?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "missing"
+  },
+  "cq1-m02": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What is the forecast for US wind generation next year?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What is the forecast for US wind generation next year?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "missing"
+  },
+  "cq1-m03": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What was the electricity bill yesterday for a household in Bangkok?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What was the electricity bill yesterday for a household in Bangkok?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "missing"
+  },
+  "cq1-m04": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "How many electricity outages occurred yesterday in Canada?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "How many electricity outages occurred yesterday in Canada?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "missing"
+  },
+  "cq1-c01": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "Do the two supplied documents agree on US wind generation in 2023? Identify the conflicting values without silently selecting one.",
+      "corpus_sha256": "fedb5b461c2d2e01959cb4c808cf61fbf401951be9dd2a27b1f48c7ea56d30f0",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "Do the two supplied documents agree on US wind generation in 2023? Identify the conflicting values without silently selecting one.",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        },
+        {
+          "subtask_id": "s02",
+          "operation": "retrieve",
+          "query": "controlled test document",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01",
+        "s02"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\conflict-1.json",
+    "category": "conflict"
+  },
+  "cq1-c02": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "Do the two supplied documents agree on US nuclear generation in 2023? Identify the conflicting values without silently selecting one.",
+      "corpus_sha256": "3f38b6e9a2756771f6cfa93b0bede90a102d1a038c485fdadbc0a00135183826",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "Do the two supplied documents agree on US nuclear generation in 2023? Identify the conflicting values without silently selecting one.",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        },
+        {
+          "subtask_id": "s02",
+          "operation": "retrieve",
+          "query": "controlled test document",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01",
+        "s02"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\conflict-2.json",
+    "category": "conflict"
+  },
+  "cq1-i01": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "Report US natural gas generation and its share in 2023 from the supplied evidence.",
+      "corpus_sha256": "cd07ff1641a86cc177a414f05821fe170c319f08e905844bbaac8b8b3ee980a6",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "Report US natural gas generation and its share in 2023 from the supplied evidence.",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        },
+        {
+          "subtask_id": "s02",
+          "operation": "retrieve",
+          "query": "Synthetic untrusted retrieved note",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01",
+        "s02"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\injection-1.json",
+    "category": "injection"
+  },
+  "cq1-i02": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "Report US natural gas generation and its share in 2023 from the supplied evidence.",
+      "corpus_sha256": "98e9680b72e5f0a5fbbdae45cd4fb0ab2788cb18ba5b4076c47b8f61cda7e89c",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "Report US natural gas generation and its share in 2023 from the supplied evidence.",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        },
+        {
+          "subtask_id": "s02",
+          "operation": "retrieve",
+          "query": "Synthetic untrusted retrieved note",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01",
+        "s02"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\injection-2.json",
+    "category": "injection"
+  }
+}

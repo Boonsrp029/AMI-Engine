@@ -1,0 +1,15 @@
+{
+  "status": "C activation adapter prepared; A patch unapplied; no generation grant",
+  "targeted": "12passed5.00seconds;fixedresponses;syntheticspawnedrunner",
+  "core_full_suite": "1718passed14warnings;precededadapter;notrepeatedforunusedhelper",
+  "sha256": {
+    "src/pilot/subtasks/_scoped_activation.py": "e47e63f0f3b488482a1d0b608f3723a8bedf294a13db2b5877aff2c9821deb02",
+    "tests/test_scoped_activation.py": "df902955484d7ad450ebb212e157ee06b2a768aa944496058bfd73be398f0e41",
+    "reports\\workstream-c\\scoped-disclosures-2026-11-07\\a-activation-candidate.patch": "6835d53dbf9237843e646d3ec078c20232c3ac21b08f04acaeb1f8229b4b1cc8"
+  },
+  "A_caller_unchanged_sha256": "2cebb73c29a4761ed6fdb235e40583639481d7b5241ac79fe79a17dfd25d5a1a",
+  "activation": "pending A",
+  "new_model_calls": 0,
+  "CQ1attempted": 0,
+  "exact_next_step": "A applies candidate and validates integrated source/sidecar admission, then C freezes new protocol; no inference without a new grant"
+}

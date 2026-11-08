@@ -1,0 +1,6 @@
+{
+  "contract_sha256": "8da1a51cd9239cd54ec5617dff9d7859ddd39b419cd0d743823eb59d24811b37",
+  "human_reply": "Authorize one concurrent composer-v2 diagnostic",
+  "authorization_reference": "Explicit user message 2026-11-07: Authorize the Single concurrent composer diagnostic",
+  "scope": "One composer request only;95seconds total;zeroNeMo/no retries/no workflows or CQ1"
+}

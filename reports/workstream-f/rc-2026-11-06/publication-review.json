@@ -1,0 +1,211 @@
+{
+  "publication_authorized": false,
+  "files_requiring_review": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "1ed55698f6ed42f4e1c4ea8b9d889a6fed6c540c517a40707962eafbb51ac2bf"
+    },
+    {
+      "path": "compose.pilot.yml",
+      "sha256": "db0342d371ddee7ed198a764d8b4931ab6de7040a31462ddc5948e1876d316aa"
+    },
+    {
+      "path": "docs/concurrency/b-retrieval-adapter.md",
+      "sha256": "0b41f500ffddd48167012c97bf12d1f38cd75d3994f3a947c0175e5f14110179"
+    },
+    {
+      "path": "docs/concurrency/c-corpus-integration.md",
+      "sha256": "dc551ae19f63ba3dd4a85b912345187342710ac4c8e1a09dd7e2f2930e30125d"
+    },
+    {
+      "path": "docs/concurrency/e-d-lifecycle-handoff.md",
+      "sha256": "c7b01c15360a805dd9fb2e99b0af745f582d9e917a4f78761a4e9ce72f9e521f"
+    },
+    {
+      "path": "docs/concurrency/e-workflow-api-handoff.md",
+      "sha256": "651dadbb9bbe95286e7f41b78572660e958657199611b1e5ff40fdda47e87ccf"
+    },
+    {
+      "path": "docs/concurrency/e-workflow-interface.md",
+      "sha256": "fadb76b1d28aff495f625f55527a6719e3ffb8dd1fd45cdc358159213234376d"
+    },
+    {
+      "path": "docs/concurrency/e-workflow-verification.json",
+      "sha256": "3562757d455ac30d957448c18686e8dcd607dfcda6a82826b727fe4f14cfaee0"
+    },
+    {
+      "path": "docs/concurrency/f-reliability-handoff-d.md",
+      "sha256": "c3616cf144788b4f420f8594cab3cf4c1a4f740d1b2ee665da2fa74799d5f42f"
+    },
+    {
+      "path": "docs/concurrency/progress-interface-e.md",
+      "sha256": "038cb31267fc3b40c6ed706d2fe9b11002ea36edf17b06523ae25ec68e5befbf"
+    },
+    {
+      "path": "docs/concurrency/retrieval-integration-contract.md",
+      "sha256": "b1f498fa04c484643f1d41cdeddac9d2e493d9d124bd278ba317c53f7d208480"
+    },
+    {
+      "path": "docs/release/candidate-verification.json",
+      "sha256": "e2134b41c972c808110f7f6bd123acc81dcd7a97796362a187ccff06cd03a796"
+    },
+    {
+      "path": "docs/release/local-candidate.md",
+      "sha256": "08c9bd10632430cc7adbe26c719aa8bd1dc238edddfaa588f731e8dcb9e6ee98"
+    },
+    {
+      "path": "scripts/prepare_local_release.py",
+      "sha256": "5da872d003493c1447ecfda023e7bf33121fb945252b05548ebb15b33103d6f1"
+    },
+    {
+      "path": "scripts/smoke_subtasks_container.py",
+      "sha256": "6ed0b0bce0e307d5493d29579cda5351e740f41d79a03475a0af6bf86e096b2c"
+    },
+    {
+      "path": "src/pilot/_identity.py",
+      "sha256": "826cd264f71268389f7322c881dcc4e8cbd386d93c7527bf7b3850a871ec5d15"
+    },
+    {
+      "path": "src/pilot/_runtime.py",
+      "sha256": "36200f857f9716f186289c5e9e3fb8474bff68ed9d8fc6239a9f86c24ba1606a"
+    },
+    {
+      "path": "src/pilot/api.py",
+      "sha256": "63361bc6e7f948be621b239acce54942f0fad68a2c36c0b953daa46d34c278ec"
+    },
+    {
+      "path": "src/pilot/index.html",
+      "sha256": "9f9bc954a32630abce46d926975f1ae9afa92636dc6f2f5ffd627483607ebaa1"
+    },
+    {
+      "path": "src/pilot/schemas.py",
+      "sha256": "2a5cdbd49f14f0d1869ab97bc96a82dd9163b4f440742ffa97bb1abf43e59f74"
+    },
+    {
+      "path": "src/pilot/store.py",
+      "sha256": "4294f33c3c4183112f6b04511d5d1dc6cc98d5012b9736faf555a4fc3c60a5ba"
+    },
+    {
+      "path": "src/pilot/subtasks/_relationships.py",
+      "sha256": "ba6e69c390280a37d7d9cd9810b4709af985717356560125a8bcf9d1a6e46012"
+    },
+    {
+      "path": "src/pilot/subtasks/api_runtime.py",
+      "sha256": "85a5d3e3c64f76a9f346c9432eebf41e900dfed8194c0eb75adfee14685d0173"
+    },
+    {
+      "path": "src/pilot/subtasks/persistence.py",
+      "sha256": "3ae69ddffe1bfa5fc991ce0e9bf0d66ea5b3ec335527f6358a6b231759172b61"
+    },
+    {
+      "path": "src/pilot/subtasks/retrieval.py",
+      "sha256": "dc7f271b77ed6ae8fbfd4d79f36efb0a450a84fd638cda69ce20de306fb13f08"
+    },
+    {
+      "path": "src/pilot/subtasks/runner.py",
+      "sha256": "facc9c653735b8857bf3960a93c11a1016a0afc764cac98572ef43072159103a"
+    },
+    {
+      "path": "src/pilot/subtasks/synthesis.py",
+      "sha256": "1ab33ed152c6b9e3833b08b8e719c6c00526c2f84637fee614e768fc7c2fde4c"
+    },
+    {
+      "path": "tests/browser/progress-interface.cjs",
+      "sha256": "2a6351c302edc06aa20792cf10b5e9075622598ddb175e06304bcfa1ec3f0327"
+    },
+    {
+      "path": "tests/browser/workflow-lifecycle.cjs",
+      "sha256": "1ebc914bb10034023d0b402e004f9d64b299b81001a510ec15dd6d2a34a0850d"
+    },
+    {
+      "path": "tests/browser/workflow-submission.cjs",
+      "sha256": "c68c4451ef8017263b52870ba345786125a810c7defc47c1baa72b69bd688330"
+    },
+    {
+      "path": "tests/fixtures/release/concurrent_smoke.py",
+      "sha256": "0c3506fdf2e7a38aee4c0d92fde7d66dfa6fcf55d8cf6236e83ebc762368598b"
+    },
+    {
+      "path": "tests/fixtures/workers/e_lifecycle_worker.py",
+      "sha256": "db2847e03b4e40003d93c0b29b567adf3ca89d8a7007c6853d8c3daefdb8e55d"
+    },
+    {
+      "path": "tests/integration/subtasks/e_browser_fixture.py",
+      "sha256": "4fd5ab27edadc6801ea8e0ba37a0c73d220112972f2d1f490dcafc4558afe11c"
+    },
+    {
+      "path": "tests/integration/subtasks/test_e_workflow_lifecycle.py",
+      "sha256": "ba5d2293de79ba245d9b1e868e553681dd18ca866de7544f676fcaae61369c81"
+    },
+    {
+      "path": "tests/test_pilot_identity.py",
+      "sha256": "186db3336d96bced5acd1a7e36b23825faf9d3ff0b140b86b570e0a84cd2da8b"
+    },
+    {
+      "path": "tests/test_release_context.py",
+      "sha256": "94204851a9cb213a45a1744dcd3463c115d1211cb95d8c84f017281ef288d6ea"
+    },
+    {
+      "path": "tests/test_subtask_corpus_synthesis.py",
+      "sha256": "4385af03c84d158587c0daea97730835b0112d1674fbfb3a7c7facd70783eb52"
+    },
+    {
+      "path": "tests/test_subtask_retrieval.py",
+      "sha256": "0ac5c90250b6f651664a227e63839ceedeb9105da67aa18df606d075bdd4ae99"
+    },
+    {
+      "path": "tests/test_subtask_workflow_api.py",
+      "sha256": "9ca7734a8f68617617ac89fe285352ded5cc21cbb4c6229c1107e70793f29bca"
+    }
+  ],
+  "excluded_unrelated_or_local_artifacts": [
+    "reports/workstream-c/corpus-integration-2026-11-06/baseline.json",
+    "reports/workstream-c/corpus-integration-2026-11-06/completion-audit.md",
+    "reports/workstream-c/corpus-integration-2026-11-06/denominator-targeted.txt",
+    "reports/workstream-c/corpus-integration-2026-11-06/handoff.json",
+    "reports/workstream-c/corpus-integration-2026-11-06/integrated-full.txt",
+    "reports/workstream-c/corpus-integration-2026-11-06/integrated-source-before.json",
+    "reports/workstream-c/corpus-integration-2026-11-06/preservation-final.json",
+    "reports/workstream-c/corpus-integration-2026-11-06/preservation.json",
+    "reports/workstream-c/corpus-integration-2026-11-06/r07-replay.json",
+    "reports/workstream-c/corpus-integration-2026-11-06/r07-replay.txt",
+    "reports/workstream-c/corpus-integration-2026-11-06/repaired-targeted.txt",
+    "reports/workstream-c/corpus-integration-2026-11-06/scope-probes.txt",
+    "reports/workstream-c/corpus-integration-2026-11-06/targeted.txt",
+    "reports/workstream-d/release-candidate-2026-11-06/commands.txt",
+    "reports/workstream-d/release-candidate-2026-11-06/e-retained-full-suite.txt",
+    "reports/workstream-d/release-candidate-2026-11-06/e-tested-source.json",
+    "reports/workstream-d/release-candidate-2026-11-06/e-verification-retained.json",
+    "reports/workstream-d/release-candidate-2026-11-06/helpers-junit.xml",
+    "reports/workstream-d/release-candidate-2026-11-06/helpers-pytest.txt",
+    "reports/workstream-d/release-candidate-2026-11-06/helpers-tested-source.json",
+    "reports/workstream-d/release-candidate-2026-11-06/integrated-final/delta-from-E.json",
+    "reports/workstream-d/release-candidate-2026-11-06/integrated-final/git-status-before.txt",
+    "reports/workstream-d/release-candidate-2026-11-06/integrated-final/pytest.txt",
+    "reports/workstream-d/release-candidate-2026-11-06/integrated-final/run-start.json",
+    "reports/workstream-d/release-candidate-2026-11-06/integrated-final/source-before.json",
+    "reports/workstream-d/release-candidate-2026-11-06/source-comparison-before.json",
+    "reports/workstream-d/release-candidate-2026-11-06/verification.json",
+    "reports/workstream-f/rc-2026-11-06/build-driver.txt",
+    "reports/workstream-f/rc-2026-11-06/concurrent-diagnostic-driver.txt",
+    "reports/workstream-f/rc-2026-11-06/concurrent-driver.txt",
+    "reports/workstream-f/rc-2026-11-06/concurrent-final-driver.txt",
+    "reports/workstream-f/rc-2026-11-06/concurrent-root-driver.txt",
+    "reports/workstream-f/rc-2026-11-06/dependency-parity.json",
+    "reports/workstream-f/rc-2026-11-06/final-build-driver.txt",
+    "reports/workstream-f/rc-2026-11-06/image-content-audit.json",
+    "reports/workstream-f/rc-2026-11-06/integrated-baseline.json",
+    "reports/workstream-f/rc-2026-11-06/linux-driver.txt",
+    "reports/workstream-f/rc-2026-11-06/linux-final-driver.txt",
+    "reports/workstream-f/rc-2026-11-06/sequential-driver.txt",
+    "reports/workstream-f/rc-2026-11-06/sequential-root-driver.txt"
+  ],
+  "actions": [
+    "Approve exact integrated file list and diff",
+    "Authorize staging and commit",
+    "Authorize normal push or PR",
+    "Observe actual CI for exact published revision",
+    "Authorize any registry/release publication separately",
+    "No deployment authorized"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "current_scope": "fresh full integrated F candidate Windows suite",
+  "verification": "integrated-final/verification.json",
+  "passed": 1503,
+  "warnings": 14,
+  "seconds": 464.02,
+  "exit_code": 0,
+  "source_manifest_byte_sha256": "6796fbe5fa6d1bf4f5563a58600b880700eda811ab55b6dff3267a437cb8b130",
+  "earlier_root_verification": "Historical E-baseline reuse/helper subset; does not cover F additions"
+}

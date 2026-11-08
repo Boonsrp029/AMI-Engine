@@ -1,0 +1,324 @@
+{
+  "technical_pass": false,
+  "main_calls": 1,
+  "nemo_invocations": 0,
+  "elapsed_seconds": 16.014999999984866,
+  "failure_type": "ValueError",
+  "stored_run": {
+    "id": "e882d6011ff641c69dcc7060e90a2d59",
+    "request_key": "qualify-0320ec24502c3c98802c6cd8af9cd894",
+    "query": "Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday.",
+    "corpus_sha": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669",
+    "status": "failed",
+    "revision": 0,
+    "draft": null,
+    "sources": {},
+    "metrics": {
+      "partial": true,
+      "execution_elapsed_seconds": 13.062999999994645,
+      "attempt_id": "0ed26c4554664750963a186d92f6a79e",
+      "model_calls": 1,
+      "guardrail_invocations": 0,
+      "token_usage_complete": false,
+      "inflight_usage_unknown": true,
+      "monetary_cost": null,
+      "known_input_tokens": 0,
+      "known_output_tokens": 0,
+      "failure_reason": "worker_error"
+    },
+    "error": "Worker failed; inspect history before retrying",
+    "created": "2026-11-07T03:09:43.476565+00:00",
+    "updated": "2026-11-07T03:09:56.629053+00:00",
+    "events": [
+      {
+        "seq": 1,
+        "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+        "kind": "attempt_started",
+        "payload": {
+          "attempt_id": "0ed26c4554664750963a186d92f6a79e"
+        },
+        "created": "2026-11-07T03:09:43.597012+00:00"
+      },
+      {
+        "seq": 2,
+        "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+        "kind": "subtask_plan",
+        "payload": {
+          "identity": {
+            "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+            "attempt_id": "0ed26c4554664750963a186d92f6a79e",
+            "plan_id": "0a4655b6e8acac6435ee1e767495dfc19976fe346144536549e9279ea3098003",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "plan": {
+            "version": "ami-subtasks-v1",
+            "query": "Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday.",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669",
+            "subtasks": [
+              {
+                "subtask_id": "s01",
+                "operation": "retrieve",
+                "query": "wind",
+                "source_ids": [],
+                "dependencies": [],
+                "required": true,
+                "timeout_seconds": 30.0
+              },
+              {
+                "subtask_id": "s02",
+                "operation": "retrieve",
+                "query": "yesterday retail prices",
+                "source_ids": [],
+                "dependencies": [],
+                "required": true,
+                "timeout_seconds": 30.0
+              }
+            ],
+            "retrieval_concurrency": 2,
+            "deadline_seconds": 177.90700000000652,
+            "model_concurrency": 1,
+            "maximum_main_calls": 4
+          },
+          "attempt_id": "0ed26c4554664750963a186d92f6a79e"
+        },
+        "created": "2026-11-07T03:09:43.705111+00:00"
+      },
+      {
+        "seq": 3,
+        "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+        "kind": "subtask_worker_started",
+        "payload": {
+          "pid": 46176,
+          "attempt_id": "0ed26c4554664750963a186d92f6a79e"
+        },
+        "created": "2026-11-07T03:09:43.909966+00:00"
+      },
+      {
+        "seq": 4,
+        "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+            "attempt_id": "0ed26c4554664750963a186d92f6a79e",
+            "plan_id": "0a4655b6e8acac6435ee1e767495dfc19976fe346144536549e9279ea3098003",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "97c0fe73512849a194fb12565b6d2ff3",
+          "ordinal": 1,
+          "status": "queued",
+          "created_at": "2026-11-07T03:09:44.863941Z",
+          "reason": "none",
+          "attempt_id": "0ed26c4554664750963a186d92f6a79e"
+        },
+        "created": "2026-11-07T03:09:44.863941+00:00"
+      },
+      {
+        "seq": 5,
+        "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+            "attempt_id": "0ed26c4554664750963a186d92f6a79e",
+            "plan_id": "0a4655b6e8acac6435ee1e767495dfc19976fe346144536549e9279ea3098003",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "65b19749934545238915166d2dd66c99",
+          "ordinal": 2,
+          "status": "queued",
+          "created_at": "2026-11-07T03:09:44.863941Z",
+          "reason": "none",
+          "attempt_id": "0ed26c4554664750963a186d92f6a79e"
+        },
+        "created": "2026-11-07T03:09:45.054268+00:00"
+      },
+      {
+        "seq": 6,
+        "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+            "attempt_id": "0ed26c4554664750963a186d92f6a79e",
+            "plan_id": "0a4655b6e8acac6435ee1e767495dfc19976fe346144536549e9279ea3098003",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "97c0fe73512849a194fb12565b6d2ff3",
+          "ordinal": 3,
+          "status": "running",
+          "created_at": "2026-11-07T03:09:44.863941Z",
+          "reason": "none",
+          "attempt_id": "0ed26c4554664750963a186d92f6a79e"
+        },
+        "created": "2026-11-07T03:09:45.133795+00:00"
+      },
+      {
+        "seq": 7,
+        "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+            "attempt_id": "0ed26c4554664750963a186d92f6a79e",
+            "plan_id": "0a4655b6e8acac6435ee1e767495dfc19976fe346144536549e9279ea3098003",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "65b19749934545238915166d2dd66c99",
+          "ordinal": 4,
+          "status": "running",
+          "created_at": "2026-11-07T03:09:44.863941Z",
+          "reason": "none",
+          "attempt_id": "0ed26c4554664750963a186d92f6a79e"
+        },
+        "created": "2026-11-07T03:09:45.212964+00:00"
+      },
+      {
+        "seq": 8,
+        "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+            "attempt_id": "0ed26c4554664750963a186d92f6a79e",
+            "plan_id": "0a4655b6e8acac6435ee1e767495dfc19976fe346144536549e9279ea3098003",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "97c0fe73512849a194fb12565b6d2ff3",
+          "ordinal": 5,
+          "status": "completed",
+          "created_at": "2026-11-07T03:09:44.863941Z",
+          "reason": "none",
+          "attempt_id": "0ed26c4554664750963a186d92f6a79e"
+        },
+        "created": "2026-11-07T03:09:45.308081+00:00"
+      },
+      {
+        "seq": 9,
+        "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+        "kind": "subtask_result",
+        "payload": {
+          "identity": {
+            "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+            "attempt_id": "0ed26c4554664750963a186d92f6a79e",
+            "plan_id": "0a4655b6e8acac6435ee1e767495dfc19976fe346144536549e9279ea3098003",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "97c0fe73512849a194fb12565b6d2ff3",
+          "dependencies": [],
+          "outcome": "evidence",
+          "sources": [
+            {
+              "source_id": "cq-wind",
+              "content": "In Denmark, wind supplied 29% of total electricity generation in 2015.",
+              "content_sha256": "48ef42de6bc49128cc5515fe5063f42cf5fc3103a8de32cc86458b211719b2d7",
+              "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669",
+              "role": "support",
+              "title": "Wind",
+              "url": "",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            }
+          ],
+          "elapsed_seconds": 0.0,
+          "diagnostic": "none",
+          "attempt_id": "0ed26c4554664750963a186d92f6a79e"
+        },
+        "created": "2026-11-07T03:09:45.394082+00:00"
+      },
+      {
+        "seq": 10,
+        "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+            "attempt_id": "0ed26c4554664750963a186d92f6a79e",
+            "plan_id": "0a4655b6e8acac6435ee1e767495dfc19976fe346144536549e9279ea3098003",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "65b19749934545238915166d2dd66c99",
+          "ordinal": 6,
+          "status": "completed",
+          "created_at": "2026-11-07T03:09:44.863941Z",
+          "reason": "none",
+          "attempt_id": "0ed26c4554664750963a186d92f6a79e"
+        },
+        "created": "2026-11-07T03:09:45.481880+00:00"
+      },
+      {
+        "seq": 11,
+        "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+        "kind": "subtask_result",
+        "payload": {
+          "identity": {
+            "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+            "attempt_id": "0ed26c4554664750963a186d92f6a79e",
+            "plan_id": "0a4655b6e8acac6435ee1e767495dfc19976fe346144536549e9279ea3098003",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "65b19749934545238915166d2dd66c99",
+          "dependencies": [],
+          "outcome": "missing",
+          "sources": [],
+          "elapsed_seconds": 0.0,
+          "diagnostic": "no_matching_evidence",
+          "attempt_id": "0ed26c4554664750963a186d92f6a79e"
+        },
+        "created": "2026-11-07T03:09:45.576734+00:00"
+      },
+      {
+        "seq": 12,
+        "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+        "kind": "model_request_started",
+        "payload": {
+          "stage": "subtask_compose",
+          "attempt_id": "0ed26c4554664750963a186d92f6a79e"
+        },
+        "created": "2026-11-07T03:09:45.684930+00:00"
+      },
+      {
+        "seq": 13,
+        "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+        "kind": "subtask_worker_failure",
+        "payload": {
+          "error_type": "ValueError",
+          "stage": "composition",
+          "attempt_id": "0ed26c4554664750963a186d92f6a79e"
+        },
+        "created": "2026-11-07T03:09:56.436200+00:00"
+      },
+      {
+        "seq": 14,
+        "run_id": "e882d6011ff641c69dcc7060e90a2d59",
+        "kind": "attempt_stopped",
+        "payload": {
+          "attempt_id": "0ed26c4554664750963a186d92f6a79e",
+          "reason": "worker_error",
+          "elapsed_seconds": 13.062999999994645
+        },
+        "created": "2026-11-07T03:09:56.628048+00:00"
+      }
+    ],
+    "reviews": []
+  },
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured",
+  "source_assessment": "pending",
+  "owner_adjudication": "pending"
+}

@@ -1,0 +1,63 @@
+{
+  "protocol_id": "concurrent-development-v7-title-lineage",
+  "status": "prepared; new explicit grant required",
+  "purpose": "Actual integrated local two-case generation, final title scope, safety and persisted draft after the retained raw composer pass and offline repairs",
+  "case_order": [
+    "cq-p01",
+    "cq-p02"
+  ],
+  "case_acceptance": {
+    "cq-p01": [
+      "Answer both requested measures and periods with exact source identities.",
+      "Never put 5.7% in the Japan forecast unit.",
+      "Retain Canada/Japan, 2016/2036 and observation/projection distinctions.",
+      "Retain unit/component/subtask/child-attempt/source/corpus lineage.",
+      "Report raw completeness and final completeness separately; no editorial rescue.",
+      "Final title does not apply a single-country label to the two-country brief; per-claim geography remains explicit."
+    ],
+    "cq-p02": [
+      "Retain Denmark wind 29%, total electricity generation denominator and 2015.",
+      "Explicitly state supplied evidence lacks requested yesterday retail electricity prices.",
+      "Do not substitute generation share for a dated retail price.",
+      "Completed missing required branch remains visible; preserve supported partial answer."
+    ]
+  },
+  "limits": {
+    "case_attempts": 2,
+    "main_calls_total": 8,
+    "nemo_invocations_total": 2,
+    "seconds_per_case": 180,
+    "automatic_retries": 0,
+    "retrieval_concurrency": 2,
+    "inference_concurrency": 1,
+    "hosted_inference": false,
+    "ragas": false
+  },
+  "stop": "Stop and close at first technical, source-support/completeness, safety, identity, context or budget failure. No tuning, case substitution, repair or retries within the batch. Case2 requires immutable passing source assessment of case1.",
+  "source_review": "Preserve original development criteria. Record raw and final support/completeness separately, fallback use, final title scope, source/unit lineage, missing evidence and safety/publication. No editorial rescue or retrospective regrade.",
+  "human_review": "Assistant source assessment gates advancement. New assessable outputs need explicit owner review before owner-acceptance claims. Technical failures do not request repeated human scoring. No stored approval/export is authorized.",
+  "conditional_qualification": "CQ1 predeclared content/plans remain separate. Twenty-case execution requires both diagnostics to pass plus applicable matching authorization and QualificationLedger admission. This development grant alone cannot execute CQ1.",
+  "unavailable_measurements": [
+    "internal NeMo request/token totals where not exposed",
+    "energy/hardware cost",
+    "monetary cost"
+  ],
+  "preservation": "Old r07 remains failed/consumed. Old nineteen reserved cases and source snapshots remain unchanged; they are not used for tuning.",
+  "usage": "At standing90percent threshold save exact handoff and pause. Shared usage reading currently unavailable; do not invent it.",
+  "prior_batch_assessment": "reports\\workstream-c\\concurrent-qualification-2026-11-06\\interruption-assessment-v1.json",
+  "prior_batch_sha256": "3dc1b036e3b408bb76ef288ad81361a258369c822944d97c7cf205179d3f30e4",
+  "development_freshness": "Both cases are development evidence. cq-p01 has retained failed/interrupted attempts and was used for diagnosis; never count it as unseen.",
+  "repair": "Supported-state provenance cover prefix; every eligible span remains a choice. Partial/missing/conflict alternatives and application guard remain.",
+  "prior_failure_sha256": "9bf9a331c6204cc53e053ea938d390a35db74b30609d1a4d7340031e913881a0",
+  "freshness": "Consumed synthetic development evidence; both two-case protocol and original20case quality gates remain required. The composer-only pass does not replace workflow qualification.",
+  "context_policy": "Message content plus256framing+900completion <=4096. Explicit json_schema format grammar is separate from prompt; record its size and latency, do not hide resource failures.",
+  "mapping_version": "cq-mapper-v5-decoder-coverage",
+  "changes": [
+    "Concurrent title label needs selected-quote coverage or disclosed pinned-document context; partial geographic suffix is suppressed before safety.",
+    "Qualification admission binds retained development contract/start/result/source records and current runtime/model/settings; no CQ1 admission is authorized.",
+    "As-of date is newly captured as2026-11-07. Questions/corpus bytes remain unchanged; dated absence is assessed relative to this captured date."
+  ],
+  "as_of": "2026-11-07",
+  "composition_version": "cq-composer-v2-unit-local",
+  "title_scope_version": "cq-title-scope-v1"
+}

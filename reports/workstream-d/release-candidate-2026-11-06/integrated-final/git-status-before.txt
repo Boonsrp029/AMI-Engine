@@ -1,0 +1,41 @@
+ M .github/workflows/ci.yml
+ M compose.pilot.yml
+ M docs/concurrency/progress-interface-e.md
+ M src/pilot/_identity.py
+ M src/pilot/_runtime.py
+ M src/pilot/api.py
+ M src/pilot/index.html
+ M src/pilot/schemas.py
+ M src/pilot/store.py
+ M src/pilot/subtasks/persistence.py
+ M src/pilot/subtasks/runner.py
+ M src/pilot/subtasks/synthesis.py
+ M tests/browser/progress-interface.cjs
+ M tests/test_pilot_identity.py
+?? docs/concurrency/b-retrieval-adapter.md
+?? docs/concurrency/c-corpus-integration.md
+?? docs/concurrency/e-d-lifecycle-handoff.md
+?? docs/concurrency/e-workflow-api-handoff.md
+?? docs/concurrency/e-workflow-interface.md
+?? docs/concurrency/e-workflow-verification.json
+?? docs/concurrency/f-reliability-handoff-d.md
+?? docs/concurrency/retrieval-integration-contract.md
+?? docs/release/
+?? reports/workstream-c/corpus-integration-2026-11-06/
+?? reports/workstream-d/
+?? reports/workstream-f/
+?? scripts/prepare_local_release.py
+?? scripts/smoke_subtasks_container.py
+?? src/pilot/subtasks/_relationships.py
+?? src/pilot/subtasks/api_runtime.py
+?? src/pilot/subtasks/retrieval.py
+?? tests/browser/workflow-lifecycle.cjs
+?? tests/browser/workflow-submission.cjs
+?? tests/fixtures/release/concurrent_smoke.py
+?? tests/fixtures/workers/e_lifecycle_worker.py
+?? tests/integration/subtasks/e_browser_fixture.py
+?? tests/integration/subtasks/test_e_workflow_lifecycle.py
+?? tests/test_release_context.py
+?? tests/test_subtask_corpus_synthesis.py
+?? tests/test_subtask_retrieval.py
+?? tests/test_subtask_workflow_api.py

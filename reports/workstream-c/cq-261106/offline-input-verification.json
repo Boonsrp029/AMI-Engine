@@ -1,0 +1,25 @@
+{
+  "fixture_checks": [
+    {
+      "case_id": "cq-p01",
+      "outcomes": [
+        "evidence",
+        "evidence"
+      ],
+      "plan_id": "f0955f93814d6f55da77df6e7953e8c4617d7d7cdb42df46bfaa135fcbfc0992",
+      "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+    },
+    {
+      "case_id": "cq-p02",
+      "outcomes": [
+        "evidence",
+        "missing"
+      ],
+      "plan_id": "5d0e290b003be93d1cf178693a1fe9bd51c189270e34620d3e7ef4d2d2bbe623",
+      "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+    }
+  ],
+  "model_calls": 0,
+  "nemo_calls": 0,
+  "generation_authorized": false
+}

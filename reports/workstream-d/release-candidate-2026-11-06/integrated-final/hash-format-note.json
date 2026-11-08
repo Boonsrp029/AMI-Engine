@@ -1,0 +1,9 @@
+{
+  "initial_run_start_hash": "80bd4341ddfca545ab55326fe867eeb6252a918db3ec38def79cce1f4b9d3c77",
+  "initial_hash_representation": "UTF-8 JSON with LF newlines, computed before write_text translated Windows newlines",
+  "actual_saved_manifest_sha256": "6796fbe5fa6d1bf4f5563a58600b880700eda811ab55b6dff3267a437cb8b130",
+  "actual_representation": "UTF-8 JSON with CRLF newlines",
+  "before_after_actual_bytes_identical": true,
+  "source_entry_hashes": "All252 source-file byte hashes identical before/after; only metadata hash representation needed clarification",
+  "historical_run_start_preserved": true
+}

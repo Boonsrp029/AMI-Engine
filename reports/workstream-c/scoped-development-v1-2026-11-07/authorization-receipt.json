@@ -1,0 +1,19 @@
+{
+  "user_verbatim": "Authorize regeneration",
+  "received_date_Asia_Bangkok": "2026-11-07",
+  "authorized_scope": "The sole prepared scoped v1 two-case development diagnostic; no CQ1 or broader regeneration",
+  "contract_sha256": "f5eb8a4de2eecf482746e5e513525ceeef4e37fc951b8d1e43506c2780391405",
+  "case_ids": [
+    "cq-p01",
+    "cq-p02"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "recorded_utc": "2026-11-07T11:59:01.393249+00:00",
+  "standing_pause_threshold": "10percentremaining in either window; check between cases",
+  "owner_hold": "reopened for this bounded scope by the latest direct authorization"
+}

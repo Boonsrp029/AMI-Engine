@@ -1,0 +1,35 @@
+............F....                                                        [100%]
+================================== FAILURES ===================================
+______ test_activated_development_entry_retains_original_scope_identity _______
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/scoped-landed-fixed/test_activated_development_ent0')
+
+    def test_activated_development_entry_retains_original_scope_identity(tmp_path):
+        from src.pilot.subtasks.qualification import DevelopmentLedger
+        from src.pilot.subtasks.qualification_runner import execute_development
+        from test_scoped_disclosures import allow
+        _, plan, sidecar, frozen, contract = packet(tmp_path)
+        contract.update(case_ids=['p01', 'p02'], cases={'p01': frozen, 'p02': frozen},
+            model_snapshot={'synthetic': True}, limits={'main_calls_per_case': 4,
+                'nemo_per_case': 1, 'seconds_per_case': 180, 'retries': 0})
+        corpus = tmp_path/'corpus.json'
+        frozen['corpus_path'] = str(corpus)
+        contract['input_sha256'][str(corpus)] = hashlib.sha256(corpus.read_bytes()).hexdigest()
+        contract['contract_sha256'] = hashlib.sha256(json.dumps(contract, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+        grant = {'contract_sha256': contract['contract_sha256'], 'case_ids': contract['case_ids'],
+            'limits': contract['limits'], 'authorization_reference': 'SYNTHETIC TEST ONLY; no inference authorization'}
+        ledger = DevelopmentLedger(tmp_path/'out', contract, grant)
+        def identity(value):
+            assert value == {'synthetic': True}
+        result = execute_development(ledger, 'p01', FixedScoped(), allow, identity)
+        assert result['technical_pass'] and result['main_calls'] == 2 and result['nemo_invocations'] == 1
+        provenance = result['stored_run']['metrics']['composition_diagnostics']['scope_deadline_binding']
+        assert provenance['declared_plan_id'] == plan.plan_id
+>       assert provenance['runtime_plan_id'] != plan.plan_id
+E       AssertionError: assert '3c9312a03e97693e4961f256a00b11ecfdb57b2b3800d01e688507a6f364ed14' != '3c9312a03e97693e4961f256a00b11ecfdb57b2b3800d01e688507a6f364ed14'
+E        +  where '3c9312a03e97693e4961f256a00b11ecfdb57b2b3800d01e688507a6f364ed14' = Plan(version='ami-subtasks-v1', query='Describe solar generation in Chile in 2012 and provide Chile retail gas tariffs...ue, timeout_seconds=30.0)), retrieval_concurrency=2, deadline_seconds=180.0, model_concurrency=1, maximum_main_calls=4).plan_id
+
+tests\test_scoped_activation.py:117: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_scoped_activation.py::test_activated_development_entry_retains_original_scope_identity
+1 failed, 16 passed in 13.80s

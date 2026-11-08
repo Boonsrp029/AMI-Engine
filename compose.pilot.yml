@@ -1,5 +1,6 @@
 services:
   analyst:
+    image: ${AMI_PILOT_IMAGE:-ami-pilot:local}
     build:
       context: .
       dockerfile: Dockerfile.pilot

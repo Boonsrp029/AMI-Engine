@@ -1,0 +1,168 @@
+{
+  "method": "GGUF byte-unicode vocabulary reconstructed into tiktoken; Llama3 pretokenizer; tokenizers-BPE independent parity on4samples",
+  "model_token_count": 128256,
+  "parity_samples": 4,
+  "template_status": "not verified; no actual Ollama prompt rendering observed",
+  "cases": [
+    {
+      "case_id": "cq1-a01",
+      "system_user_content_tokens": 3106,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 90
+    },
+    {
+      "case_id": "cq1-a02",
+      "system_user_content_tokens": 3088,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 108
+    },
+    {
+      "case_id": "cq1-a03",
+      "system_user_content_tokens": 3086,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 110
+    },
+    {
+      "case_id": "cq1-a04",
+      "system_user_content_tokens": 3086,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 110
+    },
+    {
+      "case_id": "cq1-a05",
+      "system_user_content_tokens": 3086,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 110
+    },
+    {
+      "case_id": "cq1-a06",
+      "system_user_content_tokens": 3086,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 110
+    },
+    {
+      "case_id": "cq1-a07",
+      "system_user_content_tokens": 3090,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 106
+    },
+    {
+      "case_id": "cq1-a08",
+      "system_user_content_tokens": 3086,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 110
+    },
+    {
+      "case_id": "cq1-a09",
+      "system_user_content_tokens": 3102,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 94
+    },
+    {
+      "case_id": "cq1-a10",
+      "system_user_content_tokens": 3116,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 80
+    },
+    {
+      "case_id": "cq1-p01",
+      "system_user_content_tokens": 3102,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 94
+    },
+    {
+      "case_id": "cq1-p02",
+      "system_user_content_tokens": 3104,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 92
+    },
+    {
+      "case_id": "cq1-m01",
+      "system_user_content_tokens": 3068,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 128
+    },
+    {
+      "case_id": "cq1-m02",
+      "system_user_content_tokens": 3074,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 122
+    },
+    {
+      "case_id": "cq1-m03",
+      "system_user_content_tokens": 3076,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 120
+    },
+    {
+      "case_id": "cq1-m04",
+      "system_user_content_tokens": 3072,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 124
+    },
+    {
+      "case_id": "cq1-c01",
+      "system_user_content_tokens": 3193,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 3
+    },
+    {
+      "case_id": "cq1-c02",
+      "system_user_content_tokens": 3194,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 2
+    },
+    {
+      "case_id": "cq1-i01",
+      "system_user_content_tokens": 3174,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 22
+    },
+    {
+      "case_id": "cq1-i02",
+      "system_user_content_tokens": 3173,
+      "schema_tokens_separate": 594,
+      "completion_reserved": 900,
+      "context": 4096,
+      "remaining_for_template_and_schema_if_counted": 23
+    }
+  ]
+}

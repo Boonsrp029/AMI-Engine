@@ -1,0 +1,13 @@
+{
+  "preparation_sha256": "32699e8aef4f29894cf897b8e1d6159b46b147465ab8a5c01f2f69e0963e8353",
+  "input_files_verified": 6,
+  "case_ids": [
+    "cq-p01",
+    "cq-p02"
+  ],
+  "source_identity": "same consumed case/corpus identities as retained v7",
+  "A_activation": "still unapplied; verified caller SHA unchanged",
+  "new_actual_model_calls": 0,
+  "executable_contract": false,
+  "new_grant": false
+}

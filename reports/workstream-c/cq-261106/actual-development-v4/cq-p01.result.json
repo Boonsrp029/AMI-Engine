@@ -1,0 +1,337 @@
+{
+  "technical_pass": false,
+  "main_calls": 1,
+  "nemo_invocations": 0,
+  "elapsed_seconds": 23.078000000008615,
+  "failure_type": "ValueError",
+  "stored_run": {
+    "id": "74bdc4e5ebac420b9a7d24db4527771a",
+    "request_key": "qualify-961b63a0c0c8e05c19d9c07f7b7615ec",
+    "query": "Compare observed electricity demand in Canada in 2016 with projected electricity demand in Japan through 2036.",
+    "corpus_sha": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13",
+    "status": "failed",
+    "revision": 0,
+    "draft": null,
+    "sources": {},
+    "metrics": {
+      "partial": true,
+      "execution_elapsed_seconds": 20.171999999991385,
+      "attempt_id": "e1301704ac014b068e3de592bf9b6a56",
+      "model_calls": 1,
+      "guardrail_invocations": 0,
+      "token_usage_complete": false,
+      "inflight_usage_unknown": true,
+      "monetary_cost": null,
+      "known_input_tokens": 0,
+      "known_output_tokens": 0,
+      "failure_reason": "worker_error"
+    },
+    "error": "Worker failed; inspect history before retrying",
+    "created": "2026-11-06T14:25:31.317799+00:00",
+    "updated": "2026-11-06T14:25:51.577827+00:00",
+    "events": [
+      {
+        "seq": 1,
+        "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+        "kind": "attempt_started",
+        "payload": {
+          "attempt_id": "e1301704ac014b068e3de592bf9b6a56"
+        },
+        "created": "2026-11-06T14:25:31.417831+00:00"
+      },
+      {
+        "seq": 2,
+        "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+        "kind": "subtask_plan",
+        "payload": {
+          "identity": {
+            "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+            "attempt_id": "e1301704ac014b068e3de592bf9b6a56",
+            "plan_id": "95817acc6d9a6a9ad7c8af4b71cfdb43db252f443582e95daf2d4c715931020e",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "plan": {
+            "version": "ami-subtasks-v1",
+            "query": "Compare observed electricity demand in Canada in 2016 with projected electricity demand in Japan through 2036.",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13",
+            "subtasks": [
+              {
+                "subtask_id": "s01",
+                "operation": "retrieve",
+                "query": "observed",
+                "source_ids": [],
+                "dependencies": [],
+                "required": true,
+                "timeout_seconds": 30.0
+              },
+              {
+                "subtask_id": "s02",
+                "operation": "retrieve",
+                "query": "projected",
+                "source_ids": [],
+                "dependencies": [],
+                "required": true,
+                "timeout_seconds": 30.0
+              }
+            ],
+            "retrieval_concurrency": 2,
+            "deadline_seconds": 177.81299999999464,
+            "model_concurrency": 1,
+            "maximum_main_calls": 4
+          },
+          "attempt_id": "e1301704ac014b068e3de592bf9b6a56"
+        },
+        "created": "2026-11-06T14:25:31.504806+00:00"
+      },
+      {
+        "seq": 3,
+        "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+        "kind": "subtask_worker_started",
+        "payload": {
+          "pid": 21112,
+          "attempt_id": "e1301704ac014b068e3de592bf9b6a56"
+        },
+        "created": "2026-11-06T14:25:31.700442+00:00"
+      },
+      {
+        "seq": 4,
+        "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+            "attempt_id": "e1301704ac014b068e3de592bf9b6a56",
+            "plan_id": "95817acc6d9a6a9ad7c8af4b71cfdb43db252f443582e95daf2d4c715931020e",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "6d7af89965bf4d6ea37674863bbeddbf",
+          "ordinal": 1,
+          "status": "queued",
+          "created_at": "2026-11-06T14:25:32.595570Z",
+          "reason": "none",
+          "attempt_id": "e1301704ac014b068e3de592bf9b6a56"
+        },
+        "created": "2026-11-06T14:25:32.595570+00:00"
+      },
+      {
+        "seq": 5,
+        "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+            "attempt_id": "e1301704ac014b068e3de592bf9b6a56",
+            "plan_id": "95817acc6d9a6a9ad7c8af4b71cfdb43db252f443582e95daf2d4c715931020e",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "71105f9ef9864f24b3d4d45fbb9cdcb2",
+          "ordinal": 2,
+          "status": "queued",
+          "created_at": "2026-11-06T14:25:32.595570Z",
+          "reason": "none",
+          "attempt_id": "e1301704ac014b068e3de592bf9b6a56"
+        },
+        "created": "2026-11-06T14:25:32.867447+00:00"
+      },
+      {
+        "seq": 6,
+        "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+            "attempt_id": "e1301704ac014b068e3de592bf9b6a56",
+            "plan_id": "95817acc6d9a6a9ad7c8af4b71cfdb43db252f443582e95daf2d4c715931020e",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "6d7af89965bf4d6ea37674863bbeddbf",
+          "ordinal": 3,
+          "status": "running",
+          "created_at": "2026-11-06T14:25:32.595570Z",
+          "reason": "none",
+          "attempt_id": "e1301704ac014b068e3de592bf9b6a56"
+        },
+        "created": "2026-11-06T14:25:33.342856+00:00"
+      },
+      {
+        "seq": 7,
+        "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+            "attempt_id": "e1301704ac014b068e3de592bf9b6a56",
+            "plan_id": "95817acc6d9a6a9ad7c8af4b71cfdb43db252f443582e95daf2d4c715931020e",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "71105f9ef9864f24b3d4d45fbb9cdcb2",
+          "ordinal": 4,
+          "status": "running",
+          "created_at": "2026-11-06T14:25:32.595570Z",
+          "reason": "none",
+          "attempt_id": "e1301704ac014b068e3de592bf9b6a56"
+        },
+        "created": "2026-11-06T14:25:33.482709+00:00"
+      },
+      {
+        "seq": 8,
+        "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+            "attempt_id": "e1301704ac014b068e3de592bf9b6a56",
+            "plan_id": "95817acc6d9a6a9ad7c8af4b71cfdb43db252f443582e95daf2d4c715931020e",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "6d7af89965bf4d6ea37674863bbeddbf",
+          "ordinal": 5,
+          "status": "completed",
+          "created_at": "2026-11-06T14:25:32.597861Z",
+          "reason": "none",
+          "attempt_id": "e1301704ac014b068e3de592bf9b6a56"
+        },
+        "created": "2026-11-06T14:25:33.605479+00:00"
+      },
+      {
+        "seq": 9,
+        "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+        "kind": "subtask_result",
+        "payload": {
+          "identity": {
+            "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+            "attempt_id": "e1301704ac014b068e3de592bf9b6a56",
+            "plan_id": "95817acc6d9a6a9ad7c8af4b71cfdb43db252f443582e95daf2d4c715931020e",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "6d7af89965bf4d6ea37674863bbeddbf",
+          "dependencies": [],
+          "outcome": "evidence",
+          "sources": [
+            {
+              "source_id": "cq-observed",
+              "content": "In Canada, observed electricity demand grew 5.7% in 2016.",
+              "content_sha256": "32551050b7e35b9d74c27df373a4448d70494ce8967ded49cbd0aa32daf01b6b",
+              "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13",
+              "role": "support",
+              "title": "Observed",
+              "url": "",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            }
+          ],
+          "elapsed_seconds": 0.0,
+          "diagnostic": "none",
+          "attempt_id": "e1301704ac014b068e3de592bf9b6a56"
+        },
+        "created": "2026-11-06T14:25:33.679883+00:00"
+      },
+      {
+        "seq": 10,
+        "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+            "attempt_id": "e1301704ac014b068e3de592bf9b6a56",
+            "plan_id": "95817acc6d9a6a9ad7c8af4b71cfdb43db252f443582e95daf2d4c715931020e",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "71105f9ef9864f24b3d4d45fbb9cdcb2",
+          "ordinal": 6,
+          "status": "completed",
+          "created_at": "2026-11-06T14:25:32.597861Z",
+          "reason": "none",
+          "attempt_id": "e1301704ac014b068e3de592bf9b6a56"
+        },
+        "created": "2026-11-06T14:25:33.752763+00:00"
+      },
+      {
+        "seq": 11,
+        "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+        "kind": "subtask_result",
+        "payload": {
+          "identity": {
+            "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+            "attempt_id": "e1301704ac014b068e3de592bf9b6a56",
+            "plan_id": "95817acc6d9a6a9ad7c8af4b71cfdb43db252f443582e95daf2d4c715931020e",
+            "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "71105f9ef9864f24b3d4d45fbb9cdcb2",
+          "dependencies": [],
+          "outcome": "evidence",
+          "sources": [
+            {
+              "source_id": "cq-projected",
+              "content": "In Japan, electricity demand is projected to grow 2.6% annually through 2036.",
+              "content_sha256": "0501a99bcf96d21189aa75cc3ee1d0a0c767b693d3d4738b25dcd78a1f7744c4",
+              "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13",
+              "role": "support",
+              "title": "Projected",
+              "url": "",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            }
+          ],
+          "elapsed_seconds": 0.0,
+          "diagnostic": "none",
+          "attempt_id": "e1301704ac014b068e3de592bf9b6a56"
+        },
+        "created": "2026-11-06T14:25:33.949729+00:00"
+      },
+      {
+        "seq": 12,
+        "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+        "kind": "model_request_started",
+        "payload": {
+          "stage": "subtask_compose",
+          "attempt_id": "e1301704ac014b068e3de592bf9b6a56"
+        },
+        "created": "2026-11-06T14:25:34.145271+00:00"
+      },
+      {
+        "seq": 13,
+        "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+        "kind": "subtask_worker_failure",
+        "payload": {
+          "error_type": "ValueError",
+          "stage": "composition",
+          "attempt_id": "e1301704ac014b068e3de592bf9b6a56"
+        },
+        "created": "2026-11-06T14:25:51.401084+00:00"
+      },
+      {
+        "seq": 14,
+        "run_id": "74bdc4e5ebac420b9a7d24db4527771a",
+        "kind": "attempt_stopped",
+        "payload": {
+          "attempt_id": "e1301704ac014b068e3de592bf9b6a56",
+          "reason": "worker_error",
+          "elapsed_seconds": 20.171999999991385
+        },
+        "created": "2026-11-06T14:25:51.576853+00:00"
+      }
+    ],
+    "reviews": []
+  },
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured",
+  "source_assessment": "pending",
+  "owner_adjudication": "pending"
+}

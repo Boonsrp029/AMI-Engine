@@ -6,6 +6,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from src.pilot._presentation import without_bullet_glyphs
+from src.pilot.subtasks.contracts import Plan, Subtask
 
 
 class StrictModel(BaseModel):
@@ -25,6 +26,38 @@ class ResearchRequest(StrictModel):
         if re.search(r"\b[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}\b|\b\d{13,19}\b", value):
             raise ValueError("This public-data pilot does not accept email addresses or account/identity numbers")
         return value
+
+
+class SubtaskResearchRequest(ResearchRequest):
+    """Explicit, bounded plan for the opt-in workflow; no automatic planner."""
+
+    subtasks: tuple[Subtask, ...] = Field(min_length=1, max_length=5)
+    retrieval_concurrency: int = Field(default=2, ge=1, le=2)
+    deadline_seconds: float = Field(default=180.0, gt=0, le=180, allow_inf_nan=False)
+
+    @field_validator("subtasks", mode="before")
+    @classmethod
+    def json_sequences(cls, value):
+        # The internal contract is strict and immutable; adapt JSON arrays to
+        # tuples at this HTTP boundary before validating each Subtask.
+        if not isinstance(value, (list, tuple)):
+            return value
+        normalized = []
+        for raw in value:
+            if not isinstance(raw, dict):
+                normalized.append(raw)
+                continue
+            task = dict(raw)
+            for field in ("source_ids", "dependencies"):
+                if isinstance(task.get(field), list):
+                    task[field] = tuple(task[field])
+            normalized.append(task)
+        return tuple(normalized)
+
+    def make_plan(self, corpus_sha256: str) -> Plan:
+        return Plan(query=self.query, corpus_sha256=corpus_sha256,
+                    subtasks=self.subtasks, retrieval_concurrency=self.retrieval_concurrency,
+                    deadline_seconds=self.deadline_seconds)
 
 
 class Claim(StrictModel):

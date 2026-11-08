@@ -1,0 +1,209 @@
+{
+  "mapping_version": "cq-mapper-v3-constrained-states",
+  "tokenizer_sha256": "fa1ba7031fa5853b7f1f766c35c2627b5e56235939d52c2694e5f8744ae71cf5",
+  "template_status": "known no-tools template; framing allowance, not server-observed tokens",
+  "generation_calls": 0,
+  "cases": [
+    {
+      "case_id": "cq1-a01",
+      "message_content_tokens": 2193,
+      "schema_reservation": 3969,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 7318,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-a02",
+      "message_content_tokens": 2179,
+      "schema_reservation": 2319,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 5654,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-a03",
+      "message_content_tokens": 2177,
+      "schema_reservation": 2318,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 5651,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-a04",
+      "message_content_tokens": 2177,
+      "schema_reservation": 2318,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 5651,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-a05",
+      "message_content_tokens": 2177,
+      "schema_reservation": 2318,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 5651,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-a06",
+      "message_content_tokens": 2177,
+      "schema_reservation": 2318,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 5651,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-a07",
+      "message_content_tokens": 2181,
+      "schema_reservation": 2320,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 5657,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-a08",
+      "message_content_tokens": 2177,
+      "schema_reservation": 2318,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 5651,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-a09",
+      "message_content_tokens": 2189,
+      "schema_reservation": 3967,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 7312,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-a10",
+      "message_content_tokens": 2203,
+      "schema_reservation": 3974,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 7333,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-p01",
+      "message_content_tokens": 2189,
+      "schema_reservation": 3967,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 7312,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-p02",
+      "message_content_tokens": 2191,
+      "schema_reservation": 3968,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 7315,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-m01",
+      "message_content_tokens": 2159,
+      "schema_reservation": 2309,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 5624,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-m02",
+      "message_content_tokens": 2165,
+      "schema_reservation": 2312,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 5633,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-m03",
+      "message_content_tokens": 2167,
+      "schema_reservation": 2313,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 5636,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-m04",
+      "message_content_tokens": 2163,
+      "schema_reservation": 2311,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 5630,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-c01",
+      "message_content_tokens": 2269,
+      "schema_reservation": 2353,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 5778,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-c02",
+      "message_content_tokens": 2270,
+      "schema_reservation": 2355,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 5781,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-i01",
+      "message_content_tokens": 2250,
+      "schema_reservation": 2348,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 5754,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    },
+    {
+      "case_id": "cq1-i02",
+      "message_content_tokens": 2249,
+      "schema_reservation": 2344,
+      "framing_allowance": 256,
+      "completion_reservation": 900,
+      "total_budget": 5749,
+      "limit": 4096,
+      "within_conservative_allowance": false
+    }
+  ],
+  "all_within_conservative_allowance": false
+}

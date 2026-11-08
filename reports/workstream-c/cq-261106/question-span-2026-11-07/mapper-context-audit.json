@@ -1,0 +1,13 @@
+{
+  "message_content_tokens": 715,
+  "framing_reservation": 256,
+  "completion_reservation": 900,
+  "conservative_total": 1871,
+  "limit": 4096,
+  "within_conservative_allowance": true,
+  "schema_format_tokens_separate": 1069,
+  "server_observed_tokens": false,
+  "grammar_processing_latency": "unverified",
+  "tokenizer_metadata_sha256": "fa1ba7031fa5853b7f1f766c35c2627b5e56235939d52c2694e5f8744ae71cf5",
+  "actual_model_calls": 0
+}

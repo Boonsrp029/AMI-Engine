@@ -1,0 +1,12 @@
+[
+  {
+    "feed_id": "cq-observed",
+    "title": "Observed",
+    "clean_content": "In Canada, observed electricity demand grew 5.7% in 2016."
+  },
+  {
+    "feed_id": "cq-projected",
+    "title": "Projected",
+    "clean_content": "In Japan, electricity demand is projected to grow 2.6% annually through 2036."
+  }
+]

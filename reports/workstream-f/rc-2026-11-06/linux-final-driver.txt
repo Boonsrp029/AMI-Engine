@@ -1,0 +1,1 @@
+{"image": "ami-pilot:rc-20261106", "context_sha256": "d5a285cb84c662d7858353ef0f7ed1d911b61763771d01c12cc9898f15136041", "network": "none", "status": "passed", "remote_github_ci": false, "credentials_or_owner_reports_mounted": false, "returncode": 0}

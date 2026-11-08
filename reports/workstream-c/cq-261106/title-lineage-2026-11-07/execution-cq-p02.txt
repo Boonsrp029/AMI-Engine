@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\src\pilot\subtasks\qualify_cli.py", line 62, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\src\pilot\subtasks\qualify_cli.py", line 57, in main
+    execute_development(ledger, args.case, transport, safety, verify_model)
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\src\pilot\subtasks\qualification_runner.py", line 102, in execute_development
+    ledger.finish(case_id, result)  # Retain failed result before closing allowance.
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\src\pilot\subtasks\qualification.py", line 95, in finish
+    raise ValueError("Attempt failed its execution gate")
+ValueError: Attempt failed its execution gate

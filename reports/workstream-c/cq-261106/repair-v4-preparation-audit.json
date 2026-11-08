@@ -1,0 +1,15 @@
+{
+  "status": "repair preparation ready; actual quality remains failed/unverified",
+  "full_suite": "1549passed14warnings460.02seconds;session71258terminalexit0",
+  "source_files_checked": 201,
+  "source_drift": [],
+  "contract_sha256": "af23323de0515807aaa390a5dd365df4c193f45a9f5956f10b81516dbe133022",
+  "contract_files_checked": 97,
+  "r07_unchanged": true,
+  "reserved_package_unchanged": true,
+  "failed_actual_batch_unchanged": true,
+  "CQ1content_unchanged": true,
+  "new_run_directory_exists": false,
+  "new_authorization": null,
+  "repaired_actual_generation_calls": 0
+}

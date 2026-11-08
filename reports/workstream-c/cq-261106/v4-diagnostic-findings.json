@@ -1,0 +1,43 @@
+{
+  "status": "failed; allowance closed",
+  "technical_pass": false,
+  "mapping_schema": "passed constrained-state contract",
+  "raw_composer_claims": [
+    {
+      "component_id": "r1",
+      "text": "Canada had 5.7% more observed electricity demand in 2016.",
+      "unit_id": "u1"
+    }
+  ],
+  "completeness": "failed: Japan2.6percentannualprojectionthrough2036 omitted despite retrieved evidence",
+  "final_nemo_passed": true,
+  "publication": "failed RuntimeError; no candidate event or saved revision; precise child-exit/transport cause not established",
+  "main_requests": 2,
+  "nemo_invocations": 1,
+  "elapsed_seconds": 46.46899999999732,
+  "known_main_usage": {
+    "input_tokens": 1291,
+    "output_tokens": 177
+  },
+  "internal_nemo_usage": "unavailable",
+  "monetary_energy_cost": "unmeasured",
+  "development_planned": 2,
+  "development_attempted": [
+    "cq-p01"
+  ],
+  "development_unattempted": [
+    "cq-p02"
+  ],
+  "CQ1planned": 20,
+  "CQ1attempted": 0,
+  "owner_acceptance": "not requested; no published draft",
+  "evidence_sha256": {
+    "cq-p01.composition.raw.json": "9d9568b03850c533370948cbc08d4f5ddde250874a6664ab1dec76a4be2e71fe",
+    "cq-p01.mapping.raw.json": "c8c8d7d9a60ca7d1dad49bc4b6510e959370cede887704a67dc09c4c5a95f447",
+    "cq-p01.result.json": "52d5296b609cfa09bf0e048fa689635c098f6ef2e8649d2ed936ec33ca0cfa14",
+    "cq-p01.safety.json": "bc8f49a6cfbf9aecd02c2f611b81ca6e8ecaba97100970182050fef135d3dbae",
+    "cq-p01.started.json": "4421eace6d801639654e607c8201786d0bb3ef644b0a92613da44db3fe9f28d7",
+    "stopped.json": "2768471f80ee3c2130ae5caca75836e102422ad17f2253fa90b32c5e84885a31"
+  },
+  "frozen_source_hashes_verified": true
+}
