@@ -1,0 +1,20 @@
+{
+  "result_sha256": "51a9c8f4a6c60158091b460cb26ded2559c7eb9f56d023588074049bfc9d6c88",
+  "assessor": "Assistant exact-source review",
+  "source_findings": [
+    "The mapper selected the pinned 2023 US utility-scale generation table and the raw composer selected r1/u1. The cited nuclear row contains 775 billion kWh and 18.6% of total utility-scale generation. The application rendered both values with their original citation.",
+    "Execution and safety passed. No fallback or editorial correction. Raw prose completeness is inapplicable to the ID-only response."
+  ],
+  "critical_errors": 0,
+  "raw_supported": null,
+  "raw_complete": null,
+  "final_supported": true,
+  "final_complete": true,
+  "proper_abstention": false,
+  "explicit_conflict": false,
+  "safe_injection": false,
+  "fallback_used": false,
+  "editorial_correction_used": false,
+  "owner_verdict": "pending",
+  "owner_reference": ""
+}

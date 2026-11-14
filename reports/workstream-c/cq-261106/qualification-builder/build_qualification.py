@@ -52,7 +52,8 @@ def scoped_cases(cases, manifest_path, expected_sha256, pool_sha256, plans_sha25
 
 
 def build(development_path,expected_identity,pool,destination,output_directory,as_of,*,expected_pool_sha256,expected_plans_sha256,
-          scope_manifest_path=None,expected_scopes_sha256=None):
+          scope_manifest_path=None,expected_scopes_sha256=None,recorded_pool_root=None,
+          review_protocol=None,execution_artifacts=()):
     development_path=Path(development_path).resolve()
     pool=Path(pool).resolve();destination=Path(destination).resolve();output_directory=Path(output_directory).resolve()
     dev=read(development_path)
@@ -109,7 +110,12 @@ def build(development_path,expected_identity,pool,destination,output_directory,a
         if entry.get("category")!=row["category"]:
             raise ValueError("Case category differs from plan")
         plan=Plan.model_validate_json(json.dumps(entry["plan"]))
-        corpus=inside(pool,entry["corpus_path"])
+        recorded = Path(entry["corpus_path"])
+        if recorded_pool_root is not None and recorded.is_absolute() and not recorded.is_relative_to(pool):
+            recorded = recorded.relative_to(Path(recorded_pool_root).resolve())
+            if recorded.as_posix() not in manifest["sha256"]:
+                raise ValueError("Relocated corpus is absent from the frozen manifest")
+        corpus=inside(pool,recorded)
         if digest(corpus)!=plan.corpus_sha256:
             raise ValueError("Qualification corpus changed")
         cases[row["case_id"]]={k:entry[k] for k in ("plan","bindings","corpus_path","complete_required_branches") if k in entry}
@@ -153,6 +159,15 @@ def build(development_path,expected_identity,pool,destination,output_directory,a
         contract.update(requested_scope_manifest_path=str(Path(scope_manifest_path).resolve()),
             requested_scope_manifest_sha256=expected_scopes_sha256,
             authorization_reply="Authorize CQ1 scoped twenty-case qualification")
+    if review_protocol is not None:
+        protocol = Path(review_protocol).resolve()
+        contract["source_review_protocol"] = str(protocol)
+        contract["source_review_protocol_sha256"] = digest(protocol)
+        contract["input_sha256"][str(protocol)] = contract["source_review_protocol_sha256"]
+    contract["source_reference_path"] = str(pool / "cases.json")
+    for artifact in execution_artifacts:
+        path = Path(artifact).resolve()
+        contract["input_sha256"][str(path)] = digest(path)
     contract["contract_sha256"]=canonical_hash(contract)
     verify_lineage(contract)  # No grant-shaped object is created for validation.
     if any(digest(name)!=value for name,value in contract["input_sha256"].items()):
@@ -170,10 +185,15 @@ def main(argv=None):
         p.add_argument("--"+name,required=True)
     p.add_argument("--scope-manifest-path")
     p.add_argument("--expected-scopes-sha256")
+    p.add_argument("--recorded-pool-root")
+    p.add_argument("--review-protocol")
+    p.add_argument("--execution-artifact", action="append", default=[])
     args=p.parse_args(argv)
     contract=build(args.development_contract,args.expected_identity,args.pool,args.destination,args.output_directory,args.as_of,
         expected_pool_sha256=args.expected_pool_sha256,expected_plans_sha256=args.expected_plans_sha256,
-        scope_manifest_path=args.scope_manifest_path,expected_scopes_sha256=args.expected_scopes_sha256)
+        scope_manifest_path=args.scope_manifest_path,expected_scopes_sha256=args.expected_scopes_sha256,
+        recorded_pool_root=args.recorded_pool_root,review_protocol=args.review_protocol,
+        execution_artifacts=args.execution_artifact)
     print(json.dumps({"contract_sha256":contract["contract_sha256"],"execution_authorized":False,"actual_model_calls":0}))
     return 0
 

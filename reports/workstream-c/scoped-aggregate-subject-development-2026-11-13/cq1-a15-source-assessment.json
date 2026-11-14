@@ -1,0 +1,9 @@
+{
+  "verdict": "pass",
+  "source_findings": [
+    "Assistant-authored. The raw mapper selected the pinned EIA 2023 U.S. utility-scale generation table, eia-generation-2023 span s_cb9a294a4ff9d4c9 offsets 557:1157. The Fossil fuels (total) row gives 2,505 billion kWh and 60.0% of all U.S. utility-scale generation, distinct from the 4,178 billion kWh all-source total and individual fuel rows.",
+    "Raw composer selected r1/u1. Application rendered that verified row with both fields and its original citation. No fallback or editorial correction. Final NeMo passed and the exact draft persisted as revision 1. The U.S. scope is established by the cited source heading and question."
+  ],
+  "owner_adjudication": "pending",
+  "result_sha256": "d9833c3b217b2a68c652ead0a0bbea3d82b8752834425bc882f83bb68230ece3"
+}

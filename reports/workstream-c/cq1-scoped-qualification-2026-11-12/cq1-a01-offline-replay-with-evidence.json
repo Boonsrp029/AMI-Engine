@@ -1,0 +1,50 @@
+{
+  "actual_model_calls": 0,
+  "nemo_invocations": 0,
+  "sockets_blocked": true,
+  "stages": [
+    "mapping"
+  ],
+  "selected_evidence": [
+    {
+      "source_id": "eia-generation-2023",
+      "span": {
+        "span_id": "s_9f6629387f7fb9e1",
+        "text": "In 2023, about 4,178 billion kilowatthours (kWh) (or about 4.18 trillion kWh) of electricity were generated at utility-scale electricity generation facilities in the United States."
+      },
+      "component_evidence": true,
+      "geography_evidence": false
+    },
+    {
+      "source_id": "eia-generation-2023",
+      "span": {
+        "span_id": "s_53a9904131330b03",
+        "text": "16\n0.4%\nPumped storage hydropower\n4\n-6\n-0.1%\nOther sources\n5\n10\n0.2%\nData source: U.S."
+      },
+      "component_evidence": true,
+      "geography_evidence": false
+    },
+    {
+      "source_id": "eia-generation-2023",
+      "span": {
+        "span_id": "s_379ceb3c45f341ef",
+        "text": "preliminary data\n1\nUtility-scale electricity generation is electricity generation from power plants with at least one megawatt (or 1,000 kilowatts) of total electricity generating capacity."
+      },
+      "component_evidence": true,
+      "geography_evidence": false
+    },
+    {
+      "source_id": "eia-measurement",
+      "span": {
+        "span_id": "s_f771166ff784ccaf",
+        "text": "Electricity use over time is measured in Watthours\nWatts measure power at a specific moment, but we use Watthours (Wh) to measure how much electricity is used over a period of time."
+      },
+      "component_evidence": false,
+      "geography_evidence": true
+    }
+  ],
+  "reproduced_failure": true,
+  "error_type": "ValueError",
+  "message": "Geography evidence must come from a supported component's retrieved source or its pinned document",
+  "traceback": "Traceback (most recent call last):\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\replay-cq1-a01.py\", line 62, in <module>\n    callback(report, ModelAccess(time.monotonic() + 30))\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_scoped_activation.py\", line 41, in __call__\n    result = ScopedConcurrentComposer(runtime, self.bindings, self.as_of, self.transport,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_scoped_generation.py\", line 122, in __call__\n    mapping, extracts = resolve_source_selection(candidate, catalog, self.plan.query, sources, self.as_of)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_source_selection.py\", line 130, in resolve_source_selection\n    mapping = resolve_selection(legacy_shape, catalog, question, sources, as_of)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_evidence.py\", line 341, in resolve_selection\n    raise ValueError(\"Geography evidence must come from a supported component's retrieved source or its pinned document\")\nValueError: Geography evidence must come from a supported component's retrieved source or its pinned document\n"
+}

@@ -1,0 +1,26 @@
+{
+  "version": "cq-scoped-disclosures-v1",
+  "plan_id": "972ab0b9b2d66ad1968c5688e47734d4404f5fbc4714b233822e7f1e56311ddf",
+  "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143",
+  "question_sha256": "ff8d725d3dc53746d22c1fac68c8d2c9720e85968cab062f804db5abcd369c97",
+  "bindings_sha256": "65027ea19f8364378f35d32392edc9f727eac1c4b702f6afe44023735e4859de",
+  "declaration_ref": "Assistant annotation from the frozen replacement question and branch plan.",
+  "annotations": [
+    {
+      "component_id": "r1",
+      "subtask_id": "s01",
+      "question_span": {
+        "start": 0,
+        "end": 88
+      }
+    },
+    {
+      "component_id": "r2",
+      "subtask_id": "s02",
+      "question_span": {
+        "start": 94,
+        "end": 151
+      }
+    }
+  ]
+}

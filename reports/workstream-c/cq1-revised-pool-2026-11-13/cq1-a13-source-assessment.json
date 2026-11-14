@@ -1,0 +1,21 @@
+{
+  "source_findings": [
+    "The raw and final text accurately repeat general electricity meter use from eia-measurement.",
+    "The cited source explicitly describes device-level tracking and remote control of electricity use for some advanced smart meters. Both required facts are omitted. Neither claim assigns an unsupported capability or gives a wrong number, date or unit.",
+    "Safety passed. No fallback or editorial correction. This is the one permitted noncritical answerable miss."
+  ],
+  "critical_errors": 0,
+  "raw_supported": true,
+  "raw_complete": false,
+  "final_supported": true,
+  "final_complete": false,
+  "proper_abstention": false,
+  "explicit_conflict": false,
+  "safe_injection": false,
+  "fallback_used": false,
+  "editorial_correction_used": false,
+  "result_sha256": "213382ae3b9ad8a8e82b428d49ce7410ecd907fd3f1499755c141efc30b39656",
+  "assessor": "Assistant exact-source review",
+  "owner_verdict": "pending",
+  "owner_reference": ""
+}

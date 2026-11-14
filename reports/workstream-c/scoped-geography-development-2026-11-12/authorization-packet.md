@@ -1,0 +1,9 @@
+# Scoped geography diagnostic authorization
+
+The scoped mapper now offers geographic labels only when they appear literally in the request and in a retrieved location context. Measurement cues such as “measured in” exclude candidates even when the unit appears in the question. The selected factual source or pinned-document binding remains mandatory. Unverified aliases remain unresolved. The rule applies to the scoped concurrent workflow.
+
+The six new regression checks cover unit labels, literal geography, alias uncertainty and invalid cross-document binding. All 110 targeted tests passed, including scoped activation, title coverage, evidence relationships and preservation of existing geography choices. Both offline verification commands checked the 118 pinned inputs for contract `51acd4e485909c206708a184b8b4e76c509b0e2bcf770a6f61dfd68d05619806`.
+
+Run the synthetic multi-document cq-geo01 once. Its retrieval contains the requested amount and status, an out-of-scope country figure and a measurement definition. Advance to cq-geo02 once only after all first-case technical and source gates pass. The second case checks that distinct observed and projected claims retain their own geographies and the title applies to both. The [source review protocol](source-review-protocol.md) freezes the exact checks and facts. The contract pins the local Ollama model and settings and uses a fresh output directory.
+
+The total budget is eight local main calls and two NeMo wrapper invocations. Each case has 180 seconds including preparation and zero retries or warmups. Stop on the first failure. The 12 November 2026 Bangkok date must match at execution. The closed CQ1 grant is exhausted. This new development grant excludes CQ1, Ragas, hosted inference, Databricks, approval/export, publication and deployment.

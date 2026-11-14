@@ -1,0 +1,23 @@
+{
+  "status": "paused for standing usage threshold",
+  "contract_sha256": "0a4b3cd3320a9b15ea5b3b6ea8f290f40b2666941a09f83ec14338c2e3b0a4a3",
+  "attempted": [
+    "cq-focus01"
+  ],
+  "source_gate_passed": [
+    "cq-focus01"
+  ],
+  "unattempted": [
+    "cq-focus02"
+  ],
+  "five_hour_remaining_percent": 10,
+  "weekly_remaining_percent": 86,
+  "actual_main_calls": 2,
+  "nemo_wrapper_invocations": 1,
+  "known_main_tokens": 2724,
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured",
+  "next": "After explicit resume and usage check, verify date, input hashes and grant. If the frozen date still matches, run cq-focus02 once under the original grant. Otherwise prepare a new dated contract and obtain a matching grant. Never replay cq-focus01 as a retry in this batch.",
+  "result_sha256": "5245c07148bd7a843b8ae04040653a59e87fdcd2aca6a032364fb2e3d0a577ae",
+  "assessment_sha256": "10ffb929b0c6ce3aaf1c69a5d50cce9b9f03f4bcedffa707f2658772a0f94acf"
+}

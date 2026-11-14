@@ -1,0 +1,5 @@
+# Explicit subject development gate
+
+Run cq1-a20 once. Advance to cq1-a19 once only after technical, safety and exact-source review pass. Both are consumed cases. For cq1-a20 the raw and stored answer must identify electricity use and the utility as the recipient, retain periodic reporting, and avoid applying modern wireless reporting to historical automated meters. Every claim must have a clear subject and be relevant to the requested evidence. For cq1-a19 the raw mapper and composer must select the verified biomass total row and the stored draft must retain 47 billion kWh and 1.1% of total U.S. utility-scale generation in 2023.
+
+One attempt per case, 180 seconds each including preparation. Maximum eight local main-model calls and two NeMo invocations. Zero retries or warmups. Stop on first failure or the standing usage threshold. Bind assistant assessments to exact results. Record raw composition, application row rendering, fallback and editorial correction separately. Owner acceptance is separate. The grant covers development only.

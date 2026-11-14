@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "233301e219404ea2bdd666e2352d147a",
+    "attempt_id": "1e13f8ea50564c12a4738fd09a2a6f98",
+    "plan_id": "367fe39f653c96563f9294a0683a486b55fd855b4df2e3c82da8b21dc839ca27",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"Automated electricity meters report electricity use periodically to the utility.\",\n      \"unit_id\": \"u1\"\n    },\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"Utility companies measure and monitor electricity use with meters.\",\n      \"unit_id\": \"u2\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 694,
+    "output_tokens": 100,
+    "total_tokens": 794
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-13T12:06:38.553822Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2815572700,
+    "load_duration": 6406800,
+    "prompt_eval_count": 694,
+    "prompt_eval_duration": 312270000,
+    "eval_count": 100,
+    "eval_duration": 2204411000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

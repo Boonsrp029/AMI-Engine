@@ -1,0 +1,12 @@
+{
+  "case_id": "cq-focus02",
+  "returncode": 0,
+  "timed_out": false,
+  "wall_limit_seconds": 180,
+  "retry_performed": false,
+  "source_review_pending": true,
+  "backend_cancellation_verified": false,
+  "termination_targets": "only this invocation owned process tree",
+  "elapsed_seconds": 46.0,
+  "wall_budget_exceeded": false
+}

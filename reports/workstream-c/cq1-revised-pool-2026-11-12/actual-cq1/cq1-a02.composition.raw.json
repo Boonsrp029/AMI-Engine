@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "2bfb8211ee1440e8a417efb98d121a95",
+    "attempt_id": "910bc59496eb462ea23020f4170bba41",
+    "plan_id": "087ce6da67e91b230a34e4dcebb5eed507732c92fb9b3613f5ddf2e7a96682d9",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"In 2023, about 4,178 billion kilowatthours (kWh) of electricity were generated at utility-scale electricity generation facilities in the United States.\",\n      \"unit_id\": \"u1\"\n    },\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"About 60% of the electricity generated in 2023 was from fossil fuels.\",\n      \"unit_id\": \"u2\"\n    },\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"About 19% of the electricity generated in 2023 was from nuclear energy.\",\n      \"unit_id\": \"u3\"\n    },\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"About 21% of the electricity generated in 2023 was from renewable energy sources.\",\n      \"unit_id\": \"u4\"\n    },\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"About 0.4% of the electricity generated in 2023 was from pumped storage hydropower.\",\n      \"unit_id\": \"u5\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 993,
+    "output_tokens": 268,
+    "total_tokens": 1261
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-12T13:08:13.7142258Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 7198142400,
+    "load_duration": 19253300,
+    "prompt_eval_count": 993,
+    "prompt_eval_duration": 372107000,
+    "eval_count": 268,
+    "eval_duration": 6597969000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

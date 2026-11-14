@@ -1,0 +1,7 @@
+{
+  "validated_report": "In 2015, wind supplied 29% of total electricity generation in Denmark.",
+  "passed_guardrails": true,
+  "raw_output": "In 2015, wind supplied 29% of total electricity generation in Denmark.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

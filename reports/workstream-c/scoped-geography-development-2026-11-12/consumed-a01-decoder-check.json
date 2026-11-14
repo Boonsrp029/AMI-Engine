@@ -1,0 +1,11 @@
+{
+  "case_id": "cq1-a01",
+  "previous_labels": [
+    "Watthours",
+    "Watthours Watts"
+  ],
+  "revised_labels": [],
+  "model_calls": 0,
+  "verdict_change": false,
+  "qualification_credit": false
+}

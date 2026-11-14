@@ -1,0 +1,26 @@
+{
+  "status": "technical failure; allowance closed",
+  "contract_sha256": "69861aa018b5af7431a3b4cf6bea7d8aa6d472fc10e9011bb18c9298448875bf",
+  "attempted": [
+    "cq-focus01"
+  ],
+  "unattempted": [
+    "cq-focus02"
+  ],
+  "main_model_calls": 2,
+  "nemo_wrapper_invocations": 0,
+  "known_input_tokens": 2395,
+  "known_output_tokens": 318,
+  "known_total_tokens": 2713,
+  "frozen_inputs_verified": 138,
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured",
+  "retained_artifacts": {
+    "cq-focus01.composition.raw.json": "28d5457e18e3fb237a6deec96af5f0a51defbd9c6329d61adf73eaea8ce4221f",
+    "cq-focus01.mapping.raw.json": "7cb51dfccbde388fad1d65f8ed3212aa054f34340356c482b8528da9ad81b28e",
+    "cq-focus01.result.json": "e5e3bd13a988c194e7b855133603b577694e7ce04b33ec0a1e3f143f29c70b5b",
+    "cq-focus01.sqlite3": "2d2b9f0f32835aa7605fb6938eb7299246452e96b3940e037bd38610c48c338e",
+    "cq-focus01.started.json": "917bc681381bf58e13fb03fe2e210672416632bd129df1f85ec0e9bf07f99b0e",
+    "stopped.json": "8c40acf40fe04826e4f55b050e28ee85d0b9f618c699bdb2295cc87f1386e570"
+  }
+}

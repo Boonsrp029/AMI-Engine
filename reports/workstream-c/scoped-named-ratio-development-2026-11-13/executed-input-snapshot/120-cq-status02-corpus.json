@@ -1,0 +1,17 @@
+[
+  {
+    "feed_id": "ferry-provisional",
+    "title": "Status memorandum A",
+    "clean_content": "In Cambodia, the 2021 ferry counts are provisional."
+  },
+  {
+    "feed_id": "ferry-final",
+    "title": "Status memorandum B",
+    "clean_content": "In Cambodia, the 2021 ferry counts are final."
+  },
+  {
+    "feed_id": "ferry-method",
+    "title": "Ferry operations note",
+    "clean_content": "Ferry distance is measured in Nautical Miles."
+  }
+]

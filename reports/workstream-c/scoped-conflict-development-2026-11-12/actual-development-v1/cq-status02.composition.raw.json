@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "4d4910f88856461bb4fadfd30674502e",
+    "attempt_id": "369a918ac1cf4a7dafb99bd5fe64275b",
+    "plan_id": "68e1556b60c934306bc4fb02013b2d1a797913bd2fdc057c5f0f776b02e23c23",
+    "corpus_sha256": "4fd8be3d84378567d472ce45a6c6e157d95987fe341799f7ab58499428499254"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"The 2021 ferry counts in Cambodia were provisional.\",\n      \"unit_id\": \"u1\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 548,
+    "output_tokens": 62,
+    "total_tokens": 610
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-12T12:57:16.2515136Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1842773200,
+    "load_duration": 5953100,
+    "prompt_eval_count": 548,
+    "prompt_eval_duration": 197480000,
+    "eval_count": 62,
+    "eval_duration": 1530836000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

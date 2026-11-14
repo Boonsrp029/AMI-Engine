@@ -113,7 +113,7 @@ def project_disclosures(plan, report, mapping, bindings, scopes):
     components = {c.component_id: c for c in mapping.components}
     if set(components) != set(bindings):
         raise ValueError("Disclosure mapping components differ from bindings")
-    records, warnings, unresolved_records = [], [], []
+    records, warnings, unresolved_records, conflicts = [], [], [], []
     for request in requested_components(plan.query):
         cid = request['component_id']
         bids = bindings[cid]
@@ -153,11 +153,13 @@ def project_disclosures(plan, report, mapping, bindings, scopes):
             if task.required and unresolved:
                 component_unresolved = True
                 unresolved_records.append(item)
-        conflict_disclosed = any(item['component_id'] == cid and item['required']
-            and item['kind'] == 'reported_conflict' for item in unresolved_records)
-        if component.status == 'conflicting' and not conflict_disclosed:
-            warnings.append(f"Component {cid} reports conflicting selected evidence; inspect the separate source statements. "
-                f"Original request: {plan.query}")
+        if component.status == 'conflicting':
+            statements = [item.model_dump() for item in component.evidence]
+            source_ids = list(dict.fromkeys(item["source_id"] for item in statements))
+            conflicts.append({"component_id": cid, "question_anchor": component.question_anchor,
+                              "selected_statements": statements, "semantic_conflict_proven": False})
+            warnings.append(f"Component {cid} reports conflicting selected evidence. Inspect these source IDs: "
+                            + ", ".join(source_ids) + f". Original request: {plan.query}")
         elif component.status != "supported" and not component_unresolved:
             warnings.append(f"Component {cid} remains {component.status}; branch selection does not locate every unresolved fact. "
                 f"Original request: {plan.query}")
@@ -171,6 +173,6 @@ def project_disclosures(plan, report, mapping, bindings, scopes):
         branch_warnings.append(f"Subtask {task.subtask_id}: {details}. "
             f"Retrieval query (data): {task.query or '[source inspection]'}. Original request: {plan.query}")
     return {"version": VERSION, "identity": report.identity.model_dump(),
-        "scope_contract": scopes.model_dump(mode="json"), "records": records,
+        "scope_contract": scopes.model_dump(mode="json"), "records": records, "selected_conflicts": conflicts,
         "warnings": branch_warnings + warnings, "drafting_allowed": report.can_compose,
         "semantic_support_proven": False, "owner_acceptance": "not inferred"}

@@ -1,0 +1,7 @@
+{
+  "validated_report": "In Peru, 18 million passenger rail journeys were recorded in 2019.",
+  "passed_guardrails": true,
+  "raw_output": "In Peru, 18 million passenger rail journeys were recorded in 2019.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

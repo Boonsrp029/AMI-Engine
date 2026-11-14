@@ -1,0 +1,61 @@
+{
+  "actual_model_calls": 0,
+  "actual_nemo_invocations": 0,
+  "sockets_blocked": true,
+  "prior_batch_verdicts_unchanged": true,
+  "cases": [
+    {
+      "case": "cq-status01",
+      "replayed_stages": [
+        "mapping",
+        "composition"
+      ],
+      "draft": {
+        "title": "Analyst research brief (Peru)",
+        "claims": [
+          {
+            "text": "In Peru, 18 million passenger rail journeys were recorded in 2019.",
+            "source_ids": [
+              "rail-total"
+            ]
+          },
+          {
+            "text": "The 2019 Peru passenger rail journey figures are provisional.",
+            "source_ids": [
+              "rail-status"
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "application_detected_status_conflicts": []
+    },
+    {
+      "case": "cq-status02",
+      "replayed_stages": [
+        "mapping"
+      ],
+      "draft": {
+        "title": "Conflicting evidence",
+        "claims": [],
+        "warnings": [
+          "Component r1 reports conflicting selected evidence. Inspect these source IDs: ferry-provisional, ferry-final. Original request: Were the 2021 ferry counts in Cambodia provisional or final?"
+        ]
+      },
+      "application_detected_status_conflicts": [
+        {
+          "component_id": "r1",
+          "original_status": "supported",
+          "original_evidence": [
+            "s_a33829757a86860c"
+          ],
+          "opposed_span_ids": [
+            "s_a33829757a86860c",
+            "s_7e56dc17ae7a2610"
+          ],
+          "basis": "opposed publication status for the same literal subject and requested year"
+        }
+      ]
+    }
+  ]
+}

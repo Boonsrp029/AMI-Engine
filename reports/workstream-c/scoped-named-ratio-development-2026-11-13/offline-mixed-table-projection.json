@@ -1,0 +1,77 @@
+{
+  "status": "offline projection, safety pending",
+  "model_input_units": [
+    "u2"
+  ],
+  "rejected_raw_claims": [
+    "application-owned ID",
+    "duplicate ID",
+    "wrong component",
+    "unknown ID"
+  ],
+  "synthetic_raw_composer_output": {
+    "title": "Analyst research brief",
+    "claims": [
+      {
+        "component_id": "r2",
+        "unit_id": "u2",
+        "text": "The 2018 generation figures are provisional."
+      }
+    ]
+  },
+  "application_rendered_claim": {
+    "component_id": "r1",
+    "unit_id": "u1",
+    "text": "In 2018, the table gives Hydropower generation in Billion kWh as 119 and its share of total utility-scale electricity generation as 23.3%."
+  },
+  "draft": {
+    "title": "Analyst research brief",
+    "claims": [
+      {
+        "text": "In 2018, the table gives Hydropower generation in Billion kWh as 119 and its share of total utility-scale electricity generation as 23.3%.",
+        "source_ids": [
+          "generation"
+        ]
+      },
+      {
+        "text": "The 2018 generation figures are provisional.",
+        "source_ids": [
+          "status"
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "claim_provenance": [
+    {
+      "claim_index": 0,
+      "origins": [
+        {
+          "unit_id": "u1",
+          "component_id": "r1",
+          "subtask_id": "s01",
+          "child_attempt_id": "a21655aacb8a4b329acbdc1b9ad7bbb8",
+          "source_id": "generation",
+          "content_sha256": "06f79304d46b728a3135843d7d85d31e9967ea368fdfa8e56528ace5d454af8d",
+          "corpus_sha256": "46aad24e02aef3c8b9a795f228ebd588c95ce5143ae70b56713ce8b5521b2e45"
+        }
+      ]
+    },
+    {
+      "claim_index": 1,
+      "origins": [
+        {
+          "unit_id": "u2",
+          "component_id": "r2",
+          "subtask_id": "s02",
+          "child_attempt_id": "1b86192a959e4140a74fa27445390ce8",
+          "source_id": "status",
+          "content_sha256": "4b021835c0fd09ba4d1ed6b935854fb0f42e65aaabac6ad34a953df315bf8757",
+          "corpus_sha256": "46aad24e02aef3c8b9a795f228ebd588c95ce5143ae70b56713ce8b5521b2e45"
+        }
+      ]
+    }
+  ],
+  "actual_model_calls": 0,
+  "actual_nemo_calls": 0
+}

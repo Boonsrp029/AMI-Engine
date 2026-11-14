@@ -1,0 +1,70 @@
+{
+  "status": "technical failure; allowance closed",
+  "contract_sha256": "1b93bcf4e523e04d31d696478453dd850254a939a0c68d5aec54ea696988c59c",
+  "planned_denominators": {
+    "answerable": 10,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2
+  },
+  "thresholds": {
+    "answerable": 9,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2,
+    "critical_errors": 0
+  },
+  "attempted_ids": [
+    "cq1-a14",
+    "cq1-a15"
+  ],
+  "passed_ids": [
+    "cq1-a14"
+  ],
+  "technical_failure_ids": [
+    "cq1-a15"
+  ],
+  "unattempted_ids": [
+    "cq1-a16",
+    "cq1-a17",
+    "cq1-a18",
+    "cq1-a06",
+    "cq1-a07",
+    "cq1-a08",
+    "cq1-a09",
+    "cq1-a10",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "main_calls": 4,
+  "nemo_invocations": 1,
+  "reported_main_tokens": 6852,
+  "pins_verified": 212,
+  "offline_focus_comparison": {
+    "original": [],
+    "explicit_total": [
+      {
+        "kind": "table_row",
+        "label": "Fossil fuels (total)",
+        "amount": "2,505",
+        "share": "60.0%",
+        "unit": "Billion kWh",
+        "year": "2023",
+        "denominator": "total utility-scale electricity generation"
+      }
+    ]
+  },
+  "owner_adjudication": "pending",
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured"
+}

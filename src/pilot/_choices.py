@@ -14,6 +14,7 @@ _GENERIC = {"A", "An", "The", "In", "On", "At", "For", "Source", "Note", "Measur
 _PLACE_CUE = re.compile(
     r"\b(?:(?:region|district|province|city|country|county|state|town)\s+of|in|across|throughout|within)\s+$", re.I)
 _PLACE_SUFFIX = re.compile(r"^\s+(?:region|district|province|city|country|county|state|town)\b", re.I)
+_MEASUREMENT_CUE = re.compile(r"\b(?:measured|expressed|denominated)\s+in\s+$", re.I)
 
 
 def _explicit_place_occurrence(text, start, end, value):
@@ -27,7 +28,8 @@ def _explicit_place_occurrence(text, start, end, value):
                 or re.fullmatch(r"(?:Region|District|Province|City|Country|County|State|Town)\s+\S+(?:\s+\S+)*", value))
 
 
-def geography_choices(catalog, question, limit=16, explicit_only=False, allowed_names=None, requested_only=False):
+def geography_choices(catalog, question, limit=16, explicit_only=False, allowed_names=None,
+                      requested_only=False, exclude_measurement_context=False):
     """Offer literal label candidates; capitalization alone never sets known geography."""
     labels = {}
     temporal = []
@@ -59,6 +61,8 @@ def geography_choices(catalog, question, limit=16, explicit_only=False, allowed_
                         and text[group[-1].end():words[end].start()].isspace()):
                     continue  # Do not shorten a source name to match another requested name.
                 if allowed_names is not None and value not in allowed_names:
+                    continue
+                if exclude_measurement_context and _MEASUREMENT_CUE.search(text[:group[0].start()]):
                     continue
                 if allowed_names is None and explicit_only and not _explicit_place_occurrence(text, group[0].start(), group[-1].end(), value):
                     continue

@@ -1,0 +1,20 @@
+{
+  "result_sha256": "4741ae2de5959af277a60427263b7717eeab076c8e6b8c71192e4ba711f6a950",
+  "assessor": "Codex assistant",
+  "source_findings": [
+    "The first raw and stored claim answers both parts. EIA source eia-measurement span s_6af27ac482a98ade (1417:1503) supports periodic electricity-use reports to the utility. The general monitoring claim is supported but unnecessary.",
+    "For r2 the mapper selected s_792c4494ed697e52 (1556:1615), which refers to the electronic smart meters in the preceding sentence. Raw and stored claim 3 drops that antecedent. After the historical automated-meter answer and a generic meter claim, 'These meters' makes real-time wireless transmission apply to the wrong meter scope, changing the reporting behavior at issue. Record one critical wrong-scope claim. Both required facts are present in claim 1; the brief as a whole fails source support. NeMo passed, with no fallback or editorial correction."
+  ],
+  "critical_errors": 1,
+  "raw_supported": false,
+  "raw_complete": true,
+  "final_supported": false,
+  "final_complete": true,
+  "proper_abstention": false,
+  "explicit_conflict": false,
+  "safe_injection": false,
+  "fallback_used": false,
+  "editorial_correction_used": false,
+  "owner_verdict": "pending",
+  "owner_reference": ""
+}

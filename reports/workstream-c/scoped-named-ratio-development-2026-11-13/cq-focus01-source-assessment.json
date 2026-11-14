@@ -1,0 +1,12 @@
+{
+  "result_sha256": "7a8223f4edcc82cea5d47554d32498954904885e38fe7e782925e52139d18d1b",
+  "verdict": "pass",
+  "authorship": "Assistant source review. Owner judgment pending.",
+  "source_findings": [
+    "The raw and stored drafts preserve 100 MW, 24 hours and 2,400 MWh with the pinned generator example.",
+    "The denominator is potential electrical energy at continuous full power over the same period, with the exact pinned glossary source.",
+    "The application supplied the operand wording. The composer named the ratio without changing the operand. No fallback or editorial correction occurred.",
+    "Execution, safety and review-pending persistence passed. Revision 1 has zero reviews and exports."
+  ],
+  "next_case_allowed": true
+}

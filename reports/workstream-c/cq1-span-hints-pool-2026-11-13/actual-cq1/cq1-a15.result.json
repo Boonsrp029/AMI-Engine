@@ -1,0 +1,249 @@
+{
+  "technical_pass": false,
+  "main_calls": 2,
+  "nemo_invocations": 0,
+  "elapsed_seconds": 27.89100000000326,
+  "failure_type": "ValueError",
+  "stored_run": {
+    "id": "5b418cfb96314523b0993db2555882c3",
+    "request_key": "qualify-e7d04840215a229f92806fd492cf5c7e",
+    "query": "What were fossil fuels generation and its share of US utility-scale generation in 2023?",
+    "corpus_sha": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+    "status": "failed",
+    "revision": 0,
+    "draft": null,
+    "sources": {},
+    "metrics": {
+      "partial": true,
+      "execution_elapsed_seconds": 24.96799999999348,
+      "attempt_id": "c4427641f6c14b3fb1b1a21a032bf8b7",
+      "model_calls": 2,
+      "guardrail_invocations": 0,
+      "token_usage_complete": false,
+      "inflight_usage_unknown": true,
+      "monetary_cost": null,
+      "known_input_tokens": 0,
+      "known_output_tokens": 0,
+      "failure_reason": "worker_error"
+    },
+    "error": "Worker failed; inspect history before retrying",
+    "created": "2026-11-13T11:39:18.546889+00:00",
+    "updated": "2026-11-13T11:39:43.613031+00:00",
+    "events": [
+      {
+        "seq": 1,
+        "run_id": "5b418cfb96314523b0993db2555882c3",
+        "kind": "attempt_started",
+        "payload": {
+          "attempt_id": "c4427641f6c14b3fb1b1a21a032bf8b7"
+        },
+        "created": "2026-11-13T11:39:18.639059+00:00"
+      },
+      {
+        "seq": 2,
+        "run_id": "5b418cfb96314523b0993db2555882c3",
+        "kind": "subtask_plan",
+        "payload": {
+          "identity": {
+            "run_id": "5b418cfb96314523b0993db2555882c3",
+            "attempt_id": "c4427641f6c14b3fb1b1a21a032bf8b7",
+            "plan_id": "71ae9d45e235da72c471ab07bfd53d5bc3dc0174b884bffe0976ed1c3c1dd59d",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+          },
+          "plan": {
+            "version": "ami-subtasks-v1",
+            "query": "What were fossil fuels generation and its share of US utility-scale generation in 2023?",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+            "subtasks": [
+              {
+                "subtask_id": "s01",
+                "operation": "retrieve",
+                "query": "What were fossil fuels generation and its share of US utility-scale generation in 2023?",
+                "source_ids": [],
+                "dependencies": [],
+                "required": true,
+                "timeout_seconds": 30.0
+              }
+            ],
+            "retrieval_concurrency": 2,
+            "deadline_seconds": 177.84300000000803,
+            "model_concurrency": 1,
+            "maximum_main_calls": 4
+          },
+          "attempt_id": "c4427641f6c14b3fb1b1a21a032bf8b7"
+        },
+        "created": "2026-11-13T11:39:18.716245+00:00"
+      },
+      {
+        "seq": 3,
+        "run_id": "5b418cfb96314523b0993db2555882c3",
+        "kind": "subtask_worker_started",
+        "payload": {
+          "pid": 24544,
+          "attempt_id": "c4427641f6c14b3fb1b1a21a032bf8b7"
+        },
+        "created": "2026-11-13T11:39:18.890630+00:00"
+      },
+      {
+        "seq": 4,
+        "run_id": "5b418cfb96314523b0993db2555882c3",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "5b418cfb96314523b0993db2555882c3",
+            "attempt_id": "c4427641f6c14b3fb1b1a21a032bf8b7",
+            "plan_id": "71ae9d45e235da72c471ab07bfd53d5bc3dc0174b884bffe0976ed1c3c1dd59d",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "eb2716273f3a4ac3a938994d4f22be6d",
+          "ordinal": 1,
+          "status": "queued",
+          "created_at": "2026-11-13T11:39:19.725215Z",
+          "reason": "none",
+          "attempt_id": "c4427641f6c14b3fb1b1a21a032bf8b7"
+        },
+        "created": "2026-11-13T11:39:19.728213+00:00"
+      },
+      {
+        "seq": 5,
+        "run_id": "5b418cfb96314523b0993db2555882c3",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "5b418cfb96314523b0993db2555882c3",
+            "attempt_id": "c4427641f6c14b3fb1b1a21a032bf8b7",
+            "plan_id": "71ae9d45e235da72c471ab07bfd53d5bc3dc0174b884bffe0976ed1c3c1dd59d",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "eb2716273f3a4ac3a938994d4f22be6d",
+          "ordinal": 2,
+          "status": "running",
+          "created_at": "2026-11-13T11:39:19.725215Z",
+          "reason": "none",
+          "attempt_id": "c4427641f6c14b3fb1b1a21a032bf8b7"
+        },
+        "created": "2026-11-13T11:39:19.904574+00:00"
+      },
+      {
+        "seq": 6,
+        "run_id": "5b418cfb96314523b0993db2555882c3",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "5b418cfb96314523b0993db2555882c3",
+            "attempt_id": "c4427641f6c14b3fb1b1a21a032bf8b7",
+            "plan_id": "71ae9d45e235da72c471ab07bfd53d5bc3dc0174b884bffe0976ed1c3c1dd59d",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "eb2716273f3a4ac3a938994d4f22be6d",
+          "ordinal": 3,
+          "status": "completed",
+          "created_at": "2026-11-13T11:39:19.731206Z",
+          "reason": "none",
+          "attempt_id": "c4427641f6c14b3fb1b1a21a032bf8b7"
+        },
+        "created": "2026-11-13T11:39:19.999305+00:00"
+      },
+      {
+        "seq": 7,
+        "run_id": "5b418cfb96314523b0993db2555882c3",
+        "kind": "subtask_result",
+        "payload": {
+          "identity": {
+            "run_id": "5b418cfb96314523b0993db2555882c3",
+            "attempt_id": "c4427641f6c14b3fb1b1a21a032bf8b7",
+            "plan_id": "71ae9d45e235da72c471ab07bfd53d5bc3dc0174b884bffe0976ed1c3c1dd59d",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "eb2716273f3a4ac3a938994d4f22be6d",
+          "dependencies": [],
+          "outcome": "evidence",
+          "sources": [
+            {
+              "source_id": "eia-generation-2023",
+              "content": "In 2023, about 4,178 billion kilowatthours (kWh) (or about 4.18 trillion kWh) of electricity were generated at utility-scale electricity generation facilities in the United States.\n1\nAbout 60% of this electricity generation was from fossil fuels—coal, natural gas, petroleum, and other gases. About 19% was from nuclear energy, and about 21% was from renewable energy sources.\nThe U.S. Energy Information Administration estimates that an additional 73.62 billion kWh of electricity generation was from small-scale solar photovoltaic systems in 2023.\n2\nU.S. utility-scale electricity generation by source, amount, and share of total in 2023\nEnergy source\nBillion kWh\nShare of total\nTotal - all sources\n4,178\nFossil fuels (total)\n2,505\n60.0%\nNatural gas\n1,802\n43.1%\nCoal\n675\n16.2%\nPetroleum (total)\n16\n0.4%\nPetroleum liquids\n12\n0.3%\nPetroleum coke\n5\n0.1%\nOther gases\n3\n11\n0.3%\nNuclear\n775\n18.6%\nRenewables (total)\n894\n21.4%\nWind\n425\n10.2%\nHydropower\n240\n5.7%\nSolar (total)\n165\n3.9%\nPhotovoltaic\n162\n3.9%\nSolar thermal\n3\n0.1%\nBiomass (total)\n47\n1.1%\nWood\n31\n0.8%\nLandfill gas\n8\n0.2%\nMunicipal solid waste (biogenic)\n6\n0.1%\nOther biomass waste\n2\n0.1%\nGeothermal\n16\n0.4%\nPumped storage hydropower\n4\n-6\n-0.1%\nOther sources\n5\n10\n0.2%\nData source: U.S. Energy Information Administration,\nElectric Power Monthly\n, February 2024; preliminary data\n1\nUtility-scale electricity generation is electricity generation from power plants with at least one megawatt (or 1,000 kilowatts) of total electricity generating capacity. Data are for\nnet electricity generation\n.\n2\nSmall-scale solar photovoltaic (PV) systems are electricity generators with less than one megawatt (MW) of electricity generating capacity, which are not connected at a power plant that has a combined capacity of one MW or larger. Most small-scale PV systems are at or near the location where the electricity is consumed and many are\nnet metered systems\n. Smaller PV systems are usually installed on building rooftops.\n3\nOther gases includes blast furnace gas and other manufactured and waste gases derived from fossil fuels.\n4\nPumped storage hydroelectricity\ngeneration is negative because most pumped storage electricity generation facilities use more electricity than they produce on an annual basis. Most pumped storage systems use electricity from an\nelectric power grid\nfor pumping water to the storage component of the system.\n5\nOther (utility-scale) sources includes non-biogenic municipal solid waste, batteries, hydrogen, purchased steam, sulfur, tire-derived fuel, and other miscellaneous energy sources.\n",
+              "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+              "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+              "role": "support",
+              "title": "US utility-scale generation in 2023; preliminary February 2024 data",
+              "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+              "published": "2024-02-29",
+              "doc_name": "eia-generation.html",
+              "page_num": null
+            },
+            {
+              "source_id": "eia-measurement",
+              "content": "Electricity is measured in units of power called Watts, named after James Watt, the inventor of the steam engine. One Watt is a very small amount of power. Some devices need only a few Watts to operate, but other devices require larger amounts, and their consumption is measured in kilowatts (kW). One kilowatt is equal to 1,000 Watts.\nFor very large amounts of electricity, like what power plants generate, we use even larger units:\nMegawatts (MW): One MW is 1,000 kW, or 1,000,000 Watts.\nGigawatts (GW): One GW is 1,000 MW, or 1,000,000,000 Watts.\nElectricity use over time is measured in Watthours\nWatts measure power at a specific moment, but we use Watthours (Wh) to measure how much electricity is used over a period of time. One Watthour is the energy of one Watt used for one hour.\nElectric utilities and power plants generally measure electricity in kilowatthours (kWh). One kWh is one kilowatt generated for one hour. For example, if you use a 40-Watt (0.04 kW) light bulb for five hours, you have used 200 Wh, or 0.2 kWh, of electrical energy.\nUtility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use. These meters are usually located on the outside of the building or home where the power line connects. In the past, electricity meters were mechanical devices that a utility employee had to read manually. Eventually, automated meters could periodically report electricity use to the utility. Today, many utilities use\nelectronic smart meters\n. These meters wirelessly send power usage data in real time. Some advanced smart meters can even track the electricity use of individual devices and allow the utility or customer to control electricity use remotely.\n",
+              "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+              "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+              "role": "support",
+              "title": "Measuring electricity",
+              "url": "https://www.eia.gov/energyexplained/electricity/measuring-electricity.php",
+              "published": null,
+              "doc_name": "eia-measuring.html",
+              "page_num": null
+            }
+          ],
+          "elapsed_seconds": 0.0,
+          "diagnostic": "none",
+          "attempt_id": "c4427641f6c14b3fb1b1a21a032bf8b7"
+        },
+        "created": "2026-11-13T11:39:20.100201+00:00"
+      },
+      {
+        "seq": 8,
+        "run_id": "5b418cfb96314523b0993db2555882c3",
+        "kind": "model_request_started",
+        "payload": {
+          "stage": "subtask_compose",
+          "attempt_id": "c4427641f6c14b3fb1b1a21a032bf8b7"
+        },
+        "created": "2026-11-13T11:39:20.179270+00:00"
+      },
+      {
+        "seq": 9,
+        "run_id": "5b418cfb96314523b0993db2555882c3",
+        "kind": "model_request_started",
+        "payload": {
+          "stage": "subtask_compose",
+          "attempt_id": "c4427641f6c14b3fb1b1a21a032bf8b7"
+        },
+        "created": "2026-11-13T11:39:32.812454+00:00"
+      },
+      {
+        "seq": 10,
+        "run_id": "5b418cfb96314523b0993db2555882c3",
+        "kind": "subtask_worker_failure",
+        "payload": {
+          "error_type": "ValueError",
+          "stage": "composition",
+          "attempt_id": "c4427641f6c14b3fb1b1a21a032bf8b7"
+        },
+        "created": "2026-11-13T11:39:43.424627+00:00"
+      },
+      {
+        "seq": 11,
+        "run_id": "5b418cfb96314523b0993db2555882c3",
+        "kind": "attempt_stopped",
+        "payload": {
+          "attempt_id": "c4427641f6c14b3fb1b1a21a032bf8b7",
+          "reason": "worker_error",
+          "elapsed_seconds": 24.96799999999348
+        },
+        "created": "2026-11-13T11:39:43.611425+00:00"
+      }
+    ],
+    "reviews": []
+  },
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured",
+  "source_assessment": "pending",
+  "owner_adjudication": "pending"
+}

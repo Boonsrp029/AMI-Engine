@@ -1,0 +1,162 @@
+{
+  "status": "prepared data; A activation and combined validation pending; not an execution contract",
+  "composition_contract": "cq-scoped-composition-v1",
+  "as_of": "2026-11-07",
+  "model_snapshot": {
+    "provider": "ollama",
+    "model": "ami-llama3.1:8b-4k",
+    "digest": "6f3154f347c4f96858a9f259e64d96b2675f4cb2f4894b2d9714fb0752aecc23",
+    "endpoint": "http://localhost:11434"
+  },
+  "settings": {
+    "num_ctx": 4096,
+    "num_predict": 900,
+    "temperature": 0,
+    "client_timeout_seconds": 90,
+    "structured_method": "json_schema",
+    "endpoint": "http://localhost:11434"
+  },
+  "cases": {
+    "cq-p01": {
+      "frozen_case": {
+        "plan": {
+          "version": "ami-subtasks-v1",
+          "query": "Compare observed electricity demand in Canada in 2016 with projected electricity demand in Japan through 2036.",
+          "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13",
+          "subtasks": [
+            {
+              "subtask_id": "s01",
+              "operation": "retrieve",
+              "query": "observed",
+              "source_ids": [],
+              "dependencies": [],
+              "required": true,
+              "timeout_seconds": 30.0
+            },
+            {
+              "subtask_id": "s02",
+              "operation": "retrieve",
+              "query": "projected",
+              "source_ids": [],
+              "dependencies": [],
+              "required": true,
+              "timeout_seconds": 30.0
+            }
+          ],
+          "retrieval_concurrency": 2,
+          "deadline_seconds": 180.0,
+          "model_concurrency": 1,
+          "maximum_main_calls": 4
+        },
+        "bindings": {
+          "r1": [
+            "s01",
+            "s02"
+          ]
+        },
+        "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq-p01\\corpus.json",
+        "complete_required_branches": {
+          "r1": [
+            "s01",
+            "s02"
+          ]
+        },
+        "requested_scopes": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\prepared-development-data\\cq-p01.scopes.json",
+        "requested_scopes_sha256": "69add2a644f71c8c3997da3901f6bc33b365f898aaab466fba748201af6ded2e"
+      },
+      "declared_scope_labels": [
+        "observed electricity demand in Canada in 2016",
+        "projected electricity demand in Japan through 2036"
+      ],
+      "offline_runtime_cap_for_binding_check": 150,
+      "message_content_tokens": 550,
+      "conservative_budget": 1706,
+      "grammar_tokens_separate": 2143,
+      "current_model_identity_live_verified": false,
+      "actual_generation": false
+    },
+    "cq-p02": {
+      "frozen_case": {
+        "plan": {
+          "version": "ami-subtasks-v1",
+          "query": "Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday.",
+          "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669",
+          "subtasks": [
+            {
+              "subtask_id": "s01",
+              "operation": "retrieve",
+              "query": "wind",
+              "source_ids": [],
+              "dependencies": [],
+              "required": true,
+              "timeout_seconds": 30.0
+            },
+            {
+              "subtask_id": "s02",
+              "operation": "retrieve",
+              "query": "yesterday retail prices",
+              "source_ids": [],
+              "dependencies": [],
+              "required": true,
+              "timeout_seconds": 30.0
+            }
+          ],
+          "retrieval_concurrency": 2,
+          "deadline_seconds": 180.0,
+          "model_concurrency": 1,
+          "maximum_main_calls": 4
+        },
+        "bindings": {
+          "r1": [
+            "s01",
+            "s02"
+          ]
+        },
+        "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq-p02\\corpus.json",
+        "complete_required_branches": {
+          "r1": [
+            "s01",
+            "s02"
+          ]
+        },
+        "requested_scopes": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\prepared-development-data\\cq-p02.scopes.json",
+        "requested_scopes_sha256": "57817949c06da90a6305966b0d0f52b33490eb5d6bf4acaa294605ab23153815"
+      },
+      "declared_scope_labels": [
+        "wind generation in Denmark in 2015",
+        "Denmark retail electricity prices yesterday"
+      ],
+      "offline_runtime_cap_for_binding_check": 150,
+      "message_content_tokens": 460,
+      "conservative_budget": 1616,
+      "grammar_tokens_separate": 953,
+      "current_model_identity_live_verified": false,
+      "actual_generation": false
+    }
+  },
+  "input_sha256": {
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\prepared-development-data\\cq-p01.scopes.json": "69add2a644f71c8c3997da3901f6bc33b365f898aaab466fba748201af6ded2e",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\prepared-development-data\\cq-p01.mapper-input.json": "532cb947585855bfce4a7a0297367d930054544d4c7179bb44d719ef6888451a",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\prepared-development-data\\cq-p01.native-body.json": "f602ab79d8ffd1ccf8666619c0769b3f4ed110186b9f77091cbe3597994ade7d",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\prepared-development-data\\cq-p02.scopes.json": "57817949c06da90a6305966b0d0f52b33490eb5d6bf4acaa294605ab23153815",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\prepared-development-data\\cq-p02.mapper-input.json": "e863712fcc8aa85b0249e6e4aa856f1372c10ab22b736842cc2c385ddb525c42",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\prepared-development-data\\cq-p02.native-body.json": "0c3d8706d6738d3311b540009b1221747c550daea8a1034e226097860b221804"
+  },
+  "actual_model_calls": 0,
+  "execution_authorized": false,
+  "budget_proposal": {
+    "main_calls_total": 8,
+    "nemo_invocations_total": 2,
+    "seconds_per_case": 180,
+    "retries": 0,
+    "warmups": 0
+  },
+  "stop_policy": "cq-p01 once; cq-p02 only after all first-case gates pass; stop on first failure; no CQ1 authorization",
+  "scope_authorship": "caller-declared preparation annotations, membership checked; not model-produced or owner-adjudicated",
+  "remaining": [
+    "A applies/reviews activation patch",
+    "Combined source/admission checks",
+    "Final runtime/config/scope pins and source-review protocol in executable contract",
+    "New direct generation grant"
+  ]
+}

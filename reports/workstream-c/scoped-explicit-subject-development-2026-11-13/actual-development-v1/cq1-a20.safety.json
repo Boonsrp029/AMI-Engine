@@ -1,0 +1,7 @@
+{
+  "validated_report": "Automated electricity meters report electricity use periodically to the utility.\nUtility companies measure and monitor electricity use with meters.",
+  "passed_guardrails": true,
+  "raw_output": "Automated electricity meters report electricity use periodically to the utility.\nUtility companies measure and monitor electricity use with meters.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

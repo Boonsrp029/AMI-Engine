@@ -1,0 +1,26 @@
+{
+  "actual_model_calls": 0,
+  "nemo_invocations": 0,
+  "sockets_blocked": true,
+  "stages": [
+    "mapping",
+    "composition"
+  ],
+  "result_sha256": "9a4d1d4ac7dfc1927cadcdf961d2681c58d3fe51d43a1dd041464a122f638183",
+  "selected": [
+    "s_cb9a294a4ff9d4c9"
+  ],
+  "focus": {
+    "kind": "table_row",
+    "label": "Natural gas",
+    "amount": "1,802",
+    "share": "43.1%",
+    "unit": "Billion kWh",
+    "year": "2023",
+    "denominator": "total utility-scale electricity generation",
+    "span_id": "s_cb9a294a4ff9d4c9"
+  },
+  "expected": "In 2023, the table gives Natural gas generation in Billion kWh as 1,802 and its share of total utility-scale electricity generation as 43.1%.",
+  "actual": "In 2023, Natural gas generation was 1,802 Billion kWh.",
+  "message": "Raw claim does not retain the requested table row or ratio operand"
+}

@@ -210,6 +210,32 @@ def test_unit_local_explicit_scope_and_denominator_contract(text, valid):
             validate_relationships(text, evidence)
 
 
+@pytest.mark.parametrize(("text", "valid"), [
+    ("In 2018, rail carried 36% of total domestic freight in Peru.", True),
+    ("In 2019, rail carried 36% of total domestic freight in Peru.", False),
+    ("In 2018, rail carried 36% of total domestic freight in Chile.", False),
+    ("In 2018, rail carried 63% of total domestic freight in Peru.", False),
+    ("In 2018, rail carried 36% of total freight in Peru.", False),
+    ("In 2018, rail carried 36% of total domestic freight tonnes in Peru.", False),
+    ("In 2018, rail was projected to carry 36% of total domestic freight in Peru.", False),
+    ("In 2018, trucks carried 36% of total domestic freight in Peru.", False),
+    ("In 2018, rail carried 36% of total domestic freight in Peru and Chile.", False),
+])
+def test_relocated_percentage_scope_requires_the_same_fact(text, valid):
+    from src.pilot._evidence import EvidenceQuote
+    from src.pilot.subtasks._relationships import validate_relationships
+
+    quote = EvidenceQuote(source_id="rail", quote="In Peru, rail carried 36% of total domestic freight in 2018.")
+    if valid:
+        validate_relationships(text, [quote])
+        validate_relationships(quote.quote, [quote.model_copy(update={"quote": text})])
+        with pytest.raises(ValueError, match="denominator"):
+            validate_relationships(text, [quote, quote.model_copy(update={"source_id": "second"})])
+    else:
+        with pytest.raises(ValueError):
+            validate_relationships(text, [quote])
+
+
 def test_corpus_denominator_substitution_cannot_publish(tmp_path):
     path, _, _, _ = setup_corpus(tmp_path)
     rows = json.loads(path.read_text())

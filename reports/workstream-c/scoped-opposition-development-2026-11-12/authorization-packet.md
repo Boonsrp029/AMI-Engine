@@ -1,0 +1,7 @@
+# Opposing publication-status diagnostic authorization
+
+The scoped workflow now checks retrieved evidence from the same bound branch even when the mapper selects one side. The additional check is limited to explicit publication-status alternatives about the same literal subject and one requested year, with opposed assertions from distinct retrieved sources. It preserves the original mapper response and logs the application decision and exact span IDs before composition. Other conflict types still follow their existing evidence and review rules.
+
+All 102 targeted checks passed. The socket-blocked replay preserved the supported Peru claims and disclosed the Cambodia disagreement using both exact pinned notices, while retaining the one-sided raw selection as evidence. No prior verdict was changed. Both offline verification commands checked the 128 pinned inputs for contract `d98bca1799af0758aaae8484f1f1658fe713bc1bb1d530adfe7932209fc0521a`.
+
+Run cq-status01 once and cq-status02 once only if the first passes. Follow the [source review protocol](source-review-protocol.md), keep application findings separate from raw model quality, and stop on the first failure. The total budget is eight local main calls and two NeMo wrapper invocations, 180 seconds per case, with zero retries or warmups. The frozen execution date is 12 November 2026 in Bangkok. This grant is limited to development and excludes CQ1, Ragas, hosted inference, Databricks, approval/export, publication and deployment.

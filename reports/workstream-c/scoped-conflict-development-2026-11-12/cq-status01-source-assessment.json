@@ -1,0 +1,13 @@
+{
+  "result_sha256": "4564c20f29e3ac8b78c1462cb303481a3413f7933864699ab6249ade4daf613b",
+  "verdict": "pass",
+  "authorship": "Assistant source review. Owner judgment pending.",
+  "source_findings": [
+    "Raw composer and stored draft both give 18 million Peru passenger rail journeys in 2019, with rail-total.",
+    "Both give the provisional status with the exact rail-status evidence. The two compatible facts were selected in distinct supported components.",
+    "The Peru geography binds to the amount span. Neither distractor was selected.",
+    "Both required branches were covered and the Peru title applies to both claims. No conflict warning, source fallback or editorial correction.",
+    "Technical execution and NeMo passed. Revision 1 needs_review with lineage and zero stored reviews or exports."
+  ],
+  "next_case_allowed": true
+}

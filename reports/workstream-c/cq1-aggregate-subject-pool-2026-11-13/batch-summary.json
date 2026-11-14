@@ -1,0 +1,74 @@
+{
+  "status": "critical source failure; allowance closed",
+  "contract_sha256": "f66f056bb1d7e82421d526c3773935d799ec008e2dd173099dc62fe55f29124a",
+  "pins_verified": 156,
+  "attempted_ids": [
+    "cq1-a19",
+    "cq1-a20"
+  ],
+  "passed_ids": [
+    "cq1-a19"
+  ],
+  "critical_source_failure_ids": [
+    "cq1-a20"
+  ],
+  "unattempted_ids": [
+    "cq1-a16",
+    "cq1-a17",
+    "cq1-a18",
+    "cq1-a06",
+    "cq1-a07",
+    "cq1-a08",
+    "cq1-a09",
+    "cq1-a10",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "planned_denominators": {
+    "answerable": 10,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2
+  },
+  "thresholds": {
+    "answerable": 9,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2,
+    "critical_errors": 0
+  },
+  "main_calls": 4,
+  "nemo_invocations": 2,
+  "reported_main_tokens": 6973,
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured",
+  "retry_count": 0,
+  "owner_adjudication": "pending",
+  "source_offsets": {
+    "s_6af27ac482a98ade": {
+      "source_id": "eia-measurement",
+      "start": 1417,
+      "end": 1503
+    },
+    "s_792c4494ed697e52": {
+      "source_id": "eia-measurement",
+      "start": 1556,
+      "end": 1615
+    },
+    "s_ad16cc6c657b8bd0": {
+      "source_id": "eia-measurement",
+      "start": 1504,
+      "end": 1555
+    }
+  }
+}

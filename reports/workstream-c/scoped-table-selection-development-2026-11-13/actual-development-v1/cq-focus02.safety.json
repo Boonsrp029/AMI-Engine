@@ -1,0 +1,7 @@
+{
+  "validated_report": "In 2023, the table gives Natural gas generation in Billion kWh as 1,802 and its share of total utility-scale electricity generation as 43.1%.",
+  "passed_guardrails": true,
+  "raw_output": "In 2023, the table gives Natural gas generation in Billion kWh as 1,802 and its share of total utility-scale electricity generation as 43.1%.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

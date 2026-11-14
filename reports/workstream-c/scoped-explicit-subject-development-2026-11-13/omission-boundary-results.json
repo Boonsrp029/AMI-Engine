@@ -1,0 +1,21 @@
+{
+  "synthetic_cases": [
+    {
+      "question": "What could the harbor transmitter send weekly, and to whom?",
+      "kept": "The harbor transmitter could send weekly manifests to the port clerk.",
+      "omitted": "The harbor office kept a separate log of vessel arrivals.",
+      "should_allow_omission": true,
+      "accounting_guard_allows_omission": true
+    },
+    {
+      "question": "What were the installation and annual maintenance costs?",
+      "kept": "Installation cost 24,000 baht.",
+      "omitted": "Annual maintenance cost 3,500 baht.",
+      "should_allow_omission": false,
+      "accounting_guard_allows_omission": true
+    }
+  ],
+  "component_coverage_is_not_fact_coverage": true,
+  "runtime_activated": false,
+  "model_calls": 0
+}

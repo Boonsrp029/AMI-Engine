@@ -1,0 +1,58 @@
+{
+  "actual_model_calls": 0,
+  "actual_nemo_invocations": 0,
+  "sockets_blocked": true,
+  "stages": [
+    "mapping",
+    "composition"
+  ],
+  "selected_spans": [
+    {
+      "span_id": "s_9f6629387f7fb9e1",
+      "text": "In 2023, about 4,178 billion kilowatthours (kWh) (or about 4.18 trillion kWh) of electricity were generated at utility-scale electricity generation facilities in the United States.",
+      "source_id": "eia-generation-2023"
+    },
+    {
+      "span_id": "s_9f96e1da2a50533f",
+      "text": "1\nAbout 60% of this electricity generation was from fossil fuels—coal, natural gas, petroleum, and other gases.",
+      "source_id": "eia-generation-2023"
+    },
+    {
+      "span_id": "s_610d409a2f28f88c",
+      "text": "About 19% was from nuclear energy, and about 21% was from renewable energy sources.",
+      "source_id": "eia-generation-2023"
+    },
+    {
+      "span_id": "s_2259500935f03130",
+      "text": "Energy Information Administration estimates that an additional 73.62 billion kWh of electricity generation was from small-scale solar photovoltaic systems in 2023.",
+      "source_id": "eia-generation-2023"
+    },
+    {
+      "span_id": "s_53a9904131330b03",
+      "text": "16\n0.4%\nPumped storage hydropower\n4\n-6\n-0.1%\nOther sources\n5\n10\n0.2%\nData source: U.S.",
+      "source_id": "eia-generation-2023"
+    }
+  ],
+  "retrieved_natural_gas_spans": [
+    {
+      "span_id": "s_9f96e1da2a50533f",
+      "text": "1\nAbout 60% of this electricity generation was from fossil fuels—coal, natural gas, petroleum, and other gases.",
+      "source_id": "eia-generation-2023"
+    },
+    {
+      "span_id": "s_cb9a294a4ff9d4c9",
+      "text": "utility-scale electricity generation by source, amount, and share of total in 2023\nEnergy source\nBillion kWh\nShare of total\nTotal - all sources\n4,178\nFossil fuels (total)\n2,505\n60.0%\nNatural gas\n1,802\n43.1%\nCoal\n675\n16.2%\nPetroleum (total)\n16\n0.4%\nPetroleum liquids\n12\n0.3%\nPetroleum coke\n5\n0.1%\nOther gases\n3\n11\n0.3%\nNuclear\n775\n18.6%\nRenewables (total)\n894\n21.4%\nWind\n425\n10.2%\nHydropower\n240\n5.7%\nSolar (total)\n165\n3.9%\nPhotovoltaic\n162\n3.9%\nSolar thermal\n3\n0.1%\nBiomass (total)\n47\n1.1%\nWood\n31\n0.8%\nLandfill gas\n8\n0.2%\nMunicipal solid waste (biogenic)\n6\n0.1%\nOther biomass waste\n2\n0.1%\nGeothermal",
+      "source_id": "eia-generation-2023"
+    }
+  ],
+  "composition_unit_ids": [
+    "u1",
+    "u2",
+    "u3",
+    "u4",
+    "u5"
+  ],
+  "error_type": "ValueError",
+  "message": "Draft introduces a numeric value absent from its selected evidence",
+  "traceback": "Traceback (most recent call last):\n  File \"<stdin>\", line 36, in <module>\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_scoped_activation.py\", line 41, in __call__\n    result = ScopedConcurrentComposer(runtime, self.bindings, self.as_of, self.transport,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_scoped_generation.py\", line 140, in __call__\n    result = project_report(self.plan, report, mapping.model_dump(exclude={\"geography_resolution\"}),\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\synthesis.py\", line 93, in project_report\n    validate_claim_measure_and_numbers(claim.text, component, plan.query)\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_scope.py\", line 206, in validate_claim_measure_and_numbers\n    raise ValueError(\"Draft introduces a numeric value absent from its selected evidence\")\nValueError: Draft introduces a numeric value absent from its selected evidence\n"
+}

@@ -1,0 +1,7 @@
+{
+  "validated_report": "A 100 MW plant generates 2,400 MWh of electricity in 24 hours at that capacity.\nThe plant's actual electrical energy output for a given period forms the numerator of its capacity factor.",
+  "passed_guardrails": true,
+  "raw_output": "A 100 MW plant generates 2,400 MWh of electricity in 24 hours at that capacity.\nThe plant's actual electrical energy output for a given period forms the numerator of its capacity factor.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "feed_id": "rail-total",
+    "title": "Journey count",
+    "clean_content": "In Peru, passenger rail recorded 18 million journeys in 2019."
+  },
+  {
+    "feed_id": "rail-status",
+    "title": "Status note",
+    "clean_content": "The 2019 Peru passenger rail journey figures are provisional."
+  },
+  {
+    "feed_id": "rail-units",
+    "title": "Measurement methods",
+    "clean_content": "Passenger rail distance is measured in Passenger Kilometres."
+  },
+  {
+    "feed_id": "rail-other",
+    "title": "Another network",
+    "clean_content": "In Bolivia, passenger rail recorded 7 million journeys in 2019."
+  }
+]

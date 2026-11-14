@@ -1,0 +1,12 @@
+{
+  "result_sha256": "270e9e82ca7069740660ac95142d2fe9ac668e6e7a9f22688a41dc30a4a7d850",
+  "verdict": "pass",
+  "authorship": "Assistant source review. Owner judgment pending.",
+  "source_findings": [
+    "Raw and final claims retain 18 million Peru passenger rail journeys in 2019 with rail-total and the provisional status with rail-status.",
+    "The two compatible facts are supported independently; no application conflict, fallback or editorial correction was used.",
+    "Peru geography and title are sourced. Both distractors are absent from the claims.",
+    "Technical execution and NeMo passed. Revision 1 needs_review has scope lineage and zero stored reviews or exports."
+  ],
+  "next_case_allowed": true
+}

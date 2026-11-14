@@ -1,0 +1,26 @@
+{
+  "version": "cq-scoped-disclosures-v1",
+  "plan_id": "662bcee638f27c90d5a846b0da3206392b45d66dcb5f11f4f3b58733b73e0532",
+  "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+  "question_sha256": "50bb9edd997fdc17049181967c7c2edb58e251decda998c9e80c4ec470ecbb60",
+  "bindings_sha256": "65027ea19f8364378f35d32392edc9f727eac1c4b702f6afe44023735e4859de",
+  "declaration_ref": "Synthetic multi-document development request, predeclared from its question.",
+  "annotations": [
+    {
+      "component_id": "r1",
+      "subtask_id": "s01",
+      "question_span": {
+        "start": 0,
+        "end": 62
+      }
+    },
+    {
+      "component_id": "r2",
+      "subtask_id": "s02",
+      "question_span": {
+        "start": 68,
+        "end": 106
+      }
+    }
+  ]
+}

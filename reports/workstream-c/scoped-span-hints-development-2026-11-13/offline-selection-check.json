@@ -1,0 +1,41 @@
+{
+  "actual_model_calls": 0,
+  "cases": {
+    "cq-hint01": {
+      "focus": {
+        "r1": {
+          "kind": "table_row",
+          "label": "Renewables (total)",
+          "amount": "894",
+          "share": "21.4%",
+          "unit": "Billion kWh",
+          "year": "2023",
+          "denominator": "total utility-scale electricity generation",
+          "span_id": "s_cb9a294a4ff9d4c9"
+        }
+      },
+      "hints": {}
+    },
+    "cq-hint02": {
+      "focus": {},
+      "hints": {
+        "r1": [
+          {
+            "span_id": "s_44a4448281bbe6a8",
+            "text": "Some advanced smart meters can even track the electricity use of individual devices and allow the utility or customer to control electricity use remotely."
+          },
+          {
+            "span_id": "s_ad16cc6c657b8bd0",
+            "text": "Today, many utilities use\nelectronic smart meters\n."
+          }
+        ],
+        "r2": [
+          {
+            "span_id": "s_44a4448281bbe6a8",
+            "text": "Some advanced smart meters can even track the electricity use of individual devices and allow the utility or customer to control electricity use remotely."
+          }
+        ]
+      }
+    }
+  }
+}

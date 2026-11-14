@@ -1,0 +1,395 @@
+{
+  "technical_pass": false,
+  "main_calls": 2,
+  "nemo_invocations": 0,
+  "elapsed_seconds": 37.31199999999808,
+  "failure_type": "ValueError",
+  "stored_run": {
+    "id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+    "request_key": "qualify-40022a36508e174dff5f63b7f7647ada",
+    "query": "How much electricity does the example 100 MW plant generate in 24 hours at that capacity, and what output forms the denominator of its capacity factor?",
+    "corpus_sha": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143",
+    "status": "failed",
+    "revision": 0,
+    "draft": null,
+    "sources": {},
+    "metrics": {
+      "partial": true,
+      "execution_elapsed_seconds": 34.46899999999732,
+      "attempt_id": "709218ac05cf401c92f8cd77d99e0d52",
+      "model_calls": 2,
+      "guardrail_invocations": 0,
+      "token_usage_complete": false,
+      "inflight_usage_unknown": true,
+      "monetary_cost": null,
+      "known_input_tokens": 0,
+      "known_output_tokens": 0,
+      "failure_reason": "worker_error"
+    },
+    "error": "Worker failed; inspect history before retrying",
+    "created": "2026-11-12T13:17:31.943593+00:00",
+    "updated": "2026-11-12T13:18:06.498968+00:00",
+    "events": [
+      {
+        "seq": 1,
+        "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+        "kind": "attempt_started",
+        "payload": {
+          "attempt_id": "709218ac05cf401c92f8cd77d99e0d52"
+        },
+        "created": "2026-11-12T13:17:32.034771+00:00"
+      },
+      {
+        "seq": 2,
+        "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+        "kind": "subtask_plan",
+        "payload": {
+          "identity": {
+            "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+            "attempt_id": "709218ac05cf401c92f8cd77d99e0d52",
+            "plan_id": "6eefdfcfea0180feaee53398a1c2d4c47e33740b93514bd30da098e2452e72e9",
+            "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143"
+          },
+          "plan": {
+            "version": "ami-subtasks-v1",
+            "query": "How much electricity does the example 100 MW plant generate in 24 hours at that capacity, and what output forms the denominator of its capacity factor?",
+            "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143",
+            "subtasks": [
+              {
+                "subtask_id": "s01",
+                "operation": "retrieve",
+                "query": "How much electricity does the example 100 MW plant generate in 24 hours at that capacity",
+                "source_ids": [],
+                "dependencies": [],
+                "required": true,
+                "timeout_seconds": 30.0
+              },
+              {
+                "subtask_id": "s02",
+                "operation": "retrieve",
+                "query": "what output forms the denominator of its capacity factor?",
+                "source_ids": [],
+                "dependencies": [],
+                "required": true,
+                "timeout_seconds": 30.0
+              }
+            ],
+            "retrieval_concurrency": 2,
+            "deadline_seconds": 177.8289999999979,
+            "model_concurrency": 1,
+            "maximum_main_calls": 4
+          },
+          "attempt_id": "709218ac05cf401c92f8cd77d99e0d52"
+        },
+        "created": "2026-11-12T13:17:32.116780+00:00"
+      },
+      {
+        "seq": 3,
+        "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+        "kind": "subtask_worker_started",
+        "payload": {
+          "pid": 42056,
+          "attempt_id": "709218ac05cf401c92f8cd77d99e0d52"
+        },
+        "created": "2026-11-12T13:17:32.282180+00:00"
+      },
+      {
+        "seq": 4,
+        "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+            "attempt_id": "709218ac05cf401c92f8cd77d99e0d52",
+            "plan_id": "6eefdfcfea0180feaee53398a1c2d4c47e33740b93514bd30da098e2452e72e9",
+            "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "5aab623352bd487588c3e502b10b3e30",
+          "ordinal": 1,
+          "status": "queued",
+          "created_at": "2026-11-12T13:17:33.286020Z",
+          "reason": "none",
+          "attempt_id": "709218ac05cf401c92f8cd77d99e0d52"
+        },
+        "created": "2026-11-12T13:17:33.287975+00:00"
+      },
+      {
+        "seq": 5,
+        "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+            "attempt_id": "709218ac05cf401c92f8cd77d99e0d52",
+            "plan_id": "6eefdfcfea0180feaee53398a1c2d4c47e33740b93514bd30da098e2452e72e9",
+            "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "b4a9bb000ada45cd8d20019d07e722f1",
+          "ordinal": 2,
+          "status": "queued",
+          "created_at": "2026-11-12T13:17:33.286020Z",
+          "reason": "none",
+          "attempt_id": "709218ac05cf401c92f8cd77d99e0d52"
+        },
+        "created": "2026-11-12T13:17:33.460181+00:00"
+      },
+      {
+        "seq": 6,
+        "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+            "attempt_id": "709218ac05cf401c92f8cd77d99e0d52",
+            "plan_id": "6eefdfcfea0180feaee53398a1c2d4c47e33740b93514bd30da098e2452e72e9",
+            "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "5aab623352bd487588c3e502b10b3e30",
+          "ordinal": 3,
+          "status": "running",
+          "created_at": "2026-11-12T13:17:33.286020Z",
+          "reason": "none",
+          "attempt_id": "709218ac05cf401c92f8cd77d99e0d52"
+        },
+        "created": "2026-11-12T13:17:33.545082+00:00"
+      },
+      {
+        "seq": 7,
+        "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+            "attempt_id": "709218ac05cf401c92f8cd77d99e0d52",
+            "plan_id": "6eefdfcfea0180feaee53398a1c2d4c47e33740b93514bd30da098e2452e72e9",
+            "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "b4a9bb000ada45cd8d20019d07e722f1",
+          "ordinal": 4,
+          "status": "running",
+          "created_at": "2026-11-12T13:17:33.286020Z",
+          "reason": "none",
+          "attempt_id": "709218ac05cf401c92f8cd77d99e0d52"
+        },
+        "created": "2026-11-12T13:17:33.633168+00:00"
+      },
+      {
+        "seq": 8,
+        "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+            "attempt_id": "709218ac05cf401c92f8cd77d99e0d52",
+            "plan_id": "6eefdfcfea0180feaee53398a1c2d4c47e33740b93514bd30da098e2452e72e9",
+            "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "5aab623352bd487588c3e502b10b3e30",
+          "ordinal": 5,
+          "status": "completed",
+          "created_at": "2026-11-12T13:17:33.288981Z",
+          "reason": "none",
+          "attempt_id": "709218ac05cf401c92f8cd77d99e0d52"
+        },
+        "created": "2026-11-12T13:17:33.715109+00:00"
+      },
+      {
+        "seq": 9,
+        "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+        "kind": "subtask_result",
+        "payload": {
+          "identity": {
+            "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+            "attempt_id": "709218ac05cf401c92f8cd77d99e0d52",
+            "plan_id": "6eefdfcfea0180feaee53398a1c2d4c47e33740b93514bd30da098e2452e72e9",
+            "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "5aab623352bd487588c3e502b10b3e30",
+          "dependencies": [],
+          "outcome": "evidence",
+          "sources": [
+            {
+              "source_id": "eia-faq-generator-example",
+              "content": "In the EIA example, a single 100 MW generator running continuously at that capacity for 24 hours generates 2,400 MWh. Operating continuously at that capacity for 365 days would generate 876,000 MWh.",
+              "content_sha256": "55364de479dedc4c5d9d2cf00ffee580410131a593a88db8c007a59bdef23dca",
+              "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143",
+              "role": "support",
+              "title": "EIA power plant generation FAQ",
+              "url": "https://www.eia.gov/tools/faqs/faq.php?id=104&t=1",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            },
+            {
+              "source_id": "eia-measurement",
+              "content": "Electricity is measured in units of power called Watts, named after James Watt, the inventor of the steam engine. One Watt is a very small amount of power. Some devices need only a few Watts to operate, but other devices require larger amounts, and their consumption is measured in kilowatts (kW). One kilowatt is equal to 1,000 Watts.\nFor very large amounts of electricity, like what power plants generate, we use even larger units:\nMegawatts (MW): One MW is 1,000 kW, or 1,000,000 Watts.\nGigawatts (GW): One GW is 1,000 MW, or 1,000,000,000 Watts.\nElectricity use over time is measured in Watthours\nWatts measure power at a specific moment, but we use Watthours (Wh) to measure how much electricity is used over a period of time. One Watthour is the energy of one Watt used for one hour.\nElectric utilities and power plants generally measure electricity in kilowatthours (kWh). One kWh is one kilowatt generated for one hour. For example, if you use a 40-Watt (0.04 kW) light bulb for five hours, you have used 200 Wh, or 0.2 kWh, of electrical energy.\nUtility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use. These meters are usually located on the outside of the building or home where the power line connects. In the past, electricity meters were mechanical devices that a utility employee had to read manually. Eventually, automated meters could periodically report electricity use to the utility. Today, many utilities use\nelectronic smart meters\n. These meters wirelessly send power usage data in real time. Some advanced smart meters can even track the electricity use of individual devices and allow the utility or customer to control electricity use remotely.\n",
+              "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+              "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143",
+              "role": "support",
+              "title": "Measuring electricity",
+              "url": "https://www.eia.gov/energyexplained/electricity/measuring-electricity.php",
+              "published": null,
+              "doc_name": "eia-measuring.html",
+              "page_num": null
+            },
+            {
+              "source_id": "eia-glossary-capacity-factor",
+              "content": "Capacity factor divides a generating unit’s actual electrical energy output for a given period by the electrical energy it could have generated by running at full power throughout that same period.",
+              "content_sha256": "0d3d7150fd58df92c3cae6faf6a052c57916fe8dc7f4020808c098161d39365d",
+              "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143",
+              "role": "support",
+              "title": "EIA glossary capacity factor",
+              "url": "https://www.eia.gov/tools/glossary/index.php?id=Capacity_factor",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            }
+          ],
+          "elapsed_seconds": 0.01600000000325963,
+          "diagnostic": "none",
+          "attempt_id": "709218ac05cf401c92f8cd77d99e0d52"
+        },
+        "created": "2026-11-12T13:17:33.802016+00:00"
+      },
+      {
+        "seq": 10,
+        "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+            "attempt_id": "709218ac05cf401c92f8cd77d99e0d52",
+            "plan_id": "6eefdfcfea0180feaee53398a1c2d4c47e33740b93514bd30da098e2452e72e9",
+            "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "b4a9bb000ada45cd8d20019d07e722f1",
+          "ordinal": 6,
+          "status": "completed",
+          "created_at": "2026-11-12T13:17:33.289965Z",
+          "reason": "none",
+          "attempt_id": "709218ac05cf401c92f8cd77d99e0d52"
+        },
+        "created": "2026-11-12T13:17:33.940342+00:00"
+      },
+      {
+        "seq": 11,
+        "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+        "kind": "subtask_result",
+        "payload": {
+          "identity": {
+            "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+            "attempt_id": "709218ac05cf401c92f8cd77d99e0d52",
+            "plan_id": "6eefdfcfea0180feaee53398a1c2d4c47e33740b93514bd30da098e2452e72e9",
+            "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "b4a9bb000ada45cd8d20019d07e722f1",
+          "dependencies": [],
+          "outcome": "evidence",
+          "sources": [
+            {
+              "source_id": "eia-glossary-capacity-factor",
+              "content": "Capacity factor divides a generating unit’s actual electrical energy output for a given period by the electrical energy it could have generated by running at full power throughout that same period.",
+              "content_sha256": "0d3d7150fd58df92c3cae6faf6a052c57916fe8dc7f4020808c098161d39365d",
+              "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143",
+              "role": "support",
+              "title": "EIA glossary capacity factor",
+              "url": "https://www.eia.gov/tools/glossary/index.php?id=Capacity_factor",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            },
+            {
+              "source_id": "eia-measurement",
+              "content": "Electricity is measured in units of power called Watts, named after James Watt, the inventor of the steam engine. One Watt is a very small amount of power. Some devices need only a few Watts to operate, but other devices require larger amounts, and their consumption is measured in kilowatts (kW). One kilowatt is equal to 1,000 Watts.\nFor very large amounts of electricity, like what power plants generate, we use even larger units:\nMegawatts (MW): One MW is 1,000 kW, or 1,000,000 Watts.\nGigawatts (GW): One GW is 1,000 MW, or 1,000,000,000 Watts.\nElectricity use over time is measured in Watthours\nWatts measure power at a specific moment, but we use Watthours (Wh) to measure how much electricity is used over a period of time. One Watthour is the energy of one Watt used for one hour.\nElectric utilities and power plants generally measure electricity in kilowatthours (kWh). One kWh is one kilowatt generated for one hour. For example, if you use a 40-Watt (0.04 kW) light bulb for five hours, you have used 200 Wh, or 0.2 kWh, of electrical energy.\nUtility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use. These meters are usually located on the outside of the building or home where the power line connects. In the past, electricity meters were mechanical devices that a utility employee had to read manually. Eventually, automated meters could periodically report electricity use to the utility. Today, many utilities use\nelectronic smart meters\n. These meters wirelessly send power usage data in real time. Some advanced smart meters can even track the electricity use of individual devices and allow the utility or customer to control electricity use remotely.\n",
+              "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+              "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143",
+              "role": "support",
+              "title": "Measuring electricity",
+              "url": "https://www.eia.gov/energyexplained/electricity/measuring-electricity.php",
+              "published": null,
+              "doc_name": "eia-measuring.html",
+              "page_num": null
+            },
+            {
+              "source_id": "eia-faq-generator-example",
+              "content": "In the EIA example, a single 100 MW generator running continuously at that capacity for 24 hours generates 2,400 MWh. Operating continuously at that capacity for 365 days would generate 876,000 MWh.",
+              "content_sha256": "55364de479dedc4c5d9d2cf00ffee580410131a593a88db8c007a59bdef23dca",
+              "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143",
+              "role": "support",
+              "title": "EIA power plant generation FAQ",
+              "url": "https://www.eia.gov/tools/faqs/faq.php?id=104&t=1",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            }
+          ],
+          "elapsed_seconds": 0.0,
+          "diagnostic": "none",
+          "attempt_id": "709218ac05cf401c92f8cd77d99e0d52"
+        },
+        "created": "2026-11-12T13:17:34.059067+00:00"
+      },
+      {
+        "seq": 12,
+        "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+        "kind": "model_request_started",
+        "payload": {
+          "stage": "subtask_compose",
+          "attempt_id": "709218ac05cf401c92f8cd77d99e0d52"
+        },
+        "created": "2026-11-12T13:17:34.243561+00:00"
+      },
+      {
+        "seq": 13,
+        "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+        "kind": "model_request_started",
+        "payload": {
+          "stage": "subtask_compose",
+          "attempt_id": "709218ac05cf401c92f8cd77d99e0d52"
+        },
+        "created": "2026-11-12T13:17:55.335964+00:00"
+      },
+      {
+        "seq": 14,
+        "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+        "kind": "subtask_worker_failure",
+        "payload": {
+          "error_type": "ValueError",
+          "stage": "composition",
+          "attempt_id": "709218ac05cf401c92f8cd77d99e0d52"
+        },
+        "created": "2026-11-12T13:18:06.313846+00:00"
+      },
+      {
+        "seq": 15,
+        "run_id": "af6e115a19444e59b10fbaf3dbcb7eaf",
+        "kind": "attempt_stopped",
+        "payload": {
+          "attempt_id": "709218ac05cf401c92f8cd77d99e0d52",
+          "reason": "worker_error",
+          "elapsed_seconds": 34.46899999999732
+        },
+        "created": "2026-11-12T13:18:06.497455+00:00"
+      }
+    ],
+    "reviews": []
+  },
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured",
+  "source_assessment": "pending",
+  "owner_adjudication": "pending"
+}

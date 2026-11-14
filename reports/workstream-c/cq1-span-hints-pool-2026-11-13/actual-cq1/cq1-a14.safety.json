@@ -1,0 +1,7 @@
+{
+  "validated_report": "In 2023, the table gives Petroleum coke generation in Billion kWh as 5 and its share of total utility-scale electricity generation as 0.1%.",
+  "passed_guardrails": true,
+  "raw_output": "In 2023, the table gives Petroleum coke generation in Billion kWh as 5 and its share of total utility-scale electricity generation as 0.1%.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

@@ -1,0 +1,15 @@
+{
+  "contract_sha256": "e743aa1666faecc6b132ced965c45b218de26ad5095ef1f573a670a06126f553",
+  "case_ids": [
+    "cq1-a20",
+    "cq1-a19"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "authorization_reference": "Direct user reply in this Codex chat on 13 November 2026: Authorize scoped explicit-subject development diagnostics.",
+  "human_reply": "Authorize scoped explicit-subject development diagnostics"
+}

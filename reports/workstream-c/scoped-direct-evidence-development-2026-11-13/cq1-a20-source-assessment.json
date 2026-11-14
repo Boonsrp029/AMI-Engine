@@ -1,0 +1,10 @@
+{
+  "verdict": "fail",
+  "result_sha256": "06f2a44e77d51a8ce689ad2165c2d823722d1b6e774b0f0315dcbc2b71959188",
+  "source_findings": [
+    "Assistant-authored. Both mapper components again selected the exact EIA historical capability span (1417:1503) and the general monitoring span (1055:1211).",
+    "Raw and stored drafts repeat the two prior claims. Claim 1 gives the information, cadence and recipient, but uses present tense instead of historical capability. Claim 2 is supported general background and answers neither requested part. The source gate fails.",
+    "Technical and NeMo checks passed. No fallback or editorial correction occurred."
+  ],
+  "owner_adjudication": "pending"
+}

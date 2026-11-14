@@ -1,0 +1,30 @@
+{
+  "contract_sha256": "bd4c66afabf91cacbcc77139162f95eef227b704bc68c52dacd516a653f0ec95",
+  "verified_inputs": 154,
+  "attempted": 2,
+  "passed": 2,
+  "results": {
+    "cq-focus01": {
+      "result_sha256": "c4720b0df56e99e0379c7c0041c83fd85e8868bd4394908ad4d8608851a11458",
+      "assessment_sha256": "ae6cd7a597dea56a9ac3499b68ee5a1c8822937ff445ad465878c7a96dd99a5d",
+      "main_calls": 2,
+      "nemo_wrapper_invocations": 1,
+      "wall_seconds": 82.93799999999464
+    },
+    "cq-focus02": {
+      "result_sha256": "280c3c2e94b69fa453a9c294c69b0cf64eb996c3ead5dfa3dba7c8b48e2ce46e",
+      "assessment_sha256": "ef7b0355a02d90d340daf5fa7cf5c4ffd3e08731309ff7025c35b7f424f35d85",
+      "main_calls": 2,
+      "nemo_wrapper_invocations": 1,
+      "wall_seconds": 46.0
+    }
+  },
+  "main_calls": 4,
+  "nemo_wrapper_invocations": 2,
+  "known_input_tokens": 5734,
+  "known_output_tokens": 493,
+  "known_main_tokens": 6227,
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured",
+  "owner_acceptance": "pending"
+}

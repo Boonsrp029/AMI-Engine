@@ -1,0 +1,388 @@
+{
+  "status": "assistant assessment and owner adjudication pending",
+  "result_file": "cq-status02.result.json",
+  "draft": {
+    "title": "Conflicting evidence",
+    "claims": [],
+    "warnings": [
+      "Component r1 reports conflicting selected evidence. Inspect these source IDs: ferry-provisional, ferry-final. Original request: Were the 2021 ferry counts in Cambodia provisional or final?"
+    ]
+  },
+  "sources": {
+    "ferry-provisional": {
+      "source_id": "ferry-provisional",
+      "content": "In Cambodia, the 2021 ferry counts are provisional.",
+      "content_sha256": "716f6e1138ef5d577c0544903923c418c9c407b3c3d8289154ab47b1693e4653",
+      "corpus_sha256": "4fd8be3d84378567d472ce45a6c6e157d95987fe341799f7ab58499428499254",
+      "role": "support",
+      "title": "Status memorandum A",
+      "url": "",
+      "published": null,
+      "doc_name": null,
+      "page_num": null
+    },
+    "ferry-final": {
+      "source_id": "ferry-final",
+      "content": "In Cambodia, the 2021 ferry counts are final.",
+      "content_sha256": "f698bb3f2bad508608506d47015bf02d5c43528e839a7acd4bfa54ebb4f43310",
+      "corpus_sha256": "4fd8be3d84378567d472ce45a6c6e157d95987fe341799f7ab58499428499254",
+      "role": "support",
+      "title": "Status memorandum B",
+      "url": "",
+      "published": null,
+      "doc_name": null,
+      "page_num": null
+    },
+    "ferry-method": {
+      "source_id": "ferry-method",
+      "content": "Ferry distance is measured in Nautical Miles.",
+      "content_sha256": "b2d9fd17d2fad2bbc075c35b70deda3ce651461c380b6f90f438d18ea7697308",
+      "corpus_sha256": "4fd8be3d84378567d472ce45a6c6e157d95987fe341799f7ab58499428499254",
+      "role": "support",
+      "title": "Ferry operations note",
+      "url": "",
+      "published": null,
+      "doc_name": null,
+      "page_num": null
+    }
+  },
+  "diagnostics": {
+    "identity": {
+      "run_id": "02d14d74b73844a8b7c1d8605cdc97dc",
+      "attempt_id": "bf0b8351489d4fc69d4fb60b216f3c86",
+      "plan_id": "3758817617dbcbc74143a885e97bd96c7a4a34e4f7dc895e914102b9fc59e3d6",
+      "corpus_sha256": "4fd8be3d84378567d472ce45a6c6e157d95987fe341799f7ab58499428499254"
+    },
+    "raw_composer_output": {
+      "title": "Analyst research brief",
+      "claims": []
+    },
+    "editorial_correction": false,
+    "branch_states": {
+      "s01": "completed"
+    },
+    "missing_branches": [],
+    "fallback_unit_ids": [],
+    "scoped_disclosures": {
+      "version": "cq-scoped-disclosures-v1",
+      "identity": {
+        "run_id": "02d14d74b73844a8b7c1d8605cdc97dc",
+        "attempt_id": "bf0b8351489d4fc69d4fb60b216f3c86",
+        "plan_id": "3758817617dbcbc74143a885e97bd96c7a4a34e4f7dc895e914102b9fc59e3d6",
+        "corpus_sha256": "4fd8be3d84378567d472ce45a6c6e157d95987fe341799f7ab58499428499254"
+      },
+      "scope_contract": {
+        "version": "cq-scoped-disclosures-v1",
+        "plan_id": "3758817617dbcbc74143a885e97bd96c7a4a34e4f7dc895e914102b9fc59e3d6",
+        "corpus_sha256": "4fd8be3d84378567d472ce45a6c6e157d95987fe341799f7ab58499428499254",
+        "question_sha256": "72be0872901715672a83d5689f9e2e086485822eec0b88e3d350ac1b55717315",
+        "bindings_sha256": "1adcfd3c62d5cb3d1ca0da2d6949f0c05b355a4f4509d8d0f5d4741c623315f7",
+        "declaration_ref": "Synthetic opposed publication-status statements frozen before generation.",
+        "annotations": [
+          {
+            "component_id": "r1",
+            "subtask_id": "s01",
+            "question_span": {
+              "start": 0,
+              "end": 60
+            }
+          }
+        ]
+      },
+      "records": [
+        {
+          "component_id": "r1",
+          "component_status": "conflicting",
+          "subtask_id": "s01",
+          "required": true,
+          "state": "completed",
+          "outcome": "evidence",
+          "kind": "selected_evidence",
+          "requested_scope": "Were the 2021 ferry counts in Cambodia provisional or final?",
+          "question_span": {
+            "start": 0,
+            "end": 60
+          },
+          "original_question": "Were the 2021 ferry counts in Cambodia provisional or final?",
+          "retrieval_query": "Cambodia 2021 ferry counts",
+          "returned_support_ids": [
+            "ferry-provisional",
+            "ferry-final",
+            "ferry-method"
+          ],
+          "selected_support_ids": [
+            "ferry-provisional",
+            "ferry-final"
+          ],
+          "child_attempt_id": "4ff0c560c10943e6b9434527ac120589",
+          "disclosure": "Evidence selected; semantic support and within-branch completeness remain unproven.",
+          "semantic_support_proven": false,
+          "scope_semantics_proven": false
+        }
+      ],
+      "selected_conflicts": [
+        {
+          "component_id": "r1",
+          "question_anchor": "Were the 2021 ferry counts in Cambodia provisional or final?",
+          "selected_statements": [
+            {
+              "source_id": "ferry-provisional",
+              "quote": "In Cambodia, the 2021 ferry counts are provisional."
+            },
+            {
+              "source_id": "ferry-final",
+              "quote": "In Cambodia, the 2021 ferry counts are final."
+            }
+          ],
+          "semantic_conflict_proven": false
+        }
+      ],
+      "warnings": [
+        "Component r1 reports conflicting selected evidence. Inspect these source IDs: ferry-provisional, ferry-final. Original request: Were the 2021 ferry counts in Cambodia provisional or final?"
+      ],
+      "drafting_allowed": true,
+      "semantic_support_proven": false,
+      "owner_acceptance": "not inferred"
+    },
+    "scoped_mapper_raw_selection": {
+      "wire_version": "cq-scoped-selection-v1",
+      "components": [
+        {
+          "component_id": "r1",
+          "status": "supported",
+          "evidence": [
+            "s_a33829757a86860c"
+          ],
+          "measure": "",
+          "scenario": "",
+          "kind": "unknown"
+        }
+      ],
+      "geography": {
+        "status": "known",
+        "value": "Cambodia",
+        "evidence": [
+          "s_a33829757a86860c"
+        ],
+        "reason": ""
+      },
+      "period": ""
+    },
+    "application_source_selection": {
+      "components": [
+        {
+          "component_id": "r1",
+          "status": "conflicting",
+          "evidence": [
+            "s_a33829757a86860c",
+            "s_7e56dc17ae7a2610"
+          ],
+          "gap_anchor": "",
+          "measure": "",
+          "scenario": "",
+          "kind": "unknown"
+        }
+      ],
+      "geography": {
+        "status": "known",
+        "value": "Cambodia",
+        "evidence": [
+          "s_a33829757a86860c"
+        ],
+        "reason": ""
+      },
+      "period": "",
+      "wire_version": "source-selection-v1"
+    },
+    "resolved_evidence_mapping": {
+      "geography": "Cambodia",
+      "period": "",
+      "components": [
+        {
+          "component_id": "r1",
+          "question_anchor": "Were the 2021 ferry counts in Cambodia provisional or final?",
+          "status": "conflicting",
+          "short_answer": "",
+          "evidence": [
+            {
+              "source_id": "ferry-provisional",
+              "quote": "In Cambodia, the 2021 ferry counts are provisional."
+            },
+            {
+              "source_id": "ferry-final",
+              "quote": "In Cambodia, the 2021 ferry counts are final."
+            }
+          ],
+          "gap_anchor": "",
+          "measure": "",
+          "scenario": "",
+          "kind": "unknown"
+        }
+      ],
+      "geography_resolution": {
+        "status": "known",
+        "value": "Cambodia",
+        "evidence": [
+          {
+            "source_id": "ferry-provisional",
+            "quote": "In Cambodia, the 2021 ferry counts are provisional.",
+            "span_id": "s_a33829757a86860c",
+            "content_sha256": "716f6e1138ef5d577c0544903923c418c9c407b3c3d8289154ab47b1693e4653",
+            "start": 0,
+            "end": 51
+          }
+        ],
+        "reason": "",
+        "original_value": "Cambodia",
+        "normalization": "none",
+        "context_only": false,
+        "document_context_bindings": []
+      }
+    },
+    "application_detected_status_conflicts": [
+      {
+        "component_id": "r1",
+        "original_status": "supported",
+        "original_evidence": [
+          "s_a33829757a86860c"
+        ],
+        "opposed_span_ids": [
+          "s_a33829757a86860c",
+          "s_7e56dc17ae7a2610"
+        ],
+        "basis": "opposed publication status for the same literal subject and requested year"
+      }
+    ],
+    "model_responses": [
+      {
+        "stage": "mapping",
+        "identity": {
+          "run_id": "02d14d74b73844a8b7c1d8605cdc97dc",
+          "attempt_id": "bf0b8351489d4fc69d4fb60b216f3c86",
+          "plan_id": "3758817617dbcbc74143a885e97bd96c7a4a34e4f7dc895e914102b9fc59e3d6",
+          "corpus_sha256": "4fd8be3d84378567d472ce45a6c6e157d95987fe341799f7ab58499428499254"
+        },
+        "raw": "{\n  \"wire_version\": \"cq-scoped-selection-v1\",\n  \"components\": [\n    {\n      \"component_id\": \"r1\",\n      \"status\": \"supported\",\n      \"evidence\": [\n        \"s_a33829757a86860c\"\n      ],\n      \"measure\": \"\",\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    }\n  ],\n  \"geography\": {\n    \"status\": \"known\",\n    \"value\": \"Cambodia\",\n    \"evidence\": [\n      \"s_a33829757a86860c\"\n    ],\n    \"reason\": \"\"\n  },\n  \"period\": \"\"\n}",
+        "usage": {
+          "input_tokens": 629,
+          "output_tokens": 144,
+          "total_tokens": 773
+        },
+        "response_metadata": {
+          "model": "ami-llama3.1:8b-4k",
+          "created_at": "2026-11-12T13:04:10.3714856Z",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 4192802800,
+          "load_duration": 8142800,
+          "prompt_eval_count": 629,
+          "prompt_eval_duration": 249341000,
+          "eval_count": 144,
+          "eval_duration": 3859522000,
+          "logprobs": null,
+          "model_name": "ami-llama3.1:8b-4k",
+          "model_provider": "ollama"
+        }
+      }
+    ],
+    "span_catalog": {
+      "s_a33829757a86860c": {
+        "source_id": "ferry-provisional",
+        "content_sha256": "716f6e1138ef5d577c0544903923c418c9c407b3c3d8289154ab47b1693e4653",
+        "start": 0,
+        "end": 51,
+        "text": "In Cambodia, the 2021 ferry counts are provisional."
+      },
+      "s_7e56dc17ae7a2610": {
+        "source_id": "ferry-final",
+        "content_sha256": "f698bb3f2bad508608506d47015bf02d5c43528e839a7acd4bfa54ebb4f43310",
+        "start": 0,
+        "end": 45,
+        "text": "In Cambodia, the 2021 ferry counts are final."
+      },
+      "s_c1baa6e942764a3b": {
+        "source_id": "ferry-method",
+        "content_sha256": "b2d9fd17d2fad2bbc075c35b70deda3ce651461c380b6f90f438d18ea7697308",
+        "start": 0,
+        "end": 45,
+        "text": "Ferry distance is measured in Nautical Miles."
+      }
+    },
+    "application_extracts": [
+      {
+        "component_id": "r1",
+        "financial_comparison_coverage": {
+          "status": "not_checked",
+          "semantic_support_proven": false
+        },
+        "origin": "application-selected-source-extract",
+        "text": "",
+        "span_ids": [
+          "s_a33829757a86860c",
+          "s_7e56dc17ae7a2610"
+        ],
+        "evidence": [
+          {
+            "source_id": "ferry-provisional",
+            "quote": "In Cambodia, the 2021 ferry counts are provisional.",
+            "span_id": "s_a33829757a86860c",
+            "content_sha256": "716f6e1138ef5d577c0544903923c418c9c407b3c3d8289154ab47b1693e4653",
+            "start": 0,
+            "end": 51
+          },
+          {
+            "source_id": "ferry-final",
+            "quote": "In Cambodia, the 2021 ferry counts are final.",
+            "span_id": "s_7e56dc17ae7a2610",
+            "content_sha256": "f698bb3f2bad508608506d47015bf02d5c43528e839a7acd4bfa54ebb4f43310",
+            "start": 0,
+            "end": 45
+          }
+        ],
+        "quantity_measure_check": "not_applicable"
+      }
+    ],
+    "requested_branch_coverage": {
+      "r1": {
+        "status": "conflicting",
+        "required_branches": [
+          "s01"
+        ],
+        "unselected_branches": [],
+        "semantic_support_proven": false
+      }
+    },
+    "concurrent_mapping_version": "cq-mapper-v10-opposing-status",
+    "concurrent_composition_version": "cq-composer-v2-unit-local",
+    "mapping_wire_version": "cq-scoped-selection-v1",
+    "gap_authorship": "application-owned scoped branch disclosures; not raw model or editorial text",
+    "scope_deadline_binding": {
+      "declared_scope_contract": {
+        "version": "cq-scoped-disclosures-v1",
+        "plan_id": "bb7bc752575061bc28e26174aafd30cf60bb0bdb82b93a1422a1a55725d643e8",
+        "corpus_sha256": "4fd8be3d84378567d472ce45a6c6e157d95987fe341799f7ab58499428499254",
+        "question_sha256": "72be0872901715672a83d5689f9e2e086485822eec0b88e3d350ac1b55717315",
+        "bindings_sha256": "1adcfd3c62d5cb3d1ca0da2d6949f0c05b355a4f4509d8d0f5d4741c623315f7",
+        "declaration_ref": "Synthetic opposed publication-status statements frozen before generation.",
+        "annotations": [
+          {
+            "component_id": "r1",
+            "subtask_id": "s01",
+            "question_span": {
+              "start": 0,
+              "end": 60
+            }
+          }
+        ]
+      },
+      "declared_scope_file_sha256": "924115aea5cc95266778bc1ea6c7be195e62d3af48aaa48dd4b71108df415b8c",
+      "declared_plan_id": "bb7bc752575061bc28e26174aafd30cf60bb0bdb82b93a1422a1a55725d643e8",
+      "runtime_plan_id": "3758817617dbcbc74143a885e97bd96c7a4a34e4f7dc895e914102b9fc59e3d6",
+      "declared_deadline_seconds": 180.0,
+      "runtime_deadline_seconds": 177.89100000000326,
+      "allowed_change": "deadline reduction only; all other plan fields equal",
+      "semantic_support_proven": false
+    }
+  },
+  "note": "Review raw composer, application fallback and final claims separately; no approval/export."
+}

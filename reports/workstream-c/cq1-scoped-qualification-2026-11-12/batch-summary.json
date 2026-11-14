@@ -1,0 +1,62 @@
+{
+  "status": "failed; allowance closed",
+  "contract_sha256": "5739ff3bb0f6e57c1d6d9b52da45530c87059d44722d1a7df5ac4891cd092bcc",
+  "frozen_files_verified": 161,
+  "attempted_ids": [
+    "cq1-a01"
+  ],
+  "source_adjudicated_ids": [],
+  "unattempted_ids": [
+    "cq1-a02",
+    "cq1-a03",
+    "cq1-a04",
+    "cq1-a05",
+    "cq1-a06",
+    "cq1-a07",
+    "cq1-a08",
+    "cq1-a09",
+    "cq1-a10",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "planned_denominators": {
+    "answerable": 10,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2
+  },
+  "failure": "The grammar admitted a lexical measurement-unit label as geography. Source-to-document binding rejected its unrelated supporting span before composition.",
+  "actual_model_calls": 1,
+  "nemo_invocations": 0,
+  "input_tokens": 2319,
+  "output_tokens": 204,
+  "known_main_tokens": 2523,
+  "r07_sha256": "5c09d7eaa6eb1f5c7a6434e531c8d4281af4efe46658f8bcd432aecfc82ebfd9",
+  "retained_artifacts": {
+    "cq1-a01.mapping.raw.json": "26588501d7e2594e184a0ced81016751cb1993de677d77df299b4f9dc106b657",
+    "cq1-a01.result.json": "f17be32537b7983e86bd7aa6897b19d978c210140ade6c1d2808ca412b8bc0df",
+    "cq1-a01.sqlite3": "f87b6eb727841f9b1323be506c30a8a27b38222add5ebf469044fc62e17647ed",
+    "cq1-a01.started.json": "055550d636606da96dc2d827fb6b5c06540c3f3d58c56ed23a29a3ffc66d639e",
+    "stopped.json": "bfe29305a57738d3d42ae8476689a81c9f398e437bd1272765e9faa1e6178747"
+  },
+  "thresholds": {
+    "answerable": 9,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2,
+    "critical_errors": 0
+  },
+  "cumulative_observed_main_starts": 21,
+  "cumulative_nemo_wrappers": 5,
+  "cumulative_known_main_tokens": 16577
+}

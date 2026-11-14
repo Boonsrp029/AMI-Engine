@@ -1,0 +1,6 @@
+{
+  "verdict": "pass",
+  "result_sha256": "9befd0c23ed9daab5ea20c5972cdf8c0ae5d8a0a008c11a5572a5ec2a63462e8",
+  "source_findings": "Assistant-authored. Pinned EIA US utility-scale 2023 table, source eia-generation-2023, span s_cb9a294a4ff9d4c9 offsets 557:1157, gives Renewables (total) 894 billion kWh and 21.4% of total utility-scale generation. Raw mapper selected the exact span; raw composer selected r1/u1; application rendered the verified aggregate row with both fields and original citation. Final NeMo passed and exact text persisted as needs_review revision 1. No fallback or editorial correction. US is supplied by the cited table heading and query; generic title does not assert another geography.",
+  "owner_adjudication": "pending"
+}

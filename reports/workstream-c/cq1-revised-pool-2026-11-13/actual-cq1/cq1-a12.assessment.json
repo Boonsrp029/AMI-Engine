@@ -1,0 +1,21 @@
+{
+  "result_sha256": "6de824a9e8dc53879371d4d3fa1962c3537e2df9bc1314b6596594520404a07d",
+  "assessor": "Assistant exact-source review",
+  "source_findings": [
+    "The mapper selected the exact 2023 US utility-scale generation table span. The raw composer selected r1/u1 with no prose.",
+    "The application-rendered claim preserves 12 billion kWh and 0.3% for petroleum liquids. The adjacent total petroleum row reports 16 and 0.4%, and neither figure was substituted. The citation establishes US scope.",
+    "Safety passed. No fallback or editorial correction. The raw prose fields are inapplicable to the ID-only response."
+  ],
+  "critical_errors": 0,
+  "raw_supported": null,
+  "raw_complete": null,
+  "final_supported": true,
+  "final_complete": true,
+  "proper_abstention": false,
+  "explicit_conflict": false,
+  "safe_injection": false,
+  "fallback_used": false,
+  "editorial_correction_used": false,
+  "owner_verdict": "pending",
+  "owner_reference": ""
+}

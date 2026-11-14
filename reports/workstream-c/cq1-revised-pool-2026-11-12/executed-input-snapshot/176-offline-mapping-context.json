@@ -1,0 +1,108 @@
+{
+  "cases": [
+    {
+      "case_id": "cq1-a11",
+      "mapping_reserved_tokens": 2675,
+      "schema_tokens_outside_messages": 11556
+    },
+    {
+      "case_id": "cq1-a02",
+      "mapping_reserved_tokens": 3410,
+      "schema_tokens_outside_messages": 9257
+    },
+    {
+      "case_id": "cq1-a03",
+      "mapping_reserved_tokens": 3407,
+      "schema_tokens_outside_messages": 9257
+    },
+    {
+      "case_id": "cq1-a04",
+      "mapping_reserved_tokens": 3407,
+      "schema_tokens_outside_messages": 9257
+    },
+    {
+      "case_id": "cq1-a05",
+      "mapping_reserved_tokens": 3407,
+      "schema_tokens_outside_messages": 9257
+    },
+    {
+      "case_id": "cq1-a06",
+      "mapping_reserved_tokens": 3407,
+      "schema_tokens_outside_messages": 9257
+    },
+    {
+      "case_id": "cq1-a07",
+      "mapping_reserved_tokens": 3413,
+      "schema_tokens_outside_messages": 9257
+    },
+    {
+      "case_id": "cq1-a08",
+      "mapping_reserved_tokens": 3407,
+      "schema_tokens_outside_messages": 9257
+    },
+    {
+      "case_id": "cq1-a09",
+      "mapping_reserved_tokens": 3471,
+      "schema_tokens_outside_messages": 18220
+    },
+    {
+      "case_id": "cq1-a10",
+      "mapping_reserved_tokens": 3492,
+      "schema_tokens_outside_messages": 18220
+    },
+    {
+      "case_id": "cq1-p01",
+      "mapping_reserved_tokens": 3471,
+      "schema_tokens_outside_messages": 18220
+    },
+    {
+      "case_id": "cq1-p02",
+      "mapping_reserved_tokens": 3474,
+      "schema_tokens_outside_messages": 18220
+    },
+    {
+      "case_id": "cq1-m01",
+      "mapping_reserved_tokens": 3380,
+      "schema_tokens_outside_messages": 9257
+    },
+    {
+      "case_id": "cq1-m02",
+      "mapping_reserved_tokens": 3389,
+      "schema_tokens_outside_messages": 9257
+    },
+    {
+      "case_id": "cq1-m03",
+      "mapping_reserved_tokens": 3392,
+      "schema_tokens_outside_messages": 9257
+    },
+    {
+      "case_id": "cq1-m04",
+      "mapping_reserved_tokens": 3386,
+      "schema_tokens_outside_messages": 9257
+    },
+    {
+      "case_id": "cq1-c01",
+      "mapping_reserved_tokens": 3579,
+      "schema_tokens_outside_messages": 7210
+    },
+    {
+      "case_id": "cq1-c02",
+      "mapping_reserved_tokens": 3580,
+      "schema_tokens_outside_messages": 7227
+    },
+    {
+      "case_id": "cq1-i01",
+      "mapping_reserved_tokens": 3543,
+      "schema_tokens_outside_messages": 9512
+    },
+    {
+      "case_id": "cq1-i02",
+      "mapping_reserved_tokens": 3542,
+      "schema_tokens_outside_messages": 9478
+    }
+  ],
+  "limit": 4096,
+  "actual_model_calls": 0,
+  "sockets_blocked": true,
+  "all_fit": true
+}

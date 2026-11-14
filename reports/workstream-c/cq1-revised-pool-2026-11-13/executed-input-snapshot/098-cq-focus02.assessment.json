@@ -1,0 +1,14 @@
+{
+  "result_sha256": "280c3c2e94b69fa453a9c294c69b0cf64eb996c3ead5dfa3dba7c8b48e2ce46e",
+  "verdict": "pass",
+  "authorship": "Assistant source review. Owner judgment pending.",
+  "source_findings": [
+    "The mapper selected the exact table span. The composer selected component r1, unit u1 without generating prose.",
+    "The pinned US utility-scale table identifies Natural gas, 1,802 billion kWh and 43.1% of total in 2023. The application-rendered text preserves these fields and its original citation.",
+    "Source content hash, span offsets and s01 lineage match. No fallback or editorial correction.",
+    "Execution and NeMo passed. Revision 1 awaits review with zero reviews or exports."
+  ],
+  "raw_table_selection_pass": true,
+  "application_rendered_claim_complete": true,
+  "next_case_allowed": false
+}

@@ -104,3 +104,42 @@ def test_existing_contract_is_never_overwritten(tmp_path):
     args=setup(tmp_path);args["destination"].parent.mkdir();args["destination"].write_text("Preserved local owner text")
     with pytest.raises(ValueError,match="fresh contract"):build(**args)
     assert args["destination"].read_text()=="Preserved local owner text"
+
+
+@pytest.mark.parametrize("relocation", ["verified", "wrong_root", "unlisted_corpus"])
+def test_relocated_frozen_corpus_and_review_protocol(tmp_path, relocation):
+    args = setup(tmp_path)
+    pool = args["pool"]
+    old_root = tmp_path / "old-pool"
+    plans_path = pool / "plans.json"
+    plans = json.loads(plans_path.read_text())
+    for row in plans.values():
+        row["corpus_path"] = str(old_root / "corpus.json")
+    write(plans_path, plans)
+    manifest_path = pool / "manifest.json"
+    if relocation == "unlisted_corpus":
+        manifest = json.loads(manifest_path.read_text())
+        del manifest["sha256"]["corpus.json"]
+        write(manifest_path, manifest)
+    args.update(expected_pool_sha256=digest(manifest_path), expected_plans_sha256=digest(plans_path))
+    write(pool / "plans-v3-coverage-manifest.json", {
+        "plans_file": plans_path.name, "sha256": args["expected_plans_sha256"],
+        "original_content_manifest_sha256": args["expected_pool_sha256"],
+    })
+    protocol = tmp_path / "review.md"
+    protocol.write_text("Synthetic source review protocol.", encoding="utf-8")
+    operator = tmp_path / "operator.py"
+    operator.write_text("# Synthetic operator", encoding="utf-8")
+    args.update(recorded_pool_root=tmp_path / "wrong" if relocation == "wrong_root" else old_root,
+                review_protocol=protocol, execution_artifacts=(operator,))
+    if relocation != "verified":
+        with pytest.raises(ValueError):
+            build(**args)
+        assert not args["destination"].exists()
+        return
+    contract = build(**args)
+    assert {row["corpus_path"] for row in contract["cases"].values()} == {str(pool / "corpus.json")}
+    assert contract["input_sha256"][str(protocol)] == digest(protocol)
+    assert contract["input_sha256"][str(operator)] == digest(operator)
+    assert contract["source_reference_path"] == str(pool / "cases.json")
+    assert not args["output_directory"].exists()

@@ -1,0 +1,26 @@
+{
+  "version": "cq-scoped-disclosures-v1",
+  "plan_id": "f0955f93814d6f55da77df6e7953e8c4617d7d7cdb42df46bfaa135fcbfc0992",
+  "corpus_sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13",
+  "question_sha256": "5fe26fdab1387468eeb96b00a46b34b2a26066dab96810832178e4d2083bfcc9",
+  "bindings_sha256": "15061eeb9cb7f10ebe295d0da1a6384a1cf678473ddde02af79b60c950cefc63",
+  "declaration_ref": "C prepared development question labels; not owner acceptance",
+  "annotations": [
+    {
+      "component_id": "r1",
+      "subtask_id": "s01",
+      "question_span": {
+        "start": 8,
+        "end": 53
+      }
+    },
+    {
+      "component_id": "r1",
+      "subtask_id": "s02",
+      "question_span": {
+        "start": 59,
+        "end": 109
+      }
+    }
+  ]
+}

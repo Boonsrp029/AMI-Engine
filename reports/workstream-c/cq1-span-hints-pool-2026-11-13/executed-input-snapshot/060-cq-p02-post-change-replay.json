@@ -1,0 +1,25 @@
+{
+  "reproduced_failure": false,
+  "draft": {
+    "title": "Analyst research brief (Denmark)",
+    "claims": [
+      {
+        "text": "In 2015, wind supplied 29% of total electricity generation in Denmark.",
+        "source_ids": [
+          "cq-wind"
+        ]
+      }
+    ],
+    "warnings": [
+      "Subtask s02: component r1: This retrieval returned no supporting evidence; this does not establish absence in the database. Requested scope: Denmark retail electricity prices yesterday. Retrieval query (data): yesterday retail prices. Original request: Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday."
+    ]
+  },
+  "offline": true,
+  "sockets_blocked": true,
+  "actual_model_calls": 0,
+  "replayed_stages": [
+    "mapping",
+    "composition"
+  ],
+  "nemo_invocations": 0
+}

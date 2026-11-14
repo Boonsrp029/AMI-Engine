@@ -1,0 +1,30 @@
+{
+  "stage": "mapping",
+  "identity": {
+    "run_id": "6995f67015504fbdaa70444581d9899d",
+    "attempt_id": "e6d8359f0c8d4e7d8b9d9cc1fe7ef072",
+    "plan_id": "56cd9086292ced801de03e5db9ed4aade8ae4aa11f6db2d33dc8d9c88743cdf2",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"wire_version\": \"cq-scoped-selection-v1\",\n  \"components\": [\n    {\n      \"component_id\": \"r1\",\n      \"status\": \"supported\",\n      \"evidence\": [\n        \"s_cb9a294a4ff9d4c9\"\n      ],\n      \"measure\": \"\",\n      \"kind\": \"unknown\"\n    }\n  ],\n  \"geography\": {\n    \"status\": \"unresolved\",\n    \"value\": \"\",\n    \"evidence\": [],\n    \"reason\": \"Units are not places\"\n  },\n  \"period\": \"\"\n}",
+  "usage": {
+    "input_tokens": 2388,
+    "output_tokens": 129,
+    "total_tokens": 2517
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-13T11:50:32.9876038Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 9445083300,
+    "load_duration": 5238471100,
+    "prompt_eval_count": 2388,
+    "prompt_eval_duration": 1106280000,
+    "eval_count": 129,
+    "eval_duration": 3074749000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

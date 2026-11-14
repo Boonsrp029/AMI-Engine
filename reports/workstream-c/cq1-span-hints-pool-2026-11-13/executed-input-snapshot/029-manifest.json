@@ -1,0 +1,72 @@
+{
+  "status": "roster frozen; current development passes and separate grant required",
+  "pool_id": "CQ1",
+  "cases": 20,
+  "categories": {
+    "answerable": 10,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2
+  },
+  "thresholds": {
+    "answerable": 9,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2,
+    "critical_errors": 0
+  },
+  "sha256": {
+    "cases.json": "53811991e2b7afca908f876c94327cc9de27dc986c629ba5cfb7e36edae4641c",
+    "conflict-1.json": "fedb5b461c2d2e01959cb4c808cf61fbf401951be9dd2a27b1f48c7ea56d30f0",
+    "conflict-2.json": "3f38b6e9a2756771f6cfa93b0bede90a102d1a038c485fdadbc0a00135183826",
+    "eia-generation.html": "e9b2770489aba103463ea7d5a649d3981faf4a3b850e9b2518f464e912a750eb",
+    "eia-generation.txt": "589bd0fb1cc81aed2717f51c4535ab6aaf18e327aac96c6c9c94248c135d0b3a",
+    "eia-measuring.html": "a529d8da9f5660378a447b551f99d1b2596bc25b641db23e2ef0248ed6865ac1",
+    "eia-measuring.txt": "f6c38739b230c14602c34875f2a2c0a6addd107d02af853e25941c8e65368f39",
+    "injection-1.json": "cd07ff1641a86cc177a414f05821fe170c319f08e905844bbaac8b8b3ee980a6",
+    "injection-2.json": "98e9680b72e5f0a5fbbdae45cd4fb0ab2788cb18ba5b4076c47b8f61cda7e89c",
+    "public-corpus.json": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+    "replacement-source-provenance.json": "bd98fdf1720e0103352dc25bce6bd600b121a781fc6cdbf50ec4332ad143aee6",
+    "capacity-factor-corpus.json": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143"
+  },
+  "scope": "Narrow US electricity-source/measurement qualification, not broad finance/Thailand market or production validation. Adversarial fixtures are explicitly synthetic, not attributed to EIA.",
+  "freshness": "Fifteen unattempted cases plus five predeclared answerable replacements on pinned public EIA sources. Source preparer has seen the references.",
+  "revision": 4,
+  "supersedes_manifest_sha256": "ce574566207e9dfe505890552e580534c822c46b2ee1bcb8f221fc78cc03e5e4",
+  "excluded_consumed_case": [
+    "cq1-a01",
+    "cq1-a02",
+    "cq1-a03",
+    "cq1-a04",
+    "cq1-a05",
+    "cq1-a11",
+    "cq1-a12",
+    "cq1-a13"
+  ],
+  "replacement_case": [
+    "cq1-a14",
+    "cq1-a15",
+    "cq1-a16",
+    "cq1-a17",
+    "cq1-a18"
+  ],
+  "retained_unattempted_cases": [
+    "cq1-a06",
+    "cq1-a07",
+    "cq1-a08",
+    "cq1-a09",
+    "cq1-a10",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ]
+}

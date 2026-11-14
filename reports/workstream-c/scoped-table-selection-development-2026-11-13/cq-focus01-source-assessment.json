@@ -1,0 +1,12 @@
+{
+  "result_sha256": "c4720b0df56e99e0379c7c0041c83fd85e8868bd4394908ad4d8608851a11458",
+  "verdict": "pass",
+  "authorship": "Assistant source review. Owner judgment pending.",
+  "source_findings": [
+    "The example preserves 100 MW, 24 hours at capacity and 2,400 MWh with the pinned generation source.",
+    "The capacity-factor denominator preserves potential electrical energy at full power over the same period with the pinned glossary source.",
+    "The composer used the supplied ratio operand and preserved both facts in the stored draft. No fallback, editorial correction or application-rendered table row.",
+    "Execution and NeMo passed and revision 1 awaits review."
+  ],
+  "next_case_allowed": true
+}

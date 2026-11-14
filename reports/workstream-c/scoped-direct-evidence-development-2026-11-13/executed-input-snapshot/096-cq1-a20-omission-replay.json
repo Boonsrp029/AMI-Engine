@@ -1,0 +1,154 @@
+{
+  "case_id": "cq1-a20",
+  "result_sha256": "292da0876313ef7f292ed28c03510492b1502692e9a95a63a27a9693ec27e509",
+  "actual_model_calls": 0,
+  "sockets_blocked": true,
+  "variants": {
+    "unchanged": {
+      "draft": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "Automated electricity meters report electricity use periodically to the utility.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          },
+          {
+            "text": "Utility companies measure and monitor electricity use with meters.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "fallback_reasons": {},
+      "coverage": [
+        {
+          "claim_index": 0,
+          "unit_ids": [
+            "u1",
+            "u3"
+          ],
+          "component_ids": [
+            "r1",
+            "r2"
+          ]
+        },
+        {
+          "claim_index": 1,
+          "unit_ids": [
+            "u2",
+            "u4"
+          ],
+          "component_ids": [
+            "r1",
+            "r2"
+          ]
+        }
+      ]
+    },
+    "omit_background": {
+      "draft": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "Automated electricity meters report electricity use periodically to the utility.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          },
+          {
+            "text": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          }
+        ],
+        "warnings": [
+          "Some claims retain verbatim source excerpts because synthesis omitted evidence, its causal explanation, or used an unestablished period; review their relevance and readability."
+        ]
+      },
+      "fallback_reasons": {
+        "u2": "unit_omitted",
+        "u4": "unit_omitted"
+      },
+      "coverage": [
+        {
+          "claim_index": 0,
+          "unit_ids": [
+            "u1",
+            "u3"
+          ],
+          "component_ids": [
+            "r1",
+            "r2"
+          ]
+        },
+        {
+          "claim_index": 1,
+          "unit_ids": [
+            "u2",
+            "u4"
+          ],
+          "component_ids": [
+            "r1",
+            "r2"
+          ]
+        }
+      ]
+    },
+    "omit_background_preserve_capability": {
+      "draft": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "Earlier automated electricity meters could periodically report electricity use to the utility.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          },
+          {
+            "text": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          }
+        ],
+        "warnings": [
+          "Some claims retain verbatim source excerpts because synthesis omitted evidence, its causal explanation, or used an unestablished period; review their relevance and readability."
+        ]
+      },
+      "fallback_reasons": {
+        "u2": "unit_omitted",
+        "u4": "unit_omitted"
+      },
+      "coverage": [
+        {
+          "claim_index": 0,
+          "unit_ids": [
+            "u1",
+            "u3"
+          ],
+          "component_ids": [
+            "r1",
+            "r2"
+          ]
+        },
+        {
+          "claim_index": 1,
+          "unit_ids": [
+            "u2",
+            "u4"
+          ],
+          "component_ids": [
+            "r1",
+            "r2"
+          ]
+        }
+      ]
+    }
+  },
+  "synthetic_variants": "fixed-response engineering checks only"
+}

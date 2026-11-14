@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "c32217b23dbf4bef86dcb61ced0452f4",
+    "attempt_id": "8c8d8164dfa04a26a7ff373623a8f72a",
+    "plan_id": "434e9a4ba9b01cf43e35630d51dc26dc7715901395c06807ecf18d8fc391d746",
+    "corpus_sha256": "5f50f75038dfed79d11037134f41c1fc051de1326730b54c22e5e05119915143"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"A 100 MW plant generates 2,400 MWh of electricity in 24 hours at that capacity.\",\n      \"unit_id\": \"u1\"\n    },\n    {\n      \"component_id\": \"r2\",\n      \"text\": \"The plant's actual electrical energy output for a given period forms the numerator of its capacity factor.\",\n      \"unit_id\": \"u2\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 682,
+    "output_tokens": 119,
+    "total_tokens": 801
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-12T13:06:57.3929765Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3320131400,
+    "load_duration": 3232800,
+    "prompt_eval_count": 682,
+    "prompt_eval_duration": 154893000,
+    "eval_count": 119,
+    "eval_duration": 2987843000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

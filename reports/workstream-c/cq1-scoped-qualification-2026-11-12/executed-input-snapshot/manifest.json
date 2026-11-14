@@ -1,0 +1,807 @@
+[
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\config\\agent_config.yaml",
+    "sha256": "16e6a2b37b1660769844b404bffac7ac0579311ba034446fc08ef8e0c72f447d",
+    "snapshot": "001-agent_config.yaml"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\config\\guardrails\\actions.py",
+    "sha256": "e8d9c33f3a1955f5aa139373c80237b5a1dfd568870fd0e00492532fbee4ce73",
+    "snapshot": "002-actions.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\config\\guardrails\\config.yml",
+    "sha256": "4cbaa1a73c727902f8144f1733124440587fa9411ff1481e818739b88fa4713d",
+    "snapshot": "003-config.yml"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\config\\guardrails\\prompts.yml",
+    "sha256": "9d402ad55555375eaad39d80ff83c8874381a283ac0fdcbd87eb498fad5ae996",
+    "snapshot": "004-prompts.yml"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\config\\guardrails\\rails.co",
+    "sha256": "39dd145bb34b132d77b34744410b5049c716954f012859daaf350916dd8f4dad",
+    "snapshot": "005-rails.co"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\constraints-pilot.txt",
+    "sha256": "267aab0f6a0601605fa33532f94f091809866429f340c55b335e4ecd22015836",
+    "snapshot": "006-constraints-pilot.txt"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\docs\\concurrency\\c-percentage-scope-relocation.md",
+    "sha256": "5be6b2c2ba79cec0cb89a0e076aa8af050f4936b6dde45b7e4661dba0bcd07af",
+    "snapshot": "007-c-percentage-scope-relocation.md"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq-261106\\cq-p01\\corpus.json",
+    "sha256": "a03c935201dd5717a06c2f1f9b7e36eef7cab4b65b5f3cb277cf4bd1c96a0a13",
+    "snapshot": "008-corpus.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq-261106\\cq-p02\\corpus.json",
+    "sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669",
+    "snapshot": "009-corpus.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq-261106\\cq1\\cases.json",
+    "sha256": "9a0497ec4c30e05992bc2730b9118565c33c79539a399afbd4dedcd4c9dbf832",
+    "snapshot": "010-cases.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq-261106\\cq1\\conflict-1.json",
+    "sha256": "fedb5b461c2d2e01959cb4c808cf61fbf401951be9dd2a27b1f48c7ea56d30f0",
+    "snapshot": "011-conflict-1.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq-261106\\cq1\\conflict-2.json",
+    "sha256": "3f38b6e9a2756771f6cfa93b0bede90a102d1a038c485fdadbc0a00135183826",
+    "snapshot": "012-conflict-2.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq-261106\\cq1\\eia-generation.html",
+    "sha256": "e9b2770489aba103463ea7d5a649d3981faf4a3b850e9b2518f464e912a750eb",
+    "snapshot": "013-eia-generation.html"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq-261106\\cq1\\eia-generation.txt",
+    "sha256": "589bd0fb1cc81aed2717f51c4535ab6aaf18e327aac96c6c9c94248c135d0b3a",
+    "snapshot": "014-eia-generation.txt"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq-261106\\cq1\\eia-measuring.html",
+    "sha256": "a529d8da9f5660378a447b551f99d1b2596bc25b641db23e2ef0248ed6865ac1",
+    "snapshot": "015-eia-measuring.html"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq-261106\\cq1\\eia-measuring.txt",
+    "sha256": "f6c38739b230c14602c34875f2a2c0a6addd107d02af853e25941c8e65368f39",
+    "snapshot": "016-eia-measuring.txt"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq-261106\\cq1\\injection-1.json",
+    "sha256": "cd07ff1641a86cc177a414f05821fe170c319f08e905844bbaac8b8b3ee980a6",
+    "snapshot": "017-injection-1.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq-261106\\cq1\\injection-2.json",
+    "sha256": "98e9680b72e5f0a5fbbdae45cd4fb0ab2788cb18ba5b4076c47b8f61cda7e89c",
+    "snapshot": "018-injection-2.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq-261106\\cq1\\manifest.json",
+    "sha256": "d587da3c69e9edde1e7f2a5ddcc7dcefe402b6532c7d9f0a21a70b256ea6e26b",
+    "snapshot": "019-manifest.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq-261106\\cq1\\plans-v3-coverage-manifest.json",
+    "sha256": "5515a9085aff17c2536a4fedc95c47b8325476b4f214601c67e7d0e89451ddde",
+    "snapshot": "020-plans-v3-coverage-manifest.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq-261106\\cq1\\plans-v3-explicit-coverage.json",
+    "sha256": "1c67c1fa832acd8f8dab10caafbfaa85b8f24cc7549fc5b6a9355d2310df9f81",
+    "snapshot": "021-plans-v3-explicit-coverage.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq-261106\\cq1\\public-corpus.json",
+    "sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+    "snapshot": "022-public-corpus.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq-261106\\tokenizer-metadata.json",
+    "sha256": "fa1ba7031fa5853b7f1f766c35c2627b5e56235939d52c2694e5f8744ae71cf5",
+    "snapshot": "023-tokenizer-metadata.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\build_qualification.py",
+    "sha256": "989b7011e4e8987fe75ec1cc08d806f3c25fe33a6f3517a6a27885ab25cef54a",
+    "snapshot": "024-build_qualification.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\cq-p01.lineage-assessment.json",
+    "sha256": "ed8b2585034d016e7fb69f4e7246fe1881e5f29fc40a3faf322aedebd8008c7a",
+    "snapshot": "025-cq-p01.lineage-assessment.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\cq-p02.lineage-assessment.json",
+    "sha256": "ea7eaa2de86ad95c2a9de05bfef79b9dd778eaac05bdf787de4ebcd60a9460ae",
+    "snapshot": "026-cq-p02.lineage-assessment.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-a01.json",
+    "sha256": "24f8b2db9a58192f0dff7436d1216dad68b1f7c82981ebba7581bb67b6418dcb",
+    "snapshot": "027-cq1-a01.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-a02.json",
+    "sha256": "b62435dc818cdee11c8e75057b219687b99021e45ce9e8f5a479a28ed344a115",
+    "snapshot": "028-cq1-a02.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-a03.json",
+    "sha256": "4892f8fc15589eabff335aece09c5c4a57bd02489acce7e4b723231c48273a72",
+    "snapshot": "029-cq1-a03.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-a04.json",
+    "sha256": "f618982e9d744f6b6c160b95beca12a9968d3b03d173da596675d3de0c54e4d7",
+    "snapshot": "030-cq1-a04.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-a05.json",
+    "sha256": "94ace6412a6e0f5b2ceb199e7f476d28b0844bc93979c6bfca430e9a0a0f710c",
+    "snapshot": "031-cq1-a05.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-a06.json",
+    "sha256": "f10ccf27dbf8c9c6a421e15c296ffb75742adcc91d4b7208d3ff934db3cf24b0",
+    "snapshot": "032-cq1-a06.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-a07.json",
+    "sha256": "71ee5a344e4f0c15c30e8d5c6f70f9c5e1050f6f6fceb8dc47f3d3aedc405afa",
+    "snapshot": "033-cq1-a07.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-a08.json",
+    "sha256": "b758e9a38123230176eb0fd4bde0df5f22a6f7616819316c0a60d0612783086e",
+    "snapshot": "034-cq1-a08.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-a09.json",
+    "sha256": "6bd96e880ca620f656779da8db91f2c4e3ae2f2a91ec29f38823f2a2dd9ed4e6",
+    "snapshot": "035-cq1-a09.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-a10.json",
+    "sha256": "3c6989853491cd74fcbf976e2eac88392d9895cd8dbb2f989cd5519c4fb802b7",
+    "snapshot": "036-cq1-a10.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-c01.json",
+    "sha256": "cc0a45d668af59ba9cdb5c505fbbbe8644c2c9f3c7c6e4a948861f341f035f3a",
+    "snapshot": "037-cq1-c01.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-c02.json",
+    "sha256": "83a517a30f3bb57413028553b78c4a93f2ff4db903575476bf0240b02636794d",
+    "snapshot": "038-cq1-c02.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-i01.json",
+    "sha256": "b5abe7a60c12a78055864fb8c9e8adb8914b5c6ab8aff5406eba7534c0592864",
+    "snapshot": "039-cq1-i01.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-i02.json",
+    "sha256": "330ab689b1033eebe7977582e836a8b9e3ee0431473c1a9f62bef41a4b110ffa",
+    "snapshot": "040-cq1-i02.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-m01.json",
+    "sha256": "bbd80ab0e4959ffad4728cb3a8c63498a07bb42dc2a5f004fba2da03945db7c7",
+    "snapshot": "041-cq1-m01.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-m02.json",
+    "sha256": "3cd3d767d6f1001f9e1cb76e3e05f35c9abd769260324d10833c16aa6ce1b536",
+    "snapshot": "042-cq1-m02.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-m03.json",
+    "sha256": "c3b4271b6d6570170865f0a87f84d4c30ca4971e7f201cb2de469465997b60b8",
+    "snapshot": "043-cq1-m03.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-m04.json",
+    "sha256": "98ac171a8e28e91d082f5379205305cabdd5f9ced9dcf9c14d53cd82c1f2fa1c",
+    "snapshot": "044-cq1-m04.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-p01.json",
+    "sha256": "7e5cf402bcc7fece184a94bae170a89066e8cee4b495791337bea4a22a452bc3",
+    "snapshot": "045-cq1-p01.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\cq1-p02.json",
+    "sha256": "4ae164920b68db1b67d2d3142ab53a6183c178551ef730c4a9749c73b40fa052",
+    "snapshot": "046-cq1-p02.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\question-scopes\\manifest.json",
+    "sha256": "45c2aeb26052a136a76cea42352ef064c16a86653b7d5e5f788b6934d6d2f3b7",
+    "snapshot": "047-manifest.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-denominator-development-2026-11-12\\actual-development-v1\\cq-p01.assessment.json",
+    "sha256": "58ca68a7ecfeddf82c64603c109bb3b4e89293ef023cd95476c3a6811e56b722",
+    "snapshot": "048-cq-p01.assessment.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-denominator-development-2026-11-12\\actual-development-v1\\cq-p01.result.json",
+    "sha256": "93a42f12729fc0202a219517620df3abbf8476836e5427449d75dcd6b02c8745",
+    "snapshot": "049-cq-p01.result.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-denominator-development-2026-11-12\\actual-development-v1\\cq-p01.started.json",
+    "sha256": "f274680f414aa6f55e4ce0ad5cc28e67b846d20da1cc4a6dacb7bda372045ff4",
+    "snapshot": "050-cq-p01.started.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-denominator-development-2026-11-12\\actual-development-v1\\cq-p02.assessment.json",
+    "sha256": "405550c8336df8fa7414cc07716322247eb1d0b9e422bd628570eb4e473b45d7",
+    "snapshot": "051-cq-p02.assessment.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-denominator-development-2026-11-12\\actual-development-v1\\cq-p02.result.json",
+    "sha256": "b0fba192dd5dc7b76fc7d7fadd53d129177e67f090d17816ab821634c51dfdf1",
+    "snapshot": "052-cq-p02.result.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-denominator-development-2026-11-12\\actual-development-v1\\cq-p02.started.json",
+    "sha256": "d573de933a5658274db83db66bbf17b626fb6d172e56eb65a64cbd97c392efdf",
+    "snapshot": "053-cq-p02.started.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-denominator-development-2026-11-12\\cq-p02-post-change-replay.json",
+    "sha256": "e825e895a5683aacfef3346d3df60491a304567c4491a0ef42203840a600ba5f",
+    "snapshot": "054-cq-p02-post-change-replay.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-denominator-development-2026-11-12\\development-contract.json",
+    "sha256": "38d9525a9540c888c71148ae92852820b7c58dbd0f6df504abd686a8981f9b11",
+    "snapshot": "055-development-contract.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-denominator-development-2026-11-12\\replay-cq-p02.py",
+    "sha256": "a56d3658cfb56d25cd287d1993f0131c523fbc2e023ffbbf7271a2c943022284",
+    "snapshot": "056-replay-cq-p02.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-denominator-development-2026-11-12\\run_case.py",
+    "sha256": "f3cef52943ce88b87956fd532f6895a0b8c10743e6a1ba8ac65f14eb72b499c6",
+    "snapshot": "057-run_case.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-denominator-development-2026-11-12\\source-review-protocol.md",
+    "sha256": "74b62b6fdfcdc08a6b592a2fc0626241b9740efcf69f16738587f7ec6e8d47d5",
+    "snapshot": "058-source-review-protocol.md"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-development-v1-2026-11-07\\run_case.py",
+    "sha256": "f3cef52943ce88b87956fd532f6895a0b8c10743e6a1ba8ac65f14eb72b499c6",
+    "snapshot": "059-run_case.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-development-v1-2026-11-07\\source-review-protocol.md",
+    "sha256": "74b62b6fdfcdc08a6b592a2fc0626241b9740efcf69f16738587f7ec6e8d47d5",
+    "snapshot": "060-source-review-protocol.md"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\activated-full-offline-tests.txt",
+    "sha256": "c66b6c6e6e53757b9b2844b90ea2d8bc9695db5a106b9ec266e6682ad7a57834",
+    "snapshot": "061-activated-full-offline-tests.txt"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\landed-ready-tests.txt",
+    "sha256": "dd7643c4fdf4d2e79fa788c6c2fcb5c304d7ad1da442661aabdb9788c9413fe5",
+    "snapshot": "062-landed-ready-tests.txt"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\prepared-development-data\\cq-p01.mapper-input.json",
+    "sha256": "532cb947585855bfce4a7a0297367d930054544d4c7179bb44d719ef6888451a",
+    "snapshot": "063-cq-p01.mapper-input.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\prepared-development-data\\cq-p01.native-body.json",
+    "sha256": "f602ab79d8ffd1ccf8666619c0769b3f4ed110186b9f77091cbe3597994ade7d",
+    "snapshot": "064-cq-p01.native-body.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\prepared-development-data\\cq-p01.scopes.json",
+    "sha256": "69add2a644f71c8c3997da3901f6bc33b365f898aaab466fba748201af6ded2e",
+    "snapshot": "065-cq-p01.scopes.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\prepared-development-data\\cq-p02.mapper-input.json",
+    "sha256": "e863712fcc8aa85b0249e6e4aa856f1372c10ab22b736842cc2c385ddb525c42",
+    "snapshot": "066-cq-p02.mapper-input.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\prepared-development-data\\cq-p02.native-body.json",
+    "sha256": "0c3d8706d6738d3311b540009b1221747c550daea8a1034e226097860b221804",
+    "snapshot": "067-cq-p02.native-body.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\prepared-development-data\\cq-p02.scopes.json",
+    "sha256": "57817949c06da90a6305966b0d0f52b33490eb5d6bf4acaa294605ab23153815",
+    "snapshot": "068-cq-p02.scopes.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\scoped-disclosures-2026-11-07\\prepared-development-data\\preparation.json",
+    "sha256": "32699e8aef4f29894cf897b8e1d6159b46b147465ab8a5c01f2f69e0963e8353",
+    "snapshot": "069-preparation.json"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\requirements-serving.txt",
+    "sha256": "b9f8abc4b20928e4351088a14e17a2a94f6322499fbd794d5ef3ec320bc4e7be",
+    "snapshot": "070-requirements-serving.txt"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\requirements.txt",
+    "sha256": "4bc238785549332a1196ab5954f996890ed12b1370c1834f396ede567af64726",
+    "snapshot": "071-requirements.txt"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\scripts\\_llama_token_count.py",
+    "sha256": "890a7c5bfcc8fb97170626d7def7f36d939f958dba8f318aac37abadb2ee0191",
+    "snapshot": "072-_llama_token_count.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\agents\\graph.py",
+    "sha256": "bd4f83461a1bba1ecbc10850ad6653b75d368c7ab48da4ed7b88ddb0eeeb9413",
+    "snapshot": "073-graph.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\agents\\local_retriever.py",
+    "sha256": "d801d00cf4e2cf90e69bc6685be87a87da0ec94c6719bb06bd279c59e208d541",
+    "snapshot": "074-local_retriever.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\agents\\retriever_node.py",
+    "sha256": "8b958a661728466478e012289deba71c1c830f11c553dba7e3dce425a8ce1c16",
+    "snapshot": "075-retriever_node.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\etl\\__init__.py",
+    "sha256": "21ec1383cfa2d4af8acb8843cc851256f0058622dba9e9271ad5afd2b6232878",
+    "snapshot": "076-__init__.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\etl\\silver_ingestion.py",
+    "sha256": "ff6923fc70e5496d06a19a4e3b329ee2b4bb629aa59321d06425c8ba0b2f20aa",
+    "snapshot": "077-silver_ingestion.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\evals\\artifacts.py",
+    "sha256": "b38dcdab083799494688651ad2dc9a218cd296fde475da3717814e04c2e2fa88",
+    "snapshot": "078-artifacts.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\evals\\evaluate_run.py",
+    "sha256": "0c6dbcaca6603e53b01ed9ba4d6f64f8a2be5ef2eec2bce98928abf78b1b78f5",
+    "snapshot": "079-evaluate_run.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\evals\\inputs.py",
+    "sha256": "afdf731f81f0f6a9e5ec2c98f42199841a83cc9b83ce02c88b8be7521c2a276e",
+    "snapshot": "080-inputs.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\evals\\run_ragas.py",
+    "sha256": "bd04e085eed627f9044fa31520245e5eedae4a5b6e37b16f2654b398d3ad0e35",
+    "snapshot": "081-run_ragas.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\evals\\scoring.py",
+    "sha256": "e52e94611c6716f16d03a7b9dc6b84b326eda7511f2528dc93ab849e4cbed394",
+    "snapshot": "082-scoring.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\indexers\\__init__.py",
+    "sha256": "87d2c87a40e75cef287ff88f72436c4a3a7877743faaaca5cd770034b5671244",
+    "snapshot": "083-__init__.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\indexers\\vector_search_sync.py",
+    "sha256": "e9125702aa0b4869f6399bc28c9942b049fd2133efe5da0d4e3f6de882d7e3a1",
+    "snapshot": "084-vector_search_sync.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\models\\deploy_endpoint.py",
+    "sha256": "62fc56c742d2ffee5a6c606c16ac4f835a5e0bde2af2b6404b29d6f45ccde4a7",
+    "snapshot": "085-deploy_endpoint.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\models\\register_model.py",
+    "sha256": "a00c31d5186abbbe4e269d5f2cab0be75794b290f86d98c04931c19b01dce77c",
+    "snapshot": "086-register_model.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\models\\test_endpoint.py",
+    "sha256": "eb4ad5d8ad889a6c24e4a18790aa7a29bd768b14402ac7e4e675ab066103433f",
+    "snapshot": "087-test_endpoint.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\__init__.py",
+    "sha256": "ce536a06443933605a051f30f560c94e53d0b09b2882a28479ce8b30c991d4a0",
+    "snapshot": "088-__init__.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_choices.py",
+    "sha256": "98f674602d54cdf754c2894cb9803b9516181fd310508afebc5fba80fecba949",
+    "snapshot": "089-_choices.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_comparison_evidence.py",
+    "sha256": "5e4cabd09fc497243050dd47651a9f9ba3f60bad56f8668c08e959098078c628",
+    "snapshot": "090-_comparison_evidence.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_component_retrieval.py",
+    "sha256": "9261e2739c8e119e4e5fbfda3d2f6fa34db85509e62f46356a7e5f5afa55a374",
+    "snapshot": "091-_component_retrieval.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_composition.py",
+    "sha256": "6b0dda5169b2543d04ef077a376f27b7a3cfb80e625a5a04590eb87caf194eaa",
+    "snapshot": "092-_composition.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_continuations.py",
+    "sha256": "e7e0a14a2c858d86768e0dbee3cc87f00b1ccdf260115c642154be13db83a1a2",
+    "snapshot": "093-_continuations.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_directions.py",
+    "sha256": "5d8010d31065ca994e0d334d575f9807dc7ec7f61d62956ac29ff8dfa2176783",
+    "snapshot": "094-_directions.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_entity_comparison.py",
+    "sha256": "6252a8ef6689cf064805ca81ae1b7e1dc6e00b59229e492858e106a20570098c",
+    "snapshot": "095-_entity_comparison.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_evidence.py",
+    "sha256": "6db502ba246dff4186688919b92fb476adefd6098db9e94ebafa2ef7d6c341bf",
+    "snapshot": "096-_evidence.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_financial_coverage.py",
+    "sha256": "95085e8fa52d742f68ce2aae7c64e145f7eda646cc16c675f13a1a420665ffab",
+    "snapshot": "097-_financial_coverage.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_identity.py",
+    "sha256": "826cd264f71268389f7322c881dcc4e8cbd386d93c7527bf7b3850a871ec5d15",
+    "snapshot": "098-_identity.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_investment_coverage.py",
+    "sha256": "83ebf5670f5ecc40f712a7ef9b73dff03aa9b0e769a2e6a9377c32b00f7ab9b9",
+    "snapshot": "099-_investment_coverage.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_model_identity.py",
+    "sha256": "d44643467c4659bc7b6c94f34f72d7fd92ba3e7bb953d858690baed9168039d8",
+    "snapshot": "100-_model_identity.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_passages.py",
+    "sha256": "dd6b7682051365af951496646c984a8e39652aafd80fef98565798badf0375ae",
+    "snapshot": "101-_passages.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_presentation.py",
+    "sha256": "6f945a3ca75cf31abdb897000cc22b20a6d997e610e2f896044fb59c5e68a29d",
+    "snapshot": "102-_presentation.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_quantities.py",
+    "sha256": "c2b05cb011f852643b205039bdae313394c027ac00da6feb472962c7b1c1fe0e",
+    "snapshot": "103-_quantities.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_quarter_context.py",
+    "sha256": "69d914acb0ea85b1fd384743c05ae87ec219d5c0cbdb154eb8b94abfe82c2b36",
+    "snapshot": "104-_quarter_context.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_readiness.py",
+    "sha256": "84f83d43a2ec0ca91b9fd33fab154d16eab2c98bb7fedb7c6fdd7a72d74cf912",
+    "snapshot": "105-_readiness.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_report_context.py",
+    "sha256": "0f2a797fb56c1a8bc669566657b2cdf5eba95b85ba474555f47720be7bc5391e",
+    "snapshot": "106-_report_context.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_request_body.py",
+    "sha256": "b4167934b30dcecdfe786db6210cd6023470d9dfd5ec978a7b7423cbe24ab496",
+    "snapshot": "107-_request_body.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_requests.py",
+    "sha256": "7464b8dd3f1af2536d785f083f02b2f9808b00caf6d6c80d2f34f29b037a8252",
+    "snapshot": "108-_requests.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_retrieval_policy.py",
+    "sha256": "b02471a14a06f46c8ba894901044989609812de64dc89f863ccde8bf19a9c845",
+    "snapshot": "109-_retrieval_policy.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_runtime.py",
+    "sha256": "36200f857f9716f186289c5e9e3fb8474bff68ed9d8fc6239a9f86c24ba1606a",
+    "snapshot": "110-_runtime.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_scope.py",
+    "sha256": "5a1587e721bbd7eb746895338ea828a0cba1c07f14621106ff01bcae297c2aa6",
+    "snapshot": "111-_scope.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_server_logging.py",
+    "sha256": "0fb3538257d7b0fede3896800566eb3b65e593eb294ee87470fb934db5ad1f70",
+    "snapshot": "112-_server_logging.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_source_context.py",
+    "sha256": "6e1f65dc2fd8fa465bf89371a1fdeaad7561bdb2568b99be1ea5182bf79c97a0",
+    "snapshot": "113-_source_context.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_source_excerpt.py",
+    "sha256": "f6a9febe2eaa418bf4c2fe40fade698381c6fcfea8facae3caaf3b4d9e5b979f",
+    "snapshot": "114-_source_excerpt.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_source_selection.py",
+    "sha256": "6d71741afb0146d478c9bbafa60ae54fffcb1923968d3552abe1c8dd66eb4961",
+    "snapshot": "115-_source_selection.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_temporal.py",
+    "sha256": "c501a5a0c1df635f6844c1a521a168d7b525e3fec803ebecb10ed36731140584",
+    "snapshot": "116-_temporal.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_topics.py",
+    "sha256": "6b7edc78d0326f594e37bb9c65407e042cba85d8f2574a580e27275060914898",
+    "snapshot": "117-_topics.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_validation_errors.py",
+    "sha256": "e5eb343df5c4429623e193e62784dd463a57674895c799b2793b5e1ed80076f2",
+    "snapshot": "118-_validation_errors.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_worker.py",
+    "sha256": "fe2d511e39febd54030e3b6b38ed7baf272db6c689f9e91bb2bdba21d4b2da77",
+    "snapshot": "119-_worker.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\api.py",
+    "sha256": "63361bc6e7f948be621b239acce54942f0fad68a2c36c0b953daa46d34c278ec",
+    "snapshot": "120-api.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\engine.py",
+    "sha256": "d01295dc249047b3c37f761b439dd71356bd22aa18c981e133d4978d422b6d90",
+    "snapshot": "121-engine.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\evaluate.py",
+    "sha256": "dd3dbbddb053e48fd7e74c195df075cb921308ef50fc35e4903bfd1c4327d3f4",
+    "snapshot": "122-evaluate.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\launch.py",
+    "sha256": "424b579c6a7834806c010019a0a7ccbb5928f10f98bc820465abc0c3f6bcc008",
+    "snapshot": "123-launch.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\qualify.py",
+    "sha256": "1bdd112776ea226a65f824942ff884a41f886426d4db62a9f84dce5d29cd011d",
+    "snapshot": "124-qualify.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\schemas.py",
+    "sha256": "2a5cdbd49f14f0d1869ab97bc96a82dd9163b4f440742ffa97bb1abf43e59f74",
+    "snapshot": "125-schemas.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\store.py",
+    "sha256": "4294f33c3c4183112f6b04511d5d1dc6cc98d5012b9736faf555a4fc3c60a5ba",
+    "snapshot": "126-store.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\__init__.py",
+    "sha256": "76efce2ee5133fb3b1c15a21c3b905fc87e444721e0e29ec3f552d8b9a93e256",
+    "snapshot": "127-__init__.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_composition_instruction.py",
+    "sha256": "3557246b83c88986b67c44929cceed219638e2e2e1e59e38069070cf5bd6f3c1",
+    "snapshot": "128-_composition_instruction.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_coverage.py",
+    "sha256": "fcf3109b118df05d24522bf264337c9534733137db42cfd4d6e5233ec3f3b5a6",
+    "snapshot": "129-_coverage.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_coverage_decoder.py",
+    "sha256": "0b15e2a67bc03c7372119cce6b47c2024a285e67550f635aa8670dab020b8a33",
+    "snapshot": "130-_coverage_decoder.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_development_lineage.py",
+    "sha256": "4c7896b5fc083c02e94f9387f61d7e832e147ec8c09f5473b1ded0c0119a01c7",
+    "snapshot": "131-_development_lineage.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_disclosures.py",
+    "sha256": "d8f94aa275640859640c8f4da9b2a75d47b832ff1c6d50c31e41619504c5e9be",
+    "snapshot": "132-_disclosures.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_handoff.py",
+    "sha256": "69fbe56dc78863a590b8348995d3b7a15706a761671e33967fc97ab4f083151c",
+    "snapshot": "133-_handoff.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_question_spans.py",
+    "sha256": "de334d8141c8181b0f0c1e8c4a245d7ef2d0f9f3259ab46dfe4badef500d980d",
+    "snapshot": "134-_question_spans.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_relationships.py",
+    "sha256": "2530bb4418264a68f3e367cbac8f8ae26597b6025e0984c506ab78c1ac4b43cb",
+    "snapshot": "135-_relationships.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_scoped_activation.py",
+    "sha256": "e47e63f0f3b488482a1d0b608f3723a8bedf294a13db2b5877aff2c9821deb02",
+    "snapshot": "136-_scoped_activation.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_scoped_generation.py",
+    "sha256": "ada4aefc8a0eced94a29b1fa74f7163035a88774c181fb054633de5c302e354c",
+    "snapshot": "137-_scoped_generation.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_title_scope.py",
+    "sha256": "ad87958dff01c3a8ca1fe6830b5bdcfb7f3ad30f48331c31fe7da6bea3147a64",
+    "snapshot": "138-_title_scope.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\api_runtime.py",
+    "sha256": "85a5d3e3c64f76a9f346c9432eebf41e900dfed8194c0eb75adfee14685d0173",
+    "snapshot": "139-api_runtime.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\context_gate.py",
+    "sha256": "419e93b2c0db803c2474f3d19ce555bfec97bf93c4bacff0ff46d9f8c2752e67",
+    "snapshot": "140-context_gate.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\contracts.py",
+    "sha256": "5f405bae533274888a6bc868f8c044280bb9724d09538a166a4eb49bcf9fbade",
+    "snapshot": "141-contracts.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\generation.py",
+    "sha256": "9b92878fc6c148ae1c782cec9d6e096dac99392fb345c64b211c05aeb33cbaae",
+    "snapshot": "142-generation.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\persistence.py",
+    "sha256": "3ae69ddffe1bfa5fc991ce0e9bf0d66ea5b3ec335527f6358a6b231759172b61",
+    "snapshot": "143-persistence.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\qualification.py",
+    "sha256": "3f68c237dd98164b92844a84c746133b55d76218928cd5973b332dae6c8fd9de",
+    "snapshot": "144-qualification.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\qualification_phase.py",
+    "sha256": "4a2f2b5e6e10e625a4cbd14acd8a71747d1c2a0c145c42a04697c4f6a4b03a0d",
+    "snapshot": "145-qualification_phase.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\qualification_runner.py",
+    "sha256": "6601782ae781081448fb130213e7d75db5bfe6183db7b8ac62d17599d2b5c893",
+    "snapshot": "146-qualification_runner.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\qualify_cli.py",
+    "sha256": "e6e351acc58c8f06ed96d319cba640b1231b99940952c094a1fd77b11f183941",
+    "snapshot": "147-qualify_cli.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\quality_review.py",
+    "sha256": "d3d65862a2d8979419580852725a008e1c7d33f523a312013af19c93103aae2b",
+    "snapshot": "148-quality_review.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\retrieval.py",
+    "sha256": "dc7f271b77ed6ae8fbfd4d79f36efb0a450a84fd638cda69ce20de306fb13f08",
+    "snapshot": "149-retrieval.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\runner.py",
+    "sha256": "0fa7caac4a73e728de6b7875da0d89907e884cb75c883faa5baf725e69bf5815",
+    "snapshot": "150-runner.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\scheduler.py",
+    "sha256": "d53c514e2934e430ff7977960620f83c525a5f26bf37368aab539668abc73491",
+    "snapshot": "151-scheduler.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\synthesis.py",
+    "sha256": "e2347a7c4296ebb6c0cf54f9b395d72a269b8882300fed59f20e43bf0cd1a73c",
+    "snapshot": "152-synthesis.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\utils\\_periods.py",
+    "sha256": "cf1d5c9f1d5d22c64c98424184c3617bc833ff37d1faf40b86248a2e2ccc2a39",
+    "snapshot": "153-_periods.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\utils\\env.py",
+    "sha256": "54c1840d3b4715b6794104943edc8330abe100b21fcda02504403d04c3fd88b7",
+    "snapshot": "154-env.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\utils\\guardrails_runner.py",
+    "sha256": "f88745960dcbdb52f6c505574b883c622c694d9aecdf545c4a24ba96ed434ba8",
+    "snapshot": "155-guardrails_runner.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\tests\\test_scoped_disclosures.py",
+    "sha256": "a730d6930fb20ee018492530670123bb5809f4172dd085b79373f69f74347754",
+    "snapshot": "156-test_scoped_disclosures.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\tests\\test_subtask_corpus_synthesis.py",
+    "sha256": "89f155d10fc3daf43872f8c236f8638394aabcf920b1f5a0d58d25c0cdb7c0e2",
+    "snapshot": "157-test_subtask_corpus_synthesis.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\source-review-protocol.md",
+    "sha256": "2a47f2e80a9cd8b04bdf2fe4fe3f5b8d3bb90586efa27c3f1dd731bbd7e06fa7",
+    "snapshot": "158-source-review-protocol.md"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\run_case.py",
+    "sha256": "08490012b3a03c4105f6f01af44b871defaaeec4beedf4b9b5ec4281572bb489",
+    "snapshot": "159-run_case.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\check_mapping_context.py",
+    "sha256": "ffc9c1bddeb1cdf37258d34be773b3dd3acd7f366c2b70cc533dbe79598ec13c",
+    "snapshot": "160-check_mapping_context.py"
+  },
+  {
+    "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\mapping-context-check.json",
+    "sha256": "962516c0befe5acf8c81685974f011cb97de769a6888e5d8cd256e0aafaf617e",
+    "snapshot": "161-mapping-context-check.json"
+  }
+]

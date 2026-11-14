@@ -1,0 +1,21 @@
+{
+  "retained_false_conflict_rejected": "Publication-status conflict requires opposed assertions about the same subject",
+  "synthetic_opposed_conflict": {
+    "component_id": "r1",
+    "question_anchor": "Were the 2021 ferry counts in Cambodia provisional or final?",
+    "selected_statements": [
+      {
+        "source_id": "ferry-provisional",
+        "quote": "In Cambodia, the 2021 ferry counts are provisional."
+      },
+      {
+        "source_id": "ferry-final",
+        "quote": "In Cambodia, the 2021 ferry counts are final."
+      }
+    ],
+    "semantic_conflict_proven": false
+  },
+  "actual_model_calls": 0,
+  "actual_nemo_invocations": 0,
+  "network_blocked": true
+}

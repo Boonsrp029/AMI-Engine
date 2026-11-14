@@ -1,0 +1,28 @@
+{
+  "result_sha256": "938fa7902aec257202217f321255a509c38bd7aff5bd1f3d6580fb515d58bce8",
+  "verdict": "fail",
+  "authorship": "Assistant source assessment. Owner judgment pending.",
+  "source_findings": [
+    "Technical execution, NeMo and review-pending persistence passed.",
+    "Both raw and final claims correctly state 18 million Peru passenger rail journeys in 2019, citing rail-total.",
+    "The mapper correctly binds geography to the same Peru factual span and excludes the unit and Bolivia distractors.",
+    "The r2 conflicting selection contains the provisional status note and the amount statement. Those facts are compatible; no final-status statement was selected.",
+    "The false conflict suppresses the required provisional answer and produces a misleading warning. Raw and final answers are incomplete.",
+    "No fallback, editorial correction, owner approval or export occurred."
+  ],
+  "raw_supported": true,
+  "raw_complete": false,
+  "final_supported": true,
+  "final_complete": false,
+  "next_case_allowed": false,
+  "selected_r2_spans": [
+    {
+      "source_id": "rail-status",
+      "text": "The 2019 Peru passenger rail journey figures are provisional."
+    },
+    {
+      "source_id": "rail-total",
+      "text": "In Peru, passenger rail recorded 18 million journeys in 2019."
+    }
+  ]
+}

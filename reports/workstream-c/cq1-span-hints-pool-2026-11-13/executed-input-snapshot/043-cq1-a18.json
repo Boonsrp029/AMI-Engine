@@ -1,0 +1,26 @@
+{
+  "version": "cq-scoped-disclosures-v1",
+  "plan_id": "0ded6f70cb4f5184f285a240f9ffd5483bfffd1eb92ec54133f81a45c1f4e80b",
+  "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+  "question_sha256": "81a57152074ee5e91d6f62830e2a8537e01c16814212a02afdaf41ba9d8649ba",
+  "bindings_sha256": "65027ea19f8364378f35d32392edc9f727eac1c4b702f6afe44023735e4859de",
+  "declaration_ref": "Question-clause annotation frozen before generation.",
+  "annotations": [
+    {
+      "component_id": "r1",
+      "subtask_id": "s01",
+      "question_span": {
+        "start": 0,
+        "end": 54
+      }
+    },
+    {
+      "component_id": "r2",
+      "subtask_id": "s02",
+      "question_span": {
+        "start": 60,
+        "end": 122
+      }
+    }
+  ]
+}

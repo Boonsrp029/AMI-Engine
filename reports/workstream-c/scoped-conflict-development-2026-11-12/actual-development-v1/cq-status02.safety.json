@@ -1,0 +1,7 @@
+{
+  "validated_report": "The 2021 ferry counts in Cambodia were provisional.",
+  "passed_guardrails": true,
+  "raw_output": "The 2021 ferry counts in Cambodia were provisional.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

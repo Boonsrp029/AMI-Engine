@@ -1,0 +1,30 @@
+{
+  "stage": "mapping",
+  "identity": {
+    "run_id": "bb42e558dd664c0d8041600c94d84836",
+    "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+    "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"wire_version\": \"cq-scoped-selection-v1\",\n  \"components\": [\n    {\n      \"component_id\": \"r1\",\n      \"status\": \"supported\",\n      \"evidence\": [\n        \"s_2845cfa10cf8e534\",\n        \"s_792c4494ed697e52\"\n      ],\n      \"measure\": \"\",\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    },\n    {\n      \"component_id\": \"r2\",\n      \"status\": \"supported\",\n      \"evidence\": [\n        \"s_2845cfa10cf8e534\",\n        \"s_792c4494ed697e52\"\n      ],\n      \"measure\": \"\",\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    }\n  ],\n  \"geography\": {\n    \"status\": \"unresolved\",\n    \"value\": \"\",\n    \"evidence\": [],\n    \"reason\": \"Units are not places\"\n  },\n  \"period\": \"\"\n}",
+  "usage": {
+    "input_tokens": 2382,
+    "output_tokens": 225,
+    "total_tokens": 2607
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-13T05:23:08.4500022Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 6725084200,
+    "load_duration": 6656500,
+    "prompt_eval_count": 2382,
+    "prompt_eval_duration": 1016417000,
+    "eval_count": 225,
+    "eval_duration": 5634715000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

@@ -19,6 +19,7 @@ from src.pilot.subtasks._scoped_generation import ScopedConcurrentComposer, WIRE
 
 QUESTION = 'Describe solar generation in Chile in 2012 and provide Chile retail gas tariffs today.'
 FACT = 'In Chile, solar supplied 12% of total electricity generation in 2012.'
+REORDERED_FACT = 'In 2012, solar supplied 12% of total electricity generation in Chile.'
 BINDINGS = {'r1': ['s01', 's02']}
 
 
@@ -79,6 +80,8 @@ class FixedScoped:
                 parsed['claims'] = []
             if self.mode == 'wrong_number':
                 parsed['claims'][0]['text'] = FACT.replace('12%', '82%')
+            if self.mode == 'reordered_scope':
+                parsed['claims'][0]['text'] = REORDERED_FACT
         return {'parsed': parsed, 'raw': json.dumps(parsed), 'usage': None}
 
 
@@ -90,11 +93,13 @@ def compose(plan, report, *, mode='partial', scope=None):
     return callback, access, captured
 
 
-def test_partial_uses_explicit_requested_scope_and_preserves_supported_fact(tmp_path):
+@pytest.mark.parametrize(('mode', 'claim'), [('partial', FACT), ('reordered_scope', REORDERED_FACT)])
+def test_partial_uses_explicit_requested_scope_and_preserves_supported_fact(tmp_path, mode, claim):
     _, plan, report = fixture(tmp_path)
-    callback, access, captured = compose(plan, report)
+    callback, access, captured = compose(plan, report, mode=mode)
     result = callback(report, access)
-    assert result.draft['claims'][0]['text'] == FACT
+    assert result.draft['claims'][0]['text'] == claim
+    assert result.diagnostics['fallback_unit_ids'] == []
     assert access.calls == 2 and access.guards == 0 and not result.safety_passed
     warning = next(w for w in result.draft['warnings'] if 'Subtask s02' in w)
     assert 'Chile retail gas tariffs today' in warning and QUESTION in warning
@@ -250,8 +255,14 @@ def test_mapper_conflict_is_not_hidden_by_a_separate_missing_branch(tmp_path):
     callback, access, _ = compose(plan, report, mode='conflicting')
     result = callback(report, access)
     assert result.draft['claims'] == [] and access.calls == 1
+    assert result.draft['title'] == 'Conflicting evidence'
     assert any('Subtask s02' in warning for warning in result.draft['warnings'])
-    assert any('conflicting' in warning for warning in result.draft['warnings'])
+    assert any('conflicting' in warning and 'solar12, solar14' in warning for warning in result.draft['warnings'])
+    conflict, = result.diagnostics['scoped_disclosures']['selected_conflicts']
+    assert conflict['semantic_conflict_proven'] is False
+    assert conflict['selected_statements'] == [
+        {'source_id': 'solar12', 'quote': FACT}, {'source_id': 'solar14', 'quote': FACT.replace('12%', '14%')},
+    ]
 
 
 @pytest.mark.parametrize('outcome', ['unselected', 'conflicting', 'failed', 'cancelled', 'blocked'])

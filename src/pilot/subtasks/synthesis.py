@@ -116,6 +116,8 @@ def project_report(plan: Plan, report: Report, mapping, composed, bindings, *, a
         # period and no-information messages. Never let the composer write gaps.
         legacy_gaps = set(evidence_gaps(selected, plan.query))
         draft['warnings'] = [w for w in draft['warnings'] if w not in legacy_gaps]
+        if all(component.status == 'conflicting' for component in selected.components):
+            draft = {'title': 'Conflicting evidence', 'claims': [], 'warnings': []}
         warnings = projection['warnings']
         diagnostics['scoped_disclosures'] = projection
     if len(draft['warnings']) + len(warnings) > 10:

@@ -1,0 +1,64 @@
+{
+  "retained_questions": 15,
+  "retained_plans": 15,
+  "retained_scope_sidecars": 15,
+  "pool_sha256": "9bc3ac6ab7ef2dbeb76e94cc5ca8f89b4b36c8125cc027f91042da6946c78e6f",
+  "plans_sha256": "7734b2c1a65ab9622ca2d3d4984140c0acab255a7c76f8029a641828c9b1e461",
+  "scope_manifest_sha256": "e7167eca3a6341cc086ebf977ee76c72ab53cd2158a65784b8df072e89b55734",
+  "prior_attempt_results": {
+    "cq1-a12": "6de824a9e8dc53879371d4d3fa1962c3537e2df9bc1314b6596594520404a07d",
+    "cq1-a13": "213382ae3b9ad8a8e82b428d49ce7410ecd907fd3f1499755c141efc30b39656",
+    "cq1-a03": "700eb8325d05d9f3c3655bd77291b1305e4d9180e16c3a117b07c802eeb1f03a",
+    "cq1-a04": "51a9c8f4a6c60158091b460cb26ded2559c7eb9f56d023588074049bfc9d6c88",
+    "cq1-a05": "988e68511cc76e21aaaaa2172186fb311a273dfb198e2b1d71d049e36f46121b"
+  },
+  "replacement_source_checks": {
+    "cq1-a14": {
+      "source_id": "eia-generation-2023",
+      "source_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+      "start": 831,
+      "end": 852,
+      "bound_branches": [
+        "s01"
+      ]
+    },
+    "cq1-a15": {
+      "source_id": "eia-generation-2023",
+      "source_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+      "start": 707,
+      "end": 739,
+      "bound_branches": [
+        "s01"
+      ]
+    },
+    "cq1-a16": {
+      "source_id": "eia-generation-2023",
+      "source_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+      "start": 438,
+      "end": 466,
+      "bound_branches": [
+        "s01"
+      ]
+    },
+    "cq1-a17": {
+      "source_id": "eia-generation-2023",
+      "source_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+      "start": 2199,
+      "end": 2256,
+      "bound_branches": [
+        "s01"
+      ]
+    },
+    "cq1-a18": {
+      "source_id": "eia-measurement",
+      "source_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+      "start": 1376,
+      "end": 1415,
+      "bound_branches": [
+        "s01",
+        "s02"
+      ]
+    }
+  },
+  "actual_model_calls": 0
+}

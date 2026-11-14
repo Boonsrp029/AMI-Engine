@@ -1,0 +1,7 @@
+{
+  "validated_report": "Automated electricity meters periodically report electricity use to the utility, according to the EIA-measurement source.\nUtility companies measure and monitor electricity use with meters, as stated in the EIA-measurement source.\nThese meters wirelessly send power usage data in real time, as per the EIA-measurement source.",
+  "passed_guardrails": true,
+  "raw_output": "Automated electricity meters periodically report electricity use to the utility, according to the EIA-measurement source.\nUtility companies measure and monitor electricity use with meters, as stated in the EIA-measurement source.\nThese meters wirelessly send power usage data in real time, as per the EIA-measurement source.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

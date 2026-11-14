@@ -1,0 +1,16 @@
+{
+  "contract_sha256": "51acd4e485909c206708a184b8b4e76c509b0e2bcf770a6f61dfd68d05619806",
+  "case_ids": [
+    "cq-geo01",
+    "cq-geo02"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "human_reply": "Authorize scoped geography development diagnostics",
+  "verbatim_user_reply": "Authorize scoped geography development diagnostics",
+  "authorization_reference": "Direct answer to request_user_input_async call_cb211bda0d064efc98647b8280b76bd9"
+}

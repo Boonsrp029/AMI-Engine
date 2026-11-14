@@ -1,0 +1,22 @@
+{
+  "result_sha256": "e099b0a58e387319f1fd296d89781c56030d6a2e4eacf06dffdbb736e127cda9",
+  "assessor": "Assistant exact-source review",
+  "source_findings": [
+    "The first claim preserves 100 MW, continuous operation for 24 hours at capacity, and 2,400 MWh, supported by eia-faq-generator-example.",
+    "The second claim accurately states the numerator, actual energy output. The question asks for the denominator, maximum possible energy at continuous full power over the same period. The draft never supplies that required fact.",
+    "The error is an omission with an adjacent sourced statement. It does not assert that the numerator is the denominator or introduce an unsupported number or measure.",
+    "Both raw and final outputs are incomplete. No fallback or editorial correction. Execution, safety and review-pending persistence passed."
+  ],
+  "critical_errors": 0,
+  "raw_supported": true,
+  "raw_complete": false,
+  "final_supported": true,
+  "final_complete": false,
+  "proper_abstention": false,
+  "explicit_conflict": false,
+  "safe_injection": false,
+  "fallback_used": false,
+  "editorial_correction_used": false,
+  "owner_verdict": "pending",
+  "owner_reference": ""
+}

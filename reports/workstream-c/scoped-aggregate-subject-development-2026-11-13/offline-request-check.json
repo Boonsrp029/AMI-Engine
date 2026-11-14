@@ -1,0 +1,48 @@
+{
+  "actual_model_calls": 0,
+  "sockets_blocked": true,
+  "cases": {
+    "cq1-a15": {
+      "reserved_tokens": {
+        "mapping": 3529,
+        "composition": 2080
+      },
+      "draft": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "In 2023, the table gives Fossil fuels (total) generation in Billion kWh as 2,505 and its share of total utility-scale electricity generation as 60.0%.",
+            "source_ids": [
+              "eia-generation-2023"
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    },
+    "cq-hint02": {
+      "reserved_tokens": {
+        "mapping": 3604,
+        "composition": 1795
+      },
+      "draft": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "Some advanced smart meters can track the electricity use of individual devices and allow remote control of electricity use by the utility or customer.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          },
+          {
+            "text": "Many utilities use electronic smart meters today.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "original_contract_sha256": "f66f056bb1d7e82421d526c3773935d799ec008e2dd173099dc62fe55f29124a",
+  "case_id": "cq1-a20",
+  "offline_actual_calls": 0,
+  "sockets_blocked": true,
+  "original_draft_reproduced_before_change": true,
+  "retained_responses_after_change": {
+    "mapping": {
+      "reserved_tokens": 3567,
+      "relevance_hints": {
+        "r1": [
+          "s_6af27ac482a98ade",
+          "s_2845cfa10cf8e534"
+        ],
+        "r2": [
+          "s_6af27ac482a98ade",
+          "s_2845cfa10cf8e534"
+        ]
+      }
+    },
+    "composition": {
+      "reserved_tokens": 1873,
+      "relevance_hints": null
+    }
+  },
+  "strict_rejection": "Concurrent claim starts with an unresolved demonstrative subject"
+}

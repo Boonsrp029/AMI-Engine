@@ -1,0 +1,168 @@
+{
+  "cases": [
+    {
+      "case_id": "cq1-a21",
+      "content_tokens": 2364,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3520,
+      "format_schema_tokens": 1746
+    },
+    {
+      "case_id": "cq1-a22",
+      "content_tokens": 2375,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3531,
+      "format_schema_tokens": 9257
+    },
+    {
+      "case_id": "cq1-a16",
+      "content_tokens": 2381,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3537,
+      "format_schema_tokens": 9257
+    },
+    {
+      "case_id": "cq1-a17",
+      "content_tokens": 2356,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3512,
+      "format_schema_tokens": 9257
+    },
+    {
+      "case_id": "cq1-a18",
+      "content_tokens": 2455,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3611,
+      "format_schema_tokens": 18220
+    },
+    {
+      "case_id": "cq1-a06",
+      "content_tokens": 2364,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3520,
+      "format_schema_tokens": 1746
+    },
+    {
+      "case_id": "cq1-a07",
+      "content_tokens": 2372,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3528,
+      "format_schema_tokens": 1746
+    },
+    {
+      "case_id": "cq1-a08",
+      "content_tokens": 2366,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3522,
+      "format_schema_tokens": 1746
+    },
+    {
+      "case_id": "cq1-a09",
+      "content_tokens": 2454,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3610,
+      "format_schema_tokens": 18220
+    },
+    {
+      "case_id": "cq1-a10",
+      "content_tokens": 2463,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3619,
+      "format_schema_tokens": 18220
+    },
+    {
+      "case_id": "cq1-p01",
+      "content_tokens": 2430,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3586,
+      "format_schema_tokens": 18220
+    },
+    {
+      "case_id": "cq1-p02",
+      "content_tokens": 2433,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3589,
+      "format_schema_tokens": 18220
+    },
+    {
+      "case_id": "cq1-m01",
+      "content_tokens": 2273,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3429,
+      "format_schema_tokens": 9257
+    },
+    {
+      "case_id": "cq1-m02",
+      "content_tokens": 2338,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3494,
+      "format_schema_tokens": 9257
+    },
+    {
+      "case_id": "cq1-m03",
+      "content_tokens": 2285,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3441,
+      "format_schema_tokens": 9257
+    },
+    {
+      "case_id": "cq1-m04",
+      "content_tokens": 2333,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3489,
+      "format_schema_tokens": 9257
+    },
+    {
+      "case_id": "cq1-c01",
+      "content_tokens": 2537,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3693,
+      "format_schema_tokens": 7210
+    },
+    {
+      "case_id": "cq1-c02",
+      "content_tokens": 2539,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3695,
+      "format_schema_tokens": 7227
+    },
+    {
+      "case_id": "cq1-i01",
+      "content_tokens": 2506,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3662,
+      "format_schema_tokens": 9512
+    },
+    {
+      "case_id": "cq1-i02",
+      "content_tokens": 2505,
+      "framing_reserved": 256,
+      "completion_reserved": 900,
+      "total_reserved": 3661,
+      "format_schema_tokens": 9478
+    }
+  ],
+  "limit": 4096,
+  "all_fit": true,
+  "actual_calls": 0,
+  "sockets_blocked": true
+}

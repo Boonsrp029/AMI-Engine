@@ -1,0 +1,16 @@
+{
+  "contract_sha256": "c54250ad9fd4d4f8cc3cccb3b97d41ab9b63487bdc2b79be1c627bd97c8b97ae",
+  "case_ids": [
+    "cq-status01",
+    "cq-status02"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "human_reply": "Authorize scoped conflict development diagnostics",
+  "verbatim_user_reply": "Authorize scoped conflict development diagnostics",
+  "authorization_reference": "Direct answer to request_user_input_async call_00fb52351b4541488cbfad7954460acb"
+}

@@ -1,0 +1,12 @@
+{
+  "result_sha256": "5245c07148bd7a843b8ae04040653a59e87fdcd2aca6a032364fb2e3d0a577ae",
+  "verdict": "pass",
+  "authorship": "Assistant source review. Owner judgment pending.",
+  "source_findings": [
+    "Raw and final drafts preserve the 100 MW, 24-hour and 2,400 MWh generator example, supported by eia-faq-generator-example.",
+    "The second claim names the capacity factor and gives the exact source-backed denominator: possible electrical energy at full power over the same period.",
+    "The scoped focus supplied the operand wording. The raw composer retained it and named the ratio. No fallback or editorial correction occurred.",
+    "Execution and NeMo passed. Revision 1 is needs_review with both citations and zero stored reviews or exports."
+  ],
+  "next_case_allowed": true
+}

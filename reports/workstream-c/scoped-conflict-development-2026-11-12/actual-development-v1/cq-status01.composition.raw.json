@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "a3ccdaf4f0b043709330d51f21c8cde2",
+    "attempt_id": "2c4ed23fa95840b8b4c63ba01e397daa",
+    "plan_id": "d1b2172d52a21f51f6c359f5a79eb3207a2f38cb586860ab3c6f770a2047bda8",
+    "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"In Peru, 18 million passenger rail journeys were recorded in 2019.\",\n      \"unit_id\": \"u1\"\n    },\n    {\n      \"component_id\": \"r2\",\n      \"text\": \"The 2019 Peru passenger rail journey figures are provisional.\",\n      \"unit_id\": \"u2\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 629,
+    "output_tokens": 106,
+    "total_tokens": 735
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-12T12:56:00.2895877Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3140240100,
+    "load_duration": 11925500,
+    "prompt_eval_count": 629,
+    "prompt_eval_duration": 476320000,
+    "eval_count": 106,
+    "eval_duration": 2521816000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

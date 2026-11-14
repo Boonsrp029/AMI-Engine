@@ -1,0 +1,22 @@
+{
+  "case_id": "cq1-a15",
+  "contract_sha256": "1b93bcf4e523e04d31d696478453dd850254a939a0c68d5aec54ea696988c59c",
+  "failure": {
+    "type": "ValueError",
+    "message": "Draft introduces a numeric value absent from its selected evidence"
+  },
+  "request_focus": null,
+  "relevance_hints": {
+    "r1": [
+      "s_9f96e1da2a50533f",
+      "s_9f6629387f7fb9e1"
+    ]
+  },
+  "selected_spans": [
+    "s_9f96e1da2a50533f",
+    "s_9f6629387f7fb9e1"
+  ],
+  "evidence_with_requested_row_present": true,
+  "model_calls": 0,
+  "sockets_blocked": true
+}

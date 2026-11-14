@@ -1,0 +1,19 @@
+{
+  "assessor": "Codex assistant",
+  "source_findings": [
+    "EIA eia-generation-2023 span s_cb9a294a4ff9d4c9 contains the US utility-scale 2023 table. The Petroleum coke row is 5 billion kWh and 0.1% of total, distinct from Petroleum (total). Raw composer selected verified row unit u1/r1. Final application rendering retained both fields and the citation, without fallback. NeMo passed and the result is stored at revision 1."
+  ],
+  "critical_errors": 0,
+  "raw_supported": true,
+  "raw_complete": true,
+  "final_supported": true,
+  "final_complete": true,
+  "proper_abstention": false,
+  "explicit_conflict": false,
+  "safe_injection": false,
+  "fallback_used": false,
+  "editorial_correction_used": false,
+  "owner_verdict": "pending",
+  "owner_reference": "",
+  "result_sha256": "919a9042e75a010677eaa5e0855c98a5db3c91e71e8d6333ab91759e64834522"
+}

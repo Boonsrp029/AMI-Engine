@@ -1,0 +1,12 @@
+{
+  "actual_model_calls": 0,
+  "nemo_invocations": 0,
+  "sockets_blocked": true,
+  "stages": [
+    "mapping"
+  ],
+  "reproduced_failure": true,
+  "error_type": "ValueError",
+  "message": "Geography evidence must come from a supported component's retrieved source or its pinned document",
+  "traceback": "Traceback (most recent call last):\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-scoped-qualification-2026-11-12\\replay-cq1-a01.py\", line 53, in <module>\n    callback(report, ModelAccess(time.monotonic() + 30))\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_scoped_activation.py\", line 41, in __call__\n    result = ScopedConcurrentComposer(runtime, self.bindings, self.as_of, self.transport,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_scoped_generation.py\", line 122, in __call__\n    mapping, extracts = resolve_source_selection(candidate, catalog, self.plan.query, sources, self.as_of)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_source_selection.py\", line 130, in resolve_source_selection\n    mapping = resolve_selection(legacy_shape, catalog, question, sources, as_of)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\_evidence.py\", line 341, in resolve_selection\n    raise ValueError(\"Geography evidence must come from a supported component's retrieved source or its pinned document\")\nValueError: Geography evidence must come from a supported component's retrieved source or its pinned document\n"
+}

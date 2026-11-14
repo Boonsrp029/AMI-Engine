@@ -1,0 +1,7 @@
+{
+  "validated_report": "In 2023, the table gives Coal generation in Billion kWh as 675 and its share of total utility-scale electricity generation as 16.2%.",
+  "passed_guardrails": true,
+  "raw_output": "In 2023, the table gives Coal generation in Billion kWh as 675 and its share of total utility-scale electricity generation as 16.2%.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

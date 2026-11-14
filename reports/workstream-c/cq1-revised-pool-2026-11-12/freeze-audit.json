@@ -1,0 +1,24 @@
+{
+  "retained_rows": 19,
+  "retained_plans": 19,
+  "retained_scope_sidecars": 19,
+  "retained_corpus_files": 9,
+  "replacement": "cq1-a11",
+  "replacement_local_retrieval": {
+    "s01": [
+      "eia-faq-generator-example",
+      "eia-measurement",
+      "eia-glossary-capacity-factor"
+    ],
+    "s02": [
+      "eia-glossary-capacity-factor",
+      "eia-measurement",
+      "eia-faq-generator-example"
+    ]
+  },
+  "old_failed_result_sha256": "f17be32537b7983e86bd7aa6897b19d978c210140ade6c1d2808ca412b8bc0df",
+  "pool_sha256": "239bb977e85fbf2240b98c3d65255aeba6c9636bb824446a90f24dc1e60854d2",
+  "plans_sha256": "6e136e6062388814a2541d328eef1e6b39a52676fe69cef6df3a6dfe621a5231",
+  "scope_manifest_sha256": "ffe04190ba301e256e69fb012b5d1ab14f817dd0fc884ea94d6079a9d9dbba52",
+  "new_actual_model_calls": 0
+}

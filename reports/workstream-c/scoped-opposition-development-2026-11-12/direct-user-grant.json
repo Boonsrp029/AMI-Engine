@@ -1,0 +1,16 @@
+{
+  "contract_sha256": "d98bca1799af0758aaae8484f1f1658fe713bc1bb1d530adfe7932209fc0521a",
+  "case_ids": [
+    "cq-status01",
+    "cq-status02"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "human_reply": "Authorize scoped opposing-status diagnostics",
+  "verbatim_user_reply": "Authorize scoped opposing-status diagnostics",
+  "authorization_reference": "Direct answer to request_user_input_async call_d80714ff9a8e4b8ea9a29b0e759b3606"
+}

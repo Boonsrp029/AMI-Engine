@@ -1,0 +1,30 @@
+{
+  "stage": "mapping",
+  "identity": {
+    "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+    "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+    "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+    "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+  },
+  "raw": "{\n  \"wire_version\": \"cq-scoped-selection-v1\",\n  \"components\": [\n    {\n      \"component_id\": \"r1\",\n      \"status\": \"supported\",\n      \"evidence\": [\n        \"s_65af4fc137d43b33\"\n      ],\n      \"measure\": \"\",\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    },\n    {\n      \"component_id\": \"r2\",\n      \"status\": \"conflicting\",\n      \"evidence\": [\n        \"s_b0e4f8d83a806a98\",\n        \"s_65af4fc137d43b33\"\n      ],\n      \"measure\": \"\",\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    }\n  ],\n  \"geography\": {\n    \"status\": \"known\",\n    \"value\": \"Peru\",\n    \"evidence\": [\n      \"s_65af4fc137d43b33\"\n    ],\n    \"reason\": \"\"\n  },\n  \"period\": \"\"\n}",
+  "usage": {
+    "input_tokens": 730,
+    "output_tokens": 226,
+    "total_tokens": 956
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-12T12:48:36.4894087Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 11605653100,
+    "load_duration": 5449645100,
+    "prompt_eval_count": 730,
+    "prompt_eval_duration": 469453000,
+    "eval_count": 226,
+    "eval_duration": 5668963000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

@@ -1,0 +1,496 @@
+Measuring electricity - U.S. Energy Information Administration (EIA)
+Skip to sub-navigation
+U.S. Energy Information Administration - EIA - Independent Statistics and Analysis
+Menu
+Statistics
+Analysis
+Tools
+Education
+News
+Search
+Electricity explained
+Measuring electricity
+Basics
++Menu
+What is energy?
+Units and calculators
+U.S. energy facts
+Use of energy
+Energy and the environment
+Close
+Also in
+What is energy?
+What is energy?
+Forms of energy
+Sources of energy
+Laws of energy
+Close
+Also in
+Units and calculators explained
+Units and calculators
+Energy conversion calculators
+British thermal units (Btu)
+Degree days
+Close
+Also in
+U.S. energy facts explained
+Consumption and production
+Imports and exports
+Data and statistics
+Estimated primary energy consumption, 1635–1945
+State and U.S. territory data
+Close
+Also in
+Use of energy explained
+Use of energy
+Energy use in industry
+Energy use in manufacturing
+Energy use for transportation
+Electric vehicles
+Energy use in homes
+Electricity use in homes
+Energy use in commercial buildings
+Energy intensity in commercial buildings
+Energy efficiency and conservation
+Energy indicators
+Close
+Also in
+Energy and the environment explained
+Energy and the environment
+Greenhouse gases
+Greenhouse gases and the climate
+Where greenhouse gases come from
+Outlook for future emissions
+Recycling and energy
+Nonrenewable sources
+Oil and petroleum products
+Gasoline
+Diesel fuel
+Heating oil
+Close
+Also in
+Oil and petroleum products explained
+Oil and petroleum products
+Data and statistics
+Refining crude oil
+The refining process
+Inputs and outputs
+Refinery rankings
+Where oil is produced
+Where oil comes from
+Imports and exports
+Offshore oil and natural gas
+Offshore oil and natural gas production
+Use of oil
+Prices and outlook
+Oil and the environment
+Close
+Also in
+Gasoline explained
+Gasoline
+Octane in depth
+Where our gasoline comes from
+Use of gasoline
+Prices and outlook
+Factors affecting gasoline prices
+Regional price differences
+Price fluctuations
+History of gasoline
+Gasoline and the environment
+Leaded Gasoline
+Close
+Also in
+Diesel fuel explained
+Diesel fuel
+Where our diesel comes from
+Use of diesel
+Prices and outlook
+Factors affecting diesel prices
+Diesel fuel surcharges
+Diesel and the environment
+Close
+Also in
+Heating oil explained
+Heating oil
+Where our heating oil comes from
+Use of heating oil
+Prices and outlook
+Factors affecting heating oil prices
+Hydrocarbon Gas Liquids
+Natural gas
+Coal
+Nuclear
+Close
+Also in
+Hydrocarbon gas liquids explained
+Hydrocarbon gas liquids
+Where do hydrocarbon gas liquids come from?
+Propane production
+Transporting and storing
+Uses of hydrocarbon gas liquids
+Propane consumption
+Imports and exports
+Prices
+Propane prices
+Close
+Also in
+Natural gas explained
+Natural gas
+Data and statistics
+Delivery and storage
+Natural gas pipelines
+Liquefied natural gas
+Where our natural gas comes from
+Imports and exports
+How much gas is left
+Use of natural gas
+Prices
+Factors affecting natural gas prices
+Natural gas and the environment
+Customer choice programs
+Close
+Also in
+Coal explained
+Coal
+Data and statistics
+Mining and transportation
+Where our coal comes from
+Imports and exports
+How much coal is left
+Use of coal
+Prices and outlook
+Coal and the environment
+Close
+Also in
+Nuclear explained
+Nuclear
+Data and statistics
+Nuclear power plants
+Types of reactors
+The nuclear fuel cycle
+Where our uranium comes from
+U.S. nuclear industry
+Nuclear power and the environment
+Renewable sources
+Renewable energy
+Hydropower
+Biomass
+Biofuels
+Close
+Also in
+Renewable energy explained
+Renewable energy
+Types & usages
+Incentives
+Portfolio standards
+Close
+Also in
+Hydropower explained
+Hydropower
+Where hydropower is generated
+Hydropower and the environment
+Tidal power
+Wave power
+Ocean thermal energy conversion
+Close
+Also in
+Biomass explained
+Biomass
+Wood and wood waste
+Waste-to-energy (MSW)
+In depth
+Landfill gas and biogas
+Biomass and the environment
+Close
+Also in
+Biofuels explained
+Biofuels
+Data and statistics
+Ethanol
+Ethanol Use
+Ethanol Supply
+Biodiesel, renewable diesel, and other biofuels
+Use and supply
+Biofuels and the environment
+Wind
+Geothermal
+Solar
+Close
+Also in
+Wind explained
+Wind
+Electricity generation from wind
+Where wind power is harnessed
+Types of wind turbines
+History of wind power
+Wind energy and the environment
+Close
+Also in
+Geothermal explained
+Geothermal
+Where geothermal energy is found
+Use of geothermal energy
+Geothermal power plants
+Geothermal heat pumps
+Geothermal energy and the environment
+Close
+Also in
+Solar explained
+Solar
+Photovoltaics and electricity
+Where solar is found and used
+Solar thermal power plants
+Solar thermal collectors
+Solar energy and the environment
+Secondary sources
+Electricity
+Hydrogen
+Close
+Also in
+Electricity explained
+Electricity
+Data and statistics
+The science of electricity
+Magnets and electricity
+Batteries, circuits, and transformers
+Measuring electricity
+How electricity is generated
+Energy storage for electricity generation
+Electricity in the United States
+Generation, capacity, and sales
+Top 10
+Delivery to consumers
+Use of electricity
+Prices and factors affecting prices
+Electricity and the environment
+Close
+Also in
+Hydrogen explained
+Hydrogen
+Hydrogen production
+Use of hydrogen
+Electricity is measured in Watts and kilowatts
+Electricity is measured in units of power called Watts, named after James Watt, the inventor of the steam engine. One Watt is a very small amount of power. Some devices need only a few Watts to operate, but other devices require larger amounts, and their consumption is measured in kilowatts (kW). One kilowatt is equal to 1,000 Watts.
+For very large amounts of electricity, like what power plants generate, we use even larger units:
+Megawatts (MW): One MW is 1,000 kW, or 1,000,000 Watts.
+Gigawatts (GW): One GW is 1,000 MW, or 1,000,000,000 Watts.
+Electricity use over time is measured in Watthours
+Watts measure power at a specific moment, but we use Watthours (Wh) to measure how much electricity is used over a period of time. One Watthour is the energy of one Watt used for one hour.
+Electric utilities and power plants generally measure electricity in kilowatthours (kWh). One kWh is one kilowatt generated for one hour. For example, if you use a 40-Watt (0.04 kW) light bulb for five hours, you have used 200 Wh, or 0.2 kWh, of electrical energy.
+Utility companies measure and monitor electricity use with meters
+Electric utility companies use meters to measure how much electricity their customers use. These meters are usually located on the outside of the building or home where the power line connects. In the past, electricity meters were mechanical devices that a utility employee had to read manually. Eventually, automated meters could periodically report electricity use to the utility. Today, many utilities use
+electronic smart meters
+. These meters wirelessly send power usage data in real time. Some advanced smart meters can even track the electricity use of individual devices and allow the utility or customer to control electricity use remotely.
+A mechanical electricity meter
+Source: Stock photography (copyrighted)
+A smart electricity meter
+Source: Stock photography (copyrighted)
+Also in
+Electricity explained
+Electricity
+Data and statistics
+The science of electricity
+Magnets and electricity
+Batteries, circuits, and transformers
+Measuring electricity
+How electricity is generated
+Energy storage for electricity generation
+Electricity in the United States
+Generation, capacity, and sales
+Top 10
+Delivery to consumers
+Use of electricity
+Prices and factors affecting prices
+Electricity and the environment
+Also on Energy Explained
+U.S. energy facts
+Use of energy
+Renewable energy
+Also on EIA.gov
+Residential average monthly bill by Census Division, and State (Table 5.a)
+Articles on Smart Grid
+Articles on Electricity
+Frequently Asked Questions: Electricity
+About EIA
+Open Data
+Legacy
+Contact Us
+U.S. Energy Information Administration
+1000 Independence Ave., SW
+Washington, DC 20585
+Policies
+Privacy/Security
+Copyright & Reuse
+Accessibility
+Information Quality
+Freedom of Information Act (FOIA)
+Related Sites
+usa.gov
+U.S. Department of Energy
+Stay Connected
+Facebook
+X
+Youtube
+LinkedIn
+Email Updates
+RSS Feeds
+Statistics
+Analysis
+Tools
+Education
+News
+Petroleum & Other Liquids
+Crude oil, gasoline, heating oil, diesel, propane, and other liquids including biofuels and natural gas liquids.
+Natural Gas
+Exploration and reserves, storage, imports and exports, production, prices, sales.
+Electricity
+Sales, revenue and prices, power plants, fuel use, stocks, generation, trade, demand & emissions.
+Coal
+Reserves, production, prices, employment and productivity, distribution, stocks, imports and exports.
+Nuclear & Uranium
+Uranium fuel, nuclear reactors, generation, spent fuel.
+Renewable & Alternative Fuels
+Includes hydropower, solar, wind, geothermal, biomass and ethanol.
+EIA Survey Forms
+Forms EIA uses to collect energy data including descriptions, links to survey instructions, and additional information.
+Total Energy
+Comprehensive data summaries, comparisons, analysis, and projections integrated across all energy sources.
+Monthly Energy Review
+Consumption & Efficiency
+Energy use in homes, commercial buildings, manufacturing, and transportation.
+Residential Energy Consumption Survey (RECS)
+Commercial Buildings Energy Consumption Survey (CBECS)
+Manufacturing Energy Consumption Survey (MECS)
+U.S. States
+State energy information, including overviews, rankings, data, and analyses.
+International
+International energy information, including overviews, rankings, data, and analyses.
+Environment
+Greenhouse gas data, voluntary reporting, electric power plant emissions.
+U.S. Energy-Related Carbon Dioxide Emissions
+Energy-Related Carbon Dioxide Emissions at the State Level
+Analysis and Projections
+Monthly and yearly energy forecasts, analysis of energy topics, financial analysis, congressional reports.
+Short-Term Energy Outlook
+Annual Energy Outlook
+Special Reports
+Special market analysis and/or data requests.
+EIA-112 Residential Utility Disconnections
+SHIP Act
+Energy & Financial Markets: What Drives Crude Oil Prices?
+International
+International energy analyses.
+Regional Analysis Briefs
+Country Analysis Briefs
+World Oil Transit Chokepoints
+OPEC Revenue
+Global Energy Security Data
+Data Tools, Apps, & Maps
+Tools to customize searches, view specific data sets, study detailed documentation, and access time-series data.
+Open Data
+EIA's free and open data available as API, Excel add-in, bulk files, and widgets
+EIA Beta
+Come test out some of the products still in development and let us know what you think!
+Open Source Code
+EIA's open source code, available on GitHub.
+All Reports & Products
+Email Updates
+Sign up for email subscriptions to receive messages about specific EIA products
+RSS Feeds
+Subscribe to feeds for updates on EIA products including Today in Energy and What's New.
+Follow us. . .
+A-Z Index
+A
+|
+B
+|
+C
+|
+D
+|
+E
+|
+F
+|
+G
+|
+H
+|
+I
+|
+J
+|
+K
+|
+L
+|
+M
+|
+N
+|
+O
+|
+P
+|
+Q
+|
+R
+|
+S
+|
+T
+|
+U
+|
+V
+|
+W
+|
+XYZ
+Energy Explained
+What is Energy?
+Units & Calculators
+U.S. Energy Facts
+Use of Energy
+Energy & Environment
+Petroleum
+Hydrocarbon Gas Liquids
+Natural Gas
+Coal
+Nuclear
+Electricity
+Hydrogen
+Hydropower
+Biofuels
+Biomass
+Wind
+Geothermal
+Solar
+For Teachers
+Lesson plans, science fair experiments, field trips, teacher guide, and career corner.
+Glossary
+FAQs
+Coal
+Conversion & Equivalents
+Oil/Petroleum
+Diesel
+Electricity
+Environment
+Gasoline
+General Energy
+Natural Gas
+Nuclear
+Prices
+Renewables
+What's New?
+Wholesale Electricity Market Data
+Oct 29, 2026
+Monthly Energy Review
+Oct 29, 2026
+Electric Power Monthly
+Oct 23, 2026
+Press Room
+Press Releases
+Congressional Testimony
+Presentations
+Events

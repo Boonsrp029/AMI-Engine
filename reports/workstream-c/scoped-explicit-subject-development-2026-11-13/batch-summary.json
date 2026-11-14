@@ -1,0 +1,24 @@
+{
+  "status": "source gate failure; allowance closed",
+  "contract_sha256": "e743aa1666faecc6b132ced965c45b218de26ad5095ef1f573a670a06126f553",
+  "planned": 2,
+  "attempted_ids": [
+    "cq1-a20"
+  ],
+  "passed_ids": [],
+  "source_failure_ids": [
+    "cq1-a20"
+  ],
+  "unattempted_ids": [
+    "cq1-a19"
+  ],
+  "main_calls": 2,
+  "nemo_invocations": 1,
+  "reported_main_tokens": 3444,
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured",
+  "retry_count": 0,
+  "pins_verified": 102,
+  "result_sha256": "292da0876313ef7f292ed28c03510492b1502692e9a95a63a27a9693ec27e509",
+  "owner_adjudication": "pending"
+}

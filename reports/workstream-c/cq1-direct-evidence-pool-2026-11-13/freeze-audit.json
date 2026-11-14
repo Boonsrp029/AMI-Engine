@@ -1,0 +1,14 @@
+{
+  "retained_questions": 18,
+  "retained_plans": 18,
+  "retained_scope_sidecars": 18,
+  "pool_sha256": "ba15b6a0ff830abba031957751626567e766a4a93a92870bdcbcbff15799bfa9",
+  "plans_sha256": "9f0bc227015c44e7045b50cbd1e09ea6210cbfda303d136358e5dbf441a2d8ec",
+  "scope_manifest_sha256": "810fe2b8b7713134b0c9a5c06bf376d59bd8a0a4cf65627a605604c5d01bcbce",
+  "development_contract_sha256": "264d7b2f3f49ec88424dd726d0804dc7787c618b6e0c02a6f18d159e7d5f1472",
+  "prior_attempt_results": {
+    "cq1-a19": "5ea2007e840dc7b3aa664b1c9e144b7cd2496d9be1e98f314cba6c5577e39963",
+    "cq1-a20": "4741ae2de5959af277a60427263b7717eeab076c8e6b8c71192e4ba711f6a950"
+  }
+}
+

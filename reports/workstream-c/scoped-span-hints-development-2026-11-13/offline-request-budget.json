@@ -1,0 +1,31 @@
+{
+  "contract_sha256": "4839470efadb458f37d04e55f3df8d8bc21e2bb482265f257bf0c3cec5d5c269",
+  "requests": [
+    {
+      "case": "cq-hint01",
+      "stage": "mapping",
+      "reserved_tokens": 3524
+    },
+    {
+      "case": "cq-hint01",
+      "stage": "composition",
+      "reserved_tokens": 2079
+    },
+    {
+      "case": "cq-hint02",
+      "stage": "mapping",
+      "reserved_tokens": 3604
+    },
+    {
+      "case": "cq-hint02",
+      "stage": "composition",
+      "reserved_tokens": 1732
+    }
+  ],
+  "context_limit": 4096,
+  "actual_model_calls": 0,
+  "actual_nemo_calls": 0,
+  "sockets_blocked": true,
+  "retained_artifacts_verified": 42,
+  "unattempted_preserved": 15
+}

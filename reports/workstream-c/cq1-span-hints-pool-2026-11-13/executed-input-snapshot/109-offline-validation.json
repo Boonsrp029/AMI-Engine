@@ -1,0 +1,12 @@
+{
+  "integrated_tests_passed": 113,
+  "elapsed_seconds": 62.79,
+  "actual_model_calls": 0,
+  "suite": [
+    "test_scoped_request_focus",
+    "test_scoped_disclosures",
+    "test_scoped_activation",
+    "test_scoped_status_conflict",
+    "test_subtask_corpus_synthesis"
+  ]
+}

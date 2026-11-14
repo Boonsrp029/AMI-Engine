@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "435acb50924f4d48940673f50684afd2",
+    "attempt_id": "961a2a80ba7e442b9ce68be6950259f7",
+    "plan_id": "75fd71186d5cf1c8adb544871b4258a07c416fedde510b4adbabe36924abdac3",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"Some advanced smart meters can track the electricity use of individual devices and allow remote control of electricity use by the utility or customer.\",\n      \"unit_id\": \"u1\"\n    },\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"Many utilities use electronic smart meters today.\",\n      \"unit_id\": \"u2\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 654,
+    "output_tokens": 111,
+    "total_tokens": 765
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-13T11:52:23.0134548Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3524639900,
+    "load_duration": 11390100,
+    "prompt_eval_count": 654,
+    "prompt_eval_duration": 419679000,
+    "eval_count": 111,
+    "eval_duration": 2450871000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "version": "cq-scoped-disclosures-v1",
+  "plan_id": "a0d1fb312f12aa10ef0b4ab188159833fc8135e05e82ba316ad0f899fb0a0ece",
+  "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+  "question_sha256": "3d4ee5a8ea9165d372615de012660ce304ce54386b2b8ce2b291ea40947a320f",
+  "bindings_sha256": "1adcfd3c62d5cb3d1ca0da2d6949f0c05b355a4f4509d8d0f5d4741c623315f7",
+  "declaration_ref": "Assistant annotation from frozen question and branch plan. Shared conflict and safety checks inherit the full request scope.",
+  "annotations": [
+    {
+      "component_id": "r1",
+      "subtask_id": "s01",
+      "question_span": {
+        "start": 0,
+        "end": 79
+      }
+    }
+  ]
+}

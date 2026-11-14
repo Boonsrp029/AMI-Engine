@@ -1,0 +1,43 @@
+{
+  "status": "source gate failed; allowance closed",
+  "contract_sha256": "c54250ad9fd4d4f8cc3cccb3b97d41ab9b63487bdc2b79be1c627bd97c8b97ae",
+  "attempted": [
+    "cq-status01",
+    "cq-status02"
+  ],
+  "source_gate_passed": [
+    "cq-status01"
+  ],
+  "source_gate_failed": [
+    "cq-status02"
+  ],
+  "frozen_inputs_verified": 125,
+  "main_model_calls": 4,
+  "nemo_wrapper_invocations": 2,
+  "known_input_tokens": 2585,
+  "known_output_tokens": 523,
+  "known_total_tokens": 3108,
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured",
+  "revised_cq1_attempts": 0,
+  "revised_cq1_cases": 20,
+  "retained_artifacts": {
+    "cq-status01.assessment.json": "bb8e4130dd95fc149cd9cc8971d6d08f3c7b225455d37dc4508ec1e792833229",
+    "cq-status01.composition.raw.json": "8738afcc14489c085651e03ced6a54e7fbfd0e0158229bbeff608d456b45ba32",
+    "cq-status01.mapping.raw.json": "9beb763744c19927dbcd54619b68d372948b622d09d4e0aea33fb0e6f7e15dbd",
+    "cq-status01.result.json": "4564c20f29e3ac8b78c1462cb303481a3413f7933864699ab6249ade4daf613b",
+    "cq-status01.review.json": "0efe738295cacb8501edcaf0bd591b34acd642b81eb6b6461bfdfa479d01eeba",
+    "cq-status01.safety.json": "2c0e4f22343bf0d6fbb77978eae29342eff4be03588502bd1307d251f6fb7f06",
+    "cq-status01.sqlite3": "860cd114a20a74a48e3065067fb31e1a19f7c8f047399deb35ed24e066670d99",
+    "cq-status01.started.json": "a74b3a063affac0effe2c16e56f60d7eb0315b434af24872760d42dff4c452d1",
+    "cq-status02.assessment.json": "38fa65b07f595556c765c0ce541141017b0c7d50b999f172cf93cffc9530932b",
+    "cq-status02.composition.raw.json": "58d89a40a35a860da0df7a3e0cd57fb1dca0543e4de25656aea2c672f6ad359f",
+    "cq-status02.mapping.raw.json": "2f1a046123d0b2f817af4998cf8968551c2a6964ea49d8d12b613eb756d3f745",
+    "cq-status02.result.json": "4e766774fd2e7750b06314ba0439ef43511b9b84f43db73b208147ea8624ee1d",
+    "cq-status02.review.json": "3e78799525a2953990b0e2cf6edeaf2f2a1dac4214481ebda6e129cc81ff2522",
+    "cq-status02.safety.json": "19497c44043392e3b232fab65f89732fc65f7a165f8df7a41cfe9e871397cb9f",
+    "cq-status02.sqlite3": "3d14aa5141421a98063445d5a4cc6a6007bc07c3efaad50d4c31b6e1b1f0b260",
+    "cq-status02.started.json": "201cd3dde7a8ebf2f9b8e0a64d3e8afe52d3afe905198c6251102104e477f0e7",
+    "stopped.json": "d413253712e4583d86e1803bc45262378b0fd88416a224076db316f7d8c2c126"
+  }
+}

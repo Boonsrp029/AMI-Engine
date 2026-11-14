@@ -1,0 +1,34 @@
+{
+  "status": "source gate failed; allowance closed",
+  "contract_sha256": "51acd4e485909c206708a184b8b4e76c509b0e2bcf770a6f61dfd68d05619806",
+  "frozen_inputs_verified": 118,
+  "attempted": [
+    "cq-geo01"
+  ],
+  "unattempted": [
+    "cq-geo02"
+  ],
+  "main_model_calls": 2,
+  "nemo_wrapper_invocations": 1,
+  "known_input_tokens": 1278,
+  "known_output_tokens": 293,
+  "known_total_tokens": 1571,
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured",
+  "revised_cq1_attempts": 0,
+  "revised_cq1_cases": 20,
+  "cumulative_observed_main_starts": 23,
+  "cumulative_nemo_wrappers": 6,
+  "cumulative_known_main_tokens": 18148,
+  "retained_artifacts": {
+    "cq-geo01.assessment.json": "28f87f96b0203468b58c07950c5bb5026b62e4c67f7580d644c5797efcaa8856",
+    "cq-geo01.composition.raw.json": "a394a2a4a4bba51e8dc3608e4b22fd2d9d2cd02b53354ed98ce332947f842421",
+    "cq-geo01.mapping.raw.json": "b8d42ce5045859c7e34511b32a2d5a1e2ca8840c37353b68d7ec3f7cf469f1a7",
+    "cq-geo01.result.json": "938fa7902aec257202217f321255a509c38bd7aff5bd1f3d6580fb515d58bce8",
+    "cq-geo01.review.json": "51f34a0a0ee37269e7865f0cfdacbd24584596013d25f4c6f7daec6c2f26cd99",
+    "cq-geo01.safety.json": "f76c4e081ef4a47164c43f6e75949ddf8584085c3bded333edcb3960dc88d164",
+    "cq-geo01.sqlite3": "2f459a74bac0254beed7e62e64210244af6e96560f906e8c92f657bdeee74353",
+    "cq-geo01.started.json": "0513f1a450ef6558d261adbc9a48497bab24046ad0d68f238d198d68cccd4a53",
+    "stopped.json": "a7418296d544db40c099f673b34a817f44abbca3f14a7e60a3d24d2ad5e1d7b0"
+  }
+}

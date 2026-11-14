@@ -1,0 +1,1226 @@
+{
+  "technical_pass": true,
+  "main_calls": 2,
+  "nemo_invocations": 1,
+  "elapsed_seconds": 40.625,
+  "failure_type": null,
+  "stored_run": {
+    "id": "9faabf0ccad64597bb99551c2ebd8b18",
+    "request_key": "qualify-0320ec24502c3c98802c6cd8af9cd894",
+    "query": "Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday.",
+    "corpus_sha": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669",
+    "status": "needs_review",
+    "revision": 1,
+    "draft": {
+      "title": "Analyst research brief (Denmark)",
+      "claims": [
+        {
+          "text": "In 2015, wind supplied 29% of total electricity generation in Denmark.",
+          "source_ids": [
+            "cq-wind"
+          ]
+        }
+      ],
+      "warnings": [
+        "Subtask s02: component r1: This retrieval returned no supporting evidence; this does not establish absence in the database. Requested scope: Denmark retail electricity prices yesterday. Retrieval query (data): yesterday retail prices. Original request: Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday."
+      ]
+    },
+    "sources": {
+      "cq-wind": {
+        "source_id": "cq-wind",
+        "content": "In Denmark, wind supplied 29% of total electricity generation in 2015.",
+        "content_sha256": "48ef42de6bc49128cc5515fe5063f42cf5fc3103a8de32cc86458b211719b2d7",
+        "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669",
+        "role": "support",
+        "title": "Wind",
+        "url": "",
+        "published": null,
+        "doc_name": null,
+        "page_num": null
+      }
+    },
+    "metrics": {
+      "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669",
+      "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+      "workflow": "ami-subtasks-v1",
+      "model_calls": 2,
+      "guardrail_invocations": 1,
+      "token_usage_complete": false,
+      "missing_branches": [],
+      "composition_provenance": [
+        {
+          "claim_index": 0,
+          "origins": [
+            {
+              "unit_id": "u1",
+              "component_id": "r1",
+              "subtask_id": "s01",
+              "child_attempt_id": "ce474596b19d403b9d9a4240f5a61d4c",
+              "source_id": "cq-wind",
+              "content_sha256": "48ef42de6bc49128cc5515fe5063f42cf5fc3103a8de32cc86458b211719b2d7",
+              "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+            }
+          ]
+        }
+      ],
+      "composition_diagnostics": {
+        "identity": {
+          "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+          "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+          "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+          "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+        },
+        "raw_composer_output": {
+          "title": "Analyst research brief",
+          "claims": [
+            {
+              "component_id": "r1",
+              "text": "In 2015, wind supplied 29% of total electricity generation in Denmark.",
+              "unit_id": "u1"
+            }
+          ]
+        },
+        "editorial_correction": false,
+        "branch_states": {
+          "s01": "completed",
+          "s02": "completed"
+        },
+        "missing_branches": [],
+        "omitted_financial_context": {},
+        "source_excerpt_presentations": {},
+        "fallback_reasons": {},
+        "source_baseline_normalizations": [],
+        "public_claim_coverage": [
+          {
+            "claim_index": 0,
+            "unit_ids": [
+              "u1"
+            ],
+            "component_ids": [
+              "r1"
+            ]
+          }
+        ],
+        "canonical_composition_units": [
+          {
+            "component_id": "r1",
+            "evidence": [
+              {
+                "source_id": "cq-wind",
+                "quote": "In Denmark, wind supplied 29% of total electricity generation in 2015."
+              }
+            ],
+            "unit_id": "u1",
+            "identity_sha256": "79f30bd1d46e0d40905f61477c480bd9904956254d6808056b56707bf0f1527c",
+            "established_scope": {},
+            "scope_citation_ids": [],
+            "origins": [
+              {
+                "unit_id": "u1",
+                "component_id": "r1"
+              }
+            ]
+          }
+        ],
+        "omitted_measure_qualifiers": {},
+        "merged_duplicate_citations": [],
+        "literal_comparison_conclusions": [],
+        "source_rendered_comparisons": [],
+        "fallback_unit_ids": [],
+        "scoped_disclosures": {
+          "version": "cq-scoped-disclosures-v1",
+          "identity": {
+            "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+            "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+            "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "scope_contract": {
+            "version": "cq-scoped-disclosures-v1",
+            "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669",
+            "question_sha256": "da852d2fff43e42b54e6022ea1eb059220f1ed76268632fc68488e4eaedfb693",
+            "bindings_sha256": "15061eeb9cb7f10ebe295d0da1a6384a1cf678473ddde02af79b60c950cefc63",
+            "declaration_ref": "C prepared development question labels; not owner acceptance",
+            "annotations": [
+              {
+                "component_id": "r1",
+                "subtask_id": "s01",
+                "question_span": {
+                  "start": 9,
+                  "end": 43
+                }
+              },
+              {
+                "component_id": "r1",
+                "subtask_id": "s02",
+                "question_span": {
+                  "start": 56,
+                  "end": 99
+                }
+              }
+            ]
+          },
+          "records": [
+            {
+              "component_id": "r1",
+              "component_status": "partial",
+              "subtask_id": "s01",
+              "required": true,
+              "state": "completed",
+              "outcome": "evidence",
+              "kind": "selected_evidence",
+              "requested_scope": "wind generation in Denmark in 2015",
+              "question_span": {
+                "start": 9,
+                "end": 43
+              },
+              "original_question": "Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday.",
+              "retrieval_query": "wind",
+              "returned_support_ids": [
+                "cq-wind"
+              ],
+              "selected_support_ids": [
+                "cq-wind"
+              ],
+              "child_attempt_id": "ce474596b19d403b9d9a4240f5a61d4c",
+              "disclosure": "Evidence selected; semantic support and within-branch completeness remain unproven.",
+              "semantic_support_proven": false,
+              "scope_semantics_proven": false
+            },
+            {
+              "component_id": "r1",
+              "component_status": "partial",
+              "subtask_id": "s02",
+              "required": true,
+              "state": "completed",
+              "outcome": "missing",
+              "kind": "empty_retrieval",
+              "requested_scope": "Denmark retail electricity prices yesterday",
+              "question_span": {
+                "start": 56,
+                "end": 99
+              },
+              "original_question": "Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday.",
+              "retrieval_query": "yesterday retail prices",
+              "returned_support_ids": [],
+              "selected_support_ids": [],
+              "child_attempt_id": "a72b989ae1eb4083a4582d452a9ae3c3",
+              "disclosure": "This retrieval returned no supporting evidence; this does not establish absence in the database.",
+              "semantic_support_proven": false,
+              "scope_semantics_proven": false
+            }
+          ],
+          "warnings": [
+            "Subtask s02: component r1: This retrieval returned no supporting evidence; this does not establish absence in the database. Requested scope: Denmark retail electricity prices yesterday. Retrieval query (data): yesterday retail prices. Original request: Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday."
+          ],
+          "drafting_allowed": true,
+          "semantic_support_proven": false,
+          "owner_acceptance": "not inferred"
+        },
+        "title_geography": {
+          "version": "cq-title-scope-v1",
+          "candidate": "Denmark",
+          "title_before": "Analyst research brief (Denmark)",
+          "semantic_applicability_proven": false,
+          "evidence_coverage": [
+            {
+              "source_id": "cq-wind",
+              "quote_sha256": "48ef42de6bc49128cc5515fe5063f42cf5fc3103a8de32cc86458b211719b2d7",
+              "basis": "literal_in_selected_quote"
+            }
+          ],
+          "status": "retained_literal_common_geography",
+          "title_after": "Analyst research brief (Denmark)"
+        },
+        "scoped_mapper_raw_selection": {
+          "wire_version": "cq-scoped-selection-v1",
+          "components": [
+            {
+              "component_id": "r1",
+              "status": "partial",
+              "evidence": [
+                "s_165fe1a5aff7d74a"
+              ],
+              "measure": "",
+              "scenario": "",
+              "kind": "unknown"
+            }
+          ],
+          "geography": {
+            "status": "known",
+            "value": "Denmark",
+            "evidence": [
+              "s_165fe1a5aff7d74a"
+            ],
+            "reason": ""
+          },
+          "period": ""
+        },
+        "application_source_selection": {
+          "components": [
+            {
+              "component_id": "r1",
+              "status": "partial",
+              "evidence": [
+                "s_165fe1a5aff7d74a"
+              ],
+              "gap_anchor": "Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday.",
+              "measure": "",
+              "scenario": "",
+              "kind": "unknown"
+            }
+          ],
+          "geography": {
+            "status": "known",
+            "value": "Denmark",
+            "evidence": [
+              "s_165fe1a5aff7d74a"
+            ],
+            "reason": ""
+          },
+          "period": "",
+          "wire_version": "source-selection-v1"
+        },
+        "resolved_evidence_mapping": {
+          "geography": "Denmark",
+          "period": "",
+          "components": [
+            {
+              "component_id": "r1",
+              "question_anchor": "Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday.",
+              "status": "partial",
+              "short_answer": "In Denmark, wind supplied 29% of total electricity generation in 2015.",
+              "evidence": [
+                {
+                  "source_id": "cq-wind",
+                  "quote": "In Denmark, wind supplied 29% of total electricity generation in 2015."
+                }
+              ],
+              "gap_anchor": "Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday.",
+              "measure": "",
+              "scenario": "",
+              "kind": "unknown"
+            }
+          ],
+          "geography_resolution": {
+            "status": "known",
+            "value": "Denmark",
+            "evidence": [
+              {
+                "source_id": "cq-wind",
+                "quote": "In Denmark, wind supplied 29% of total electricity generation in 2015.",
+                "span_id": "s_165fe1a5aff7d74a",
+                "content_sha256": "48ef42de6bc49128cc5515fe5063f42cf5fc3103a8de32cc86458b211719b2d7",
+                "start": 0,
+                "end": 70
+              }
+            ],
+            "reason": "",
+            "original_value": "Denmark",
+            "normalization": "none",
+            "context_only": false,
+            "document_context_bindings": []
+          }
+        },
+        "model_responses": [
+          {
+            "stage": "mapping",
+            "identity": {
+              "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+              "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+              "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+              "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+            },
+            "raw": "{\n  \"wire_version\": \"cq-scoped-selection-v1\",\n  \"components\": [\n    {\n      \"component_id\": \"r1\",\n      \"status\": \"partial\",\n      \"evidence\": [\n        \"s_165fe1a5aff7d74a\"\n      ],\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    }\n  ],\n  \"geography\": {\n    \"status\": \"known\",\n    \"value\": \"Denmark\",\n    \"evidence\": [\n      \"s_165fe1a5aff7d74a\"\n    ],\n    \"reason\": \"\"\n  },\n  \"period\": \"\"\n}",
+            "usage": {
+              "input_tokens": 475,
+              "output_tokens": 146,
+              "total_tokens": 621
+            },
+            "response_metadata": {
+              "model": "ami-llama3.1:8b-4k",
+              "created_at": "2026-11-12T12:27:08.7191116Z",
+              "done": true,
+              "done_reason": "stop",
+              "total_duration": 4145732900,
+              "load_duration": 28520800,
+              "prompt_eval_count": 475,
+              "prompt_eval_duration": 295680000,
+              "eval_count": 146,
+              "eval_duration": 3715455000,
+              "logprobs": null,
+              "model_name": "ami-llama3.1:8b-4k",
+              "model_provider": "ollama"
+            }
+          },
+          {
+            "stage": "composition",
+            "identity": {
+              "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+              "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+              "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+              "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+            },
+            "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"In 2015, wind supplied 29% of total electricity generation in Denmark.\",\n      \"unit_id\": \"u1\"\n    }\n  ]\n}",
+            "usage": {
+              "input_tokens": 578,
+              "output_tokens": 68,
+              "total_tokens": 646
+            },
+            "response_metadata": {
+              "model": "ami-llama3.1:8b-4k",
+              "created_at": "2026-11-12T12:27:18.0579249Z",
+              "done": true,
+              "done_reason": "stop",
+              "total_duration": 2102097100,
+              "load_duration": 16107100,
+              "prompt_eval_count": 578,
+              "prompt_eval_duration": 274612000,
+              "eval_count": 68,
+              "eval_duration": 1718892000,
+              "logprobs": null,
+              "model_name": "ami-llama3.1:8b-4k",
+              "model_provider": "ollama"
+            }
+          }
+        ],
+        "span_catalog": {
+          "s_165fe1a5aff7d74a": {
+            "source_id": "cq-wind",
+            "content_sha256": "48ef42de6bc49128cc5515fe5063f42cf5fc3103a8de32cc86458b211719b2d7",
+            "start": 0,
+            "end": 70,
+            "text": "In Denmark, wind supplied 29% of total electricity generation in 2015."
+          }
+        },
+        "application_extracts": [
+          {
+            "component_id": "r1",
+            "financial_comparison_coverage": {
+              "status": "not_checked",
+              "semantic_support_proven": false
+            },
+            "origin": "application-selected-source-extract",
+            "text": "In Denmark, wind supplied 29% of total electricity generation in 2015.",
+            "span_ids": [
+              "s_165fe1a5aff7d74a"
+            ],
+            "evidence": [
+              {
+                "source_id": "cq-wind",
+                "quote": "In Denmark, wind supplied 29% of total electricity generation in 2015.",
+                "span_id": "s_165fe1a5aff7d74a",
+                "content_sha256": "48ef42de6bc49128cc5515fe5063f42cf5fc3103a8de32cc86458b211719b2d7",
+                "start": 0,
+                "end": 70
+              }
+            ],
+            "quantity_measure_check": "not_applicable"
+          }
+        ],
+        "requested_branch_coverage": {
+          "r1": {
+            "status": "partial",
+            "required_branches": [
+              "s01",
+              "s02"
+            ],
+            "unselected_branches": [
+              "s02"
+            ],
+            "semantic_support_proven": false
+          }
+        },
+        "concurrent_mapping_version": "cq-mapper-v7-scoped-disclosures",
+        "concurrent_composition_version": "cq-composer-v2-unit-local",
+        "mapping_wire_version": "cq-scoped-selection-v1",
+        "gap_authorship": "application-owned scoped branch disclosures; not raw model or editorial text",
+        "scope_deadline_binding": {
+          "declared_scope_contract": {
+            "version": "cq-scoped-disclosures-v1",
+            "plan_id": "5d0e290b003be93d1cf178693a1fe9bd51c189270e34620d3e7ef4d2d2bbe623",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669",
+            "question_sha256": "da852d2fff43e42b54e6022ea1eb059220f1ed76268632fc68488e4eaedfb693",
+            "bindings_sha256": "15061eeb9cb7f10ebe295d0da1a6384a1cf678473ddde02af79b60c950cefc63",
+            "declaration_ref": "C prepared development question labels; not owner acceptance",
+            "annotations": [
+              {
+                "component_id": "r1",
+                "subtask_id": "s01",
+                "question_span": {
+                  "start": 9,
+                  "end": 43
+                }
+              },
+              {
+                "component_id": "r1",
+                "subtask_id": "s02",
+                "question_span": {
+                  "start": 56,
+                  "end": 99
+                }
+              }
+            ]
+          },
+          "declared_scope_file_sha256": "57817949c06da90a6305966b0d0f52b33490eb5d6bf4acaa294605ab23153815",
+          "declared_plan_id": "5d0e290b003be93d1cf178693a1fe9bd51c189270e34620d3e7ef4d2d2bbe623",
+          "runtime_plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+          "declared_deadline_seconds": 180.0,
+          "runtime_deadline_seconds": 177.82799999999406,
+          "allowed_change": "deadline reduction only; all other plan fields equal",
+          "semantic_support_proven": false
+        }
+      },
+      "composition_content_sha256": "d0e9556a2bb12ad695dcbd548051ff91effc0bfc1744233993a1ef94e07c94aa",
+      "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+      "execution_elapsed_seconds": 35.53100000000268
+    },
+    "error": null,
+    "created": "2026-11-12T12:26:55.190042+00:00",
+    "updated": "2026-11-12T12:27:30.821741+00:00",
+    "events": [
+      {
+        "seq": 1,
+        "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+        "kind": "attempt_started",
+        "payload": {
+          "attempt_id": "cb654a57a0b54d8db8a394346887999e"
+        },
+        "created": "2026-11-12T12:26:55.280925+00:00"
+      },
+      {
+        "seq": 2,
+        "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+        "kind": "subtask_plan",
+        "payload": {
+          "identity": {
+            "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+            "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+            "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "plan": {
+            "version": "ami-subtasks-v1",
+            "query": "Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday.",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669",
+            "subtasks": [
+              {
+                "subtask_id": "s01",
+                "operation": "retrieve",
+                "query": "wind",
+                "source_ids": [],
+                "dependencies": [],
+                "required": true,
+                "timeout_seconds": 30.0
+              },
+              {
+                "subtask_id": "s02",
+                "operation": "retrieve",
+                "query": "yesterday retail prices",
+                "source_ids": [],
+                "dependencies": [],
+                "required": true,
+                "timeout_seconds": 30.0
+              }
+            ],
+            "retrieval_concurrency": 2,
+            "deadline_seconds": 177.82799999999406,
+            "model_concurrency": 1,
+            "maximum_main_calls": 4
+          },
+          "attempt_id": "cb654a57a0b54d8db8a394346887999e"
+        },
+        "created": "2026-11-12T12:26:55.360906+00:00"
+      },
+      {
+        "seq": 3,
+        "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+        "kind": "subtask_worker_started",
+        "payload": {
+          "pid": 24492,
+          "attempt_id": "cb654a57a0b54d8db8a394346887999e"
+        },
+        "created": "2026-11-12T12:26:55.532408+00:00"
+      },
+      {
+        "seq": 4,
+        "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+            "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+            "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "ce474596b19d403b9d9a4240f5a61d4c",
+          "ordinal": 1,
+          "status": "queued",
+          "created_at": "2026-11-12T12:26:56.591135Z",
+          "reason": "none",
+          "attempt_id": "cb654a57a0b54d8db8a394346887999e"
+        },
+        "created": "2026-11-12T12:26:56.594095+00:00"
+      },
+      {
+        "seq": 5,
+        "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+            "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+            "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "a72b989ae1eb4083a4582d452a9ae3c3",
+          "ordinal": 2,
+          "status": "queued",
+          "created_at": "2026-11-12T12:26:56.591135Z",
+          "reason": "none",
+          "attempt_id": "cb654a57a0b54d8db8a394346887999e"
+        },
+        "created": "2026-11-12T12:26:56.774238+00:00"
+      },
+      {
+        "seq": 6,
+        "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+            "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+            "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "ce474596b19d403b9d9a4240f5a61d4c",
+          "ordinal": 3,
+          "status": "running",
+          "created_at": "2026-11-12T12:26:56.591135Z",
+          "reason": "none",
+          "attempt_id": "cb654a57a0b54d8db8a394346887999e"
+        },
+        "created": "2026-11-12T12:26:56.947342+00:00"
+      },
+      {
+        "seq": 7,
+        "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+            "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+            "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "a72b989ae1eb4083a4582d452a9ae3c3",
+          "ordinal": 4,
+          "status": "running",
+          "created_at": "2026-11-12T12:26:56.591135Z",
+          "reason": "none",
+          "attempt_id": "cb654a57a0b54d8db8a394346887999e"
+        },
+        "created": "2026-11-12T12:26:57.109978+00:00"
+      },
+      {
+        "seq": 8,
+        "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+            "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+            "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "ce474596b19d403b9d9a4240f5a61d4c",
+          "ordinal": 5,
+          "status": "completed",
+          "created_at": "2026-11-12T12:26:56.593087Z",
+          "reason": "none",
+          "attempt_id": "cb654a57a0b54d8db8a394346887999e"
+        },
+        "created": "2026-11-12T12:26:57.250353+00:00"
+      },
+      {
+        "seq": 9,
+        "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+        "kind": "subtask_result",
+        "payload": {
+          "identity": {
+            "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+            "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+            "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "ce474596b19d403b9d9a4240f5a61d4c",
+          "dependencies": [],
+          "outcome": "evidence",
+          "sources": [
+            {
+              "source_id": "cq-wind",
+              "content": "In Denmark, wind supplied 29% of total electricity generation in 2015.",
+              "content_sha256": "48ef42de6bc49128cc5515fe5063f42cf5fc3103a8de32cc86458b211719b2d7",
+              "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669",
+              "role": "support",
+              "title": "Wind",
+              "url": "",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            }
+          ],
+          "elapsed_seconds": 0.0,
+          "diagnostic": "none",
+          "attempt_id": "cb654a57a0b54d8db8a394346887999e"
+        },
+        "created": "2026-11-12T12:26:57.336422+00:00"
+      },
+      {
+        "seq": 10,
+        "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+            "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+            "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "a72b989ae1eb4083a4582d452a9ae3c3",
+          "ordinal": 6,
+          "status": "completed",
+          "created_at": "2026-11-12T12:26:56.594095Z",
+          "reason": "none",
+          "attempt_id": "cb654a57a0b54d8db8a394346887999e"
+        },
+        "created": "2026-11-12T12:26:57.420098+00:00"
+      },
+      {
+        "seq": 11,
+        "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+        "kind": "subtask_result",
+        "payload": {
+          "identity": {
+            "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+            "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+            "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "a72b989ae1eb4083a4582d452a9ae3c3",
+          "dependencies": [],
+          "outcome": "missing",
+          "sources": [],
+          "elapsed_seconds": 0.0,
+          "diagnostic": "no_matching_evidence",
+          "attempt_id": "cb654a57a0b54d8db8a394346887999e"
+        },
+        "created": "2026-11-12T12:26:57.528080+00:00"
+      },
+      {
+        "seq": 12,
+        "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+        "kind": "model_request_started",
+        "payload": {
+          "stage": "subtask_compose",
+          "attempt_id": "cb654a57a0b54d8db8a394346887999e"
+        },
+        "created": "2026-11-12T12:26:57.612407+00:00"
+      },
+      {
+        "seq": 13,
+        "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+        "kind": "model_request_started",
+        "payload": {
+          "stage": "subtask_compose",
+          "attempt_id": "cb654a57a0b54d8db8a394346887999e"
+        },
+        "created": "2026-11-12T12:27:10.837984+00:00"
+      },
+      {
+        "seq": 14,
+        "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+        "kind": "guard_invocation_started",
+        "payload": {
+          "stage": "subtask_safety",
+          "attempt_id": "cb654a57a0b54d8db8a394346887999e"
+        },
+        "created": "2026-11-12T12:27:20.272762+00:00"
+      },
+      {
+        "seq": 15,
+        "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+        "kind": "subtask_worker_terminal",
+        "payload": {
+          "exit_code": 0,
+          "candidate_received": true,
+          "attempt_id": "cb654a57a0b54d8db8a394346887999e"
+        },
+        "created": "2026-11-12T12:27:30.550130+00:00"
+      },
+      {
+        "seq": 16,
+        "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+        "kind": "composition_candidate",
+        "payload": {
+          "status": "candidate; publication and approval are separate",
+          "identity": {
+            "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+            "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+            "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+            "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+          },
+          "claim_provenance": [
+            {
+              "claim_index": 0,
+              "origins": [
+                {
+                  "unit_id": "u1",
+                  "component_id": "r1",
+                  "subtask_id": "s01",
+                  "child_attempt_id": "ce474596b19d403b9d9a4240f5a61d4c",
+                  "source_id": "cq-wind",
+                  "content_sha256": "48ef42de6bc49128cc5515fe5063f42cf5fc3103a8de32cc86458b211719b2d7",
+                  "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+                }
+              ]
+            }
+          ],
+          "diagnostics": {
+            "identity": {
+              "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+              "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+              "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+              "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+            },
+            "raw_composer_output": {
+              "title": "Analyst research brief",
+              "claims": [
+                {
+                  "component_id": "r1",
+                  "text": "In 2015, wind supplied 29% of total electricity generation in Denmark.",
+                  "unit_id": "u1"
+                }
+              ]
+            },
+            "editorial_correction": false,
+            "branch_states": {
+              "s01": "completed",
+              "s02": "completed"
+            },
+            "missing_branches": [],
+            "omitted_financial_context": {},
+            "source_excerpt_presentations": {},
+            "fallback_reasons": {},
+            "source_baseline_normalizations": [],
+            "public_claim_coverage": [
+              {
+                "claim_index": 0,
+                "unit_ids": [
+                  "u1"
+                ],
+                "component_ids": [
+                  "r1"
+                ]
+              }
+            ],
+            "canonical_composition_units": [
+              {
+                "component_id": "r1",
+                "evidence": [
+                  {
+                    "source_id": "cq-wind",
+                    "quote": "In Denmark, wind supplied 29% of total electricity generation in 2015."
+                  }
+                ],
+                "unit_id": "u1",
+                "identity_sha256": "79f30bd1d46e0d40905f61477c480bd9904956254d6808056b56707bf0f1527c",
+                "established_scope": {},
+                "scope_citation_ids": [],
+                "origins": [
+                  {
+                    "unit_id": "u1",
+                    "component_id": "r1"
+                  }
+                ]
+              }
+            ],
+            "omitted_measure_qualifiers": {},
+            "merged_duplicate_citations": [],
+            "literal_comparison_conclusions": [],
+            "source_rendered_comparisons": [],
+            "fallback_unit_ids": [],
+            "scoped_disclosures": {
+              "version": "cq-scoped-disclosures-v1",
+              "identity": {
+                "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+                "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+                "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+                "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+              },
+              "scope_contract": {
+                "version": "cq-scoped-disclosures-v1",
+                "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+                "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669",
+                "question_sha256": "da852d2fff43e42b54e6022ea1eb059220f1ed76268632fc68488e4eaedfb693",
+                "bindings_sha256": "15061eeb9cb7f10ebe295d0da1a6384a1cf678473ddde02af79b60c950cefc63",
+                "declaration_ref": "C prepared development question labels; not owner acceptance",
+                "annotations": [
+                  {
+                    "component_id": "r1",
+                    "subtask_id": "s01",
+                    "question_span": {
+                      "start": 9,
+                      "end": 43
+                    }
+                  },
+                  {
+                    "component_id": "r1",
+                    "subtask_id": "s02",
+                    "question_span": {
+                      "start": 56,
+                      "end": 99
+                    }
+                  }
+                ]
+              },
+              "records": [
+                {
+                  "component_id": "r1",
+                  "component_status": "partial",
+                  "subtask_id": "s01",
+                  "required": true,
+                  "state": "completed",
+                  "outcome": "evidence",
+                  "kind": "selected_evidence",
+                  "requested_scope": "wind generation in Denmark in 2015",
+                  "question_span": {
+                    "start": 9,
+                    "end": 43
+                  },
+                  "original_question": "Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday.",
+                  "retrieval_query": "wind",
+                  "returned_support_ids": [
+                    "cq-wind"
+                  ],
+                  "selected_support_ids": [
+                    "cq-wind"
+                  ],
+                  "child_attempt_id": "ce474596b19d403b9d9a4240f5a61d4c",
+                  "disclosure": "Evidence selected; semantic support and within-branch completeness remain unproven.",
+                  "semantic_support_proven": false,
+                  "scope_semantics_proven": false
+                },
+                {
+                  "component_id": "r1",
+                  "component_status": "partial",
+                  "subtask_id": "s02",
+                  "required": true,
+                  "state": "completed",
+                  "outcome": "missing",
+                  "kind": "empty_retrieval",
+                  "requested_scope": "Denmark retail electricity prices yesterday",
+                  "question_span": {
+                    "start": 56,
+                    "end": 99
+                  },
+                  "original_question": "Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday.",
+                  "retrieval_query": "yesterday retail prices",
+                  "returned_support_ids": [],
+                  "selected_support_ids": [],
+                  "child_attempt_id": "a72b989ae1eb4083a4582d452a9ae3c3",
+                  "disclosure": "This retrieval returned no supporting evidence; this does not establish absence in the database.",
+                  "semantic_support_proven": false,
+                  "scope_semantics_proven": false
+                }
+              ],
+              "warnings": [
+                "Subtask s02: component r1: This retrieval returned no supporting evidence; this does not establish absence in the database. Requested scope: Denmark retail electricity prices yesterday. Retrieval query (data): yesterday retail prices. Original request: Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday."
+              ],
+              "drafting_allowed": true,
+              "semantic_support_proven": false,
+              "owner_acceptance": "not inferred"
+            },
+            "title_geography": {
+              "version": "cq-title-scope-v1",
+              "candidate": "Denmark",
+              "title_before": "Analyst research brief (Denmark)",
+              "semantic_applicability_proven": false,
+              "evidence_coverage": [
+                {
+                  "source_id": "cq-wind",
+                  "quote_sha256": "48ef42de6bc49128cc5515fe5063f42cf5fc3103a8de32cc86458b211719b2d7",
+                  "basis": "literal_in_selected_quote"
+                }
+              ],
+              "status": "retained_literal_common_geography",
+              "title_after": "Analyst research brief (Denmark)"
+            },
+            "scoped_mapper_raw_selection": {
+              "wire_version": "cq-scoped-selection-v1",
+              "components": [
+                {
+                  "component_id": "r1",
+                  "status": "partial",
+                  "evidence": [
+                    "s_165fe1a5aff7d74a"
+                  ],
+                  "measure": "",
+                  "scenario": "",
+                  "kind": "unknown"
+                }
+              ],
+              "geography": {
+                "status": "known",
+                "value": "Denmark",
+                "evidence": [
+                  "s_165fe1a5aff7d74a"
+                ],
+                "reason": ""
+              },
+              "period": ""
+            },
+            "application_source_selection": {
+              "components": [
+                {
+                  "component_id": "r1",
+                  "status": "partial",
+                  "evidence": [
+                    "s_165fe1a5aff7d74a"
+                  ],
+                  "gap_anchor": "Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday.",
+                  "measure": "",
+                  "scenario": "",
+                  "kind": "unknown"
+                }
+              ],
+              "geography": {
+                "status": "known",
+                "value": "Denmark",
+                "evidence": [
+                  "s_165fe1a5aff7d74a"
+                ],
+                "reason": ""
+              },
+              "period": "",
+              "wire_version": "source-selection-v1"
+            },
+            "resolved_evidence_mapping": {
+              "geography": "Denmark",
+              "period": "",
+              "components": [
+                {
+                  "component_id": "r1",
+                  "question_anchor": "Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday.",
+                  "status": "partial",
+                  "short_answer": "In Denmark, wind supplied 29% of total electricity generation in 2015.",
+                  "evidence": [
+                    {
+                      "source_id": "cq-wind",
+                      "quote": "In Denmark, wind supplied 29% of total electricity generation in 2015."
+                    }
+                  ],
+                  "gap_anchor": "Describe wind generation in Denmark in 2015 and provide Denmark retail electricity prices yesterday.",
+                  "measure": "",
+                  "scenario": "",
+                  "kind": "unknown"
+                }
+              ],
+              "geography_resolution": {
+                "status": "known",
+                "value": "Denmark",
+                "evidence": [
+                  {
+                    "source_id": "cq-wind",
+                    "quote": "In Denmark, wind supplied 29% of total electricity generation in 2015.",
+                    "span_id": "s_165fe1a5aff7d74a",
+                    "content_sha256": "48ef42de6bc49128cc5515fe5063f42cf5fc3103a8de32cc86458b211719b2d7",
+                    "start": 0,
+                    "end": 70
+                  }
+                ],
+                "reason": "",
+                "original_value": "Denmark",
+                "normalization": "none",
+                "context_only": false,
+                "document_context_bindings": []
+              }
+            },
+            "model_responses": [
+              {
+                "stage": "mapping",
+                "identity": {
+                  "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+                  "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+                  "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+                  "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+                },
+                "raw": "{\n  \"wire_version\": \"cq-scoped-selection-v1\",\n  \"components\": [\n    {\n      \"component_id\": \"r1\",\n      \"status\": \"partial\",\n      \"evidence\": [\n        \"s_165fe1a5aff7d74a\"\n      ],\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    }\n  ],\n  \"geography\": {\n    \"status\": \"known\",\n    \"value\": \"Denmark\",\n    \"evidence\": [\n      \"s_165fe1a5aff7d74a\"\n    ],\n    \"reason\": \"\"\n  },\n  \"period\": \"\"\n}",
+                "usage": {
+                  "input_tokens": 475,
+                  "output_tokens": 146,
+                  "total_tokens": 621
+                },
+                "response_metadata": {
+                  "model": "ami-llama3.1:8b-4k",
+                  "created_at": "2026-11-12T12:27:08.7191116Z",
+                  "done": true,
+                  "done_reason": "stop",
+                  "total_duration": 4145732900,
+                  "load_duration": 28520800,
+                  "prompt_eval_count": 475,
+                  "prompt_eval_duration": 295680000,
+                  "eval_count": 146,
+                  "eval_duration": 3715455000,
+                  "logprobs": null,
+                  "model_name": "ami-llama3.1:8b-4k",
+                  "model_provider": "ollama"
+                }
+              },
+              {
+                "stage": "composition",
+                "identity": {
+                  "run_id": "9faabf0ccad64597bb99551c2ebd8b18",
+                  "attempt_id": "cb654a57a0b54d8db8a394346887999e",
+                  "plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+                  "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669"
+                },
+                "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"In 2015, wind supplied 29% of total electricity generation in Denmark.\",\n      \"unit_id\": \"u1\"\n    }\n  ]\n}",
+                "usage": {
+                  "input_tokens": 578,
+                  "output_tokens": 68,
+                  "total_tokens": 646
+                },
+                "response_metadata": {
+                  "model": "ami-llama3.1:8b-4k",
+                  "created_at": "2026-11-12T12:27:18.0579249Z",
+                  "done": true,
+                  "done_reason": "stop",
+                  "total_duration": 2102097100,
+                  "load_duration": 16107100,
+                  "prompt_eval_count": 578,
+                  "prompt_eval_duration": 274612000,
+                  "eval_count": 68,
+                  "eval_duration": 1718892000,
+                  "logprobs": null,
+                  "model_name": "ami-llama3.1:8b-4k",
+                  "model_provider": "ollama"
+                }
+              }
+            ],
+            "span_catalog": {
+              "s_165fe1a5aff7d74a": {
+                "source_id": "cq-wind",
+                "content_sha256": "48ef42de6bc49128cc5515fe5063f42cf5fc3103a8de32cc86458b211719b2d7",
+                "start": 0,
+                "end": 70,
+                "text": "In Denmark, wind supplied 29% of total electricity generation in 2015."
+              }
+            },
+            "application_extracts": [
+              {
+                "component_id": "r1",
+                "financial_comparison_coverage": {
+                  "status": "not_checked",
+                  "semantic_support_proven": false
+                },
+                "origin": "application-selected-source-extract",
+                "text": "In Denmark, wind supplied 29% of total electricity generation in 2015.",
+                "span_ids": [
+                  "s_165fe1a5aff7d74a"
+                ],
+                "evidence": [
+                  {
+                    "source_id": "cq-wind",
+                    "quote": "In Denmark, wind supplied 29% of total electricity generation in 2015.",
+                    "span_id": "s_165fe1a5aff7d74a",
+                    "content_sha256": "48ef42de6bc49128cc5515fe5063f42cf5fc3103a8de32cc86458b211719b2d7",
+                    "start": 0,
+                    "end": 70
+                  }
+                ],
+                "quantity_measure_check": "not_applicable"
+              }
+            ],
+            "requested_branch_coverage": {
+              "r1": {
+                "status": "partial",
+                "required_branches": [
+                  "s01",
+                  "s02"
+                ],
+                "unselected_branches": [
+                  "s02"
+                ],
+                "semantic_support_proven": false
+              }
+            },
+            "concurrent_mapping_version": "cq-mapper-v7-scoped-disclosures",
+            "concurrent_composition_version": "cq-composer-v2-unit-local",
+            "mapping_wire_version": "cq-scoped-selection-v1",
+            "gap_authorship": "application-owned scoped branch disclosures; not raw model or editorial text",
+            "scope_deadline_binding": {
+              "declared_scope_contract": {
+                "version": "cq-scoped-disclosures-v1",
+                "plan_id": "5d0e290b003be93d1cf178693a1fe9bd51c189270e34620d3e7ef4d2d2bbe623",
+                "corpus_sha256": "7bed2ea832292ca257e9b0252be1b0cd10bd6ff53b39c2635b3fe7b95c3d3669",
+                "question_sha256": "da852d2fff43e42b54e6022ea1eb059220f1ed76268632fc68488e4eaedfb693",
+                "bindings_sha256": "15061eeb9cb7f10ebe295d0da1a6384a1cf678473ddde02af79b60c950cefc63",
+                "declaration_ref": "C prepared development question labels; not owner acceptance",
+                "annotations": [
+                  {
+                    "component_id": "r1",
+                    "subtask_id": "s01",
+                    "question_span": {
+                      "start": 9,
+                      "end": 43
+                    }
+                  },
+                  {
+                    "component_id": "r1",
+                    "subtask_id": "s02",
+                    "question_span": {
+                      "start": 56,
+                      "end": 99
+                    }
+                  }
+                ]
+              },
+              "declared_scope_file_sha256": "57817949c06da90a6305966b0d0f52b33490eb5d6bf4acaa294605ab23153815",
+              "declared_plan_id": "5d0e290b003be93d1cf178693a1fe9bd51c189270e34620d3e7ef4d2d2bbe623",
+              "runtime_plan_id": "4763a942aa6f56a96f395e6e4e844ea19a3ab127a2ba532dea9c1673974333c9",
+              "declared_deadline_seconds": 180.0,
+              "runtime_deadline_seconds": 177.82799999999406,
+              "allowed_change": "deadline reduction only; all other plan fields equal",
+              "semantic_support_proven": false
+            }
+          },
+          "draft_sources_sha256": "02c5f20c0432269f217b5ec732191ca552fa4032c8eb1236e3c0474965808911",
+          "content_sha256": "d0e9556a2bb12ad695dcbd548051ff91effc0bfc1744233993a1ef94e07c94aa",
+          "attempt_id": "cb654a57a0b54d8db8a394346887999e"
+        },
+        "created": "2026-11-12T12:27:30.723650+00:00"
+      }
+    ],
+    "reviews": []
+  },
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured",
+  "source_assessment": "pending",
+  "owner_adjudication": "pending"
+}

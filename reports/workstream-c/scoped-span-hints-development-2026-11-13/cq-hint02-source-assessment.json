@@ -1,0 +1,6 @@
+{
+  "verdict": "pass",
+  "result_sha256": "29e864c49e59533bc31af8f1427182d2f00eddf498d30c79ede0d601bb378c55",
+  "source_findings": "Assistant-authored. Pinned EIA measurement source eia-measurement, span s_44a4448281bbe6a8 offsets 1616:1770, establishes both individual-device electricity tracking and remote electricity-use control by the utility or customer for some advanced smart meters. Raw mapper chose that exact sentence for both components; the first raw claim and its unchanged final text preserve both capabilities and the qualifier. The second sentence is supported general context from s_ad16cc6c657b8bd0 offsets 1504:1555 and is unnecessary. The first claim cites the shared unit covering both components. Final NeMo passed and the draft persisted for review. No fallback or editorial correction.",
+  "owner_adjudication": "pending"
+}

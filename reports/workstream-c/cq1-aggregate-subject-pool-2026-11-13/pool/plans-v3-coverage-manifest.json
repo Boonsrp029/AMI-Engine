@@ -1,0 +1,6 @@
+{
+  "plans_file": "plans-v3-explicit-coverage.json",
+  "sha256": "8a0cd19b7ec4cb77bc20a3ef69e1c3b2d8a4d96b48e772f25d42650773512fd3",
+  "original_content_manifest_sha256": "57f938480032eccc02af088766e6b76247b1cd6f7d1b4c8acbae5f42e28296ad",
+  "note": "Eighteen unchanged plans and two predeclared answerable replacements."
+}

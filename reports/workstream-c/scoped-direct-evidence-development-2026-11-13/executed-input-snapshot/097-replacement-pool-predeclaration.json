@@ -1,0 +1,105 @@
+{
+  "status": "predeclared before generation; compilation requires passing development",
+  "prior_contract_sha256": "f66f056bb1d7e82421d526c3773935d799ec008e2dd173099dc62fe55f29124a",
+  "carried_unattempted_ids": [
+    "cq1-a16",
+    "cq1-a17",
+    "cq1-a18",
+    "cq1-a06",
+    "cq1-a07",
+    "cq1-a08",
+    "cq1-a09",
+    "cq1-a10",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "consumed_ids": [
+    "cq1-a19",
+    "cq1-a20"
+  ],
+  "category_thresholds": {
+    "answerable": 9,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2,
+    "critical_errors": 0
+  },
+  "replacement_corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+  "replacement_cases": [
+    {
+      "case_id": "cq1-a21",
+      "category": "answerable",
+      "query": "What were wood generation and its share of US utility-scale generation in 2023?",
+      "required_findings": [
+        "31 billion kWh",
+        "0.8% of total U.S. utility-scale generation in 2023"
+      ],
+      "source_id": "eia-generation-2023",
+      "start": 1047,
+      "end": 1059,
+      "source_quote": "Wood\n31\n0.8%",
+      "plan": {
+        "version": "ami-subtasks-v1",
+        "query": "What were wood generation and its share of US utility-scale generation in 2023?",
+        "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+        "subtasks": [
+          {
+            "subtask_id": "s01",
+            "operation": "retrieve",
+            "query": "What were wood generation and its share of US utility-scale generation in 2023?",
+            "source_ids": [],
+            "dependencies": [],
+            "required": true,
+            "timeout_seconds": 30.0
+          }
+        ],
+        "retrieval_concurrency": 2,
+        "deadline_seconds": 180.0,
+        "model_concurrency": 1,
+        "maximum_main_calls": 4
+      }
+    },
+    {
+      "case_id": "cq1-a22",
+      "category": "answerable",
+      "query": "How many kilowatts and watts does the EIA source say are equivalent to one megawatt?",
+      "required_findings": [
+        "1,000 kilowatts",
+        "1,000,000 watts"
+      ],
+      "source_id": "eia-measurement",
+      "start": 434,
+      "end": 489,
+      "source_quote": "Megawatts (MW): One MW is 1,000 kW, or 1,000,000 Watts.",
+      "plan": {
+        "version": "ami-subtasks-v1",
+        "query": "How many kilowatts and watts does the EIA source say are equivalent to one megawatt?",
+        "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+        "subtasks": [
+          {
+            "subtask_id": "s01",
+            "operation": "retrieve",
+            "query": "How many kilowatts and watts does the EIA source say are equivalent to one megawatt?",
+            "source_ids": [],
+            "dependencies": [],
+            "required": true,
+            "timeout_seconds": 30.0
+          }
+        ],
+        "retrieval_concurrency": 2,
+        "deadline_seconds": 180.0,
+        "model_concurrency": 1,
+        "maximum_main_calls": 4
+      }
+    }
+  ]
+}

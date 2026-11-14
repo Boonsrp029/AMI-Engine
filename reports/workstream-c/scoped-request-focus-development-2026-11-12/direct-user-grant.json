@@ -1,0 +1,16 @@
+{
+  "contract_sha256": "69861aa018b5af7431a3b4cf6bea7d8aa6d472fc10e9011bb18c9298448875bf",
+  "case_ids": [
+    "cq-focus01",
+    "cq-focus02"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "human_reply": "Authorize scoped request-focus diagnostics",
+  "verbatim_user_reply": "Authorize scoped request-focus diagnostics",
+  "authorization_reference": "Direct answer to request_user_input_async call_53d52fa80c674b49a11f7864c3c3338a"
+}

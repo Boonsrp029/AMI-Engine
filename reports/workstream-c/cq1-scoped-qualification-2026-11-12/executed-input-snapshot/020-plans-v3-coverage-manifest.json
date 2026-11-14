@@ -1,0 +1,6 @@
+{
+  "plans_file": "plans-v3-explicit-coverage.json",
+  "sha256": "1c67c1fa832acd8f8dab10caafbfaa85b8f24cc7549fc5b6a9355d2310df9f81",
+  "original_content_manifest_sha256": "d587da3c69e9edde1e7f2a5ddcc7dcefe402b6532c7d9f0a21a70b256ea6e26b",
+  "note": "content and questions unchanged; explicit answer coverage separates adversarial distractor branch"
+}

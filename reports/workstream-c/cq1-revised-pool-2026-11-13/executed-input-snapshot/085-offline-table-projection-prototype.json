@@ -1,0 +1,91 @@
+{
+  "status": "offline prototype, safety pending, no persisted revision",
+  "retained_failure_sha256": "9a4d1d4ac7dfc1927cadcdf961d2681c58d3fe51d43a1dd041464a122f638183",
+  "raw_mapper_selection": {
+    "wire_version": "cq-scoped-selection-v1",
+    "components": [
+      {
+        "component_id": "r1",
+        "status": "supported",
+        "evidence": [
+          "s_cb9a294a4ff9d4c9"
+        ],
+        "measure": "",
+        "scenario": "",
+        "kind": "unknown"
+      }
+    ],
+    "geography": {
+      "status": "unresolved",
+      "value": "",
+      "evidence": [],
+      "reason": "units are not places"
+    },
+    "period": ""
+  },
+  "historical_raw_composer_output": {
+    "title": "Analyst research brief",
+    "claims": [
+      {
+        "component_id": "r1",
+        "text": "In 2023, Natural gas generation was 1,802 Billion kWh.",
+        "unit_id": "u1"
+      }
+    ]
+  },
+  "prototype_raw_composer_output": null,
+  "application_rendered_claim": {
+    "component_id": "r1",
+    "unit_id": "u1",
+    "text": "In 2023, the table gives Natural gas generation in Billion kWh as 1,802 and its share of total utility-scale electricity generation as 43.1%."
+  },
+  "focus": {
+    "kind": "table_row",
+    "label": "Natural gas",
+    "amount": "1,802",
+    "share": "43.1%",
+    "unit": "Billion kWh",
+    "year": "2023",
+    "denominator": "total utility-scale electricity generation",
+    "span_id": "s_cb9a294a4ff9d4c9"
+  },
+  "selected_span": {
+    "source_id": "eia-generation-2023",
+    "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+    "start": 557,
+    "end": 1157,
+    "text": "utility-scale electricity generation by source, amount, and share of total in 2023\nEnergy source\nBillion kWh\nShare of total\nTotal - all sources\n4,178\nFossil fuels (total)\n2,505\n60.0%\nNatural gas\n1,802\n43.1%\nCoal\n675\n16.2%\nPetroleum (total)\n16\n0.4%\nPetroleum liquids\n12\n0.3%\nPetroleum coke\n5\n0.1%\nOther gases\n3\n11\n0.3%\nNuclear\n775\n18.6%\nRenewables (total)\n894\n21.4%\nWind\n425\n10.2%\nHydropower\n240\n5.7%\nSolar (total)\n165\n3.9%\nPhotovoltaic\n162\n3.9%\nSolar thermal\n3\n0.1%\nBiomass (total)\n47\n1.1%\nWood\n31\n0.8%\nLandfill gas\n8\n0.2%\nMunicipal solid waste (biogenic)\n6\n0.1%\nOther biomass waste\n2\n0.1%\nGeothermal"
+  },
+  "draft": {
+    "title": "Analyst research brief",
+    "claims": [
+      {
+        "text": "In 2023, the table gives Natural gas generation in Billion kWh as 1,802 and its share of total utility-scale electricity generation as 43.1%.",
+        "source_ids": [
+          "eia-generation-2023"
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "claim_provenance": [
+    {
+      "claim_index": 0,
+      "origins": [
+        {
+          "unit_id": "u1",
+          "component_id": "r1",
+          "subtask_id": "s01",
+          "child_attempt_id": "7ccfbb3a5d3d4fe388a00e10b659240b",
+          "source_id": "eia-generation-2023",
+          "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+          "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+        }
+      ]
+    }
+  ],
+  "fallback_unit_ids": [],
+  "editorial_correction": false,
+  "actual_model_calls": 0,
+  "actual_nemo_calls": 0
+}

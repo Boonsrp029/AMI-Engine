@@ -1,0 +1,15 @@
+{
+  "result_sha256": "dd1355a890e5f3f16c39070d3b25a7ca61154272e700b44765d299a5f7d5a285",
+  "verdict": "pass",
+  "authorship": "Assistant source review. Owner judgment pending.",
+  "source_findings": [
+    "Both original notices make opposed assertions for the same Cambodia 2021 ferry count.",
+    "Raw mapper chose the provisional notice and alone does not disclose the conflict.",
+    "Application retained that raw selection, recorded both exact opposed span IDs and preserved both pinned excerpts in conflict diagnostics.",
+    "The stored draft discloses the conflict with both source IDs and makes no status claim. No composer, NeMo, fallback or editorial correction was used.",
+    "Technical execution passed. Revision 1 needs_review has scope lineage and zero stored reviews or exports."
+  ],
+  "raw_conflict_complete": false,
+  "application_conflict_complete": true,
+  "next_case_allowed": false
+}

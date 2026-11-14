@@ -1,0 +1,29 @@
+{
+  "contract_sha256": "51acd4e485909c206708a184b8b4e76c509b0e2bcf770a6f61dfd68d05619806",
+  "fixed_response_context": [
+    {
+      "case_id": "cq-geo01",
+      "stage": "mapping",
+      "reserved_tokens": 1871
+    },
+    {
+      "case_id": "cq-geo01",
+      "stage": "composition",
+      "reserved_tokens": 1770
+    },
+    {
+      "case_id": "cq-geo02",
+      "stage": "mapping",
+      "reserved_tokens": 1723
+    },
+    {
+      "case_id": "cq-geo02",
+      "stage": "composition",
+      "reserved_tokens": 1827
+    }
+  ],
+  "limit": 4096,
+  "actual_model_calls": 0,
+  "actual_nemo_invocations": 0,
+  "sockets_blocked": true
+}

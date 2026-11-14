@@ -1,0 +1,16 @@
+{
+  "contract_sha256": "e016d82252beb9c0f88207e0a3a0cd09c923ecafe3506dfda59a656e8848dd93",
+  "case_ids": [
+    "cq-focus01",
+    "cq-focus02"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "human_reply": "Authorize 13 November named-ratio diagnostics",
+  "verbatim_user_reply": "Authorize 13 November named-ratio diagnostics",
+  "authorization_reference": "Direct answer to request_user_input_async call_a076d157a4d84da6ad54e362ee727b7d"
+}

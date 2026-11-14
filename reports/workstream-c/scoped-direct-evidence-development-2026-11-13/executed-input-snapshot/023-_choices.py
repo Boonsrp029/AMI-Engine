@@ -1,0 +1,207 @@
+"""Source-literal decoder choices, not an automatic geographic classifier."""
+import re
+from enum import StrEnum
+from typing import Literal, Union
+
+from pydantic import Field, create_model
+from src.pilot._scope import _MONTHS, _PERIOD, explicit_periods, measurement_periods
+
+
+_WORDS = re.compile(r"[^\W\d_]+(?:-[^\W\d_]+)*", re.UNICODE)
+_GENERIC = {"A", "An", "The", "In", "On", "At", "For", "Source", "Note", "Measured", "Output",
+    "Capacity", "Expansion", "Spending", "Meanwhile", "However", "MWh", "GWh", "TWh", "GDP", "PCI", "PII"}
+
+_PLACE_CUE = re.compile(
+    r"\b(?:(?:region|district|province|city|country|county|state|town)\s+of|in|across|throughout|within)\s+$", re.I)
+_PLACE_SUFFIX = re.compile(r"^\s+(?:region|district|province|city|country|county|state|town)\b", re.I)
+_MEASUREMENT_CUE = re.compile(r"\b(?:measured|expressed|denominated)\s+in\s+$", re.I)
+
+
+def _explicit_place_occurrence(text, start, end, value):
+    """Lexical location cues narrow choices; they are not a semantic location classifier."""
+    if value.split()[0] in {"The", "A", "An", "Bank", "Source", "Note"}:
+        return False
+    if value in _MONTHS.split() and not re.search(
+            r"\b(?:region|district|province|city|country|county|state|town)\s+of\s+$", text[:start], re.I):
+        return bool(_PLACE_SUFFIX.search(text[end:]))
+    return bool(_PLACE_CUE.search(text[:start]) or _PLACE_SUFFIX.search(text[end:])
+                or re.fullmatch(r"(?:Region|District|Province|City|Country|County|State|Town)\s+\S+(?:\s+\S+)*", value))
+
+
+def geography_choices(catalog, question, limit=16, explicit_only=False, allowed_names=None,
+                      requested_only=False, exclude_measurement_context=False):
+    """Offer literal label candidates; capitalization alone never sets known geography."""
+    labels = {}
+    temporal = []
+    for sid, span in catalog.items():
+        text = span["text"]
+        words = list(_WORDS.finditer(text))
+        dates = [(m.start(), m.end()) for m in _PERIOD.finditer(text) if explicit_periods(m.group())]
+        for i, word in enumerate(words):
+            token = word.group()
+            if not (token[0].isupper() or any(ord(c) > 127 for c in token)):
+                continue
+            for end in range(i + 1, min(i + 4, len(words)) + 1):
+                group = words[i:end]
+                if any(not (w.group()[0].isupper() or w.group() in {"of", "the", "and"}) for w in group):
+                    break
+                if not group[-1].group()[0].isupper() and len(group) > 1:
+                    continue
+                if any(not text[a.end():b.start()].isspace() for a, b in zip(group, group[1:])):
+                    break
+                value = " ".join(text[group[0].start():group[-1].end()].split())
+                if any(start <= group[0].start() and group[-1].end() <= end for start, end in dates):
+                    temporal.append({"value": value, "span_id": sid, "start": group[0].start(), "end": group[-1].end()})
+                    continue
+                if len(value) > 60 or value in _GENERIC:
+                    continue
+                if requested_only and not re.search(r"(?<!\w)" + re.escape(value) + r"(?!\w)", question, re.I):
+                    continue
+                if (requested_only and end < len(words) and words[end].group()[0].isupper()
+                        and text[group[-1].end():words[end].start()].isspace()):
+                    continue  # Do not shorten a source name to match another requested name.
+                if allowed_names is not None and value not in allowed_names:
+                    continue
+                if exclude_measurement_context and _MEASUREMENT_CUE.search(text[:group[0].start()]):
+                    continue
+                if allowed_names is None and explicit_only and not _explicit_place_occurrence(text, group[0].start(), group[-1].end(), value):
+                    continue
+                labels.setdefault(value, [])
+                if sid not in labels[value]:
+                    labels[value].append(sid)
+    query_words = set(re.findall(r"\w+", question.casefold()))
+    ordered = sorted(labels, key=lambda value: -len(set(re.findall(r"\w+", value.casefold())) & query_words))
+    chosen = ordered[:limit]
+    return {"labels": [{"value": value, "span_ids": labels[value]} for value in chosen],
+        "total_labels": len(ordered), "truncated": len(ordered) > limit,
+        "excluded_temporal_mentions": temporal,
+        "explicit_location_cues_only": explicit_only,
+        "requested_labels_only": requested_only,
+        "classification": "untyped source-literal choices; model and owner must establish geographic meaning"}
+
+
+def period_choices(catalog, question=None):
+    """Only literal periods in non-publication spans may enter the decoder."""
+    periods = {}
+    requested = {p.casefold() for p in explicit_periods(question or "")}
+    years = set(re.findall(r"(?<!\d)\d{4}(?!\d)", question or ""))
+    for sid, span in catalog.items():
+        for period in measurement_periods(span["text"]):
+            if not _standalone_period(span['text'], period):
+                continue
+            if requested and period.casefold() not in requested:
+                continue
+            if not requested and years and not (set(re.findall(r"\d{4}", period)) & years):
+                continue
+            periods.setdefault(period, []).append(sid)
+    return [{"value": value, "span_ids": ids} for value, ids in periods.items()]
+
+
+def _standalone_period(text, period):
+    """A month in an explicit range is not a standalone monthly observation.
+
+    This recognizes only the existing full-English-month date vocabulary. A
+    separate occurrence of the same period can still supply a literal choice.
+    It does not infer annual scope or decide whether a fact answers a question.
+    """
+    month = r'(?:' + '|'.join(_MONTHS.split()) + r')'
+    connector = r'(?:to|through|[-\u2010-\u2014])'
+    before = re.compile(r'\b' + month + r'(?:\s+\d{4})?\s*' + connector + r'\s*$', re.I)
+    after = re.compile(r'^\s*' + connector + r'\s*' + month + r'\b', re.I)
+    for match in _PERIOD.finditer(text):
+        if ' '.join(match.group().split()).casefold() == period.casefold():
+            if not before.search(text[:match.start()]) and not after.search(text[match.end():]):
+                return True
+    return False
+
+
+def constrained_selection(base, geography_base, choices, requests=None, periods=None, request_views=None, *, component_base=None,
+                          question_bound_missing=False):
+    variants = []
+    for i, label in enumerate(choices["labels"]):
+        variant = create_model(f"KnownGeography{i}", __base__=geography_base,
+            status=(Literal["known"], ...), value=(Literal[label["value"]], ...),
+            evidence=(list[Literal[tuple(label["span_ids"])]], Field(min_length=1, max_length=1)),
+            reason=(Literal[""], ...))
+        variants.append(variant)
+    unresolved = create_model("UnresolvedGeography", __base__=geography_base,
+        status=(Literal["unresolved"], ...), value=(Literal[""], ...),
+        evidence=(list[str], Field(max_length=0)), reason=(str, Field(min_length=1, max_length=200)))
+    variants.append(unresolved)
+    geo_type = Union[tuple(variants)] if len(variants) > 1 else unresolved
+    fields = {"geography": (geo_type, ...)}
+    if periods is not None:
+        fields["period"] = (Literal[tuple(["", *[p["value"] for p in periods]])], "")
+    if requests is not None:
+        # Positional schemas prevent invented or repeated request IDs at decoding time.
+        # Semantic validation still checks every selected quotation after parsing.
+        from src.pilot._evidence import EvidenceSelectionComponent
+        selection_component = component_base or EvidenceSelectionComponent
+        slots = []
+        for i, request in enumerate(requests):
+            component_fields = {"component_id": (Literal[request["component_id"]], ...),
+                "measure": (Literal[""], ""), "scenario": (Literal[""], ""), "kind": (Literal["unknown"], "unknown")}
+            views = (request_views or {}).get(request["component_id"])
+            covered_evidence = None
+            if views and views[0].get('unordered_coverage'):
+                from src.pilot._financial_coverage import decoder_coverage
+                ids = views[0]['span_ids']
+                component_fields['evidence'] = (list[Literal[tuple(ids)]],
+                    Field(..., max_length=5, json_schema_extra={'uniqueItems': True}))
+                minimum, sequences = decoder_coverage(views[0])
+                if sequences is None:
+                    covered_evidence = (list[Literal[tuple(ids)]], Field(...,
+                        min_length=minimum, max_length=5, json_schema_extra={'uniqueItems': True},
+                        description='Necessary coverage count only; all financial roles are validated after selection.'))
+                else:
+                    alternatives = [tuple[tuple(Literal[sid] for sid in sequence)] for sequence in sequences]
+                    covered_evidence = (Union[tuple(alternatives)] if len(alternatives) > 1 else alternatives[0],
+                        Field(..., json_schema_extra={'uniqueItems': True}))
+            elif views:
+                required = [Literal[tuple(view["span_ids"])] for view in views]
+                extra_ids = list(dict.fromkeys(sid for view in views
+                    for sid in view.get("extra_span_ids", view["span_ids"])))
+                # Unknown eligible extras can be numerous. Share their enum in
+                # $defs rather than repeat all IDs in every tuple alternative.
+                extra = (StrEnum(f'RequestExtraSpans{i}', {f'span{j}': sid for j,sid in enumerate(extra_ids)})
+                         if any('extra_span_ids' in view for view in views) else Literal[tuple(extra_ids)])
+                extra_counts = range(6 - len(required)) if all(v.get("allow_extra", True) for v in views) else [0]
+                variants = [tuple[()]] + [tuple[tuple(required + [extra] * count)] for count in extra_counts]
+                component_fields["evidence"] = (Union[tuple(variants)], Field(..., json_schema_extra={'uniqueItems': True}))
+            supported = create_model(f"SupportedRequestSlot{i}", __base__=selection_component,
+                **{**component_fields, **({'evidence': covered_evidence} if covered_evidence else {}),
+                   "status": (Literal["supported"], ...),
+                   "gap_anchor": (Literal[""], ... if selection_component.model_fields['gap_anchor'].is_required() else "")})
+            if question_bound_missing:
+                unresolved_statuses = ['conflicting'] if covered_evidence else ['partial', 'conflicting']
+            else:
+                unresolved_statuses = ['missing', 'conflicting'] if covered_evidence else ['partial', 'missing', 'conflicting']
+            unresolved = create_model(f"UnresolvedRequestSlot{i}", __base__=selection_component,
+                **{**component_fields, "status": (Literal[tuple(unresolved_statuses)], ...)})
+            alternatives = [supported, unresolved]
+            if covered_evidence:
+                partial = create_model(f"PartialRequestSlot{i}", __base__=selection_component,
+                    **{**component_fields, 'evidence': covered_evidence, 'status': (Literal['partial'], ...)})
+                alternatives.insert(1, partial)
+            if question_bound_missing:
+                anchor = request.get('question_anchor')
+                if not isinstance(anchor, str) or not anchor.strip() or len(anchor) > 1200:
+                    raise ValueError('Missing-state decoder requires a nonempty supplied question anchor')
+                # Only missing states have no supported subpart to qualify.
+                # Partial states retain their exact unanswered-fragment field.
+                missing = create_model(f"MissingRequestSlot{i}", __base__=selection_component,
+                    **{**component_fields, 'status': (Literal['missing'], ...),
+                       'evidence': (list[str], Field(..., max_length=0)),
+                       'gap_anchor': (Literal[anchor], ...)})
+                alternatives.append(missing)
+            slots.append(Union[tuple(alternatives)])
+        slots = tuple(slots)
+        if not 1 <= len(slots) <= 5:
+            raise ValueError("Expected one to five canonical request slots")
+        fields["components"] = (tuple[slots], ...)
+    return create_model("EvidenceSelection", __base__=base, **fields)
+
+
+def constrained_composition(mapping, scope_context=None, *, excluded_units=()):
+    from src.pilot._composition import response_schema
+    return response_schema(mapping, scope_context, excluded_units=excluded_units)

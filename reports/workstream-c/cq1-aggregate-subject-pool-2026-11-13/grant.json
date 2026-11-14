@@ -1,0 +1,33 @@
+{
+  "contract_sha256": "f66f056bb1d7e82421d526c3773935d799ec008e2dd173099dc62fe55f29124a",
+  "case_ids": [
+    "cq1-a19",
+    "cq1-a20",
+    "cq1-a16",
+    "cq1-a17",
+    "cq1-a18",
+    "cq1-a06",
+    "cq1-a07",
+    "cq1-a08",
+    "cq1-a09",
+    "cq1-a10",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "authorization_reference": "Direct user reply in this Codex chat on 13 November 2026: Authorize CQ1 scoped twenty-case qualification.",
+  "human_reply": "Authorize CQ1 scoped twenty-case qualification"
+}

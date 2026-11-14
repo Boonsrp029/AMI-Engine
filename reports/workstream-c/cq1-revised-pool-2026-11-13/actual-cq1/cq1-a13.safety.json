@@ -1,0 +1,7 @@
+{
+  "validated_report": "Utility companies measure electricity use with meters.\nUtility companies use meters to measure electricity use.",
+  "passed_guardrails": true,
+  "raw_output": "Utility companies measure electricity use with meters.\nUtility companies use meters to measure electricity use.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

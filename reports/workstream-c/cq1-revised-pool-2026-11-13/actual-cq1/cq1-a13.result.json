@@ -1,0 +1,2091 @@
+{
+  "technical_pass": true,
+  "main_calls": 2,
+  "nemo_invocations": 1,
+  "elapsed_seconds": 38.812000000005355,
+  "failure_type": null,
+  "stored_run": {
+    "id": "bb42e558dd664c0d8041600c94d84836",
+    "request_key": "qualify-282e87dd4b5577d2c4998e7aa86549a1",
+    "query": "What information can advanced smart meters track, and what can they let the utility or customer control remotely?",
+    "corpus_sha": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+    "status": "needs_review",
+    "revision": 1,
+    "draft": {
+      "title": "Analyst research brief",
+      "claims": [
+        {
+          "text": "Utility companies measure electricity use with meters.",
+          "source_ids": [
+            "eia-measurement"
+          ]
+        },
+        {
+          "text": "Utility companies use meters to measure electricity use.",
+          "source_ids": [
+            "eia-measurement"
+          ]
+        }
+      ],
+      "warnings": []
+    },
+    "sources": {
+      "eia-measurement": {
+        "source_id": "eia-measurement",
+        "content": "Electricity is measured in units of power called Watts, named after James Watt, the inventor of the steam engine. One Watt is a very small amount of power. Some devices need only a few Watts to operate, but other devices require larger amounts, and their consumption is measured in kilowatts (kW). One kilowatt is equal to 1,000 Watts.\nFor very large amounts of electricity, like what power plants generate, we use even larger units:\nMegawatts (MW): One MW is 1,000 kW, or 1,000,000 Watts.\nGigawatts (GW): One GW is 1,000 MW, or 1,000,000,000 Watts.\nElectricity use over time is measured in Watthours\nWatts measure power at a specific moment, but we use Watthours (Wh) to measure how much electricity is used over a period of time. One Watthour is the energy of one Watt used for one hour.\nElectric utilities and power plants generally measure electricity in kilowatthours (kWh). One kWh is one kilowatt generated for one hour. For example, if you use a 40-Watt (0.04 kW) light bulb for five hours, you have used 200 Wh, or 0.2 kWh, of electrical energy.\nUtility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use. These meters are usually located on the outside of the building or home where the power line connects. In the past, electricity meters were mechanical devices that a utility employee had to read manually. Eventually, automated meters could periodically report electricity use to the utility. Today, many utilities use\nelectronic smart meters\n. These meters wirelessly send power usage data in real time. Some advanced smart meters can even track the electricity use of individual devices and allow the utility or customer to control electricity use remotely.\n",
+        "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+        "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+        "role": "support",
+        "title": "Measuring electricity",
+        "url": "https://www.eia.gov/energyexplained/electricity/measuring-electricity.php",
+        "published": null,
+        "doc_name": "eia-measuring.html",
+        "page_num": null
+      },
+      "eia-generation-2023": {
+        "source_id": "eia-generation-2023",
+        "content": "In 2023, about 4,178 billion kilowatthours (kWh) (or about 4.18 trillion kWh) of electricity were generated at utility-scale electricity generation facilities in the United States.\n1\nAbout 60% of this electricity generation was from fossil fuels—coal, natural gas, petroleum, and other gases. About 19% was from nuclear energy, and about 21% was from renewable energy sources.\nThe U.S. Energy Information Administration estimates that an additional 73.62 billion kWh of electricity generation was from small-scale solar photovoltaic systems in 2023.\n2\nU.S. utility-scale electricity generation by source, amount, and share of total in 2023\nEnergy source\nBillion kWh\nShare of total\nTotal - all sources\n4,178\nFossil fuels (total)\n2,505\n60.0%\nNatural gas\n1,802\n43.1%\nCoal\n675\n16.2%\nPetroleum (total)\n16\n0.4%\nPetroleum liquids\n12\n0.3%\nPetroleum coke\n5\n0.1%\nOther gases\n3\n11\n0.3%\nNuclear\n775\n18.6%\nRenewables (total)\n894\n21.4%\nWind\n425\n10.2%\nHydropower\n240\n5.7%\nSolar (total)\n165\n3.9%\nPhotovoltaic\n162\n3.9%\nSolar thermal\n3\n0.1%\nBiomass (total)\n47\n1.1%\nWood\n31\n0.8%\nLandfill gas\n8\n0.2%\nMunicipal solid waste (biogenic)\n6\n0.1%\nOther biomass waste\n2\n0.1%\nGeothermal\n16\n0.4%\nPumped storage hydropower\n4\n-6\n-0.1%\nOther sources\n5\n10\n0.2%\nData source: U.S. Energy Information Administration,\nElectric Power Monthly\n, February 2024; preliminary data\n1\nUtility-scale electricity generation is electricity generation from power plants with at least one megawatt (or 1,000 kilowatts) of total electricity generating capacity. Data are for\nnet electricity generation\n.\n2\nSmall-scale solar photovoltaic (PV) systems are electricity generators with less than one megawatt (MW) of electricity generating capacity, which are not connected at a power plant that has a combined capacity of one MW or larger. Most small-scale PV systems are at or near the location where the electricity is consumed and many are\nnet metered systems\n. Smaller PV systems are usually installed on building rooftops.\n3\nOther gases includes blast furnace gas and other manufactured and waste gases derived from fossil fuels.\n4\nPumped storage hydroelectricity\ngeneration is negative because most pumped storage electricity generation facilities use more electricity than they produce on an annual basis. Most pumped storage systems use electricity from an\nelectric power grid\nfor pumping water to the storage component of the system.\n5\nOther (utility-scale) sources includes non-biogenic municipal solid waste, batteries, hydrogen, purchased steam, sulfur, tire-derived fuel, and other miscellaneous energy sources.\n",
+        "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+        "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+        "role": "support",
+        "title": "US utility-scale generation in 2023; preliminary February 2024 data",
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "published": "2024-02-29",
+        "doc_name": "eia-generation.html",
+        "page_num": null
+      }
+    },
+    "metrics": {
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+      "workflow": "ami-subtasks-v1",
+      "model_calls": 2,
+      "guardrail_invocations": 1,
+      "token_usage_complete": false,
+      "missing_branches": [],
+      "composition_provenance": [
+        {
+          "claim_index": 0,
+          "origins": [
+            {
+              "unit_id": "u1",
+              "component_id": "r1",
+              "subtask_id": "s01",
+              "child_attempt_id": "addce5eb78b840dc97c52e310ded7447",
+              "source_id": "eia-measurement",
+              "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+              "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+            },
+            {
+              "unit_id": "u3",
+              "component_id": "r2",
+              "subtask_id": "s02",
+              "child_attempt_id": "3e3797baa5aa45afac73a73ab0677ab1",
+              "source_id": "eia-measurement",
+              "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+              "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+            }
+          ]
+        },
+        {
+          "claim_index": 1,
+          "origins": [
+            {
+              "unit_id": "u2",
+              "component_id": "r1",
+              "subtask_id": "s01",
+              "child_attempt_id": "addce5eb78b840dc97c52e310ded7447",
+              "source_id": "eia-measurement",
+              "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+              "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+            },
+            {
+              "unit_id": "u4",
+              "component_id": "r2",
+              "subtask_id": "s02",
+              "child_attempt_id": "3e3797baa5aa45afac73a73ab0677ab1",
+              "source_id": "eia-measurement",
+              "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+              "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+            }
+          ]
+        }
+      ],
+      "composition_diagnostics": {
+        "identity": {
+          "run_id": "bb42e558dd664c0d8041600c94d84836",
+          "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+          "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+          "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+        },
+        "raw_composer_output": {
+          "title": "Analyst research brief",
+          "claims": [
+            {
+              "component_id": "r1",
+              "text": "Utility companies measure electricity use with meters.",
+              "unit_id": "u1"
+            },
+            {
+              "component_id": "r1",
+              "text": "Utility companies use meters to measure electricity use.",
+              "unit_id": "u2"
+            }
+          ]
+        },
+        "editorial_correction": false,
+        "branch_states": {
+          "s01": "completed",
+          "s02": "completed"
+        },
+        "missing_branches": [],
+        "omitted_financial_context": {},
+        "source_excerpt_presentations": {},
+        "fallback_reasons": {},
+        "source_baseline_normalizations": [],
+        "public_claim_coverage": [
+          {
+            "claim_index": 0,
+            "unit_ids": [
+              "u1",
+              "u3"
+            ],
+            "component_ids": [
+              "r1",
+              "r2"
+            ]
+          },
+          {
+            "claim_index": 1,
+            "unit_ids": [
+              "u2",
+              "u4"
+            ],
+            "component_ids": [
+              "r1",
+              "r2"
+            ]
+          }
+        ],
+        "canonical_composition_units": [
+          {
+            "component_id": "r1",
+            "evidence": [
+              {
+                "source_id": "eia-measurement",
+                "quote": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use."
+              }
+            ],
+            "unit_id": "u1",
+            "identity_sha256": "cb38b30a29c67aedf7ebb8215bfe6ea6029db386c5b2f10e88c17a757916b44d",
+            "established_scope": {},
+            "scope_citation_ids": [],
+            "origins": [
+              {
+                "unit_id": "u1",
+                "component_id": "r1"
+              },
+              {
+                "unit_id": "u3",
+                "component_id": "r2"
+              }
+            ]
+          },
+          {
+            "component_id": "r1",
+            "evidence": [
+              {
+                "source_id": "eia-measurement",
+                "quote": "These meters wirelessly send power usage data in real time."
+              }
+            ],
+            "unit_id": "u2",
+            "identity_sha256": "61e6343b68e3d6953d8759af8e2e937978d1ab57cc291631a59d4584375aa2f5",
+            "established_scope": {},
+            "scope_citation_ids": [],
+            "origins": [
+              {
+                "unit_id": "u2",
+                "component_id": "r1"
+              },
+              {
+                "unit_id": "u4",
+                "component_id": "r2"
+              }
+            ]
+          }
+        ],
+        "omitted_measure_qualifiers": {},
+        "merged_duplicate_citations": [],
+        "literal_comparison_conclusions": [],
+        "source_rendered_comparisons": [],
+        "fallback_unit_ids": [],
+        "scoped_disclosures": {
+          "version": "cq-scoped-disclosures-v1",
+          "identity": {
+            "run_id": "bb42e558dd664c0d8041600c94d84836",
+            "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+            "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+          },
+          "scope_contract": {
+            "version": "cq-scoped-disclosures-v1",
+            "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+            "question_sha256": "3082c3033070c19acae6e9c5a4556b5ce3b844593a23bf82dca3eefcb53f3a32",
+            "bindings_sha256": "65027ea19f8364378f35d32392edc9f727eac1c4b702f6afe44023735e4859de",
+            "declaration_ref": "Question-clause annotation frozen before generation.",
+            "annotations": [
+              {
+                "component_id": "r1",
+                "subtask_id": "s01",
+                "question_span": {
+                  "start": 0,
+                  "end": 48
+                }
+              },
+              {
+                "component_id": "r2",
+                "subtask_id": "s02",
+                "question_span": {
+                  "start": 54,
+                  "end": 113
+                }
+              }
+            ]
+          },
+          "records": [
+            {
+              "component_id": "r1",
+              "component_status": "supported",
+              "subtask_id": "s01",
+              "required": true,
+              "state": "completed",
+              "outcome": "evidence",
+              "kind": "selected_evidence",
+              "requested_scope": "What information can advanced smart meters track",
+              "question_span": {
+                "start": 0,
+                "end": 48
+              },
+              "original_question": "What information can advanced smart meters track, and what can they let the utility or customer control remotely?",
+              "retrieval_query": "What information can advanced smart meters track",
+              "returned_support_ids": [
+                "eia-measurement",
+                "eia-generation-2023"
+              ],
+              "selected_support_ids": [
+                "eia-measurement"
+              ],
+              "child_attempt_id": "addce5eb78b840dc97c52e310ded7447",
+              "disclosure": "Evidence selected; semantic support and within-branch completeness remain unproven.",
+              "semantic_support_proven": false,
+              "scope_semantics_proven": false
+            },
+            {
+              "component_id": "r2",
+              "component_status": "supported",
+              "subtask_id": "s02",
+              "required": true,
+              "state": "completed",
+              "outcome": "evidence",
+              "kind": "selected_evidence",
+              "requested_scope": "what can they let the utility or customer control remotely?",
+              "question_span": {
+                "start": 54,
+                "end": 113
+              },
+              "original_question": "What information can advanced smart meters track, and what can they let the utility or customer control remotely?",
+              "retrieval_query": "what can they let the utility or customer control remotely?",
+              "returned_support_ids": [
+                "eia-measurement",
+                "eia-generation-2023"
+              ],
+              "selected_support_ids": [
+                "eia-measurement"
+              ],
+              "child_attempt_id": "3e3797baa5aa45afac73a73ab0677ab1",
+              "disclosure": "Evidence selected; semantic support and within-branch completeness remain unproven.",
+              "semantic_support_proven": false,
+              "scope_semantics_proven": false
+            }
+          ],
+          "selected_conflicts": [],
+          "warnings": [],
+          "drafting_allowed": true,
+          "semantic_support_proven": false,
+          "owner_acceptance": "not inferred"
+        },
+        "title_geography": {
+          "version": "cq-title-scope-v1",
+          "candidate": "",
+          "title_before": "Analyst research brief",
+          "semantic_applicability_proven": false,
+          "evidence_coverage": [],
+          "status": "not_applicable",
+          "title_after": "Analyst research brief"
+        },
+        "scoped_mapper_raw_selection": {
+          "wire_version": "cq-scoped-selection-v1",
+          "components": [
+            {
+              "component_id": "r1",
+              "status": "supported",
+              "evidence": [
+                "s_2845cfa10cf8e534",
+                "s_792c4494ed697e52"
+              ],
+              "measure": "",
+              "scenario": "",
+              "kind": "unknown"
+            },
+            {
+              "component_id": "r2",
+              "status": "supported",
+              "evidence": [
+                "s_2845cfa10cf8e534",
+                "s_792c4494ed697e52"
+              ],
+              "measure": "",
+              "scenario": "",
+              "kind": "unknown"
+            }
+          ],
+          "geography": {
+            "status": "unresolved",
+            "value": "",
+            "evidence": [],
+            "reason": "Units are not places"
+          },
+          "period": ""
+        },
+        "application_source_selection": {
+          "components": [
+            {
+              "component_id": "r1",
+              "status": "supported",
+              "evidence": [
+                "s_2845cfa10cf8e534",
+                "s_792c4494ed697e52"
+              ],
+              "gap_anchor": "",
+              "measure": "",
+              "scenario": "",
+              "kind": "unknown"
+            },
+            {
+              "component_id": "r2",
+              "status": "supported",
+              "evidence": [
+                "s_2845cfa10cf8e534",
+                "s_792c4494ed697e52"
+              ],
+              "gap_anchor": "",
+              "measure": "",
+              "scenario": "",
+              "kind": "unknown"
+            }
+          ],
+          "geography": {
+            "status": "unresolved",
+            "value": "",
+            "evidence": [],
+            "reason": "Units are not places"
+          },
+          "period": "",
+          "wire_version": "source-selection-v1"
+        },
+        "resolved_evidence_mapping": {
+          "geography": "",
+          "period": "",
+          "components": [
+            {
+              "component_id": "r1",
+              "question_anchor": "What information can advanced smart meters track",
+              "status": "supported",
+              "short_answer": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use. These meters wirelessly send power usage data in real time.",
+              "evidence": [
+                {
+                  "source_id": "eia-measurement",
+                  "quote": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use."
+                },
+                {
+                  "source_id": "eia-measurement",
+                  "quote": "These meters wirelessly send power usage data in real time."
+                }
+              ],
+              "gap_anchor": "",
+              "measure": "",
+              "scenario": "",
+              "kind": "unknown"
+            },
+            {
+              "component_id": "r2",
+              "question_anchor": "what can they let the utility or customer control remotely?",
+              "status": "supported",
+              "short_answer": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use. These meters wirelessly send power usage data in real time.",
+              "evidence": [
+                {
+                  "source_id": "eia-measurement",
+                  "quote": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use."
+                },
+                {
+                  "source_id": "eia-measurement",
+                  "quote": "These meters wirelessly send power usage data in real time."
+                }
+              ],
+              "gap_anchor": "",
+              "measure": "",
+              "scenario": "",
+              "kind": "unknown"
+            }
+          ],
+          "geography_resolution": {
+            "status": "unresolved",
+            "value": "",
+            "evidence": [],
+            "reason": "Units are not places",
+            "original_value": "",
+            "normalization": "none",
+            "context_only": false,
+            "document_context_bindings": []
+          }
+        },
+        "application_detected_status_conflicts": [],
+        "request_evidence_focus": {},
+        "application_rendered_table_rows": [],
+        "model_responses": [
+          {
+            "stage": "mapping",
+            "identity": {
+              "run_id": "bb42e558dd664c0d8041600c94d84836",
+              "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+              "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+              "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+            },
+            "raw": "{\n  \"wire_version\": \"cq-scoped-selection-v1\",\n  \"components\": [\n    {\n      \"component_id\": \"r1\",\n      \"status\": \"supported\",\n      \"evidence\": [\n        \"s_2845cfa10cf8e534\",\n        \"s_792c4494ed697e52\"\n      ],\n      \"measure\": \"\",\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    },\n    {\n      \"component_id\": \"r2\",\n      \"status\": \"supported\",\n      \"evidence\": [\n        \"s_2845cfa10cf8e534\",\n        \"s_792c4494ed697e52\"\n      ],\n      \"measure\": \"\",\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    }\n  ],\n  \"geography\": {\n    \"status\": \"unresolved\",\n    \"value\": \"\",\n    \"evidence\": [],\n    \"reason\": \"Units are not places\"\n  },\n  \"period\": \"\"\n}",
+            "usage": {
+              "input_tokens": 2382,
+              "output_tokens": 225,
+              "total_tokens": 2607
+            },
+            "response_metadata": {
+              "model": "ami-llama3.1:8b-4k",
+              "created_at": "2026-11-13T05:23:08.4500022Z",
+              "done": true,
+              "done_reason": "stop",
+              "total_duration": 6725084200,
+              "load_duration": 6656500,
+              "prompt_eval_count": 2382,
+              "prompt_eval_duration": 1016417000,
+              "eval_count": 225,
+              "eval_duration": 5634715000,
+              "logprobs": null,
+              "model_name": "ami-llama3.1:8b-4k",
+              "model_provider": "ollama"
+            }
+          },
+          {
+            "stage": "composition",
+            "identity": {
+              "run_id": "bb42e558dd664c0d8041600c94d84836",
+              "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+              "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+              "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+            },
+            "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"Utility companies measure electricity use with meters.\",\n      \"unit_id\": \"u1\"\n    },\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"Utility companies use meters to measure electricity use.\",\n      \"unit_id\": \"u2\"\n    }\n  ]\n}",
+            "usage": {
+              "input_tokens": 664,
+              "output_tokens": 95,
+              "total_tokens": 759
+            },
+            "response_metadata": {
+              "model": "ami-llama3.1:8b-4k",
+              "created_at": "2026-11-13T05:23:18.0494874Z",
+              "done": true,
+              "done_reason": "stop",
+              "total_duration": 2321576500,
+              "load_duration": 16851800,
+              "prompt_eval_count": 664,
+              "prompt_eval_duration": 107766000,
+              "eval_count": 95,
+              "eval_duration": 2063558000,
+              "logprobs": null,
+              "model_name": "ami-llama3.1:8b-4k",
+              "model_provider": "ollama"
+            }
+          }
+        ],
+        "span_catalog": {
+          "s_bc68aaf38aed223e": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 0,
+            "end": 113,
+            "text": "Electricity is measured in units of power called Watts, named after James Watt, the inventor of the steam engine."
+          },
+          "s_a46000abe7f383a1": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 114,
+            "end": 155,
+            "text": "One Watt is a very small amount of power."
+          },
+          "s_6531c20764810d19": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 156,
+            "end": 297,
+            "text": "Some devices need only a few Watts to operate, but other devices require larger amounts, and their consumption is measured in kilowatts (kW)."
+          },
+          "s_d46a265266fdb8bc": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 298,
+            "end": 335,
+            "text": "One kilowatt is equal to 1,000 Watts."
+          },
+          "s_d1ad042cf9ed1c0a": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 336,
+            "end": 489,
+            "text": "For very large amounts of electricity, like what power plants generate, we use even larger units:\nMegawatts (MW): One MW is 1,000 kW, or 1,000,000 Watts."
+          },
+          "s_a0ba37a9ebb6f10b": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 490,
+            "end": 549,
+            "text": "Gigawatts (GW): One GW is 1,000 MW, or 1,000,000,000 Watts."
+          },
+          "s_f771166ff784ccaf": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 550,
+            "end": 731,
+            "text": "Electricity use over time is measured in Watthours\nWatts measure power at a specific moment, but we use Watthours (Wh) to measure how much electricity is used over a period of time."
+          },
+          "s_ec39d28380e76dfd": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 732,
+            "end": 789,
+            "text": "One Watthour is the energy of one Watt used for one hour."
+          },
+          "s_71e744b8dcea4eb6": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 790,
+            "end": 879,
+            "text": "Electric utilities and power plants generally measure electricity in kilowatthours (kWh)."
+          },
+          "s_684693c6816ddcf4": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 880,
+            "end": 927,
+            "text": "One kWh is one kilowatt generated for one hour."
+          },
+          "s_bd057ec120f8b36b": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 928,
+            "end": 1054,
+            "text": "For example, if you use a 40-Watt (0.04 kW) light bulb for five hours, you have used 200 Wh, or 0.2 kWh, of electrical energy."
+          },
+          "s_2845cfa10cf8e534": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 1055,
+            "end": 1211,
+            "text": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use."
+          },
+          "s_f4366d86d82e2ee4": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 1212,
+            "end": 1314,
+            "text": "These meters are usually located on the outside of the building or home where the power line connects."
+          },
+          "s_5b17f78fd492302c": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 1315,
+            "end": 1416,
+            "text": "In the past, electricity meters were mechanical devices that a utility employee had to read manually."
+          },
+          "s_6af27ac482a98ade": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 1417,
+            "end": 1503,
+            "text": "Eventually, automated meters could periodically report electricity use to the utility."
+          },
+          "s_ad16cc6c657b8bd0": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 1504,
+            "end": 1555,
+            "text": "Today, many utilities use\nelectronic smart meters\n."
+          },
+          "s_792c4494ed697e52": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 1556,
+            "end": 1615,
+            "text": "These meters wirelessly send power usage data in real time."
+          },
+          "s_44a4448281bbe6a8": {
+            "source_id": "eia-measurement",
+            "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+            "start": 1616,
+            "end": 1770,
+            "text": "Some advanced smart meters can even track the electricity use of individual devices and allow the utility or customer to control electricity use remotely."
+          },
+          "s_9f6629387f7fb9e1": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 0,
+            "end": 180,
+            "text": "In 2023, about 4,178 billion kilowatthours (kWh) (or about 4.18 trillion kWh) of electricity were generated at utility-scale electricity generation facilities in the United States."
+          },
+          "s_9f96e1da2a50533f": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 181,
+            "end": 292,
+            "text": "1\nAbout 60% of this electricity generation was from fossil fuels—coal, natural gas, petroleum, and other gases."
+          },
+          "s_610d409a2f28f88c": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 293,
+            "end": 376,
+            "text": "About 19% was from nuclear energy, and about 21% was from renewable energy sources."
+          },
+          "s_31e68c934e4613b5": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 377,
+            "end": 385,
+            "text": "The U.S."
+          },
+          "s_2259500935f03130": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 386,
+            "end": 549,
+            "text": "Energy Information Administration estimates that an additional 73.62 billion kWh of electricity generation was from small-scale solar photovoltaic systems in 2023."
+          },
+          "s_5afda567c1ab8363": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 550,
+            "end": 556,
+            "text": "2\nU.S."
+          },
+          "s_cb9a294a4ff9d4c9": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 557,
+            "end": 1157,
+            "text": "utility-scale electricity generation by source, amount, and share of total in 2023\nEnergy source\nBillion kWh\nShare of total\nTotal - all sources\n4,178\nFossil fuels (total)\n2,505\n60.0%\nNatural gas\n1,802\n43.1%\nCoal\n675\n16.2%\nPetroleum (total)\n16\n0.4%\nPetroleum liquids\n12\n0.3%\nPetroleum coke\n5\n0.1%\nOther gases\n3\n11\n0.3%\nNuclear\n775\n18.6%\nRenewables (total)\n894\n21.4%\nWind\n425\n10.2%\nHydropower\n240\n5.7%\nSolar (total)\n165\n3.9%\nPhotovoltaic\n162\n3.9%\nSolar thermal\n3\n0.1%\nBiomass (total)\n47\n1.1%\nWood\n31\n0.8%\nLandfill gas\n8\n0.2%\nMunicipal solid waste (biogenic)\n6\n0.1%\nOther biomass waste\n2\n0.1%\nGeothermal"
+          },
+          "s_53a9904131330b03": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 1158,
+            "end": 1244,
+            "text": "16\n0.4%\nPumped storage hydropower\n4\n-6\n-0.1%\nOther sources\n5\n10\n0.2%\nData source: U.S."
+          },
+          "s_da5cc8dafb8664b8": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 1245,
+            "end": 1319,
+            "text": "Energy Information Administration,\nElectric Power Monthly\n, February 2024;"
+          },
+          "s_379ceb3c45f341ef": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 1320,
+            "end": 1509,
+            "text": "preliminary data\n1\nUtility-scale electricity generation is electricity generation from power plants with at least one megawatt (or 1,000 kilowatts) of total electricity generating capacity."
+          },
+          "s_f524846d7a694449": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 1510,
+            "end": 1551,
+            "text": "Data are for\nnet electricity generation\n."
+          },
+          "s_d7571401d3a80385": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 1552,
+            "end": 1784,
+            "text": "2\nSmall-scale solar photovoltaic (PV) systems are electricity generators with less than one megawatt (MW) of electricity generating capacity, which are not connected at a power plant that has a combined capacity of one MW or larger."
+          },
+          "s_e7151e814e2840c4": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 1785,
+            "end": 1909,
+            "text": "Most small-scale PV systems are at or near the location where the electricity is consumed and many are\nnet metered systems\n."
+          },
+          "s_aba929158915415b": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 1910,
+            "end": 1972,
+            "text": "Smaller PV systems are usually installed on building rooftops."
+          },
+          "s_1c02614a2ce1b7d8": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 1973,
+            "end": 2079,
+            "text": "3\nOther gases includes blast furnace gas and other manufactured and waste gases derived from fossil fuels."
+          },
+          "s_8b9306d974626ad5": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 2080,
+            "end": 2257,
+            "text": "4\nPumped storage hydroelectricity\ngeneration is negative because most pumped storage electricity generation facilities use more electricity than they produce on an annual basis."
+          },
+          "s_e677fdbe4b189e04": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 2258,
+            "end": 2387,
+            "text": "Most pumped storage systems use electricity from an\nelectric power grid\nfor pumping water to the storage component of the system."
+          },
+          "s_92faf2a6f901b323": {
+            "source_id": "eia-generation-2023",
+            "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+            "start": 2388,
+            "end": 2569,
+            "text": "5\nOther (utility-scale) sources includes non-biogenic municipal solid waste, batteries, hydrogen, purchased steam, sulfur, tire-derived fuel, and other miscellaneous energy sources."
+          }
+        },
+        "application_extracts": [
+          {
+            "component_id": "r1",
+            "financial_comparison_coverage": {
+              "status": "not_checked",
+              "semantic_support_proven": false
+            },
+            "origin": "application-selected-source-extract",
+            "text": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use. These meters wirelessly send power usage data in real time.",
+            "span_ids": [
+              "s_2845cfa10cf8e534",
+              "s_792c4494ed697e52"
+            ],
+            "evidence": [
+              {
+                "source_id": "eia-measurement",
+                "quote": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use.",
+                "span_id": "s_2845cfa10cf8e534",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 1055,
+                "end": 1211
+              },
+              {
+                "source_id": "eia-measurement",
+                "quote": "These meters wirelessly send power usage data in real time.",
+                "span_id": "s_792c4494ed697e52",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 1556,
+                "end": 1615
+              }
+            ],
+            "quantity_measure_check": "not_applicable"
+          },
+          {
+            "component_id": "r2",
+            "financial_comparison_coverage": {
+              "status": "not_checked",
+              "semantic_support_proven": false
+            },
+            "origin": "application-selected-source-extract",
+            "text": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use. These meters wirelessly send power usage data in real time.",
+            "span_ids": [
+              "s_2845cfa10cf8e534",
+              "s_792c4494ed697e52"
+            ],
+            "evidence": [
+              {
+                "source_id": "eia-measurement",
+                "quote": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use.",
+                "span_id": "s_2845cfa10cf8e534",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 1055,
+                "end": 1211
+              },
+              {
+                "source_id": "eia-measurement",
+                "quote": "These meters wirelessly send power usage data in real time.",
+                "span_id": "s_792c4494ed697e52",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 1556,
+                "end": 1615
+              }
+            ],
+            "quantity_measure_check": "not_applicable"
+          }
+        ],
+        "requested_branch_coverage": {
+          "r1": {
+            "status": "supported",
+            "required_branches": [
+              "s01"
+            ],
+            "unselected_branches": [],
+            "semantic_support_proven": false
+          },
+          "r2": {
+            "status": "supported",
+            "required_branches": [
+              "s02"
+            ],
+            "unselected_branches": [],
+            "semantic_support_proven": false
+          }
+        },
+        "concurrent_mapping_version": "cq-mapper-v13-table-row-selection",
+        "concurrent_composition_version": "cq-composer-v3-table-row-selection",
+        "mapping_wire_version": "cq-scoped-selection-v1",
+        "gap_authorship": "application-owned scoped branch disclosures; not raw model or editorial text",
+        "scope_deadline_binding": {
+          "declared_scope_contract": {
+            "version": "cq-scoped-disclosures-v1",
+            "plan_id": "6b9ef2736b82bbedadc772f76d35eeec8d7779edfc82aa741000ddc0b7dc3011",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+            "question_sha256": "3082c3033070c19acae6e9c5a4556b5ce3b844593a23bf82dca3eefcb53f3a32",
+            "bindings_sha256": "65027ea19f8364378f35d32392edc9f727eac1c4b702f6afe44023735e4859de",
+            "declaration_ref": "Question-clause annotation frozen before generation.",
+            "annotations": [
+              {
+                "component_id": "r1",
+                "subtask_id": "s01",
+                "question_span": {
+                  "start": 0,
+                  "end": 48
+                }
+              },
+              {
+                "component_id": "r2",
+                "subtask_id": "s02",
+                "question_span": {
+                  "start": 54,
+                  "end": 113
+                }
+              }
+            ]
+          },
+          "declared_scope_file_sha256": "18a5a85455a679c6ffd1aec0de5bad82917ea041d3df6c77d0f6fc4876a76df0",
+          "declared_plan_id": "6b9ef2736b82bbedadc772f76d35eeec8d7779edfc82aa741000ddc0b7dc3011",
+          "runtime_plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+          "declared_deadline_seconds": 180.0,
+          "runtime_deadline_seconds": 177.85899999999674,
+          "allowed_change": "deadline reduction only; all other plan fields equal",
+          "semantic_support_proven": false
+        }
+      },
+      "composition_content_sha256": "6017bd3da309968b256e30283e255aa7c61e23c4ef5477b17c665ee9d7700c58",
+      "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+      "execution_elapsed_seconds": 33.875
+    },
+    "error": null,
+    "created": "2026-11-13T05:22:53.920764+00:00",
+    "updated": "2026-11-13T05:23:27.895709+00:00",
+    "events": [
+      {
+        "seq": 1,
+        "run_id": "bb42e558dd664c0d8041600c94d84836",
+        "kind": "attempt_started",
+        "payload": {
+          "attempt_id": "f93e15bf6a354606a24dae14205d2e1e"
+        },
+        "created": "2026-11-13T05:22:54.010136+00:00"
+      },
+      {
+        "seq": 2,
+        "run_id": "bb42e558dd664c0d8041600c94d84836",
+        "kind": "subtask_plan",
+        "payload": {
+          "identity": {
+            "run_id": "bb42e558dd664c0d8041600c94d84836",
+            "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+            "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+          },
+          "plan": {
+            "version": "ami-subtasks-v1",
+            "query": "What information can advanced smart meters track, and what can they let the utility or customer control remotely?",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+            "subtasks": [
+              {
+                "subtask_id": "s01",
+                "operation": "retrieve",
+                "query": "What information can advanced smart meters track",
+                "source_ids": [],
+                "dependencies": [],
+                "required": true,
+                "timeout_seconds": 30.0
+              },
+              {
+                "subtask_id": "s02",
+                "operation": "retrieve",
+                "query": "what can they let the utility or customer control remotely?",
+                "source_ids": [],
+                "dependencies": [],
+                "required": true,
+                "timeout_seconds": 30.0
+              }
+            ],
+            "retrieval_concurrency": 2,
+            "deadline_seconds": 177.85899999999674,
+            "model_concurrency": 1,
+            "maximum_main_calls": 4
+          },
+          "attempt_id": "f93e15bf6a354606a24dae14205d2e1e"
+        },
+        "created": "2026-11-13T05:22:54.091447+00:00"
+      },
+      {
+        "seq": 3,
+        "run_id": "bb42e558dd664c0d8041600c94d84836",
+        "kind": "subtask_worker_started",
+        "payload": {
+          "pid": 15176,
+          "attempt_id": "f93e15bf6a354606a24dae14205d2e1e"
+        },
+        "created": "2026-11-13T05:22:54.256367+00:00"
+      },
+      {
+        "seq": 4,
+        "run_id": "bb42e558dd664c0d8041600c94d84836",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "bb42e558dd664c0d8041600c94d84836",
+            "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+            "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "addce5eb78b840dc97c52e310ded7447",
+          "ordinal": 1,
+          "status": "queued",
+          "created_at": "2026-11-13T05:22:55.175486Z",
+          "reason": "none",
+          "attempt_id": "f93e15bf6a354606a24dae14205d2e1e"
+        },
+        "created": "2026-11-13T05:22:55.177486+00:00"
+      },
+      {
+        "seq": 5,
+        "run_id": "bb42e558dd664c0d8041600c94d84836",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "bb42e558dd664c0d8041600c94d84836",
+            "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+            "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "3e3797baa5aa45afac73a73ab0677ab1",
+          "ordinal": 2,
+          "status": "queued",
+          "created_at": "2026-11-13T05:22:55.175486Z",
+          "reason": "none",
+          "attempt_id": "f93e15bf6a354606a24dae14205d2e1e"
+        },
+        "created": "2026-11-13T05:22:55.260224+00:00"
+      },
+      {
+        "seq": 6,
+        "run_id": "bb42e558dd664c0d8041600c94d84836",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "bb42e558dd664c0d8041600c94d84836",
+            "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+            "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "addce5eb78b840dc97c52e310ded7447",
+          "ordinal": 3,
+          "status": "running",
+          "created_at": "2026-11-13T05:22:55.175486Z",
+          "reason": "none",
+          "attempt_id": "f93e15bf6a354606a24dae14205d2e1e"
+        },
+        "created": "2026-11-13T05:22:55.345664+00:00"
+      },
+      {
+        "seq": 7,
+        "run_id": "bb42e558dd664c0d8041600c94d84836",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "bb42e558dd664c0d8041600c94d84836",
+            "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+            "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "3e3797baa5aa45afac73a73ab0677ab1",
+          "ordinal": 4,
+          "status": "running",
+          "created_at": "2026-11-13T05:22:55.177486Z",
+          "reason": "none",
+          "attempt_id": "f93e15bf6a354606a24dae14205d2e1e"
+        },
+        "created": "2026-11-13T05:22:55.455405+00:00"
+      },
+      {
+        "seq": 8,
+        "run_id": "bb42e558dd664c0d8041600c94d84836",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "bb42e558dd664c0d8041600c94d84836",
+            "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+            "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "addce5eb78b840dc97c52e310ded7447",
+          "ordinal": 5,
+          "status": "completed",
+          "created_at": "2026-11-13T05:22:55.179486Z",
+          "reason": "none",
+          "attempt_id": "f93e15bf6a354606a24dae14205d2e1e"
+        },
+        "created": "2026-11-13T05:22:55.551431+00:00"
+      },
+      {
+        "seq": 9,
+        "run_id": "bb42e558dd664c0d8041600c94d84836",
+        "kind": "subtask_result",
+        "payload": {
+          "identity": {
+            "run_id": "bb42e558dd664c0d8041600c94d84836",
+            "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+            "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "addce5eb78b840dc97c52e310ded7447",
+          "dependencies": [],
+          "outcome": "evidence",
+          "sources": [
+            {
+              "source_id": "eia-measurement",
+              "content": "Electricity is measured in units of power called Watts, named after James Watt, the inventor of the steam engine. One Watt is a very small amount of power. Some devices need only a few Watts to operate, but other devices require larger amounts, and their consumption is measured in kilowatts (kW). One kilowatt is equal to 1,000 Watts.\nFor very large amounts of electricity, like what power plants generate, we use even larger units:\nMegawatts (MW): One MW is 1,000 kW, or 1,000,000 Watts.\nGigawatts (GW): One GW is 1,000 MW, or 1,000,000,000 Watts.\nElectricity use over time is measured in Watthours\nWatts measure power at a specific moment, but we use Watthours (Wh) to measure how much electricity is used over a period of time. One Watthour is the energy of one Watt used for one hour.\nElectric utilities and power plants generally measure electricity in kilowatthours (kWh). One kWh is one kilowatt generated for one hour. For example, if you use a 40-Watt (0.04 kW) light bulb for five hours, you have used 200 Wh, or 0.2 kWh, of electrical energy.\nUtility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use. These meters are usually located on the outside of the building or home where the power line connects. In the past, electricity meters were mechanical devices that a utility employee had to read manually. Eventually, automated meters could periodically report electricity use to the utility. Today, many utilities use\nelectronic smart meters\n. These meters wirelessly send power usage data in real time. Some advanced smart meters can even track the electricity use of individual devices and allow the utility or customer to control electricity use remotely.\n",
+              "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+              "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+              "role": "support",
+              "title": "Measuring electricity",
+              "url": "https://www.eia.gov/energyexplained/electricity/measuring-electricity.php",
+              "published": null,
+              "doc_name": "eia-measuring.html",
+              "page_num": null
+            },
+            {
+              "source_id": "eia-generation-2023",
+              "content": "In 2023, about 4,178 billion kilowatthours (kWh) (or about 4.18 trillion kWh) of electricity were generated at utility-scale electricity generation facilities in the United States.\n1\nAbout 60% of this electricity generation was from fossil fuels—coal, natural gas, petroleum, and other gases. About 19% was from nuclear energy, and about 21% was from renewable energy sources.\nThe U.S. Energy Information Administration estimates that an additional 73.62 billion kWh of electricity generation was from small-scale solar photovoltaic systems in 2023.\n2\nU.S. utility-scale electricity generation by source, amount, and share of total in 2023\nEnergy source\nBillion kWh\nShare of total\nTotal - all sources\n4,178\nFossil fuels (total)\n2,505\n60.0%\nNatural gas\n1,802\n43.1%\nCoal\n675\n16.2%\nPetroleum (total)\n16\n0.4%\nPetroleum liquids\n12\n0.3%\nPetroleum coke\n5\n0.1%\nOther gases\n3\n11\n0.3%\nNuclear\n775\n18.6%\nRenewables (total)\n894\n21.4%\nWind\n425\n10.2%\nHydropower\n240\n5.7%\nSolar (total)\n165\n3.9%\nPhotovoltaic\n162\n3.9%\nSolar thermal\n3\n0.1%\nBiomass (total)\n47\n1.1%\nWood\n31\n0.8%\nLandfill gas\n8\n0.2%\nMunicipal solid waste (biogenic)\n6\n0.1%\nOther biomass waste\n2\n0.1%\nGeothermal\n16\n0.4%\nPumped storage hydropower\n4\n-6\n-0.1%\nOther sources\n5\n10\n0.2%\nData source: U.S. Energy Information Administration,\nElectric Power Monthly\n, February 2024; preliminary data\n1\nUtility-scale electricity generation is electricity generation from power plants with at least one megawatt (or 1,000 kilowatts) of total electricity generating capacity. Data are for\nnet electricity generation\n.\n2\nSmall-scale solar photovoltaic (PV) systems are electricity generators with less than one megawatt (MW) of electricity generating capacity, which are not connected at a power plant that has a combined capacity of one MW or larger. Most small-scale PV systems are at or near the location where the electricity is consumed and many are\nnet metered systems\n. Smaller PV systems are usually installed on building rooftops.\n3\nOther gases includes blast furnace gas and other manufactured and waste gases derived from fossil fuels.\n4\nPumped storage hydroelectricity\ngeneration is negative because most pumped storage electricity generation facilities use more electricity than they produce on an annual basis. Most pumped storage systems use electricity from an\nelectric power grid\nfor pumping water to the storage component of the system.\n5\nOther (utility-scale) sources includes non-biogenic municipal solid waste, batteries, hydrogen, purchased steam, sulfur, tire-derived fuel, and other miscellaneous energy sources.\n",
+              "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+              "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+              "role": "support",
+              "title": "US utility-scale generation in 2023; preliminary February 2024 data",
+              "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+              "published": "2024-02-29",
+              "doc_name": "eia-generation.html",
+              "page_num": null
+            }
+          ],
+          "elapsed_seconds": 0.014999999999417923,
+          "diagnostic": "none",
+          "attempt_id": "f93e15bf6a354606a24dae14205d2e1e"
+        },
+        "created": "2026-11-13T05:22:55.649366+00:00"
+      },
+      {
+        "seq": 10,
+        "run_id": "bb42e558dd664c0d8041600c94d84836",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "bb42e558dd664c0d8041600c94d84836",
+            "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+            "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "3e3797baa5aa45afac73a73ab0677ab1",
+          "ordinal": 6,
+          "status": "completed",
+          "created_at": "2026-11-13T05:22:55.180485Z",
+          "reason": "none",
+          "attempt_id": "f93e15bf6a354606a24dae14205d2e1e"
+        },
+        "created": "2026-11-13T05:22:55.732584+00:00"
+      },
+      {
+        "seq": 11,
+        "run_id": "bb42e558dd664c0d8041600c94d84836",
+        "kind": "subtask_result",
+        "payload": {
+          "identity": {
+            "run_id": "bb42e558dd664c0d8041600c94d84836",
+            "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+            "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "3e3797baa5aa45afac73a73ab0677ab1",
+          "dependencies": [],
+          "outcome": "evidence",
+          "sources": [
+            {
+              "source_id": "eia-measurement",
+              "content": "Electricity is measured in units of power called Watts, named after James Watt, the inventor of the steam engine. One Watt is a very small amount of power. Some devices need only a few Watts to operate, but other devices require larger amounts, and their consumption is measured in kilowatts (kW). One kilowatt is equal to 1,000 Watts.\nFor very large amounts of electricity, like what power plants generate, we use even larger units:\nMegawatts (MW): One MW is 1,000 kW, or 1,000,000 Watts.\nGigawatts (GW): One GW is 1,000 MW, or 1,000,000,000 Watts.\nElectricity use over time is measured in Watthours\nWatts measure power at a specific moment, but we use Watthours (Wh) to measure how much electricity is used over a period of time. One Watthour is the energy of one Watt used for one hour.\nElectric utilities and power plants generally measure electricity in kilowatthours (kWh). One kWh is one kilowatt generated for one hour. For example, if you use a 40-Watt (0.04 kW) light bulb for five hours, you have used 200 Wh, or 0.2 kWh, of electrical energy.\nUtility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use. These meters are usually located on the outside of the building or home where the power line connects. In the past, electricity meters were mechanical devices that a utility employee had to read manually. Eventually, automated meters could periodically report electricity use to the utility. Today, many utilities use\nelectronic smart meters\n. These meters wirelessly send power usage data in real time. Some advanced smart meters can even track the electricity use of individual devices and allow the utility or customer to control electricity use remotely.\n",
+              "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+              "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+              "role": "support",
+              "title": "Measuring electricity",
+              "url": "https://www.eia.gov/energyexplained/electricity/measuring-electricity.php",
+              "published": null,
+              "doc_name": "eia-measuring.html",
+              "page_num": null
+            },
+            {
+              "source_id": "eia-generation-2023",
+              "content": "In 2023, about 4,178 billion kilowatthours (kWh) (or about 4.18 trillion kWh) of electricity were generated at utility-scale electricity generation facilities in the United States.\n1\nAbout 60% of this electricity generation was from fossil fuels—coal, natural gas, petroleum, and other gases. About 19% was from nuclear energy, and about 21% was from renewable energy sources.\nThe U.S. Energy Information Administration estimates that an additional 73.62 billion kWh of electricity generation was from small-scale solar photovoltaic systems in 2023.\n2\nU.S. utility-scale electricity generation by source, amount, and share of total in 2023\nEnergy source\nBillion kWh\nShare of total\nTotal - all sources\n4,178\nFossil fuels (total)\n2,505\n60.0%\nNatural gas\n1,802\n43.1%\nCoal\n675\n16.2%\nPetroleum (total)\n16\n0.4%\nPetroleum liquids\n12\n0.3%\nPetroleum coke\n5\n0.1%\nOther gases\n3\n11\n0.3%\nNuclear\n775\n18.6%\nRenewables (total)\n894\n21.4%\nWind\n425\n10.2%\nHydropower\n240\n5.7%\nSolar (total)\n165\n3.9%\nPhotovoltaic\n162\n3.9%\nSolar thermal\n3\n0.1%\nBiomass (total)\n47\n1.1%\nWood\n31\n0.8%\nLandfill gas\n8\n0.2%\nMunicipal solid waste (biogenic)\n6\n0.1%\nOther biomass waste\n2\n0.1%\nGeothermal\n16\n0.4%\nPumped storage hydropower\n4\n-6\n-0.1%\nOther sources\n5\n10\n0.2%\nData source: U.S. Energy Information Administration,\nElectric Power Monthly\n, February 2024; preliminary data\n1\nUtility-scale electricity generation is electricity generation from power plants with at least one megawatt (or 1,000 kilowatts) of total electricity generating capacity. Data are for\nnet electricity generation\n.\n2\nSmall-scale solar photovoltaic (PV) systems are electricity generators with less than one megawatt (MW) of electricity generating capacity, which are not connected at a power plant that has a combined capacity of one MW or larger. Most small-scale PV systems are at or near the location where the electricity is consumed and many are\nnet metered systems\n. Smaller PV systems are usually installed on building rooftops.\n3\nOther gases includes blast furnace gas and other manufactured and waste gases derived from fossil fuels.\n4\nPumped storage hydroelectricity\ngeneration is negative because most pumped storage electricity generation facilities use more electricity than they produce on an annual basis. Most pumped storage systems use electricity from an\nelectric power grid\nfor pumping water to the storage component of the system.\n5\nOther (utility-scale) sources includes non-biogenic municipal solid waste, batteries, hydrogen, purchased steam, sulfur, tire-derived fuel, and other miscellaneous energy sources.\n",
+              "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+              "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+              "role": "support",
+              "title": "US utility-scale generation in 2023; preliminary February 2024 data",
+              "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+              "published": "2024-02-29",
+              "doc_name": "eia-generation.html",
+              "page_num": null
+            }
+          ],
+          "elapsed_seconds": 0.0,
+          "diagnostic": "none",
+          "attempt_id": "f93e15bf6a354606a24dae14205d2e1e"
+        },
+        "created": "2026-11-13T05:22:55.815658+00:00"
+      },
+      {
+        "seq": 12,
+        "run_id": "bb42e558dd664c0d8041600c94d84836",
+        "kind": "model_request_started",
+        "payload": {
+          "stage": "subtask_compose",
+          "attempt_id": "f93e15bf6a354606a24dae14205d2e1e"
+        },
+        "created": "2026-11-13T05:22:55.899746+00:00"
+      },
+      {
+        "seq": 13,
+        "run_id": "bb42e558dd664c0d8041600c94d84836",
+        "kind": "model_request_started",
+        "payload": {
+          "stage": "subtask_compose",
+          "attempt_id": "f93e15bf6a354606a24dae14205d2e1e"
+        },
+        "created": "2026-11-13T05:23:10.597187+00:00"
+      },
+      {
+        "seq": 14,
+        "run_id": "bb42e558dd664c0d8041600c94d84836",
+        "kind": "guard_invocation_started",
+        "payload": {
+          "stage": "subtask_safety",
+          "attempt_id": "f93e15bf6a354606a24dae14205d2e1e"
+        },
+        "created": "2026-11-13T05:23:20.203873+00:00"
+      },
+      {
+        "seq": 15,
+        "run_id": "bb42e558dd664c0d8041600c94d84836",
+        "kind": "subtask_worker_terminal",
+        "payload": {
+          "exit_code": 0,
+          "candidate_received": true,
+          "attempt_id": "f93e15bf6a354606a24dae14205d2e1e"
+        },
+        "created": "2026-11-13T05:23:27.607202+00:00"
+      },
+      {
+        "seq": 16,
+        "run_id": "bb42e558dd664c0d8041600c94d84836",
+        "kind": "composition_candidate",
+        "payload": {
+          "status": "candidate; publication and approval are separate",
+          "identity": {
+            "run_id": "bb42e558dd664c0d8041600c94d84836",
+            "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+            "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+            "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+          },
+          "claim_provenance": [
+            {
+              "claim_index": 0,
+              "origins": [
+                {
+                  "unit_id": "u1",
+                  "component_id": "r1",
+                  "subtask_id": "s01",
+                  "child_attempt_id": "addce5eb78b840dc97c52e310ded7447",
+                  "source_id": "eia-measurement",
+                  "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                  "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+                },
+                {
+                  "unit_id": "u3",
+                  "component_id": "r2",
+                  "subtask_id": "s02",
+                  "child_attempt_id": "3e3797baa5aa45afac73a73ab0677ab1",
+                  "source_id": "eia-measurement",
+                  "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                  "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+                }
+              ]
+            },
+            {
+              "claim_index": 1,
+              "origins": [
+                {
+                  "unit_id": "u2",
+                  "component_id": "r1",
+                  "subtask_id": "s01",
+                  "child_attempt_id": "addce5eb78b840dc97c52e310ded7447",
+                  "source_id": "eia-measurement",
+                  "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                  "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+                },
+                {
+                  "unit_id": "u4",
+                  "component_id": "r2",
+                  "subtask_id": "s02",
+                  "child_attempt_id": "3e3797baa5aa45afac73a73ab0677ab1",
+                  "source_id": "eia-measurement",
+                  "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                  "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+                }
+              ]
+            }
+          ],
+          "diagnostics": {
+            "identity": {
+              "run_id": "bb42e558dd664c0d8041600c94d84836",
+              "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+              "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+              "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+            },
+            "raw_composer_output": {
+              "title": "Analyst research brief",
+              "claims": [
+                {
+                  "component_id": "r1",
+                  "text": "Utility companies measure electricity use with meters.",
+                  "unit_id": "u1"
+                },
+                {
+                  "component_id": "r1",
+                  "text": "Utility companies use meters to measure electricity use.",
+                  "unit_id": "u2"
+                }
+              ]
+            },
+            "editorial_correction": false,
+            "branch_states": {
+              "s01": "completed",
+              "s02": "completed"
+            },
+            "missing_branches": [],
+            "omitted_financial_context": {},
+            "source_excerpt_presentations": {},
+            "fallback_reasons": {},
+            "source_baseline_normalizations": [],
+            "public_claim_coverage": [
+              {
+                "claim_index": 0,
+                "unit_ids": [
+                  "u1",
+                  "u3"
+                ],
+                "component_ids": [
+                  "r1",
+                  "r2"
+                ]
+              },
+              {
+                "claim_index": 1,
+                "unit_ids": [
+                  "u2",
+                  "u4"
+                ],
+                "component_ids": [
+                  "r1",
+                  "r2"
+                ]
+              }
+            ],
+            "canonical_composition_units": [
+              {
+                "component_id": "r1",
+                "evidence": [
+                  {
+                    "source_id": "eia-measurement",
+                    "quote": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use."
+                  }
+                ],
+                "unit_id": "u1",
+                "identity_sha256": "cb38b30a29c67aedf7ebb8215bfe6ea6029db386c5b2f10e88c17a757916b44d",
+                "established_scope": {},
+                "scope_citation_ids": [],
+                "origins": [
+                  {
+                    "unit_id": "u1",
+                    "component_id": "r1"
+                  },
+                  {
+                    "unit_id": "u3",
+                    "component_id": "r2"
+                  }
+                ]
+              },
+              {
+                "component_id": "r1",
+                "evidence": [
+                  {
+                    "source_id": "eia-measurement",
+                    "quote": "These meters wirelessly send power usage data in real time."
+                  }
+                ],
+                "unit_id": "u2",
+                "identity_sha256": "61e6343b68e3d6953d8759af8e2e937978d1ab57cc291631a59d4584375aa2f5",
+                "established_scope": {},
+                "scope_citation_ids": [],
+                "origins": [
+                  {
+                    "unit_id": "u2",
+                    "component_id": "r1"
+                  },
+                  {
+                    "unit_id": "u4",
+                    "component_id": "r2"
+                  }
+                ]
+              }
+            ],
+            "omitted_measure_qualifiers": {},
+            "merged_duplicate_citations": [],
+            "literal_comparison_conclusions": [],
+            "source_rendered_comparisons": [],
+            "fallback_unit_ids": [],
+            "scoped_disclosures": {
+              "version": "cq-scoped-disclosures-v1",
+              "identity": {
+                "run_id": "bb42e558dd664c0d8041600c94d84836",
+                "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+                "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+                "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+              },
+              "scope_contract": {
+                "version": "cq-scoped-disclosures-v1",
+                "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+                "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+                "question_sha256": "3082c3033070c19acae6e9c5a4556b5ce3b844593a23bf82dca3eefcb53f3a32",
+                "bindings_sha256": "65027ea19f8364378f35d32392edc9f727eac1c4b702f6afe44023735e4859de",
+                "declaration_ref": "Question-clause annotation frozen before generation.",
+                "annotations": [
+                  {
+                    "component_id": "r1",
+                    "subtask_id": "s01",
+                    "question_span": {
+                      "start": 0,
+                      "end": 48
+                    }
+                  },
+                  {
+                    "component_id": "r2",
+                    "subtask_id": "s02",
+                    "question_span": {
+                      "start": 54,
+                      "end": 113
+                    }
+                  }
+                ]
+              },
+              "records": [
+                {
+                  "component_id": "r1",
+                  "component_status": "supported",
+                  "subtask_id": "s01",
+                  "required": true,
+                  "state": "completed",
+                  "outcome": "evidence",
+                  "kind": "selected_evidence",
+                  "requested_scope": "What information can advanced smart meters track",
+                  "question_span": {
+                    "start": 0,
+                    "end": 48
+                  },
+                  "original_question": "What information can advanced smart meters track, and what can they let the utility or customer control remotely?",
+                  "retrieval_query": "What information can advanced smart meters track",
+                  "returned_support_ids": [
+                    "eia-measurement",
+                    "eia-generation-2023"
+                  ],
+                  "selected_support_ids": [
+                    "eia-measurement"
+                  ],
+                  "child_attempt_id": "addce5eb78b840dc97c52e310ded7447",
+                  "disclosure": "Evidence selected; semantic support and within-branch completeness remain unproven.",
+                  "semantic_support_proven": false,
+                  "scope_semantics_proven": false
+                },
+                {
+                  "component_id": "r2",
+                  "component_status": "supported",
+                  "subtask_id": "s02",
+                  "required": true,
+                  "state": "completed",
+                  "outcome": "evidence",
+                  "kind": "selected_evidence",
+                  "requested_scope": "what can they let the utility or customer control remotely?",
+                  "question_span": {
+                    "start": 54,
+                    "end": 113
+                  },
+                  "original_question": "What information can advanced smart meters track, and what can they let the utility or customer control remotely?",
+                  "retrieval_query": "what can they let the utility or customer control remotely?",
+                  "returned_support_ids": [
+                    "eia-measurement",
+                    "eia-generation-2023"
+                  ],
+                  "selected_support_ids": [
+                    "eia-measurement"
+                  ],
+                  "child_attempt_id": "3e3797baa5aa45afac73a73ab0677ab1",
+                  "disclosure": "Evidence selected; semantic support and within-branch completeness remain unproven.",
+                  "semantic_support_proven": false,
+                  "scope_semantics_proven": false
+                }
+              ],
+              "selected_conflicts": [],
+              "warnings": [],
+              "drafting_allowed": true,
+              "semantic_support_proven": false,
+              "owner_acceptance": "not inferred"
+            },
+            "title_geography": {
+              "version": "cq-title-scope-v1",
+              "candidate": "",
+              "title_before": "Analyst research brief",
+              "semantic_applicability_proven": false,
+              "evidence_coverage": [],
+              "status": "not_applicable",
+              "title_after": "Analyst research brief"
+            },
+            "scoped_mapper_raw_selection": {
+              "wire_version": "cq-scoped-selection-v1",
+              "components": [
+                {
+                  "component_id": "r1",
+                  "status": "supported",
+                  "evidence": [
+                    "s_2845cfa10cf8e534",
+                    "s_792c4494ed697e52"
+                  ],
+                  "measure": "",
+                  "scenario": "",
+                  "kind": "unknown"
+                },
+                {
+                  "component_id": "r2",
+                  "status": "supported",
+                  "evidence": [
+                    "s_2845cfa10cf8e534",
+                    "s_792c4494ed697e52"
+                  ],
+                  "measure": "",
+                  "scenario": "",
+                  "kind": "unknown"
+                }
+              ],
+              "geography": {
+                "status": "unresolved",
+                "value": "",
+                "evidence": [],
+                "reason": "Units are not places"
+              },
+              "period": ""
+            },
+            "application_source_selection": {
+              "components": [
+                {
+                  "component_id": "r1",
+                  "status": "supported",
+                  "evidence": [
+                    "s_2845cfa10cf8e534",
+                    "s_792c4494ed697e52"
+                  ],
+                  "gap_anchor": "",
+                  "measure": "",
+                  "scenario": "",
+                  "kind": "unknown"
+                },
+                {
+                  "component_id": "r2",
+                  "status": "supported",
+                  "evidence": [
+                    "s_2845cfa10cf8e534",
+                    "s_792c4494ed697e52"
+                  ],
+                  "gap_anchor": "",
+                  "measure": "",
+                  "scenario": "",
+                  "kind": "unknown"
+                }
+              ],
+              "geography": {
+                "status": "unresolved",
+                "value": "",
+                "evidence": [],
+                "reason": "Units are not places"
+              },
+              "period": "",
+              "wire_version": "source-selection-v1"
+            },
+            "resolved_evidence_mapping": {
+              "geography": "",
+              "period": "",
+              "components": [
+                {
+                  "component_id": "r1",
+                  "question_anchor": "What information can advanced smart meters track",
+                  "status": "supported",
+                  "short_answer": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use. These meters wirelessly send power usage data in real time.",
+                  "evidence": [
+                    {
+                      "source_id": "eia-measurement",
+                      "quote": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use."
+                    },
+                    {
+                      "source_id": "eia-measurement",
+                      "quote": "These meters wirelessly send power usage data in real time."
+                    }
+                  ],
+                  "gap_anchor": "",
+                  "measure": "",
+                  "scenario": "",
+                  "kind": "unknown"
+                },
+                {
+                  "component_id": "r2",
+                  "question_anchor": "what can they let the utility or customer control remotely?",
+                  "status": "supported",
+                  "short_answer": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use. These meters wirelessly send power usage data in real time.",
+                  "evidence": [
+                    {
+                      "source_id": "eia-measurement",
+                      "quote": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use."
+                    },
+                    {
+                      "source_id": "eia-measurement",
+                      "quote": "These meters wirelessly send power usage data in real time."
+                    }
+                  ],
+                  "gap_anchor": "",
+                  "measure": "",
+                  "scenario": "",
+                  "kind": "unknown"
+                }
+              ],
+              "geography_resolution": {
+                "status": "unresolved",
+                "value": "",
+                "evidence": [],
+                "reason": "Units are not places",
+                "original_value": "",
+                "normalization": "none",
+                "context_only": false,
+                "document_context_bindings": []
+              }
+            },
+            "application_detected_status_conflicts": [],
+            "request_evidence_focus": {},
+            "application_rendered_table_rows": [],
+            "model_responses": [
+              {
+                "stage": "mapping",
+                "identity": {
+                  "run_id": "bb42e558dd664c0d8041600c94d84836",
+                  "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+                  "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+                  "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+                },
+                "raw": "{\n  \"wire_version\": \"cq-scoped-selection-v1\",\n  \"components\": [\n    {\n      \"component_id\": \"r1\",\n      \"status\": \"supported\",\n      \"evidence\": [\n        \"s_2845cfa10cf8e534\",\n        \"s_792c4494ed697e52\"\n      ],\n      \"measure\": \"\",\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    },\n    {\n      \"component_id\": \"r2\",\n      \"status\": \"supported\",\n      \"evidence\": [\n        \"s_2845cfa10cf8e534\",\n        \"s_792c4494ed697e52\"\n      ],\n      \"measure\": \"\",\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    }\n  ],\n  \"geography\": {\n    \"status\": \"unresolved\",\n    \"value\": \"\",\n    \"evidence\": [],\n    \"reason\": \"Units are not places\"\n  },\n  \"period\": \"\"\n}",
+                "usage": {
+                  "input_tokens": 2382,
+                  "output_tokens": 225,
+                  "total_tokens": 2607
+                },
+                "response_metadata": {
+                  "model": "ami-llama3.1:8b-4k",
+                  "created_at": "2026-11-13T05:23:08.4500022Z",
+                  "done": true,
+                  "done_reason": "stop",
+                  "total_duration": 6725084200,
+                  "load_duration": 6656500,
+                  "prompt_eval_count": 2382,
+                  "prompt_eval_duration": 1016417000,
+                  "eval_count": 225,
+                  "eval_duration": 5634715000,
+                  "logprobs": null,
+                  "model_name": "ami-llama3.1:8b-4k",
+                  "model_provider": "ollama"
+                }
+              },
+              {
+                "stage": "composition",
+                "identity": {
+                  "run_id": "bb42e558dd664c0d8041600c94d84836",
+                  "attempt_id": "f93e15bf6a354606a24dae14205d2e1e",
+                  "plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+                  "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+                },
+                "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"Utility companies measure electricity use with meters.\",\n      \"unit_id\": \"u1\"\n    },\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"Utility companies use meters to measure electricity use.\",\n      \"unit_id\": \"u2\"\n    }\n  ]\n}",
+                "usage": {
+                  "input_tokens": 664,
+                  "output_tokens": 95,
+                  "total_tokens": 759
+                },
+                "response_metadata": {
+                  "model": "ami-llama3.1:8b-4k",
+                  "created_at": "2026-11-13T05:23:18.0494874Z",
+                  "done": true,
+                  "done_reason": "stop",
+                  "total_duration": 2321576500,
+                  "load_duration": 16851800,
+                  "prompt_eval_count": 664,
+                  "prompt_eval_duration": 107766000,
+                  "eval_count": 95,
+                  "eval_duration": 2063558000,
+                  "logprobs": null,
+                  "model_name": "ami-llama3.1:8b-4k",
+                  "model_provider": "ollama"
+                }
+              }
+            ],
+            "span_catalog": {
+              "s_bc68aaf38aed223e": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 0,
+                "end": 113,
+                "text": "Electricity is measured in units of power called Watts, named after James Watt, the inventor of the steam engine."
+              },
+              "s_a46000abe7f383a1": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 114,
+                "end": 155,
+                "text": "One Watt is a very small amount of power."
+              },
+              "s_6531c20764810d19": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 156,
+                "end": 297,
+                "text": "Some devices need only a few Watts to operate, but other devices require larger amounts, and their consumption is measured in kilowatts (kW)."
+              },
+              "s_d46a265266fdb8bc": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 298,
+                "end": 335,
+                "text": "One kilowatt is equal to 1,000 Watts."
+              },
+              "s_d1ad042cf9ed1c0a": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 336,
+                "end": 489,
+                "text": "For very large amounts of electricity, like what power plants generate, we use even larger units:\nMegawatts (MW): One MW is 1,000 kW, or 1,000,000 Watts."
+              },
+              "s_a0ba37a9ebb6f10b": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 490,
+                "end": 549,
+                "text": "Gigawatts (GW): One GW is 1,000 MW, or 1,000,000,000 Watts."
+              },
+              "s_f771166ff784ccaf": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 550,
+                "end": 731,
+                "text": "Electricity use over time is measured in Watthours\nWatts measure power at a specific moment, but we use Watthours (Wh) to measure how much electricity is used over a period of time."
+              },
+              "s_ec39d28380e76dfd": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 732,
+                "end": 789,
+                "text": "One Watthour is the energy of one Watt used for one hour."
+              },
+              "s_71e744b8dcea4eb6": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 790,
+                "end": 879,
+                "text": "Electric utilities and power plants generally measure electricity in kilowatthours (kWh)."
+              },
+              "s_684693c6816ddcf4": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 880,
+                "end": 927,
+                "text": "One kWh is one kilowatt generated for one hour."
+              },
+              "s_bd057ec120f8b36b": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 928,
+                "end": 1054,
+                "text": "For example, if you use a 40-Watt (0.04 kW) light bulb for five hours, you have used 200 Wh, or 0.2 kWh, of electrical energy."
+              },
+              "s_2845cfa10cf8e534": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 1055,
+                "end": 1211,
+                "text": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use."
+              },
+              "s_f4366d86d82e2ee4": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 1212,
+                "end": 1314,
+                "text": "These meters are usually located on the outside of the building or home where the power line connects."
+              },
+              "s_5b17f78fd492302c": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 1315,
+                "end": 1416,
+                "text": "In the past, electricity meters were mechanical devices that a utility employee had to read manually."
+              },
+              "s_6af27ac482a98ade": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 1417,
+                "end": 1503,
+                "text": "Eventually, automated meters could periodically report electricity use to the utility."
+              },
+              "s_ad16cc6c657b8bd0": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 1504,
+                "end": 1555,
+                "text": "Today, many utilities use\nelectronic smart meters\n."
+              },
+              "s_792c4494ed697e52": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 1556,
+                "end": 1615,
+                "text": "These meters wirelessly send power usage data in real time."
+              },
+              "s_44a4448281bbe6a8": {
+                "source_id": "eia-measurement",
+                "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                "start": 1616,
+                "end": 1770,
+                "text": "Some advanced smart meters can even track the electricity use of individual devices and allow the utility or customer to control electricity use remotely."
+              },
+              "s_9f6629387f7fb9e1": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 0,
+                "end": 180,
+                "text": "In 2023, about 4,178 billion kilowatthours (kWh) (or about 4.18 trillion kWh) of electricity were generated at utility-scale electricity generation facilities in the United States."
+              },
+              "s_9f96e1da2a50533f": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 181,
+                "end": 292,
+                "text": "1\nAbout 60% of this electricity generation was from fossil fuels—coal, natural gas, petroleum, and other gases."
+              },
+              "s_610d409a2f28f88c": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 293,
+                "end": 376,
+                "text": "About 19% was from nuclear energy, and about 21% was from renewable energy sources."
+              },
+              "s_31e68c934e4613b5": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 377,
+                "end": 385,
+                "text": "The U.S."
+              },
+              "s_2259500935f03130": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 386,
+                "end": 549,
+                "text": "Energy Information Administration estimates that an additional 73.62 billion kWh of electricity generation was from small-scale solar photovoltaic systems in 2023."
+              },
+              "s_5afda567c1ab8363": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 550,
+                "end": 556,
+                "text": "2\nU.S."
+              },
+              "s_cb9a294a4ff9d4c9": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 557,
+                "end": 1157,
+                "text": "utility-scale electricity generation by source, amount, and share of total in 2023\nEnergy source\nBillion kWh\nShare of total\nTotal - all sources\n4,178\nFossil fuels (total)\n2,505\n60.0%\nNatural gas\n1,802\n43.1%\nCoal\n675\n16.2%\nPetroleum (total)\n16\n0.4%\nPetroleum liquids\n12\n0.3%\nPetroleum coke\n5\n0.1%\nOther gases\n3\n11\n0.3%\nNuclear\n775\n18.6%\nRenewables (total)\n894\n21.4%\nWind\n425\n10.2%\nHydropower\n240\n5.7%\nSolar (total)\n165\n3.9%\nPhotovoltaic\n162\n3.9%\nSolar thermal\n3\n0.1%\nBiomass (total)\n47\n1.1%\nWood\n31\n0.8%\nLandfill gas\n8\n0.2%\nMunicipal solid waste (biogenic)\n6\n0.1%\nOther biomass waste\n2\n0.1%\nGeothermal"
+              },
+              "s_53a9904131330b03": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 1158,
+                "end": 1244,
+                "text": "16\n0.4%\nPumped storage hydropower\n4\n-6\n-0.1%\nOther sources\n5\n10\n0.2%\nData source: U.S."
+              },
+              "s_da5cc8dafb8664b8": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 1245,
+                "end": 1319,
+                "text": "Energy Information Administration,\nElectric Power Monthly\n, February 2024;"
+              },
+              "s_379ceb3c45f341ef": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 1320,
+                "end": 1509,
+                "text": "preliminary data\n1\nUtility-scale electricity generation is electricity generation from power plants with at least one megawatt (or 1,000 kilowatts) of total electricity generating capacity."
+              },
+              "s_f524846d7a694449": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 1510,
+                "end": 1551,
+                "text": "Data are for\nnet electricity generation\n."
+              },
+              "s_d7571401d3a80385": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 1552,
+                "end": 1784,
+                "text": "2\nSmall-scale solar photovoltaic (PV) systems are electricity generators with less than one megawatt (MW) of electricity generating capacity, which are not connected at a power plant that has a combined capacity of one MW or larger."
+              },
+              "s_e7151e814e2840c4": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 1785,
+                "end": 1909,
+                "text": "Most small-scale PV systems are at or near the location where the electricity is consumed and many are\nnet metered systems\n."
+              },
+              "s_aba929158915415b": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 1910,
+                "end": 1972,
+                "text": "Smaller PV systems are usually installed on building rooftops."
+              },
+              "s_1c02614a2ce1b7d8": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 1973,
+                "end": 2079,
+                "text": "3\nOther gases includes blast furnace gas and other manufactured and waste gases derived from fossil fuels."
+              },
+              "s_8b9306d974626ad5": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 2080,
+                "end": 2257,
+                "text": "4\nPumped storage hydroelectricity\ngeneration is negative because most pumped storage electricity generation facilities use more electricity than they produce on an annual basis."
+              },
+              "s_e677fdbe4b189e04": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 2258,
+                "end": 2387,
+                "text": "Most pumped storage systems use electricity from an\nelectric power grid\nfor pumping water to the storage component of the system."
+              },
+              "s_92faf2a6f901b323": {
+                "source_id": "eia-generation-2023",
+                "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+                "start": 2388,
+                "end": 2569,
+                "text": "5\nOther (utility-scale) sources includes non-biogenic municipal solid waste, batteries, hydrogen, purchased steam, sulfur, tire-derived fuel, and other miscellaneous energy sources."
+              }
+            },
+            "application_extracts": [
+              {
+                "component_id": "r1",
+                "financial_comparison_coverage": {
+                  "status": "not_checked",
+                  "semantic_support_proven": false
+                },
+                "origin": "application-selected-source-extract",
+                "text": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use. These meters wirelessly send power usage data in real time.",
+                "span_ids": [
+                  "s_2845cfa10cf8e534",
+                  "s_792c4494ed697e52"
+                ],
+                "evidence": [
+                  {
+                    "source_id": "eia-measurement",
+                    "quote": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use.",
+                    "span_id": "s_2845cfa10cf8e534",
+                    "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                    "start": 1055,
+                    "end": 1211
+                  },
+                  {
+                    "source_id": "eia-measurement",
+                    "quote": "These meters wirelessly send power usage data in real time.",
+                    "span_id": "s_792c4494ed697e52",
+                    "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                    "start": 1556,
+                    "end": 1615
+                  }
+                ],
+                "quantity_measure_check": "not_applicable"
+              },
+              {
+                "component_id": "r2",
+                "financial_comparison_coverage": {
+                  "status": "not_checked",
+                  "semantic_support_proven": false
+                },
+                "origin": "application-selected-source-extract",
+                "text": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use. These meters wirelessly send power usage data in real time.",
+                "span_ids": [
+                  "s_2845cfa10cf8e534",
+                  "s_792c4494ed697e52"
+                ],
+                "evidence": [
+                  {
+                    "source_id": "eia-measurement",
+                    "quote": "Utility companies measure and monitor electricity use with meters\nElectric utility companies use meters to measure how much electricity their customers use.",
+                    "span_id": "s_2845cfa10cf8e534",
+                    "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                    "start": 1055,
+                    "end": 1211
+                  },
+                  {
+                    "source_id": "eia-measurement",
+                    "quote": "These meters wirelessly send power usage data in real time.",
+                    "span_id": "s_792c4494ed697e52",
+                    "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+                    "start": 1556,
+                    "end": 1615
+                  }
+                ],
+                "quantity_measure_check": "not_applicable"
+              }
+            ],
+            "requested_branch_coverage": {
+              "r1": {
+                "status": "supported",
+                "required_branches": [
+                  "s01"
+                ],
+                "unselected_branches": [],
+                "semantic_support_proven": false
+              },
+              "r2": {
+                "status": "supported",
+                "required_branches": [
+                  "s02"
+                ],
+                "unselected_branches": [],
+                "semantic_support_proven": false
+              }
+            },
+            "concurrent_mapping_version": "cq-mapper-v13-table-row-selection",
+            "concurrent_composition_version": "cq-composer-v3-table-row-selection",
+            "mapping_wire_version": "cq-scoped-selection-v1",
+            "gap_authorship": "application-owned scoped branch disclosures; not raw model or editorial text",
+            "scope_deadline_binding": {
+              "declared_scope_contract": {
+                "version": "cq-scoped-disclosures-v1",
+                "plan_id": "6b9ef2736b82bbedadc772f76d35eeec8d7779edfc82aa741000ddc0b7dc3011",
+                "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+                "question_sha256": "3082c3033070c19acae6e9c5a4556b5ce3b844593a23bf82dca3eefcb53f3a32",
+                "bindings_sha256": "65027ea19f8364378f35d32392edc9f727eac1c4b702f6afe44023735e4859de",
+                "declaration_ref": "Question-clause annotation frozen before generation.",
+                "annotations": [
+                  {
+                    "component_id": "r1",
+                    "subtask_id": "s01",
+                    "question_span": {
+                      "start": 0,
+                      "end": 48
+                    }
+                  },
+                  {
+                    "component_id": "r2",
+                    "subtask_id": "s02",
+                    "question_span": {
+                      "start": 54,
+                      "end": 113
+                    }
+                  }
+                ]
+              },
+              "declared_scope_file_sha256": "18a5a85455a679c6ffd1aec0de5bad82917ea041d3df6c77d0f6fc4876a76df0",
+              "declared_plan_id": "6b9ef2736b82bbedadc772f76d35eeec8d7779edfc82aa741000ddc0b7dc3011",
+              "runtime_plan_id": "679b83bec74416ff0bc46cc44f15e6aef61226fd061c4508458ef045a46b44b3",
+              "declared_deadline_seconds": 180.0,
+              "runtime_deadline_seconds": 177.85899999999674,
+              "allowed_change": "deadline reduction only; all other plan fields equal",
+              "semantic_support_proven": false
+            }
+          },
+          "draft_sources_sha256": "132c680b4df77777fd51029c469a10865e3170de86bbebb493db3199fc845f77",
+          "content_sha256": "6017bd3da309968b256e30283e255aa7c61e23c4ef5477b17c665ee9d7700c58",
+          "attempt_id": "f93e15bf6a354606a24dae14205d2e1e"
+        },
+        "created": "2026-11-13T05:23:27.788004+00:00"
+      }
+    ],
+    "reviews": []
+  },
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured",
+  "source_assessment": "pending",
+  "owner_adjudication": "pending"
+}

@@ -1,0 +1,16 @@
+{
+  "result_sha256": "4e766774fd2e7750b06314ba0439ef43511b9b84f43db73b208147ea8624ee1d",
+  "verdict": "fail",
+  "authorship": "Assistant source review. Owner judgment pending.",
+  "source_findings": [
+    "Both retrieved source statements explicitly address the same 2021 Cambodia ferry counts.",
+    "The provisional notice says provisional. The separate final notice says final. Neither selected evidence nor the draft establishes which notice supersedes the other.",
+    "The mapper selected only the provisional notice and classified the question supported, so no conflict was disclosed.",
+    "The raw and stored drafts assert the provisional status alone. The cited statement supports that source\u2019s version, but the draft omits the opposing source and fails the requested conflict behavior.",
+    "Technical execution and NeMo passed, but the expected conflict-only path would have used neither a composer request nor NeMo. No fallback, editorial correction, owner approval or export occurred."
+  ],
+  "raw_complete": false,
+  "final_complete": false,
+  "explicit_conflict": false,
+  "next_case_allowed": false
+}

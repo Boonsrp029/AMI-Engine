@@ -47,10 +47,11 @@ CONCURRENT_MAPPING_INSTRUCTION = (
 )
 
 
-def selection_schema(catalog, question, *, report=None, requirements=None):
+def selection_schema(catalog, question, *, report=None, requirements=None, requested_geography_only=False):
     """Private range wire preserves sequential geographic and resolved-state checks."""
     geographic = constrained_selection(SourceSelection, GeographySelection,
-        geography_choices(catalog, question, explicit_only=True),
+        geography_choices(catalog, question, explicit_only=True, requested_only=requested_geography_only,
+            exclude_measurement_context=requested_geography_only),
         periods=[])
     schema = question_selection_schema(catalog,question,requested_components(question),
         geographic.model_fields["geography"].annotation)

@@ -1,0 +1,1571 @@
+{
+  "technical_pass": true,
+  "main_calls": 2,
+  "nemo_invocations": 1,
+  "elapsed_seconds": 46.625,
+  "failure_type": null,
+  "stored_run": {
+    "id": "b9369e5f10e8463ab3dfa34d7e699f90",
+    "request_key": "qualify-0c2fec82e207841698144c63ca56cdc4",
+    "query": "How many passenger rail journeys were recorded in Peru in 2019, and were the figures provisional or final?",
+    "corpus_sha": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+    "status": "needs_review",
+    "revision": 1,
+    "draft": {
+      "title": "Analyst research brief (Peru)",
+      "claims": [
+        {
+          "text": "In Peru, 18 million passenger rail journeys were recorded in 2019.",
+          "source_ids": [
+            "rail-total"
+          ]
+        }
+      ],
+      "warnings": [
+        "Component r2 reports conflicting selected evidence; inspect the separate source statements. Original request: How many passenger rail journeys were recorded in Peru in 2019, and were the figures provisional or final?"
+      ]
+    },
+    "sources": {
+      "rail-total": {
+        "source_id": "rail-total",
+        "content": "In Peru, passenger rail recorded 18 million journeys in 2019.",
+        "content_sha256": "94d2c4f54ae9f787ed5b52696a13814ecae26f8c2ed74407a5f0d5cb7ac32550",
+        "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+        "role": "support",
+        "title": "Journey count",
+        "url": "",
+        "published": null,
+        "doc_name": null,
+        "page_num": null
+      },
+      "rail-status": {
+        "source_id": "rail-status",
+        "content": "The 2019 Peru passenger rail journey figures are provisional.",
+        "content_sha256": "ad139ea48a4295b898f1b0181428185138768c64449310a0f655ec4c91ea5b18",
+        "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+        "role": "support",
+        "title": "Status note",
+        "url": "",
+        "published": null,
+        "doc_name": null,
+        "page_num": null
+      },
+      "rail-other": {
+        "source_id": "rail-other",
+        "content": "In Bolivia, passenger rail recorded 7 million journeys in 2019.",
+        "content_sha256": "05352203fb34fda8bd130b2719b8eb56834ddee7e6c7562a42d6ff5f0edf8f12",
+        "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+        "role": "support",
+        "title": "Another network",
+        "url": "",
+        "published": null,
+        "doc_name": null,
+        "page_num": null
+      },
+      "rail-units": {
+        "source_id": "rail-units",
+        "content": "Passenger rail distance is measured in Passenger Kilometres.",
+        "content_sha256": "ea8d5b6f24d5c74d32e0788e554017817317a5e19c3e00e87999659aa7997f4b",
+        "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+        "role": "support",
+        "title": "Measurement methods",
+        "url": "",
+        "published": null,
+        "doc_name": null,
+        "page_num": null
+      }
+    },
+    "metrics": {
+      "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+      "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+      "workflow": "ami-subtasks-v1",
+      "model_calls": 2,
+      "guardrail_invocations": 1,
+      "token_usage_complete": false,
+      "missing_branches": [],
+      "composition_provenance": [
+        {
+          "claim_index": 0,
+          "origins": [
+            {
+              "unit_id": "u1",
+              "component_id": "r1",
+              "subtask_id": "s01",
+              "child_attempt_id": "54132fa0c4c44d11b2c0b9ba53cac797",
+              "source_id": "rail-total",
+              "content_sha256": "94d2c4f54ae9f787ed5b52696a13814ecae26f8c2ed74407a5f0d5cb7ac32550",
+              "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+            }
+          ]
+        }
+      ],
+      "composition_diagnostics": {
+        "identity": {
+          "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+          "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+          "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+          "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+        },
+        "raw_composer_output": {
+          "title": "Analyst research brief",
+          "claims": [
+            {
+              "component_id": "r1",
+              "text": "In Peru, 18 million passenger rail journeys were recorded in 2019.",
+              "unit_id": "u1"
+            }
+          ]
+        },
+        "editorial_correction": false,
+        "branch_states": {
+          "s01": "completed",
+          "s02": "completed"
+        },
+        "missing_branches": [],
+        "omitted_financial_context": {},
+        "source_excerpt_presentations": {},
+        "fallback_reasons": {},
+        "source_baseline_normalizations": [],
+        "public_claim_coverage": [
+          {
+            "claim_index": 0,
+            "unit_ids": [
+              "u1"
+            ],
+            "component_ids": [
+              "r1"
+            ]
+          }
+        ],
+        "canonical_composition_units": [
+          {
+            "component_id": "r1",
+            "evidence": [
+              {
+                "source_id": "rail-total",
+                "quote": "In Peru, passenger rail recorded 18 million journeys in 2019."
+              }
+            ],
+            "unit_id": "u1",
+            "identity_sha256": "6f6fe4c8406415bfb00acdac1725e7d897e7c11dcd6bc6d1078bf6ee329108bf",
+            "established_scope": {},
+            "scope_citation_ids": [],
+            "origins": [
+              {
+                "unit_id": "u1",
+                "component_id": "r1"
+              }
+            ]
+          }
+        ],
+        "omitted_measure_qualifiers": {},
+        "merged_duplicate_citations": [],
+        "literal_comparison_conclusions": [],
+        "source_rendered_comparisons": [],
+        "fallback_unit_ids": [],
+        "scoped_disclosures": {
+          "version": "cq-scoped-disclosures-v1",
+          "identity": {
+            "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+            "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+            "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+            "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+          },
+          "scope_contract": {
+            "version": "cq-scoped-disclosures-v1",
+            "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+            "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+            "question_sha256": "50bb9edd997fdc17049181967c7c2edb58e251decda998c9e80c4ec470ecbb60",
+            "bindings_sha256": "65027ea19f8364378f35d32392edc9f727eac1c4b702f6afe44023735e4859de",
+            "declaration_ref": "Synthetic multi-document development request, predeclared from its question.",
+            "annotations": [
+              {
+                "component_id": "r1",
+                "subtask_id": "s01",
+                "question_span": {
+                  "start": 0,
+                  "end": 62
+                }
+              },
+              {
+                "component_id": "r2",
+                "subtask_id": "s02",
+                "question_span": {
+                  "start": 68,
+                  "end": 106
+                }
+              }
+            ]
+          },
+          "records": [
+            {
+              "component_id": "r1",
+              "component_status": "supported",
+              "subtask_id": "s01",
+              "required": true,
+              "state": "completed",
+              "outcome": "evidence",
+              "kind": "selected_evidence",
+              "requested_scope": "How many passenger rail journeys were recorded in Peru in 2019",
+              "question_span": {
+                "start": 0,
+                "end": 62
+              },
+              "original_question": "How many passenger rail journeys were recorded in Peru in 2019, and were the figures provisional or final?",
+              "retrieval_query": "Peru passenger rail journeys 2019",
+              "returned_support_ids": [
+                "rail-total",
+                "rail-status",
+                "rail-other",
+                "rail-units"
+              ],
+              "selected_support_ids": [
+                "rail-total"
+              ],
+              "child_attempt_id": "54132fa0c4c44d11b2c0b9ba53cac797",
+              "disclosure": "Evidence selected; semantic support and within-branch completeness remain unproven.",
+              "semantic_support_proven": false,
+              "scope_semantics_proven": false
+            },
+            {
+              "component_id": "r2",
+              "component_status": "conflicting",
+              "subtask_id": "s02",
+              "required": true,
+              "state": "completed",
+              "outcome": "evidence",
+              "kind": "selected_evidence",
+              "requested_scope": "were the figures provisional or final?",
+              "question_span": {
+                "start": 68,
+                "end": 106
+              },
+              "original_question": "How many passenger rail journeys were recorded in Peru in 2019, and were the figures provisional or final?",
+              "retrieval_query": "Peru rail figures provisional final",
+              "returned_support_ids": [
+                "rail-status",
+                "rail-total",
+                "rail-units",
+                "rail-other"
+              ],
+              "selected_support_ids": [
+                "rail-status",
+                "rail-total"
+              ],
+              "child_attempt_id": "41bad1071db64c12b0a955c066107973",
+              "disclosure": "Evidence selected; semantic support and within-branch completeness remain unproven.",
+              "semantic_support_proven": false,
+              "scope_semantics_proven": false
+            }
+          ],
+          "warnings": [
+            "Component r2 reports conflicting selected evidence; inspect the separate source statements. Original request: How many passenger rail journeys were recorded in Peru in 2019, and were the figures provisional or final?"
+          ],
+          "drafting_allowed": true,
+          "semantic_support_proven": false,
+          "owner_acceptance": "not inferred"
+        },
+        "title_geography": {
+          "version": "cq-title-scope-v1",
+          "candidate": "Peru",
+          "title_before": "Analyst research brief (Peru)",
+          "semantic_applicability_proven": false,
+          "evidence_coverage": [
+            {
+              "source_id": "rail-total",
+              "quote_sha256": "94d2c4f54ae9f787ed5b52696a13814ecae26f8c2ed74407a5f0d5cb7ac32550",
+              "basis": "literal_in_selected_quote"
+            }
+          ],
+          "status": "retained_literal_common_geography",
+          "title_after": "Analyst research brief (Peru)"
+        },
+        "scoped_mapper_raw_selection": {
+          "wire_version": "cq-scoped-selection-v1",
+          "components": [
+            {
+              "component_id": "r1",
+              "status": "supported",
+              "evidence": [
+                "s_65af4fc137d43b33"
+              ],
+              "measure": "",
+              "scenario": "",
+              "kind": "unknown"
+            },
+            {
+              "component_id": "r2",
+              "status": "conflicting",
+              "evidence": [
+                "s_b0e4f8d83a806a98",
+                "s_65af4fc137d43b33"
+              ],
+              "measure": "",
+              "scenario": "",
+              "kind": "unknown"
+            }
+          ],
+          "geography": {
+            "status": "known",
+            "value": "Peru",
+            "evidence": [
+              "s_65af4fc137d43b33"
+            ],
+            "reason": ""
+          },
+          "period": ""
+        },
+        "application_source_selection": {
+          "components": [
+            {
+              "component_id": "r1",
+              "status": "supported",
+              "evidence": [
+                "s_65af4fc137d43b33"
+              ],
+              "gap_anchor": "",
+              "measure": "",
+              "scenario": "",
+              "kind": "unknown"
+            },
+            {
+              "component_id": "r2",
+              "status": "conflicting",
+              "evidence": [
+                "s_b0e4f8d83a806a98",
+                "s_65af4fc137d43b33"
+              ],
+              "gap_anchor": "",
+              "measure": "",
+              "scenario": "",
+              "kind": "unknown"
+            }
+          ],
+          "geography": {
+            "status": "known",
+            "value": "Peru",
+            "evidence": [
+              "s_65af4fc137d43b33"
+            ],
+            "reason": ""
+          },
+          "period": "",
+          "wire_version": "source-selection-v1"
+        },
+        "resolved_evidence_mapping": {
+          "geography": "Peru",
+          "period": "",
+          "components": [
+            {
+              "component_id": "r1",
+              "question_anchor": "How many passenger rail journeys were recorded in Peru in 2019",
+              "status": "supported",
+              "short_answer": "In Peru, passenger rail recorded 18 million journeys in 2019.",
+              "evidence": [
+                {
+                  "source_id": "rail-total",
+                  "quote": "In Peru, passenger rail recorded 18 million journeys in 2019."
+                }
+              ],
+              "gap_anchor": "",
+              "measure": "",
+              "scenario": "",
+              "kind": "unknown"
+            },
+            {
+              "component_id": "r2",
+              "question_anchor": "were the figures provisional or final?",
+              "status": "conflicting",
+              "short_answer": "",
+              "evidence": [
+                {
+                  "source_id": "rail-status",
+                  "quote": "The 2019 Peru passenger rail journey figures are provisional."
+                },
+                {
+                  "source_id": "rail-total",
+                  "quote": "In Peru, passenger rail recorded 18 million journeys in 2019."
+                }
+              ],
+              "gap_anchor": "",
+              "measure": "",
+              "scenario": "",
+              "kind": "unknown"
+            }
+          ],
+          "geography_resolution": {
+            "status": "known",
+            "value": "Peru",
+            "evidence": [
+              {
+                "source_id": "rail-total",
+                "quote": "In Peru, passenger rail recorded 18 million journeys in 2019.",
+                "span_id": "s_65af4fc137d43b33",
+                "content_sha256": "94d2c4f54ae9f787ed5b52696a13814ecae26f8c2ed74407a5f0d5cb7ac32550",
+                "start": 0,
+                "end": 61
+              }
+            ],
+            "reason": "",
+            "original_value": "Peru",
+            "normalization": "none",
+            "context_only": false,
+            "document_context_bindings": []
+          }
+        },
+        "model_responses": [
+          {
+            "stage": "mapping",
+            "identity": {
+              "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+              "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+              "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+              "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+            },
+            "raw": "{\n  \"wire_version\": \"cq-scoped-selection-v1\",\n  \"components\": [\n    {\n      \"component_id\": \"r1\",\n      \"status\": \"supported\",\n      \"evidence\": [\n        \"s_65af4fc137d43b33\"\n      ],\n      \"measure\": \"\",\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    },\n    {\n      \"component_id\": \"r2\",\n      \"status\": \"conflicting\",\n      \"evidence\": [\n        \"s_b0e4f8d83a806a98\",\n        \"s_65af4fc137d43b33\"\n      ],\n      \"measure\": \"\",\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    }\n  ],\n  \"geography\": {\n    \"status\": \"known\",\n    \"value\": \"Peru\",\n    \"evidence\": [\n      \"s_65af4fc137d43b33\"\n    ],\n    \"reason\": \"\"\n  },\n  \"period\": \"\"\n}",
+            "usage": {
+              "input_tokens": 730,
+              "output_tokens": 226,
+              "total_tokens": 956
+            },
+            "response_metadata": {
+              "model": "ami-llama3.1:8b-4k",
+              "created_at": "2026-11-12T12:48:36.4894087Z",
+              "done": true,
+              "done_reason": "stop",
+              "total_duration": 11605653100,
+              "load_duration": 5449645100,
+              "prompt_eval_count": 730,
+              "prompt_eval_duration": 469453000,
+              "eval_count": 226,
+              "eval_duration": 5668963000,
+              "logprobs": null,
+              "model_name": "ami-llama3.1:8b-4k",
+              "model_provider": "ollama"
+            }
+          },
+          {
+            "stage": "composition",
+            "identity": {
+              "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+              "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+              "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+              "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+            },
+            "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"In Peru, 18 million passenger rail journeys were recorded in 2019.\",\n      \"unit_id\": \"u1\"\n    }\n  ]\n}",
+            "usage": {
+              "input_tokens": 548,
+              "output_tokens": 67,
+              "total_tokens": 615
+            },
+            "response_metadata": {
+              "model": "ami-llama3.1:8b-4k",
+              "created_at": "2026-11-12T12:48:46.005217Z",
+              "done": true,
+              "done_reason": "stop",
+              "total_duration": 2291403400,
+              "load_duration": 7482500,
+              "prompt_eval_count": 548,
+              "prompt_eval_duration": 501146000,
+              "eval_count": 67,
+              "eval_duration": 1714396000,
+              "logprobs": null,
+              "model_name": "ami-llama3.1:8b-4k",
+              "model_provider": "ollama"
+            }
+          }
+        ],
+        "span_catalog": {
+          "s_65af4fc137d43b33": {
+            "source_id": "rail-total",
+            "content_sha256": "94d2c4f54ae9f787ed5b52696a13814ecae26f8c2ed74407a5f0d5cb7ac32550",
+            "start": 0,
+            "end": 61,
+            "text": "In Peru, passenger rail recorded 18 million journeys in 2019."
+          },
+          "s_b0e4f8d83a806a98": {
+            "source_id": "rail-status",
+            "content_sha256": "ad139ea48a4295b898f1b0181428185138768c64449310a0f655ec4c91ea5b18",
+            "start": 0,
+            "end": 61,
+            "text": "The 2019 Peru passenger rail journey figures are provisional."
+          },
+          "s_820906f363cfac9a": {
+            "source_id": "rail-other",
+            "content_sha256": "05352203fb34fda8bd130b2719b8eb56834ddee7e6c7562a42d6ff5f0edf8f12",
+            "start": 0,
+            "end": 63,
+            "text": "In Bolivia, passenger rail recorded 7 million journeys in 2019."
+          },
+          "s_09fcfe1f2a8c2833": {
+            "source_id": "rail-units",
+            "content_sha256": "ea8d5b6f24d5c74d32e0788e554017817317a5e19c3e00e87999659aa7997f4b",
+            "start": 0,
+            "end": 60,
+            "text": "Passenger rail distance is measured in Passenger Kilometres."
+          }
+        },
+        "application_extracts": [
+          {
+            "component_id": "r1",
+            "financial_comparison_coverage": {
+              "status": "not_checked",
+              "semantic_support_proven": false
+            },
+            "origin": "application-selected-source-extract",
+            "text": "In Peru, passenger rail recorded 18 million journeys in 2019.",
+            "span_ids": [
+              "s_65af4fc137d43b33"
+            ],
+            "evidence": [
+              {
+                "source_id": "rail-total",
+                "quote": "In Peru, passenger rail recorded 18 million journeys in 2019.",
+                "span_id": "s_65af4fc137d43b33",
+                "content_sha256": "94d2c4f54ae9f787ed5b52696a13814ecae26f8c2ed74407a5f0d5cb7ac32550",
+                "start": 0,
+                "end": 61
+              }
+            ],
+            "quantity_measure_check": "not_applicable"
+          },
+          {
+            "component_id": "r2",
+            "financial_comparison_coverage": {
+              "status": "not_checked",
+              "semantic_support_proven": false
+            },
+            "origin": "application-selected-source-extract",
+            "text": "",
+            "span_ids": [
+              "s_b0e4f8d83a806a98",
+              "s_65af4fc137d43b33"
+            ],
+            "evidence": [
+              {
+                "source_id": "rail-status",
+                "quote": "The 2019 Peru passenger rail journey figures are provisional.",
+                "span_id": "s_b0e4f8d83a806a98",
+                "content_sha256": "ad139ea48a4295b898f1b0181428185138768c64449310a0f655ec4c91ea5b18",
+                "start": 0,
+                "end": 61
+              },
+              {
+                "source_id": "rail-total",
+                "quote": "In Peru, passenger rail recorded 18 million journeys in 2019.",
+                "span_id": "s_65af4fc137d43b33",
+                "content_sha256": "94d2c4f54ae9f787ed5b52696a13814ecae26f8c2ed74407a5f0d5cb7ac32550",
+                "start": 0,
+                "end": 61
+              }
+            ],
+            "quantity_measure_check": "not_applicable"
+          }
+        ],
+        "requested_branch_coverage": {
+          "r1": {
+            "status": "supported",
+            "required_branches": [
+              "s01"
+            ],
+            "unselected_branches": [],
+            "semantic_support_proven": false
+          },
+          "r2": {
+            "status": "conflicting",
+            "required_branches": [
+              "s02"
+            ],
+            "unselected_branches": [],
+            "semantic_support_proven": false
+          }
+        },
+        "concurrent_mapping_version": "cq-mapper-v8-request-bound-geography",
+        "concurrent_composition_version": "cq-composer-v2-unit-local",
+        "mapping_wire_version": "cq-scoped-selection-v1",
+        "gap_authorship": "application-owned scoped branch disclosures; not raw model or editorial text",
+        "scope_deadline_binding": {
+          "declared_scope_contract": {
+            "version": "cq-scoped-disclosures-v1",
+            "plan_id": "662bcee638f27c90d5a846b0da3206392b45d66dcb5f11f4f3b58733b73e0532",
+            "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+            "question_sha256": "50bb9edd997fdc17049181967c7c2edb58e251decda998c9e80c4ec470ecbb60",
+            "bindings_sha256": "65027ea19f8364378f35d32392edc9f727eac1c4b702f6afe44023735e4859de",
+            "declaration_ref": "Synthetic multi-document development request, predeclared from its question.",
+            "annotations": [
+              {
+                "component_id": "r1",
+                "subtask_id": "s01",
+                "question_span": {
+                  "start": 0,
+                  "end": 62
+                }
+              },
+              {
+                "component_id": "r2",
+                "subtask_id": "s02",
+                "question_span": {
+                  "start": 68,
+                  "end": 106
+                }
+              }
+            ]
+          },
+          "declared_scope_file_sha256": "56dc6ca9413284242393ac7b68264c9d8a0db441e62c7034abd6c59cf655a6b8",
+          "declared_plan_id": "662bcee638f27c90d5a846b0da3206392b45d66dcb5f11f4f3b58733b73e0532",
+          "runtime_plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+          "declared_deadline_seconds": 180.0,
+          "runtime_deadline_seconds": 177.79699999999866,
+          "allowed_change": "deadline reduction only; all other plan fields equal",
+          "semantic_support_proven": false
+        }
+      },
+      "composition_content_sha256": "268cf9c2c17626d232c995d3b191d93568b7f0b8b4cf3b83d69550a7fbaed747",
+      "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+      "execution_elapsed_seconds": 41.5940000000046
+    },
+    "error": null,
+    "created": "2026-11-12T12:48:16.517054+00:00",
+    "updated": "2026-11-12T12:48:58.224705+00:00",
+    "events": [
+      {
+        "seq": 1,
+        "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+        "kind": "attempt_started",
+        "payload": {
+          "attempt_id": "174b654bf854479cbbc5eee3808ab227"
+        },
+        "created": "2026-11-12T12:48:16.620240+00:00"
+      },
+      {
+        "seq": 2,
+        "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+        "kind": "subtask_plan",
+        "payload": {
+          "identity": {
+            "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+            "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+            "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+            "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+          },
+          "plan": {
+            "version": "ami-subtasks-v1",
+            "query": "How many passenger rail journeys were recorded in Peru in 2019, and were the figures provisional or final?",
+            "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+            "subtasks": [
+              {
+                "subtask_id": "s01",
+                "operation": "retrieve",
+                "query": "Peru passenger rail journeys 2019",
+                "source_ids": [],
+                "dependencies": [],
+                "required": true,
+                "timeout_seconds": 30.0
+              },
+              {
+                "subtask_id": "s02",
+                "operation": "retrieve",
+                "query": "Peru rail figures provisional final",
+                "source_ids": [],
+                "dependencies": [],
+                "required": true,
+                "timeout_seconds": 30.0
+              }
+            ],
+            "retrieval_concurrency": 2,
+            "deadline_seconds": 177.79699999999866,
+            "model_concurrency": 1,
+            "maximum_main_calls": 4
+          },
+          "attempt_id": "174b654bf854479cbbc5eee3808ab227"
+        },
+        "created": "2026-11-12T12:48:16.704193+00:00"
+      },
+      {
+        "seq": 3,
+        "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+        "kind": "subtask_worker_started",
+        "payload": {
+          "pid": 29264,
+          "attempt_id": "174b654bf854479cbbc5eee3808ab227"
+        },
+        "created": "2026-11-12T12:48:16.867649+00:00"
+      },
+      {
+        "seq": 4,
+        "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+            "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+            "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+            "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "54132fa0c4c44d11b2c0b9ba53cac797",
+          "ordinal": 1,
+          "status": "queued",
+          "created_at": "2026-11-12T12:48:17.857139Z",
+          "reason": "none",
+          "attempt_id": "174b654bf854479cbbc5eee3808ab227"
+        },
+        "created": "2026-11-12T12:48:17.858115+00:00"
+      },
+      {
+        "seq": 5,
+        "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+            "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+            "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+            "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "41bad1071db64c12b0a955c066107973",
+          "ordinal": 2,
+          "status": "queued",
+          "created_at": "2026-11-12T12:48:17.857139Z",
+          "reason": "none",
+          "attempt_id": "174b654bf854479cbbc5eee3808ab227"
+        },
+        "created": "2026-11-12T12:48:17.953270+00:00"
+      },
+      {
+        "seq": 6,
+        "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+            "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+            "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+            "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "54132fa0c4c44d11b2c0b9ba53cac797",
+          "ordinal": 3,
+          "status": "running",
+          "created_at": "2026-11-12T12:48:17.857139Z",
+          "reason": "none",
+          "attempt_id": "174b654bf854479cbbc5eee3808ab227"
+        },
+        "created": "2026-11-12T12:48:18.037846+00:00"
+      },
+      {
+        "seq": 7,
+        "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+            "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+            "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+            "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "41bad1071db64c12b0a955c066107973",
+          "ordinal": 4,
+          "status": "running",
+          "created_at": "2026-11-12T12:48:17.857139Z",
+          "reason": "none",
+          "attempt_id": "174b654bf854479cbbc5eee3808ab227"
+        },
+        "created": "2026-11-12T12:48:18.124236+00:00"
+      },
+      {
+        "seq": 8,
+        "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+            "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+            "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+            "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "41bad1071db64c12b0a955c066107973",
+          "ordinal": 5,
+          "status": "completed",
+          "created_at": "2026-11-12T12:48:17.860102Z",
+          "reason": "none",
+          "attempt_id": "174b654bf854479cbbc5eee3808ab227"
+        },
+        "created": "2026-11-12T12:48:18.208098+00:00"
+      },
+      {
+        "seq": 9,
+        "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+        "kind": "subtask_result",
+        "payload": {
+          "identity": {
+            "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+            "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+            "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+            "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+          },
+          "subtask_id": "s02",
+          "child_attempt_id": "41bad1071db64c12b0a955c066107973",
+          "dependencies": [],
+          "outcome": "evidence",
+          "sources": [
+            {
+              "source_id": "rail-status",
+              "content": "The 2019 Peru passenger rail journey figures are provisional.",
+              "content_sha256": "ad139ea48a4295b898f1b0181428185138768c64449310a0f655ec4c91ea5b18",
+              "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+              "role": "support",
+              "title": "Status note",
+              "url": "",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            },
+            {
+              "source_id": "rail-total",
+              "content": "In Peru, passenger rail recorded 18 million journeys in 2019.",
+              "content_sha256": "94d2c4f54ae9f787ed5b52696a13814ecae26f8c2ed74407a5f0d5cb7ac32550",
+              "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+              "role": "support",
+              "title": "Journey count",
+              "url": "",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            },
+            {
+              "source_id": "rail-units",
+              "content": "Passenger rail distance is measured in Passenger Kilometres.",
+              "content_sha256": "ea8d5b6f24d5c74d32e0788e554017817317a5e19c3e00e87999659aa7997f4b",
+              "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+              "role": "support",
+              "title": "Measurement methods",
+              "url": "",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            },
+            {
+              "source_id": "rail-other",
+              "content": "In Bolivia, passenger rail recorded 7 million journeys in 2019.",
+              "content_sha256": "05352203fb34fda8bd130b2719b8eb56834ddee7e6c7562a42d6ff5f0edf8f12",
+              "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+              "role": "support",
+              "title": "Another network",
+              "url": "",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            }
+          ],
+          "elapsed_seconds": 0.0,
+          "diagnostic": "none",
+          "attempt_id": "174b654bf854479cbbc5eee3808ab227"
+        },
+        "created": "2026-11-12T12:48:18.292970+00:00"
+      },
+      {
+        "seq": 10,
+        "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+        "kind": "subtask_progress",
+        "payload": {
+          "version": "ami-subtasks-v1",
+          "identity": {
+            "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+            "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+            "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+            "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "54132fa0c4c44d11b2c0b9ba53cac797",
+          "ordinal": 6,
+          "status": "completed",
+          "created_at": "2026-11-12T12:48:17.860102Z",
+          "reason": "none",
+          "attempt_id": "174b654bf854479cbbc5eee3808ab227"
+        },
+        "created": "2026-11-12T12:48:18.377788+00:00"
+      },
+      {
+        "seq": 11,
+        "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+        "kind": "subtask_result",
+        "payload": {
+          "identity": {
+            "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+            "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+            "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+            "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+          },
+          "subtask_id": "s01",
+          "child_attempt_id": "54132fa0c4c44d11b2c0b9ba53cac797",
+          "dependencies": [],
+          "outcome": "evidence",
+          "sources": [
+            {
+              "source_id": "rail-total",
+              "content": "In Peru, passenger rail recorded 18 million journeys in 2019.",
+              "content_sha256": "94d2c4f54ae9f787ed5b52696a13814ecae26f8c2ed74407a5f0d5cb7ac32550",
+              "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+              "role": "support",
+              "title": "Journey count",
+              "url": "",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            },
+            {
+              "source_id": "rail-status",
+              "content": "The 2019 Peru passenger rail journey figures are provisional.",
+              "content_sha256": "ad139ea48a4295b898f1b0181428185138768c64449310a0f655ec4c91ea5b18",
+              "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+              "role": "support",
+              "title": "Status note",
+              "url": "",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            },
+            {
+              "source_id": "rail-other",
+              "content": "In Bolivia, passenger rail recorded 7 million journeys in 2019.",
+              "content_sha256": "05352203fb34fda8bd130b2719b8eb56834ddee7e6c7562a42d6ff5f0edf8f12",
+              "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+              "role": "support",
+              "title": "Another network",
+              "url": "",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            },
+            {
+              "source_id": "rail-units",
+              "content": "Passenger rail distance is measured in Passenger Kilometres.",
+              "content_sha256": "ea8d5b6f24d5c74d32e0788e554017817317a5e19c3e00e87999659aa7997f4b",
+              "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+              "role": "support",
+              "title": "Measurement methods",
+              "url": "",
+              "published": null,
+              "doc_name": null,
+              "page_num": null
+            }
+          ],
+          "elapsed_seconds": 0.0,
+          "diagnostic": "none",
+          "attempt_id": "174b654bf854479cbbc5eee3808ab227"
+        },
+        "created": "2026-11-12T12:48:18.463163+00:00"
+      },
+      {
+        "seq": 12,
+        "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+        "kind": "model_request_started",
+        "payload": {
+          "stage": "subtask_compose",
+          "attempt_id": "174b654bf854479cbbc5eee3808ab227"
+        },
+        "created": "2026-11-12T12:48:18.547546+00:00"
+      },
+      {
+        "seq": 13,
+        "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+        "kind": "model_request_started",
+        "payload": {
+          "stage": "subtask_compose",
+          "attempt_id": "174b654bf854479cbbc5eee3808ab227"
+        },
+        "created": "2026-11-12T12:48:38.620937+00:00"
+      },
+      {
+        "seq": 14,
+        "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+        "kind": "guard_invocation_started",
+        "payload": {
+          "stage": "subtask_safety",
+          "attempt_id": "174b654bf854479cbbc5eee3808ab227"
+        },
+        "created": "2026-11-12T12:48:48.149941+00:00"
+      },
+      {
+        "seq": 15,
+        "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+        "kind": "subtask_worker_terminal",
+        "payload": {
+          "exit_code": 0,
+          "candidate_received": true,
+          "attempt_id": "174b654bf854479cbbc5eee3808ab227"
+        },
+        "created": "2026-11-12T12:48:57.953792+00:00"
+      },
+      {
+        "seq": 16,
+        "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+        "kind": "composition_candidate",
+        "payload": {
+          "status": "candidate; publication and approval are separate",
+          "identity": {
+            "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+            "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+            "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+            "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+          },
+          "claim_provenance": [
+            {
+              "claim_index": 0,
+              "origins": [
+                {
+                  "unit_id": "u1",
+                  "component_id": "r1",
+                  "subtask_id": "s01",
+                  "child_attempt_id": "54132fa0c4c44d11b2c0b9ba53cac797",
+                  "source_id": "rail-total",
+                  "content_sha256": "94d2c4f54ae9f787ed5b52696a13814ecae26f8c2ed74407a5f0d5cb7ac32550",
+                  "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+                }
+              ]
+            }
+          ],
+          "diagnostics": {
+            "identity": {
+              "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+              "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+              "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+              "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+            },
+            "raw_composer_output": {
+              "title": "Analyst research brief",
+              "claims": [
+                {
+                  "component_id": "r1",
+                  "text": "In Peru, 18 million passenger rail journeys were recorded in 2019.",
+                  "unit_id": "u1"
+                }
+              ]
+            },
+            "editorial_correction": false,
+            "branch_states": {
+              "s01": "completed",
+              "s02": "completed"
+            },
+            "missing_branches": [],
+            "omitted_financial_context": {},
+            "source_excerpt_presentations": {},
+            "fallback_reasons": {},
+            "source_baseline_normalizations": [],
+            "public_claim_coverage": [
+              {
+                "claim_index": 0,
+                "unit_ids": [
+                  "u1"
+                ],
+                "component_ids": [
+                  "r1"
+                ]
+              }
+            ],
+            "canonical_composition_units": [
+              {
+                "component_id": "r1",
+                "evidence": [
+                  {
+                    "source_id": "rail-total",
+                    "quote": "In Peru, passenger rail recorded 18 million journeys in 2019."
+                  }
+                ],
+                "unit_id": "u1",
+                "identity_sha256": "6f6fe4c8406415bfb00acdac1725e7d897e7c11dcd6bc6d1078bf6ee329108bf",
+                "established_scope": {},
+                "scope_citation_ids": [],
+                "origins": [
+                  {
+                    "unit_id": "u1",
+                    "component_id": "r1"
+                  }
+                ]
+              }
+            ],
+            "omitted_measure_qualifiers": {},
+            "merged_duplicate_citations": [],
+            "literal_comparison_conclusions": [],
+            "source_rendered_comparisons": [],
+            "fallback_unit_ids": [],
+            "scoped_disclosures": {
+              "version": "cq-scoped-disclosures-v1",
+              "identity": {
+                "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+                "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+                "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+                "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+              },
+              "scope_contract": {
+                "version": "cq-scoped-disclosures-v1",
+                "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+                "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+                "question_sha256": "50bb9edd997fdc17049181967c7c2edb58e251decda998c9e80c4ec470ecbb60",
+                "bindings_sha256": "65027ea19f8364378f35d32392edc9f727eac1c4b702f6afe44023735e4859de",
+                "declaration_ref": "Synthetic multi-document development request, predeclared from its question.",
+                "annotations": [
+                  {
+                    "component_id": "r1",
+                    "subtask_id": "s01",
+                    "question_span": {
+                      "start": 0,
+                      "end": 62
+                    }
+                  },
+                  {
+                    "component_id": "r2",
+                    "subtask_id": "s02",
+                    "question_span": {
+                      "start": 68,
+                      "end": 106
+                    }
+                  }
+                ]
+              },
+              "records": [
+                {
+                  "component_id": "r1",
+                  "component_status": "supported",
+                  "subtask_id": "s01",
+                  "required": true,
+                  "state": "completed",
+                  "outcome": "evidence",
+                  "kind": "selected_evidence",
+                  "requested_scope": "How many passenger rail journeys were recorded in Peru in 2019",
+                  "question_span": {
+                    "start": 0,
+                    "end": 62
+                  },
+                  "original_question": "How many passenger rail journeys were recorded in Peru in 2019, and were the figures provisional or final?",
+                  "retrieval_query": "Peru passenger rail journeys 2019",
+                  "returned_support_ids": [
+                    "rail-total",
+                    "rail-status",
+                    "rail-other",
+                    "rail-units"
+                  ],
+                  "selected_support_ids": [
+                    "rail-total"
+                  ],
+                  "child_attempt_id": "54132fa0c4c44d11b2c0b9ba53cac797",
+                  "disclosure": "Evidence selected; semantic support and within-branch completeness remain unproven.",
+                  "semantic_support_proven": false,
+                  "scope_semantics_proven": false
+                },
+                {
+                  "component_id": "r2",
+                  "component_status": "conflicting",
+                  "subtask_id": "s02",
+                  "required": true,
+                  "state": "completed",
+                  "outcome": "evidence",
+                  "kind": "selected_evidence",
+                  "requested_scope": "were the figures provisional or final?",
+                  "question_span": {
+                    "start": 68,
+                    "end": 106
+                  },
+                  "original_question": "How many passenger rail journeys were recorded in Peru in 2019, and were the figures provisional or final?",
+                  "retrieval_query": "Peru rail figures provisional final",
+                  "returned_support_ids": [
+                    "rail-status",
+                    "rail-total",
+                    "rail-units",
+                    "rail-other"
+                  ],
+                  "selected_support_ids": [
+                    "rail-status",
+                    "rail-total"
+                  ],
+                  "child_attempt_id": "41bad1071db64c12b0a955c066107973",
+                  "disclosure": "Evidence selected; semantic support and within-branch completeness remain unproven.",
+                  "semantic_support_proven": false,
+                  "scope_semantics_proven": false
+                }
+              ],
+              "warnings": [
+                "Component r2 reports conflicting selected evidence; inspect the separate source statements. Original request: How many passenger rail journeys were recorded in Peru in 2019, and were the figures provisional or final?"
+              ],
+              "drafting_allowed": true,
+              "semantic_support_proven": false,
+              "owner_acceptance": "not inferred"
+            },
+            "title_geography": {
+              "version": "cq-title-scope-v1",
+              "candidate": "Peru",
+              "title_before": "Analyst research brief (Peru)",
+              "semantic_applicability_proven": false,
+              "evidence_coverage": [
+                {
+                  "source_id": "rail-total",
+                  "quote_sha256": "94d2c4f54ae9f787ed5b52696a13814ecae26f8c2ed74407a5f0d5cb7ac32550",
+                  "basis": "literal_in_selected_quote"
+                }
+              ],
+              "status": "retained_literal_common_geography",
+              "title_after": "Analyst research brief (Peru)"
+            },
+            "scoped_mapper_raw_selection": {
+              "wire_version": "cq-scoped-selection-v1",
+              "components": [
+                {
+                  "component_id": "r1",
+                  "status": "supported",
+                  "evidence": [
+                    "s_65af4fc137d43b33"
+                  ],
+                  "measure": "",
+                  "scenario": "",
+                  "kind": "unknown"
+                },
+                {
+                  "component_id": "r2",
+                  "status": "conflicting",
+                  "evidence": [
+                    "s_b0e4f8d83a806a98",
+                    "s_65af4fc137d43b33"
+                  ],
+                  "measure": "",
+                  "scenario": "",
+                  "kind": "unknown"
+                }
+              ],
+              "geography": {
+                "status": "known",
+                "value": "Peru",
+                "evidence": [
+                  "s_65af4fc137d43b33"
+                ],
+                "reason": ""
+              },
+              "period": ""
+            },
+            "application_source_selection": {
+              "components": [
+                {
+                  "component_id": "r1",
+                  "status": "supported",
+                  "evidence": [
+                    "s_65af4fc137d43b33"
+                  ],
+                  "gap_anchor": "",
+                  "measure": "",
+                  "scenario": "",
+                  "kind": "unknown"
+                },
+                {
+                  "component_id": "r2",
+                  "status": "conflicting",
+                  "evidence": [
+                    "s_b0e4f8d83a806a98",
+                    "s_65af4fc137d43b33"
+                  ],
+                  "gap_anchor": "",
+                  "measure": "",
+                  "scenario": "",
+                  "kind": "unknown"
+                }
+              ],
+              "geography": {
+                "status": "known",
+                "value": "Peru",
+                "evidence": [
+                  "s_65af4fc137d43b33"
+                ],
+                "reason": ""
+              },
+              "period": "",
+              "wire_version": "source-selection-v1"
+            },
+            "resolved_evidence_mapping": {
+              "geography": "Peru",
+              "period": "",
+              "components": [
+                {
+                  "component_id": "r1",
+                  "question_anchor": "How many passenger rail journeys were recorded in Peru in 2019",
+                  "status": "supported",
+                  "short_answer": "In Peru, passenger rail recorded 18 million journeys in 2019.",
+                  "evidence": [
+                    {
+                      "source_id": "rail-total",
+                      "quote": "In Peru, passenger rail recorded 18 million journeys in 2019."
+                    }
+                  ],
+                  "gap_anchor": "",
+                  "measure": "",
+                  "scenario": "",
+                  "kind": "unknown"
+                },
+                {
+                  "component_id": "r2",
+                  "question_anchor": "were the figures provisional or final?",
+                  "status": "conflicting",
+                  "short_answer": "",
+                  "evidence": [
+                    {
+                      "source_id": "rail-status",
+                      "quote": "The 2019 Peru passenger rail journey figures are provisional."
+                    },
+                    {
+                      "source_id": "rail-total",
+                      "quote": "In Peru, passenger rail recorded 18 million journeys in 2019."
+                    }
+                  ],
+                  "gap_anchor": "",
+                  "measure": "",
+                  "scenario": "",
+                  "kind": "unknown"
+                }
+              ],
+              "geography_resolution": {
+                "status": "known",
+                "value": "Peru",
+                "evidence": [
+                  {
+                    "source_id": "rail-total",
+                    "quote": "In Peru, passenger rail recorded 18 million journeys in 2019.",
+                    "span_id": "s_65af4fc137d43b33",
+                    "content_sha256": "94d2c4f54ae9f787ed5b52696a13814ecae26f8c2ed74407a5f0d5cb7ac32550",
+                    "start": 0,
+                    "end": 61
+                  }
+                ],
+                "reason": "",
+                "original_value": "Peru",
+                "normalization": "none",
+                "context_only": false,
+                "document_context_bindings": []
+              }
+            },
+            "model_responses": [
+              {
+                "stage": "mapping",
+                "identity": {
+                  "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+                  "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+                  "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+                  "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+                },
+                "raw": "{\n  \"wire_version\": \"cq-scoped-selection-v1\",\n  \"components\": [\n    {\n      \"component_id\": \"r1\",\n      \"status\": \"supported\",\n      \"evidence\": [\n        \"s_65af4fc137d43b33\"\n      ],\n      \"measure\": \"\",\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    },\n    {\n      \"component_id\": \"r2\",\n      \"status\": \"conflicting\",\n      \"evidence\": [\n        \"s_b0e4f8d83a806a98\",\n        \"s_65af4fc137d43b33\"\n      ],\n      \"measure\": \"\",\n      \"scenario\": \"\",\n      \"kind\": \"unknown\"\n    }\n  ],\n  \"geography\": {\n    \"status\": \"known\",\n    \"value\": \"Peru\",\n    \"evidence\": [\n      \"s_65af4fc137d43b33\"\n    ],\n    \"reason\": \"\"\n  },\n  \"period\": \"\"\n}",
+                "usage": {
+                  "input_tokens": 730,
+                  "output_tokens": 226,
+                  "total_tokens": 956
+                },
+                "response_metadata": {
+                  "model": "ami-llama3.1:8b-4k",
+                  "created_at": "2026-11-12T12:48:36.4894087Z",
+                  "done": true,
+                  "done_reason": "stop",
+                  "total_duration": 11605653100,
+                  "load_duration": 5449645100,
+                  "prompt_eval_count": 730,
+                  "prompt_eval_duration": 469453000,
+                  "eval_count": 226,
+                  "eval_duration": 5668963000,
+                  "logprobs": null,
+                  "model_name": "ami-llama3.1:8b-4k",
+                  "model_provider": "ollama"
+                }
+              },
+              {
+                "stage": "composition",
+                "identity": {
+                  "run_id": "b9369e5f10e8463ab3dfa34d7e699f90",
+                  "attempt_id": "174b654bf854479cbbc5eee3808ab227",
+                  "plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+                  "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3"
+                },
+                "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"In Peru, 18 million passenger rail journeys were recorded in 2019.\",\n      \"unit_id\": \"u1\"\n    }\n  ]\n}",
+                "usage": {
+                  "input_tokens": 548,
+                  "output_tokens": 67,
+                  "total_tokens": 615
+                },
+                "response_metadata": {
+                  "model": "ami-llama3.1:8b-4k",
+                  "created_at": "2026-11-12T12:48:46.005217Z",
+                  "done": true,
+                  "done_reason": "stop",
+                  "total_duration": 2291403400,
+                  "load_duration": 7482500,
+                  "prompt_eval_count": 548,
+                  "prompt_eval_duration": 501146000,
+                  "eval_count": 67,
+                  "eval_duration": 1714396000,
+                  "logprobs": null,
+                  "model_name": "ami-llama3.1:8b-4k",
+                  "model_provider": "ollama"
+                }
+              }
+            ],
+            "span_catalog": {
+              "s_65af4fc137d43b33": {
+                "source_id": "rail-total",
+                "content_sha256": "94d2c4f54ae9f787ed5b52696a13814ecae26f8c2ed74407a5f0d5cb7ac32550",
+                "start": 0,
+                "end": 61,
+                "text": "In Peru, passenger rail recorded 18 million journeys in 2019."
+              },
+              "s_b0e4f8d83a806a98": {
+                "source_id": "rail-status",
+                "content_sha256": "ad139ea48a4295b898f1b0181428185138768c64449310a0f655ec4c91ea5b18",
+                "start": 0,
+                "end": 61,
+                "text": "The 2019 Peru passenger rail journey figures are provisional."
+              },
+              "s_820906f363cfac9a": {
+                "source_id": "rail-other",
+                "content_sha256": "05352203fb34fda8bd130b2719b8eb56834ddee7e6c7562a42d6ff5f0edf8f12",
+                "start": 0,
+                "end": 63,
+                "text": "In Bolivia, passenger rail recorded 7 million journeys in 2019."
+              },
+              "s_09fcfe1f2a8c2833": {
+                "source_id": "rail-units",
+                "content_sha256": "ea8d5b6f24d5c74d32e0788e554017817317a5e19c3e00e87999659aa7997f4b",
+                "start": 0,
+                "end": 60,
+                "text": "Passenger rail distance is measured in Passenger Kilometres."
+              }
+            },
+            "application_extracts": [
+              {
+                "component_id": "r1",
+                "financial_comparison_coverage": {
+                  "status": "not_checked",
+                  "semantic_support_proven": false
+                },
+                "origin": "application-selected-source-extract",
+                "text": "In Peru, passenger rail recorded 18 million journeys in 2019.",
+                "span_ids": [
+                  "s_65af4fc137d43b33"
+                ],
+                "evidence": [
+                  {
+                    "source_id": "rail-total",
+                    "quote": "In Peru, passenger rail recorded 18 million journeys in 2019.",
+                    "span_id": "s_65af4fc137d43b33",
+                    "content_sha256": "94d2c4f54ae9f787ed5b52696a13814ecae26f8c2ed74407a5f0d5cb7ac32550",
+                    "start": 0,
+                    "end": 61
+                  }
+                ],
+                "quantity_measure_check": "not_applicable"
+              },
+              {
+                "component_id": "r2",
+                "financial_comparison_coverage": {
+                  "status": "not_checked",
+                  "semantic_support_proven": false
+                },
+                "origin": "application-selected-source-extract",
+                "text": "",
+                "span_ids": [
+                  "s_b0e4f8d83a806a98",
+                  "s_65af4fc137d43b33"
+                ],
+                "evidence": [
+                  {
+                    "source_id": "rail-status",
+                    "quote": "The 2019 Peru passenger rail journey figures are provisional.",
+                    "span_id": "s_b0e4f8d83a806a98",
+                    "content_sha256": "ad139ea48a4295b898f1b0181428185138768c64449310a0f655ec4c91ea5b18",
+                    "start": 0,
+                    "end": 61
+                  },
+                  {
+                    "source_id": "rail-total",
+                    "quote": "In Peru, passenger rail recorded 18 million journeys in 2019.",
+                    "span_id": "s_65af4fc137d43b33",
+                    "content_sha256": "94d2c4f54ae9f787ed5b52696a13814ecae26f8c2ed74407a5f0d5cb7ac32550",
+                    "start": 0,
+                    "end": 61
+                  }
+                ],
+                "quantity_measure_check": "not_applicable"
+              }
+            ],
+            "requested_branch_coverage": {
+              "r1": {
+                "status": "supported",
+                "required_branches": [
+                  "s01"
+                ],
+                "unselected_branches": [],
+                "semantic_support_proven": false
+              },
+              "r2": {
+                "status": "conflicting",
+                "required_branches": [
+                  "s02"
+                ],
+                "unselected_branches": [],
+                "semantic_support_proven": false
+              }
+            },
+            "concurrent_mapping_version": "cq-mapper-v8-request-bound-geography",
+            "concurrent_composition_version": "cq-composer-v2-unit-local",
+            "mapping_wire_version": "cq-scoped-selection-v1",
+            "gap_authorship": "application-owned scoped branch disclosures; not raw model or editorial text",
+            "scope_deadline_binding": {
+              "declared_scope_contract": {
+                "version": "cq-scoped-disclosures-v1",
+                "plan_id": "662bcee638f27c90d5a846b0da3206392b45d66dcb5f11f4f3b58733b73e0532",
+                "corpus_sha256": "49b026e10ead0bb339dd00a218fbb504578334b1a864d6f175612fe82cbf6ea3",
+                "question_sha256": "50bb9edd997fdc17049181967c7c2edb58e251decda998c9e80c4ec470ecbb60",
+                "bindings_sha256": "65027ea19f8364378f35d32392edc9f727eac1c4b702f6afe44023735e4859de",
+                "declaration_ref": "Synthetic multi-document development request, predeclared from its question.",
+                "annotations": [
+                  {
+                    "component_id": "r1",
+                    "subtask_id": "s01",
+                    "question_span": {
+                      "start": 0,
+                      "end": 62
+                    }
+                  },
+                  {
+                    "component_id": "r2",
+                    "subtask_id": "s02",
+                    "question_span": {
+                      "start": 68,
+                      "end": 106
+                    }
+                  }
+                ]
+              },
+              "declared_scope_file_sha256": "56dc6ca9413284242393ac7b68264c9d8a0db441e62c7034abd6c59cf655a6b8",
+              "declared_plan_id": "662bcee638f27c90d5a846b0da3206392b45d66dcb5f11f4f3b58733b73e0532",
+              "runtime_plan_id": "ed2bce838410dc393d33452f20ab438abcc4bab892528d61cd7e72910f6f3b53",
+              "declared_deadline_seconds": 180.0,
+              "runtime_deadline_seconds": 177.79699999999866,
+              "allowed_change": "deadline reduction only; all other plan fields equal",
+              "semantic_support_proven": false
+            }
+          },
+          "draft_sources_sha256": "935039e648094187ca27b9dd510b1054ae507ef1163b3fefdd156e393fec7415",
+          "content_sha256": "268cf9c2c17626d232c995d3b191d93568b7f0b8b4cf3b83d69550a7fbaed747",
+          "attempt_id": "174b654bf854479cbbc5eee3808ab227"
+        },
+        "created": "2026-11-12T12:48:58.133834+00:00"
+      }
+    ],
+    "reviews": []
+  },
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured",
+  "source_assessment": "pending",
+  "owner_adjudication": "pending"
+}

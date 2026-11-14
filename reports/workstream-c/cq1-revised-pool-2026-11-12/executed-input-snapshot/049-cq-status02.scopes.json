@@ -1,0 +1,18 @@
+{
+  "version": "cq-scoped-disclosures-v1",
+  "plan_id": "bb7bc752575061bc28e26174aafd30cf60bb0bdb82b93a1422a1a55725d643e8",
+  "corpus_sha256": "4fd8be3d84378567d472ce45a6c6e157d95987fe341799f7ab58499428499254",
+  "question_sha256": "72be0872901715672a83d5689f9e2e086485822eec0b88e3d350ac1b55717315",
+  "bindings_sha256": "1adcfd3c62d5cb3d1ca0da2d6949f0c05b355a4f4509d8d0f5d4741c623315f7",
+  "declaration_ref": "Synthetic opposed publication-status statements frozen before generation.",
+  "annotations": [
+    {
+      "component_id": "r1",
+      "subtask_id": "s01",
+      "question_span": {
+        "start": 0,
+        "end": 60
+      }
+    }
+  ]
+}

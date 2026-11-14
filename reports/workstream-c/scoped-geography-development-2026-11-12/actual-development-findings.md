@@ -1,0 +1,11 @@
+# Scoped geography diagnostic stopped at cq-geo01
+
+The 12 November 2026 diagnostic passed technical execution, NeMo and review-pending persistence, then failed the source gate. cq-geo01 took 48.094 seconds including preparation. The stored revision has zero reviews and exports. The ledger closed the batch, leaving cq-geo02 unattempted and revised CQ1 at zero of twenty attempts.
+
+The raw composer and final draft correctly state the Peru passenger rail amount for 2019. The mapper bound Peru to the factual source and excluded the Bolivia and measurement-unit distractors. It selected both the requested provisional status note and the amount for the second component, then labeled those compatible statements as conflicting. The amount says nothing about publication status. The other statement explicitly says provisional. There was no final-status assertion.
+
+The composer received only the amount as a supported unit. The final draft omitted the requested provisional status and added an incorrect conflict warning. No fallback or editorial correction occurred. The existing schema checks that a conflict has two distinct quotations, which allows different statements about the same topic to satisfy the structural check even when they do not disagree. The assistant assessment failed the exact retained result for incompleteness and false conflict.
+
+The attempt used two main-model calls and one NeMo wrapper invocation. Known main-model usage was 1,278 input and 293 output tokens, totaling 1,571. Internal NeMo usage and monetary cost remain unknown. All 118 contract-pinned inputs matched their hashes and were preserved.
+
+For the next offline pass, test conflict selection with different synthetic facts. Include compatible amount/status evidence, genuinely opposed answers to the same status question, different dates or measures, and comparisons involving negation or quoted labels. Define what evidence a conflict decision must retain before surfacing it. Also verify that a genuine conflict can expose the distinct pinned statements needed by the existing CQ1 source gate. Preserve the failed attempt and review. A new development contract and grant are required for additional inference.

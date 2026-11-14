@@ -1,0 +1,20 @@
+{
+  "actual_model_calls": 0,
+  "nemo_invocations": 0,
+  "sockets_blocked": true,
+  "query": "What were renewable generation and its share of US utility-scale generation in 2023?",
+  "stages": [
+    "mapping",
+    "composition"
+  ],
+  "focus": {},
+  "relevant_table_spans": [
+    {
+      "span_id": "s_cb9a294a4ff9d4c9",
+      "text": "utility-scale electricity generation by source, amount, and share of total in 2023\nEnergy source\nBillion kWh\nShare of total\nTotal - all sources\n4,178\nFossil fuels (total)\n2,505\n60.0%\nNatural gas\n1,802\n43.1%\nCoal\n675\n16.2%\nPetroleum (total)\n16\n0.4%\nPetroleum liquids\n12\n0.3%\nPetroleum coke\n5\n0.1%\nOther gases\n3\n11\n0.3%\nNuclear\n775\n18.6%\nRenewables (total)\n894\n21.4%\nWind\n425\n10.2%\nHydropower\n240\n5.7%\nSolar (total)\n165\n3.9%\nPhotovoltaic\n162\n3.9%\nSolar thermal\n3\n0.1%\nBiomass (total)\n47\n1.1%\nWood\n31\n0.8%\nLandfill gas\n8\n0.2%\nMunicipal solid waste (biogenic)\n6\n0.1%\nOther biomass waste\n2\n0.1%\nGeothermal",
+      "source_id": "eia-generation-2023",
+      "selected": false
+    }
+  ],
+  "message": "Draft introduces a numeric value absent from its selected evidence"
+}

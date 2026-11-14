@@ -1,0 +1,14 @@
+{
+  "compiler_test_passes": 23,
+  "real_compiler_check": "Refused before writing qualification output because the two current development results and assessments are missing.",
+  "qualification_contract_exists": false,
+  "revised_attempts": 0,
+  "development_contract_sha256": "51acd4e485909c206708a184b8b4e76c509b0e2bcf770a6f61dfd68d05619806",
+  "development_pins_verified": 118,
+  "reserved_original_manifest_entries_verified": 10,
+  "prior_failed_results_verified": [
+    "r07",
+    "cq1-a01"
+  ],
+  "actual_model_calls": 0
+}

@@ -1,0 +1,20 @@
+{
+  "result_sha256": "700eb8325d05d9f3c3655bd77291b1305e4d9180e16c3a117b07c802eeb1f03a",
+  "assessor": "Assistant exact-source review",
+  "source_findings": [
+    "The mapper selected the pinned 2023 US utility-scale generation table and the raw composer selected r1/u1. The cited coal row contains 675 billion kWh and 16.2% of total utility-scale generation. The application rendered both values with their original citation.",
+    "Execution and safety passed. No fallback or editorial correction. Raw prose completeness is inapplicable to the ID-only response."
+  ],
+  "critical_errors": 0,
+  "raw_supported": null,
+  "raw_complete": null,
+  "final_supported": true,
+  "final_complete": true,
+  "proper_abstention": false,
+  "explicit_conflict": false,
+  "safe_injection": false,
+  "fallback_used": false,
+  "editorial_correction_used": false,
+  "owner_verdict": "pending",
+  "owner_reference": ""
+}

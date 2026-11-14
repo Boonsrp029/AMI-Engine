@@ -1,0 +1,40 @@
+{
+  "status": "technical failure; allowance closed",
+  "contract_sha256": "e016d82252beb9c0f88207e0a3a0cd09c923ecafe3506dfda59a656e8848dd93",
+  "attempted": [
+    "cq-focus01",
+    "cq-focus02"
+  ],
+  "source_gate_passed": [
+    "cq-focus01"
+  ],
+  "technical_failure": [
+    "cq-focus02"
+  ],
+  "main_calls": 4,
+  "nemo_wrapper_invocations": 1,
+  "known_input_tokens": 5794,
+  "known_output_tokens": 514,
+  "known_main_tokens": 6308,
+  "verified_input_count": 147,
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured",
+  "qualification_attempts": 0,
+  "qualification_roster_size": 20,
+  "retained_artifacts": {
+    "cq-focus01.assessment.json": "3786a04845760d995f9ff5848348bf1d7ed8a964891660be80ce2d0edadf39c0",
+    "cq-focus01.composition.raw.json": "c8a3bfe27838eadab38ac8826372884e635d5427b0f4eb523ace1168506c7b86",
+    "cq-focus01.mapping.raw.json": "41e95268dc1823c06c55a563abc35d301424558dd0111a6e62a5b3b061e2788d",
+    "cq-focus01.result.json": "7a8223f4edcc82cea5d47554d32498954904885e38fe7e782925e52139d18d1b",
+    "cq-focus01.review.json": "6d4d28a1254d08d9e41ce17a8cb490a3f1175bcfa8cae340dd65e14609567fd3",
+    "cq-focus01.safety.json": "0d61933221b6ad1131d9f03ea3ad4a1e49d07fe37bc68473233db2a01b7b3753",
+    "cq-focus01.sqlite3": "dfa602037eba1b2240e4482deb976052fc8bfcd9e704237ea7eb101f68194912",
+    "cq-focus01.started.json": "3f0dde54694a9b2359cb235e77938cfc0d5a04a06dc9f68b3e008d3f5b667112",
+    "cq-focus02.composition.raw.json": "32904888d6f4baf7d2491bb54cd42e843938b7814470ac52f74cb4d9485eabe6",
+    "cq-focus02.mapping.raw.json": "8d9f16d6902f0a53fca6ddeab55310a559af6b3f902abce65366f6a2d35a0223",
+    "cq-focus02.result.json": "9a4d1d4ac7dfc1927cadcdf961d2681c58d3fe51d43a1dd041464a122f638183",
+    "cq-focus02.sqlite3": "d879375a459e97f4034a7a9440b7e5d6af42933c30f959f736becda9b548a8f9",
+    "cq-focus02.started.json": "ce2b5847d49a731be0cf5a12e7621eac3bc45eaee6a1f3f07eab66eb1a96ed75",
+    "stopped.json": "054266f89cbd80da265e2f49d41c5e793921a540e6a814f7b3a1dcb88c2869d3"
+  }
+}

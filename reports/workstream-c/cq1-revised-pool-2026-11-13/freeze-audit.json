@@ -1,0 +1,17 @@
+{
+  "retained_questions": 18,
+  "retained_plans": 18,
+  "retained_scope_sidecars": 18,
+  "pool_sha256": "ce574566207e9dfe505890552e580534c822c46b2ee1bcb8f221fc78cc03e5e4",
+  "plans_sha256": "543c1ad27fb0818feaee1074f827729022277e6a35bc415ec18f7d464ad6741f",
+  "scope_manifest_sha256": "e9698c6ea37aaf72e50191ec58f3c5b7b61f23af612d38e68e25b9e3d3bc9f5c",
+  "prior_failed_results": {
+    "cq1-a11": "e099b0a58e387319f1fd296d89781c56030d6a2e4eacf06dffdbb736e127cda9",
+    "cq1-a02": "55ac264f2fbfa1f5221684aa72764b687db3247ea65a6a34ea2417ddaddb3e04"
+  },
+  "replacement_source_ids": {
+    "cq1-a12": "eia-generation-2023",
+    "cq1-a13": "eia-measurement"
+  },
+  "actual_model_calls": 0
+}

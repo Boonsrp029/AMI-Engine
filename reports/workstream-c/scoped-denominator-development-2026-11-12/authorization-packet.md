@@ -1,0 +1,9 @@
+# Scoped percentage-denominator development diagnostic
+
+Frozen for 12 November 2026, Bangkok time. Contract SHA-256 `9e1e9d4cf4a9be4bf38bdd29dbfb78acf50af11a01023a2125d0a1e3533b4307`. Both offline verification commands checked all 113 file pins. Three relocated corpus/tokenizer paths matched their prior hashes. The local model remains `ami-llama3.1:8b-4k` with the digest and settings in the contract. Live identity checks apply at execution.
+
+The previous cq-p02 attempt remains failed. In a socket-blocked replay, the revised validator projected the saved Denmark wind claim with the original citation and a specific disclosure about the missing retail-price evidence. Before the repair, two synthetic regressions failed and nine checks passed. After the repair, all 81 targeted checks passed, including source, safety and persistence tests using fixed responses. The original r07 attempt matches its retained hash and all ten reserved package entries match their manifest. CQ1 remains at zero of twenty attempts.
+
+Run cq-p01 once. Advance to cq-p02 once only after cq-p01 passes technical, source, completeness, title, safety and persistence checks. Apply the frozen [source review protocol](source-review-protocol.md) to both actual outputs and stop on the first failure. Each case allows 180 seconds including preparation, at most four main requests and one NeMo wrapper invocation. The batch ceiling is eight main requests and two NeMo wrapper invocations, with zero retries and warmups. Keep all results in the new output directory. Owner source acceptance and exact-revision approval are separate.
+
+This development allowance excludes CQ1, Ragas, hosted inference, Databricks, approval/export, publication and deployment. The previous grant closed at cq-p02. A direct grant for this contract is required by the Goal and repository instructions. The operator checks the frozen Bangkok date at execution.
