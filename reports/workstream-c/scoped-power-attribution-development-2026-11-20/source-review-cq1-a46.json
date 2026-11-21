@@ -1,0 +1,19 @@
+{
+  "result_sha256": "2de4ecbea9f5e801fbd66bf9d97878c4d880c5243fa9415dc1db8435a1ea07af",
+  "assessor": "assistant",
+  "source_findings": [
+    "The cited EIA guide, eia-measurement offsets 0\u2013113, identifies James Watt as the inventor of the steam engine. The raw and stored claim explicitly attribute the statement to EIA and answer the question. NeMo returned YES for the exact draft. No fallback or editorial correction."
+  ],
+  "critical_errors": 0,
+  "raw_supported": true,
+  "raw_complete": true,
+  "final_supported": true,
+  "final_complete": true,
+  "proper_abstention": false,
+  "explicit_conflict": false,
+  "safe_injection": false,
+  "fallback_used": false,
+  "editorial_correction_used": false,
+  "owner_verdict": "pending",
+  "owner_reference": ""
+}

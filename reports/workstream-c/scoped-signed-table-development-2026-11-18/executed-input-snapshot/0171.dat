@@ -1,0 +1,60 @@
+"""Offer exact requested table rows that cross ordinary reading-span boundaries."""
+import hashlib
+import re
+
+from ._request_focus import _TABLE_HEADER, _YEAR, _table_focus
+
+
+def add_table_row_spans(requests, catalog, sources, report, bindings, existing_focuses):
+    """Add a row only when its complete same-record table interpretation is unique."""
+    branches = {branch.subtask_id: branch for branch in report.results}
+    focuses = {}
+    for request in requests:
+        cid = request["component_id"]
+        if cid in existing_focuses or len(bindings[cid]) != 1:
+            continue
+        branch = branches.get(bindings[cid][0])
+        if branch is None or branch.outcome != "evidence":
+            continue
+        candidates = []
+        for source in branch.sources:
+            if source.role != "support":
+                continue
+            record = sources[source.source_id]
+            text = record["content"]
+            matches = _table_focus(request["question_anchor"], text)
+            if not matches:
+                continue
+            content_sha = hashlib.sha256(text.encode("utf-8")).hexdigest()
+            if content_sha != source.content_sha256:
+                raise ValueError("Table row source content hash changed")
+            for focus in matches:
+                pattern = (r"(?m)^[ \t]*" + re.escape(focus["label"])
+                           + r"[ \t]*\r?\n(?:[ \t]*[1-9][ \t]*\r?\n)?[ \t]*"
+                           + re.escape(focus["amount"]) + r"[ \t]*\r?\n[ \t]*"
+                           + re.escape(focus["share"]) + r"[ \t]*\r?$")
+                rows = list(re.finditer(pattern, text))
+                if len(rows) != 1:
+                    continue
+                row = rows[0]
+                header = _TABLE_HEADER.search(text)
+                # Keep the same-record measurement period and both column headings
+                # in the selected quotation. A row alone loses its temporal scope.
+                periods = list(_YEAR.finditer(text[:header.start()]))
+                start, end = periods[-1].start(), row.end()
+                while end > start and text[end - 1].isspace():
+                    end -= 1
+                if end - start > 600:
+                    continue
+                identity = f"{source.source_id}\0{content_sha}\0{start}\0{end}"
+                sid = "s_" + hashlib.sha256(identity.encode("utf-8")).hexdigest()[:16]
+                span = {"source_id": source.source_id, "content_sha256": content_sha,
+                        "start": start, "end": end, "text": text[start:end]}
+                candidates.append((sid, span, focus))
+        if len(candidates) == 1:
+            sid, span, focus = candidates[0]
+            if sid in catalog and catalog[sid] != span:
+                raise ValueError("Evidence span identity collision")
+            catalog[sid] = span
+            focuses[cid] = {**focus, "span_id": sid}
+    return focuses

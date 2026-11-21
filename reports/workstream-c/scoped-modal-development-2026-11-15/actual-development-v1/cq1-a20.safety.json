@@ -1,0 +1,7 @@
+{
+  "validated_report": "Automated electricity meters could periodically report electricity use to the utility.",
+  "passed_guardrails": true,
+  "raw_output": "Automated electricity meters could periodically report electricity use to the utility.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

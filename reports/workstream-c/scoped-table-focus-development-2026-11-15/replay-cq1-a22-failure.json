@@ -1,0 +1,66 @@
+{
+  "sockets_blocked": true,
+  "actual_calls": 0,
+  "capture_sha256": "c1280315a7f3d5818ea53182641dd27855383382af816958b972ccd45662068e",
+  "rejection": "Duplicate fact evidence role",
+  "selection": [
+    {
+      "span_id": "s_d46a265266fdb8bc",
+      "context": [
+        "s_2845cfa10cf8e534",
+        "s_684693c6816ddcf4"
+      ]
+    },
+    {
+      "span_id": "s_379ceb3c45f341ef",
+      "context": [
+        "s_379ceb3c45f341ef",
+        "s_d7571401d3a80385"
+      ]
+    },
+    {
+      "span_id": "s_d46a265266fdb8bc",
+      "context": [
+        "s_2845cfa10cf8e534",
+        "s_684693c6816ddcf4"
+      ]
+    },
+    {
+      "span_id": "s_379ceb3c45f341ef",
+      "context": [
+        "s_379ceb3c45f341ef",
+        "s_d7571401d3a80385"
+      ]
+    },
+    {
+      "span_id": "s_d46a265266fdb8bc",
+      "context": [
+        "s_2845cfa10cf8e534",
+        "s_684693c6816ddcf4"
+      ]
+    }
+  ],
+  "expected_focus": {},
+  "selected_spans": [
+    {
+      "source_id": "eia-measurement",
+      "span_id": "s_d46a265266fdb8bc",
+      "text": "One kilowatt is equal to 1,000 Watts."
+    },
+    {
+      "source_id": "eia-measurement",
+      "span_id": "s_d1ad042cf9ed1c0a",
+      "text": "For very large amounts of electricity, like what power plants generate, we use even larger units:\nMegawatts (MW): One MW is 1,000 kW, or 1,000,000 Watts."
+    },
+    {
+      "source_id": "eia-generation-2023",
+      "span_id": "s_379ceb3c45f341ef",
+      "text": "preliminary data\n1\nUtility-scale electricity generation is electricity generation from power plants with at least one megawatt (or 1,000 kilowatts) of total electricity generating capacity."
+    },
+    {
+      "source_id": "eia-generation-2023",
+      "span_id": "s_d7571401d3a80385",
+      "text": "2\nSmall-scale solar photovoltaic (PV) systems are electricity generators with less than one megawatt (MW) of electricity generating capacity, which are not connected at a power plant that has a combined capacity of one MW or larger."
+    }
+  ]
+}

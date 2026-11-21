@@ -1,0 +1,57 @@
+{
+  "synthetic": true,
+  "case": {
+    "unit_id": "u1",
+    "component_id": "r1"
+  },
+  "projected_claim": "The minimum total payload capacity is 3 kilograms (or 3,000 grams).",
+  "selection_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "unit_id": {
+        "const": "u1",
+        "title": "Unit Id",
+        "type": "string"
+      },
+      "component_id": {
+        "const": "r1",
+        "title": "Component Id",
+        "type": "string"
+      }
+    },
+    "required": [
+      "unit_id",
+      "component_id"
+    ],
+    "title": "CapacitySelection",
+    "type": "object"
+  },
+  "exact_text_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "unit_id": {
+        "const": "u1",
+        "title": "Unit Id",
+        "type": "string"
+      },
+      "component_id": {
+        "const": "r1",
+        "title": "Component Id",
+        "type": "string"
+      },
+      "text": {
+        "const": "The minimum total payload capacity is 3 kilograms (or 3,000 grams).",
+        "title": "Text",
+        "type": "string"
+      }
+    },
+    "required": [
+      "unit_id",
+      "component_id",
+      "text"
+    ],
+    "title": "CapacityText",
+    "type": "object"
+  },
+  "invalid_examples_rejected": 3
+}

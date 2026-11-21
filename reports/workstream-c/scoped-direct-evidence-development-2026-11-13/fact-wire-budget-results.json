@@ -1,0 +1,17 @@
+{
+  "case": "cq1-a20",
+  "model_calls": 0,
+  "sockets_blocked": true,
+  "limit": 4096,
+  "counts": {
+    "existing_content": 2441,
+    "existing_schema": 18220,
+    "proposal_content": 2174,
+    "proposal_schema": 377,
+    "existing_reservation": 3597,
+    "proposal_reservation": 3330
+  },
+  "schema_tokens_reported_separately": true,
+  "proposal_activated": false,
+  "same_candidate_spans": true
+}

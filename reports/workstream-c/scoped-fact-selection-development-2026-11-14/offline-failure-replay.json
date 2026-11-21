@@ -1,0 +1,11 @@
+{
+  "result_sha256": "bf3381b09c695a2df8c1f46ed0f29b21363070d0c75166fa9b0f11629a4c29cd",
+  "mapping_capture_sha256": "3fa8ebf5e273e2ef672a1219b6d306936fdcc1991b285f3deed93bae26d71a74",
+  "wire_schema_accepted": true,
+  "application_error": "Invalid fact evidence groups",
+  "captured_stages": [
+    "mapping"
+  ],
+  "actual_model_calls_in_replay": 0,
+  "sockets_blocked": true
+}

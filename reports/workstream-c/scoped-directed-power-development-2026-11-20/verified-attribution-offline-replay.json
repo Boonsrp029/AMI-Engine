@@ -1,0 +1,57 @@
+{
+  "sockets_blocked": true,
+  "model_calls": 0,
+  "replays": {
+    "verbatim_retained": {
+      "draft": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "One gigawatt is equivalent to 1,000,000,000 watts in the EIA measurement guide.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "leading_excerpt": {
+        "span_id": "s_a0ba37a9ebb6f10b",
+        "source_id": "eia-measurement",
+        "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+        "start": 490,
+        "end": 549,
+        "text": "Gigawatts (GW): One GW is 1,000 MW, or 1,000,000,000 Watts."
+      }
+    },
+    "wrong_attribution": {
+      "stages": [
+        "mapping",
+        "composition"
+      ],
+      "rejected_before_safety": "Raw conversion must preserve the source base, digit value and requested unit"
+    },
+    "wrong_scale": {
+      "stages": [
+        "mapping",
+        "composition"
+      ],
+      "rejected_before_safety": "Raw conversion must preserve the source base, digit value and requested unit"
+    },
+    "publication": {
+      "draft": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "The table cites Electric Power Monthly as its data source.",
+            "source_ids": [
+              "eia-generation-2023"
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "leading_excerpt": null
+    }
+  }
+}

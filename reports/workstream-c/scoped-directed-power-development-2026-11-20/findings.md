@@ -1,0 +1,7 @@
+# Directed power development findings
+
+cq1-a29 mapped the exact EIA conversion span with empty context and wrote “One gigawatt is equivalent to 1,000,000,000 watts in the EIA measurement guide.” The exact passage at offsets 490 to 549 supports the claim. The validator rejected the sentence because it added the source attribution to the requested exact form. A socket-blocked replay reproduced the rejection. Removing only the attribution in a fixed-response replay reached the safety boundary with the expected exact excerpt. This is an overly strict wording check, not a wrong quantity or a NeMo rejection. [Replay](offline-attribution-variant-replay.json) · [Raw composition](actual-development-v1/cq1-a29.composition.raw.json)
+
+The batch closed after one of two cases ran and zero passed all gates. cq1-a43 stayed unattempted. The first case used two main calls and zero NeMo invocations, with 3,149 recorded input tokens and 195 output tokens, 51 seconds including preparation and zero retries. The failed run produced no draft. The earlier standalone false acceptance remains failed. [Result](actual-development-v1/cq1-a29.result.json) · [Stop record](actual-development-v1/stopped.json)
+
+The next offline step is to recognize a narrowly verified source attribution in both composition validation and evidence placement while keeping the conversion relation strict. Test a verified attribution, a false attribution and a wrong scale in synthetic and retained examples before any new grant. No owner draft review is needed.

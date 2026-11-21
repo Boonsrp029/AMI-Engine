@@ -1,0 +1,41 @@
+{
+  "model_calls": 0,
+  "runtime_activated": false,
+  "example": {
+    "reported_item": {
+      "answer": "electricity use",
+      "direct": {
+        "source_id": "eia-measurement",
+        "quote": "Eventually, automated meters could periodically report electricity use to the utility."
+      },
+      "context": [
+        {
+          "source_id": "eia-measurement",
+          "quote": "In the past, electricity meters were mechanical devices that a utility employee had to read manually."
+        }
+      ]
+    },
+    "recipient": {
+      "answer": "the utility",
+      "direct": {
+        "source_id": "eia-measurement",
+        "quote": "Eventually, automated meters could periodically report electricity use to the utility."
+      },
+      "context": [
+        {
+          "source_id": "eia-measurement",
+          "quote": "In the past, electricity meters were mechanical devices that a utility employee had to read manually."
+        }
+      ]
+    }
+  },
+  "structural_rejections": [
+    "missing decision",
+    "unbound record",
+    "changed source span",
+    "out of bounds",
+    "duplicate role"
+  ],
+  "explicit_unresolved_preserved": true,
+  "wrong_role_passed_structure": "electricity use"
+}

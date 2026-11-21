@@ -1,0 +1,50 @@
+{
+  "contract_sha256": "9419020bb5eb9bef8a46af3baef5dae583cd1d7342fad08f1ac6e8b64ee9b459",
+  "status": "Both authorized development attempts complete; allowance exhausted",
+  "attempted": 2,
+  "assistant_passed": 2,
+  "failed": 0,
+  "unattempted": 0,
+  "main_calls": 4,
+  "nemo_invocations": 2,
+  "capture_reported_main_tokens": 7590,
+  "internal_nemo_usage": "unmeasured",
+  "monetary_cost": "unmeasured",
+  "cases": [
+    {
+      "case_id": "cq1-a38",
+      "technical_pass": true,
+      "assistant_source_gate": "pass",
+      "main_calls": 2,
+      "nemo_invocations": 1,
+      "wall_seconds": 63.188000000081956,
+      "capture_reported_main_usage": {
+        "input_tokens": 3788,
+        "output_tokens": 192,
+        "total_tokens": 3980
+      },
+      "result_sha256": "b057398a9216ec024012d64e6be324270e34e8e3035bf1e77fb8ecb0d42baf51",
+      "owner_acceptance": "pending",
+      "context_note": "The model selected additional same-record contextual spans, retained as exact excerpts. These passages supply no standalone claim. Record as unnecessary context, with the complete direct row and final answer supported."
+    },
+    {
+      "case_id": "cq1-a37",
+      "technical_pass": true,
+      "assistant_source_gate": "pass",
+      "main_calls": 2,
+      "nemo_invocations": 1,
+      "wall_seconds": 39.07799999997951,
+      "capture_reported_main_usage": {
+        "input_tokens": 3414,
+        "output_tokens": 196,
+        "total_tokens": 3610
+      },
+      "result_sha256": "8665e85bd605cdcf92bcbbeba49888c8d78d1ad7165329286a536596c1da5e6b",
+      "owner_acceptance": "pending",
+      "context_note": "The model selected additional same-record contextual spans, retained as exact excerpts. These passages supply no standalone claim. Record as unnecessary context, with the complete direct row and final answer supported."
+    }
+  ],
+  "historical_cq1": "one pass, one failure, eighteen unattempted; unchanged",
+  "owner_acceptance": "pending",
+  "larger_qualification_authorized": false
+}

@@ -1,0 +1,33 @@
+{
+  "retained_case_ids": [
+    "cq1-a30",
+    "cq1-a31",
+    "cq1-a32",
+    "cq1-a33",
+    "cq1-a34",
+    "cq1-a35",
+    "cq1-a36",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "retained_questions_and_plans": 17,
+  "retained_scope_sidecars": 17,
+  "replacement_ids": [
+    "cq1-a46",
+    "cq1-a47",
+    "cq1-a48"
+  ],
+  "pool_sha256": "e848ab337f865155d0219af9263b7f35e1491cf38a7a4cc97425a41d117d65d0",
+  "plans_sha256": "37cf91d0d492599996e1f2b79570fca7634fca57ff364b47f2349a073b1a9ed6",
+  "scope_manifest_sha256": "2e0ca63f25b1b7092897685dbb627ccc1f40dfaaacfe85534b5e4e0815b2bbe9",
+  "prior_contract_sha256": "92cc69775030a3888df2cbc0a856d700946b60a4c86d515961f76f31ffec333c",
+  "actual_model_calls": 0
+}

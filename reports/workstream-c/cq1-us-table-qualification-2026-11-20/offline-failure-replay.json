@@ -1,0 +1,71 @@
+{
+  "composition_units": [
+    {
+      "component_id": "r1",
+      "evidence": [
+        {
+          "source_id": "eia-generation-2023",
+          "quote": "16\n0.4%\nPumped storage hydropower\n4\n-6\n-0.1%\nOther sources\n5\n10\n0.2%\nData source: U.S."
+        }
+      ],
+      "unit_id": "u1",
+      "established_scope": {},
+      "origins": [
+        {
+          "unit_id": "u1",
+          "component_id": "r1"
+        }
+      ],
+      "source_literal_cues": {
+        "percentage_literals": [
+          "0.4%",
+          "-0.1%",
+          "0.2%"
+        ],
+        "four_digit_literals": [],
+        "modality_words": []
+      },
+      "selected_facts": [
+        {
+          "fact_id": "r1.1",
+          "requested_measure": null,
+          "direct_span_id": "s_53a9904131330b03",
+          "context": [
+            "The U.S."
+          ]
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "type": "ValueError",
+    "message": "Draft introduces a numeric value absent from its selected evidence"
+  },
+  "sockets_blocked": true,
+  "model_calls": 0,
+  "result_sha256": "f7d61c705f363131a62e654763eded7a6c02617a7be0167fa4c93d9873d3a697",
+  "attempted": [
+    "cq1-a43"
+  ],
+  "unattempted": [
+    "cq1-a44",
+    "cq1-a29",
+    "cq1-a30",
+    "cq1-a31",
+    "cq1-a32",
+    "cq1-a33",
+    "cq1-a34",
+    "cq1-a35",
+    "cq1-a36",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "fixed_judge": true,
+  "model_calls": 0,
+  "contract_sha256": "ad1b9ca97d897e53626f25be56bd32ad187af363c5f3e6051302463dc4daeafe",
+  "cases": [
+    {
+      "case": "capacity-supported",
+      "fixed_verdict": "YES",
+      "passed_rails": true,
+      "prompt_sha256": "8d470d9a4cb62dfa244aaf283c433f2310345630fd932a71106a6a94eb71a9e7"
+    },
+    {
+      "case": "capacity-wrong-kilowatts",
+      "fixed_verdict": "NO",
+      "passed_rails": false,
+      "prompt_sha256": "59b996691af588653e1dab58520c078781488342f4e1d4d95d0fc891bd212eab"
+    }
+  ]
+}

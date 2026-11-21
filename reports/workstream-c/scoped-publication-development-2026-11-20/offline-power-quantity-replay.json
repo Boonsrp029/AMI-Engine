@@ -1,0 +1,31 @@
+{
+  "sockets_blocked": true,
+  "model_calls": 0,
+  "replays": {
+    "retained_error": "Draft power quantity value/unit pair is absent from selected evidence",
+    "fixed_conversion": [
+      {
+        "text": "One gigawatt is equivalent to 1,000,000,000 watts in the EIA measurement guide.",
+        "source_ids": [
+          "eia-measurement"
+        ]
+      }
+    ],
+    "retained_publication": [
+      {
+        "text": "The table cites Electric Power Monthly as its data source.",
+        "source_ids": [
+          "eia-generation-2023"
+        ]
+      }
+    ],
+    "retained_watt": [
+      {
+        "text": "The EIA measurement guide says one kilowatt is equal to 1,000 Watts.",
+        "source_ids": [
+          "eia-measurement"
+        ]
+      }
+    ]
+  }
+}

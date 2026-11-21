@@ -1,0 +1,95 @@
+{
+  "method": "baseline only; labels loaded after prediction",
+  "model_calls": 0,
+  "cases": {
+    "costs": {
+      "anchors": [
+        "What were the installation and annual maintenance costs in 2021?"
+      ],
+      "hints": {
+        "r1": [
+          "future",
+          "setup"
+        ]
+      },
+      "labeled_slot_count": 2,
+      "component_count_matches": false,
+      "missing_direct_hints": [
+        "service"
+      ],
+      "distractor_hints": [
+        "future"
+      ],
+      "necessary_context_not_hinted": [],
+      "unresolved_facts": [],
+      "conflicting": false
+    },
+    "reporting": {
+      "anchors": [
+        "What did harbor transmitters report weekly",
+        "who received those reports?"
+      ],
+      "hints": {
+        "r1": [
+          "direct",
+          "history"
+        ],
+        "r2": [
+          "direct",
+          "history"
+        ]
+      },
+      "labeled_slot_count": 2,
+      "component_count_matches": true,
+      "missing_direct_hints": [],
+      "distractor_hints": [],
+      "necessary_context_not_hinted": [],
+      "unresolved_facts": [],
+      "conflicting": false
+    },
+    "partial": {
+      "anchors": [
+        "What was the annual maintenance cost in 2021",
+        "what was the repair cost in 2021?"
+      ],
+      "hints": {
+        "r1": [
+          "service"
+        ],
+        "r2": [
+          "service",
+          "future"
+        ]
+      },
+      "labeled_slot_count": 2,
+      "component_count_matches": true,
+      "missing_direct_hints": [],
+      "distractor_hints": [
+        "future"
+      ],
+      "necessary_context_not_hinted": [],
+      "unresolved_facts": [
+        "2021 repair cost"
+      ],
+      "conflicting": false
+    },
+    "conflict": {
+      "anchors": [
+        "What did the two records report for reservoir capacity in 2020?"
+      ],
+      "hints": {
+        "r1": [
+          "first",
+          "second"
+        ]
+      },
+      "labeled_slot_count": 1,
+      "component_count_matches": true,
+      "missing_direct_hints": [],
+      "distractor_hints": [],
+      "necessary_context_not_hinted": [],
+      "unresolved_facts": [],
+      "conflicting": true
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "75fb774e21e64fec9963b5b7c70ecf23",
+    "attempt_id": "c9da915e542a40b2ad8596cd472ccdce",
+    "plan_id": "e9567ed47a0e5fed73435cd41274a5eed0dbb6f91cc7f1af30b1a8c57ba1822b",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"unit_id\": \"u3\",\n      \"component_id\": \"r2\",\n      \"targets\": {\n        \"target_1\": \"you use a 40-Watt (0.04 kW) light bulb for five hours\",\n        \"target_2\": \"you have used 200 Wh, or 0.2 kWh, of electrical energy\"\n      }\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 1084,
+    "output_tokens": 105,
+    "total_tokens": 1189
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-17T10:25:17.6431526Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2843650900,
+    "load_duration": 9753500,
+    "prompt_eval_count": 1084,
+    "prompt_eval_duration": 221512000,
+    "eval_count": 105,
+    "eval_duration": 2282937000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

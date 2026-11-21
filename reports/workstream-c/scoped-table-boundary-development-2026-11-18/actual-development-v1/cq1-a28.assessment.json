@@ -1,0 +1,21 @@
+{
+  "result_sha256": "43df626bcfb0f1514070800134e6238baffa6dbcc088ceb041a5b4da3a37379e",
+  "assessor": "assistant",
+  "verdict": "pass",
+  "source_findings": [
+    "Pinned EIA U.S. utility-scale 2023 table gives Geothermal, 16 billion kWh and 0.4% of total.",
+    "Exact source window s_917774a0cd14288c at offsets 635:1165 retains year, column headings and row.",
+    "Actual mapper selects one evidence span. Raw composer selects the verified row unit; application renders the claim. No fallback or editorial correction.",
+    "NeMo passed; exact revision 1 is stored as needs_review with no review or export.",
+    "U.S. scope is established by the question and pinned table heading but remains implicit in generated wording. Owner prefers explicit U.S.; wording review remains pending."
+  ],
+  "owner_acceptance": "pending",
+  "source_url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+  "source_id": "eia-generation-2023",
+  "source_content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+  "span_id": "s_917774a0cd14288c",
+  "source_offsets": [
+    635,
+    1165
+  ]
+}

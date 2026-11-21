@@ -1,0 +1,17 @@
+# Preserve historical capability wording through exact source selection
+
+The authorized whole-span diagnostic stopped at cq1-a20. The mapper selected direct evidence for both requested facts. The composer dropped “could,” turning a possible capability into present practice. Validation rejected the output before NeMo or draft storage. cq1-a19 remains unattempted. See [actual findings](actual-development-findings.md).
+
+For the opt-in concurrent workflow, let the composer select a verified evidence unit by ID when one contiguous direct source span answers the requested facts as a standalone historical capability sentence. The application would render that source sentence exactly with its original citation. Ordinary prose and table-row selection would retain their existing paths. Do not combine direct evidence with context, join passages, or convert an observation into a capability. If the sentence needs context to resolve a subject, condition, period, or geographic scope, leave it on the existing prose path with strict validation.
+
+The selection would be recorded as raw model output and the rendered sentence as application-rendered source text. A fallback or later editorial edit would remain separately attributable. The final result would go through existing evidence validation, NeMo, and exact-revision approval controls. Sequential execution and the public draft schema would stay intact.
+
+The [offline replay](capability-extract-results.json) used the saved mapper capture, a simulated unit selection, and the current projection path with sockets blocked. It rendered “Eventually, automated meters could periodically report electricity use to the utility.” with its original citation. Two positive and six negative synthetic eligibility checks passed. Eligibility is syntactic and does not establish that a passage answers the question. The earlier generated result remains a failure.
+
+Before activation, add integrated checks for ID and citation binding, missing or unrelated facts, mixed observation and capability language, conditionals, and final safety/approval. Owner review of new valid drafts should confirm source support and whether quoting the source works for the brief. Fresh generation requires a separate bounded diagnostic.
+
+## ID-only response and temporal limits
+
+The [schema probe](check-extract-id-schema.py) uses the existing table selector with synthetic maritime evidence. It accepted the bound unit/component pair and rejected omitted selection, unknown unit, wrong component, duplicate selection and free text in the ID-only slot (6 checks). The proposal can reuse this validation pattern with a separate capability response kind and provenance event. Before activation, integration tests should also check that the resolved text and citation are pinned to the same span and that final safety still runs once.
+
+“Eventually” does not by itself establish a historical observation and can introduce a future possibility relative to the publication date. Carry the source wording unchanged and test that the output does not assign an observation date or current status to the capability. Preserve conditions, negatives and context needed for interpreting the subject. If the exact sentence cannot stand alone in the brief, it is ineligible for this projection. These are requirements for the proposed integration. The current schema probe validates IDs only.

@@ -1,0 +1,15 @@
+{
+  "contract_sha256": "470276c42b07f8bb1a5c595b90f9d429b4a0dd63c98991dfcfb1ed63180cc859",
+  "case_ids": [
+    "cq1-a20",
+    "cq1-a19"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "authorization_reference": "Direct user reply in this Codex chat on 15 November 2026: Authorize scoped whole-span development diagnostics",
+  "human_reply": "Authorize scoped whole-span development diagnostics"
+}

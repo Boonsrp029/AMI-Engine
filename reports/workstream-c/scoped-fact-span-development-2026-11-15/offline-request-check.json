@@ -1,0 +1,177 @@
+{
+  "model_calls": 0,
+  "sockets_blocked": true,
+  "development_fixed_responses": {
+    "cq1-a20": {
+      "requests": {
+        "mapping": {
+          "reserved": 3423,
+          "format_schema_tokens": 5769
+        },
+        "composition": {
+          "reserved": 1906,
+          "format_schema_tokens": 252
+        }
+      },
+      "fixture_draft": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "Earlier automated electricity meters could periodically report electricity use to the utility.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    },
+    "cq1-a19": {
+      "requests": {
+        "mapping": {
+          "reserved": 3400,
+          "format_schema_tokens": 3021
+        },
+        "composition": {
+          "reserved": 2207,
+          "format_schema_tokens": 198
+        }
+      },
+      "fixture_draft": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "In 2023, the table gives Biomass (total) generation in Billion kWh as 47 and its share of total utility-scale electricity generation as 1.1%.",
+            "source_ids": [
+              "eia-generation-2023"
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    }
+  },
+  "roster_mapper_only": {
+    "cq1-a21": {
+      "mapping": {
+        "reserved": 3396,
+        "format_schema_tokens": 3021
+      }
+    },
+    "cq1-a22": {
+      "mapping": {
+        "reserved": 3378,
+        "format_schema_tokens": 3021
+      }
+    },
+    "cq1-a16": {
+      "mapping": {
+        "reserved": 3386,
+        "format_schema_tokens": 3021
+      }
+    },
+    "cq1-a17": {
+      "mapping": {
+        "reserved": 3352,
+        "format_schema_tokens": 3021
+      }
+    },
+    "cq1-a18": {
+      "mapping": {
+        "reserved": 3471,
+        "format_schema_tokens": 5769
+      }
+    },
+    "cq1-a06": {
+      "mapping": {
+        "reserved": 3396,
+        "format_schema_tokens": 3021
+      }
+    },
+    "cq1-a07": {
+      "mapping": {
+        "reserved": 3406,
+        "format_schema_tokens": 3021
+      }
+    },
+    "cq1-a08": {
+      "mapping": {
+        "reserved": 3398,
+        "format_schema_tokens": 3021
+      }
+    },
+    "cq1-a09": {
+      "mapping": {
+        "reserved": 3471,
+        "format_schema_tokens": 5769
+      }
+    },
+    "cq1-a10": {
+      "mapping": {
+        "reserved": 3487,
+        "format_schema_tokens": 5769
+      }
+    },
+    "cq1-p01": {
+      "mapping": {
+        "reserved": 3447,
+        "format_schema_tokens": 5769
+      }
+    },
+    "cq1-p02": {
+      "mapping": {
+        "reserved": 3451,
+        "format_schema_tokens": 5769
+      }
+    },
+    "cq1-m01": {
+      "mapping": {
+        "reserved": 3296,
+        "format_schema_tokens": 3021
+      }
+    },
+    "cq1-m02": {
+      "mapping": {
+        "reserved": 3331,
+        "format_schema_tokens": 3021
+      }
+    },
+    "cq1-m03": {
+      "mapping": {
+        "reserved": 3312,
+        "format_schema_tokens": 3021
+      }
+    },
+    "cq1-m04": {
+      "mapping": {
+        "reserved": 3325,
+        "format_schema_tokens": 3021
+      }
+    },
+    "cq1-c01": {
+      "mapping": {
+        "reserved": 3542,
+        "format_schema_tokens": 3302
+      }
+    },
+    "cq1-c02": {
+      "mapping": {
+        "reserved": 3544,
+        "format_schema_tokens": 3306
+      }
+    },
+    "cq1-i01": {
+      "mapping": {
+        "reserved": 3504,
+        "format_schema_tokens": 3306
+      }
+    },
+    "cq1-i02": {
+      "mapping": {
+        "reserved": 3503,
+        "format_schema_tokens": 3298
+      }
+    }
+  },
+  "reservation_limit": 4096
+}

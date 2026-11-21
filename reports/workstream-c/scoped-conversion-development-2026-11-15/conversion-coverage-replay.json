@@ -1,0 +1,21 @@
+{
+  "actual_model_calls": 0,
+  "sockets_blocked": true,
+  "saved_incomplete_rejected": true,
+  "capture_sha256": {
+    "mapping": "ac8bd1fd0387a40ae3a0e7794bdfa00985403f3bd91cba2253cfa6a030c6a96c",
+    "composition": "95b6c5db142baf33a6430c423b97e00866c6f35cfecb033e978b275899644cf0"
+  },
+  "complete_fixed_prose_projected": {
+    "title": "Analyst research brief",
+    "claims": [
+      {
+        "text": "One megawatt is equivalent to 1,000 kilowatts or 1,000,000 watts.",
+        "source_ids": [
+          "eia-measurement"
+        ]
+      }
+    ],
+    "warnings": []
+  }
+}

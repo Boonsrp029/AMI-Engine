@@ -1,0 +1,12 @@
+{
+  "sockets_blocked": true,
+  "actual_model_calls": 0,
+  "synthetic_fixtures": 6,
+  "retrieved_spans_checked": 36,
+  "selected_span_id": "s_d1ad042cf9ed1c0a",
+  "direct_quote": "One MW is 1,000 kW, or 1,000,000 Watts.",
+  "saved_bad_selection_rejected": true,
+  "fixed_direct_selection_parsed": true,
+  "runtime_changed": false,
+  "qualification_credit": false
+}

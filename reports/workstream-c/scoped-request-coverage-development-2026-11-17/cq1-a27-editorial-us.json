@@ -1,0 +1,22 @@
+{
+  "case_id": "cq1-a27",
+  "date": "2026-11-17",
+  "status": "Owner-requested editorial scope clarification",
+  "owner_instruction": "Add \"U.S.\" explicitly in order to keep consistency with my earlier preference",
+  "original_result": "actual-cq1/cq1-a27.result.json",
+  "original_result_sha256": "f0c8b93d4f0e63bf45dc468e1ed98ff20c58731464356b6b5d81ca6f16789fb9",
+  "original_claim": "In 2023, the table gives Municipal solid waste (biogenic) generation in Billion kWh as 6 and its share of total utility-scale electricity generation as 0.1%.",
+  "revised_draft": {
+    "title": "Analyst research brief",
+    "claims": [
+      {
+        "text": "In 2023, the table gives Municipal solid waste (biogenic) generation in Billion kWh as 6 and its share of total U.S. utility-scale electricity generation as 0.1%.",
+        "source_ids": [
+          "eia-generation-2023"
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "scope": "Editorial review copy only. Semantic acceptance, stored exact-revision approval/export, and fresh safety qualification are separate."
+}

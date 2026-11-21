@@ -1,0 +1,38 @@
+{
+  "actual_model_calls": 0,
+  "sockets_blocked": true,
+  "draft_persisted": false,
+  "mocked_safety_outcomes": [
+    "accepted",
+    "blocked"
+  ],
+  "raw_composer": {
+    "title": "Analyst research brief",
+    "claims": [
+      {
+        "unit_id": "u1",
+        "component_id": "r1",
+        "targets": {
+          "target_1": "blast furnace gas",
+          "target_2": "other manufactured and waste gases derived from fossil fuels"
+        }
+      }
+    ]
+  },
+  "application_rendering": {
+    "unit_id": "u1",
+    "component_id": "r1",
+    "text": "The other gases category includes blast furnace gas and other manufactured and waste gases derived from fossil fuels.",
+    "span_id": "s_1c02614a2ce1b7d8",
+    "source_id": "eia-generation-2023",
+    "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+    "start": 1973,
+    "end": 2079
+  },
+  "projected_claim": {
+    "text": "The other gases category includes blast furnace gas and other manufactured and waste gases derived from fossil fuels.",
+    "source_ids": [
+      "eia-generation-2023"
+    ]
+  }
+}

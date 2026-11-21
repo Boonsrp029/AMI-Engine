@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "10415398dd5c4aeabeaca71c8ad7a643",
+    "attempt_id": "1aeb5366e580413588b1bb845c5b6606",
+    "plan_id": "67531d48e0bbcab2cf4f1ca225207185539029277bf76aeb39cf151fb0c5fdca",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"One gigawatt is equivalent to 1,000,000,000 watts in the EIA measurement guide.\",\n      \"unit_id\": \"u1\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 874,
+    "output_tokens": 73,
+    "total_tokens": 947
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-20T15:39:47.2739613Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2558767500,
+    "load_duration": 32833700,
+    "prompt_eval_count": 874,
+    "prompt_eval_duration": 581770000,
+    "eval_count": 73,
+    "eval_duration": 1785453000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

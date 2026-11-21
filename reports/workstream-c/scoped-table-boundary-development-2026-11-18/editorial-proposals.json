@@ -1,0 +1,18 @@
+[
+  {
+    "case_id": "cq1-a28",
+    "original_result_sha256": "43df626bcfb0f1514070800134e6238baffa6dbcc088ceb041a5b4da3a37379e",
+    "original_stored_run_id": "1c3c61211c6843cab3b5a9a23f7f500b",
+    "original_stored_revision": 1,
+    "proposed_claim": "In 2023, the table gives Geothermal generation in Billion kWh as 16 and its share of total U.S. utility-scale electricity generation as 0.4%.",
+    "status": "Editorial proposal awaiting exact wording/source review"
+  },
+  {
+    "case_id": "cq1-a27",
+    "original_result_sha256": "91680c2b628474ffae7d0e49c2620c140279b6d1cbf334304cc9c705d6b660f5",
+    "original_stored_run_id": "2bb6335610074f3ba085231cbeaa9f46",
+    "original_stored_revision": 1,
+    "proposed_claim": "In 2023, the table gives Municipal solid waste (biogenic) generation in Billion kWh as 6 and its share of total U.S. utility-scale electricity generation as 0.1%.",
+    "status": "Editorial proposal awaiting exact wording/source review"
+  }
+]

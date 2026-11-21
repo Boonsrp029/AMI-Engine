@@ -1,0 +1,11 @@
+{
+  "owner_adjudication": "not requested for incomplete draft",
+  "result_sha256": "b685da9bb914fac8dca8e1f6ab267a31cb66a987f362d3e7a4abb1e498b520f2",
+  "author": "assistant",
+  "source_findings": [
+    "Mapper selected s_d1ad042cf9ed1c0a. The cited EIA span directly gives both 1,000 kW and 1,000,000 W for one MW. No duplicate or self-context selection occurred.",
+    "Raw composer and stored draft include only the kilowatt equivalence. The requested watt equivalence is absent from the claim and warnings. No fallback or editorial correction.",
+    "Technical and NeMo checks passed, but this fails the frozen completeness gate. Do not advance to cq1-a21."
+  ],
+  "verdict": "fail"
+}

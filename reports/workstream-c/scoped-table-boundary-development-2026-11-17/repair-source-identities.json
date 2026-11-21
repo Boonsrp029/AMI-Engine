@@ -1,0 +1,6 @@
+{
+  "src/pilot/subtasks/_scoped_generation.py": "c740aa008b20851a78e13ccb5dccdfa335b19f0d4fa44b70f2ffd6adc578cdfd",
+  "src/pilot/subtasks/_fact_selection.py": "d91804c1a7b199d81de42b8a9cd5fc1e2d6cfb16ed847c050e44a8eab2571c6a",
+  "src/pilot/subtasks/_table_spans.py": "c270fce8b623a32c5ad90b59c6367ebd5fdebb75099d124741a2c7712bdd4367",
+  "tests/test_scoped_table_spans.py": "cf8e7bef91b992a9cd88cc422ed578ca2ad345b36d0f1d509c2381e4c58cb2da"
+}

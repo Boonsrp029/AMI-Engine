@@ -1,0 +1,15 @@
+{
+  "human_reply": "Authorize scoped membership rendering diagnostics",
+  "contract_sha256": "2ada51ceb758383322525cd7d73770838827eee380b85cf85d58ba31a8a52769",
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "authorization_reference": "Direct user reply in this Codex chat on 15 November 2026: Authorize scoped membership rendering diagnostics",
+  "case_ids": [
+    "cq1-a24",
+    "cq1-a23"
+  ]
+}

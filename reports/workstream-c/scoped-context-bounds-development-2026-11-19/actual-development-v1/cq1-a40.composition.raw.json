@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "61cca55672ba4ef89cac5bf5e7aa4f05",
+    "attempt_id": "35b754d9a6a04fd4ad76dc5b4d3789fe",
+    "plan_id": "d43ba59575d9401244509a3427c6ebd2c7852070867c4deac2cc89c669982276",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"EIA defines utility-scale generation as electricity generation from power plants with at least one megawatt of total electricity generating capacity.\",\n      \"unit_id\": \"u1\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 870,
+    "output_tokens": 76,
+    "total_tokens": 946
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-19T12:19:07.4454842Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2505387300,
+    "load_duration": 8376600,
+    "prompt_eval_count": 870,
+    "prompt_eval_duration": 432218000,
+    "eval_count": 76,
+    "eval_duration": 2007923000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

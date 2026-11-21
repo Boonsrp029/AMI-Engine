@@ -1,0 +1,14 @@
+{
+  "result_sha256": "b4a5f90e5193719f18b32887643b4fada953b1abc682ea74cb6974dd374a5fc5",
+  "sockets_blocked": true,
+  "model_calls": 0,
+  "stages": [
+    "mapping",
+    "composition"
+  ],
+  "error": "Projected claim loses a selected fact literal or capability qualifier",
+  "raw_hashes": {
+    "mapping": "3e131814b19ab98c1cf759000d367afe63cae32ce708a3045a42fcbe8be05d5d",
+    "composition": "696f456d73067de0eaa7aceb15f95ff002c74ee4672972684a7ddf52ba29c9b7"
+  }
+}

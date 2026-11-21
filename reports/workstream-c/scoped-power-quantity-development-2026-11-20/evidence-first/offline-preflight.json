@@ -1,0 +1,19 @@
+{
+  "model_calls": 0,
+  "fixed_judge": true,
+  "contract_sha256": "16e0347972546ee51cf55387139800179bb3ee48a5241b45ffeadb9985db9b10",
+  "findings": [
+    {
+      "case": "power-supported",
+      "fixed_verdict": "YES",
+      "decision": "RailStatus.PASSED",
+      "prompt_sha256": "1a5bf49ee8933184d954fa56f156f98bc2768cfe8ad2fe658e9ae12ea6411ec1"
+    },
+    {
+      "case": "power-wrong-scale",
+      "fixed_verdict": "NO",
+      "decision": "RailStatus.BLOCKED",
+      "prompt_sha256": "78920f0ce1b1265fc7dc5c3ba3b74567d7f109899ff0375ac7bb8a610fd6709d"
+    }
+  ]
+}

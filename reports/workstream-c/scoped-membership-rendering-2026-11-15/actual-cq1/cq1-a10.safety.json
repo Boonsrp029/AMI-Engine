@@ -1,0 +1,7 @@
+{
+  "validated_report": "A watt measures power, while a watthour measures energy.\nThe source light-bulb example uses 200 Wh of electrical energy.\nUtility companies measure electricity use with meters.",
+  "passed_guardrails": true,
+  "raw_output": "A watt measures power, while a watthour measures energy.\nThe source light-bulb example uses 200 Wh of electrical energy.\nUtility companies measure electricity use with meters.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

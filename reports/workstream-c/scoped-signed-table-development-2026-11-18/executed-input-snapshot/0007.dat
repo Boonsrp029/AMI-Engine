@@ -1,0 +1,89 @@
+{
+  "sockets_blocked": true,
+  "actual_model_calls": 0,
+  "checks": 20,
+  "retained_exact_questions_plans_scopes": 10,
+  "largest_mapper_reservation": 3544,
+  "results": {
+    "cq1-a27": {
+      "reserved": 3427,
+      "format_schema_tokens": 2225
+    },
+    "cq1-a28": {
+      "reserved": 3369,
+      "format_schema_tokens": 3021
+    },
+    "cq1-a29": {
+      "reserved": 3364,
+      "format_schema_tokens": 3021
+    },
+    "cq1-a30": {
+      "reserved": 3335,
+      "format_schema_tokens": 3021
+    },
+    "cq1-a31": {
+      "reserved": 3352,
+      "format_schema_tokens": 3021
+    },
+    "cq1-a32": {
+      "reserved": 3346,
+      "format_schema_tokens": 3021
+    },
+    "cq1-a33": {
+      "reserved": 3375,
+      "format_schema_tokens": 3021
+    },
+    "cq1-a34": {
+      "reserved": 3406,
+      "format_schema_tokens": 3021
+    },
+    "cq1-a35": {
+      "reserved": 3356,
+      "format_schema_tokens": 3021
+    },
+    "cq1-a36": {
+      "reserved": 3354,
+      "format_schema_tokens": 3021
+    },
+    "cq1-p01": {
+      "reserved": 3447,
+      "format_schema_tokens": 5769
+    },
+    "cq1-p02": {
+      "reserved": 3451,
+      "format_schema_tokens": 5769
+    },
+    "cq1-m01": {
+      "reserved": 3296,
+      "format_schema_tokens": 3021
+    },
+    "cq1-m02": {
+      "reserved": 3331,
+      "format_schema_tokens": 3021
+    },
+    "cq1-m03": {
+      "reserved": 3312,
+      "format_schema_tokens": 3021
+    },
+    "cq1-m04": {
+      "reserved": 3325,
+      "format_schema_tokens": 3021
+    },
+    "cq1-c01": {
+      "reserved": 3542,
+      "format_schema_tokens": 3302
+    },
+    "cq1-c02": {
+      "reserved": 3544,
+      "format_schema_tokens": 3306
+    },
+    "cq1-i01": {
+      "reserved": 3504,
+      "format_schema_tokens": 3306
+    },
+    "cq1-i02": {
+      "reserved": 3503,
+      "format_schema_tokens": 3298
+    }
+  }
+}

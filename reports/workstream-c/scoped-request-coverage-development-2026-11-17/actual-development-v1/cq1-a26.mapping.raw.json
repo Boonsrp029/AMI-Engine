@@ -1,0 +1,30 @@
+{
+  "stage": "mapping",
+  "identity": {
+    "run_id": "4cbfa9deaf9f431f891ec0e493e00cfc",
+    "attempt_id": "92a1997864d148b3ae8a3aa41e92e6b2",
+    "plan_id": "9ddcb48cc7ca49870fb9c164619fd74d8b93a24ff1bcf3c9a47798820f1d5b19",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\"wire_version\": \"cq-fact-span-selection-v1\", \"facts\": [{\"fact_id\": \"r1.1\", \"state\": \"supported\", \"alternatives\": [ [\n    {\"span_id\": \"s_44a4448281bbe6a8\", \"context\": [\"s_792c4494ed697e52\"]}] ]}],\"geography\": {\"status\": \"unresolved\", \"value\": \"\",\"evidence\": [],\"reason\": \"Geography known requires a place explicitly named in the question and evidenced by selected sources or their pinned document.\"}}",
+  "usage": {
+    "input_tokens": 2232,
+    "output_tokens": 135,
+    "total_tokens": 2367
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-17T10:23:56.1383329Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 17938828300,
+    "load_duration": 13432502900,
+    "prompt_eval_count": 2232,
+    "prompt_eval_duration": 1040179000,
+    "eval_count": 135,
+    "eval_duration": 3444972000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

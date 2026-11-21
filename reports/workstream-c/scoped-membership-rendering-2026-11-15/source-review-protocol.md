@@ -1,0 +1,8 @@
+# Verified membership rendering source review
+
+Run consumed cq1-a24 once. Require mapping to the exact EIA membership span and both raw required fields to match their respective complete member phrases, including “derived from fossil fuels.” Verify the cited application-rendered claim covers both groups without fallback, unrelated facts or editorial correction. Check that the rendering event identifies the exact source span and remains separate from raw model fields. Require original final NeMo acceptance and a stored reviewable draft. Report any fact-check block as the recorded rail result; do not infer its reason.
+
+Run consumed cq1-a23 once only after cq1-a24 passes the full gate. Require the mapper and composer to select the verified Landfill gas row and the final draft to retain 8 billion kWh and 0.2% of total U.S. utility-scale electricity generation in 2023. U.S. scope can follow from the question and verified table; note if the rendered clause leaves it implicit and preserve the owner's request for explicit “U.S.” as an independent wording change. Require final NeMo and a reviewable draft. Distinguish model row IDs from application-rendered text.
+
+At most four main calls and one NeMo invocation per case, eight and two total. Allow 180 seconds per case including preparation. No retries or warmups. Stop on the first technical, source, completeness or safety failure, or at the standing usage threshold. Keep archived failures, raw response, application projection and owner wording separate. This run uses consumed development cases only.
+

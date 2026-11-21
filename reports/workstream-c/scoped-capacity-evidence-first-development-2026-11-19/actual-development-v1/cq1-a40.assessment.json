@@ -1,0 +1,10 @@
+{
+  "author": "assistant",
+  "verdict": "pass",
+  "result_sha256": "689c6184f2c71be2671f703e894cd29484190fd32c799a46d391af6e7734ec70",
+  "source_findings": [
+    "EIA footnote 1 states a minimum of one megawatt or 1,000 kilowatts of total electricity generating capacity. Both units, the measure and the minimum are retained. The leading safety excerpt and full context digest match the verified standalone input.",
+    "Verified https://www.eia.gov/tools/faqs/faq.php?id=427&t=3 at offsets 1320 to 1509 in eia-generation-2023.",
+    "Raw composer selected the bound unit, application rendered its cited sentence, no fallback or editorial change, NeMo passed and SQLite retained reviewable revision 1."
+  ]
+}

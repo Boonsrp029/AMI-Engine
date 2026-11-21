@@ -1,0 +1,1 @@
+{"contract_sha256": "4b8e6315105d5a9cb1b1a9b213c80f2ea2606519f9c017235d53333031351f71", "case_ids": ["cq1-a29", "cq1-a43"], "limits": {"main_calls_per_case": 4, "nemo_per_case": 1, "seconds_per_case": 180, "retries": 0}, "authorization_reference": "Direct user grant in this chat, 20 November 2026 Bangkok", "human_reply": "Authorize scoped directed power development diagnostics"}

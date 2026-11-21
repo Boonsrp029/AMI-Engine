@@ -1,0 +1,7 @@
+{
+  "validated_report": "EIA defines utility-scale generation as power plants with at least 1 megawatt of total electricity generating capacity.",
+  "passed_guardrails": true,
+  "raw_output": "EIA defines utility-scale generation as power plants with at least 1 megawatt of total electricity generating capacity.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

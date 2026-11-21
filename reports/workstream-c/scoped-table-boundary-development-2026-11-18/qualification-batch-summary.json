@@ -1,0 +1,95 @@
+{
+  "planned_denominators": {
+    "answerable": 10,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2
+  },
+  "thresholds": {
+    "answerable": 9,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2
+  },
+  "attempted_ids": [
+    "cq1-a37",
+    "cq1-a38"
+  ],
+  "source_reviewed_ids": [
+    "cq1-a37"
+  ],
+  "unattempted_ids": [
+    "cq1-a29",
+    "cq1-a30",
+    "cq1-a31",
+    "cq1-a32",
+    "cq1-a33",
+    "cq1-a34",
+    "cq1-a35",
+    "cq1-a36",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "category_pass_counts": {
+    "answerable": 1,
+    "partial": 0,
+    "missing": 0,
+    "conflict": 0,
+    "injection": 0
+  },
+  "raw_supported_complete_ids": [
+    "cq1-a37"
+  ],
+  "owner_accepted_ids": [],
+  "stop": {
+    "case_id": "cq1-a38",
+    "reason": "technical failure"
+  },
+  "pending_case": "cq1-a29",
+  "owner_reviewed_ids": [],
+  "review_bundle_sha256": "3f2aa53e9324880eda39ff171601d3e6332ab9feda4373828c24f55e7db2ad95",
+  "source_quality_gates_pass": false,
+  "qualification_complete": false,
+  "approval_export": "separate exact-revision workflow; never authorized here",
+  "contract_sha256": "477a0214853fdf8fa2b819493c240e7dbba46d39ad6a669a868f8e32d99c1ddf",
+  "allowance_status": "closed at failure",
+  "attempted_count": 2,
+  "technical_pass_count": 1,
+  "technical_failure_count": 1,
+  "main_calls": 4,
+  "nemo_invocations": 1,
+  "capture_reported_main_tokens": 6839,
+  "usage_by_case": {
+    "cq1-a37": {
+      "input_tokens": 3414,
+      "output_tokens": 195,
+      "total_tokens": 3609
+    },
+    "cq1-a38": {
+      "input_tokens": 3027,
+      "output_tokens": 203,
+      "total_tokens": 3230
+    }
+  },
+  "owned_wall_seconds": {
+    "cq1-a37": 62.811999999918044,
+    "cq1-a38": 29.54700000002049
+  },
+  "internal_nemo_usage": "unmeasured",
+  "monetary_cost": "unmeasured",
+  "result_sha256": {
+    "cq1-a37": "16cf232a3f81d36e34467cf7d8b40d491bf8d3a93287c9eb9e40e68139b696ef",
+    "cq1-a38": "48e90724bbe4da60d4a80ad9e39a5a0a07c8f6314c5af9b95bb0c1ef5eb3ba1f"
+  },
+  "development_editorial_acceptance": "Owner accepted both U.S.-explicit development copies in owner-acceptance-development.json; separate from qualification."
+}

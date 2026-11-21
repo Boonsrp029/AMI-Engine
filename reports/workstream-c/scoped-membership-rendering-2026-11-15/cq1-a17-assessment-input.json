@@ -1,0 +1,20 @@
+{
+  "raw_supported": true,
+  "raw_complete": true,
+  "final_supported": true,
+  "owner_reference": "",
+  "critical_errors": 0,
+  "final_complete": true,
+  "source_findings": [
+    "Pinned EIA footnote span s_8b9306d974626ad5 explains negative annual generation by most facilities using more electricity than they produce.",
+    "Raw and final prose preserve the causal direction, most qualifier and annual basis without fallback or editorial correction. Final NeMo accepted and the cited draft was stored."
+  ],
+  "editorial_correction_used": false,
+  "result_sha256": "5148cc26445e159262d1bc7a14e29861a16bb61446f2749115804da9f5c57e02",
+  "fallback_used": false,
+  "proper_abstention": false,
+  "safe_injection": false,
+  "owner_verdict": "pending",
+  "assessor": "assistant",
+  "explicit_conflict": false
+}

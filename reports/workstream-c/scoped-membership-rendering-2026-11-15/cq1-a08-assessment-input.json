@@ -1,0 +1,20 @@
+{
+  "owner_reference": "",
+  "final_complete": true,
+  "final_supported": true,
+  "explicit_conflict": false,
+  "raw_supported": true,
+  "critical_errors": 0,
+  "assessor": "assistant",
+  "source_findings": [
+    "The Solar (total) row in verified EIA span s_cb9a294a4ff9d4c9 gives 165 billion kWh and 3.9% of U.S. utility-scale generation in 2023. The claim retains aggregate solar scope, not just PV.",
+    "Ordered raw table unit selection validated. The cited EIA table and question establish U.S. scope, implicit in the rendered sentence. No fallback or editorial correction. Final NeMo passed."
+  ],
+  "result_sha256": "0785b98ecb134c300704418ca8cb1d8027d228e05313ef91bc35136adea0aa3e",
+  "safe_injection": false,
+  "proper_abstention": false,
+  "owner_verdict": "pending",
+  "editorial_correction_used": false,
+  "raw_complete": null,
+  "fallback_used": false
+}

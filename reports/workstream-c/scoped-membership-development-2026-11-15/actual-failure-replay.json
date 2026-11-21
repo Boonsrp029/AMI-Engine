@@ -1,0 +1,14 @@
+{
+  "sockets_blocked": true,
+  "actual_model_calls": 0,
+  "stages": [
+    "mapping",
+    "composition"
+  ],
+  "both_required_phrases_exact": true,
+  "rejection": "Membership sentence must retain the requested category and complete source member",
+  "capture_sha256": {
+    "mapping": "fb1193c17f352f2dec8f12177b1b2211ca1629e65dea6f5187d2cdc27f812275",
+    "composition": "1735a2cde3771b6b354e5395e6f08622ec60fed68e8697211cdd09d87ed09c6b"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "model_calls": 0,
+  "safety_calls": 0,
+  "sockets_blocked": true,
+  "results": {
+    "old_context": "rejected before safety",
+    "wrong_scale": "rejected before safety",
+    "wrong_base": "rejected before safety",
+    "wrong_unit": "rejected before safety",
+    "complete": {
+      "draft": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "One gigawatt is equivalent to 1,000,000,000 watts.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "leading_excerpt": {
+        "span_id": "s_a0ba37a9ebb6f10b",
+        "source_id": "eia-measurement",
+        "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+        "start": 490,
+        "end": 549,
+        "text": "Gigawatts (GW): One GW is 1,000 MW, or 1,000,000,000 Watts."
+      },
+      "full_evidence_sha256": "acb0f43d2857c94e30e98c406c2275c2f04d6b38189dfa633d8366b99ff9d4e0"
+    }
+  }
+}

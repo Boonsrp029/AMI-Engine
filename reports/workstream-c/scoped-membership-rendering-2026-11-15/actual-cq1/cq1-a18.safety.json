@@ -1,0 +1,7 @@
+{
+  "validated_report": "Household electricity meters are usually located on the outside of the building or home where the power line connects.\nUtility employees historically read mechanical meters manually.",
+  "passed_guardrails": true,
+  "raw_output": "Household electricity meters are usually located on the outside of the building or home where the power line connects.\nUtility employees historically read mechanical meters manually.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

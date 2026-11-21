@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "e368da81a9de42e2b90e6cd19d81d0d1",
+    "attempt_id": "c79ca80ad55b4ef5a3bd9af410b49d8f",
+    "plan_id": "4342ed237b856fb808aa38a22e4bbd9df623ab78d16b8429d8f8801524e64dd1",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"unit_id\": \"u1\",\n      \"component_id\": \"r1\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 1155,
+    "output_tokens": 45,
+    "total_tokens": 1200
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-15T15:27:13.9468662Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1794099300,
+    "load_duration": 4354300,
+    "prompt_eval_count": 1155,
+    "prompt_eval_duration": 411443000,
+    "eval_count": 45,
+    "eval_duration": 1147408000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

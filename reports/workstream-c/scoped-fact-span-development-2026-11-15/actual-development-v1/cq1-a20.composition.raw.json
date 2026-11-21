@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "b246b3dd59984067b09f3ade0e8ca6c6",
+    "attempt_id": "eb91b8f554db4c3f81727c6350e7211f",
+    "plan_id": "f5837fcd338d454927ab6e88cf18e8fe520602af46bf785f570e74896f0104cf",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"Automated electricity meters report electricity use periodically to the utility.\",\n      \"unit_id\": \"u1\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 777,
+    "output_tokens": 63,
+    "total_tokens": 840
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-15T04:39:06.6574646Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2309889100,
+    "load_duration": 7353300,
+    "prompt_eval_count": 777,
+    "prompt_eval_duration": 482556000,
+    "eval_count": 63,
+    "eval_duration": 1643960000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

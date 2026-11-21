@@ -1,0 +1,15 @@
+{
+  "contract_sha256": "212ac0c0d801b4b7ad4960ad26a2b6970f39e79dfdde0ad737458d84d3e89bae",
+  "case_ids": [
+    "cq1-a28",
+    "cq1-a27"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "authorization_reference": "Direct user reply to call_34182d1ed5cc4f0094e1669ad1841135 on 18 November 2026",
+  "human_reply": "Authorize scoped table-boundary development diagnostics"
+}

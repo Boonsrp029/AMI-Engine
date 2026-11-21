@@ -1,0 +1,43 @@
+{
+  "protocol_sha256": "52acafba3197eb6f13702d333e85f1211314b2c560063701f044f435ed278019",
+  "status": "validation failed; allowance closed",
+  "service_result_sha256": "6ebf2a5b69e83ad8e6170ea4bd7fc9b4b058700add2fd236c748ace2736866e5",
+  "raw_stream_sha256": "e86529795bc397e7a968a46aa0fa014de2f0bdd93cb3f240aeb58b8701cf65dd",
+  "pins_verified": 102,
+  "main_calls": 1,
+  "composer_calls": 0,
+  "nemo_invocations": 0,
+  "retries": 0,
+  "reported_tokens": {
+    "input_tokens": 2294,
+    "output_tokens": 329,
+    "total_tokens": 2623
+  },
+  "service_process_seconds": 21.296999999991385,
+  "validation_seconds": 17.95299999997951,
+  "failure": "Evidence selection references an unknown span",
+  "manual_review_required": false,
+  "monetary_cost": "unmeasured",
+  "facts": [
+    {
+      "fact_id": "r1.1",
+      "supported_groups": 1,
+      "literal_excerpts": [
+        "Eventually, automated meters could",
+        "Utility companies measure and moni"
+      ],
+      "invalid_context_count": 2,
+      "background_selected_as_direct": true
+    },
+    {
+      "fact_id": "r2.1",
+      "supported_groups": 1,
+      "literal_excerpts": [
+        "Eventually, automated meters could",
+        "Utility companies measure and moni"
+      ],
+      "invalid_context_count": 2,
+      "background_selected_as_direct": true
+    }
+  ]
+}

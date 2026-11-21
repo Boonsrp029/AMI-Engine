@@ -1,0 +1,14 @@
+{
+  "passed_guardrails": false,
+  "blocking_rail": "self check facts",
+  "evidence_view": "capacity-evidence-first-v1",
+  "leading_excerpt": {
+    "span_id": "s_379ceb3c45f341ef",
+    "source_id": "eia-generation-2023",
+    "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+    "start": 1320,
+    "end": 1509,
+    "text": "preliminary data\n1\nUtility-scale electricity generation is electricity generation from power plants with at least one megawatt (or 1,000 kilowatts) of total electricity generating capacity."
+  },
+  "context_sha256": "5af6e350c04c8d1313d5836ef76b2132fb70c23eb60d5ab76163bfdf4da88f9e"
+}

@@ -1,0 +1,6 @@
+{
+  "plans_file": "plans-v3-explicit-coverage.json",
+  "sha256": "37cf91d0d492599996e1f2b79570fca7634fca57ff364b47f2349a073b1a9ed6",
+  "original_content_manifest_sha256": "e848ab337f865155d0219af9263b7f35e1491cf38a7a4cc97425a41d117d65d0",
+  "note": "Seventeen exact retained cases and three unused questions from familiar source material."
+}

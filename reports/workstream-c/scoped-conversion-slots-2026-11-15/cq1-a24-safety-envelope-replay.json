@@ -1,0 +1,27 @@
+{
+  "actual_model_calls": 0,
+  "sockets_blocked": true,
+  "mocked_rail_verdict": "blocked",
+  "historic_rail": "self check facts",
+  "historic_reason_available": false,
+  "reconstructed_claim": "The EIA includes blast furnace gas in the other gases category.",
+  "identical_to_historic_raw_report": true,
+  "exact_source_member_statement": "Other gases includes blast furnace gas and other manufactured and waste gases derived from fossil fuels.",
+  "omitted_member_group": "other manufactured and waste gases derived from fossil fuels",
+  "source_id": "eia-generation-2023",
+  "envelope": {
+    "evidence_chars": 4342,
+    "evidence_sha256": "70883e3820402e008b9fa5a1ab0659819623e44b54e0a773812dc27fb721dca7",
+    "ordered_sources": [
+      "eia-generation-2023",
+      "eia-measurement"
+    ],
+    "direct_statement_present": true,
+    "check_facts": true
+  },
+  "fallback_used": false,
+  "retained_capture_sha256": {
+    "mapping": "73940e7e461ce90be513ba4075ee994d1c5ab317d066e02ee564a9e09f9d6764",
+    "composition": "6e2df28dfd434fa59cac8212c1359a3455f4aacdf21db19ff28980e09244c20e"
+  }
+}

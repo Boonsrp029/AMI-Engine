@@ -1,0 +1,70 @@
+{
+  "sockets_blocked": true,
+  "model_calls": 0,
+  "retained_cases": {
+    "cq1-a41": {
+      "draft": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "In 2023, the table gives U.S. Pumped storage hydropower generation in Billion kWh as -6 and its share of total U.S. utility-scale electricity generation as -0.1%.",
+            "source_ids": [
+              "eia-generation-2023"
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "table_trace": {
+        "unit_id": "u1",
+        "component_id": "r1",
+        "text": "In 2023, the table gives U.S. Pumped storage hydropower generation in Billion kWh as -6 and its share of total U.S. utility-scale electricity generation as -0.1%.",
+        "span_id": "s_5f9a18b418a9cec0",
+        "source_id": "eia-generation-2023",
+        "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+        "start": 635,
+        "end": 1202,
+        "geographic_evidence": {
+          "label": "U.S.",
+          "source_id": "eia-generation-2023",
+          "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+          "start": 552,
+          "end": 639,
+          "text": "U.S. utility-scale electricity generation by source, amount, and share of total in 2023"
+        }
+      }
+    },
+    "cq1-a42": {
+      "draft": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "In 2023, the table gives U.S. Photovoltaic generation in Billion kWh as 162 and its share of total U.S. utility-scale electricity generation as 3.9%.",
+            "source_ids": [
+              "eia-generation-2023"
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "table_trace": {
+        "unit_id": "u1",
+        "component_id": "r1",
+        "text": "In 2023, the table gives U.S. Photovoltaic generation in Billion kWh as 162 and its share of total U.S. utility-scale electricity generation as 3.9%.",
+        "span_id": "s_cb9a294a4ff9d4c9",
+        "source_id": "eia-generation-2023",
+        "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+        "start": 557,
+        "end": 1157,
+        "geographic_evidence": {
+          "label": "U.S.",
+          "source_id": "eia-generation-2023",
+          "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+          "start": 552,
+          "end": 639,
+          "text": "U.S. utility-scale electricity generation by source, amount, and share of total in 2023"
+        }
+      }
+    }
+  }
+}

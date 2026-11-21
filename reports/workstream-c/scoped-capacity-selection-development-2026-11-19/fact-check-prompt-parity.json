@@ -1,0 +1,8 @@
+{
+  "fixed_judge": true,
+  "model_calls": 0,
+  "prompt_sha256": {
+    "original": "eed7b1ad1e0262c34f77a22a41b0ae551b0ec7f17b57a31df47bb42ccaa33b22",
+    "standalone": "eed7b1ad1e0262c34f77a22a41b0ae551b0ec7f17b57a31df47bb42ccaa33b22"
+  }
+}

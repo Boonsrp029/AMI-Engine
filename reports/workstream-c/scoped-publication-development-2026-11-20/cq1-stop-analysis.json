@@ -1,0 +1,89 @@
+{
+  "contract": "92cc69775030a3888df2cbc0a856d700946b60a4c86d515961f76f31ffec333c",
+  "planned": 20,
+  "attempted": [
+    "cq1-a45",
+    "cq1-a44",
+    "cq1-a29"
+  ],
+  "passed": [
+    "cq1-a45",
+    "cq1-a44"
+  ],
+  "unattempted": [
+    "cq1-a30",
+    "cq1-a31",
+    "cq1-a32",
+    "cq1-a33",
+    "cq1-a34",
+    "cq1-a35",
+    "cq1-a36",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "critical_source_error": "Raw and projected candidate understate watt equivalent by a factor of 1,000. NeMo blocked before publication.",
+  "source_url": "https://www.eia.gov/energyexplained/electricity/measuring-electricity.php",
+  "selected_fact": {
+    "source_id": "eia-measurement",
+    "quote": "Gigawatts (GW): One GW is 1,000 MW, or 1,000,000,000 Watts.",
+    "span_id": "s_a0ba37a9ebb6f10b",
+    "answer": "Gigawatts (GW): One GW is 1,000 MW, or 1,000,000,000 Watts.",
+    "start": 0,
+    "end": 59,
+    "context": [
+      {
+        "source_id": "eia-measurement",
+        "quote": "One Watt is a very small amount of power.",
+        "span_id": "s_a46000abe7f383a1",
+        "source_offsets": [
+          114,
+          155
+        ],
+        "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2"
+      },
+      {
+        "source_id": "eia-measurement",
+        "quote": "Some devices need only a few Watts to operate, but other devices require larger amounts, and their consumption is measured in kilowatts (kW).",
+        "span_id": "s_6531c20764810d19",
+        "source_offsets": [
+          156,
+          297
+        ],
+        "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2"
+      }
+    ],
+    "source_offsets": [
+      490,
+      549
+    ],
+    "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2"
+  },
+  "replayed_candidate": {
+    "title": "Analyst research brief",
+    "claims": [
+      {
+        "text": "One gigawatt is equivalent to one million watts in the EIA measurement guide.",
+        "source_ids": [
+          "eia-measurement"
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "qualification_traffic": {
+    "main_calls": 6,
+    "nemo_invocations": 3,
+    "input_tokens": 9048,
+    "output_tokens": 646
+  },
+  "offline_replay_model_calls": 0,
+  "result_sha256": "b6acaa46040873c930f3a8eb6dac0016739bf8f2ed84177331f5dbd50288cd32"
+}

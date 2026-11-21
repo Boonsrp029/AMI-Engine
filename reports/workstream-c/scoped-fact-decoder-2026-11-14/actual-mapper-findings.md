@@ -1,0 +1,9 @@
+# Fact decoder mapper-only diagnostic failed validation
+
+The one authorized mapper call completed normally with the pinned local model. Both supported decisions contained one nonempty group. The schema cardinality change addressed the earlier empty-support failure in this attempt. The response then failed application validation because it put prose in the context ID arrays. The resolver rejected the unknown span. [Service result](actual-mapper/service/service-result.json) · [Validation trace](actual-mapper/validation/stderr.txt)
+
+The retained selections also fail the source gate. Both decisions gave offsets 0–34 for the historical meter sentence, extracting “Eventually, automated meters could” in each case. The excerpt identifies neither what the meters reported nor who received it. Both decisions also selected the generic utility-monitoring span as direct evidence. This is distinct from the structural context-ID failure. [Derived excerpts and exact hashes](batch-summary.json)
+
+The service process took 21.30 seconds and offline validation took 17.95 seconds. One mapper call reported 2,623 tokens. There were zero composer calls, NeMo invocations, retries or warmups. Monetary cost was unmeasured. All 102 pinned inputs matched and were copied. The allowance closed, no draft exists for manual review, and the CQ1 roster remains unattempted for this revision.
+
+The next offline pass should constrain context IDs to valid same-record choices and evaluate whether the mapper can select exact excerpts from application-generated IDs instead of calculating offsets. Constraining the IDs alone would leave the retained wrong excerpts and generic background unresolved. Keep the saved failure intact and test any changes with distinct supporting, partial and conflicting fixtures before seeking a new generation allowance.

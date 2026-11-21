@@ -1,0 +1,15 @@
+colang_version: "1.0"
+
+models:
+  - type: main
+    engine: ollama
+    model: ami-llama3.1:8b-4k
+
+rails:
+  input:
+    flows:
+      - self check input
+  output:
+    flows:
+      - self check facts
+      - verify market topic alignment

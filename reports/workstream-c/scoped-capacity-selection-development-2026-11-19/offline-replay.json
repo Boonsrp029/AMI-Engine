@@ -1,0 +1,31 @@
+{
+  "sockets_blocked": true,
+  "model_calls": 0,
+  "legacy_prose_rejected": true,
+  "fixed_capacity_selection": [
+    {
+      "text": "The minimum total electricity generating capacity is one megawatt (or 1,000 kilowatts).",
+      "source_ids": [
+        "eia-generation-2023"
+      ]
+    }
+  ],
+  "capacity_provenance": {
+    "unit_id": "u1",
+    "component_id": "r1",
+    "text": "The minimum total electricity generating capacity is one megawatt (or 1,000 kilowatts).",
+    "span_id": "s_379ceb3c45f341ef",
+    "source_id": "eia-generation-2023",
+    "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+    "start": 1320,
+    "end": 1509
+  },
+  "retained_table": [
+    {
+      "text": "In 2023, the table gives Solar thermal generation in Billion kWh as 3 and its share of total utility-scale electricity generation as 0.1%.",
+      "source_ids": [
+        "eia-generation-2023"
+      ]
+    }
+  ]
+}

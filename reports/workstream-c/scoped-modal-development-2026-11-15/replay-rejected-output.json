@@ -1,0 +1,15 @@
+{
+  "contract_sha256": "55b16188320ceb7ffeb36c53749d2b224da29598ee2eb029c959bfef93ac3a89",
+  "sockets_blocked": true,
+  "model_calls": 0,
+  "retained_response_hashes": {
+    "mapping": "3e131814b19ab98c1cf759000d367afe63cae32ce708a3045a42fcbe8be05d5d",
+    "composition": "696f456d73067de0eaa7aceb15f95ff002c74ee4672972684a7ddf52ba29c9b7"
+  },
+  "fixed_stages": [
+    "mapping",
+    "composition"
+  ],
+  "rejection": "Projected claim loses a selected fact literal or capability qualifier",
+  "actual_output_created": false
+}

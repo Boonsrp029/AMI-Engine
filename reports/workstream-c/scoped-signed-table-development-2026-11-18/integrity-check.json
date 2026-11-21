@@ -1,0 +1,10 @@
+{
+  "archived_files_verified": 187,
+  "expected_current_changes": [
+    "src/pilot/subtasks/_fact_selection.py",
+    "src/pilot/subtasks/_request_focus.py"
+  ],
+  "requirements_unchanged": true,
+  "historical_results_unchanged": true,
+  "source_snapshots_unchanged": true
+}

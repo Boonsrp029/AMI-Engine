@@ -1,0 +1,26 @@
+{
+  "sockets_blocked": true,
+  "actual_model_calls": 0,
+  "nemo_invocations": 0,
+  "capture_sha256": "77ace9f6f4aa1d5205962abf2882a0e1cb8b01a81daa5ce52fce0287f0b4afdc",
+  "rejection": "Duplicate fact evidence role",
+  "schema_valid": true,
+  "direct_span_id": "s_379ceb3c45f341ef",
+  "context_span_ids": [
+    "s_379ceb3c45f341ef",
+    "s_610d409a2f28f88c"
+  ],
+  "selected_spans": [
+    {
+      "span_id": "s_379ceb3c45f341ef",
+      "text": "preliminary data\n1\nUtility-scale electricity generation is electricity generation from power plants with at least one megawatt (or 1,000 kilowatts) of total electricity generating capacity.",
+      "source_id": "eia-generation-2023"
+    },
+    {
+      "span_id": "s_610d409a2f28f88c",
+      "text": "About 19% was from nuclear energy, and about 21% was from renewable energy sources.",
+      "source_id": "eia-generation-2023"
+    }
+  ],
+  "diagnosis": "Generic same-record schema allows a selected direct span in its own context list. The resolver prohibits that duplicate role. The selected direct quote contains the requested one-megawatt/1000-kilowatt minimum definition. Composition never ran."
+}

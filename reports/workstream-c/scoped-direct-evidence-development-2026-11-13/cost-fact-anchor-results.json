@@ -1,0 +1,63 @@
+{
+  "baseline_fixture_predictions": {
+    "costs": [
+      {
+        "measure": "installation",
+        "year": "2021",
+        "candidates": [
+          "setup"
+        ]
+      },
+      {
+        "measure": "annual maintenance",
+        "year": "2021",
+        "candidates": [
+          "service"
+        ]
+      }
+    ],
+    "reporting": null,
+    "partial": [
+      {
+        "measure": "annual maintenance",
+        "year": "2021",
+        "candidates": [
+          "service"
+        ]
+      },
+      {
+        "measure": "repair",
+        "year": "2021",
+        "candidates": []
+      }
+    ],
+    "conflict": null
+  },
+  "new_fixture": [
+    {
+      "measure": "delivery",
+      "year": "2022",
+      "candidates": [
+        "delivery"
+      ]
+    },
+    {
+      "measure": "storage",
+      "year": "2022",
+      "candidates": [
+        "storage_a",
+        "storage_b"
+      ]
+    }
+  ],
+  "boundary_checks": [
+    "both opposing values retained",
+    "prior year excluded",
+    "capability excluded",
+    "definition excluded",
+    "multi-year declined",
+    "duplicate slot declined"
+  ],
+  "runtime_activated": false,
+  "model_calls": 0
+}

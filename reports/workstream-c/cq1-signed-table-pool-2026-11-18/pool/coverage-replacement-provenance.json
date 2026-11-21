@@ -1,0 +1,110 @@
+{
+  "prior_contract_sha256": "3119601296b14409ed4c7ac0424df385965fb4a0092881abd58360a96ae0639e",
+  "retained_case_ids": [
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "excluded_consumed_case_ids": [
+    "cq1-a25",
+    "cq1-a26",
+    "cq1-a16",
+    "cq1-a17",
+    "cq1-a18",
+    "cq1-a06",
+    "cq1-a07",
+    "cq1-a08",
+    "cq1-a09",
+    "cq1-a10"
+  ],
+  "replacement_sources": [
+    {
+      "case_id": "cq1-a27",
+      "source_id": "eia-generation-2023",
+      "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+      "start": 1080,
+      "end": 1119,
+      "quote": "Municipal solid waste (biogenic)\n6\n0.1%"
+    },
+    {
+      "case_id": "cq1-a28",
+      "source_id": "eia-generation-2023",
+      "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+      "start": 1147,
+      "end": 1165,
+      "quote": "Geothermal\n16\n0.4%"
+    },
+    {
+      "case_id": "cq1-a29",
+      "source_id": "eia-measurement",
+      "url": "https://www.eia.gov/energyexplained/electricity/measuring-electricity.php",
+      "start": 490,
+      "end": 549,
+      "quote": "Gigawatts (GW): One GW is 1,000 MW, or 1,000,000,000 Watts."
+    },
+    {
+      "case_id": "cq1-a30",
+      "source_id": "eia-measurement",
+      "url": "https://www.eia.gov/energyexplained/electricity/measuring-electricity.php",
+      "start": 49,
+      "end": 78,
+      "quote": "Watts, named after James Watt"
+    },
+    {
+      "case_id": "cq1-a31",
+      "source_id": "eia-generation-2023",
+      "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+      "start": 2258,
+      "end": 2387,
+      "quote": "Most pumped storage systems use electricity from an\nelectric power grid\nfor pumping water to the storage component of the system."
+    },
+    {
+      "case_id": "cq1-a32",
+      "source_id": "eia-generation-2023",
+      "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+      "start": 1910,
+      "end": 1972,
+      "quote": "Smaller PV systems are usually installed on building rooftops."
+    },
+    {
+      "case_id": "cq1-a33",
+      "source_id": "eia-generation-2023",
+      "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+      "start": 1785,
+      "end": 1909,
+      "quote": "Most small-scale PV systems are at or near the location where the electricity is consumed and many are\nnet metered systems\n."
+    },
+    {
+      "case_id": "cq1-a34",
+      "source_id": "eia-generation-2023",
+      "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+      "start": 183,
+      "end": 292,
+      "quote": "About 60% of this electricity generation was from fossil fuels—coal, natural gas, petroleum, and other gases."
+    },
+    {
+      "case_id": "cq1-a35",
+      "source_id": "eia-generation-2023",
+      "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+      "start": 2390,
+      "end": 2501,
+      "quote": "Other (utility-scale) sources includes non-biogenic municipal solid waste, batteries, hydrogen, purchased steam"
+    },
+    {
+      "case_id": "cq1-a36",
+      "source_id": "eia-generation-2023",
+      "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+      "start": 1510,
+      "end": 1551,
+      "quote": "Data are for\nnet electricity generation\n."
+    }
+  ],
+  "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+}

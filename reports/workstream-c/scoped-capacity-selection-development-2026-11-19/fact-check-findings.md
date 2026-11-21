@@ -1,0 +1,5 @@
+# Standalone capacity fact-check result
+
+The authorized check returned the single, valid verdict NO. NeMo blocked the report on self check facts and returned no validated report. The rendered fact-check prompt exactly matches the offline reconstruction, which includes EIA's minimum-capacity footnote supporting one megawatt or 1,000 kilowatts. The result reproduces the block and establishes a false rejection in this standalone check. The original workflow did not capture its raw verdict, so its exact response remains unknown. [Result](actual-fact-check/result.json) · [Source check](source-check.json)
+
+The judge ran once. The worker recorded 9.81 seconds inside the diagnostic, excluding outer model identity checks. Analyst workflow calls and retries were zero. Internal tokens and cost were unavailable. The diagnostic failed its expected YES gate. No additional case ran. The historical cq1-a40 workflow remains failed and cq1-a39 remains unattempted under that allowance. No owner draft review is required.

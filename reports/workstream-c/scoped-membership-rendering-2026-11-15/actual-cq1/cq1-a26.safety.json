@@ -1,0 +1,7 @@
+{
+  "validated_report": "The EIA describes advanced smart meters as capable of tracking the electricity use of individual devices.",
+  "passed_guardrails": true,
+  "raw_output": "The EIA describes advanced smart meters as capable of tracking the electricity use of individual devices.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

@@ -1,0 +1,50 @@
+{
+  "contract_sha256": "212ac0c0d801b4b7ad4960ad26a2b6970f39e79dfdde0ad737458d84d3e89bae",
+  "status": "Both authorized development attempts complete; allowance exhausted",
+  "attempted": 2,
+  "assistant_passed": 2,
+  "failed": 0,
+  "unattempted": 0,
+  "main_calls": 4,
+  "nemo_invocations": 2,
+  "capture_reported_main_tokens": 7447,
+  "internal_nemo_usage": "unmeasured",
+  "monetary_cost": "unmeasured",
+  "cases": [
+    {
+      "case_id": "cq1-a28",
+      "technical_pass": true,
+      "assistant_source_gate": "pass",
+      "main_calls": 2,
+      "nemo_invocations": 1,
+      "wall_seconds": 73.25,
+      "capture_reported_main_usage": {
+        "input_tokens": 3639,
+        "output_tokens": 166,
+        "total_tokens": 3805
+      },
+      "result_sha256": "43df626bcfb0f1514070800134e6238baffa6dbcc088ceb041a5b4da3a37379e",
+      "owner_acceptance": "pending",
+      "context_note": "No extra context selected."
+    },
+    {
+      "case_id": "cq1-a27",
+      "technical_pass": true,
+      "assistant_source_gate": "pass",
+      "main_calls": 2,
+      "nemo_invocations": 1,
+      "wall_seconds": 46.51600000006147,
+      "capture_reported_main_usage": {
+        "input_tokens": 3445,
+        "output_tokens": 197,
+        "total_tokens": 3642
+      },
+      "result_sha256": "91680c2b628474ffae7d0e49c2620c140279b6d1cbf334304cc9c705d6b660f5",
+      "owner_acceptance": "pending",
+      "context_note": "The model selected extra same-record context about small-scale solar and a U.S. fragment. These passages add no necessary support to the requested waste row and supply no claim. Record as unnecessary context, with the complete direct row and final answer supported."
+    }
+  ],
+  "historical_cq1": "one pass, one failure, eighteen unattempted; unchanged",
+  "owner_acceptance": "pending",
+  "larger_qualification_authorized": false
+}

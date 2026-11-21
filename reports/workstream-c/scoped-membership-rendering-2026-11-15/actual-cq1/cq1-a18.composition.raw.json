@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "0a1e5f2dcdc6447cad45760790865013",
+    "attempt_id": "3e33b31209904e7097a54524a31a3bed",
+    "plan_id": "fb3070e369991deea7ee02eeb2a34c9c935ce4e1f3cbbe0d234ff552e12b65c2",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"Household electricity meters are usually located on the outside of the building or home where the power line connects.\",\n      \"unit_id\": \"u1\"\n    },\n    {\n      \"component_id\": \"r2\",\n      \"text\": \"Utility employees historically read mechanical meters manually.\",\n      \"unit_id\": \"u2\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 856,
+    "output_tokens": 107,
+    "total_tokens": 963
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-15T15:25:03.9351383Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2989597100,
+    "load_duration": 6683300,
+    "prompt_eval_count": 856,
+    "prompt_eval_duration": 152850000,
+    "eval_count": 107,
+    "eval_duration": 2623154000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

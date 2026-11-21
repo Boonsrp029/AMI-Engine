@@ -1,0 +1,117 @@
+{
+  "model_calls": 0,
+  "sockets_blocked": true,
+  "limit": 4096,
+  "cases": {
+    "cq1-a21": {
+      "reserved_tokens": 3407,
+      "schema_tokens": 575,
+      "fact_count": 1
+    },
+    "cq1-a22": {
+      "reserved_tokens": 3389,
+      "schema_tokens": 575,
+      "fact_count": 1
+    },
+    "cq1-a16": {
+      "reserved_tokens": 3397,
+      "schema_tokens": 575,
+      "fact_count": 1
+    },
+    "cq1-a17": {
+      "reserved_tokens": 3363,
+      "schema_tokens": 575,
+      "fact_count": 1
+    },
+    "cq1-a18": {
+      "reserved_tokens": 3482,
+      "schema_tokens": 731,
+      "fact_count": 2
+    },
+    "cq1-a06": {
+      "reserved_tokens": 3407,
+      "schema_tokens": 575,
+      "fact_count": 1
+    },
+    "cq1-a07": {
+      "reserved_tokens": 3417,
+      "schema_tokens": 575,
+      "fact_count": 1
+    },
+    "cq1-a08": {
+      "reserved_tokens": 3409,
+      "schema_tokens": 575,
+      "fact_count": 1
+    },
+    "cq1-a09": {
+      "reserved_tokens": 3482,
+      "schema_tokens": 731,
+      "fact_count": 2
+    },
+    "cq1-a10": {
+      "reserved_tokens": 3498,
+      "schema_tokens": 731,
+      "fact_count": 2
+    },
+    "cq1-p01": {
+      "reserved_tokens": 3458,
+      "schema_tokens": 731,
+      "fact_count": 2
+    },
+    "cq1-p02": {
+      "reserved_tokens": 3462,
+      "schema_tokens": 731,
+      "fact_count": 2
+    },
+    "cq1-m01": {
+      "reserved_tokens": 3307,
+      "schema_tokens": 575,
+      "fact_count": 1
+    },
+    "cq1-m02": {
+      "reserved_tokens": 3342,
+      "schema_tokens": 575,
+      "fact_count": 1
+    },
+    "cq1-m03": {
+      "reserved_tokens": 3323,
+      "schema_tokens": 575,
+      "fact_count": 1
+    },
+    "cq1-m04": {
+      "reserved_tokens": 3336,
+      "schema_tokens": 575,
+      "fact_count": 1
+    },
+    "cq1-c01": {
+      "reserved_tokens": 3553,
+      "schema_tokens": 575,
+      "fact_count": 1
+    },
+    "cq1-c02": {
+      "reserved_tokens": 3555,
+      "schema_tokens": 575,
+      "fact_count": 1
+    },
+    "cq1-i01": {
+      "reserved_tokens": 3515,
+      "schema_tokens": 575,
+      "fact_count": 1
+    },
+    "cq1-i02": {
+      "reserved_tokens": 3514,
+      "schema_tokens": 575,
+      "fact_count": 1
+    },
+    "cq1-a20": {
+      "reserved_tokens": 3434,
+      "schema_tokens": 731,
+      "fact_count": 2
+    },
+    "cq1-a19": {
+      "reserved_tokens": 3411,
+      "schema_tokens": 575,
+      "fact_count": 1
+    }
+  }
+}

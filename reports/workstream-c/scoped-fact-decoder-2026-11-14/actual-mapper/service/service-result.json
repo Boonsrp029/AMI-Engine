@@ -1,0 +1,111 @@
+{
+  "transport": "ollama-native-stream-v1",
+  "created_utc": "2026-11-14T13:02:23.226780+00:00",
+  "status": "completed_transport; engine validation pending",
+  "model_calls_started": 1,
+  "response_complete": true,
+  "content": "{ \"wire_version\": \"cq-fact-selection-v1\", \"facts\": [ { \"fact_id\": \"r1.1\", \"state\": \"supported\", \"alternatives\": [ [ { \"span_id\": \"s_6af27ac482a98ade\", \"start\": 0, \"end\": 34, \"context\": [ \"In the past, electricity meters were mechanical devices that a utility employee had to read manually.\" ] }, { \"span_id\": \"s_2845cfa10cf8e534\", \"start\": 0, \"end\": 34, \"context\": [ \"Utility companies measure and monitor electricity use with meters\" ] } ] ] }, { \"fact_id\": \"r2.1\", \"state\": \"supported\", \"alternatives\": [ [ { \"span_id\": \"s_6af27ac482a98ade\", \"start\": 0, \"end\": 34, \"context\": [ \"In the past, electricity meters were mechanical devices that a utility employee had to read manually.\" ] }, { \"span_id\": \"s_2845cfa10cf8e534\", \"start\": 0, \"end\": 34, \"context\": [ \"Utility companies measure and monitor electricity use with meters\" ] } ] ] } ],\"geography\": {\"status\": \"unresolved\", \"value\": \"\",\"evidence\": [],\"reason\": \"Geography known requires a place explicitly named in the question and evidenced by selected sources or their pinned document.\"} }",
+  "finish": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-14T13:02:42.2899584Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 14871183400,
+    "load_duration": 5210229100,
+    "prompt_eval_count": 2294,
+    "prompt_eval_duration": 1172280000,
+    "eval_count": 329,
+    "eval_duration": 8469490000
+  },
+  "usage": {
+    "input_tokens": 2294,
+    "output_tokens": 329,
+    "total_tokens": 2623
+  },
+  "chunks_received": 329,
+  "bytes_received": 44736,
+  "identity_before": true,
+  "identity_after": true,
+  "inflight_usage_unknown": false,
+  "started_monotonic": 215065.968,
+  "backend_cancellation_verified": false,
+  "stages": [
+    {
+      "stage": "worker_ready",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "stage": "identity_before_verified",
+      "elapsed_seconds": 2.172000000020489
+    },
+    {
+      "stage": "invocation_started",
+      "elapsed_seconds": 2.187999999994645
+    },
+    {
+      "stage": "request_written",
+      "elapsed_seconds": 4.187999999994645
+    },
+    {
+      "stage": "response_headers",
+      "elapsed_seconds": 10.594000000011874
+    },
+    {
+      "stage": "first_body_bytes",
+      "elapsed_seconds": 10.594000000011874
+    },
+    {
+      "stage": "first_chunk",
+      "elapsed_seconds": 10.594000000011874
+    },
+    {
+      "stage": "stream_progress",
+      "elapsed_seconds": 10.594000000011874
+    },
+    {
+      "stage": "stream_progress",
+      "elapsed_seconds": 11.610000000015134
+    },
+    {
+      "stage": "stream_progress",
+      "elapsed_seconds": 12.625
+    },
+    {
+      "stage": "stream_progress",
+      "elapsed_seconds": 13.625
+    },
+    {
+      "stage": "stream_progress",
+      "elapsed_seconds": 14.64100000000326
+    },
+    {
+      "stage": "stream_progress",
+      "elapsed_seconds": 15.64100000000326
+    },
+    {
+      "stage": "stream_progress",
+      "elapsed_seconds": 16.64100000000326
+    },
+    {
+      "stage": "stream_progress",
+      "elapsed_seconds": 17.65700000000652
+    },
+    {
+      "stage": "stream_progress",
+      "elapsed_seconds": 18.65700000000652
+    },
+    {
+      "stage": "response_done",
+      "elapsed_seconds": 19.062999999994645
+    },
+    {
+      "stage": "completed",
+      "elapsed_seconds": 21.125
+    }
+  ],
+  "http_status": 200,
+  "elapsed_seconds": 21.125,
+  "raw_stream_file": "response.ndjson",
+  "worker_entry_monotonic": 215065.953,
+  "bootstrap_to_stream_seconds": 0.014999999984866008
+}

@@ -1,0 +1,9 @@
+# Context role development diagnostic
+
+Contract SHA-256 **6ad60047b361442d0141f9b333bc0fb4a296ede6660add27a1f23f59d2c96157** pins 153 inputs. It uses the local ami-llama3.1:8b-4k model with 4,096 context tokens, 900 completion tokens and temperature zero. The contract pins the model digest, sources, requests, runtime, review protocol and a fresh output directory. [Frozen contract](development-contract.json)
+
+Run consumed cq1-a40 once. Verify the minimum capacity, both units, distinct evidence roles, final safety and persisted draft. Run consumed cq1-a39 once only if the first case passes all gates. The combined ceiling is eight local main calls and two NeMo invocations, with 180 seconds per case including preparation. Stop at the first failure or at 90% five-hour usage. The protocol allows zero retries and warmups. [Source review](source-review-protocol.md)
+
+The repaired schema rejects the retained invalid mapping. Two fixed-response workflows passed through composition with sockets blocked. The full Windows offline suite passed 1,886 tests with 14 warnings. Across the previous twenty-case roster, the largest prompt reservation was 3,560 of 4,096 tokens. The largest compact schema grew from 12,201 to 107,329 bytes. The first diagnostic will exercise a 54,075-byte schema. Local decoder behavior remains unverified. [Offline replay and measurements](offline-replay.json) · [Test results](offline-windows.xml)
+
+Archived execution inputs, the original r07 failure, and the latest eighteen unattempted cases matched their recorded hashes. The latest CQ1 remains one pass, one failure and eighteen unattempted. Owner review applies to new assessable drafts. The preceding generation allowance closed at cq1-a40. A grant for this contract covers development only. Reply **Authorize scoped context-role development diagnostics** to grant execution. [Preservation record](qualification-preservation.json)

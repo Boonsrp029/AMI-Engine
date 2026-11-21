@@ -1,0 +1,364 @@
+{
+  "model": "ami-llama3.1:8b-4k",
+  "stream": true,
+  "options": {
+    "num_ctx": 4096,
+    "num_predict": 900,
+    "temperature": 0.0
+  },
+  "format": {
+    "$defs": {
+      "ConflictingFact0": {
+        "additionalProperties": false,
+        "properties": {
+          "fact_id": {
+            "const": "r1.1",
+            "title": "Fact Id",
+            "type": "string"
+          },
+          "state": {
+            "const": "conflicting",
+            "title": "State",
+            "type": "string"
+          },
+          "alternatives": {
+            "items": {
+              "items": {
+                "$ref": "#/$defs/DirectSpan"
+              },
+              "maxItems": 5,
+              "minItems": 1,
+              "type": "array"
+            },
+            "maxItems": 3,
+            "minItems": 2,
+            "title": "Alternatives",
+            "type": "array"
+          }
+        },
+        "required": [
+          "fact_id",
+          "state",
+          "alternatives"
+        ],
+        "title": "ConflictingFact0",
+        "type": "object"
+      },
+      "ConflictingFact1": {
+        "additionalProperties": false,
+        "properties": {
+          "fact_id": {
+            "const": "r2.1",
+            "title": "Fact Id",
+            "type": "string"
+          },
+          "state": {
+            "const": "conflicting",
+            "title": "State",
+            "type": "string"
+          },
+          "alternatives": {
+            "items": {
+              "items": {
+                "$ref": "#/$defs/DirectSpan"
+              },
+              "maxItems": 5,
+              "minItems": 1,
+              "type": "array"
+            },
+            "maxItems": 3,
+            "minItems": 2,
+            "title": "Alternatives",
+            "type": "array"
+          }
+        },
+        "required": [
+          "fact_id",
+          "state",
+          "alternatives"
+        ],
+        "title": "ConflictingFact1",
+        "type": "object"
+      },
+      "DirectSpan": {
+        "additionalProperties": false,
+        "properties": {
+          "span_id": {
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Span Id",
+            "type": "string"
+          },
+          "start": {
+            "minimum": 0,
+            "title": "Start",
+            "type": "integer"
+          },
+          "end": {
+            "exclusiveMinimum": 0,
+            "title": "End",
+            "type": "integer"
+          },
+          "context": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 2,
+            "title": "Context",
+            "type": "array"
+          }
+        },
+        "required": [
+          "span_id",
+          "start",
+          "end",
+          "context"
+        ],
+        "title": "DirectSpan",
+        "type": "object"
+      },
+      "MissingFact0": {
+        "additionalProperties": false,
+        "properties": {
+          "fact_id": {
+            "const": "r1.1",
+            "title": "Fact Id",
+            "type": "string"
+          },
+          "state": {
+            "const": "missing",
+            "title": "State",
+            "type": "string"
+          },
+          "alternatives": {
+            "items": {
+              "items": {
+                "$ref": "#/$defs/DirectSpan"
+              },
+              "maxItems": 5,
+              "minItems": 1,
+              "type": "array"
+            },
+            "maxItems": 0,
+            "title": "Alternatives",
+            "type": "array"
+          }
+        },
+        "required": [
+          "fact_id",
+          "state",
+          "alternatives"
+        ],
+        "title": "MissingFact0",
+        "type": "object"
+      },
+      "MissingFact1": {
+        "additionalProperties": false,
+        "properties": {
+          "fact_id": {
+            "const": "r2.1",
+            "title": "Fact Id",
+            "type": "string"
+          },
+          "state": {
+            "const": "missing",
+            "title": "State",
+            "type": "string"
+          },
+          "alternatives": {
+            "items": {
+              "items": {
+                "$ref": "#/$defs/DirectSpan"
+              },
+              "maxItems": 5,
+              "minItems": 1,
+              "type": "array"
+            },
+            "maxItems": 0,
+            "title": "Alternatives",
+            "type": "array"
+          }
+        },
+        "required": [
+          "fact_id",
+          "state",
+          "alternatives"
+        ],
+        "title": "MissingFact1",
+        "type": "object"
+      },
+      "SupportedFact0": {
+        "additionalProperties": false,
+        "properties": {
+          "fact_id": {
+            "const": "r1.1",
+            "title": "Fact Id",
+            "type": "string"
+          },
+          "state": {
+            "const": "supported",
+            "title": "State",
+            "type": "string"
+          },
+          "alternatives": {
+            "items": {
+              "items": {
+                "$ref": "#/$defs/DirectSpan"
+              },
+              "maxItems": 5,
+              "minItems": 1,
+              "type": "array"
+            },
+            "maxItems": 1,
+            "minItems": 1,
+            "title": "Alternatives",
+            "type": "array"
+          }
+        },
+        "required": [
+          "fact_id",
+          "state",
+          "alternatives"
+        ],
+        "title": "SupportedFact0",
+        "type": "object"
+      },
+      "SupportedFact1": {
+        "additionalProperties": false,
+        "properties": {
+          "fact_id": {
+            "const": "r2.1",
+            "title": "Fact Id",
+            "type": "string"
+          },
+          "state": {
+            "const": "supported",
+            "title": "State",
+            "type": "string"
+          },
+          "alternatives": {
+            "items": {
+              "items": {
+                "$ref": "#/$defs/DirectSpan"
+              },
+              "maxItems": 5,
+              "minItems": 1,
+              "type": "array"
+            },
+            "maxItems": 1,
+            "minItems": 1,
+            "title": "Alternatives",
+            "type": "array"
+          }
+        },
+        "required": [
+          "fact_id",
+          "state",
+          "alternatives"
+        ],
+        "title": "SupportedFact1",
+        "type": "object"
+      },
+      "UnresolvedGeography": {
+        "additionalProperties": false,
+        "properties": {
+          "status": {
+            "const": "unresolved",
+            "title": "Status",
+            "type": "string"
+          },
+          "value": {
+            "const": "",
+            "title": "Value",
+            "type": "string"
+          },
+          "evidence": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 0,
+            "title": "Evidence",
+            "type": "array"
+          },
+          "reason": {
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Reason",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "value",
+          "evidence",
+          "reason"
+        ],
+        "title": "UnresolvedGeography",
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "properties": {
+      "wire_version": {
+        "const": "cq-fact-selection-v1",
+        "title": "Wire Version",
+        "type": "string"
+      },
+      "facts": {
+        "maxItems": 2,
+        "minItems": 2,
+        "prefixItems": [
+          {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/SupportedFact0"
+              },
+              {
+                "$ref": "#/$defs/MissingFact0"
+              },
+              {
+                "$ref": "#/$defs/ConflictingFact0"
+              }
+            ]
+          },
+          {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/SupportedFact1"
+              },
+              {
+                "$ref": "#/$defs/MissingFact1"
+              },
+              {
+                "$ref": "#/$defs/ConflictingFact1"
+              }
+            ]
+          }
+        ],
+        "title": "Facts",
+        "type": "array"
+      },
+      "geography": {
+        "$ref": "#/$defs/UnresolvedGeography"
+      }
+    },
+    "required": [
+      "wire_version",
+      "facts",
+      "geography"
+    ],
+    "title": "ConcurrentFactSelection",
+    "type": "object"
+  },
+  "messages": [
+    {
+      "role": "system",
+      "content": "Use the supplied facts in order. For each fact, select direct evidence and exact character offsets within each span, with an exclusive end. Keep necessary same-record context separate from answers. Exclude background and preserve source time, scope, measure and modality. Multiple spans can jointly answer one fact. Supported requires one nonempty group; missing uses []; conflicting requires at least two nonempty groups for opposing records about the same requested fact. Respect branch bindings and request_focus. Geography known requires a place explicitly named in the question and evidenced by selected sources or their pinned document. Otherwise return unresolved with a reason. Use complete_required_branches for supported coverage. Use no more than 900 tokens."
+    },
+    {
+      "role": "user",
+      "content": "{\"as_of\":\"2026-11-14\",\"question\":\"What did automated electricity meters report periodically, and who received those reports?\",\"requests\":[{\"component_id\":\"r1\",\"question_anchor\":\"What did automated electricity meters report periodically\"},{\"component_id\":\"r2\",\"question_anchor\":\"who received those reports?\"}],\"evidence\":[{\"source_id\":\"eia-measurement\",\"title\":\"Measuring electricity\",\"url\":\"https://www.eia.gov/energyexplained/electricity/measuring-electricity.php\",\"published\":null,\"doc_name\":\"eia-measuring.html\",\"page_num\":null,\"spans\":[{\"span_id\":\"s_bc68aaf38aed223e\",\"text\":\"Electricity is measured in units of power called Watts, named after James Watt, the inventor of the steam engine.\"},{\"span_id\":\"s_a46000abe7f383a1\",\"text\":\"One Watt is a very small amount of power.\"},{\"span_id\":\"s_6531c20764810d19\",\"text\":\"Some devices need only a few Watts to operate, but other devices require larger amounts, and their consumption is measured in kilowatts (kW).\"},{\"span_id\":\"s_d46a265266fdb8bc\",\"text\":\"One kilowatt is equal to 1,000 Watts.\"},{\"span_id\":\"s_d1ad042cf9ed1c0a\",\"text\":\"For very large amounts of electricity, like what power plants generate, we use even larger units:\\nMegawatts (MW): One MW is 1,000 kW, or 1,000,000 Watts.\"},{\"span_id\":\"s_a0ba37a9ebb6f10b\",\"text\":\"Gigawatts (GW): One GW is 1,000 MW, or 1,000,000,000 Watts.\"},{\"span_id\":\"s_f771166ff784ccaf\",\"text\":\"Electricity use over time is measured in Watthours\\nWatts measure power at a specific moment, but we use Watthours (Wh) to measure how much electricity is used over a period of time.\"},{\"span_id\":\"s_ec39d28380e76dfd\",\"text\":\"One Watthour is the energy of one Watt used for one hour.\"},{\"span_id\":\"s_71e744b8dcea4eb6\",\"text\":\"Electric utilities and power plants generally measure electricity in kilowatthours (kWh).\"},{\"span_id\":\"s_684693c6816ddcf4\",\"text\":\"One kWh is one kilowatt generated for one hour.\"},{\"span_id\":\"s_bd057ec120f8b36b\",\"text\":\"For example, if you use a 40-Watt (0.04 kW) light bulb for five hours, you have used 200 Wh, or 0.2 kWh, of electrical energy.\"},{\"span_id\":\"s_2845cfa10cf8e534\",\"text\":\"Utility companies measure and monitor electricity use with meters\\nElectric utility companies use meters to measure how much electricity their customers use.\"},{\"span_id\":\"s_f4366d86d82e2ee4\",\"text\":\"These meters are usually located on the outside of the building or home where the power line connects.\"},{\"span_id\":\"s_5b17f78fd492302c\",\"text\":\"In the past, electricity meters were mechanical devices that a utility employee had to read manually.\"},{\"span_id\":\"s_6af27ac482a98ade\",\"text\":\"Eventually, automated meters could periodically report electricity use to the utility.\"},{\"span_id\":\"s_ad16cc6c657b8bd0\",\"text\":\"Today, many utilities use\\nelectronic smart meters\\n.\"},{\"span_id\":\"s_792c4494ed697e52\",\"text\":\"These meters wirelessly send power usage data in real time.\"},{\"span_id\":\"s_44a4448281bbe6a8\",\"text\":\"Some advanced smart meters can even track the electricity use of individual devices and allow the utility or customer to control electricity use remotely.\"}]},{\"source_id\":\"eia-generation-2023\",\"title\":\"US utility-scale generation in 2023; preliminary February 2024 data\",\"url\":\"https://www.eia.gov/tools/faqs/faq.php?id=427&t=3\",\"published\":\"2024-02-29\",\"doc_name\":\"eia-generation.html\",\"page_num\":null,\"spans\":[{\"span_id\":\"s_9f6629387f7fb9e1\",\"text\":\"In 2023, about 4,178 billion kilowatthours (kWh) (or about 4.18 trillion kWh) of electricity were generated at utility-scale electricity generation facilities in the United States.\"},{\"span_id\":\"s_9f96e1da2a50533f\",\"text\":\"1\\nAbout 60% of this electricity generation was from fossil fuels—coal, natural gas, petroleum, and other gases.\"},{\"span_id\":\"s_610d409a2f28f88c\",\"text\":\"About 19% was from nuclear energy, and about 21% was from renewable energy sources.\"},{\"span_id\":\"s_31e68c934e4613b5\",\"text\":\"The U.S.\"},{\"span_id\":\"s_2259500935f03130\",\"text\":\"Energy Information Administration estimates that an additional 73.62 billion kWh of electricity generation was from small-scale solar photovoltaic systems in 2023.\"},{\"span_id\":\"s_5afda567c1ab8363\",\"text\":\"2\\nU.S.\"},{\"span_id\":\"s_cb9a294a4ff9d4c9\",\"text\":\"utility-scale electricity generation by source, amount, and share of total in 2023\\nEnergy source\\nBillion kWh\\nShare of total\\nTotal - all sources\\n4,178\\nFossil fuels (total)\\n2,505\\n60.0%\\nNatural gas\\n1,802\\n43.1%\\nCoal\\n675\\n16.2%\\nPetroleum (total)\\n16\\n0.4%\\nPetroleum liquids\\n12\\n0.3%\\nPetroleum coke\\n5\\n0.1%\\nOther gases\\n3\\n11\\n0.3%\\nNuclear\\n775\\n18.6%\\nRenewables (total)\\n894\\n21.4%\\nWind\\n425\\n10.2%\\nHydropower\\n240\\n5.7%\\nSolar (total)\\n165\\n3.9%\\nPhotovoltaic\\n162\\n3.9%\\nSolar thermal\\n3\\n0.1%\\nBiomass (total)\\n47\\n1.1%\\nWood\\n31\\n0.8%\\nLandfill gas\\n8\\n0.2%\\nMunicipal solid waste (biogenic)\\n6\\n0.1%\\nOther biomass waste\\n2\\n0.1%\\nGeothermal\"},{\"span_id\":\"s_53a9904131330b03\",\"text\":\"16\\n0.4%\\nPumped storage hydropower\\n4\\n-6\\n-0.1%\\nOther sources\\n5\\n10\\n0.2%\\nData source: U.S.\"},{\"span_id\":\"s_da5cc8dafb8664b8\",\"text\":\"Energy Information Administration,\\nElectric Power Monthly\\n, February 2024;\"},{\"span_id\":\"s_379ceb3c45f341ef\",\"text\":\"preliminary data\\n1\\nUtility-scale electricity generation is electricity generation from power plants with at least one megawatt (or 1,000 kilowatts) of total electricity generating capacity.\"},{\"span_id\":\"s_f524846d7a694449\",\"text\":\"Data are for\\nnet electricity generation\\n.\"},{\"span_id\":\"s_d7571401d3a80385\",\"text\":\"2\\nSmall-scale solar photovoltaic (PV) systems are electricity generators with less than one megawatt (MW) of electricity generating capacity, which are not connected at a power plant that has a combined capacity of one MW or larger.\"},{\"span_id\":\"s_e7151e814e2840c4\",\"text\":\"Most small-scale PV systems are at or near the location where the electricity is consumed and many are\\nnet metered systems\\n.\"},{\"span_id\":\"s_aba929158915415b\",\"text\":\"Smaller PV systems are usually installed on building rooftops.\"},{\"span_id\":\"s_1c02614a2ce1b7d8\",\"text\":\"3\\nOther gases includes blast furnace gas and other manufactured and waste gases derived from fossil fuels.\"},{\"span_id\":\"s_8b9306d974626ad5\",\"text\":\"4\\nPumped storage hydroelectricity\\ngeneration is negative because most pumped storage electricity generation facilities use more electricity than they produce on an annual basis.\"},{\"span_id\":\"s_e677fdbe4b189e04\",\"text\":\"Most pumped storage systems use electricity from an\\nelectric power grid\\nfor pumping water to the storage component of the system.\"},{\"span_id\":\"s_92faf2a6f901b323\",\"text\":\"5\\nOther (utility-scale) sources includes non-biogenic municipal solid waste, batteries, hydrogen, purchased steam, sulfur, tire-derived fuel, and other miscellaneous energy sources.\"}]}],\"requested_branch_scopes\":[{\"component_id\":\"r1\",\"subtask_id\":\"s01\",\"requested_scope\":\"What did automated electricity meters report periodically\"},{\"component_id\":\"r2\",\"subtask_id\":\"s01\",\"requested_scope\":\"who received those reports?\"}],\"complete_required_branches\":{\"r1\":[\"s01\"],\"r2\":[\"s01\"]},\"branches\":[{\"subtask_id\":\"s01\",\"outcome\":\"evidence\",\"support_source_ids\":[\"eia-measurement\",\"eia-generation-2023\"]}],\"relevance_hints\":{\"r1\":[\"s_6af27ac482a98ade\",\"s_2845cfa10cf8e534\"],\"r2\":[\"s_6af27ac482a98ade\",\"s_2845cfa10cf8e534\"]},\"facts\":[{\"component_id\":\"r1\",\"question_anchor\":\"What did automated electricity meters report periodically\",\"fact_id\":\"r1.1\"},{\"component_id\":\"r2\",\"question_anchor\":\"who received those reports?\",\"fact_id\":\"r2.1\"}]}"
+    }
+  ],
+  "tools": []
+}

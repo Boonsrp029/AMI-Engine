@@ -1,0 +1,20 @@
+{
+  "safe_injection": false,
+  "editorial_correction_used": false,
+  "raw_supported": true,
+  "final_complete": true,
+  "owner_reference": "",
+  "fallback_used": false,
+  "proper_abstention": false,
+  "final_supported": true,
+  "raw_complete": true,
+  "source_findings": [
+    "Pinned EIA generation source s_2259500935f03130 reports an estimate of 73.62 billion additional kWh from small-scale solar photovoltaic systems in 2023. The report and question establish U.S. scope.",
+    "Raw and stored prose agree and retain the estimate, amount, measure, scope and year. No fallback or editorial change. Final NeMo passed and stored."
+  ],
+  "critical_errors": 0,
+  "owner_verdict": "pending",
+  "explicit_conflict": false,
+  "result_sha256": "a2fcc207a45ede7c136b0dcff0eafab830b3c757363e8fefb154a7d266b6ae6d",
+  "assessor": "assistant"
+}

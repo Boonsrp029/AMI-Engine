@@ -63,6 +63,7 @@ def verify_lineage(contract):
         if (dev.get("pipeline_identity") != contract["pipeline_identity"]
                 or canonical(dev.get("model_snapshot")) != canonical(contract["model_snapshot"])
                 or canonical(dev.get("settings")) != canonical(contract["settings"])
+                or dev.get("safety_evidence_view") != contract.get("safety_evidence_view")
                 or canonical(dev.get("limits")) != canonical(contract["limits"])):
             raise ValueError("Retained development pipeline/model/settings differ")
         if start != {"case_id":case["case_id"], "contract_sha256":reference}:

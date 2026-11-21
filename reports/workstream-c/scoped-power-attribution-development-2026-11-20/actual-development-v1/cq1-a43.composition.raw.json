@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "4d3e1f01fa384ff690c66c7f0cc24d9b",
+    "attempt_id": "58277de4805a42d693c202719ab126d8",
+    "plan_id": "204b08b8d1eaa8bc868cf3df7e722a5aab0d4f860229f37f73ea9ab54ce13b31",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"The table cites Electric Power Monthly as its data source.\",\n      \"unit_id\": \"u1\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 845,
+    "output_tokens": 62,
+    "total_tokens": 907
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-20T15:58:08.0565306Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2098953700,
+    "load_duration": 8016100,
+    "prompt_eval_count": 845,
+    "prompt_eval_duration": 318701000,
+    "eval_count": 62,
+    "eval_duration": 1640703000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

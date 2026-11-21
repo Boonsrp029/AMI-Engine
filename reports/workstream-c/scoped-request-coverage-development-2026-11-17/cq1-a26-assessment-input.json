@@ -1,0 +1,10 @@
+{
+  "verdict": "pass",
+  "result_sha256": "280e2e188b2e1e7ac100091d9130d3ffbb6492f66e79ef85f34513c866bb49b1",
+  "owner_adjudication": "pending",
+  "source_findings": [
+    "Raw selections match both actions from s_44a4448281bbe6a8 in eia-measurement. The rendered claim retains Some, even, tracking of individual devices and remote control by the utility or customer.",
+    "Application rendering records the exact span, offsets and source digest. It adds no facts, uses no fallback or editorial correction, and matches the stored and NeMo-accepted text."
+  ],
+  "author": "assistant"
+}

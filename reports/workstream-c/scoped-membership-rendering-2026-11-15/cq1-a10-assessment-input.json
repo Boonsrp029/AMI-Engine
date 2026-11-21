@@ -1,0 +1,21 @@
+{
+  "explicit_conflict": false,
+  "result_sha256": "f91345fcf781bdd7c294643058a962e0fc4e35ad394c452a30d18773850e1dbe",
+  "final_supported": true,
+  "raw_complete": false,
+  "editorial_correction_used": false,
+  "fallback_used": false,
+  "final_complete": false,
+  "safe_injection": false,
+  "critical_errors": 0,
+  "owner_verdict": "pending",
+  "owner_reference": "",
+  "source_findings": [
+    "Pinned EIA measurement span s_ec39d28380e76dfd supports power versus energy over time. Span s_bd057ec120f8b36b states the example uses a 40-watt bulb for five hours and consumes 200 Wh or 0.2 kWh.",
+    "Raw and final retain the distinction and 200 Wh but omit the 40-watt and five-hour conditions explicitly required by the frozen reference. The unrelated meter claim is supported by selected span s_2845cfa10cf8e534, but does not answer the bulb example. No wrong value or unsupported factual assertion.",
+    "This is a noncritical answerable miss under the predeclared completeness criteria. NeMo passed; no fallback or editorial correction."
+  ],
+  "raw_supported": true,
+  "proper_abstention": false,
+  "assessor": "assistant"
+}

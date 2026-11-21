@@ -1,0 +1,20 @@
+{
+  "assessor": "assistant",
+  "raw_complete": null,
+  "critical_errors": 0,
+  "raw_supported": true,
+  "owner_verdict": "pending",
+  "editorial_correction_used": false,
+  "explicit_conflict": false,
+  "safe_injection": false,
+  "owner_reference": "",
+  "final_complete": true,
+  "fallback_used": false,
+  "result_sha256": "d6311b14f1ad0f63f4c00432e43b69d4d2fd9fd064784cabb3dad67b47312d46",
+  "source_findings": [
+    "The direct EIA table span s_cb9a294a4ff9d4c9 reports Wood, 31 billion kWh, 0.8 percent of the total. The question and cited EIA source title establish U.S. utility-scale scope for 2023. The claim references that table and retains both measures.",
+    "Raw composer chose the exact verified u1/r1 row. Application-rendered text carries both facts. No fallback or edit. Final draft passed NeMo and is stored for review."
+  ],
+  "final_supported": true,
+  "proper_abstention": false
+}

@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\reports\workstream-c\scoped-fact-decoder-2026-11-14\check_mapper.py", line 197, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\reports\workstream-c\scoped-fact-decoder-2026-11-14\check_mapper.py", line 186, in main
+    validate(args.hash, args.service, args.output)
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\reports\workstream-c\scoped-fact-decoder-2026-11-14\check_mapper.py", line 133, in validate
+    frozen, projected = capture(received["content"])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\reports\workstream-c\scoped-fact-decoder-2026-11-14\check_mapper.py", line 73, in capture
+    prepare_composer(contract, case, plan, fixed, None)(report, ModelAccess(time.monotonic() + 20))
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\src\pilot\subtasks\_scoped_activation.py", line 43, in __call__
+    result = ScopedConcurrentComposer(runtime, self.bindings, self.as_of, self.transport,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\src\pilot\subtasks\_scoped_generation.py", line 191, in __call__
+    selection, resolved_facts = facts.resolve_facts(
+                                ^^^^^^^^^^^^^^^^^^^^
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\src\pilot\subtasks\_fact_selection.py", line 116, in resolve_facts
+    context = _resolve_span(context_id, catalog, sources)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\src\pilot\_evidence.py", line 280, in _resolve_span
+    raise ValueError("Evidence selection references an unknown span")
+ValueError: Evidence selection references an unknown span

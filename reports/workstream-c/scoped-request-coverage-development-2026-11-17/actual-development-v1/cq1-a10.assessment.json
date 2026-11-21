@@ -1,0 +1,11 @@
+{
+  "result_sha256": "6bf80554be07a35bf068f537081db0dacf92d767642a6c2905c1961f8961878a",
+  "author": "assistant",
+  "source_findings": [
+    "Pinned span s_bd057ec120f8b36b and both exact raw fields bind 40 W and five hours to 200 Wh or 0.2 kWh. The application rendered the complete example and retained the source offsets; unrelated meter content is absent.",
+    "The composer omitted the watt/watthour comparison. Disclosed fallbacks u1 and u2 restore it from EIA spans s_f771166ff784ccaf and s_ec39d28380e76dfd. The final text is supported and complete under the frozen development rule. Raw output remains incomplete; no editorial correction.",
+    "Final NeMo accepted the exact stored draft. Wording and fallback readability remain for owner review."
+  ],
+  "verdict": "pass",
+  "owner_adjudication": "pending"
+}

@@ -1,0 +1,7 @@
+# Explicit category membership — offline integration
+
+Composer v9 handles unambiguous two-group inclusion statements in the opt-in whole-span workflow. It recognizes a requested category with one matching explicit source statement in the bound support branch. It uses the existing required prose fields to cover each member group, retaining the complete wording including qualifiers. It checks each affirmative relationship before joining the two model-written sentences into a cited claim. If it cannot establish that narrow structure from the retrieved evidence, it uses the existing general path. Recognition is limited and does not establish entailment in every surrounding context.
+
+The socket-blocked exact replay rejected the archived incomplete cq1-a24 raw response. Fixed output retained both groups, including “derived from fossil fuels,” and projected without fallback or editorial correction. Synthetic reclaimed-aggregate fixtures checked full qualifier retention, wrong categories, negation, ambiguity and out-of-branch support. 100 targeted tests passed. The largest replay reservation was 3,367 of 4,096 tokens.
+
+The runner and NeMo evidence envelope were not changed. No model calls ran. Whether NeMo accepts a complete generated answer remains unverified. The archived results and dependency manifests passed SHA-256 checks. Preserve all eighteen reserved cases and predeclare two replacements. Freeze a bounded development run and obtain a separate grant before any more actual generation.

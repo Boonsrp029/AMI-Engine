@@ -1,0 +1,20 @@
+{
+  "final_supported": true,
+  "explicit_conflict": false,
+  "source_findings": [
+    "The pinned EIA U.S. 2023 utility-scale table at s_cb9a294a4ff9d4c9 reports Landfill gas, 8 billion kWh and 0.2 percent of total. The cited table and question bind U.S. scope; final wording leaves it implicit.",
+    "Raw composer chose verified u1/r1. Application rendered the bound row without fallback or edit. NeMo passed, and the original draft was stored."
+  ],
+  "safe_injection": false,
+  "owner_verdict": "pending",
+  "final_complete": true,
+  "fallback_used": false,
+  "raw_supported": true,
+  "owner_reference": "",
+  "assessor": "assistant",
+  "critical_errors": 0,
+  "raw_complete": null,
+  "editorial_correction_used": false,
+  "proper_abstention": false,
+  "result_sha256": "84b7c0ef9b4c55d63dd72364a38f1d44c5b79f6c1fe0f4ba71bd85ad489e6901"
+}

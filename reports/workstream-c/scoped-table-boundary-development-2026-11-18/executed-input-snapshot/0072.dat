@@ -1,0 +1,83 @@
+{
+  "sockets_blocked": true,
+  "actual_model_calls": 0,
+  "cases": {
+    "cq1-a26": {
+      "request_reservations": {
+        "mapping": 3373,
+        "composition": 1941
+      },
+      "saved_response_rejected_stages": [
+        "composition"
+      ],
+      "draft": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "Some advanced smart meters can even track the electricity use of individual devices and allow the utility or customer to control electricity use remotely.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "application_rendering": {
+        "unit_id": "u1",
+        "component_id": "r1",
+        "text": "Some advanced smart meters can even track the electricity use of individual devices and allow the utility or customer to control electricity use remotely.",
+        "span_id": "s_44a4448281bbe6a8",
+        "source_id": "eia-measurement",
+        "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+        "start": 1616,
+        "end": 1770
+      },
+      "archived_captures_sha256": {
+        "mapping": "c67f6780d8f3ce784e224a50f809617661889c4778353a1869a9728cea23f2f9",
+        "composition": "47d0f230897fd0084ece2cf7aa08a77acc244a5505ca37f092812a2ed8b59d82"
+      }
+    },
+    "cq1-a10": {
+      "request_reservations": {
+        "mapping": 3526,
+        "composition": 2098
+      },
+      "saved_response_rejected_stages": [
+        "mapping",
+        "composition"
+      ],
+      "draft": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "A watt measures power, while a watthour measures energy.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          },
+          {
+            "text": "For example, if you use a 40-Watt (0.04 kW) light bulb for five hours, you have used 200 Wh, or 0.2 kWh, of electrical energy.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "application_rendering": {
+        "unit_id": "u2",
+        "component_id": "r2",
+        "text": "For example, if you use a 40-Watt (0.04 kW) light bulb for five hours, you have used 200 Wh, or 0.2 kWh, of electrical energy.",
+        "span_id": "s_bd057ec120f8b36b",
+        "source_id": "eia-measurement",
+        "content_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+        "start": 928,
+        "end": 1054
+      },
+      "archived_captures_sha256": {
+        "mapping": "9160166da425aa0eec9c37702e02f585145cec5647d6a2f7bfe5151686665314",
+        "composition": "778eac5adca0ceedb97bc5be942805abdc1e740da58c84c0e4ff3d557a40fe7f"
+      }
+    }
+  }
+}

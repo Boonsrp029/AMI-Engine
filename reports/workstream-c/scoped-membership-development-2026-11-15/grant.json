@@ -1,0 +1,15 @@
+{
+  "authorization_reference": "Direct user reply in this Codex chat on 15 November 2026: Authorize scoped membership development diagnostics",
+  "contract_sha256": "0c7ea6d8f01755f33fe5fb8a205d52d9769c145fa1c789eb49488016160d7cdc",
+  "case_ids": [
+    "cq1-a24",
+    "cq1-a23"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "human_reply": "Authorize scoped membership development diagnostics"
+}

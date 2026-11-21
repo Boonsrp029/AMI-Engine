@@ -1,0 +1,7 @@
+{
+  "validated_report": "The other gases category includes blast furnace gas and other manufactured and waste gases derived from fossil fuels.",
+  "passed_guardrails": true,
+  "raw_output": "The other gases category includes blast furnace gas and other manufactured and waste gases derived from fossil fuels.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

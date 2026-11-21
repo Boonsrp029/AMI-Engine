@@ -1,0 +1,18 @@
+{
+  "version": "cq-scoped-disclosures-v1",
+  "plan_id": "5e58f281dd088bd4962071a181b918abc9c9c27c75bfcd852b01ca43f71f42af",
+  "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+  "question_sha256": "6ff96c13f878fb8ac2ec8f66dacc172b6ad4416598a5749642ccf3289d25939e",
+  "bindings_sha256": "1adcfd3c62d5cb3d1ca0da2d6949f0c05b355a4f4509d8d0f5d4741c623315f7",
+  "declaration_ref": "Unused question frozen before generation; source document is familiar.",
+  "annotations": [
+    {
+      "component_id": "r1",
+      "subtask_id": "s01",
+      "question_span": {
+        "start": 0,
+        "end": 55
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "plans_file": "plans-v3-explicit-coverage.json",
+  "sha256": "af0414a4e5d360df3a6ee64513d5df8ccc639eeac98e38ab2163d4bbca4ad406",
+  "original_content_manifest_sha256": "960ca14353f611dea06066a8cec4b5846f5881935aa80aa16967b67974b92068",
+  "note": "18 retained cases and two fresh answerable replacements."
+}

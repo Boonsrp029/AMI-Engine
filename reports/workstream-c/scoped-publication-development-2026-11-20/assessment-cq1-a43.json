@@ -1,0 +1,9 @@
+{
+  "author": "assistant",
+  "verdict": "pass",
+  "result_sha256": "d00ec731d3844958f7c84d05973c11021378a2f2595d036cbcdc3143fe256f66",
+  "source_findings": [
+    "Exact EIA attribution at offsets 1227 to 1336 in eia-generation-2023 names Electric Power Monthly. The mapper selected the full attribution with empty context.",
+    "The raw composer and SQLite revision 1 both name the publication without an unsupported year, fallback or editorial change. Final NeMo accepted the exact text."
+  ]
+}

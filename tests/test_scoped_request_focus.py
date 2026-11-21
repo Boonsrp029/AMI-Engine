@@ -6,7 +6,8 @@ import time
 import pytest
 
 from src.pilot.subtasks._disclosures import DisclosureScopes, bindings_hash
-from src.pilot.subtasks._request_focus import _table_focus, relevance_hints, validate_focused_claims
+from src.pilot.subtasks._request_focus import _capacity_focus, _table_focus, relevance_hints, validate_focused_claims
+from src.pilot.subtasks._request_focus import _single_power_focus, focused_text
 from src.pilot.subtasks._scoped_generation import (
     ScopedConcurrentComposer, WIRE_VERSION, _validate_explicit_subjects, table_composition_schema,
 )
@@ -22,10 +23,66 @@ TABLE = ("utility-scale electricity generation in 2018\nEnergy source\nBillion k
 RATIO = "The delivery rate divides completed deliveries by all scheduled deliveries for the same week."
 
 
+@pytest.mark.parametrize("claim", [
+    "The minimum total payload capacity is 3 kilograms.",
+    "The total payload capacity is 3 kilograms (3,000 grams).",
+    "The minimum total payload capacity is 3,000 kilograms (3 grams).",
+])
+def test_capacity_claim_rejects_incomplete_or_misbound_equivalence(claim):
+    question = "What minimum total payload capacity does the guide specify, in kilograms and grams?"
+    source = "Eligible crates carry at least 3 kilograms (or 3,000 grams) of total payload capacity."
+    focus, = _capacity_focus(question, source)
+    assert _capacity_focus(question, source.replace("payload", "fuel")) == []
+    assert _capacity_focus(question, source.replace("at least", "up to")) == []
+    assert _capacity_focus(question, source.replace("grams)", "pounds)")) == []
+    with pytest.raises(ValueError, match="minimum and both requested units"):
+        validate_focused_claims([{"component_id": "r1", "text": claim}], {"r1": focus})
+    validate_focused_claims(
+        [{"component_id": "r1", "text": "The minimum total payload capacity is 3 kilograms (or 3,000 grams)."}],
+        {"r1": focus},
+    )
+
+
+@pytest.mark.parametrize("claim", [
+    "One terawatt is equivalent to 3,000,000,000 kilowatts.",
+    "One megawatt is equivalent to 1,000,000,000 kilowatts.",
+    "One terawatt is equivalent to 1,000,000,000 kilowatthours.",
+    "One terawatt is equivalent to one billion kilowatts.",
+])
+def test_single_power_conversions_require_source_direction_and_exact_digits(claim):
+    question = "How many kilowatts are equivalent to one terawatt in the guide?"
+    quote = "Terawatts (TW): One TW is 1,000 GW, or 1,000,000,000 kW."
+    focus, = _single_power_focus(question, quote)
+    assert _single_power_focus(question, quote.replace("1,000,000,000 kW", "1,000,000,000 kWh")) == []
+    assert _single_power_focus(question, quote.replace("Terawatts (TW)", "Megawatts (MW)")) == []
+    assert focused_text(focus) == "One terawatt is equivalent to 1,000,000,000 kilowatts."
+    validate_focused_claims([{"component_id": "r1", "text": focused_text(focus)}], {"r1": focus})
+    with pytest.raises(ValueError, match="source base, digit value and requested unit"):
+        validate_focused_claims([{"component_id": "r1", "text": claim}], {"r1": focus})
+
+
+@pytest.mark.parametrize(("suffix", "valid"), [
+    (" in the Thermal Grid Handbook.", True),
+    (" in the EIA measurement guide.", False),
+    (" in the Thermal Grid Handbook, with projected losses.", False),
+])
+def test_single_power_conversion_attribution_must_match_selected_record(suffix, valid):
+    focus = {"kind": "single_power_conversion", "base": "terawatt",
+             "value": "1,000,000,000", "target": "kilowatts"}
+    claim = {"component_id": "r1", "text": focused_text(focus)[:-1] + suffix}
+    source = {"title": "Thermal Grid Handbook", "url": "https://example.org/handbook"}
+    if valid:
+        validate_focused_claims([claim], {"r1": focus}, sources_by_component={"r1": source})
+    else:
+        with pytest.raises(ValueError, match="source base, digit value and requested unit"):
+            validate_focused_claims([claim], {"r1": focus}, sources_by_component={"r1": source})
+
+
 @pytest.mark.parametrize(("kind", "invalid"), [
     ("table", ""), ("aggregate", ""), ("table", "span"), ("table", "claim"), ("table", "omit"),
     ("table", "duplicate"), ("table", "forged"), ("table", "wrong_component"),
     ("ratio", ""), ("ratio", "claim"),
+    *(("capacity", invalid) for invalid in ("", "span", "claim", "omit", "forged", "wrong_component")),
 ])
 def test_scoped_request_focus_binds_exact_row_and_operand(tmp_path, kind, invalid):
     question, fact, expected = {
@@ -36,6 +93,9 @@ def test_scoped_request_focus_binds_exact_row_and_operand(tmp_path, kind, invali
                       "In 2018, the table gives Waste gases (total) generation in Billion kWh as 48 and its share of total utility-scale electricity generation as 9.4%."),
         "ratio": ("What forms the denominator of the delivery rate?",
                   RATIO, "The denominator is all scheduled deliveries for the same week."),
+        "capacity": ("What minimum total payload capacity does the guide specify, in kilograms and grams?",
+                     "Eligible crates carry at least 3 kilograms (or 3,000 grams) of total payload capacity.",
+                     "The minimum total payload capacity is 3 kilograms (or 3,000 grams)."),
     }[kind]
     corpus = tmp_path / "corpus.json"
     corpus.write_text(json.dumps([{"feed_id": "target", "clean_content": fact},
@@ -61,8 +121,13 @@ def test_scoped_request_focus_binds_exact_row_and_operand(tmp_path, kind, invali
             parsed = {"wire_version": WIRE_VERSION, "components": [{"component_id": "r1",
                 "status": "supported", "evidence": [spans["distractor" if invalid == "span" else "target"]]}],
                 "geography": {"status": "unresolved", "value": "", "evidence": [], "reason": "No place."}}
-        elif kind in {"table", "aggregate"}:
-            assert inputs["units"][0]["response_kind"] == "table_row"
+            if kind == "capacity":
+                from src.pilot.subtasks._fact_selection import SPAN_WIRE_VERSION
+                parsed.pop("components")
+                parsed.update(wire_version=SPAN_WIRE_VERSION, facts=[{"fact_id": "r1.1", "state": "supported",
+                    "alternatives": [[{"span_id": spans["distractor" if invalid == "span" else "target"], "context": []}]]}])
+        elif kind in {"table", "aggregate", "capacity"}:
+            assert inputs["units"][0]["response_kind"] == ("capacity_threshold" if kind == "capacity" else "table_row")
             assert "request_focus" not in inputs
             selection = {"component_id": "r1", "unit_id": "u1"}
             claims = [selection]
@@ -87,7 +152,8 @@ def test_scoped_request_focus_binds_exact_row_and_operand(tmp_path, kind, invali
         return {"parsed": parsed}
 
     callback = ScopedConcurrentComposer(plan, bindings, "2026-11-12", fixed, scopes,
-                                        complete_required_branches=bindings)
+                                        complete_required_branches=bindings,
+                                        fact_selection=kind == "capacity", whole_fact_spans=kind == "capacity")
     access = ModelAccess(time.monotonic() + 30)
     if invalid:
         with pytest.raises(ValueError):
@@ -96,9 +162,11 @@ def test_scoped_request_focus_binds_exact_row_and_operand(tmp_path, kind, invali
         result = callback(report, access)
         assert result.draft["claims"] == [{"text": expected, "source_ids": ["target"]}]
         assert result.diagnostics["fallback_unit_ids"] == []
-        if kind in {"table", "aggregate"}:
+        if kind in {"table", "aggregate", "capacity"}:
             assert result.diagnostics["raw_composer_output"]["claims"] == ({"component_id": "r1", "unit_id": "u1"},)
-            rendered, = result.diagnostics["application_rendered_table_rows"]
+            key = ("application_rendered_capacity_thresholds" if kind == "capacity"
+                   else "application_rendered_table_rows")
+            rendered, = result.diagnostics[key]
             assert rendered["text"] == expected and rendered["source_id"] == "target"
             assert fact[rendered["start"]:rendered["end"]] == fact
     assert calls == (["mapping"] if invalid == "span" else ["mapping", "composition"])
@@ -138,6 +206,26 @@ def test_mixed_composition_requires_table_selection_and_preserves_prose_slot():
         parsed = schema.model_validate({"title": "Analyst research brief", "claims": claims})
         assert parsed.model_dump(mode="json")["claims"] == claims
     for claims in ([prose], [prose, table], [table, {**prose, "text": None}]):
+        with pytest.raises(ValueError):
+            schema.model_validate({"title": "Analyst research brief", "claims": claims})
+
+
+def test_mixed_composition_requires_conversion_fields_and_ordinary_table_ids():
+    mapping = EvidenceMap(components=[
+        {"component_id": cid, "question_anchor": "Request " + cid, "status": "supported",
+         "short_answer": "Source answer", "evidence": [{"source_id": cid, "quote": quote}]}
+        for cid, quote in (("r1", TABLE), ("r2", "One hour equals 60 minutes or 3,600 seconds."), ("r3", RATIO))
+    ])
+    schema = table_composition_schema(mapping, {"u1": "r1"}, {"u2": "r2"})
+    table = {"unit_id": "u1", "component_id": "r1"}
+    conversion = {"unit_id": "u2", "component_id": "r2", "targets": {
+        "target_1": "One hour equals 60 minutes.", "target_2": "One hour equals 3,600 seconds."}}
+    prose = {"unit_id": "u3", "component_id": "r3", "text": RATIO}
+    for claims in ([table, conversion], [table, conversion, prose]):
+        decoded = schema.model_validate({"title": "Analyst research brief", "claims": claims})
+        assert decoded.model_dump(mode="json")["claims"] == claims
+    for claims in ([table], [conversion], [table, conversion, conversion],
+                   [table, {**conversion, "targets": {"target_1": conversion["targets"]["target_1"]}}]):
         with pytest.raises(ValueError):
             schema.model_validate({"title": "Analyst research brief", "claims": claims})
 

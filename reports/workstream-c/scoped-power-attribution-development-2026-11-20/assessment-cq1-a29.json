@@ -1,0 +1,9 @@
+{
+  "author": "assistant",
+  "verdict": "pass",
+  "result_sha256": "66ecf891e8d3307a122823e2b3d0c03167302aa166abf407f34ee7fbadcaa93b",
+  "source_findings": [
+    "The exact source https://www.eia.gov/energyexplained/electricity/measuring-electricity.php at offsets 490 to 549 supports the complete stored claim: One gigawatt is equivalent to 1,000,000,000 watts in the EIA measurement guide.",
+    "The mapper selected the exact bound span with empty context. Model-authored text was retained through the final NeMo valid affirmative verdict and persisted as exact SQLite revision 1. No fallback or editorial correction."
+  ]
+}

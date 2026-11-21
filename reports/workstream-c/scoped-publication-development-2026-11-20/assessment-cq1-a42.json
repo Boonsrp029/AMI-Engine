@@ -1,0 +1,9 @@
+{
+  "author": "assistant",
+  "verdict": "pass",
+  "result_sha256": "a7551eb463f7214201dd9ced9700fd280c8e5b569d624771a5a9912b58e7e5f2",
+  "source_findings": [
+    "Source https://www.eia.gov/tools/faqs/faq.php?id=427&t=3 table row at offsets 557 to 1157 contains Photovoltaic, 162 3.9% in billion kWh and percent of total U.S. utility-scale generation for 2023. The attached heading at offsets 552 to 639 establishes explicit U.S. scope for the same table.",
+    "Raw selection chose the bound row. The application retained sign, year, unit, geography and denominator without a fallback or editorial change. Final NeMo passed with standard full evidence, and SQLite retained exact revision 1 for review."
+  ]
+}

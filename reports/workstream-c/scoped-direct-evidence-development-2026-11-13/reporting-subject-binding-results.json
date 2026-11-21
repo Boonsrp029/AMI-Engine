@@ -1,0 +1,43 @@
+{
+  "runtime_activated": false,
+  "model_calls": 0,
+  "result_sha256": "06f2a44e77d51a8ce689ad2165c2d823722d1b6e774b0f0315dcbc2b71959188",
+  "frozen_question_used": "What did automated electricity meters report periodically, and who received those reports?",
+  "subject_binding": {
+    "question_subject": "automated electricity meters",
+    "source_subject": "automated meters",
+    "source_id": "eia-measurement",
+    "source_sha256": "66b099b265568df2849f7e0f9f79a80df814cd7f69530f8245d770b8f99c13e2",
+    "fact_span_id": "s_6af27ac482a98ade",
+    "context_offsets": [
+      1315,
+      1416
+    ],
+    "context_text": "In the past, electricity meters were mechanical devices that a utility employee had to read manually."
+  },
+  "bound_fact": {
+    "span_id": "s_6af27ac482a98ade",
+    "source_text": "Eventually, automated meters could periodically report electricity use to the utility.",
+    "source_id": "eia-measurement",
+    "fact_offsets": [
+      1417,
+      1503
+    ],
+    "context_offsets": [
+      1315,
+      1416
+    ]
+  },
+  "synthetic_checks_passed": [
+    "reviewed context",
+    "different subject",
+    "different cadence",
+    "different record",
+    "changed source",
+    "wrong fact offsets",
+    "new device substituted",
+    "wrong context",
+    "multiple complete matches"
+  ],
+  "semantic_equivalence_basis": "assistant adjudication of the pinned local context"
+}

@@ -1,0 +1,111 @@
+{
+  "schema_version": "cq-fact-selection-v1-state-groups",
+  "protocol_sha256": "52acafba3197eb6f13702d333e85f1211314b2c560063701f044f435ed278019",
+  "pool_manifest_sha256": "ba15b6a0ff830abba031957751626567e766a4a93a92870bdcbcbff15799bfa9",
+  "model_calls": 0,
+  "sockets_blocked": true,
+  "max_reserved_tokens": 3556,
+  "max_format_schema_tokens": 1443,
+  "cases": {
+    "cq1-a21": {
+      "fact_count": 1,
+      "reserved_tokens": 3408,
+      "format_schema_tokens": 931
+    },
+    "cq1-a22": {
+      "fact_count": 1,
+      "reserved_tokens": 3390,
+      "format_schema_tokens": 931
+    },
+    "cq1-a16": {
+      "fact_count": 1,
+      "reserved_tokens": 3398,
+      "format_schema_tokens": 931
+    },
+    "cq1-a17": {
+      "fact_count": 1,
+      "reserved_tokens": 3364,
+      "format_schema_tokens": 931
+    },
+    "cq1-a18": {
+      "fact_count": 2,
+      "reserved_tokens": 3483,
+      "format_schema_tokens": 1443
+    },
+    "cq1-a06": {
+      "fact_count": 1,
+      "reserved_tokens": 3408,
+      "format_schema_tokens": 931
+    },
+    "cq1-a07": {
+      "fact_count": 1,
+      "reserved_tokens": 3418,
+      "format_schema_tokens": 931
+    },
+    "cq1-a08": {
+      "fact_count": 1,
+      "reserved_tokens": 3410,
+      "format_schema_tokens": 931
+    },
+    "cq1-a09": {
+      "fact_count": 2,
+      "reserved_tokens": 3483,
+      "format_schema_tokens": 1443
+    },
+    "cq1-a10": {
+      "fact_count": 2,
+      "reserved_tokens": 3499,
+      "format_schema_tokens": 1443
+    },
+    "cq1-p01": {
+      "fact_count": 2,
+      "reserved_tokens": 3459,
+      "format_schema_tokens": 1443
+    },
+    "cq1-p02": {
+      "fact_count": 2,
+      "reserved_tokens": 3463,
+      "format_schema_tokens": 1443
+    },
+    "cq1-m01": {
+      "fact_count": 1,
+      "reserved_tokens": 3308,
+      "format_schema_tokens": 931
+    },
+    "cq1-m02": {
+      "fact_count": 1,
+      "reserved_tokens": 3343,
+      "format_schema_tokens": 931
+    },
+    "cq1-m03": {
+      "fact_count": 1,
+      "reserved_tokens": 3324,
+      "format_schema_tokens": 931
+    },
+    "cq1-m04": {
+      "fact_count": 1,
+      "reserved_tokens": 3337,
+      "format_schema_tokens": 931
+    },
+    "cq1-c01": {
+      "fact_count": 1,
+      "reserved_tokens": 3554,
+      "format_schema_tokens": 931
+    },
+    "cq1-c02": {
+      "fact_count": 1,
+      "reserved_tokens": 3556,
+      "format_schema_tokens": 931
+    },
+    "cq1-i01": {
+      "fact_count": 1,
+      "reserved_tokens": 3516,
+      "format_schema_tokens": 931
+    },
+    "cq1-i02": {
+      "fact_count": 1,
+      "reserved_tokens": 3515,
+      "format_schema_tokens": 931
+    }
+  }
+}

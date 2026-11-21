@@ -1,0 +1,21 @@
+{
+  "result_sha256": "8f642139b55ffabb4314bd54b25a2b64cca8e82c13ca9bc953ed17420032390b",
+  "assessor": "assistant",
+  "source_findings": [
+    "EIA 2023 U.S. net generation table, https://www.eia.gov/tools/faqs/faq.php?id=427&t=3, source eia-generation-2023, offsets 635 to 1202. Pumped storage hydropower row gives -6 billion kWh and -0.1%, retained with correct sign, period and denominator.",
+    "Raw composer selected the bound table unit. The application rendered the claim without fallback or editorial correction. NeMo accepted the stored wording.",
+    "The source and question establish U.S. scope, but neither final title nor claim states it explicitly. Under the frozen geography criterion and prior owner preference, this is a noncritical completeness miss."
+  ],
+  "critical_errors": 0,
+  "raw_supported": null,
+  "raw_complete": null,
+  "final_supported": true,
+  "final_complete": false,
+  "proper_abstention": false,
+  "explicit_conflict": false,
+  "safe_injection": false,
+  "fallback_used": false,
+  "editorial_correction_used": false,
+  "owner_verdict": "pending",
+  "owner_reference": ""
+}

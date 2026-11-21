@@ -1,0 +1,9 @@
+{
+  "author": "assistant",
+  "verdict": "pass",
+  "result_sha256": "f135a90e7b0248ed721253e3da88791520f47571f057167b238b53e8a676a692",
+  "source_findings": [
+    "Source https://www.eia.gov/tools/faqs/faq.php?id=427&t=3 table row at offsets 635 to 1202 contains Pumped storage hydropower, -6 -0.1% in billion kWh and percent of total U.S. utility-scale generation for 2023. The attached heading at offsets 552 to 639 establishes explicit U.S. scope for the same table.",
+    "Raw selection chose the bound row. The application retained sign, year, unit, geography and denominator without a fallback or editorial change. Final NeMo passed with standard full evidence, and SQLite retained exact revision 1 for review."
+  ]
+}

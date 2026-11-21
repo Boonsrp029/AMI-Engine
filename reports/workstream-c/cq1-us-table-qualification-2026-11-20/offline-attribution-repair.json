@@ -1,0 +1,42 @@
+{
+  "model_calls": 0,
+  "sockets_blocked": true,
+  "old_mapper": {
+    "stages": [
+      "mapping"
+    ],
+    "reason": "Input should be 's_3d984c2a678a88a6'"
+  },
+  "old_composer": {
+    "stages": [
+      "mapping",
+      "composition"
+    ],
+    "reason": "Raw claim must name the verified table publication"
+  },
+  "fixed": {
+    "stages": [
+      "mapping",
+      "composition"
+    ],
+    "draft": {
+      "title": "Analyst research brief",
+      "claims": [
+        {
+          "text": "The table cites Electric Power Monthly as its data source.",
+          "source_ids": [
+            "eia-generation-2023"
+          ]
+        }
+      ],
+      "warnings": []
+    },
+    "focus": {
+      "r1": {
+        "kind": "table_publication",
+        "span_id": "s_3d984c2a678a88a6",
+        "publication": "Electric Power Monthly"
+      }
+    }
+  }
+}

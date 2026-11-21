@@ -1,0 +1,30 @@
+{
+  "stage": "mapping",
+  "identity": {
+    "run_id": "09728a6cb9864d838f1738dbea30c3da",
+    "attempt_id": "36493055f05f4c1793a3aa87ea8f6cb0",
+    "plan_id": "964eaefc59266464a5eb7962b1887871238c22afb7b520c807806851d8ee1338",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\"wire_version\": \"cq-fact-span-selection-v1\", \"facts\": [{\"fact_id\": \"r1.1\", \"state\": \"supported\", \"alternatives\": [ [\n    {\"span_id\": \"s_379ceb3c45f341ef\", \"context\": [\"utility-scale electricity generation facilities in the United States.\"]}\n  ]]}],\"geography\": {\"status\": \"unresolved\", \"value\": \"\",\"evidence\": [],\"reason\": \"No place is explicitly named in the question and evidenced by selected sources or their pinned document.\"}}",
+  "usage": {
+    "input_tokens": 2297,
+    "output_tokens": 131,
+    "total_tokens": 2428
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-19T12:14:18.2420747Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 18109267600,
+    "load_duration": 13168011900,
+    "prompt_eval_count": 2297,
+    "prompt_eval_duration": 1174933000,
+    "eval_count": 131,
+    "eval_duration": 3727475000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

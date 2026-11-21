@@ -1,0 +1,5 @@
+# Context bounds diagnostic findings
+
+cq1-a40 passed mapping with the exact EIA threshold span and empty context. The raw composer retained the minimum and the megawatt value but omitted the requested 1,000 kilowatts. Validation stopped the attempt at composition before NeMo or draft publication. An offline replay reproduced the exact rejection. A fixed response containing both quantities passed composition with the pinned EIA citation. [Raw mapper](actual-development-v1/cq1-a40.mapping.raw.json) · [Raw composition](actual-development-v1/cq1-a40.composition.raw.json) · [Offline replay](offline-replay.json)
+
+The batch closed with one of two cases attempted and zero passing. cq1-a39 remained unattempted. The attempt took 29.218 seconds. The two actual model calls reported 3,167 input and 186 output tokens combined. NeMo invocations were zero and cost was unmeasured. There is no published draft for owner review. [Result](actual-development-v1/cq1-a40.result.json) · [Wall clock](wall-clock-cq1-a40.json) · [Stop record](actual-development-v1/stopped.json)

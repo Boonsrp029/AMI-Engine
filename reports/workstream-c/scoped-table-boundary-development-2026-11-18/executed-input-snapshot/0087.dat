@@ -1,0 +1,11 @@
+# Table boundary development source review
+
+These two cases are consumed development evidence. Inspect cq1-a28 first. It must select one exact source window containing 2023, the table headings and the Geothermal row with 16 billion kWh and 0.4% of total U.S. utility-scale generation. Selection must contain no duplicate evidence roles. Composition must select its verified row unit. The final draft must preserve label, year, generation measure, unit and denominator. Application table rendering must be logged separately from the raw composer selection. Unsupported, missing or conflicting status fails this answerable development gate.
+
+Only after technical, source, completeness, title, safety and storage checks pass, inspect cq1-a27. Its row must retain biogenic municipal solid waste, 6 billion kWh and 0.1% for the same period and denominator. This is a regression of the existing table selection. The owner's explicit U.S. editorial preference remains recorded separately. Human review must identify any geographic wording omission in the exact generated draft before owner acceptance. It does not alter the archived qualification assessment.
+
+Inspect original source bytes, offsets and hashes. Do not judge by parsing alone or a reference answer. Record raw selection, application rendering, fallback and editorial changes independently. Stop and close the allowance at the first technical, source, completeness or safety failure. No retries, warmups, prompt tuning, substitutions or further qualification calls belong to this diagnostic.
+
+Limit each workflow to four local main-model calls, one NeMo wrapper invocation and 180 seconds including preparation. Total maximum is eight main-model calls and two NeMo invocations. Internal NeMo usage and actual backend cancellation remain incompletely measured.
+
+After both actual attempts pass, plan a separately authorized fresh twenty-case qualification. The prior roster has two consumed cases and eighteen unattempted cases. Preserve all eighteen until the revised pool and any two replacement facts are explicitly frozen. Retain the agreed category gates of 9/10 answerable, 2/2 partial, 4/4 abstention, 2/2 conflict, 2/2 injection, and zero critical unsupported or wrong-scope/date/unit claims. This document grants no execution.

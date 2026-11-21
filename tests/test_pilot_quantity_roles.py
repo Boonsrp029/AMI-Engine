@@ -6,6 +6,23 @@ from types import SimpleNamespace
 import pytest
 
 from src.pilot._quantities import UnsupportedQuantityRole, validate_quantity_roles, percentage_evidence, percentage_views
+from src.pilot._quantities import validate_power_quantity_pairs
+
+
+@pytest.mark.parametrize("candidate", ["one thousand watts", "1,000 W", "1 thousand watts", "1,000 Watts"])
+def test_power_quantity_matches_digits_scale_and_unit_alias(candidate):
+    validate_power_quantity_pairs(f"The source lists {candidate}.", ["Rated power is 1,000 watts."])
+
+
+@pytest.mark.parametrize("candidate", ["one million watts", "1,000 kW", "1,000 MW", "2 thousand watts"])
+def test_power_quantity_rejects_unsupported_value_or_unit(candidate):
+    with pytest.raises(UnsupportedQuantityRole, match="power quantity"):
+        validate_power_quantity_pairs(f"The source lists {candidate}.", ["Rated power is 1,000 watts."])
+
+
+def test_power_quantity_does_not_treat_energy_as_power():
+    with pytest.raises(UnsupportedQuantityRole, match="power quantity"):
+        validate_power_quantity_pairs("Rated power is 1,000 W.", ["Output was 1,000 Wh."])
 from src.pilot._evidence import EvidenceMap, project_draft
 
 

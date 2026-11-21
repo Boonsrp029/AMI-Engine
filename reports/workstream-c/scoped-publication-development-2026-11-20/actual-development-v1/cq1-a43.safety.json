@@ -1,0 +1,10 @@
+{
+  "validated_report": "The table cites Electric Power Monthly as its data source.",
+  "passed_guardrails": true,
+  "raw_output": "The table cites Electric Power Monthly as its data source.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null,
+  "evidence_view": "capacity-evidence-first-v1",
+  "leading_excerpt": null,
+  "context_sha256": "70883e3820402e008b9fa5a1ab0659819623e44b54e0a773812dc27fb721dca7"
+}

@@ -1,0 +1,7 @@
+{
+  "validated_report": "Some advanced smart meters can even track the electricity use of individual devices and allow the utility or customer to control electricity use remotely.",
+  "passed_guardrails": true,
+  "raw_output": "Some advanced smart meters can even track the electricity use of individual devices and allow the utility or customer to control electricity use remotely.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

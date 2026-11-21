@@ -1,0 +1,10 @@
+{
+  "validated_report": "",
+  "passed_guardrails": false,
+  "raw_output": "One gigawatt is equivalent to one million watts in the EIA measurement guide.",
+  "guardrail_status": "RailStatus.BLOCKED",
+  "blocking_rail": "self check facts",
+  "evidence_view": "capacity-evidence-first-v1",
+  "leading_excerpt": null,
+  "context_sha256": "acb0f43d2857c94e30e98c406c2275c2f04d6b38189dfa633d8366b99ff9d4e0"
+}

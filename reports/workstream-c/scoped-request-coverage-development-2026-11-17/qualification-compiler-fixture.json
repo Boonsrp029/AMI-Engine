@@ -1,0 +1,9 @@
+{
+  "synthetic_only": true,
+  "sockets_blocked": true,
+  "model_calls": 0,
+  "compiler_rejected_stopped_fixture": true,
+  "runner_verified_cases": 20,
+  "actual_contract_created": false,
+  "authorization_created": false
+}

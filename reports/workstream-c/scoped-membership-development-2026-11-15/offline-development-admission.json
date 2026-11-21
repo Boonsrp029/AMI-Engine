@@ -1,0 +1,54 @@
+{
+  "generation": 0,
+  "sockets_blocked": true,
+  "cases": {
+    "cq1-a24": {
+      "requests": {
+        "mapping": {
+          "reserved": 3367,
+          "format_schema_tokens": 2225
+        },
+        "composition": {
+          "reserved": 1944,
+          "format_schema_tokens": 323
+        }
+      },
+      "fixed_response_projection": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "The other gases category includes blast furnace gas. The other gases category includes other manufactured and waste gases derived from fossil fuels.",
+            "source_ids": [
+              "eia-generation-2023"
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    },
+    "cq1-a23": {
+      "requests": {
+        "mapping": {
+          "reserved": 3402,
+          "format_schema_tokens": 2225
+        },
+        "composition": {
+          "reserved": 2295,
+          "format_schema_tokens": 198
+        }
+      },
+      "fixed_response_projection": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "In 2023, the table gives Landfill gas generation in Billion kWh as 8 and its share of total utility-scale electricity generation as 0.2%.",
+            "source_ids": [
+              "eia-generation-2023"
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    }
+  }
+}

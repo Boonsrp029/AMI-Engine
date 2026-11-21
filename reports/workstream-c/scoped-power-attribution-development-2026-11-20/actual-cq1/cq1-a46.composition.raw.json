@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "0f49b092fbb2443db99228e22b8de03c",
+    "attempt_id": "c9dd05a4c80c410dae9f9eb0322837b7",
+    "plan_id": "eb469af4925b5827f627e0c4c30b6028a73d8fd8141988bf40c45fc2cc11f339",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"The EIA measurement guide attributes the invention of the steam engine to James Watt.\",\n      \"unit_id\": \"u1\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 775,
+    "output_tokens": 67,
+    "total_tokens": 842
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-20T16:00:11.9928384Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2138695700,
+    "load_duration": 11895500,
+    "prompt_eval_count": 775,
+    "prompt_eval_duration": 214045000,
+    "eval_count": 67,
+    "eval_duration": 1793653000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "retries": 0,
+  "warmups": 0,
+  "unattempted_ids": [
+    "cq1-a16",
+    "cq1-a17",
+    "cq1-a18",
+    "cq1-a06",
+    "cq1-a07",
+    "cq1-a08",
+    "cq1-a09",
+    "cq1-a10",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "nemo_invocations": 2,
+  "source_reviewed_ids": [
+    "cq1-a23"
+  ],
+  "technical_failure_ids": [
+    "cq1-a24"
+  ],
+  "attempted_ids": [
+    "cq1-a23",
+    "cq1-a24"
+  ],
+  "contract_sha256": "e4b0d7be5355bfa66b6a5bcd24c54da3ab52484c663e068e5ec454399ca805cd",
+  "result_sha256": {
+    "cq1-a23": "84b7c0ef9b4c55d63dd72364a38f1d44c5b79f6c1fe0f4ba71bd85ad489e6901",
+    "cq1-a24": "1630ab8ceae001818c546e5ad8adb20a460bb6e8cb9ad058ef02674997aba4bc"
+  },
+  "capture_reported_main_tokens": 6749.0,
+  "main_calls": 4,
+  "status": "technical failure at final safety gate; allowance closed",
+  "passing_ids": [
+    "cq1-a23"
+  ],
+  "monetary_cost": "unmeasured",
+  "internal_nemo_usage": "unmeasured",
+  "planned": 20
+}

@@ -1,0 +1,15 @@
+# =====================================================================
+# Custom Colang Guardrail Definitions
+# =====================================================================
+
+define bot announce off_topic_block
+  "The requested summary contains content outside the authorized financial and market research domain."
+
+define bot announce hallucination_block
+  "The market intelligence report could not be verified against available source context and was flagged for review."
+
+define subflow verify market topic alignment
+  $is_off_topic = execute check_topic_safety
+  if $is_off_topic
+    bot announce off_topic_block
+    stop

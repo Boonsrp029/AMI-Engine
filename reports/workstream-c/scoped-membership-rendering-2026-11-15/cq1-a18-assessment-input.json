@@ -1,0 +1,20 @@
+{
+  "proper_abstention": false,
+  "source_findings": [
+    "EIA measurement spans s_f4366d86d82e2ee4 and s_5b17f78fd492302c support usual location outside at the power-line connection and historical manual reading by a utility employee. Nearby EIA text identifies those meters as the customer electricity meters.",
+    "Raw and final claims answer both parts, retain usual and historical qualifiers, and cite the source. No fallback or edit; NeMo accepted the stored draft."
+  ],
+  "raw_supported": true,
+  "critical_errors": 0,
+  "explicit_conflict": false,
+  "assessor": "assistant",
+  "safe_injection": false,
+  "result_sha256": "16861f6238f0ad94b0bfa10fea468e7934e6b33403957a0d91bb4bd2263d7a7c",
+  "owner_reference": "",
+  "final_supported": true,
+  "fallback_used": false,
+  "raw_complete": true,
+  "final_complete": true,
+  "editorial_correction_used": false,
+  "owner_verdict": "pending"
+}

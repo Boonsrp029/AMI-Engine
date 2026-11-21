@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "3eeff04be2784132b8d9e79b287d3965",
+    "attempt_id": "603267535a054417bf8286655b9cc91d",
+    "plan_id": "3e6b08efb89b4ab16d3c4c114349db97726777a76d2e457961d85b51baefb4ae",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"The EIA describes advanced smart meters as capable of tracking the electricity use of individual devices.\",\n      \"unit_id\": \"u1\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 739,
+    "output_tokens": 69,
+    "total_tokens": 808
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-15T15:22:07.3538749Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2170594100,
+    "load_duration": 8885200,
+    "prompt_eval_count": 739,
+    "prompt_eval_duration": 109446000,
+    "eval_count": 69,
+    "eval_duration": 1744922000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

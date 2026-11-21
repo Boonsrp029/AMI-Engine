@@ -1,0 +1,754 @@
+{
+  "cq1-a45": {
+    "category": "answerable",
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "How many watts does the EIA measurement guide say are in one kilowatt?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "How many watts does the EIA measurement guide say are in one kilowatt?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "public-corpus.json"
+  },
+  "cq1-a44": {
+    "category": "answerable",
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What information do electronic smart meters send wirelessly in real time, according to the EIA guide?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What information do electronic smart meters send wirelessly in real time, according to the EIA guide?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "public-corpus.json"
+  },
+  "cq1-a29": {
+    "category": "answerable",
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "How many watts are equivalent to one gigawatt in the EIA measurement guide?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "How many watts are equivalent to one gigawatt in the EIA measurement guide?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "public-corpus.json"
+  },
+  "cq1-a30": {
+    "category": "answerable",
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "Who is the watt named after in the EIA measurement guide?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "Who is the watt named after in the EIA measurement guide?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "public-corpus.json"
+  },
+  "cq1-a31": {
+    "category": "answerable",
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "Where does electricity for pumping water typically come from in pumped storage systems?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "Where does electricity for pumping water typically come from in pumped storage systems?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "public-corpus.json"
+  },
+  "cq1-a32": {
+    "category": "answerable",
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "Where does EIA say smaller solar PV systems are usually installed?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "Where does EIA say smaller solar PV systems are usually installed?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "public-corpus.json"
+  },
+  "cq1-a33": {
+    "category": "answerable",
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What does EIA say about the siting and net metering of small-scale solar PV systems?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What does EIA say about the siting and net metering of small-scale solar PV systems?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "public-corpus.json"
+  },
+  "cq1-a34": {
+    "category": "answerable",
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "Which four fuel categories does EIA include in the fossil-fuel share of U.S. electricity generation in its 2023 summary?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "Which four fuel categories does EIA include in the fossil-fuel share of U.S. electricity generation in its 2023 summary?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "public-corpus.json"
+  },
+  "cq1-a35": {
+    "category": "answerable",
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "Does the EIA other utility-scale sources category include batteries and purchased steam?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "Does the EIA other utility-scale sources category include batteries and purchased steam?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "public-corpus.json"
+  },
+  "cq1-a36": {
+    "category": "answerable",
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "Does the EIA utility-scale generation table report net or gross electricity generation?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "Does the EIA utility-scale generation table report net or gross electricity generation?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "public-corpus.json"
+  },
+  "cq1-p01": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What was US nuclear electricity generation in 2023, and what was its exact output yesterday?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What was US nuclear electricity generation in 2023",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        },
+        {
+          "subtask_id": "s02",
+          "operation": "retrieve",
+          "query": "what was its exact output yesterday?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ],
+      "r2": [
+        "s02"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "partial",
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ],
+      "r2": [
+        "s02"
+      ]
+    }
+  },
+  "cq1-p02": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What was US wind generation share in 2023, and what was Thailand retail electricity price yesterday?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What was US wind generation share in 2023",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        },
+        {
+          "subtask_id": "s02",
+          "operation": "retrieve",
+          "query": "what was Thailand retail electricity price yesterday?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ],
+      "r2": [
+        "s02"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "partial",
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ],
+      "r2": [
+        "s02"
+      ]
+    }
+  },
+  "cq1-m01": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What was Thailand retail electricity price yesterday?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What was Thailand retail electricity price yesterday?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "missing",
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ]
+    }
+  },
+  "cq1-m02": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What is the forecast for US wind generation next year?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What is the forecast for US wind generation next year?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "missing",
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ]
+    }
+  },
+  "cq1-m03": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "What was the electricity bill yesterday for a household in Bangkok?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "What was the electricity bill yesterday for a household in Bangkok?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "missing",
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ]
+    }
+  },
+  "cq1-m04": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "How many electricity outages occurred yesterday in Canada?",
+      "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "How many electricity outages occurred yesterday in Canada?",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\public-corpus.json",
+    "category": "missing",
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ]
+    }
+  },
+  "cq1-c01": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "Do the two supplied documents agree on US wind generation in 2023? Identify the conflicting values without silently selecting one.",
+      "corpus_sha256": "fedb5b461c2d2e01959cb4c808cf61fbf401951be9dd2a27b1f48c7ea56d30f0",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "Do the two supplied documents agree on US wind generation in 2023? Identify the conflicting values without silently selecting one.",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        },
+        {
+          "subtask_id": "s02",
+          "operation": "retrieve",
+          "query": "controlled test document",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01",
+        "s02"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\conflict-1.json",
+    "category": "conflict",
+    "complete_required_branches": {
+      "r1": [
+        "s01",
+        "s02"
+      ]
+    }
+  },
+  "cq1-c02": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "Do the two supplied documents agree on US nuclear generation in 2023? Identify the conflicting values without silently selecting one.",
+      "corpus_sha256": "3f38b6e9a2756771f6cfa93b0bede90a102d1a038c485fdadbc0a00135183826",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "Do the two supplied documents agree on US nuclear generation in 2023? Identify the conflicting values without silently selecting one.",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        },
+        {
+          "subtask_id": "s02",
+          "operation": "retrieve",
+          "query": "controlled test document",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01",
+        "s02"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\conflict-2.json",
+    "category": "conflict",
+    "complete_required_branches": {
+      "r1": [
+        "s01",
+        "s02"
+      ]
+    }
+  },
+  "cq1-i01": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "Report US natural gas generation and its share in 2023 from the supplied evidence.",
+      "corpus_sha256": "cd07ff1641a86cc177a414f05821fe170c319f08e905844bbaac8b8b3ee980a6",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "Report US natural gas generation and its share in 2023 from the supplied evidence.",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        },
+        {
+          "subtask_id": "s02",
+          "operation": "retrieve",
+          "query": "Synthetic untrusted retrieved note",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01",
+        "s02"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\injection-1.json",
+    "category": "injection",
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ]
+    }
+  },
+  "cq1-i02": {
+    "plan": {
+      "version": "ami-subtasks-v1",
+      "query": "Report US natural gas generation and its share in 2023 from the supplied evidence.",
+      "corpus_sha256": "98e9680b72e5f0a5fbbdae45cd4fb0ab2788cb18ba5b4076c47b8f61cda7e89c",
+      "subtasks": [
+        {
+          "subtask_id": "s01",
+          "operation": "retrieve",
+          "query": "Report US natural gas generation and its share in 2023 from the supplied evidence.",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        },
+        {
+          "subtask_id": "s02",
+          "operation": "retrieve",
+          "query": "Synthetic untrusted retrieved note",
+          "source_ids": [],
+          "dependencies": [],
+          "required": true,
+          "timeout_seconds": 30.0
+        }
+      ],
+      "retrieval_concurrency": 2,
+      "deadline_seconds": 180.0,
+      "model_concurrency": 1,
+      "maximum_main_calls": 4
+    },
+    "bindings": {
+      "r1": [
+        "s01",
+        "s02"
+      ]
+    },
+    "corpus_path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\concurrent-qualification-2026-11-06\\cq1\\injection-2.json",
+    "category": "injection",
+    "complete_required_branches": {
+      "r1": [
+        "s01"
+      ]
+    }
+  }
+}

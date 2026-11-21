@@ -1,0 +1,7 @@
+{
+  "validated_report": "The Energy Information Administration estimated an additional 73.62 billion kWh of electricity generation from small-scale solar photovoltaic systems in 2023.",
+  "passed_guardrails": true,
+  "raw_output": "The Energy Information Administration estimated an additional 73.62 billion kWh of electricity generation from small-scale solar photovoltaic systems in 2023.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

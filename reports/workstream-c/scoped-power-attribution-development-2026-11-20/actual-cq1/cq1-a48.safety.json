@@ -1,0 +1,13 @@
+{
+  "validated_report": "",
+  "passed_guardrails": false,
+  "raw_output": "The EIA other utility-scale sources category includes sulfur.",
+  "guardrail_status": "RailStatus.BLOCKED",
+  "blocking_rail": "self check facts",
+  "evidence_view": "capacity-and-directed-power-evidence-first-v1",
+  "leading_excerpt": null,
+  "context_sha256": "70883e3820402e008b9fa5a1ab0659819623e44b54e0a773812dc27fb721dca7",
+  "raw_fact_verdicts": [
+    "NO"
+  ]
+}

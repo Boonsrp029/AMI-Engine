@@ -1,0 +1,9 @@
+# Explicit conversion evidence — offline prototype
+
+The saved cq1-a22 result is a technical failure. It contains two independent issues: the mapper selected irrelevant fragments despite retrieving a direct answer, and the schema let it repeat a direct span and reuse a direct span as context. The resolver correctly rejected those choices.
+
+The socket-blocked probe checked all 36 spans in the retained case's mapper input. Its narrow recognizer found one statement that explicitly names the requested base and both target units. An offline simulation reused the existing single-span supported-state schema restriction to reject the saved mapping and accept a fixed correct selection. Six synthetic tests with hours, minutes and seconds cover direct support, incomplete evidence, wrong base, wrong target, opposing figures and repeated text. The probe did not alter runtime, infer a conversion, or render a draft.
+
+For a future integrated change, only constrain a supported response when an explicit source statement answering all requested units is unique within validated branch support. Check the complete statement and reject negated, conditional or quoted hypothetical matches. Leave conflicting, missing and unrecognized requests on the existing paths. Preserve same-record context and keep duplicate rejection. The prototype's schema exercise demonstrates the focused case alone; broader prevention of duplicate/self-context choices remains separate and would need bounded schema and transport tests. No composition contract change is proposed: model-written prose would still be validated against the selected evidence.
+
+Preserve the eighteen unattempted cases. cq1-a21 and cq1-a22 remain consumed. Predeclare replacements before generation and verify a new, bounded development contract before requesting a grant.

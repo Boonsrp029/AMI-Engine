@@ -1,0 +1,23 @@
+{
+  "result_sha256": "16cf232a3f81d36e34467cf7d8b40d491bf8d3a93287c9eb9e40e68139b696ef",
+  "assessor": "assistant",
+  "source_findings": [
+    "The pinned EIA 2023 U.S. utility-scale table gives Other gases, footnote marker 3, generation 11 billion kWh and share 0.3%. The selected direct span s_cb9a294a4ff9d4c9 at source offsets 557:1157 retains the table year, column headings and complete row. Marker 3 is not the generation amount.",
+    "The raw composer selected the verified r1/u1 table unit. Application rendering retains the correct amount, share, generation measure, denominator and 2023 observation period. Both requested fields are complete; there is no fallback or editorial correction.",
+    "U.S. scope is supported by the original question and the source table heading, but remains implicit in generated prose. Explicit U.S. wording is an owner preference for review; no wrong geography is asserted.",
+    "The mapper adds unnecessary same-record solar/U.S.-fragment context. It supplies no claim and does not replace the complete direct row.",
+    "NeMo passed; revision 1 is retained in needs_review state. Owner review of this new qualification result is pending."
+  ],
+  "critical_errors": 0,
+  "raw_supported": true,
+  "raw_complete": true,
+  "final_supported": true,
+  "final_complete": true,
+  "proper_abstention": false,
+  "explicit_conflict": false,
+  "safe_injection": false,
+  "fallback_used": false,
+  "editorial_correction_used": false,
+  "owner_verdict": "pending",
+  "owner_reference": ""
+}

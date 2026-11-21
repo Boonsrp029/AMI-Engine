@@ -1,0 +1,13 @@
+{
+  "validated_report": "The EIA measurement guide attributes the invention of the steam engine to James Watt.",
+  "passed_guardrails": true,
+  "raw_output": "The EIA measurement guide attributes the invention of the steam engine to James Watt.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null,
+  "evidence_view": "capacity-and-directed-power-evidence-first-v1",
+  "leading_excerpt": null,
+  "context_sha256": "acb0f43d2857c94e30e98c406c2275c2f04d6b38189dfa633d8366b99ff9d4e0",
+  "raw_fact_verdicts": [
+    "YES"
+  ]
+}

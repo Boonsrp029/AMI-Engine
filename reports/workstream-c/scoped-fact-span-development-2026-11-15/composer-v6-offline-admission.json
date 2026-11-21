@@ -1,0 +1,55 @@
+{
+  "fixed_responses_only": true,
+  "actual_model_calls": 0,
+  "composition_version": "cq-composer-v6-bound-source-modal",
+  "cases": {
+    "cq1-a20": {
+      "requests": {
+        "mapping": {
+          "reserved": 3423,
+          "format_schema_tokens": 5769
+        },
+        "composition": {
+          "reserved": 1971,
+          "format_schema_tokens": 252
+        }
+      },
+      "fixture_draft": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "Earlier automated electricity meters could periodically report electricity use to the utility.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    },
+    "cq1-a19": {
+      "requests": {
+        "mapping": {
+          "reserved": 3400,
+          "format_schema_tokens": 3021
+        },
+        "composition": {
+          "reserved": 2260,
+          "format_schema_tokens": 198
+        }
+      },
+      "fixture_draft": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "In 2023, the table gives Biomass (total) generation in Billion kWh as 47 and its share of total utility-scale electricity generation as 1.1%.",
+            "source_ids": [
+              "eia-generation-2023"
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    }
+  }
+}

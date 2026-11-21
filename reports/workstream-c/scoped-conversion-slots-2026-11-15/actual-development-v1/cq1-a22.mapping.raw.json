@@ -1,0 +1,30 @@
+{
+  "stage": "mapping",
+  "identity": {
+    "run_id": "b8920c8f871f4f46940c60ef6ad52bc5",
+    "attempt_id": "efb4276dc2534c9e921f0281e4c80efb",
+    "plan_id": "a5a6227fff6053105846db602488521633309ea3b5b6011f41772ec92d7f1088",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\"wire_version\": \"cq-fact-span-selection-v1\", \"facts\": [{\"fact_id\": \"r1.1\", \"state\": \"supported\", \"alternatives\": [ [{ \"span_id\": \"s_d1ad042cf9ed1c0a\", \"context\": [] }]]}],\"geography\": {\"status\": \"unresolved\", \"value\": \"\",\"evidence\": [],\"reason\": \"No place is explicitly named in the question and evidenced by selected sources or their pinned document.\"}}",
+  "usage": {
+    "input_tokens": 2253,
+    "output_tokens": 122,
+    "total_tokens": 2375
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-15T12:08:57.0408016Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 14870770200,
+    "load_duration": 10183664000,
+    "prompt_eval_count": 2253,
+    "prompt_eval_duration": 1144962000,
+    "eval_count": 122,
+    "eval_duration": 3525065000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

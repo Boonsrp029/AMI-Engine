@@ -1,0 +1,20 @@
+{
+  "result_sha256": "824ab55539f4f17a73536cf195123aec98f2d3a62b69b9f6fce971a1efad2460",
+  "assessor": "assistant",
+  "source_findings": [
+    "EIA Measuring Electricity, eia-measurement offsets 1556–1615, states that these meters wirelessly send power usage data in real time. The preceding lines identify electronic smart meters. Both the raw and stored answer include the requested data and accurately describe this subset of meters.",
+    "NeMo accepted the exact draft. No fallback or editorial correction."
+  ],
+  "critical_errors": 0,
+  "raw_supported": true,
+  "raw_complete": true,
+  "final_supported": true,
+  "final_complete": true,
+  "proper_abstention": false,
+  "explicit_conflict": false,
+  "safe_injection": false,
+  "fallback_used": false,
+  "editorial_correction_used": false,
+  "owner_verdict": "pending",
+  "owner_reference": ""
+}

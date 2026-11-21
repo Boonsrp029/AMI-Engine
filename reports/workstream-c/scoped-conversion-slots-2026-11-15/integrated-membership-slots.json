@@ -1,0 +1,44 @@
+{
+  "sockets_blocked": true,
+  "actual_model_calls": 0,
+  "saved_partial_rejected": true,
+  "capture_sha256": {
+    "mapping": "73940e7e461ce90be513ba4075ee994d1c5ab317d066e02ee564a9e09f9d6764",
+    "composition": "6e2df28dfd434fa59cac8212c1359a3455f4aacdf21db19ff28980e09244c20e"
+  },
+  "requests": {
+    "mapping": {
+      "reserved": 3367,
+      "format_schema_tokens": 2225
+    },
+    "composition": {
+      "reserved": 1944,
+      "format_schema_tokens": 323
+    }
+  },
+  "fixed_raw_composer": {
+    "title": "Analyst research brief",
+    "claims": [
+      {
+        "unit_id": "u1",
+        "component_id": "r1",
+        "targets": {
+          "target_1": "The other gases category includes blast furnace gas.",
+          "target_2": "The other gases category includes other manufactured and waste gases derived from fossil fuels."
+        }
+      }
+    ]
+  },
+  "fixed_projection": {
+    "title": "Analyst research brief",
+    "claims": [
+      {
+        "text": "The other gases category includes blast furnace gas. The other gases category includes other manufactured and waste gases derived from fossil fuels.",
+        "source_ids": [
+          "eia-generation-2023"
+        ]
+      }
+    ],
+    "warnings": []
+  }
+}

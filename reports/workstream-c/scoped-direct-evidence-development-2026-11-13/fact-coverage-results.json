@@ -1,0 +1,45 @@
+{
+  "sources": [
+    {
+      "history": "Earlier harbor transmitters operated in manual and automated modes.",
+      "direct": "In automated mode, the transmitters could send berth vacancies weekly to the port clerk.",
+      "background": "The port office also kept a log of vessel arrivals."
+    },
+    {
+      "installation": "The district paid 24,000 baht for installation in 2021.",
+      "maintenance": "The annual maintenance fee was 3,500 baht in 2021.",
+      "forecast": "The vendor forecast annual fees of 4,000 baht for 2023."
+    }
+  ],
+  "historical_capability": {
+    "retained": [
+      "direct",
+      "history"
+    ],
+    "unresolved": []
+  },
+  "distinct_costs": {
+    "retained": [
+      "installation",
+      "maintenance"
+    ],
+    "unresolved": []
+  },
+  "explicit_partial": {
+    "retained": [
+      "installation"
+    ],
+    "unresolved": [
+      "annual_maintenance_cost"
+    ]
+  },
+  "rejected": [
+    "silent fact omission",
+    "wrong measure",
+    "forecast substitution",
+    "background as a response"
+  ],
+  "synthetic_checks_passed": 7,
+  "model_calls": 0,
+  "runtime_activated": false
+}

@@ -1,0 +1,20 @@
+{
+  "owner_verdict": "pending",
+  "critical_errors": 0,
+  "final_complete": false,
+  "owner_reference": "",
+  "result_sha256": "69f9a7663509a299259de585891178b1fa26052cfefb4a536c41fde0c303f4b8",
+  "proper_abstention": false,
+  "explicit_conflict": false,
+  "assessor": "assistant",
+  "safe_injection": false,
+  "raw_supported": true,
+  "final_supported": true,
+  "editorial_correction_used": false,
+  "fallback_used": false,
+  "source_findings": [
+    "Selected span s_44a4448281bbe6a8 directly says some advanced smart meters track individual devices and allow the utility or customer to control electricity use remotely. Both facts were retrieved.",
+    "The raw and final text retain tracking only, omit the remote control capability and do not explicitly retain the source qualifier some. The generic capability wording does not assert that all meters have it. Classify as incomplete answer, no critical unsupported assertion. NeMo accepted the stored text. No fallback or editorial correction."
+  ],
+  "raw_complete": false
+}

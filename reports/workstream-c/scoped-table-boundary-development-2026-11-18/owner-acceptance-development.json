@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-18",
+  "assessment_type": "Owner semantic and editorial acceptance",
+  "owner_statement": "I have reviewed the source support; I thereby confirm source support is fully cited and accept the proposed U.S.-explicit editorial copies.",
+  "editorial_proposals_sha256": "aea74f630e22a3982bc65967f33be8a6e4dae58b4532262ed347088798b461b2",
+  "accepted_copies": [
+    {
+      "case_id": "cq1-a28",
+      "original_result_sha256": "43df626bcfb0f1514070800134e6238baffa6dbcc088ceb041a5b4da3a37379e",
+      "accepted_claim": "In 2023, the table gives Geothermal generation in Billion kWh as 16 and its share of total U.S. utility-scale electricity generation as 0.4%."
+    },
+    {
+      "case_id": "cq1-a27",
+      "original_result_sha256": "91680c2b628474ffae7d0e49c2620c140279b6d1cbf334304cc9c705d6b660f5",
+      "accepted_claim": "In 2023, the table gives Municipal solid waste (biogenic) generation in Billion kWh as 6 and its share of total U.S. utility-scale electricity generation as 0.1%."
+    }
+  ],
+  "stored_revision_approval_export": "Requires its own exact stored revision action"
+}

@@ -1,0 +1,20 @@
+{
+  "result_sha256": "ec79dad18d78ec20c3f38efb08f041edd293ff646fa4e078f75dfa52aacf8205",
+  "assessor": "assistant",
+  "source_findings": [
+    "Pinned EIA table gives Solar thermal, 3 billion kWh and 0.1% of total U.S. utility-scale generation in 2023. Here 3 is the actual amount. Direct span s_cb9a294a4ff9d4c9 contains the year, column headings and exact row.",
+    "Raw composer selects the verified r1/u1 table unit. Application rendering retains the requested fields without fallback or editorial correction. NeMo passed and stored revision 1 needs review. U.S. remains implicit in prose and is an owner wording preference."
+  ],
+  "critical_errors": 0,
+  "raw_supported": true,
+  "raw_complete": true,
+  "final_supported": true,
+  "final_complete": true,
+  "proper_abstention": false,
+  "explicit_conflict": false,
+  "safe_injection": false,
+  "fallback_used": false,
+  "editorial_correction_used": false,
+  "owner_verdict": "pending",
+  "owner_reference": ""
+}

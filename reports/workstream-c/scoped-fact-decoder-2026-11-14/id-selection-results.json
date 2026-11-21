@@ -1,0 +1,15 @@
+{
+  "actual_model_calls": 0,
+  "runtime_activated": false,
+  "checks": 9,
+  "saved_context_rejected": true,
+  "negative_checks": [
+    "cross-record context",
+    "direct repeated as context",
+    "unknown direct ID",
+    "empty support",
+    "one conflict side"
+  ],
+  "granularity": "complete application-generated source spans; no model-calculated offsets",
+  "direct_relevance_verified": false
+}

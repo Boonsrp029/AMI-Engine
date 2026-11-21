@@ -1,0 +1,7 @@
+{
+  "validated_report": "Pumped storage hydroelectricity generation is negative on an annual basis because most pumped storage electricity generation facilities use more electricity than they produce on an annual basis.",
+  "passed_guardrails": true,
+  "raw_output": "Pumped storage hydroelectricity generation is negative on an annual basis because most pumped storage electricity generation facilities use more electricity than they produce on an annual basis.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

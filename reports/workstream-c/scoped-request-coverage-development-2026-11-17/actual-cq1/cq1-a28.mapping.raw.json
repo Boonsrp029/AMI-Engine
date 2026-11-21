@@ -1,0 +1,30 @@
+{
+  "stage": "mapping",
+  "identity": {
+    "run_id": "c660ba8512fc4b4fb26a78e377532e4f",
+    "attempt_id": "58717486e4fc46318a763f405bfe1927",
+    "plan_id": "0d87329c511695202e808a4e2afb78e77022173e0bbe04018098fc7e9b5ed2d6",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\"wire_version\": \"cq-fact-span-selection-v1\", \"facts\": [{\"fact_id\": \"r1.1\", \"state\": \"supported\", \"alternatives\": [ [\n    {\"span_id\": \"s_53a9904131330b03\", \"context\": [\"s_31e68c934e4613b5\", \"s_2259500935f03130\"]}, {\"span_id\": \"s_53a9904131330b03\", \"context\": [\"s_31e68c934e4613b5\", \"s_2259500935f03130\"]}, {\"span_id\": \"s_53a9904131330b03\", \"context\": [\"s_31e68c934e4613b5\", \"s_2259500935f03130\"]}, {\"span_id\": \"s_53a9904131330b03\", \"context\": [\"s_31e68c934e4613b5\", \"s_2259500935f03130\"]}, {\"span_id\": \"s_53a9904131330b03\", \"context\": [\"s_31e68c934e4613b5\", \"s_2259500935f03130\"]}] ]}],\"geography\": {\"status\": \"unresolved\", \"value\": \"\",\"evidence\": [],\"reason\": \"Geography known requires a place explicitly named in the question and evidenced by selected sources or their pinned document.\"}}",
+  "usage": {
+    "input_tokens": 2228,
+    "output_tokens": 326,
+    "total_tokens": 2554
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-17T11:19:20.0379519Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 8804000500,
+    "load_duration": 28214500,
+    "prompt_eval_count": 2228,
+    "prompt_eval_duration": 1166475000,
+    "eval_count": 326,
+    "eval_duration": 7446189000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

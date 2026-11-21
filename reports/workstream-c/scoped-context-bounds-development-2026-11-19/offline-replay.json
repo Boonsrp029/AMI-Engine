@@ -1,0 +1,25 @@
+{
+  "sockets_blocked": true,
+  "main_calls": 0,
+  "actual_replay": {
+    "stages": [
+      "mapping",
+      "composition"
+    ],
+    "error": "Raw capacity claim must retain the minimum and both requested units"
+  },
+  "fixed_response": {
+    "stages": [
+      "mapping",
+      "composition"
+    ],
+    "claims": [
+      {
+        "text": "The minimum total electricity generating capacity is one megawatt (or 1,000 kilowatts).",
+        "source_ids": [
+          "eia-generation-2023"
+        ]
+      }
+    ]
+  }
+}

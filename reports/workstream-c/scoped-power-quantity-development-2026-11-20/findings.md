@@ -1,0 +1,5 @@
+# Power quantity development findings
+
+cq1-a29 produced the correct one billion watts for one gigawatt. A fixed-response replay confirmed that the same source supports the claim at offsets 490 to 549, the new validator accepted it, and the text passed through composition without fallback or editorial correction. NeMo's self check facts rail blocked the supported report. The retained safety record does not contain the raw verdict. That leaves a factual disagreement and a strict-format rejection indistinguishable for this attempt. [Source and replay](offline-safety-boundary.json) · [Safety record](actual-development-v1/cq1-a29.safety.json)
+
+One of two cases ran and zero passed the complete gate. The first used two main calls with 3,052 input and 213 output tokens and one NeMo wrapper. It finished in 56.344 seconds without a retry and without a reviewable draft. Internal NeMo usage and cost were unavailable. The publication regression cq1-a43 remained unattempted and the allowance closed. No manual review is needed. [Stop record](actual-development-v1/stopped.json)

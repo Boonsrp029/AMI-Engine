@@ -1,0 +1,39 @@
+{
+  "actual_model_calls": 0,
+  "sockets_blocked": true,
+  "runtime_changed": false,
+  "whole_span_emulation": {
+    "paraphrase": {
+      "draft_before_fact_gate": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "Earlier automated electricity meters could periodically report electricity use to the utility.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "source_contains_could": true,
+      "fact_gate_error": "Projected claim loses a selected fact literal or capability qualifier"
+    },
+    "present_tense": {
+      "draft_before_fact_gate": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "Automated electricity meters periodically report electricity use to the utility.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          }
+        ],
+        "warnings": []
+      },
+      "source_contains_could": true,
+      "fact_gate_error": "Projected claim loses a selected fact literal or capability qualifier"
+    }
+  }
+}

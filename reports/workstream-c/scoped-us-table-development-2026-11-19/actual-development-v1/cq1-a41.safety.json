@@ -1,0 +1,10 @@
+{
+  "validated_report": "In 2023, the table gives U.S. Pumped storage hydropower generation in Billion kWh as -6 and its share of total U.S. utility-scale electricity generation as -0.1%.",
+  "passed_guardrails": true,
+  "raw_output": "In 2023, the table gives U.S. Pumped storage hydropower generation in Billion kWh as -6 and its share of total U.S. utility-scale electricity generation as -0.1%.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null,
+  "evidence_view": "capacity-evidence-first-v1",
+  "leading_excerpt": null,
+  "context_sha256": "70883e3820402e008b9fa5a1ab0659819623e44b54e0a773812dc27fb721dca7"
+}

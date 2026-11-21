@@ -1,0 +1,11 @@
+{
+  "source_findings": [
+    "Both requested facts map to direct EIA span s_6af27ac482a98ade from eia-measurement. The context span is redundant and introduced no separate claim.",
+    "Raw composer and stored draft match. Could qualifies periodically reporting electricity use to the utility. The draft asserts a capability without asserting implementation, present-day practice, or wireless transmission.",
+    "Final NeMo passed; one claim is stored in needs_review. The cited passage supports the answer without fallback or editorial correction."
+  ],
+  "verdict": "pass",
+  "result_sha256": "688afbe10fb8dc6dcd8029ef373f5eb9962f7188ddc2ce4a562ff7906f39001e",
+  "owner_adjudication": "pending",
+  "author": "assistant"
+}

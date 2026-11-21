@@ -1,0 +1,24 @@
+{
+  "status": "technical failure; allowance closed",
+  "contract_sha256": "0cdfe8437cfc69f443392be1cd9b4c4ea88b012e897c42ec838b6ddf20792cc0",
+  "planned": 2,
+  "attempted_ids": [
+    "cq1-a20"
+  ],
+  "passed_ids": [],
+  "technical_failure_ids": [
+    "cq1-a20"
+  ],
+  "unattempted_ids": [
+    "cq1-a19"
+  ],
+  "main_calls": 1,
+  "nemo_invocations": 0,
+  "reported_main_tokens": 2396,
+  "internal_nemo_usage": "no invocation",
+  "monetary_cost": "unmeasured",
+  "retry_count": 0,
+  "pins_verified": 103,
+  "result_sha256": "bf3381b09c695a2df8c1f46ed0f29b21363070d0c75166fa9b0f11629a4c29cd",
+  "draft_available": false
+}

@@ -1,0 +1,155 @@
+{
+  "rows": [
+    {
+      "main_tokens": 3615,
+      "nemo_invocations": 1,
+      "result_sha256": "65498c00f17791447098fb4e5483297a7c1f74230564b6f600c58d2c8284cdc0",
+      "main_calls": 2,
+      "id": "cq1-a25",
+      "wall_seconds": 43.84399999998277
+    },
+    {
+      "main_tokens": 3138,
+      "nemo_invocations": 1,
+      "result_sha256": "69f9a7663509a299259de585891178b1fa26052cfefb4a536c41fde0c303f4b8",
+      "main_calls": 2,
+      "id": "cq1-a26",
+      "wall_seconds": 49.42199999996228
+    },
+    {
+      "main_tokens": 3197,
+      "nemo_invocations": 1,
+      "result_sha256": "a2fcc207a45ede7c136b0dcff0eafab830b3c757363e8fefb154a7d266b6ae6d",
+      "main_calls": 2,
+      "id": "cq1-a16",
+      "wall_seconds": 37.25
+    },
+    {
+      "main_tokens": 3166,
+      "nemo_invocations": 1,
+      "result_sha256": "5148cc26445e159262d1bc7a14e29861a16bb61446f2749115804da9f5c57e02",
+      "main_calls": 2,
+      "id": "cq1-a17",
+      "wall_seconds": 37.46900000004098
+    },
+    {
+      "main_tokens": 3463,
+      "nemo_invocations": 1,
+      "result_sha256": "16861f6238f0ad94b0bfa10fea468e7934e6b33403957a0d91bb4bd2263d7a7c",
+      "main_calls": 2,
+      "id": "cq1-a18",
+      "wall_seconds": 39.65600000001723
+    },
+    {
+      "main_tokens": 3603,
+      "nemo_invocations": 1,
+      "result_sha256": "d33514df2f20f17199acf78bf91d0c85b33e4108e8b8c81e085a86f83f6b55f6",
+      "main_calls": 2,
+      "id": "cq1-a06",
+      "wall_seconds": 41.28099999995902
+    },
+    {
+      "main_tokens": 3615,
+      "nemo_invocations": 1,
+      "result_sha256": "71542d6cff8059bd345514d11b019345588823e857b1503969996f7df67a8e61",
+      "main_calls": 2,
+      "id": "cq1-a07",
+      "wall_seconds": 47.60999999998603
+    },
+    {
+      "main_tokens": 3605,
+      "nemo_invocations": 1,
+      "result_sha256": "0785b98ecb134c300704418ca8cb1d8027d228e05313ef91bc35136adea0aa3e",
+      "main_calls": 2,
+      "id": "cq1-a08",
+      "wall_seconds": 37.32799999997951
+    },
+    {
+      "main_tokens": 3547,
+      "nemo_invocations": 1,
+      "result_sha256": "a570946bf3fc8ba5f52e9a644d053f4e4b15f7e640cb9bcde6fc03313200e129",
+      "main_calls": 2,
+      "id": "cq1-a09",
+      "wall_seconds": 40.39100000000326
+    },
+    {
+      "main_tokens": 3668,
+      "nemo_invocations": 1,
+      "result_sha256": "f91345fcf781bdd7c294643058a962e0fc4e35ad394c452a30d18773850e1dbe",
+      "main_calls": 2,
+      "id": "cq1-a10",
+      "wall_seconds": 41.25
+    }
+  ],
+  "monetary_cost": "unmeasured",
+  "attempted": [
+    "cq1-a25",
+    "cq1-a26",
+    "cq1-a16",
+    "cq1-a17",
+    "cq1-a18",
+    "cq1-a06",
+    "cq1-a07",
+    "cq1-a08",
+    "cq1-a09",
+    "cq1-a10"
+  ],
+  "stop": {
+    "case_id": "cq1-a10",
+    "reason": "second noncritical answerable miss"
+  },
+  "source_reviewed": [
+    "cq1-a25",
+    "cq1-a26",
+    "cq1-a16",
+    "cq1-a17",
+    "cq1-a18",
+    "cq1-a06",
+    "cq1-a07",
+    "cq1-a08",
+    "cq1-a09",
+    "cq1-a10"
+  ],
+  "totals": {
+    "nemo": 10,
+    "tokens": 34617,
+    "calls": 20,
+    "wall": 415.5009999999311
+  },
+  "contract_sha256": "3119601296b14409ed4c7ac0424df385965fb4a0092881abd58360a96ae0639e",
+  "unattempted": [
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "misses": [
+    "cq1-a26",
+    "cq1-a10"
+  ],
+  "planned": 20,
+  "warmups": 0,
+  "retries": 0,
+  "status": "second noncritical answerable miss; allowance closed",
+  "planned_denominators": {
+    "answerable": 10,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2
+  },
+  "internal_nemo_usage": "unmeasured",
+  "category_pass_counts": {
+    "answerable": 8,
+    "partial": 0,
+    "missing": 0,
+    "conflict": 0,
+    "injection": 0
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "source_findings": [
+    "Both requested facts select EIA span s_6af27ac482a98ade in eia-measurement, which supports the reporting capability, cadence, electricity use and utility as recipient. Related context adds no claim.",
+    "Raw prose and stored draft match; could qualifies the reporting action. No fallback or editorial correction. Final NeMo passed and draft is stored needs_review."
+  ],
+  "owner_adjudication": "identical wording previously accepted; this exact result is separate",
+  "result_sha256": "cd6c88bfcccaf873c8c6c0b712af3f8aeaffa86b154d3c00e7ed3848b5edc42f",
+  "author": "assistant",
+  "verdict": "pass"
+}

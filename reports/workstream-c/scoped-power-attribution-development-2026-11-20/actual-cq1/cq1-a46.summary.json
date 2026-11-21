@@ -1,0 +1,61 @@
+{
+  "planned_denominators": {
+    "answerable": 10,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2
+  },
+  "thresholds": {
+    "answerable": 9,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2
+  },
+  "attempted_ids": [
+    "cq1-a46"
+  ],
+  "source_reviewed_ids": [
+    "cq1-a46"
+  ],
+  "unattempted_ids": [
+    "cq1-a47",
+    "cq1-a48",
+    "cq1-a30",
+    "cq1-a31",
+    "cq1-a32",
+    "cq1-a33",
+    "cq1-a34",
+    "cq1-a35",
+    "cq1-a36",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "category_pass_counts": {
+    "answerable": 1,
+    "partial": 0,
+    "missing": 0,
+    "conflict": 0,
+    "injection": 0
+  },
+  "raw_supported_complete_ids": [
+    "cq1-a46"
+  ],
+  "owner_accepted_ids": [],
+  "stop": null,
+  "pending_case": "cq1-a47",
+  "owner_reviewed_ids": [],
+  "review_bundle_sha256": "c49789c42c05471f308653aa38bff377a6c55f58ddf9dc1d6aee1baa4988cc61",
+  "source_quality_gates_pass": false,
+  "qualification_complete": false,
+  "approval_export": "separate exact-revision workflow; never authorized here"
+}

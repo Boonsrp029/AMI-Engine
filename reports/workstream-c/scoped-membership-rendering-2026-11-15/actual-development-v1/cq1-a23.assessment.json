@@ -1,0 +1,11 @@
+{
+  "owner_adjudication": "prior wording request for explicit U.S. remains",
+  "author": "assistant",
+  "verdict": "pass",
+  "source_findings": [
+    "The mapper selected s_cb9a294a4ff9d4c9 and the raw composer selected the verified table unit. The application rendered 8 billion kWh and 0.2% of 2023 total utility-scale generation, citing the pinned EIA table.",
+    "U.S. scope is established by the question and cited table and implicit in the sentence. Preserve the separate owner preference to state U.S. explicitly. No fallback or editorial correction.",
+    "Final NeMo accepted the text unchanged and the draft was stored for review."
+  ],
+  "result_sha256": "f5942c808bfdbb41ec46c93d0d75f2d1143f9fba4554564d1fe6a0914076b5ad"
+}

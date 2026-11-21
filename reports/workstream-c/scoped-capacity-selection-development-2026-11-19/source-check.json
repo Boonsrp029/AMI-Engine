@@ -1,0 +1,25 @@
+{
+  "assistant_source_check": "Both quantities and the minimum are supported. Formal development gate failed at safety.",
+  "source_url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+  "span": "preliminary data\n1\nUtility-scale electricity generation is electricity generation from power plants with at least one megawatt (or 1,000 kilowatts) of total electricity generating capacity.",
+  "provenance": {
+    "unit_id": "u1",
+    "component_id": "r1",
+    "text": "The minimum total electricity generating capacity is one megawatt (or 1,000 kilowatts).",
+    "span_id": "s_379ceb3c45f341ef",
+    "source_id": "eia-generation-2023",
+    "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+    "start": 1320,
+    "end": 1509
+  },
+  "safety": {
+    "validated_report": "",
+    "passed_guardrails": false,
+    "raw_output": "The minimum total electricity generating capacity is one megawatt (or 1,000 kilowatts).",
+    "guardrail_status": "RailStatus.BLOCKED",
+    "blocking_rail": "self check facts"
+  },
+  "attempted": 1,
+  "passed": 0,
+  "planned": 2
+}

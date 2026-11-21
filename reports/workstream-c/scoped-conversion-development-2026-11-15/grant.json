@@ -1,0 +1,15 @@
+{
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "case_ids": [
+    "cq1-a22",
+    "cq1-a21"
+  ],
+  "authorization_reference": "Direct user reply in this Codex chat on 15 November 2026: Authorize scoped conversion development diagnostics",
+  "contract_sha256": "799f2d0c43d43242087eb62f0e082568786fd9c12fc1a6a384c8d980bd980e74",
+  "human_reply": "Authorize scoped conversion development diagnostics"
+}

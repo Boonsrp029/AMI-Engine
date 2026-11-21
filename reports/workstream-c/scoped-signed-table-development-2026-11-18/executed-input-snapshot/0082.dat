@@ -1,0 +1,26 @@
+{
+  "result_sha256": "b057398a9216ec024012d64e6be324270e34e8e3035bf1e77fb8ecb0d42baf51",
+  "assessor": "assistant",
+  "verdict": "pass",
+  "source_findings": [
+    "Pinned EIA U.S. utility-scale 2023 table gives Other sources, 10 billion kWh and 0.2% of total.",
+    "Exact source window s_f7b04ee662b79ea2 at offsets 635:1226 retains year, column headings and row.",
+    "Actual mapper selects one evidence span. Raw composer selects the verified row unit; application renders the claim. No fallback or editorial correction.",
+    "NeMo passed; exact revision 1 is stored as needs_review with no review or export.",
+    "U.S. scope is established by the question and pinned table heading but remains implicit in generated wording. Owner prefers explicit U.S.; wording review remains pending."
+  ],
+  "owner_acceptance": "pending",
+  "source_url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+  "source_id": "eia-generation-2023",
+  "source_content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+  "span_id": "s_f7b04ee662b79ea2",
+  "source_offsets": [
+    635,
+    1226
+  ],
+  "context_quotes": [
+    "16\n0.4%\nPumped storage hydropower\n4\n-6\n-0.1%\nOther sources\n5\n10\n0.2%\nData source: U.S.",
+    "preliminary data\n1\nUtility-scale electricity generation is electricity generation from power plants with at least one megawatt (or 1,000 kilowatts) of total electricity generating capacity."
+  ],
+  "context_note": "The model selected additional same-record contextual spans, retained as exact excerpts. These passages supply no standalone claim. Record as unnecessary context, with the complete direct row and final answer supported."
+}

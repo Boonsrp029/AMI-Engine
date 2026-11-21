@@ -1,0 +1,63 @@
+{
+  "planned_denominators": {
+    "answerable": 10,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2
+  },
+  "thresholds": {
+    "answerable": 9,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2
+  },
+  "attempted_ids": [
+    "cq1-a41",
+    "cq1-a42"
+  ],
+  "source_reviewed_ids": [
+    "cq1-a41",
+    "cq1-a42"
+  ],
+  "unattempted_ids": [
+    "cq1-a29",
+    "cq1-a30",
+    "cq1-a31",
+    "cq1-a32",
+    "cq1-a33",
+    "cq1-a34",
+    "cq1-a35",
+    "cq1-a36",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "category_pass_counts": {
+    "answerable": 0,
+    "partial": 0,
+    "missing": 0,
+    "conflict": 0,
+    "injection": 0
+  },
+  "raw_supported_complete_ids": [],
+  "owner_accepted_ids": [],
+  "stop": {
+    "case_id": "cq1-a42",
+    "reason": "second noncritical answerable miss"
+  },
+  "pending_case": "cq1-a29",
+  "owner_reviewed_ids": [],
+  "review_bundle_sha256": "dd90315685a9b5945291c1ae03f21a2372ead77504be75fa357e571fa5adc61e",
+  "source_quality_gates_pass": false,
+  "qualification_complete": false,
+  "approval_export": "separate exact-revision workflow; never authorized here"
+}

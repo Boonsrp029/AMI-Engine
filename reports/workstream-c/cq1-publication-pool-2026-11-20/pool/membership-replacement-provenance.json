@@ -1,0 +1,46 @@
+{
+  "prior_contract_sha256": "e4b0d7be5355bfa66b6a5bcd24c54da3ab52484c663e068e5ec454399ca805cd",
+  "retained_case_ids": [
+    "cq1-a16",
+    "cq1-a17",
+    "cq1-a18",
+    "cq1-a06",
+    "cq1-a07",
+    "cq1-a08",
+    "cq1-a09",
+    "cq1-a10",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "excluded_consumed_case_ids": [
+    "cq1-a23",
+    "cq1-a24"
+  ],
+  "replacement_sources": [
+    {
+      "case_id": "cq1-a25",
+      "source_id": "eia-generation-2023",
+      "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+      "start": 1120,
+      "end": 1146,
+      "quote": "Other biomass waste\n2\n0.1%"
+    },
+    {
+      "case_id": "cq1-a26",
+      "source_id": "eia-measurement",
+      "url": "https://www.eia.gov/energyexplained/electricity/measuring-electricity.php",
+      "start": 1616,
+      "end": 1770,
+      "quote": "Some advanced smart meters can even track the electricity use of individual devices and allow the utility or customer to control electricity use remotely."
+    }
+  ],
+  "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+}

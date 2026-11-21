@@ -1,0 +1,39 @@
+{
+  "sockets_blocked": true,
+  "actual_model_calls": 0,
+  "runtime_changed": false,
+  "mapper_capture_sha256": "3e131814b19ab98c1cf759000d367afe63cae32ce708a3045a42fcbe8be05d5d",
+  "composer_capture_sha256": "696f456d73067de0eaa7aceb15f95ff002c74ee4672972684a7ddf52ba29c9b7",
+  "original_raw_composition": {
+    "title": "Analyst research brief",
+    "claims": [
+      {
+        "component_id": "r1",
+        "text": "Automated electricity meters report electricity use periodically to the utility.",
+        "unit_id": "u1"
+      }
+    ]
+  },
+  "simulated_selection": {
+    "selection": {
+      "unit_id": "u1",
+      "component_id": "r1"
+    },
+    "source_id": "eia-measurement",
+    "text": "Eventually, automated meters could periodically report electricity use to the utility."
+  },
+  "offline_projected_draft": {
+    "title": "Analyst research brief",
+    "claims": [
+      {
+        "text": "Eventually, automated meters could periodically report electricity use to the utility.",
+        "source_ids": [
+          "eia-measurement"
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "synthetic_eligibility_checks": 8,
+  "source_relevance_proven_by_eligibility": false
+}

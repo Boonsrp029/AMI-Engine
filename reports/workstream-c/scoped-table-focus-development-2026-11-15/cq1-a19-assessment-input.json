@@ -1,0 +1,11 @@
+{
+  "owner_adjudication": "pending",
+  "author": "assistant",
+  "source_findings": [
+    "The mapper selected verified direct span s_cb9a294a4ff9d4c9 from the pinned EIA 2023 U.S. utility-scale generation table. Its Biomass (total) row has 47 billion kWh and 1.1% of total. Additional same-record context added no rendered facts.",
+    "The raw composer selected u1/r1 and did not write prose for the table. The application rendered the exact selected row and cited eia-generation-2023. The claim identifies the denominator as the total in that table; U.S. scope is explicit in the question and cited source title, and implicit in the claim sentence.",
+    "Final NeMo passed and the draft was stored for review. No fallback or editorial correction. Confirm standalone wording with the owner separately."
+  ],
+  "verdict": "pass",
+  "result_sha256": "48ae2751b13f6f82f8613254b9345082671b705537a128ab713d76b703d4aa47"
+}

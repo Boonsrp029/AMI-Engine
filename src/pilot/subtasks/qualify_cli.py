@@ -53,7 +53,7 @@ def main(argv=None):
     transport = BoundedTransport(OllamaStructuredTransport(snapshot["model"]), snapshot,
         contract["tokenizer_path"], contract["tokenizer_sha256"])
     safety = LocalSafety(contract["cases"][args.case]["plan"]["query"], snapshot["model"],
-        contract["output_directory"], args.case, snapshot)
+        contract["output_directory"], args.case, snapshot, evidence_view=contract.get("safety_evidence_view"))
     execute_development(ledger, args.case, transport, safety, verify_model)
     return 0
 

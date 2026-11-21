@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-18",
+  "assessment_type": "Owner semantic and editorial acceptance",
+  "owner_statement": "Accept both editorial copies; source support confirmed",
+  "authorization_reference": "Direct user reply to call_db5ba66dcbf2447e93aa30551f80ab5d",
+  "editorial_proposals_sha256": "41a1b74e49045b722c5c7fad52afc7e20eca464596aea4fb719dd88e7194b12a",
+  "accepted_copies": [
+    {
+      "case_id": "cq1-a38",
+      "original_result_sha256": "b057398a9216ec024012d64e6be324270e34e8e3035bf1e77fb8ecb0d42baf51",
+      "accepted_claim": "In 2023, the table gives Other sources generation in Billion kWh as 10 and its share of total U.S. utility-scale electricity generation as 0.2%."
+    },
+    {
+      "case_id": "cq1-a37",
+      "original_result_sha256": "8665e85bd605cdcf92bcbbeba49888c8d78d1ad7165329286a536596c1da5e6b",
+      "accepted_claim": "In 2023, the table gives Other gases generation in Billion kWh as 11 and its share of total U.S. utility-scale electricity generation as 0.3%."
+    }
+  ],
+  "stored_revision_approval_export": "Requires its own exact stored revision action"
+}

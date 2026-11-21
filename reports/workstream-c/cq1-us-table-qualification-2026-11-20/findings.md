@@ -1,0 +1,7 @@
+# CQ1 qualification findings, 20 November 2026
+
+The frozen batch stopped at cq1-a43 on a technical failure. One of twenty cases was attempted, zero passed, and nineteen remained unattempted. The runner recorded 45.703 seconds, two main-model calls and zero NeMo invocations. Saved responses report 3,065 input tokens and 206 output tokens. Cost was unmeasured. There were zero retries and no draft was published.
+
+The question asked for the EIA publication cited as the table's data source. The pinned record identifies Electric Power Monthly. The mapper selected a passage ending at “Data source: U.S.” and supplied “The U.S.” as context. The composer used this incomplete evidence to name “U.S.” as the data source. A network-blocked replay reproduced the first validator error, “Draft introduces a numeric value absent from its selected evidence.” The year 2023 was in the question but absent from the selected span. It is also present in the full source. The publication omission is a separate source coverage defect. The first validator prevented publication before NeMo. [Replay and exact remaining roster](offline-failure-replay.json) · [Stop record](actual-cq1/stopped.json)
+
+The next engineering action is to test mapping of the complete bibliographic attribution in the same record, including source boundaries around abbreviations and publication titles. Verify a different publication and a distractor in offline fixtures. The attempt remains a failure, and cq1-a43 is consumed evidence. No owner draft review is required for this attempt.

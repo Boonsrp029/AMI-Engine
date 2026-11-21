@@ -1,0 +1,10 @@
+{
+  "author": "assistant",
+  "verdict": "pass",
+  "result_sha256": "b964b65006866ce40af2ad25feb73162fda766b3f0ab7252bbbb9cae2fb0447e",
+  "source_findings": [
+    "The EIA 2023 U.S. utility-scale generation table gives Solar thermal as 3 billion kWh and 0.1% of the total. Both requested fields are bound to the same row. Safety retained full evidence without a leading excerpt.",
+    "Verified https://www.eia.gov/tools/faqs/faq.php?id=427&t=3 at offsets 557 to 1157 in eia-generation-2023.",
+    "Raw composer selected the bound unit, application rendered its cited sentence, no fallback or editorial change, NeMo passed and SQLite retained reviewable revision 1."
+  ]
+}

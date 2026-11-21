@@ -1,0 +1,18 @@
+{
+  "costs": {
+    "requested_facts": 2, "direct": ["setup", "service"], "context": [],
+    "distractors": ["future"], "unresolved": [], "conflicting": false
+  },
+  "reporting": {
+    "requested_facts": 2, "direct": ["direct"], "context": ["history"],
+    "distractors": ["background"], "unresolved": [], "conflicting": false
+  },
+  "partial": {
+    "requested_facts": 2, "direct": ["service"], "context": [],
+    "distractors": ["future"], "unresolved": ["2021 repair cost"], "conflicting": false
+  },
+  "conflict": {
+    "requested_facts": 1, "direct": ["first", "second"], "context": [],
+    "distractors": ["future"], "unresolved": [], "conflicting": true
+  }
+}

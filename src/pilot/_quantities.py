@@ -19,6 +19,11 @@ _REQUEST = re.compile(r'\b(?:what|which)\s+(?:share|percentage|proportion)\s+of\
     r'(?:\s+(?:in|during|for)\s+\d{4}|\?|$)', re.I)
 _SCALES = {'': Decimal(1), 'thousand': Decimal(1000), 'million': Decimal(1000000),
            'billion': Decimal(1000000000), 'trillion': Decimal(1000000000000)}
+_POWER_UNITS = {"watt": "w", "kilowatt": "kw", "megawatt": "mw", "gigawatt": "gw", "terawatt": "tw"}
+_POWER_VALUES = re.compile(
+    rf"(?<![\w.,+-])(?:(?P<numeric>{_NUMBER})(?:\s+(?P<numeric_scale>{_SCALE}))?"
+    rf"|(?P<word>one)\s+(?P<word_scale>{_SCALE}))"
+    r"\s*(?P<unit>[kmgt]?w|(?:kilo|mega|giga|tera)?watts?)\b", re.I)
 _STOP = {'the', 'of', 'in', 'on', 'for', 'all', 'total', 'overall', 'a', 'an'}
 
 
@@ -79,6 +84,25 @@ def quantity_pairs(text):
             scale = (match['scale'] or '').casefold()
             result.add((unit, _number(match['number']) * _SCALES[scale]))
     return result
+
+
+def power_quantity_pairs(text):
+    """Recognize literal power quantities with digits or a spelled-out one and scale."""
+    pairs = set()
+    for match in _POWER_VALUES.finditer(text):
+        unit = match["unit"].casefold()
+        unit = _POWER_UNITS.get(unit.removesuffix("s"), unit)
+        scale = match["numeric_scale"] or match["word_scale"] or ""
+        value = _number(match["numeric"]) if match["numeric"] else Decimal(1)
+        pairs.add((unit, value * _SCALES[scale.casefold()]))
+    return pairs
+
+
+def validate_power_quantity_pairs(text, quotes):
+    """Compare power quantities in the same unit against exact selected evidence."""
+    established = set().union(*(power_quantity_pairs(quote) for quote in quotes))
+    if not power_quantity_pairs(text).issubset(established):
+        raise UnsupportedQuantityRole("Draft power quantity value/unit pair is absent from selected evidence")
 
 
 def percentage_evidence(component):

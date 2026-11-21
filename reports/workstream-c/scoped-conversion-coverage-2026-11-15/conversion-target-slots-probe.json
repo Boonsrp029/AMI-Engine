@@ -1,0 +1,26 @@
+{
+  "model_calls": 0,
+  "sockets_blocked": true,
+  "runtime_changed": false,
+  "validations": {
+    "missing_target_1_rejected": true,
+    "missing_target_2_rejected": true,
+    "swapped_unit_rejected": true,
+    "wrong_value_rejected": true,
+    "unrelated_base_rejected": true,
+    "negation_rejected": true
+  },
+  "distinct_fact_fixture_checks": 2,
+  "fixed_projection": {
+    "title": "Analyst research brief",
+    "claims": [
+      {
+        "text": "One megawatt equals one thousand kilowatts. One megawatt equals one million watts.",
+        "source_ids": [
+          "eia-measurement"
+        ]
+      }
+    ],
+    "warnings": []
+  }
+}

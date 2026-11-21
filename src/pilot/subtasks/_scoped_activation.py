@@ -11,6 +11,8 @@ from .generation import ConcurrentComposer
 
 
 CONTRACT_VERSION = 'cq-scoped-composition-v1'
+FACT_CONTRACT_VERSION = 'cq-scoped-fact-composition-v1'
+SPAN_FACT_CONTRACT_VERSION = 'cq-scoped-fact-span-composition-v1'
 
 
 @dataclass(frozen=True)
@@ -24,6 +26,8 @@ class DeadlineBoundScopedComposer:
     scope_file_sha256: str
     capture: object = None
     complete_required_branches: dict | None = None
+    fact_selection: bool = False
+    whole_fact_spans: bool = False
 
     def __call__(self, report, access):
         declared = Plan.model_validate_json(self.declared_plan.model_dump_json())
@@ -39,7 +43,8 @@ class DeadlineBoundScopedComposer:
         executed = scopes.model_copy(update={'plan_id': runtime.plan_id})
         validate_scopes(runtime, self.bindings, executed)
         result = ScopedConcurrentComposer(runtime, self.bindings, self.as_of, self.transport,
-            executed, self.capture, self.complete_required_branches)(report, access)
+            executed, self.capture, self.complete_required_branches, self.fact_selection,
+            self.whole_fact_spans)(report, access)
         result.diagnostics['scope_deadline_binding'] = {
             'declared_scope_contract': scopes.model_dump(mode='json'),
             'declared_scope_file_sha256': self.scope_file_sha256,
@@ -62,7 +67,7 @@ def prepare_composer(contract, frozen, runtime_plan, transport, capture):
             raise ValueError('Scoped metadata needs an explicit composition contract')
         return ConcurrentComposer(runtime_plan, frozen['bindings'], contract['as_of'], transport,
             capture, complete_required_branches=frozen.get('complete_required_branches'))
-    if kind != CONTRACT_VERSION:
+    if kind not in {CONTRACT_VERSION, FACT_CONTRACT_VERSION, SPAN_FACT_CONTRACT_VERSION}:
         raise ValueError('Unknown composition contract; no silent fallback')
     path = Path(frozen['requested_scopes']).resolve()
     expected = frozen['requested_scopes_sha256']
@@ -80,4 +85,5 @@ def prepare_composer(contract, frozen, runtime_plan, transport, capture):
     if left != right or not 0 < seconds <= limit:
         raise ValueError('Runtime plan differs beyond its allowed deadline reduction')
     return DeadlineBoundScopedComposer(declared, runtime_plan, frozen['bindings'], contract['as_of'],
-        transport, scopes, expected, capture, frozen.get('complete_required_branches'))
+        transport, scopes, expected, capture, frozen.get('complete_required_branches'),
+        kind != CONTRACT_VERSION, kind == SPAN_FACT_CONTRACT_VERSION)

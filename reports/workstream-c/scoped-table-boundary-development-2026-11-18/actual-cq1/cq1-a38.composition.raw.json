@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "01253895075644bfa3038325c869fded",
+    "attempt_id": "f9dba8d3fd584e22bb4f0a529a46a4bd",
+    "plan_id": "d25015b1ae074e58c3e98dc67075b7b4bedc8532b967e0846d3fd7e0946b50ae",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"Pumped storage hydropower generation was 4 in 2023, accounting for 0.4% of US utility-scale generation that year.\",\n      \"unit_id\": \"u1\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 797,
+    "output_tokens": 82,
+    "total_tokens": 879
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-18T11:40:27.9728686Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2602270200,
+    "load_duration": 16634100,
+    "prompt_eval_count": 797,
+    "prompt_eval_duration": 212630000,
+    "eval_count": 82,
+    "eval_duration": 2158977000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

@@ -18,6 +18,35 @@ from .retrieval import LocalBM25Adapter
 from .runner import run_stored_plan
 from .qualification import _write_once
 
+CAPACITY_EVIDENCE_FIRST = "capacity-evidence-first-v1"
+POWER_EVIDENCE_FIRST = "capacity-and-directed-power-evidence-first-v1"
+
+
+def _safety_excerpt(query, draft, sources, *, include_power=False):
+    """Resolve one unambiguous exact span for the whole cited claim."""
+    from .._evidence import build_span_catalog
+    from ._request_focus import _capacity_focus, _normal, _single_power_focus, focused_text, power_claim_texts
+
+    if len(draft["claims"]) != 1:
+        return None
+    claim = draft["claims"][0]
+    matchers = (_capacity_focus, _single_power_focus) if include_power else (_capacity_focus,)
+    matches = [(span_id, span, focus) for span_id, span in build_span_catalog(sources).items()
+               for matcher in matchers for focus in matcher(query, span["text"])]
+    if len(matches) != 1:
+        return None
+    span_id, span, focus = matches[0]
+    if claim["source_ids"] != [span["source_id"]]:
+        return None
+    if focus["kind"] == "single_power_conversion":
+        variants = power_claim_texts(focus, sources[span["source_id"]])
+        matches_claim = _normal(claim["text"]) in {_normal(text) for text in variants}
+    else:
+        matches_claim = claim["text"] == focused_text(focus)
+    if not matches_claim:
+        return None
+    return {"span_id": span_id, **span}
+
 
 @dataclass(frozen=True)
 class CaptureResponse:
@@ -37,6 +66,11 @@ class LocalSafety:
     output: str
     case_id: str
     model_snapshot: dict | None = None
+    evidence_view: str | None = None
+
+    def __post_init__(self):
+        if self.evidence_view not in (None, CAPACITY_EVIDENCE_FIRST, POWER_EVIDENCE_FIRST):
+            raise ValueError("Unsupported qualification safety evidence view")
 
     def __call__(self, draft, sources):
         from src.utils.guardrails_runner import GuardrailsRunner
@@ -48,9 +82,31 @@ class LocalSafety:
         previous = {key: os.environ.get(key) for key in forced}
         try:
             os.environ.update(forced)
-            result = GuardrailsRunner().validate_output(user_input=self.query,
+            context = "\n".join(source["content"] for source in sources.values())
+            excerpt = (_safety_excerpt(self.query, draft, sources,
+                                       include_power=self.evidence_view == POWER_EVIDENCE_FIRST)
+                       if self.evidence_view is not None else None)
+            if excerpt is not None:
+                context = f"Selected source excerpt:\n{excerpt['text']}\n\nComplete retrieved evidence:\n{context}"
+            guard = GuardrailsRunner()
+            verdicts = []
+            if self.evidence_view == POWER_EVIDENCE_FIRST:
+                from src.utils.guardrails_runner import strict_source_grounding
+
+                def record_verdict(value):
+                    verdicts.append(value)
+                    return strict_source_grounding(value)
+
+                guard.rails.register_output_parser(record_verdict, "strict_source_grounding")
+            result = guard.validate_output(user_input=self.query,
                 raw_report="\n".join(c["text"] for c in draft["claims"]),
-                context="\n".join(source["content"] for source in sources.values()))
+                context=context)
+            if self.evidence_view is not None:
+                result = {**result, "evidence_view": self.evidence_view,
+                          "leading_excerpt": excerpt,
+                          "context_sha256": hashlib.sha256(context.encode("utf-8")).hexdigest()}
+            if self.evidence_view == POWER_EVIDENCE_FIRST:
+                result = {**result, "raw_fact_verdicts": verdicts}
             _write_once(Path(self.output) / (self.case_id + ".safety.json"), result)
             if self.model_snapshot is not None:
                 verify_model(self.model_snapshot)

@@ -1,0 +1,9 @@
+{
+  "unchanged_count": 183,
+  "expected_modified_inputs": [
+    "src/pilot/subtasks/_fact_selection.py",
+    "src/pilot/subtasks/_scoped_generation.py"
+  ],
+  "archived_outputs_unchanged": true,
+  "dependencies_unchanged": true
+}

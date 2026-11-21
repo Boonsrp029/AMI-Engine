@@ -1,0 +1,18 @@
+[
+  {
+    "case_id": "cq1-a38",
+    "original_result_sha256": "b057398a9216ec024012d64e6be324270e34e8e3035bf1e77fb8ecb0d42baf51",
+    "original_stored_run_id": "ba28d8ce03614b778ceefdae28e5980a",
+    "original_stored_revision": 1,
+    "proposed_claim": "In 2023, the table gives Other sources generation in Billion kWh as 10 and its share of total U.S. utility-scale electricity generation as 0.2%.",
+    "status": "Editorial proposal awaiting exact wording/source review"
+  },
+  {
+    "case_id": "cq1-a37",
+    "original_result_sha256": "8665e85bd605cdcf92bcbbeba49888c8d78d1ad7165329286a536596c1da5e6b",
+    "original_stored_run_id": "2ecac5b6113648a38614201ce00def54",
+    "original_stored_revision": 1,
+    "proposed_claim": "In 2023, the table gives Other gases generation in Billion kWh as 11 and its share of total U.S. utility-scale electricity generation as 0.3%.",
+    "status": "Editorial proposal awaiting exact wording/source review"
+  }
+]

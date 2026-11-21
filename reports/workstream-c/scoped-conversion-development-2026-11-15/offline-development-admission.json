@@ -1,0 +1,54 @@
+{
+  "generation": 0,
+  "sockets_blocked": true,
+  "cases": {
+    "cq1-a22": {
+      "requests": {
+        "mapping": {
+          "reserved": 3376,
+          "format_schema_tokens": 2214
+        },
+        "composition": {
+          "reserved": 1908,
+          "format_schema_tokens": 252
+        }
+      },
+      "fixed_response_projection": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "One megawatt is equivalent to 1,000 kilowatts or 1,000,000 watts.",
+            "source_ids": [
+              "eia-measurement"
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    },
+    "cq1-a21": {
+      "requests": {
+        "mapping": {
+          "reserved": 3396,
+          "format_schema_tokens": 2225
+        },
+        "composition": {
+          "reserved": 2294,
+          "format_schema_tokens": 198
+        }
+      },
+      "fixed_response_projection": {
+        "title": "Analyst research brief",
+        "claims": [
+          {
+            "text": "In 2023, the table gives Wood generation in Billion kWh as 31 and its share of total utility-scale electricity generation as 0.8%.",
+            "source_ids": [
+              "eia-generation-2023"
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "validated_report": "",
+  "passed_guardrails": false,
+  "raw_output": "The EIA includes blast furnace gas in the other gases category.",
+  "guardrail_status": "RailStatus.BLOCKED",
+  "blocking_rail": "self check facts"
+}

@@ -84,3 +84,76 @@ def test_local_safety_forces_loopback_and_restores_environment(tmp_path, monkeyp
     assert json.loads((tmp_path/"p01.safety.json").read_text())["guardrail_status"] == "synthetic-pass"
     assert os.environ["AGENT_LLM_PROVIDER"] == "openai"
     assert os.environ["OLLAMA_BASE_URL"] == "https://example.invalid"
+
+
+@pytest.mark.parametrize("mode", ["match", "wrong_quantity", "wrong_citation", "ambiguous", "default"])
+def test_capacity_evidence_view_keeps_full_context_and_guard_verdict(tmp_path, monkeypatch, mode):
+    import hashlib
+    import sys
+    from types import SimpleNamespace
+    from src.pilot.subtasks.qualification_runner import CAPACITY_EVIDENCE_FIRST, LocalSafety
+
+    question = "What minimum total payload capacity does the guide specify, in kilograms and grams?"
+    passage = "Eligible crates carry at least 3 kilograms (or 3,000 grams) of total payload capacity."
+    text = "The minimum total payload capacity is 3 kilograms (or 3,000 grams)."
+    sources = {"record": {"content": passage}, "other": {"content": "Earlier crates used wooden lids."}}
+    if mode == "ambiguous":
+        sources["other"]["content"] = passage.replace("3 kilograms", "4 kilograms").replace("3,000", "4,000")
+    if mode == "wrong_quantity":
+        text = text.replace("3,000", "4,000")
+    full = "\n".join(source["content"] for source in sources.values())
+    expected = (f"Selected source excerpt:\n{passage}\n\nComplete retrieved evidence:\n{full}"
+                if mode == "match" else full)
+    calls = []
+
+    class FakeGuard:
+        def validate_output(self, **kwargs):
+            calls.append(kwargs)
+            return {"passed_guardrails": False, "blocking_rail": "self check facts"}
+
+    monkeypatch.setitem(sys.modules, "src.utils.guardrails_runner", SimpleNamespace(GuardrailsRunner=FakeGuard))
+    view = None if mode == "default" else CAPACITY_EVIDENCE_FIRST
+    claim = {"text": text, "source_ids": ["other" if mode == "wrong_citation" else "record"]}
+    assert LocalSafety(question, "model", str(tmp_path), "p01", evidence_view=view)(
+        {"claims": [claim]}, sources) is False
+    assert calls == [{"user_input": question, "raw_report": text, "context": expected}]
+    saved = json.loads((tmp_path / "p01.safety.json").read_text())
+    if view is None:
+        assert "evidence_view" not in saved
+    else:
+        assert saved["context_sha256"] == hashlib.sha256(expected.encode()).hexdigest()
+        assert (saved["leading_excerpt"] is not None) == (mode == "match")
+
+
+@pytest.mark.parametrize("attributed", [False, True])
+def test_directed_power_safety_view_records_the_real_parser_decision(tmp_path, monkeypatch, attributed):
+    from src.utils import guardrails_runner
+    from src.pilot.subtasks.qualification_runner import POWER_EVIDENCE_FIRST, LocalSafety
+
+    quote = "Terawatts (TW): One TW is 1,000 GW, or 1,000,000,000 kW."
+    question = "How many kilowatts are equivalent to one terawatt in the guide?"
+    claim = "One terawatt is equivalent to 1,000,000,000 kilowatts"
+    claim += " in the Thermal Grid Handbook." if attributed else "."
+
+    class FixedGuard:
+        def __init__(self):
+            self.rails = self
+
+        def register_output_parser(self, callback, name):
+            assert name == "strict_source_grounding"
+            self.parser = callback
+
+        def validate_output(self, *, user_input, raw_report, context):
+            assert user_input == question and raw_report == claim
+            assert context == f"Selected source excerpt:\n{quote}\n\nComplete retrieved evidence:\n{quote}\nUnrelated context."
+            assert self.parser("YES with explanation") == [True]
+            return {"passed_guardrails": False, "blocking_rail": "self check facts"}
+
+    monkeypatch.setattr(guardrails_runner, "GuardrailsRunner", FixedGuard)
+    assert LocalSafety(question, "model", str(tmp_path), "test", evidence_view=POWER_EVIDENCE_FIRST)(
+        {"claims": [{"text": claim, "source_ids": ["s1"]}]},
+        {"s1": {"content": quote, "title": "Thermal Grid Handbook"},
+         "s2": {"content": "Unrelated context."}}) is False
+    saved = json.loads((tmp_path / "test.safety.json").read_text())
+    assert saved["raw_fact_verdicts"] == ["YES with explanation"]
+    assert saved["leading_excerpt"]["text"] == quote

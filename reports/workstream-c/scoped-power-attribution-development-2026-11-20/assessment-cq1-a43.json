@@ -1,0 +1,9 @@
+{
+  "author": "assistant",
+  "verdict": "pass",
+  "result_sha256": "7c30098b2c14b1ec8d5afa62f46aedb4ac924f13f5bcf7c574293fd162f69a87",
+  "source_findings": [
+    "The exact source https://www.eia.gov/tools/faqs/faq.php?id=427&t=3 at offsets 1227 to 1336 supports the complete stored claim: The table cites Electric Power Monthly as its data source.",
+    "The mapper selected the exact bound span with empty context. Model-authored text was retained through the final NeMo valid affirmative verdict and persisted as exact SQLite revision 1. No fallback or editorial correction."
+  ]
+}

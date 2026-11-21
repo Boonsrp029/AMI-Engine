@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "47d65351681b4b28b512d5946d43274b",
+    "attempt_id": "ac7fbd10f5144714b399d715c5e3aeec",
+    "plan_id": "0d7edf5aa844ccf9995f969e95a80e67a2edb86263f634a01a2e10fa9713c030",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"The EIA measurement guide says one kilowatt is equal to 1,000 Watts.\",\n      \"unit_id\": \"u1\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 766,
+    "output_tokens": 69,
+    "total_tokens": 835
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-20T14:28:32.7099366Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2118672700,
+    "load_duration": 7111000,
+    "prompt_eval_count": 766,
+    "prompt_eval_duration": 272200000,
+    "eval_count": 69,
+    "eval_duration": 1712194000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

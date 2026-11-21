@@ -1,0 +1,7 @@
+# Keep model-written capability prose
+
+The owner selected prose with strict validation. Composer v6 attaches a required source modal only to whole-span facts whose selected direct passage contains “could.” The composer is told to use that word in the clause stating the supported fact and preserve timing, conditions and negation. The existing validator still rejects loss of “could.” This lexical check cannot establish semantic scope, including whether the word modifies the correct action. No source-rendered capability response kind was activated. The existing table-row path is retained.
+
+Targeted tests passed 39/39. The socket-blocked development admission check exercised both fixed responses within the 4,096-token request reservation. Counts exclude server-added instructions and schema. The fixed responses establish request and validation behavior. For actual cq1-a20 review, require the source's prospective wording or an equivalent with “could,” preserve the stated cadence and recipient, and reject any implication that the source proves actual implementation. The simulated paraphrase is not owner-approved wording.
+
+Verified 107 archived executed inputs, the rejected result, 14 pool files and 20 scope sidecars against their recorded digests. The old grant stays closed. Next freeze a new contract with the exact v6 inputs and fresh output directory; only after an explicit matching grant, run cq1-a20 once and proceed to cq1-a19 only after technical and exact-source checks pass. CQ1 remains gated on both development passes and a separate grant.

@@ -1,0 +1,20 @@
+{
+  "result_sha256": "65498c00f17791447098fb4e5483297a7c1f74230564b6f600c58d2c8284cdc0",
+  "assessor": "assistant",
+  "source_findings": [
+    "The pinned EIA U.S. utility-scale table at s_cb9a294a4ff9d4c9 explicitly lists Other biomass waste, 2 billion kWh and 0.1 percent of total in 2023. The question and table establish U.S. scope, implicit in the sentence.",
+    "Raw composer picked verified u1/r1. Application rendered the exact row, preserving threshold, denominator and citation with no fallback or correction. NeMo accepted and the original draft was stored."
+  ],
+  "critical_errors": 0,
+  "raw_supported": true,
+  "raw_complete": null,
+  "final_supported": true,
+  "final_complete": true,
+  "proper_abstention": false,
+  "explicit_conflict": false,
+  "safe_injection": false,
+  "fallback_used": false,
+  "editorial_correction_used": false,
+  "owner_verdict": "pending",
+  "owner_reference": ""
+}

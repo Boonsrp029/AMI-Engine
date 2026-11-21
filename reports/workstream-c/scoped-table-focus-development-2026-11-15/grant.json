@@ -1,0 +1,15 @@
+{
+  "human_reply": "Authorize scoped table-focus development diagnostics",
+  "case_ids": [
+    "cq1-a20",
+    "cq1-a19"
+  ],
+  "authorization_reference": "Direct user reply in this Codex chat on 15 November 2026: Authorize scoped table-focus development diagnostics",
+  "contract_sha256": "b8acd9b2a16b7bea250efa6d8fd15175dcfca91a1a9fedc5f0dc2a2d7d71b382",
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  }
+}

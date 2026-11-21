@@ -1,0 +1,20 @@
+{
+  "runtime_activated": false,
+  "model_calls": 0,
+  "retained_result_sha256": "06f2a44e77d51a8ce689ad2165c2d823722d1b6e774b0f0315dcbc2b71959188",
+  "exact_question_focus": null,
+  "literal_subject_counterfactual": "What did automated meters report periodically, and who received those reports?",
+  "retained_span": {
+    "span_id": "s_6af27ac482a98ade",
+    "source_text": "Eventually, automated meters could periodically report electricity use to the utility."
+  },
+  "synthetic_checks_passed": [
+    "direct and background",
+    "distinct figures in split sentences",
+    "different recipient in two complete spans",
+    "different subject",
+    "different cadence",
+    "current assertion",
+    "unrelated two-part request"
+  ]
+}

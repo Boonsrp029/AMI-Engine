@@ -1,0 +1,12 @@
+{
+  "result_sha256": "5e7273a420bb3f64e40ac9dd8e43f86046eefc90b78e9ca3d94006ac2e0c284e",
+  "verdict": "fail",
+  "authorship": "assistant",
+  "source_findings": [
+    "The direct EIA span at offsets [1320,1509) establishes at least one megawatt (1,000 kilowatts) of total generating capacity. All three selected spans matched their source offsets.",
+    "Context at [377,385) and [386,549) is distinct and from the same record but concerns small-scale solar output in kWh, not the utility-scale capacity threshold.",
+    "Both the raw composer and stored claim omit the explicitly requested equivalent in kilowatts. No fallback or editorial correction fired. NeMo passed and revision 1 was stored for review."
+  ],
+  "next_action": "Add offline regression coverage for equivalent units explicitly requested together, plus same-record but irrelevant context. Replay the retained response before proposing further generation.",
+  "owner_adjudication": "pending"
+}

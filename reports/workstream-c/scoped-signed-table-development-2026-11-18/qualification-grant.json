@@ -1,0 +1,33 @@
+{
+  "contract_sha256": "6a134feb5c41785680b95b937255338cd1ab7f248b16980353e1aa935b88b89b",
+  "case_ids": [
+    "cq1-a39",
+    "cq1-a40",
+    "cq1-a29",
+    "cq1-a30",
+    "cq1-a31",
+    "cq1-a32",
+    "cq1-a33",
+    "cq1-a34",
+    "cq1-a35",
+    "cq1-a36",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "human_reply": "Authorize CQ1 scoped twenty-case qualification",
+  "authorization_reference": "Direct user reply to call_26d01d03e73947daa41de04d899fd823 on 18 November 2026"
+}

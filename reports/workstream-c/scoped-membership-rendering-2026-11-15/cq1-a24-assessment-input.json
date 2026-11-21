@@ -1,0 +1,11 @@
+{
+  "result_sha256": "f0a9d22d34840ca3eb2ce41dff6a574796454a2235e211ecc2294afb32cf6a7a",
+  "author": "assistant",
+  "source_findings": [
+    "The mapper selected s_1c02614a2ce1b7d8 in eia-generation-2023. Both exact raw fields retain the reference groups and the derived-from-fossil-fuels qualifier.",
+    "Application rendering made one affirmative membership claim in the source category, with exact span ID, offsets and source digest. Related context supplied no extra claim; no fallback or editorial correction.",
+    "Final NeMo accepted the rendered sentence unchanged and the draft was stored for review."
+  ],
+  "owner_adjudication": "pending",
+  "verdict": "pass"
+}

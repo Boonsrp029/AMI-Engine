@@ -1,0 +1,7 @@
+{
+  "validated_report": "One megawatt equals one thousand kilowatts. One megawatt equals one million watts.",
+  "passed_guardrails": true,
+  "raw_output": "One megawatt equals one thousand kilowatts. One megawatt equals one million watts.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

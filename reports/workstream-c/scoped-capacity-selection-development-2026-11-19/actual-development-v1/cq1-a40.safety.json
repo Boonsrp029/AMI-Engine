@@ -1,0 +1,7 @@
+{
+  "validated_report": "",
+  "passed_guardrails": false,
+  "raw_output": "The minimum total electricity generating capacity is one megawatt (or 1,000 kilowatts).",
+  "guardrail_status": "RailStatus.BLOCKED",
+  "blocking_rail": "self check facts"
+}

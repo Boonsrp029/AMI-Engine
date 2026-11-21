@@ -1,0 +1,11 @@
+{
+  "author": "assistant",
+  "source_findings": [
+    "The mapper selected verified table span s_cb9a294a4ff9d4c9 and the raw composer selected bound u1/r1. The application rendered the Wood row as 31 billion kWh and 0.8% of total utility-scale generation in 2023 with eia-generation-2023 as its citation.",
+    "U.S. scope is explicit in the question and pinned table heading and implicit in the rendered sentence. The frozen evidence gate permits that source-bound scope; the prior owner request for an explicit U.S. remains a separate wording change. No fallback or editorial correction.",
+    "Final NeMo passed and the draft was stored for review."
+  ],
+  "verdict": "pass",
+  "result_sha256": "89848aaf5d17a014e882e5dd1c97edf216f6a60473d8086ec051ab7aa5b80815",
+  "owner_adjudication": "prior owner requested explicit U.S.; identical wording issue remains"
+}

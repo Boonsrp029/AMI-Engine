@@ -1,0 +1,7 @@
+{
+  "validated_report": "Utility-scale generation refers to electricity generation from power plants with at least one megawatt of total electricity generating capacity.\nSmall-scale solar PV systems are electricity generators with less than one megawatt of electricity generating capacity, not connected to a power plant with a combined capacity of one megawatt or larger.",
+  "passed_guardrails": true,
+  "raw_output": "Utility-scale generation refers to electricity generation from power plants with at least one megawatt of total electricity generating capacity.\nSmall-scale solar PV systems are electricity generators with less than one megawatt of electricity generating capacity, not connected to a power plant with a combined capacity of one megawatt or larger.",
+  "guardrail_status": "RailStatus.PASSED",
+  "blocking_rail": null
+}

@@ -1,0 +1,95 @@
+{
+  "planned_denominators": {
+    "answerable": 10,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2
+  },
+  "thresholds": {
+    "answerable": 9,
+    "partial": 2,
+    "missing": 4,
+    "conflict": 2,
+    "injection": 2
+  },
+  "attempted_ids": [
+    "cq1-a39",
+    "cq1-a40"
+  ],
+  "source_reviewed_ids": [
+    "cq1-a39"
+  ],
+  "unattempted_ids": [
+    "cq1-a29",
+    "cq1-a30",
+    "cq1-a31",
+    "cq1-a32",
+    "cq1-a33",
+    "cq1-a34",
+    "cq1-a35",
+    "cq1-a36",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "category_pass_counts": {
+    "answerable": 1,
+    "partial": 0,
+    "missing": 0,
+    "conflict": 0,
+    "injection": 0
+  },
+  "raw_supported_complete_ids": [
+    "cq1-a39"
+  ],
+  "owner_accepted_ids": [],
+  "stop": {
+    "case_id": "cq1-a40",
+    "reason": "technical failure"
+  },
+  "pending_case": "cq1-a29",
+  "owner_reviewed_ids": [],
+  "review_bundle_sha256": "40ed450e6d4232d32764e53c4fb4dabe959057db5409c6211479b797338de842",
+  "source_quality_gates_pass": false,
+  "qualification_complete": false,
+  "approval_export": "separate exact-revision workflow; never authorized here",
+  "contract_sha256": "6a134feb5c41785680b95b937255338cd1ab7f248b16980353e1aa935b88b89b",
+  "allowance_status": "closed at failure",
+  "attempted_count": 2,
+  "technical_pass_count": 1,
+  "technical_failure_count": 1,
+  "main_calls": 3,
+  "nemo_invocations": 1,
+  "capture_reported_main_tokens": 6007,
+  "usage_by_case": {
+    "cq1-a39": {
+      "input_tokens": 3414,
+      "output_tokens": 194,
+      "total_tokens": 3608
+    },
+    "cq1-a40": {
+      "input_tokens": 2250,
+      "output_tokens": 149,
+      "total_tokens": 2399
+    }
+  },
+  "owned_wall_seconds": {
+    "cq1-a39": 67.26500000001397,
+    "cq1-a40": 19.25
+  },
+  "internal_nemo_usage": "unmeasured",
+  "monetary_cost": "unmeasured",
+  "result_sha256": {
+    "cq1-a39": "ec79dad18d78ec20c3f38efb08f041edd293ff646fa4e078f75dfa52aacf8205",
+    "cq1-a40": "146c08d0260199abc8a8fe24428c9e0fdadd9df76958e069a72ff58c59a8c627"
+  },
+  "development_editorial_acceptance": "Owner accepted both U.S.-explicit development copies in owner-acceptance-development.json; separate from qualification."
+}

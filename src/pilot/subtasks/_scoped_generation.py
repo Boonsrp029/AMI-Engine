@@ -1,14 +1,15 @@
 """Opt-in scoped composer. A owns activation; no inference on import."""
 import copy
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 import json
 import re
 from typing import Literal, Union, get_args
 
-from pydantic import create_model, field_validator
+from pydantic import Field, create_model, field_validator
 
-from ..schemas import StrictModel
+from ..schemas import Draft, StrictModel
 from .._evidence import build_span_catalog, selection_payload
+from ._table_spans import add_table_publication_spans, add_table_row_spans, table_us_scope
 from .._source_selection import SourceSelection, resolve_source_selection, WIRE_VERSION as SOURCE_WIRE
 from .._requests import requested_components
 from .._composition import response_schema, payload
@@ -17,13 +18,16 @@ from ._coverage import validate_requirements, coverage_checks, branch_payload
 from ._composition_instruction import CONCURRENT_COMPOSITION_INSTRUCTION
 from ._disclosures import DisclosureScopes, validate_scopes, validate_report
 from ._status_conflict import include_opposing_status, validate_publication_status_conflict
-from ._request_focus import focused_text, relevance_hints, request_focus, validate_focused_claims
+from ._request_focus import (REQUIRED_TARGET_FIELDS, conversion_prose, focused_text, power_claim_texts, relevance_hints,
+                             render_membership, request_focus, validate_focused_claims)
+from ._request_coverage import SOURCE_FIELD_KINDS, render_source_fields
+from . import _fact_selection as facts
 from .synthesis import project_report
 
 
 WIRE_VERSION = "cq-scoped-selection-v1"
 MAPPING_VERSION = "cq-mapper-v17-direct-evidence"
-COMPOSITION_VERSION = "cq-composer-v5-source-modality"
+COMPOSITION_VERSION = "cq-composer-v18-power-attribution"
 _DEPENDENT_CLAIM = re.compile(r"^\s*(?:these|those|such)\b", re.I)
 SUBJECT_INSTRUCTION = (
     " Name the subject in each claim. Do not start a claim with These, Those or Such. "
@@ -107,21 +111,29 @@ def application_selection(parsed, question):
     return SourceSelection.model_validate(candidate).model_dump()
 
 
-def table_composition_schema(mapping, table_units):
-    """Keep the existing ordered unit choices and replace table prose with IDs."""
+def table_composition_schema(mapping, table_units, required_prose_units=None):
+    """Keep ordered unit choices, with required table IDs and source-bound sentences."""
     base = response_schema(mapping)
-    if not table_units:
+    if not table_units and not required_prose_units:
         return base
     slots = {
         uid: create_model(f"TableSelection{uid}", __base__=StrictModel,
                          unit_id=(Literal[uid], ...), component_id=(Literal[cid], ...))
         for uid, cid in table_units.items()
     }
+    if required_prose_units:
+        targets = create_model("RequiredTargets", __base__=StrictModel,
+                               **{field: (str, Field(min_length=1, max_length=399))
+                                  for field in REQUIRED_TARGET_FIELDS})
+        for uid, cid in required_prose_units.items():
+            slots[uid] = create_model(f"RequiredProse{uid}", __base__=StrictModel,
+                                      unit_id=(Literal[uid], ...), component_id=(Literal[cid], ...),
+                                      targets=(targets, ...))
     variants = []
     for variant in get_args(base.model_fields["claims"].annotation):
         units = get_args(variant)
         ids = [get_args(slot.model_fields["unit_id"].annotation)[0] for slot in units]
-        if table_units.keys() <= set(ids):
+        if slots.keys() <= set(ids):
             variants.append(tuple[tuple(slots.get(uid, slot) for uid, slot in zip(ids, units, strict=True))])
     return create_model("ScopedTableComposition", __base__=StrictModel,
                         title=(Literal["Analyst research brief"], ...),
@@ -137,6 +149,8 @@ class ScopedConcurrentComposer:
     requested_scopes: DisclosureScopes
     capture: object = None
     complete_required_branches: dict | None = None
+    fact_selection: bool = False
+    whole_fact_spans: bool = False
 
     def __call__(self, report, access):
         scopes = validate_scopes(self.plan, self.bindings, self.requested_scopes)
@@ -160,7 +174,13 @@ class ScopedConcurrentComposer:
             return schema.model_validate(response["parsed"]).model_dump()
 
         requests = requested_components(self.plan.query)
-        focuses = request_focus(requests, catalog, report, self.bindings)
+        anchors = {request["component_id"]: request["question_anchor"] for request in requests}
+        focuses = request_focus(requests, catalog, report, self.bindings,
+                                include_conversions=self.whole_fact_spans, include_membership=self.whole_fact_spans,
+                                include_source_fields=self.whole_fact_spans)
+        if self.whole_fact_spans:
+            focuses.update(add_table_row_spans(requests, catalog, sources, report, self.bindings, focuses))
+            focuses.update(add_table_publication_spans(requests, catalog, sources, report, self.bindings, focuses))
         inputs = {"as_of": self.as_of, "question": self.plan.query,
             "requests": requests, "evidence": selection_payload(sources, catalog),
             "requested_branch_scopes": [{"component_id": a.component_id, "subtask_id": a.subtask_id,
@@ -176,10 +196,30 @@ class ScopedConcurrentComposer:
             inputs["relevance_hints"] = hints
             mapping_instruction += (" Relevance hints rank spans separately for each request. Check the hinted spans first, "
                                     "then select text that answers that request directly. A hint is not evidence by itself.")
-        schema = scoped_schema(selection_schema(catalog, self.plan.query, report=report, requirements=requirements,
-            requested_geography_only=True), focuses)
-        raw_selection = call("mapping", schema, mapping_instruction, inputs)
-        candidate = application_selection(raw_selection, self.plan.query)
+        range_schema = selection_schema(catalog, self.plan.query, report=report,
+            requirements=None if self.fact_selection else requirements, requested_geography_only=True)
+        resolved_facts = []
+        if self.fact_selection:
+            slots = facts.fact_slots(requests)
+            inputs["facts"] = slots
+            span_options = {"catalog": catalog, "bindings": self.bindings, "report": report,
+                            "focuses": focuses} if self.whole_fact_spans else {}
+            direct_instruction = ("For capacity_threshold or single_power_conversion, use the verified direct span with empty context. "
+                                  if any(focus["kind"] in {"capacity_threshold", "single_power_conversion"}
+                                         for focus in focuses.values()) else "")
+            raw_selection = call("mapping", facts.fact_schema(slots, range_schema.model_fields["geography"].annotation,
+                                                              **span_options),
+                (facts.SPAN_INSTRUCTION if self.whole_fact_spans else facts.INSTRUCTION)
+                + direct_instruction
+                + ("Geography known requires a place explicitly named in the question and "
+                "evidenced by selected sources or their pinned document. Otherwise return unresolved with a reason. "
+                "Use complete_required_branches for supported coverage. Use no more than 900 tokens."), inputs)
+            selection, resolved_facts = facts.resolve_facts(
+                raw_selection, slots, self.bindings, catalog, sources, report, focuses)
+        else:
+            raw_selection = call("mapping", scoped_schema(range_schema, focuses), mapping_instruction, inputs)
+            selection = raw_selection
+        candidate = application_selection(selection, self.plan.query)
         mapping, extracts = resolve_source_selection(candidate, catalog, self.plan.query, sources, self.as_of)
         validate_publication_status_conflict(mapping)
         effective, status_conflicts = include_opposing_status(
@@ -191,48 +231,164 @@ class ScopedConcurrentComposer:
         composed = {"title": "Analyst research brief", "claims": []}
         raw_composition = None
         rendered_rows = []
+        rendered_capacity = []
+        rendered_memberships = []
+        rendered_source_fields = []
         if any(c.status in {"supported", "partial"} for c in mapping.components):
             active_focuses = {c.component_id: focuses[c.component_id] for c in mapping.components
                               if c.status in {"supported", "partial"} and c.component_id in focuses}
             composition_inputs = payload(mapping, self.as_of, question=self.plan.query)
             instruction = CONCURRENT_COMPOSITION_INSTRUCTION + SUBJECT_INSTRUCTION
+            if self.fact_selection:
+                facts.attach_fact_context(composition_inputs, resolved_facts, whole_spans=self.whole_fact_spans)
+                instruction += (" Answer each selected fact from direct evidence. When a selected fact has "
+                                "required_source_modal, put that word in the clause stating the supported fact. "
+                                "Keep the passage's time, conditions and negation. For example, rewrite "
+                                "'Previously, kiosks could issue tickets after hours' as "
+                                "'Kiosks could previously issue tickets after hours.' "
+                                if self.whole_fact_spans else
+                                " Retain each selected fact's source_literal_answer with its original modality. ")
+                instruction += (
+                                "Use context to interpret the direct passage. Context cannot supply a standalone claim.")
             table_units = {}
+            capacity_units = {}
+            conversion_units = {}
+            member_units = {}
+            coverage_units = {}
             supported = {c.component_id for c in mapping.components if c.status == "supported"}
             for unit in composition_inputs["units"]:
                 cid = unit["component_id"]
                 focus = active_focuses.get(cid, {})
-                if cid in supported and focus.get("kind") == "table_row" and len(unit["origins"]) == 1:
+                if cid in supported and focus.get("kind") == "unit_conversion":
+                    conversion_units[unit["unit_id"]] = {**focus, "component_id": cid}
+                    unit["required_conversion"] = {"base_unit": focus["base_unit"],
+                        "targets": {field: {"value": value, "unit": target}
+                                    for field, (target, value) in zip(REQUIRED_TARGET_FIELDS, focus["targets"].items(), strict=True)}}
+                if cid in supported and focus.get("kind") == "category_membership":
+                    member_units[unit["unit_id"]] = {**focus, "component_id": cid}
+                    unit["required_membership"] = {"category": focus["category"],
+                        "targets": dict(zip(REQUIRED_TARGET_FIELDS, focus["members"], strict=True))}
+                if cid in supported and focus.get("kind") in SOURCE_FIELD_KINDS:
+                    coverage_units[unit["unit_id"]] = {**focus, "component_id": cid}
+                    unit["required_source_fields"] = dict(zip(REQUIRED_TARGET_FIELDS, focus["fields"], strict=True))
+                kind = focus.get("kind")
+                if (cid in supported and len(unit["origins"]) == 1
+                        and (kind == "table_row" or (self.whole_fact_spans and kind == "capacity_threshold"))):
                     span = catalog[focus["span_id"]]
                     if unit["evidence"] == [{"source_id": span["source_id"], "quote": span["text"]}]:
-                        unit["response_kind"] = "table_row"
-                        table_units[unit["unit_id"]] = cid
+                        unit["response_kind"] = kind
+                        selection_units = table_units if kind == "table_row" else capacity_units
+                        selection_units[unit["unit_id"]] = cid
             if table_units:
                 instruction += TABLE_SELECTION_INSTRUCTION
-            prose_focuses = {cid: focus for cid, focus in active_focuses.items() if cid not in table_units.values()}
+            if capacity_units:
+                instruction += (" For each capacity_threshold select the required unit_id and component_id only. "
+                                "The application renders the verified minimum and both quantities.")
+            if conversion_units:
+                instruction += (" For each required_conversion provide both target fields. Write one sentence per field: "
+                                "One [base unit] equals [value] [unit]. Use only that field's value and unit.")
+            if member_units:
+                instruction += (" For each required_membership return both exact member phrases in their respective "
+                                "target fields. Keep all qualifiers. The application supplies the category sentence.")
+            if coverage_units:
+                instruction += (" For each required_source_fields return the exact two supplied phrases in their "
+                                "respective target fields. Preserve all conditions and qualifiers. The application renders the claim.")
+            selection_units = table_units | capacity_units
+            prose_focuses = {cid: focus for cid, focus in active_focuses.items()
+                             if cid not in selection_units.values() and focus["kind"] not in
+                             {"unit_conversion", "category_membership", *SOURCE_FIELD_KINDS}}
+            power_sources = {}
             if prose_focuses:
                 composition_inputs["request_focus"] = {
                     cid: {"claim_text": focused_text(focus)} for cid, focus in prose_focuses.items()}
                 instruction += FOCUSED_COMPOSITION_INSTRUCTION
-            raw_composition = call("composition", table_composition_schema(mapping, table_units),
+                if any(focus["kind"] == "capacity_threshold" for focus in prose_focuses.values()):
+                    instruction += " Copy each capacity claim_text with its minimum qualifier and both source units."
+                if any(focus["kind"] == "table_publication" for focus in prose_focuses.values()):
+                    instruction += " For a table publication, use its claim_text exactly without adding the table year."
+                for cid, focus in prose_focuses.items():
+                    if focus["kind"] != "single_power_conversion":
+                        continue
+                    power_sources[cid] = sources[catalog[focus["span_id"]]["source_id"]]
+                    variants = power_claim_texts(focus, power_sources[cid])
+                    composition_inputs["request_focus"][cid]["verified_attributions"] = variants[1:]
+                if power_sources:
+                    instruction += (" For a single power conversion, use claim_text or one listed verified_attributions "
+                                    "sentence exactly. Keep every digit.")
+            if self.whole_fact_spans:
+                from .._quantities import power_quantity_pairs, validate_power_quantity_pairs
+                evidence_by_unit = {unit["unit_id"]: unit["evidence"] for unit in composition_inputs["units"]}
+                if any(power_quantity_pairs(item["quote"]) for evidence in evidence_by_unit.values() for item in evidence):
+                    instruction += (" For a power conversion, copy the exact number and requested unit from the direct "
+                                    "evidence. Preserve all digit groups and distinguish millions from billions.")
+            required_units = conversion_units | member_units | coverage_units
+            raw_composition = call("composition", table_composition_schema(mapping, selection_units,
+                {uid: focus["component_id"] for uid, focus in required_units.items()}),
                                    instruction, composition_inputs)
             claims = []
             for claim in raw_composition["claims"]:
-                cid = table_units.get(claim["unit_id"])
+                uid = claim["unit_id"]
+                if uid in required_units:
+                    focus = required_units[uid]
+                    project = {"unit_conversion": conversion_prose, "category_membership": render_membership}.get(
+                        focus["kind"], render_source_fields)
+                    claim = {"unit_id": claim["unit_id"], "component_id": claim["component_id"],
+                             "text": project(claim["targets"], focus)}
+                    if uid in member_units or uid in coverage_units:
+                        span_id = focus["span_id"]
+                        span = catalog[span_id]
+                        rendered = rendered_memberships if uid in member_units else rendered_source_fields
+                        rendered.append({**claim, "span_id": span_id,
+                            "source_id": span["source_id"], "content_sha256": span["content_sha256"],
+                            "start": span["start"], "end": span["end"]})
+                cid = selection_units.get(uid)
                 if cid is not None:
                     focus = active_focuses[cid]
-                    claim = {**claim, "text": focused_text(focus)}
                     span = catalog[focus["span_id"]]
-                    rendered_rows.append({**claim, "span_id": focus["span_id"],
+                    scope = None
+                    if uid in table_units and self.whole_fact_spans:
+                        scope = table_us_scope(anchors[cid], span, sources[span["source_id"]], focus["year"])
+                    text = focused_text(focus)
+                    if scope:
+                        text = (f"In {focus['year']}, the table gives U.S. {focus['label']} generation in "
+                                f"{focus['unit']} as {focus['amount']} and its share of total "
+                                f"U.S. utility-scale electricity generation as {focus['share']}.")
+                    claim = {**claim, "text": text}
+                    rendered = rendered_capacity if uid in capacity_units else rendered_rows
+                    rendered.append({**claim, "span_id": focus["span_id"],
                                           "source_id": span["source_id"], "content_sha256": span["content_sha256"],
-                                          "start": span["start"], "end": span["end"]})
+                                          "start": span["start"], "end": span["end"],
+                                          **({"geographic_evidence": scope} if scope else {})})
                 claims.append(claim)
             composed = {**raw_composition, "claims": claims}
             _validate_explicit_subjects(claims)
-            validate_focused_claims(claims, prose_focuses)
+            validate_focused_claims(claims, {**prose_focuses,
+                **{cid: active_focuses[cid] for cid in capacity_units.values()}}, sources_by_component=power_sources)
+            if self.whole_fact_spans:
+                for claim in claims:
+                    validate_power_quantity_pairs(claim["text"],
+                        (item["quote"] for item in evidence_by_unit[claim["unit_id"]]))
         result = project_report(self.plan, report, mapping.model_dump(exclude={"geography_resolution"}),
             composed, self.bindings, as_of=self.as_of, is_current=lambda: True,
             geographic_resolution=mapping.geography_resolution.model_dump(), disclosure_scopes=scopes)
         _validate_explicit_subjects(result.draft["claims"])
+        if self.fact_selection:
+            status_changed_components = {item["component_id"] for item in status_conflicts}
+            facts.check_fact_claims(result, [fact for fact in resolved_facts
+                                           if fact["component_id"] not in status_changed_components], rendered_rows,
+                                   whole_spans=self.whole_fact_spans)
+            warnings = list(result.draft["warnings"])
+            for fact in resolved_facts:
+                if fact["state"] == "missing":
+                    detail = fact.get("requested_measure") or fact["question_anchor"]
+                    warnings.append(f"Requested fact remains unresolved in the selected evidence: {detail}")
+                elif fact["state"] == "conflicting":
+                    detail = fact.get("requested_measure") or fact["question_anchor"]
+                    sides = ["; ".join(f"{part['source_id']}: {part['answer']}" for part in group)
+                             for group in fact["alternatives"]]
+                    warnings.append(f"Conflicting selected evidence for {detail}: " + " | ".join(sides))
+            result = replace(result, draft=Draft.model_validate({**result.draft, "warnings": warnings}).model_dump())
+            result.diagnostics["fact_selection"] = resolved_facts
         result.diagnostics.update(scoped_mapper_raw_selection=raw_selection,
             application_source_selection=effective, resolved_evidence_mapping=mapping.model_dump(),
             application_detected_status_conflicts=status_conflicts,
@@ -240,10 +396,15 @@ class ScopedConcurrentComposer:
             request_relevance_hints=hints,
             raw_composer_output=raw_composition if raw_composition is not None else composed,
             application_rendered_table_rows=rendered_rows,
+            application_rendered_capacity_thresholds=rendered_capacity,
+            application_rendered_memberships=rendered_memberships,
+            application_rendered_source_fields=rendered_source_fields,
             model_responses=responses, span_catalog=catalog, application_extracts=extracts,
-            requested_branch_coverage=coverage, concurrent_mapping_version=MAPPING_VERSION,
+            requested_branch_coverage=coverage,
+            concurrent_mapping_version=(facts.SPAN_MAPPING_VERSION if self.whole_fact_spans else
+                                        facts.SCHEMA_VERSION if self.fact_selection else MAPPING_VERSION),
             concurrent_composition_version=COMPOSITION_VERSION,
-            mapping_wire_version=WIRE_VERSION,
+            mapping_wire_version=raw_selection["wire_version"],
             gap_authorship="application-owned scoped branch disclosures; not raw model or editorial text")
         return result
 

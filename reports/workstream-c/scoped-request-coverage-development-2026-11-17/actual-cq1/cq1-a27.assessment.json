@@ -1,0 +1,20 @@
+{
+  "result_sha256": "f0c8b93d4f0e63bf45dc468e1ed98ff20c58731464356b6b5d81ca6f16789fb9",
+  "assessor": "assistant",
+  "source_findings": [
+    "The pinned EIA 2023 U.S. utility-scale generation table at s_cb9a294a4ff9d4c9 gives Municipal solid waste (biogenic), 6 billion kWh and 0.1% of total. The question and table establish U.S. scope.",
+    "Raw composer selected the bound table row. Application rendered the two values and exact label, without fallback or editorial correction. Final NeMo passed."
+  ],
+  "critical_errors": 0,
+  "raw_supported": true,
+  "raw_complete": null,
+  "final_supported": true,
+  "final_complete": true,
+  "proper_abstention": false,
+  "explicit_conflict": false,
+  "safe_injection": false,
+  "fallback_used": false,
+  "editorial_correction_used": false,
+  "owner_verdict": "pending",
+  "owner_reference": ""
+}

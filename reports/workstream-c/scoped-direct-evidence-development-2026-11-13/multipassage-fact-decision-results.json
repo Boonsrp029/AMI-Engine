@@ -1,0 +1,67 @@
+{
+  "resolved": {
+    "access": {
+      "state": "supported",
+      "alternatives": [
+        [
+          {
+            "answer": "April through June",
+            "direct": {
+              "source_id": "log",
+              "quote": "The canal gate was open from April through June."
+            },
+            "context": []
+          },
+          {
+            "answer": "42 metres",
+            "direct": {
+              "source_id": "log",
+              "quote": "The gate admitted vessels up to 42 metres long."
+            },
+            "context": []
+          }
+        ]
+      ]
+    },
+    "width": {
+      "state": "conflicting",
+      "alternatives": [
+        [
+          {
+            "answer": "16 metres",
+            "direct": {
+              "source_id": "district_a",
+              "quote": "The inspected gate was 16 metres wide in 2022."
+            },
+            "context": []
+          }
+        ],
+        [
+          {
+            "answer": "19 metres",
+            "direct": {
+              "source_id": "district_b",
+              "quote": "The inspected gate was 19 metres wide in 2022."
+            },
+            "context": []
+          }
+        ]
+      ]
+    },
+    "fees": {
+      "state": "missing",
+      "alternatives": []
+    }
+  },
+  "structural_rejections": [
+    "one conflict side",
+    "duplicate span",
+    "unbound source",
+    "missing with evidence",
+    "empty support group",
+    "shared conflict source"
+  ],
+  "checks_passed": 9,
+  "model_calls": 0,
+  "runtime_activated": false
+}

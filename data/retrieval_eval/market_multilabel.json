@@ -1,0 +1,107 @@
+{
+  "source": "Databricks AI Search Eval Export — Portfolio Handoff, GOLDEN_RECORDS",
+  "source_export_sha256": "ad8d86b783d3c53f163f923d1e1252b02e5549794656ae872e58a30ef4db842e",
+  "corpus_scope": "20-record mock market feed export",
+  "purpose": "retrieval development benchmark",
+  "queries": [
+    {
+      "query": "AI infrastructure and data center investments across Asia-Pacific",
+      "relevant_docs": [
+        "feed_102",
+        "feed_114",
+        "feed_111"
+      ]
+    },
+    {
+      "query": "critical minerals and mining projects in the Asia-Pacific region",
+      "relevant_docs": [
+        "feed_120",
+        "feed_105",
+        "feed_113"
+      ]
+    },
+    {
+      "query": "fintech growth and digital financial services across Asia",
+      "relevant_docs": [
+        "feed_104",
+        "feed_116"
+      ]
+    },
+    {
+      "query": "software and SaaS industry expansion in Southeast Asia and India",
+      "relevant_docs": [
+        "feed_119",
+        "feed_106"
+      ]
+    },
+    {
+      "query": "electric vehicle industry growth and exports in Asia",
+      "relevant_docs": [
+        "feed_112",
+        "feed_118"
+      ]
+    },
+    {
+      "query": "renewable energy and clean tech investment in Asia",
+      "relevant_docs": [
+        "feed_109",
+        "feed_101"
+      ]
+    },
+    {
+      "query": "semiconductor manufacturing and supply chain developments in Asia",
+      "relevant_docs": [
+        "feed_115",
+        "feed_103"
+      ]
+    },
+    {
+      "query": "battery supply chain investments from minerals to vehicles",
+      "relevant_docs": [
+        "feed_112",
+        "feed_118",
+        "feed_105",
+        "feed_113"
+      ]
+    },
+    {
+      "query": "how is AI adoption transforming industries across Asia",
+      "relevant_docs": [
+        "feed_119",
+        "feed_102",
+        "feed_114",
+        "feed_111"
+      ]
+    },
+    {
+      "query": "Mongolia Oyu Tolgoi copper mine powered by solar and wind",
+      "relevant_docs": [
+        "feed_120"
+      ]
+    },
+    {
+      "query": "Hong Kong Web3 and blockchain startups raise $3.5 billion",
+      "relevant_docs": [
+        "feed_108"
+      ]
+    },
+    {
+      "query": "Japan doubles quantum computing research budget to $4 billion",
+      "relevant_docs": [
+        "feed_107"
+      ]
+    },
+    {
+      "query": "Thailand smart city 5G IoT deployment across 30 provinces",
+      "relevant_docs": [
+        "feed_117"
+      ]
+    },
+    {
+      "query": "Vietnam manufacturing FDI from Samsung and Intel",
+      "relevant_docs": [
+        "feed_110"
+      ]
+    }
+  ]
+}

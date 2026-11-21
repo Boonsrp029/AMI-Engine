@@ -1,0 +1,23 @@
+{
+  "retries": 0,
+  "attempted_ids": [
+    "cq1-a22"
+  ],
+  "reported_main_tokens": 3271,
+  "internal_nemo_usage": "unmeasured",
+  "monetary_cost": "unmeasured",
+  "main_calls": 2,
+  "unattempted_ids": [
+    "cq1-a21"
+  ],
+  "planned": 2,
+  "nemo_invocations": 1,
+  "source_failure_ids": [
+    "cq1-a22"
+  ],
+  "status": "source completeness failure; allowance closed",
+  "contract_sha256": "799f2d0c43d43242087eb62f0e082568786fd9c12fc1a6a384c8d980bd980e74",
+  "passing_ids": [],
+  "result_sha256": "b685da9bb914fac8dca8e1f6ab267a31cb66a987f362d3e7a4abb1e498b520f2",
+  "warmups": 0
+}

@@ -1,0 +1,43 @@
+{
+  "offline_only": true,
+  "actual_model_calls": 0,
+  "runtime_changed": false,
+  "synthetic_checks": 7,
+  "archived_replays": {
+    "cq1-a26": {
+      "kind": "counted_capabilities",
+      "unit": "u1",
+      "source": "eia-measurement",
+      "result_sha256": "69f9a7663509a299259de585891178b1fa26052cfefb4a536c41fde0c303f4b8",
+      "source_fields": {
+        "subject": "Some advanced smart meters",
+        "first": "track the electricity use of individual devices",
+        "second": "allow the utility or customer to control electricity use remotely"
+      },
+      "saved_raw_text": "The EIA describes advanced smart meters as capable of tracking the electricity use of individual devices.",
+      "missing_literal_fields": [
+        "subject",
+        "first",
+        "second"
+      ],
+      "other_same_component_units": []
+    },
+    "cq1-a10": {
+      "kind": "example_conditions",
+      "unit": "u2",
+      "source": "eia-measurement",
+      "result_sha256": "f91345fcf781bdd7c294643058a962e0fc4e35ad394c452a30d18773850e1dbe",
+      "source_fields": {
+        "conditions": "you use a 40-Watt (0.04 kW) light bulb for five hours",
+        "result": "you have used 200 Wh"
+      },
+      "saved_raw_text": "The source light-bulb example uses 200 Wh of electrical energy.",
+      "missing_literal_fields": [
+        "conditions"
+      ],
+      "other_same_component_units": [
+        "u3"
+      ]
+    }
+  }
+}

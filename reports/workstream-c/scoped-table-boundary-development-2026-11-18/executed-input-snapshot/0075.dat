@@ -1,0 +1,26 @@
+{
+  "result_sha256": "91680c2b628474ffae7d0e49c2620c140279b6d1cbf334304cc9c705d6b660f5",
+  "assessor": "assistant",
+  "verdict": "pass",
+  "source_findings": [
+    "Pinned EIA U.S. utility-scale 2023 table gives Municipal solid waste (biogenic), 6 billion kWh and 0.1% of total.",
+    "Exact source window s_cb9a294a4ff9d4c9 at offsets 557:1157 retains year, column headings and row.",
+    "Actual mapper selects one evidence span. Raw composer selects the verified row unit; application renders the claim. No fallback or editorial correction.",
+    "NeMo passed; exact revision 1 is stored as needs_review with no review or export.",
+    "U.S. scope is established by the question and pinned table heading but remains implicit in generated wording. Owner prefers explicit U.S.; wording review remains pending."
+  ],
+  "owner_acceptance": "pending",
+  "source_url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+  "source_id": "eia-generation-2023",
+  "source_content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+  "span_id": "s_cb9a294a4ff9d4c9",
+  "source_offsets": [
+    557,
+    1157
+  ],
+  "context_quotes": [
+    "Energy Information Administration estimates that an additional 73.62 billion kWh of electricity generation was from small-scale solar photovoltaic systems in 2023.",
+    "The U.S."
+  ],
+  "context_note": "The model selected extra same-record context about small-scale solar and a U.S. fragment. These passages add no necessary support to the requested waste row and supply no claim. Record as unnecessary context, with the complete direct row and final answer supported."
+}

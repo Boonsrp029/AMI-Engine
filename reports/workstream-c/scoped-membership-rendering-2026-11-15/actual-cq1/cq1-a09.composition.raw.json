@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "5f3210a3ea0644d9a4118ec7a335963c",
+    "attempt_id": "153a5cb060824cba91fe84be1952218e",
+    "plan_id": "2cb21aad16774a01788d6e1b4866a68a52189d9ce5960d326fa352c45f2adf4e",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"Utility-scale generation refers to electricity generation from power plants with at least one megawatt of total electricity generating capacity.\",\n      \"unit_id\": \"u1\"\n    },\n    {\n      \"component_id\": \"r2\",\n      \"text\": \"Small-scale solar PV systems are electricity generators with less than one megawatt of electricity generating capacity, not connected to a power plant with a combined capacity of one megawatt or larger.\",\n      \"unit_id\": \"u2\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 910,
+    "output_tokens": 139,
+    "total_tokens": 1049
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-15T15:29:02.8193913Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3859260000,
+    "load_duration": 7516500,
+    "prompt_eval_count": 910,
+    "prompt_eval_duration": 314019000,
+    "eval_count": 139,
+    "eval_duration": 3415423000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

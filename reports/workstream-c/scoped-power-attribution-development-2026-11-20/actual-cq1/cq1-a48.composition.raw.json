@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "79bb25c0fec14c379290fdfd419ad016",
+    "attempt_id": "6feb68dffc1d41ef89df94c8dfd4b9b9",
+    "plan_id": "f55b34c6fb9144856d2c770466f6e6449588e6c6bbf43931f6c21e45dbda33bf",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"The EIA other utility-scale sources category includes sulfur.\",\n      \"unit_id\": \"u1\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 812,
+    "output_tokens": 62,
+    "total_tokens": 874
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-20T16:02:27.7342863Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2070789400,
+    "load_duration": 10543300,
+    "prompt_eval_count": 812,
+    "prompt_eval_duration": 349016000,
+    "eval_count": 62,
+    "eval_duration": 1593109000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

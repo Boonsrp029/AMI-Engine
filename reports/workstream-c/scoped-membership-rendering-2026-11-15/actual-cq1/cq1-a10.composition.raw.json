@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "bdbff5a6b31b467b8f37744c4c158318",
+    "attempt_id": "8f9c0aed42da4c80ab179e49ddfbd8ec",
+    "plan_id": "bfe90f229ad642ae292b434f6ef7d2065e2b5c8acac24e379c80f89b32df4e28",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"component_id\": \"r1\",\n      \"text\": \"A watt measures power, while a watthour measures energy.\",\n      \"unit_id\": \"u1\"\n    },\n    {\n      \"component_id\": \"r2\",\n      \"text\": \"The source light-bulb example uses 200 Wh of electrical energy.\",\n      \"unit_id\": \"u2\"\n    },\n    {\n      \"component_id\": \"r2\",\n      \"text\": \"Utility companies measure electricity use with meters.\",\n      \"unit_id\": \"u3\"\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 990,
+    "output_tokens": 141,
+    "total_tokens": 1131
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-15T15:30:00.9653257Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 4084473500,
+    "load_duration": 8659900,
+    "prompt_eval_count": 990,
+    "prompt_eval_duration": 377768000,
+    "eval_count": 141,
+    "eval_duration": 3472900000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

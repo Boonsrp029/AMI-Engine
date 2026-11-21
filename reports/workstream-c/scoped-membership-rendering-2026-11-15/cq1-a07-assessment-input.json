@@ -1,0 +1,20 @@
+{
+  "final_supported": true,
+  "final_complete": true,
+  "source_findings": [
+    "The Hydropower row in verified EIA span s_cb9a294a4ff9d4c9 gives 240 billion kWh and 5.7% of U.S. utility-scale generation in 2023; the rendered text preserves both.",
+    "Ordered raw table unit selection validated. The cited EIA table and question establish U.S. scope, implicit in the rendered sentence. No fallback or editorial correction. Final NeMo passed."
+  ],
+  "result_sha256": "71542d6cff8059bd345514d11b019345588823e857b1503969996f7df67a8e61",
+  "fallback_used": false,
+  "explicit_conflict": false,
+  "owner_reference": "",
+  "safe_injection": false,
+  "editorial_correction_used": false,
+  "raw_supported": true,
+  "critical_errors": 0,
+  "proper_abstention": false,
+  "owner_verdict": "pending",
+  "assessor": "assistant",
+  "raw_complete": null
+}

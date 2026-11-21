@@ -1,0 +1,37 @@
+{
+  "sockets_blocked": true,
+  "actual_model_calls": 0,
+  "nemo_calls": 0,
+  "rejection": "Draft introduces a numeric value absent from its selected evidence",
+  "stages": {
+    "mapping": {
+      "capture_sha256": "0f932ef45a382cc03ad836cb03d30d59d7fb56249a83c0990aea771adf071d07",
+      "schema_valid": true,
+      "focus": null,
+      "selected_span": {
+        "span_id": "s_53a9904131330b03",
+        "text": "16\n0.4%\nPumped storage hydropower\n4\n-6\n-0.1%\nOther sources\n5\n10\n0.2%\nData source: U.S."
+      }
+    },
+    "composition": {
+      "capture_sha256": "a675f99cf75887f43a079f394d0d7beb69eee1a0bb26e55b4b158cb4e6035f9f",
+      "schema_valid": true,
+      "raw_claims": [
+        {
+          "component_id": "r1",
+          "text": "Pumped storage hydropower generation was 4 in 2023, accounting for 0.4% of US utility-scale generation that year.",
+          "unit_id": "u1"
+        }
+      ]
+    }
+  },
+  "full_source_focus": [],
+  "source_id": "eia-generation-2023",
+  "source_url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+  "table_tail": {
+    "quote": "Pumped storage hydropower\n4\n-6\n-0.1%\nOther sources\n5\n10\n0.2%",
+    "start": 1166,
+    "end": 1226
+  },
+  "diagnosis": "The positive-only table parser stops at the preceding negative pumped-storage row. No complete focus is offered for Other sources. The mapper selected a fragment without year/header. The raw composer answered a different row and mixed a footnote marker with another row's share."
+}

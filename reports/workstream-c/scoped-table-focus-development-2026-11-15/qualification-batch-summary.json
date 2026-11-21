@@ -1,0 +1,45 @@
+{
+  "unattempted_ids": [
+    "cq1-a16",
+    "cq1-a17",
+    "cq1-a18",
+    "cq1-a06",
+    "cq1-a07",
+    "cq1-a08",
+    "cq1-a09",
+    "cq1-a10",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "source_reviewed_ids": [
+    "cq1-a21"
+  ],
+  "status": "technical failure; allowance closed",
+  "planned": 20,
+  "monetary_cost": "unmeasured",
+  "retries": 0,
+  "contract_sha256": "087435c63720895c1a65c7329e01080df4187e34a19215097cb1ef95aa357994",
+  "capture_reported_main_tokens": 6163.0,
+  "passing_ids": [
+    "cq1-a21"
+  ],
+  "warmups": 0,
+  "nemo_invocations": 1,
+  "technical_failure_ids": [
+    "cq1-a22"
+  ],
+  "attempted_ids": [
+    "cq1-a21",
+    "cq1-a22"
+  ],
+  "main_calls": 3,
+  "internal_nemo_usage": "unmeasured"
+}

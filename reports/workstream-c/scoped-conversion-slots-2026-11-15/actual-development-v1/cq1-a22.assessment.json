@@ -1,0 +1,11 @@
+{
+  "result_sha256": "8fb57e4c3c72ddd22e5a8f99c75f7f840d80158c4b3eedbf2839ba00c5a441bc",
+  "verdict": "pass",
+  "author": "assistant",
+  "source_findings": [
+    "The mapper selected s_d1ad042cf9ed1c0a from pinned eia-measurement. Its exact statement gives 1,000 kW and 1,000,000 watts for one MW. No duplicate or context substitution.",
+    "The two raw required fields give the correct base and both value–unit pairs, written as separate sentences. The application joined those sentences into one claim citing eia-measurement. No fallback, editorial correction, unsupported scope or other claims.",
+    "Final NeMo passed on the joined text, stored for exact-revision review."
+  ],
+  "owner_adjudication": "pending"
+}

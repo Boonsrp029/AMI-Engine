@@ -1,0 +1,20 @@
+{
+  "final_supported": true,
+  "proper_abstention": false,
+  "assessor": "assistant",
+  "safe_injection": false,
+  "owner_reference": "",
+  "raw_complete": true,
+  "editorial_correction_used": false,
+  "source_findings": [
+    "Pinned EIA footnote s_379ceb3c45f341ef establishes at least one MW total generating capacity for utility-scale. Footnote s_d7571401d3a80385 establishes less than one MW for small solar PV and excludes connection to a power plant with combined capacity of one MW or more.",
+    "Both raw and stored claims preserve exact inequalities, capacity measure and the combined-plant distinction. Accepted by NeMo, with no fallback or editorial change."
+  ],
+  "explicit_conflict": false,
+  "final_complete": true,
+  "result_sha256": "a570946bf3fc8ba5f52e9a644d053f4e4b15f7e640cb9bcde6fc03313200e129",
+  "critical_errors": 0,
+  "fallback_used": false,
+  "owner_verdict": "pending",
+  "raw_supported": true
+}

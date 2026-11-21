@@ -1,0 +1,9 @@
+# Capacity composition decision
+
+The retained mapper selected the complete EIA threshold. The composer received an exact two-unit sentence in its input and an explicit copy instruction, yet its free text response omitted kilowatts. The compositor then rejected the draft. The 19 November result stays failed. [Exact replay](offline-replay.json)
+
+Recommend extending the existing table selection pattern to verified capacity thresholds in the opt-in workflow. The composer must return the bound unit and component identifiers, and the application renders the minimum, measure and both quantities from the validated source span. Enable this only when a supported unit binds the exact span containing the complete requested threshold. Preserve the source locator and raw selection, record application rendering as such, and send the final prose through the existing evidence checks and safety stage. Missing, conflicting and ambiguous cases follow their existing paths. The case protocol must explicitly assess raw selection and the rendered claim before any new generation.
+
+An alternative is requiring the full verified sentence as a JSON Schema constant in the composer response. Both prototypes project the same complete claim in a separate synthetic payload-capacity example. The prototype rejects a wrong unit identifier, extra free text in selection mode and missing grams in constant mode. Selection avoids asking the decoder to repeat the full sentence and reuses a contract already used for table rows. [Synthetic schema comparison](capacity-composition-prototype.json)
+
+Owner decision required before activating the capacity selection and rendering contract. After approval, add integrated offline cases for exact source binding, wrong identifiers, conflicting or ambiguous spans, and retention of both units, then freeze a new development contract. Any new model runs require their own grant.

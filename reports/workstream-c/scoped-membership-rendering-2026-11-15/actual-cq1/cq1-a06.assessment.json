@@ -1,0 +1,20 @@
+{
+  "result_sha256": "d33514df2f20f17199acf78bf91d0c85b33e4108e8b8c81e085a86f83f6b55f6",
+  "assessor": "assistant",
+  "source_findings": [
+    "EIA span s_cb9a294a4ff9d4c9 has Wind, 425 billion kWh and 10.2% of total U.S. utility-scale generation in 2023. The final claim retains both figures and denominator.",
+    "Ordered raw table unit selection validated. The cited EIA table and question establish U.S. scope, implicit in the rendered sentence. No fallback or editorial correction. Final NeMo passed."
+  ],
+  "critical_errors": 0,
+  "raw_supported": true,
+  "raw_complete": null,
+  "final_supported": true,
+  "final_complete": true,
+  "proper_abstention": false,
+  "explicit_conflict": false,
+  "safe_injection": false,
+  "fallback_used": false,
+  "editorial_correction_used": false,
+  "owner_verdict": "pending",
+  "owner_reference": ""
+}
