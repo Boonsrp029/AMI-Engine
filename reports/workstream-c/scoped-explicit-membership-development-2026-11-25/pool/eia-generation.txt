@@ -1,0 +1,365 @@
+What is U.S. electricity generation by energy source? - Frequently Asked Questions (FAQs) -
+		U.S. Energy Information Administration (EIA)
+Skip to sub-navigation
+U.S. Energy Information Administration - EIA - Independent Statistics and Analysis
+Menu
+Statistics
+Analysis
+Tools
+Education
+News
+Search
+Frequently Asked Questions (FAQs)
+This page has no sub-navigation.
+Skip to page content
+.
+What is U.S. electricity generation by energy source?
+In 2023, about 4,178 billion kilowatthours (kWh) (or about 4.18 trillion kWh) of electricity were generated at utility-scale electricity generation facilities in the United States.
+1
+About 60% of this electricity generation was from fossil fuels—coal, natural gas, petroleum, and other gases. About 19% was from nuclear energy, and about 21% was from renewable energy sources.
+The U.S. Energy Information Administration estimates that an additional 73.62 billion kWh of electricity generation was from small-scale solar photovoltaic systems in 2023.
+2
+U.S. utility-scale electricity generation by source, amount, and share of total in 2023
+Energy source
+Billion kWh
+Share of total
+Total - all sources
+4,178
+Fossil fuels (total)
+2,505
+60.0%
+Natural gas
+1,802
+43.1%
+Coal
+675
+16.2%
+Petroleum (total)
+16
+0.4%
+Petroleum liquids
+12
+0.3%
+Petroleum coke
+5
+0.1%
+Other gases
+3
+11
+0.3%
+Nuclear
+775
+18.6%
+Renewables (total)
+894
+21.4%
+Wind
+425
+10.2%
+Hydropower
+240
+5.7%
+Solar (total)
+165
+3.9%
+Photovoltaic
+162
+3.9%
+Solar thermal
+3
+0.1%
+Biomass (total)
+47
+1.1%
+Wood
+31
+0.8%
+Landfill gas
+8
+0.2%
+Municipal solid waste (biogenic)
+6
+0.1%
+Other biomass waste
+2
+0.1%
+Geothermal
+16
+0.4%
+Pumped storage hydropower
+4
+-6
+-0.1%
+Other sources
+5
+10
+0.2%
+Data source: U.S. Energy Information Administration,
+Electric Power Monthly
+, February 2024; preliminary data
+1
+Utility-scale electricity generation is electricity generation from power plants with at least one megawatt (or 1,000 kilowatts) of total electricity generating capacity. Data are for
+net electricity generation
+.
+2
+Small-scale solar photovoltaic (PV) systems are electricity generators with less than one megawatt (MW) of electricity generating capacity, which are not connected at a power plant that has a combined capacity of one MW or larger. Most small-scale PV systems are at or near the location where the electricity is consumed and many are
+net metered systems
+. Smaller PV systems are usually installed on building rooftops.
+3
+Other gases includes blast furnace gas and other manufactured and waste gases derived from fossil fuels.
+4
+Pumped storage hydroelectricity
+generation is negative because most pumped storage electricity generation facilities use more electricity than they produce on an annual basis. Most pumped storage systems use electricity from an
+electric power grid
+for pumping water to the storage component of the system.
+5
+Other (utility-scale) sources includes non-biogenic municipal solid waste, batteries, hydrogen, purchased steam, sulfur, tire-derived fuel, and other miscellaneous energy sources.
+Learn more:
+Electric Power Monthly
+: Chapter 1: Net Generation
+Electric Power Annual
+: Chapter 3: Net Generation
+Monthly Energy Review
+: Electricity
+Energy Explained: Electricity in the United States
+Last updated: February 29, 2024, with data from the
+Electric Power Monthly
+, February 2024. Data are preliminary for 2023.
+Other FAQs about
+					Electricity
+How old are U.S. nuclear power plants, and when was the newest one built?
+How much coal, natural gas, or petroleum is used to generate a kilowatthour of electricity?
+How many smart meters are installed in the United States, and who has them?
+What is the outlook for home heating fuel prices this winter?
+How much does it cost to generate electricity with different types of power plants?
+Does EIA publish electric utility rate, tariff, and demand-charge data?
+Can customers choose their electricity supplier?
+Does EIA have data on each power plant in the United States?
+What types and amounts of energy are produced in each state?
+How much of U.S. carbon dioxide emissions are associated with electricity generation?
+How much of U.S. energy production and consumption comes from renewable energy sources?
+Does EIA publish energy consumption and price data for cities, counties, or by zip code?
+How many power plants are in the United States?
+Does EIA project energy production, consumption, or prices for individual states?
+How much electricity is used for lighting in the United States?
+What is U.S. electricity generation by energy source?
+How much does it cost to build different types of power plants in the United States?
+Does EIA publish data on peak or hourly electricity generation, demand, and prices?
+How much electricity is lost in electricity transmission and distribution in the United States?
+What is the efficiency of different types of power plants?
+Does EIA publish the location of electric power plants and transmission lines?
+How much carbon dioxide is produced per kilowatthour of U.S. electricity generation?
+What is the difference between electric generation capacity and electricity generation?
+How much electricity does a power plant generate?
+How much electricity is used for air conditioning in the United States?
+How many nuclear power plants are in the United States, and where are they located?
+How much electricity does an American home use?
+Does EIA have county-level energy production data?
+How is electricity used in U.S. homes?
+Does EIA publish electricity sales and price data by state and by utility?
+Does EIA publish data on costs for electricity transmission and distribution?
+How much of world energy production and consumption is from renewable energy?
+How much energy does the world consume by each energy end-use sector?
+Does EIA have information on unplanned outages of U.S. infrastructures?
+How many electric vehicles (EV) and EV charging stations are in the United States?
+FAQ Topics:
+Coal
+Conversion & Equivalents
+Diesel
+Electricity
+Environment
+Gasoline
+General Energy
+Natural Gas
+Nuclear
+Oil/Petroleum
+Prices
+Renewables
+Full list of upcoming reports
+Sign up for email notifications
+Get the What's New RSS feed
+Didn't find the answer to your question?
+Ask an energy expert
+About EIA
+Open Data
+Legacy
+Contact Us
+U.S. Energy Information Administration
+1000 Independence Ave., SW
+Washington, DC 20585
+Policies
+Privacy/Security
+Copyright & Reuse
+Accessibility
+Information Quality
+Freedom of Information Act (FOIA)
+Related Sites
+usa.gov
+U.S. Department of Energy
+Stay Connected
+Facebook
+X
+Youtube
+LinkedIn
+Email Updates
+RSS Feeds
+Statistics
+Analysis
+Tools
+Education
+News
+Petroleum & Other Liquids
+Crude oil, gasoline, heating oil, diesel, propane, and other liquids including biofuels and natural gas liquids.
+Natural Gas
+Exploration and reserves, storage, imports and exports, production, prices, sales.
+Electricity
+Sales, revenue and prices, power plants, fuel use, stocks, generation, trade, demand & emissions.
+Coal
+Reserves, production, prices, employment and productivity, distribution, stocks, imports and exports.
+Nuclear & Uranium
+Uranium fuel, nuclear reactors, generation, spent fuel.
+Renewable & Alternative Fuels
+Includes hydropower, solar, wind, geothermal, biomass and ethanol.
+EIA Survey Forms
+Forms EIA uses to collect energy data including descriptions, links to survey instructions, and additional information.
+Total Energy
+Comprehensive data summaries, comparisons, analysis, and projections integrated across all energy sources.
+Monthly Energy Review
+Consumption & Efficiency
+Energy use in homes, commercial buildings, manufacturing, and transportation.
+Residential Energy Consumption Survey (RECS)
+Commercial Buildings Energy Consumption Survey (CBECS)
+Manufacturing Energy Consumption Survey (MECS)
+U.S. States
+State energy information, including overviews, rankings, data, and analyses.
+International
+International energy information, including overviews, rankings, data, and analyses.
+Environment
+Greenhouse gas data, voluntary reporting, electric power plant emissions.
+U.S. Energy-Related Carbon Dioxide Emissions
+Energy-Related Carbon Dioxide Emissions at the State Level
+Analysis and Projections
+Monthly and yearly energy forecasts, analysis of energy topics, financial analysis, congressional reports.
+Short-Term Energy Outlook
+Annual Energy Outlook
+Special Reports
+Special market analysis and/or data requests.
+EIA-112 Residential Utility Disconnections
+SHIP Act
+Energy & Financial Markets: What Drives Crude Oil Prices?
+International
+International energy analyses.
+Regional Analysis Briefs
+Country Analysis Briefs
+World Oil Transit Chokepoints
+OPEC Revenue
+Global Energy Security Data
+Data Tools, Apps, & Maps
+Tools to customize searches, view specific data sets, study detailed documentation, and access time-series data.
+Open Data
+EIA's free and open data available as API, Excel add-in, bulk files, and widgets
+EIA Beta
+Come test out some of the products still in development and let us know what you think!
+Open Source Code
+EIA's open source code, available on GitHub.
+All Reports & Products
+Email Updates
+Sign up for email subscriptions to receive messages about specific EIA products
+RSS Feeds
+Subscribe to feeds for updates on EIA products including Today in Energy and What's New.
+Follow us. . .
+A-Z Index
+A
+|
+B
+|
+C
+|
+D
+|
+E
+|
+F
+|
+G
+|
+H
+|
+I
+|
+J
+|
+K
+|
+L
+|
+M
+|
+N
+|
+O
+|
+P
+|
+Q
+|
+R
+|
+S
+|
+T
+|
+U
+|
+V
+|
+W
+|
+XYZ
+Energy Explained
+What is Energy?
+Units & Calculators
+U.S. Energy Facts
+Use of Energy
+Energy & Environment
+Petroleum
+Hydrocarbon Gas Liquids
+Natural Gas
+Coal
+Nuclear
+Electricity
+Hydrogen
+Hydropower
+Biofuels
+Biomass
+Wind
+Geothermal
+Solar
+For Teachers
+Lesson plans, science fair experiments, field trips, teacher guide, and career corner.
+Glossary
+FAQs
+Coal
+Conversion & Equivalents
+Oil/Petroleum
+Diesel
+Electricity
+Environment
+Gasoline
+General Energy
+Natural Gas
+Nuclear
+Prices
+Renewables
+What's New?
+Petroleum Marketing Monthly
+Nov 02, 2026
+Natural Gas Monthly
+Oct 30, 2026
+Petroleum Supply Monthly
+Oct 30, 2026
+Press Room
+Press Releases
+Congressional Testimony
+Presentations
+Events

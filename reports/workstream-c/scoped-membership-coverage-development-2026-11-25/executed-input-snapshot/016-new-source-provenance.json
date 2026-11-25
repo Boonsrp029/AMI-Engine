@@ -1,0 +1,38 @@
+[
+  {
+    "case_id": "cq1-a49",
+    "source_id": "eia-glossary-cq1-a49",
+    "url": "https://www.eia.gov/tools/glossary/index.php?id=N",
+    "captured_date": "2026-11-25",
+    "publication_date": null,
+    "html_sha256": "7738008d64cd8b9872f1d66ed752ef0d5ff94103de8db9a7d2f200e15eab49d8",
+    "text_sha256": "fc8d3c707fb9f2350af7d6fc84c7429c0207b718339cd99b9db2afd68fd75207",
+    "start": 12305,
+    "end": 12602,
+    "exact_excerpt": "Net generation: The amount of gross generation less the electrical energy consumed at the generating station(s) for station service or auxiliaries. Note: Electricity required for pumping at pumped-storage plants is regarded as electricity for station service and is deducted from gross generation."
+  },
+  {
+    "case_id": "cq1-a50",
+    "source_id": "eia-glossary-cq1-a50",
+    "url": "https://www.eia.gov/tools/glossary/index.php?id=N",
+    "captured_date": "2026-11-25",
+    "publication_date": null,
+    "html_sha256": "7738008d64cd8b9872f1d66ed752ef0d5ff94103de8db9a7d2f200e15eab49d8",
+    "text_sha256": "fc8d3c707fb9f2350af7d6fc84c7429c0207b718339cd99b9db2afd68fd75207",
+    "start": 11667,
+    "end": 11819,
+    "exact_excerpt": "Net electricity consumption: Consumption of electricity computed as generation, plus imports, minus exports, minus transmission and distribution losses."
+  },
+  {
+    "case_id": "cq1-a51",
+    "source_id": "eia-glossary-cq1-a51",
+    "url": "https://www.eia.gov/tools/glossary/index.php?id=N",
+    "captured_date": "2026-11-25",
+    "publication_date": null,
+    "html_sha256": "7738008d64cd8b9872f1d66ed752ef0d5ff94103de8db9a7d2f200e15eab49d8",
+    "text_sha256": "fc8d3c707fb9f2350af7d6fc84c7429c0207b718339cd99b9db2afd68fd75207",
+    "start": 12865,
+    "end": 13327,
+    "exact_excerpt": "Net interstate flow of electricity: The difference between the sum of electricity sales and losses within a state and the total amount of electricity generated within that state. A positive number indicates that more electricity (including associated losses) came into the state than went out of the state during the year; conversely, a negative number indicates that more electricity (including associated losses) went out of the state than came into the state."
+  }
+]

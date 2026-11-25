@@ -1,0 +1,37 @@
+{
+  "records": [
+    {
+      "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workflow_pilot\\owner-decisions-2026-10-26\\approved\\d01-revision-2.md",
+      "sha256": "792c871cb743e828d388584088adb7c0f4344d4bcfbd408412ee9582ede09a2c",
+      "expected_hash_record": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\docs\\pilot\\evidence\\owner-decisions-2026-10-26.json",
+      "matches": true
+    },
+    {
+      "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workflow_pilot\\owner-decisions-2026-10-26\\approved\\d03-revision-2.md",
+      "sha256": "96c0a2c30a74d236f781ea23c745eb1d5504bacbb9c12c522c5a89075c69a61b",
+      "expected_hash_record": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\docs\\pilot\\evidence\\owner-decisions-2026-10-26.json",
+      "matches": true
+    },
+    {
+      "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workflow_pilot\\owner-decisions-2026-10-26\\approved\\d04-revision-2.md",
+      "sha256": "058647ea676f072f486a3f4d4d8d56131cbfa24e04cc88d266c2eb09c3ed0d1b",
+      "expected_hash_record": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\docs\\pilot\\evidence\\owner-decisions-2026-10-26.json",
+      "matches": true
+    },
+    {
+      "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workflow_pilot\\owner-decisions-2026-10-26\\approved\\d02-revision-3.md",
+      "sha256": "7baaaa5388731b23f795ba367d504728f9d64619256316d2bcbfbf7c1faec045",
+      "expected_hash_record": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\docs\\pilot\\evidence\\d02-approval-2026-10-26.json",
+      "matches": true
+    },
+    {
+      "path": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workflow_pilot\\comparison-2026-10-21\\human_review.csv",
+      "sha256": "88fd2d1a1d0c31d47cc39fd768c702ca61a1ecb619a116d679a5061ebcc8e64b",
+      "expected_hash_record": "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\docs\\pilot\\evidence\\adjudication-2026-10-25.json",
+      "matches": true
+    }
+  ],
+  "checks": 5,
+  "historical_hashes_all_match": true,
+  "scope_note": "Adds separately verified CSV and four approved exports to the earlier 442-file snapshot coverage."
+}

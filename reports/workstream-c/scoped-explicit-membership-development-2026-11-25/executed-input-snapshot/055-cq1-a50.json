@@ -1,0 +1,18 @@
+{
+  "version": "cq-scoped-disclosures-v1",
+  "plan_id": "b860703c7b565c327ed1a226c6ec4f3b4a7376c726a9ced859b5230b09ffcb8c",
+  "corpus_sha256": "cf64ac0213e632bc303fe64a0f623f55eca133517e10b810e79db07ff0daefd9",
+  "question_sha256": "0d7ed45d2f120c16cf90099e06f0515ed5c681c64d734d36abb390f24ad64e0c",
+  "bindings_sha256": "1adcfd3c62d5cb3d1ca0da2d6949f0c05b355a4f4509d8d0f5d4741c623315f7",
+  "declaration_ref": "Unused glossary question on newly captured source facts; preparer has seen references.",
+  "annotations": [
+    {
+      "component_id": "r1",
+      "subtask_id": "s01",
+      "question_span": {
+        "start": 0,
+        "end": 87
+      }
+    }
+  ]
+}

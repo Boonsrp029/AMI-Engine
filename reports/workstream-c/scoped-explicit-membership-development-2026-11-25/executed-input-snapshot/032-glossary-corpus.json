@@ -1,0 +1,29 @@
+[
+  {
+    "feed_id": "eia-glossary-cq1-a49",
+    "clean_content": "Net generation: The amount of gross generation less the electrical energy consumed at the generating station(s) for station service or auxiliaries. Note: Electricity required for pumping at pumped-storage plants is regarded as electricity for station service and is deducted from gross generation.",
+    "title": "EIA glossary — Net generation",
+    "published": null,
+    "url": "https://www.eia.gov/tools/glossary/index.php?id=N",
+    "doc_name": "eia-glossary-n.txt",
+    "page_num": null
+  },
+  {
+    "feed_id": "eia-glossary-cq1-a50",
+    "clean_content": "Net electricity consumption: Consumption of electricity computed as generation, plus imports, minus exports, minus transmission and distribution losses.",
+    "title": "EIA glossary — Net electricity consumption",
+    "published": null,
+    "url": "https://www.eia.gov/tools/glossary/index.php?id=N",
+    "doc_name": "eia-glossary-n.txt",
+    "page_num": null
+  },
+  {
+    "feed_id": "eia-glossary-cq1-a51",
+    "clean_content": "Net interstate flow of electricity: The difference between the sum of electricity sales and losses within a state and the total amount of electricity generated within that state. A positive number indicates that more electricity (including associated losses) came into the state than went out of the state during the year; conversely, a negative number indicates that more electricity (including associated losses) went out of the state than came into the state.",
+    "title": "EIA glossary — Net interstate flow of electricity",
+    "published": null,
+    "url": "https://www.eia.gov/tools/glossary/index.php?id=N",
+    "doc_name": "eia-glossary-n.txt",
+    "page_num": null
+  }
+]

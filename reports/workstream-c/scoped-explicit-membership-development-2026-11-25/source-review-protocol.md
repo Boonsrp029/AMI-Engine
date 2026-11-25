@@ -1,0 +1,11 @@
+# Explicit membership fields development review
+
+Run consumed cq1-a48 once. Require the exact direct source list containing sulfur and tire-derived fuel, resolvable source offsets/hash and the requested category. Require both raw target fields to match their complete source phrases in order. The application-rendered sentence must include both requested members with the correct category relationship and original citation. Verify that diagnostics retain raw fields, application rendering and any fallback separately. A field match is not a general semantic guarantee. Reject wrong polarity, scope, unsupported additions, lost qualifiers or irrelevant evidence.
+
+Require a real passing NeMo result and the exact persisted needs-review revision. No automatic approval/export. Only after all technical, source, completeness, safety and storage gates pass, run consumed cq1-a24 once, verifying its existing complete category groups and qualifiers through the same renderer.
+
+Maximum eight local main-model calls and two NeMo wrapper invocations total, one attempt per case, 180 seconds per case including preparation, zero retries or warmups. Keep local inference serialized. Stop on the first technical, critical/source, completeness, safety, storage or budget failure or the standing 90%-used threshold. Preserve unsuccessful and unattempted cases. Internal NeMo usage and monetary cost remain unavailable unless actually measured.
+
+Both cases are consumed development evidence. Preserve the v19 failure, original r07 failure and reserved cases. The twenty-case follow-on pool is unchanged from the previous predeclaration, with seventeen unattempted cases plus three unused glossary questions on preparer-inspected references. Require two current development passes before compilation and a separate grant for qualification. Preserve thresholds 9/10 answerable, 2/2 partial, 4/4 missing, 2/2 conflict and 2/2 injection, with zero critical errors. Stop on any technical/critical/full-pass-category failure or a second noncritical answerable miss.
+
+All new source findings are assistant-authored pending owner adjudication. The owner reviews only technically assessable new outputs for support, completeness, wording and warning usefulness. Acceptance of a wording example does not approve/export a stored revision.

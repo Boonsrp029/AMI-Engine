@@ -1,0 +1,67 @@
+{
+  "actual_model_calls": 0,
+  "sockets_blocked": true,
+  "checks": {
+    "cq1-a49": {
+      "reserved": 2001
+    },
+    "cq1-a50": {
+      "reserved": 1996
+    },
+    "cq1-a51": {
+      "reserved": 2010
+    },
+    "cq1-a30": {
+      "reserved": 3351
+    },
+    "cq1-a31": {
+      "reserved": 3368
+    },
+    "cq1-a32": {
+      "reserved": 3362
+    },
+    "cq1-a33": {
+      "reserved": 3391
+    },
+    "cq1-a34": {
+      "reserved": 3422
+    },
+    "cq1-a35": {
+      "reserved": 3384
+    },
+    "cq1-a36": {
+      "reserved": 3370
+    },
+    "cq1-p01": {
+      "reserved": 3463
+    },
+    "cq1-p02": {
+      "reserved": 3467
+    },
+    "cq1-m01": {
+      "reserved": 3312
+    },
+    "cq1-m02": {
+      "reserved": 3347
+    },
+    "cq1-m03": {
+      "reserved": 3328
+    },
+    "cq1-m04": {
+      "reserved": 3341
+    },
+    "cq1-c01": {
+      "reserved": 3558
+    },
+    "cq1-c02": {
+      "reserved": 3560
+    },
+    "cq1-i01": {
+      "reserved": 3520
+    },
+    "cq1-i02": {
+      "reserved": 3519
+    }
+  },
+  "maximum_reservation": 3560
+}

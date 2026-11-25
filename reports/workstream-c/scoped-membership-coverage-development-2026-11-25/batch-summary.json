@@ -1,0 +1,41 @@
+{
+  "contract_sha256": "3525b6122ac0eeb8ba9dd6ed72d1ebe67d5a86d544c8b3a60216f3e45b80c897",
+  "status": "failed; allowance closed",
+  "planned": [
+    "cq1-a48",
+    "cq1-a24"
+  ],
+  "attempted": [
+    "cq1-a48"
+  ],
+  "passed": [],
+  "unattempted": [
+    "cq1-a24"
+  ],
+  "main_calls": 2,
+  "nemo_invocations": 0,
+  "known_input_tokens": 3085,
+  "known_output_tokens": 195,
+  "known_total_tokens": 3280,
+  "retry_count": 0,
+  "warmup_count": 0,
+  "raw_response_accounting_available": true,
+  "persisted_failure_metrics_token_counts_incomplete": true,
+  "external_wall_seconds": 122.18799999984913,
+  "mapping_validity": "saved mapping parsed and exact source selection resolved successfully",
+  "raw_composer_schema": "parsed successfully",
+  "raw_composer_quality": "incomplete; omits tire-derived fuel despite full direct evidence and explicit checklist",
+  "strict_validation": "rejected before NeMo/projection/fallback",
+  "final_draft": null,
+  "stored_status": "failed",
+  "owner_review_required_for_this_failure": false,
+  "monetary_cost": "unmeasured",
+  "all_frozen_input_hashes_verified": true,
+  "cause_supported_by_evidence": "composition coverage failure; lexical checklist did not induce complete generation",
+  "unsupported_causes": [
+    "GPU capacity as a cause of this omission",
+    "inherent open-source-model limitation",
+    "retrieval absence"
+  ],
+  "next_technical_action": "Compare explicit per-request fact/field slots with the single prose-unit contract using different synthetic facts; propose any schema/rendering change explicitly before activation."
+}

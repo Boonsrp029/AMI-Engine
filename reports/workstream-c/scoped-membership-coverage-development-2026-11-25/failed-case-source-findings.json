@@ -1,0 +1,16 @@
+{
+  "source_id": "eia-generation-2023",
+  "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+  "source_start": 2388,
+  "source_end": 2569,
+  "quote": "5\nOther (utility-scale) sources includes non-biogenic municipal solid waste, batteries, hydrogen, purchased steam, sulfur, tire-derived fuel, and other miscellaneous energy sources.",
+  "content_sha256": "fe90b1522a01c91010063e6e1c585b1f41700b606a780861e9dba5aebef5198f",
+  "mapper_selected_span_id": "s_92faf2a6f901b323",
+  "supports_requested_members": [
+    "sulfur",
+    "tire-derived fuel"
+  ],
+  "raw_answer_complete": false,
+  "assessor": "assistant",
+  "owner_verdict": "not requested for failed technical attempt"
+}

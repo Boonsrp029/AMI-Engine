@@ -13,7 +13,7 @@ from ._request_coverage import SOURCE_FIELD_KINDS
 WIRE_VERSION = "cq-fact-selection-v1"
 SCHEMA_VERSION = "cq-fact-selection-v1-state-groups"
 SPAN_WIRE_VERSION = "cq-fact-span-selection-v1"
-SPAN_MAPPING_VERSION = "cq-fact-span-selection-v1-directed-power"
+SPAN_MAPPING_VERSION = "cq-fact-span-selection-v1-explicit-membership"
 _DIRECT_ONLY_FOCUSES = {"capacity_threshold", "table_publication", "single_power_conversion"}
 SPAN_INSTRUCTION = (
     "Use the supplied facts in order. Select complete source spans using span_id only. "

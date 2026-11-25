@@ -21,13 +21,14 @@ from ._status_conflict import include_opposing_status, validate_publication_stat
 from ._request_focus import (REQUIRED_TARGET_FIELDS, conversion_prose, focused_text, power_claim_texts, relevance_hints,
                              render_membership, request_focus, validate_focused_claims)
 from ._request_coverage import SOURCE_FIELD_KINDS, render_source_fields
+from ._membership_coverage import MEMBER_FIELD_LIMIT, requested_membership, validate_membership_coverage
 from . import _fact_selection as facts
 from .synthesis import project_report
 
 
 WIRE_VERSION = "cq-scoped-selection-v1"
 MAPPING_VERSION = "cq-mapper-v17-direct-evidence"
-COMPOSITION_VERSION = "cq-composer-v18-power-attribution"
+COMPOSITION_VERSION = "cq-composer-v20-explicit-membership-fields"
 _DEPENDENT_CLAIM = re.compile(r"^\s*(?:these|those|such)\b", re.I)
 SUBJECT_INSTRUCTION = (
     " Name the subject in each claim. Do not start a claim with These, Those or Such. "
@@ -123,7 +124,7 @@ def table_composition_schema(mapping, table_units, required_prose_units=None):
     }
     if required_prose_units:
         targets = create_model("RequiredTargets", __base__=StrictModel,
-                               **{field: (str, Field(min_length=1, max_length=399))
+                               **{field: (str, Field(min_length=1, max_length=MEMBER_FIELD_LIMIT))
                                   for field in REQUIRED_TARGET_FIELDS})
         for uid, cid in required_prose_units.items():
             slots[uid] = create_model(f"RequiredProse{uid}", __base__=StrictModel,
@@ -234,6 +235,7 @@ class ScopedConcurrentComposer:
         rendered_capacity = []
         rendered_memberships = []
         rendered_source_fields = []
+        membership_coverage = {}
         if any(c.status in {"supported", "partial"} for c in mapping.components):
             active_focuses = {c.component_id: focuses[c.component_id] for c in mapping.components
                               if c.status in {"supported", "partial"} and c.component_id in focuses}
@@ -318,6 +320,19 @@ class ScopedConcurrentComposer:
             if self.whole_fact_spans:
                 from .._quantities import power_quantity_pairs, validate_power_quantity_pairs
                 evidence_by_unit = {unit["unit_id"]: unit["evidence"] for unit in composition_inputs["units"]}
+                for unit in composition_inputs["units"]:
+                    for origin in unit["origins"]:
+                        requirement = requested_membership(anchors[origin["component_id"]], unit["evidence"])
+                        if requirement:
+                            combined = membership_coverage.setdefault(unit["unit_id"], {**requirement,
+                                "component_id": unit["component_id"], "members": []})
+                            combined["members"] = list(dict.fromkeys(combined["members"] + requirement["members"]))
+                    if unit["unit_id"] in membership_coverage:
+                        unit["required_requested_members"] = membership_coverage[unit["unit_id"]]["members"]
+                if membership_coverage:
+                    instruction += (" For required_requested_members, explicitly answer for every named item "
+                                    "in the same claim using that unit's selected evidence. Preserve the category. "
+                                    "Mentioning one requested item leaves the answer incomplete.")
                 if any(power_quantity_pairs(item["quote"]) for evidence in evidence_by_unit.values() for item in evidence):
                     instruction += (" For a power conversion, copy the exact number and requested unit from the direct "
                                     "evidence. Preserve all digit groups and distinguish millions from billions.")
@@ -325,6 +340,8 @@ class ScopedConcurrentComposer:
             raw_composition = call("composition", table_composition_schema(mapping, selection_units,
                 {uid: focus["component_id"] for uid, focus in required_units.items()}),
                                    instruction, composition_inputs)
+            validate_membership_coverage(raw_composition["claims"], {
+                uid: requirement for uid, requirement in membership_coverage.items() if uid not in member_units})
             claims = []
             for claim in raw_composition["claims"]:
                 uid = claim["unit_id"]
@@ -360,6 +377,7 @@ class ScopedConcurrentComposer:
                                           "start": span["start"], "end": span["end"],
                                           **({"geographic_evidence": scope} if scope else {})})
                 claims.append(claim)
+            validate_membership_coverage(claims, membership_coverage)
             composed = {**raw_composition, "claims": claims}
             _validate_explicit_subjects(claims)
             validate_focused_claims(claims, {**prose_focuses,
@@ -399,6 +417,7 @@ class ScopedConcurrentComposer:
             application_rendered_capacity_thresholds=rendered_capacity,
             application_rendered_memberships=rendered_memberships,
             application_rendered_source_fields=rendered_source_fields,
+            requested_membership_coverage=membership_coverage,
             model_responses=responses, span_catalog=catalog, application_extracts=extracts,
             requested_branch_coverage=coverage,
             concurrent_mapping_version=(facts.SPAN_MAPPING_VERSION if self.whole_fact_spans else

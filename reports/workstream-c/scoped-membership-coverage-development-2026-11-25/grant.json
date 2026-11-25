@@ -1,0 +1,15 @@
+{
+  "contract_sha256": "3525b6122ac0eeb8ba9dd6ed72d1ebe67d5a86d544c8b3a60216f3e45b80c897",
+  "case_ids": [
+    "cq1-a48",
+    "cq1-a24"
+  ],
+  "limits": {
+    "main_calls_per_case": 4,
+    "nemo_per_case": 1,
+    "seconds_per_case": 180,
+    "retries": 0
+  },
+  "authorization_reference": "Direct user grant in this chat, 25 November 2026 Bangkok; exact membership coverage diagnostic reply",
+  "human_reply": "Authorize scoped membership coverage development diagnostics"
+}

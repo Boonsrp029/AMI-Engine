@@ -1,0 +1,30 @@
+{
+  "stage": "composition",
+  "identity": {
+    "run_id": "b259e2fd0bf14abfa310a1b07e858e0a",
+    "attempt_id": "30568e7fa33842b8b025f4130796b836",
+    "plan_id": "932b1fef80d657649625f406c8e105525cf415583f6e12c78abef5163c135cab",
+    "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e"
+  },
+  "raw": "{\n  \"title\": \"Analyst research brief\",\n  \"claims\": [\n    {\n      \"unit_id\": \"u1\",\n      \"component_id\": \"r1\",\n      \"targets\": {\n        \"target_1\": \"sulfur\",\n        \"target_2\": \"tire-derived fuel\"\n      }\n    }\n  ]\n}",
+  "usage": {
+    "input_tokens": 917,
+    "output_tokens": 77,
+    "total_tokens": 994
+  },
+  "response_metadata": {
+    "model": "ami-llama3.1:8b-4k",
+    "created_at": "2026-11-25T12:30:49.0629205Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2842383000,
+    "load_duration": 10642700,
+    "prompt_eval_count": 917,
+    "prompt_eval_duration": 581744000,
+    "eval_count": 77,
+    "eval_duration": 2188431000,
+    "logprobs": null,
+    "model_name": "ami-llama3.1:8b-4k",
+    "model_provider": "ollama"
+  }
+}

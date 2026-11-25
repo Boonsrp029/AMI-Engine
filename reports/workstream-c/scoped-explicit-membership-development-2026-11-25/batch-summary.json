@@ -1,0 +1,48 @@
+{
+  "contract_sha256": "0d6069a865f989e94495eb58a57cf39406bb81db3cd4aaac40462b805492a4dd",
+  "status": "failed; allowance closed",
+  "planned": [
+    "cq1-a48",
+    "cq1-a24"
+  ],
+  "attempted": [
+    "cq1-a48"
+  ],
+  "passed": [],
+  "unattempted": [
+    "cq1-a24"
+  ],
+  "main_calls": 2,
+  "nemo_invocations": 1,
+  "known_input_tokens": 3165,
+  "known_output_tokens": 222,
+  "internal_nemo_usage": "unavailable",
+  "monetary_cost": "unmeasured",
+  "persisted_failure_metrics_token_counts_incomplete": true,
+  "elapsed_outer_seconds": 48.03100000019185,
+  "retry_count": 0,
+  "warmup_count": 0,
+  "mapping_selection_valid": true,
+  "raw_member_fields_complete": true,
+  "application_rendered_claim": "The other utility-scale sources category includes sulfur and tire-derived fuel.",
+  "safety_passed": false,
+  "blocking_rail": "self check facts",
+  "actual_raw_fact_verdicts": [
+    "NO"
+  ],
+  "stored_status": "failed",
+  "stored_draft": null,
+  "supporting_evidence_present_in_hash_matched_context": true,
+  "supporting_evidence_present_in_reconstructed_judge_prompt": true,
+  "reconstructed_judge_prompt_tokens": 1287,
+  "assistant_source_assessment": "The selected source list supports the rendered membership claim; NO rationale unavailable.",
+  "diagnosis": "safety-stage grounding judgement rejection after successful source selection and verified phrase rendering",
+  "not_established": [
+    "application context clipping",
+    "GPU capacity as a cause",
+    "inherent limitation of all open-source models"
+  ],
+  "new_actual_model_calls_during_offline_diagnosis": 0,
+  "owner_review_required_for_failed_technical_run": false,
+  "frozen_execution_inputs_snapshotted": 165
+}

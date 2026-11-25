@@ -1,0 +1,41 @@
+{
+  "activated": false,
+  "model_calls": 0,
+  "safety_calls": 0,
+  "synthetic_question": "Does the Northbridge reclaimed products category include sorted ceramic chips and treated timber recovered from demolition?",
+  "source_quote": "Reclaimed products includes washed sand, sorted ceramic chips, treated timber recovered from demolition, and other usable products.",
+  "checks": [
+    {
+      "case": "complete",
+      "rejected": false,
+      "rendered": "The reclaimed products category includes sorted ceramic chips and treated timber recovered from demolition."
+    },
+    {
+      "case": "missing_second",
+      "rejected": true,
+      "error": "1 validation error for ScopedTableComposition\nclaims.0.targets.target_2\n  Field required [type=missing, input_value={'target_1': 'sorted ceramic chips'}, input_"
+    },
+    {
+      "case": "duplicate_first",
+      "rejected": true,
+      "error": "Membership selection must retain both complete source members in order"
+    },
+    {
+      "case": "lost_qualifier",
+      "rejected": true,
+      "error": "Membership selection must retain both complete source members in order"
+    },
+    {
+      "case": "wrong_unit",
+      "rejected": true,
+      "error": "1 validation error for ScopedTableComposition\nclaims.0.unit_id\n  Input should be 'u1' [type=literal_error, input_value='u2', input_type=str]\n    For further inf"
+    },
+    {
+      "case": "old_free_prose",
+      "rejected": true,
+      "error": "2 validation errors for ScopedTableComposition\nclaims.0.targets\n  Field required [type=missing, input_value={'unit_id': 'u1', 'compon... sorted ceramic chips.'}"
+    }
+  ],
+  "existing_schema_and_renderer_reused": true,
+  "quality_claim": "offline contract prototype only; no model-quality evidence"
+}

@@ -1,0 +1,72 @@
+........................F............................................... [  3%]
+........................................................................ [  7%]
+........................................................................ [ 10%]
+........................................................................ [ 14%]
+........................................................................ [ 18%]
+........................................................................ [ 21%]
+........................................................................ [ 25%]
+........................................................................ [ 29%]
+........................................................................ [ 32%]
+........................................................................ [ 36%]
+........................................................................ [ 40%]
+........................................................................ [ 43%]
+........................................................................ [ 47%]
+........................................................................ [ 51%]
+........................................................................ [ 54%]
+........................................................................ [ 58%]
+........................................................................ [ 62%]
+........................................................................ [ 65%]
+........................................................................ [ 69%]
+........................................................................ [ 73%]
+........................................................................ [ 76%]
+........................................................................ [ 80%]
+........................................................................ [ 84%]
+........................................................................ [ 87%]
+........................................................................ [ 91%]
+........................................................................ [ 95%]
+........................................................................ [ 98%]
+.......................                                                  [100%]
+================================== FAILURES ===================================
+_________ test_owned_runner_overlap_faults_and_no_late_draft[success] _________
+
+tmp_path = WindowsPath('D:/Learning for jobs/Autonomous-Market-Intelligence-Engine-main/AMI-Engine/.pytest-tmp/explicit-membership-full/test_owned_runner_overlap_faul0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000020450581C10>
+mode = 'success'
+
+    @pytest.mark.parametrize('mode',['success','safety','budget','corpus','cancel'])
+    def test_owned_runner_overlap_faults_and_no_late_draft(tmp_path,monkeypatch,mode):
+        worker,entered,release,corpus,plan,store,rid=fixture(tmp_path,monkeypatch)
+        cancellation=threading.Event()
+        with ThreadPoolExecutor(1) as caller:
+            future=caller.submit(run_stored_plan,store,rid,plan,corpus,worker.RunnerOperation(entered,release),
+                worker.excessive_composer if mode=='budget' else worker.fixed_composer,
+                worker.reject_safety if mode=='safety' else worker.allow_safety,cancellation=cancellation)
+            try:
+>               assert entered[0].wait(30) and entered[1].wait(30),'Both branches must enter before either is released'
+E               AssertionError: Both branches must enter before either is released
+E               assert (False)
+E                +  where False = wait(30)
+E                +    where wait = <Event at 0x204504fb710 unset>.wait
+
+tests\integration\subtasks\test_subtasks_owned_runner_integration.py:36: AssertionError
+============================== warnings summary ===============================
+.venv-pilot-clean\Lib\site-packages\fastapi\testclient.py:1
+  D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-pilot-clean\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+.venv-pilot-clean\Lib\site-packages\mlflow\pyfunc\utils\data_validation.py:187
+  D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-pilot-clean\Lib\site-packages\mlflow\pyfunc\utils\data_validation.py:187: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+    color_warning(
+
+tests/test_guardrail_grounding.py: 11 warnings
+  D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-pilot-clean\Lib\site-packages\nemoguardrails\rails\llm\config.py:934: DeprecationWarning: Use 'nim_base_url' instead. This field will be removed in a future version.
+    if self.nim_url and not self.nim_base_url:
+
+tests/test_serving_artifact.py::test_saved_artifact_embeds_constraints_and_loads_after_relocation
+  D:\Learning for jobs\Autonomous-Market-Intelligence-Engine-main\AMI-Engine\.venv-pilot-clean\Lib\site-packages\mlflow\pyfunc\__init__.py:3344: UserWarning: [1;33mAn input example was not provided when logging the model. To ensure the model signature functions correctly, specify the `input_example` parameter. See https://mlflow.org/docs/latest/model/signatures.html#model-input-example for more details about the benefits of using input_example.[0m
+    color_warning(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/integration/subtasks/test_subtasks_owned_runner_integration.py::test_owned_runner_overlap_faults_and_no_late_draft[success]
+1 failed, 1966 passed, 14 warnings in 764.97s (0:12:44)

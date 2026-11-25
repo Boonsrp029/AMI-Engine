@@ -1,0 +1,43 @@
+{
+  "activated": false,
+  "model_calls": 0,
+  "nemo_calls": 0,
+  "synthetic_checks": [
+    {
+      "case": "complete",
+      "recognized": true,
+      "expected": true
+    },
+    {
+      "case": "incomplete",
+      "recognized": false,
+      "expected": false
+    },
+    {
+      "case": "wrong_member",
+      "recognized": false,
+      "expected": false
+    },
+    {
+      "case": "wrong_polarity",
+      "recognized": false,
+      "expected": false
+    },
+    {
+      "case": "unknown_citation",
+      "recognized": false,
+      "expected": false
+    },
+    {
+      "case": "ambiguous_duplicate_span",
+      "recognized": false,
+      "expected": false
+    },
+    {
+      "case": "empty_claims",
+      "recognized": false,
+      "expected": false
+    }
+  ],
+  "purpose": "Exact source-leading excerpt selection; does not predict judge verdicts or bypass NO."
+}

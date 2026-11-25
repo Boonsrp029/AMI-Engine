@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-25",
+  "goal_status_to_record": "blocked",
+  "quality_goal_complete": false,
+  "contract_sha256": "3525b6122ac0eeb8ba9dd6ed72d1ebe67d5a86d544c8b3a60216f3e45b80c897",
+  "same_execution_boundary_observed_at_three_consecutive_goal_turns": true,
+  "turns": [
+    {
+      "turn": 1,
+      "classification": "progress",
+      "evidence": "Runtime repair, 1957 offline passes and frozen preparation; review/grant pending at turn end"
+    },
+    {
+      "turn": 2,
+      "classification": "progress",
+      "evidence": "Missing-grant entry-point and five historical-owner hash checks; same review/grant pending"
+    },
+    {
+      "turn": 3,
+      "classification": "no progress beyond revalidation",
+      "evidence": "Same final contract, no new user review decision or applicable generation grant; no execution output or logs"
+    }
+  ],
+  "blockers": [
+    "Requested Astra final review unavailable in current session; owner model-review choice pending",
+    "No explicit applicable grant for this frozen development diagnostic"
+  ],
+  "live_worker_handle": null,
+  "actual_generation_calls_since_repair": 0,
+  "actual_nemo_calls_since_repair": 0,
+  "current_test_evidence": "1957 passed, 14 warnings in 516.82s",
+  "usage_percent_used": 26,
+  "next_action": "Owner resolves review-model choice; complete required review; obtain exact two-case grant before execution",
+  "preserved_goal_scope": "Actual development then conditional separately granted twenty-case qualification and required source adjudication"
+}

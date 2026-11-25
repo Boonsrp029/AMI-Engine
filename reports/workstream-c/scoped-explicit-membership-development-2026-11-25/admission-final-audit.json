@@ -1,0 +1,8 @@
+{
+  "contract_sha256": "0d6069a865f989e94495eb58a57cf39406bb81db3cd4aaac40462b805492a4dd",
+  "verified_pins": 165,
+  "qualification_requires_current_development_passes": true,
+  "actual_model_calls": 0,
+  "nemo_calls": 0,
+  "generation_authorized": false
+}

@@ -1,0 +1,93 @@
+{
+  "model_calls": 0,
+  "safety_calls": 0,
+  "sockets_blocked": true,
+  "future_pool_mapper_admission": {
+    "cq1-a49": {
+      "mapping_reservation": 2001
+    },
+    "cq1-a50": {
+      "mapping_reservation": 1996
+    },
+    "cq1-a51": {
+      "mapping_reservation": 2010
+    },
+    "cq1-a30": {
+      "mapping_reservation": 3351
+    },
+    "cq1-a31": {
+      "mapping_reservation": 3368
+    },
+    "cq1-a32": {
+      "mapping_reservation": 3362
+    },
+    "cq1-a33": {
+      "mapping_reservation": 3391
+    },
+    "cq1-a34": {
+      "mapping_reservation": 3422
+    },
+    "cq1-a35": {
+      "mapping_reservation": 3372
+    },
+    "cq1-a36": {
+      "mapping_reservation": 3370
+    },
+    "cq1-p01": {
+      "mapping_reservation": 3463
+    },
+    "cq1-p02": {
+      "mapping_reservation": 3467
+    },
+    "cq1-m01": {
+      "mapping_reservation": 3312
+    },
+    "cq1-m02": {
+      "mapping_reservation": 3347
+    },
+    "cq1-m03": {
+      "mapping_reservation": 3328
+    },
+    "cq1-m04": {
+      "mapping_reservation": 3341
+    },
+    "cq1-c01": {
+      "mapping_reservation": 3558
+    },
+    "cq1-c02": {
+      "mapping_reservation": 3560
+    },
+    "cq1-i01": {
+      "mapping_reservation": 3520
+    },
+    "cq1-i02": {
+      "mapping_reservation": 3519
+    }
+  },
+  "historical_a24_replay": {
+    "stages": [
+      {
+        "stage": "mapping",
+        "reservation": 3383
+      },
+      {
+        "stage": "composition",
+        "reservation": 1972
+      }
+    ],
+    "draft": {
+      "title": "Analyst research brief",
+      "claims": [
+        {
+          "text": "The other gases category includes blast furnace gas and other manufactured and waste gases derived from fossil fuels.",
+          "source_ids": [
+            "eia-generation-2023"
+          ]
+        }
+      ],
+      "warnings": []
+    },
+    "new_quality_evidence": false
+  },
+  "qualification_compiler_rejected_missing_current_development": true
+}

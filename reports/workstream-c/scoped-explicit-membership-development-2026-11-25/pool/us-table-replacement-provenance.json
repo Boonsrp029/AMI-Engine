@@ -1,0 +1,65 @@
+{
+  "retained_case_ids": [
+    "cq1-a29",
+    "cq1-a30",
+    "cq1-a31",
+    "cq1-a32",
+    "cq1-a33",
+    "cq1-a34",
+    "cq1-a35",
+    "cq1-a36",
+    "cq1-p01",
+    "cq1-p02",
+    "cq1-m01",
+    "cq1-m02",
+    "cq1-m03",
+    "cq1-m04",
+    "cq1-c01",
+    "cq1-c02",
+    "cq1-i01",
+    "cq1-i02"
+  ],
+  "excluded_consumed_ids": [
+    "cq1-a41",
+    "cq1-a42"
+  ],
+  "replacement_sources": [
+    {
+      "case_id": "cq1-a43",
+      "source_id": "eia-generation-2023",
+      "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+      "quote": "Data source: U.S. Energy Information Administration,\nElectric Power Monthly\n, February 2024; preliminary data",
+      "start": 1227,
+      "end": 1336,
+      "note": "Distinct requested fact from a previously used source document."
+    },
+    {
+      "case_id": "cq1-a44",
+      "source_id": "eia-measurement",
+      "url": "https://www.eia.gov/energyexplained/electricity/measuring-electricity.php",
+      "quote": "electronic smart meters\n. These meters wirelessly send power usage data in real time.",
+      "start": 1530,
+      "end": 1615,
+      "note": "Distinct requested fact from a previously used source document."
+    }
+  ],
+  "corpus_sha256": "bf8a8f9d7f121ebdca76f129adc115ddf7f3e2b3046767f1310b77ab5a0dec6e",
+  "prior_case_manifest_sha256": {
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq-261106\\cq1\\cases.json": "9a0497ec4c30e05992bc2730b9118565c33c79539a399afbd4dedcd4c9dbf832",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-aggregate-subject-pool-2026-11-13\\pool\\cases.json": "7d840ed1d5580c7c8a5687d72482f7115bff88a4fc79e528eb635cc5b31ba37a",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-context-role-pool-2026-11-18\\pool\\cases.json": "592673c127d0c85c5aa63ce79c3794f2952ce160dc4e871bcd91a71598f438ff",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-conversion-pool-2026-11-15\\pool\\cases.json": "1cf86615eb04e238907614fe576e6bbc4e70ca1d1d1c8a79e6bef6fc58102371",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-coverage-pool-2026-11-17\\pool\\cases.json": "14a28e72b472c2d7fc250cae16552a01d4f291d757e9410ae0d56f78364bccc8",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-direct-evidence-pool-2026-11-13\\pool\\cases.json": "5b51630c79bb6ae6d5d486b229faf30a4dd4093f9b5ab918adf43e94957ffbdd",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-explicit-subject-pool-2026-11-13\\pool\\cases.json": "5b51630c79bb6ae6d5d486b229faf30a4dd4093f9b5ab918adf43e94957ffbdd",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-fact-selection-pool-2026-11-14\\pool\\cases.json": "5b51630c79bb6ae6d5d486b229faf30a4dd4093f9b5ab918adf43e94957ffbdd",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-fact-span-pool-2026-11-15\\pool\\cases.json": "5b51630c79bb6ae6d5d486b229faf30a4dd4093f9b5ab918adf43e94957ffbdd",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-membership-pool-2026-11-15\\pool\\cases.json": "70394d88a45c3b64180ff668604c55df4573d0839eb44e44296817f79e5485b1",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-revised-pool-2026-11-12\\pool\\cases.json": "6c99b51d4368ec5556574031db00350d86ee3fb4a4bfa70653d576bf4da5cd03",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-revised-pool-2026-11-13\\pool\\cases.json": "a78818709b7527e2af010bddd3089bc9b17d668371435cca7ffcecb77fdcff5a",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-signed-table-pool-2026-11-18\\pool\\cases.json": "4ba1aa0da253f54af7273d84f364ce33e2e017005bbac9d49f4e0b51f4f18b8a",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-span-hints-pool-2026-11-13\\pool\\cases.json": "53811991e2b7afca908f876c94327cc9de27dc986c629ba5cfb7e36edae4641c",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\reports\\workstream-c\\cq1-table-boundary-pool-2026-11-18\\pool\\cases.json": "9e8e36b2d1d68be5573db43a1a2b591be0f579191cc70ef890837dc0f7146d79"
+  },
+  "question_holdout_only": true
+}

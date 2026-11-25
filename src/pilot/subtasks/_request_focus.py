@@ -4,6 +4,7 @@ import re
 from src.agents.local_retriever import _bm25_scores, _tokens
 from .._quantities import _number, _SCALES
 from ._request_coverage import source_field_focus
+from ._membership_coverage import MEMBER_FIELD_LIMIT, membership_fields
 
 _YEAR = re.compile(r"\b[12][0-9]{3}\b")
 _TABLE_HEADER = re.compile(r"^Energy source\r?\n(?P<unit>(?:Million |Billion )?(?:kWh|MWh|GWh|TWh))"
@@ -203,7 +204,10 @@ def conversion_prose(texts, focus):
 def _membership_focus(anchor, text):
     request = _MEMBERSHIP_REQUEST.fullmatch(_normal(anchor))
     if request is None:
-        return []
+        fields = membership_fields(anchor, text)
+        if fields and any(len(member) > MEMBER_FIELD_LIMIT for member in fields["members"]):
+            return []
+        return [{"kind": "category_membership", **fields}] if fields else []
     category = request["category"]
     pattern = re.compile(rf"(?:the )?{re.escape(category)}(?: category)? includes? "
                          rf"(?P<first>{_MEMBERSHIP_GROUP}?) and (?P<second>other {_MEMBERSHIP_GROUP})\.", re.I)
@@ -249,6 +253,16 @@ def request_focus(requests, catalog, report, bindings, *, include_conversions=Fa
                    for matcher in matchers for focus in matcher(anchor, span["text"])]
         if len(matches) == 1:
             result[cid] = matches[0]
+    shared_membership = {}
+    for cid, focus in result.items():
+        if focus["kind"] == "category_membership":
+            shared_membership.setdefault(focus["span_id"], []).append(cid)
+    for components in shared_membership.values():
+        if len({tuple(result[cid]["members"]) for cid in components}) > 1:
+            # Canonical composition may merge the evidence into one unit.
+            # Different member pairs cannot share one two-field rendering.
+            for cid in components:
+                del result[cid]
     return result
 
 

@@ -1,0 +1,14 @@
+{
+  "baseline_files": 365,
+  "unchanged": 360,
+  "intentional_changed_files": [
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_fact_selection.py",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_membership_coverage.py",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_request_focus.py",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\src\\pilot\\subtasks\\_scoped_generation.py",
+    "D:\\Learning for jobs\\Autonomous-Market-Intelligence-Engine-main\\AMI-Engine\\tests\\test_subtask_membership_coverage.py"
+  ],
+  "preserved_v19_execution_input_files": 165,
+  "requirements_and_historical_owner_csv_exports_unchanged": true,
+  "all_old_attempt_artifacts_unchanged": true
+}
